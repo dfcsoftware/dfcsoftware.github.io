@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="generator" content="Pelican" />
+        <title>dcfsoftware Linux Home Administration - Don Cohoon</title>
+        <link rel="stylesheet" href="https://dfcsoftware.github.io/theme/css/main.css" />
+        <link href="https://dfcsoftware.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="dcfsoftware Linux Home Administration Atom Feed" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <table>
+                    <td><h1><a href="https://dfcsoftware.github.io/">dcfsoftware Linux Home Administration</a></h1></td>
+                    <td>   <!-- Note the usage of `type=module` here as this is an ES6 module --> <script type="module">
+    // Use ES module import syntax to import functionality from the module
+    // that we have compiled.
+    //
+    // Note that the `default` import is an initialization function which
+    // will "boot" the module and make it ready to use. Currently browsers
+    // don't support natively imported WebAssembly as an ES module, but
+    // eventually the manual initialization won't be required!
+    // import { search, default as init } from './tinysearch_engine.js';
+    import { search, default as init } from '/tinysearch_engine.js';
+    window.search = search;
+
+    async function run() {
+      // First up we need to actually load the wasm file, so we use the
+      // default export to inform it where the wasm file is located on the
+      // server, and then we wait on the returned promise to wait for the
+      // wasm to be loaded.
+      //
+      // Note that instead of a string here you can also pass in an instance
+      // of `WebAssembly.Module` which allows you to compile your own module.
+      // Also note that the promise, when resolved, yields the wasm module's
+      // exports which is the same as importing the `*_bg` module in other
+      // modes
+      await init('/tinysearch_engine_bg.wasm');
+    }
+
+    run();
+  </script>
+
+  <script>
+    // And afterwards we can use all the functionality defined in wasm.
+    function doSearch() {
+      let value = document.getElementById("searcher").value;
+      console.log(`Search query: ${value}`);
+
+      const results = search(value, 5);
+
+      console.log(`Results: ${results}`);
+
+      let ul = document.getElementById("results");
+      ul.innerHTML = "";
+
+      for (i = 0; i < results.length; i++) {
+        var li = document.createElement("li");
+
+        let [title, url] = results[i];
+        let elemlink = document.createElement('a');
+        elemlink.innerHTML = title;
+        elemlink.setAttribute('href', url);
+        li.appendChild(elemlink);
+
+        ul.appendChild(li);
+      }
+    }
+  </script>
+
+<div style="text-align:right"> 
+  <h2> 
+    <object type="image/svg+xml" data="/theme/images/search.svg" style="width:5%; height:10%;">
+       Search<!-- fallback image in CSS -->
+    </object>
+    <input type="text" id="searcher" onkeyup="doSearch()">
+  </h2>
+  <ul style="list-style-type: none;text-align: left;" id="results">
+  </ul>
+</div> </td>
+                </table>
+                <nav><ul>
+                    <li><a href="https://dfcsoftware.github.io/category/forest.html">forest</a></li>
+                    <li><a href="https://dfcsoftware.github.io/category/fosstodon.html">fosstodon</a></li>
+                    <li><a href="https://dfcsoftware.github.io/category/linux.html">linux</a></li>
+                    <li><a href="https://dfcsoftware.github.io/category/writing.html">writing</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+                <section id="content" class="body">
+                    <ol id="posts-list" class="hfeed" start="9">
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://dfcsoftware.github.io/encrypt-web.html" rel="bookmark"
+                           title="Permalink to Encrypt Web">Encrypt Web</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2023-01-31T15:43:10+00:00">
+                Published: Tue 31 January 2023
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://dfcsoftware.github.io/author/don-cohoon.html">Don Cohoon</a>
+        </address>
+<p>In <a href="https://dfcsoftware.github.io/category/fosstodon.html">fosstodon</a>.</p>
+
+</footer><!-- /.post-info -->                <p>If it runs over the Internet, Encrypt it. That's cowboy logic. If it hurts, hide it, if it's a load, truck it, if it's a punch, duck it... (Michael Martin Murphey)</p>
+<p>Close those curtains on your windows over there! </p>
+<p>E-Mail, Chat, Cloud, Router, etc, on 300 million websites using Lets …</p>
+                <a class="readmore" href="https://dfcsoftware.github.io/encrypt-web.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://dfcsoftware.github.io/streaming-music.html" rel="bookmark"
+                           title="Permalink to Streaming Music">Streaming Music</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2023-01-28T13:38:27+00:00">
+                Published: Sat 28 January 2023
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://dfcsoftware.github.io/author/don-cohoon.html">Don Cohoon</a>
+        </address>
+<p>In <a href="https://dfcsoftware.github.io/category/fosstodon.html">fosstodon</a>.</p>
+
+</footer><!-- /.post-info -->                <p>In the spirit of fosstodon, I would like to submit my vote for &quot;Best music streaming radio station of 2022&quot;.</p>
+<p>If you like music from the 1960's to 1970's it's a winner. If not, what streaming music radio do you like?</p>
+<p><a class="mention hashtag" href="https://fosstodon.org/tags/music" rel="tag">#<span>music</span></a> <a class="mention hashtag" href="https://fosstodon.org/tags/streaming" rel="tag">#<span>streaming</span></a> <a class="mention hashtag" href="https://fosstodon.org/tags/radio" rel="tag">#<span>radio</span></a> </p>
+<p><a href="https://www.handcraftedradio.org/" rel="nofollow noopener noreferrer" target="_blank"><span class="invisible">https://www.</span><span class="">handcraftedradio.org/</span><span class="invisible"></span></a></p>
+<p> I donate …</p>
+                <a class="readmore" href="https://dfcsoftware.github.io/streaming-music.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://dfcsoftware.github.io/book.html" rel="bookmark"
+                           title="Permalink to Book">Book</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2023-01-28T00:09:42+00:00">
+                Published: Sat 28 January 2023
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://dfcsoftware.github.io/author/don-cohoon.html">Don Cohoon</a>
+        </address>
+<p>In <a href="https://dfcsoftware.github.io/category/fosstodon.html">fosstodon</a>.</p>
+
+</footer><!-- /.post-info -->                <p>I started writing a book this year about <a class="mention hashtag" href="https://fosstodon.org/tags/linux" rel="tag">#<span>linux</span></a> and it’s been great so far. I put the first part on-line here:<br /><a href="https://Linux-in-the-house.org" rel="nofollow noopener noreferrer" target="_blank"><span class="invisible">https://</span><span class="">Linux-in-the-house.org</span><span class="invisible"></span></a></p>
+                <a class="readmore" href="https://dfcsoftware.github.io/book.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://dfcsoftware.github.io/introduction.html" rel="bookmark"
+                           title="Permalink to Introduction">Introduction</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2023-01-25T10:20:00-05:00">
+                Published: Wed 25 January 2023
+        </abbr>
+		<br />
+        <abbr class="modified" title="2024-04-19T09:30:00-04:00">
+                Updated: Fri 19 April 2024
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://dfcsoftware.github.io/author/don-cohoon.html">Don Cohoon</a>
+        </address>
+<p>In <a href="https://dfcsoftware.github.io/category/linux.html">linux</a>.</p>
+
+</footer><!-- /.post-info -->                <p><img alt="Linux-in-the-house.svg" src="/images/Linux-in-the-House2.svg"></p>
+<hr>
+<h1 style="text-align: center;">Linux in the House</h1>
+
+<h3 style="text-align: center;">The amazing things you can do with computer software in your home, ya GNU?</h3>
+
+<blockquote>
+<hr>
+<p>By: Don Cohoon</p>
+<p>Website: <a href="https://linux-in-the-house.org">https://linux-in-the-house.org</a></p>
+<p>RSS: <a href="https://fosstodon.org/@LinuxintheHouse.rss">https://fosstodon.org/@LinuxintheHouse.rss</a></p>
+<p>Feedback:</p>
+<ul>
+<li><a rel="me" href="https://fosstodon.org/@LinuxintheHouse">Mastodon</a></li>
+<li><a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#109;&#97;&#105;&#108;&#64;&#108;&#105;&#110;&#117;&#120;&#45;&#105;&#110;&#45;&#116;&#104;&#101;&#45;&#104;&#111;&#117;&#115;&#101;&#46;&#111;&#114;&#103;">&#109;&#97;&#105;&#108;&#64;&#108;&#105;&#110;&#117;&#120;&#45;&#105;&#110;&#45;&#116;&#104;&#101;&#45;&#104;&#111;&#117;&#115;&#101;&#46;&#111;&#114;&#103;</a></li>
+</ul>
+<p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 …</a></p></blockquote>
+                <a class="readmore" href="https://dfcsoftware.github.io/introduction.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://dfcsoftware.github.io/nbs.html" rel="bookmark"
+                           title="Permalink to NBS">NBS</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2022-12-20T14:56:03+00:00">
+                Published: Tue 20 December 2022
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://dfcsoftware.github.io/author/don-cohoon.html">Don Cohoon</a>
+        </address>
+<p>In <a href="https://dfcsoftware.github.io/category/fosstodon.html">fosstodon</a>.</p>
+
+</footer><!-- /.post-info -->                <p>The 20 year most useful award goes to -&gt;</p>
+<p>&quot;Never Before Seen&quot; (NBS) here:<br /><a href="http://ranum.com/security/computer_security/code/index.html" rel="nofollow noopener noreferrer" target="_blank"><span class="invisible">http://</span><span class="ellipsis">ranum.com/security/computer_se</span><span class="invisible">curity/code/index.html</span></a></p>
+<p>with a spinoff &quot;retail&quot; here:<br /><a href="https://github.com/mbucc/retail" rel="nofollow noopener noreferrer" target="_blank"><span class="invisible">https://</span><span class="">github.com/mbucc/retail</span><span class="invisible"></span></a></p>
+<p>Thanks Marcus Ranum 🏆 for making System Admin better. May your bowls always be round and spears straight. <a class="mention hashtag" href="https://fosstodon.org/tags/linux" rel="tag">#<span>linux …</span></a></p>
+                <a class="readmore" href="https://dfcsoftware.github.io/nbs.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://dfcsoftware.github.io/johnmastodon.html" rel="bookmark"
+                           title="Permalink to JohnMastodon">JohnMastodon</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2022-12-19T20:40:29+00:00">
+                Published: Mon 19 December 2022
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://dfcsoftware.github.io/author/don-cohoon.html">Don Cohoon</a>
+        </address>
+<p>In <a href="https://dfcsoftware.github.io/category/fosstodon.html">fosstodon</a>.</p>
+
+</footer><!-- /.post-info -->                <p>“In fact, he planted nurseries rather than orchards, built fences around them to protect them from livestock, left the nurseries in the care of a neighbor who sold trees on shares, and returned every year or two to tend the nursery.” John Mastodon <a class="mention hashtag" href="https://fosstodon.org/tags/JohnMastodon" rel="tag">#<span>JohnMastodon</span></a>  or Johnny Appleseed.</p>
+                <a class="readmore" href="https://dfcsoftware.github.io/johnmastodon.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://dfcsoftware.github.io/my-second-review.html" rel="bookmark"
+                           title="Permalink to My Second Review">My Second Review</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2010-12-03T10:20:00-05:00">
+                Published: Fri 03 December 2010
+        </abbr>
+		<br />
+        <abbr class="modified" title="2010-03-12T10:20:00-05:00">
+                Updated: Fri 12 March 2010
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://dfcsoftware.github.io/author/don-cohoon.html">Don Cohoon</a>
+        </address>
+<p>In <a href="https://dfcsoftware.github.io/category/linux.html">linux</a>.</p>
+
+</footer><!-- /.post-info -->                <p>Following is a review of my favorite mechanical mouse.</p>
+                <a class="readmore" href="https://dfcsoftware.github.io/my-second-review.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://dfcsoftware.github.io/my-writing-post.html" rel="bookmark"
+                           title="Permalink to My Writing Post">My Writing Post</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2010-12-03T10:20:00-05:00">
+                Published: Fri 03 December 2010
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://dfcsoftware.github.io/author/don-cohoon.html">Don Cohoon</a>
+        </address>
+<p>In <a href="https://dfcsoftware.github.io/category/writing.html">writing</a>.</p>
+
+</footer><!-- /.post-info -->                <p>Following is a story about my favorite ghost story.</p>
+                <a class="readmore" href="https://dfcsoftware.github.io/my-writing-post.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+<nav>
+  <ul>
+        <li class="horizontal"><a href="https://dfcsoftware.github.io/author/don-cohoon.html">&Lang;</a></li>
+        <li class="horizontal"><a href="https://dfcsoftware.github.io/author/don-cohoon2.html">&lang;</a></li>
+    <li class="horizontal">Page 3 / 3</li>
+  </ul>
+</nav>
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://getpelican.com/">Pelican</a></li>
+                            <li><a href="https://www.python.org/">Python.org</a></li>
+                            <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="https://dfcsoftware.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <p>
+                Site by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>, via <a rel="nofollow" href="https://www.python.org/">Python</a>.
+                </p><!-- /#about -->
+
+                <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

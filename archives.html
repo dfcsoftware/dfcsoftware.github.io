@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="generator" content="Pelican" />
+        <title>dcfsoftware Linux Home Administration</title>
+        <link rel="stylesheet" href="https://dfcsoftware.github.io/theme/css/main.css" />
+        <link href="https://dfcsoftware.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="dcfsoftware Linux Home Administration Atom Feed" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <table>
+                    <td><h1><a href="https://dfcsoftware.github.io/">dcfsoftware Linux Home Administration</a></h1></td>
+                    <td>   <!-- Note the usage of `type=module` here as this is an ES6 module --> <script type="module">
+    // Use ES module import syntax to import functionality from the module
+    // that we have compiled.
+    //
+    // Note that the `default` import is an initialization function which
+    // will "boot" the module and make it ready to use. Currently browsers
+    // don't support natively imported WebAssembly as an ES module, but
+    // eventually the manual initialization won't be required!
+    // import { search, default as init } from './tinysearch_engine.js';
+    import { search, default as init } from '/tinysearch_engine.js';
+    window.search = search;
+
+    async function run() {
+      // First up we need to actually load the wasm file, so we use the
+      // default export to inform it where the wasm file is located on the
+      // server, and then we wait on the returned promise to wait for the
+      // wasm to be loaded.
+      //
+      // Note that instead of a string here you can also pass in an instance
+      // of `WebAssembly.Module` which allows you to compile your own module.
+      // Also note that the promise, when resolved, yields the wasm module's
+      // exports which is the same as importing the `*_bg` module in other
+      // modes
+      await init('/tinysearch_engine_bg.wasm');
+    }
+
+    run();
+  </script>
+
+  <script>
+    // And afterwards we can use all the functionality defined in wasm.
+    function doSearch() {
+      let value = document.getElementById("searcher").value;
+      console.log(`Search query: ${value}`);
+
+      const results = search(value, 5);
+
+      console.log(`Results: ${results}`);
+
+      let ul = document.getElementById("results");
+      ul.innerHTML = "";
+
+      for (i = 0; i < results.length; i++) {
+        var li = document.createElement("li");
+
+        let [title, url] = results[i];
+        let elemlink = document.createElement('a');
+        elemlink.innerHTML = title;
+        elemlink.setAttribute('href', url);
+        li.appendChild(elemlink);
+
+        ul.appendChild(li);
+      }
+    }
+  </script>
+
+<div style="text-align:right"> 
+  <h2> 
+    <object type="image/svg+xml" data="/theme/images/search.svg" style="width:5%; height:10%;">
+       Search<!-- fallback image in CSS -->
+    </object>
+    <input type="text" id="searcher" onkeyup="doSearch()">
+  </h2>
+  <ul style="list-style-type: none;text-align: left;" id="results">
+  </ul>
+</div> </td>
+                </table>
+                <nav><ul>
+                    <li><a href="https://dfcsoftware.github.io/category/forest.html">forest</a></li>
+                    <li><a href="https://dfcsoftware.github.io/category/fosstodon.html">fosstodon</a></li>
+                    <li><a href="https://dfcsoftware.github.io/category/linux.html">linux</a></li>
+                    <li><a href="https://dfcsoftware.github.io/category/writing.html">writing</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+<h1>Archives for dcfsoftware Linux Home Administration</h1>
+
+<dl>
+    <dt>Mon 21 May 2525</dt>
+    <dd><a href="https://dfcsoftware.github.io/my-super-post.html">Welcome back my Friends</a></dd>
+    <dt>Sat 27 April 2024</dt>
+    <dd><a href="https://dfcsoftware.github.io/welcome-to-the-forest.html">Welcome to the Forest</a></dd>
+    <dt>Wed 23 August 2023</dt>
+    <dd><a href="https://dfcsoftware.github.io/alerts.html">Alerts</a></dd>
+    <dt>Sun 11 June 2023</dt>
+    <dd><a href="https://dfcsoftware.github.io/qemu-virtual-machine.html">QEMU Virtual Machine</a></dd>
+    <dt>Fri 19 May 2023</dt>
+    <dd><a href="https://dfcsoftware.github.io/long-ethernet.html">Long Ethernet</a></dd>
+    <dt>Sat 22 April 2023</dt>
+    <dd><a href="https://dfcsoftware.github.io/networks.html">Networks</a></dd>
+    <dt>Thu 20 April 2023</dt>
+    <dd><a href="https://dfcsoftware.github.io/encrypt-files.html">Encrypt Files</a></dd>
+    <dt>Wed 19 April 2023</dt>
+    <dd><a href="https://dfcsoftware.github.io/vlan.html">VLAN</a></dd>
+    <dt>Mon 17 April 2023</dt>
+    <dd><a href="https://dfcsoftware.github.io/docker.html">Docker</a></dd>
+    <dt>Sat 15 April 2023</dt>
+    <dd><a href="https://dfcsoftware.github.io/media-management.html">Media Management</a></dd>
+    <dt>Thu 16 March 2023</dt>
+    <dd><a href="https://dfcsoftware.github.io/beaglebone.html">BeagleBone</a></dd>
+    <dt>Mon 13 March 2023</dt>
+    <dd><a href="https://dfcsoftware.github.io/miniflux.html">MiniFlux</a></dd>
+    <dt>Sat 11 March 2023</dt>
+    <dd><a href="https://dfcsoftware.github.io/matrix.html">Matrix</a></dd>
+    <dt>Thu 09 March 2023</dt>
+    <dd><a href="https://dfcsoftware.github.io/homeautomation.html">HomeAutomation</a></dd>
+    <dt>Fri 03 March 2023</dt>
+    <dd><a href="https://dfcsoftware.github.io/email-soup.html">EMail Soup</a></dd>
+    <dt>Fri 24 February 2023</dt>
+    <dd><a href="https://dfcsoftware.github.io/cloud.html">Cloud</a></dd>
+    <dt>Thu 23 February 2023</dt>
+    <dd><a href="https://dfcsoftware.github.io/postgresql.html">PostgreSQL</a></dd>
+    <dt>Wed 08 February 2023</dt>
+    <dd><a href="https://dfcsoftware.github.io/email.html">EMail</a></dd>
+    <dt>Thu 02 February 2023</dt>
+    <dd><a href="https://dfcsoftware.github.io/setup-server.html">Setup Server</a></dd>
+    <dt>Thu 02 February 2023</dt>
+    <dd><a href="https://dfcsoftware.github.io/nas.html">NAS</a></dd>
+    <dt>Tue 31 January 2023</dt>
+    <dd><a href="https://dfcsoftware.github.io/encrypt-web.html">Encrypt Web</a></dd>
+    <dt>Sat 28 January 2023</dt>
+    <dd><a href="https://dfcsoftware.github.io/streaming-music.html">Streaming Music</a></dd>
+    <dt>Sat 28 January 2023</dt>
+    <dd><a href="https://dfcsoftware.github.io/book.html">Book</a></dd>
+    <dt>Wed 25 January 2023</dt>
+    <dd><a href="https://dfcsoftware.github.io/introduction.html">Introduction</a></dd>
+    <dt>Tue 20 December 2022</dt>
+    <dd><a href="https://dfcsoftware.github.io/nbs.html">NBS</a></dd>
+    <dt>Mon 19 December 2022</dt>
+    <dd><a href="https://dfcsoftware.github.io/johnmastodon.html">JohnMastodon</a></dd>
+    <dt>Fri 03 December 2010</dt>
+    <dd><a href="https://dfcsoftware.github.io/my-second-review.html">My Second Review</a></dd>
+    <dt>Fri 03 December 2010</dt>
+    <dd><a href="https://dfcsoftware.github.io/my-writing-post.html">My Writing Post</a></dd>
+</dl>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://getpelican.com/">Pelican</a></li>
+                            <li><a href="https://www.python.org/">Python.org</a></li>
+                            <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="https://dfcsoftware.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <p>
+                Site by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>, via <a rel="nofollow" href="https://www.python.org/">Python</a>.
+                </p><!-- /#about -->
+
+                <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

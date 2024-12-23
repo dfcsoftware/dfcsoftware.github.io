@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="generator" content="Pelican" />
+        <title>Welcome back my Friends</title>
+        <link rel="stylesheet" href="https://dfcsoftware.github.io/theme/css/main.css" />
+        <link href="https://dfcsoftware.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="dcfsoftware Linux Home Administration Atom Feed" />
+        <meta name="description" content="the show that never ends, Linux in House.." />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <table>
+                    <td><h1><a href="https://dfcsoftware.github.io/">dcfsoftware Linux Home Administration</a></h1></td>
+                    <td>   <!-- Note the usage of `type=module` here as this is an ES6 module --> <script type="module">
+    // Use ES module import syntax to import functionality from the module
+    // that we have compiled.
+    //
+    // Note that the `default` import is an initialization function which
+    // will "boot" the module and make it ready to use. Currently browsers
+    // don't support natively imported WebAssembly as an ES module, but
+    // eventually the manual initialization won't be required!
+    // import { search, default as init } from './tinysearch_engine.js';
+    import { search, default as init } from '/tinysearch_engine.js';
+    window.search = search;
+
+    async function run() {
+      // First up we need to actually load the wasm file, so we use the
+      // default export to inform it where the wasm file is located on the
+      // server, and then we wait on the returned promise to wait for the
+      // wasm to be loaded.
+      //
+      // Note that instead of a string here you can also pass in an instance
+      // of `WebAssembly.Module` which allows you to compile your own module.
+      // Also note that the promise, when resolved, yields the wasm module's
+      // exports which is the same as importing the `*_bg` module in other
+      // modes
+      await init('/tinysearch_engine_bg.wasm');
+    }
+
+    run();
+  </script>
+
+  <script>
+    // And afterwards we can use all the functionality defined in wasm.
+    function doSearch() {
+      let value = document.getElementById("searcher").value;
+      console.log(`Search query: ${value}`);
+
+      const results = search(value, 5);
+
+      console.log(`Results: ${results}`);
+
+      let ul = document.getElementById("results");
+      ul.innerHTML = "";
+
+      for (i = 0; i < results.length; i++) {
+        var li = document.createElement("li");
+
+        let [title, url] = results[i];
+        let elemlink = document.createElement('a');
+        elemlink.innerHTML = title;
+        elemlink.setAttribute('href', url);
+        li.appendChild(elemlink);
+
+        ul.appendChild(li);
+      }
+    }
+  </script>
+
+<div style="text-align:right"> 
+  <h2> 
+    <object type="image/svg+xml" data="/theme/images/search.svg" style="width:5%; height:10%;">
+       Search<!-- fallback image in CSS -->
+    </object>
+    <input type="text" id="searcher" onkeyup="doSearch()">
+  </h2>
+  <ul style="list-style-type: none;text-align: left;" id="results">
+  </ul>
+</div> </td>
+                </table>
+                <nav><ul>
+                    <li><a href="https://dfcsoftware.github.io/category/forest.html">forest</a></li>
+                    <li><a href="https://dfcsoftware.github.io/category/fosstodon.html">fosstodon</a></li>
+                    <li class="active"><a href="https://dfcsoftware.github.io/category/linux.html">linux</a></li>
+                    <li><a href="https://dfcsoftware.github.io/category/writing.html">writing</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://dfcsoftware.github.io/my-super-post.html" rel="bookmark"
+           title="Permalink to Welcome back my Friends">Welcome back my Friends</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2525-05-21T10:20:00-04:00">
+                Published: Mon 21 May 2525
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://dfcsoftware.github.io/author/don-cohoon.html">Don Cohoon</a>
+        </address>
+<p>In <a href="https://dfcsoftware.github.io/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://dfcsoftware.github.io/tag/personal.html">personal</a> <a href="https://dfcsoftware.github.io/tag/think.html">think</a> </p>
+</footer><!-- /.post-info -->      <object type="image/svg+xml" data="/images/Linux-in-the-House2.svg" style="width:35%; height:40%; text-align: right">
+  Linux-in-the-House.svg<!-- fallback image in CSS -->
+</object>
+
+<ul>
+<li>
+<p><a href="/introduction.html">Introduction</a></p>
+</li>
+<li>
+<p><a href="/setup-server.html">Setup a New Server</a></p>
+</li>
+</ul>
+<blockquote>
+<p>Dedicated to my wife, Linh. She fixes the meals, I fix the house.</p>
+</blockquote>
+<hr>
+<ul>
+<li>Following is a review of things to think about.</li>
+</ul>
+<p>Early one foggy morning a white van whipped into the driveway and out pops two bearded fellows. "Hey, the wallpaper removers are here" I called out. Sure enough the camera alerted me as to an abnormal presence in the force.</p>
+<p>It's not always been so easy, and assembling a security camera setup was something from Mad magazine in the 1960's that I achieved to some degree only lately. With an un-finished basement it was a breeze to run Cat-6 wires to each camera, even supplying power over ethernet (POE) to a latest breed of observers.</p>
+<p>Following our birth to computers, from mechanical to electrical, monolithic to personal, microscopic chemicals and minerals beat their little binary hearts digested from human text. Standing on the hills of our ancestors we can only hope to provide something the world wants to use as long it works.</p>
+<p>Thinking of such lofty goals, I am inspired to continue my journaley writings.</p>
+<p>From here, for now;</p>
+<p>-- Don</p>
+<blockquote>
+<p>Lock your computer's doors and windows,
+but remember:
+A house is not a home without visitors</p>
+</blockquote>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://getpelican.com/">Pelican</a></li>
+                            <li><a href="https://www.python.org/">Python.org</a></li>
+                            <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="https://dfcsoftware.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <p>
+                Site by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>, via <a rel="nofollow" href="https://www.python.org/">Python</a>.
+                </p><!-- /#about -->
+
+                <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

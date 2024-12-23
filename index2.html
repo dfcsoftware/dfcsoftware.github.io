@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="generator" content="Pelican" />
+        <title>dcfsoftware Linux Home Administration</title>
+        <link rel="stylesheet" href="https://dfcsoftware.github.io/theme/css/main.css" />
+        <link href="https://dfcsoftware.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="dcfsoftware Linux Home Administration Atom Feed" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <table>
+                    <td><h1><a href="https://dfcsoftware.github.io/">dcfsoftware Linux Home Administration</a></h1></td>
+                    <td>   <!-- Note the usage of `type=module` here as this is an ES6 module --> <script type="module">
+    // Use ES module import syntax to import functionality from the module
+    // that we have compiled.
+    //
+    // Note that the `default` import is an initialization function which
+    // will "boot" the module and make it ready to use. Currently browsers
+    // don't support natively imported WebAssembly as an ES module, but
+    // eventually the manual initialization won't be required!
+    // import { search, default as init } from './tinysearch_engine.js';
+    import { search, default as init } from '/tinysearch_engine.js';
+    window.search = search;
+
+    async function run() {
+      // First up we need to actually load the wasm file, so we use the
+      // default export to inform it where the wasm file is located on the
+      // server, and then we wait on the returned promise to wait for the
+      // wasm to be loaded.
+      //
+      // Note that instead of a string here you can also pass in an instance
+      // of `WebAssembly.Module` which allows you to compile your own module.
+      // Also note that the promise, when resolved, yields the wasm module's
+      // exports which is the same as importing the `*_bg` module in other
+      // modes
+      await init('/tinysearch_engine_bg.wasm');
+    }
+
+    run();
+  </script>
+
+  <script>
+    // And afterwards we can use all the functionality defined in wasm.
+    function doSearch() {
+      let value = document.getElementById("searcher").value;
+      console.log(`Search query: ${value}`);
+
+      const results = search(value, 5);
+
+      console.log(`Results: ${results}`);
+
+      let ul = document.getElementById("results");
+      ul.innerHTML = "";
+
+      for (i = 0; i < results.length; i++) {
+        var li = document.createElement("li");
+
+        let [title, url] = results[i];
+        let elemlink = document.createElement('a');
+        elemlink.innerHTML = title;
+        elemlink.setAttribute('href', url);
+        li.appendChild(elemlink);
+
+        ul.appendChild(li);
+      }
+    }
+  </script>
+
+<div style="text-align:right"> 
+  <h2> 
+    <object type="image/svg+xml" data="/theme/images/search.svg" style="width:5%; height:10%;">
+       Search<!-- fallback image in CSS -->
+    </object>
+    <input type="text" id="searcher" onkeyup="doSearch()">
+  </h2>
+  <ul style="list-style-type: none;text-align: left;" id="results">
+  </ul>
+</div> </td>
+                </table>
+                <nav><ul>
+                    <li><a href="https://dfcsoftware.github.io/category/forest.html">forest</a></li>
+                    <li><a href="https://dfcsoftware.github.io/category/fosstodon.html">fosstodon</a></li>
+                    <li><a href="https://dfcsoftware.github.io/category/linux.html">linux</a></li>
+                    <li><a href="https://dfcsoftware.github.io/category/writing.html">writing</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+                <section id="content" class="body">
+                    <ol id="posts-list" class="hfeed" start="9">
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://dfcsoftware.github.io/beaglebone.html" rel="bookmark"
+                           title="Permalink to BeagleBone">BeagleBone</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2023-03-16T16:42:40+00:00">
+                Published: Thu 16 March 2023
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://dfcsoftware.github.io/author/don-cohoon.html">Don Cohoon</a>
+        </address>
+<p>In <a href="https://dfcsoftware.github.io/category/fosstodon.html">fosstodon</a>.</p>
+
+</footer><!-- /.post-info -->                <p>The next best project to <a class="mention hashtag" href="https://fosstodon.org/tags/homeassistant" rel="tag">#<span>homeassistant</span></a> is running it on a <a class="mention hashtag" href="https://fosstodon.org/tags/beaglebone" rel="tag">#<span>beaglebone</span></a> SBC. Quite, low power and small. Excited to see <a class="mention hashtag" href="https://fosstodon.org/tags/BeaglePlay" rel="tag">#<span>BeaglePlay</span></a> released!</p>
+<p>So here's my notes:</p>
+<p><a href="https://linux-in-the-house.pages.dev/BeagleBone" rel="nofollow noopener noreferrer" target="_blank"><span class="invisible">https://</span><span class="ellipsis">linux-in-the-house.pages.dev/B</span><span class="invisible">eagleBone</span></a></p>
+<p><a class="mention hashtag" href="https://fosstodon.org/tags/linux" rel="tag">#<span>linux</span></a> <a class="mention hashtag" href="https://fosstodon.org/tags/opensource" rel="tag">#<span>opensource</span></a></p>
+                <a class="readmore" href="https://dfcsoftware.github.io/beaglebone.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://dfcsoftware.github.io/miniflux.html" rel="bookmark"
+                           title="Permalink to MiniFlux">MiniFlux</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2023-03-13T21:13:42+00:00">
+                Published: Mon 13 March 2023
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://dfcsoftware.github.io/author/don-cohoon.html">Don Cohoon</a>
+        </address>
+<p>In <a href="https://dfcsoftware.github.io/category/fosstodon.html">fosstodon</a>.</p>
+
+</footer><!-- /.post-info -->                <p>If you like to read RSS on several devices, host your own reader, <a class="mention hashtag" href="https://fosstodon.org/tags/miniflux" rel="tag">#<span>miniflux</span></a> </p>
+<p>Read on one device and pick back up on another without having to skip already read posts. No app required on your device. A small footprint, written in go.</p>
+<p><a href="https://linux-in-the-house.pages.dev/Miniflux" rel="nofollow noopener noreferrer" target="_blank"><span class="invisible">https://</span><span class="ellipsis">linux-in-the-house.pages.dev/M</span><span class="invisible">iniflux</span></a></p>
+<p><a class="mention hashtag" href="https://fosstodon.org/tags/linux" rel="tag">#<span>linux …</span></a></p>
+                <a class="readmore" href="https://dfcsoftware.github.io/miniflux.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://dfcsoftware.github.io/matrix.html" rel="bookmark"
+                           title="Permalink to Matrix">Matrix</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2023-03-11T21:52:54+00:00">
+                Published: Sat 11 March 2023
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://dfcsoftware.github.io/author/don-cohoon.html">Don Cohoon</a>
+        </address>
+<p>In <a href="https://dfcsoftware.github.io/category/fosstodon.html">fosstodon</a>.</p>
+
+</footer><!-- /.post-info -->                <p>Unable to shake the <a class="mention hashtag" href="https://fosstodon.org/tags/sysadmin" rel="tag">#<span>sysadmin</span></a> in me, my solution to alerting left the beeper ;-) behind and now a watch zaps my arm using <a class="mention hashtag" href="https://fosstodon.org/tags/matrix" rel="tag">#<span>matrix</span></a> on a home server. 🌩️ </p>
+<p>It's a leading contender for <a class="mention hashtag" href="https://fosstodon.org/tags/nextcloud" rel="tag">#<span>nextcloud</span></a> talk on the phone, since it's faster, but seems more difficult to set up and maintain …</p>
+                <a class="readmore" href="https://dfcsoftware.github.io/matrix.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://dfcsoftware.github.io/homeautomation.html" rel="bookmark"
+                           title="Permalink to HomeAutomation">HomeAutomation</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2023-03-09T00:12:38+00:00">
+                Published: Thu 09 March 2023
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://dfcsoftware.github.io/author/don-cohoon.html">Don Cohoon</a>
+        </address>
+<p>In <a href="https://dfcsoftware.github.io/category/fosstodon.html">fosstodon</a>.</p>
+
+</footer><!-- /.post-info -->                <p>Finally finished the chapter on <a class="mention hashtag" href="https://fosstodon.org/tags/homeautomation" rel="tag">#<span>homeautomation</span></a> with <a class="mention hashtag" href="https://fosstodon.org/tags/homeassistant" rel="tag">#<span>homeassistant</span></a>.  One of my favorite projects at home. Didn’t get a too crazy and docker simplifies a lot.  Wall-E is the favorite </p>
+<p><a href="https://linux-in-the-house.pages.dev/HomeAssistant" rel="nofollow noopener noreferrer" target="_blank"><span class="invisible">https://</span><span class="ellipsis">linux-in-the-house.pages.dev/H</span><span class="invisible">omeAssistant</span></a></p>
+<p><a class="mention hashtag" href="https://fosstodon.org/tags/linux" rel="tag">#<span>linux</span></a> <a class="mention hashtag" href="https://fosstodon.org/tags/opensource" rel="tag">#<span>opensource</span></a></p>
+                <a class="readmore" href="https://dfcsoftware.github.io/homeautomation.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://dfcsoftware.github.io/email-soup.html" rel="bookmark"
+                           title="Permalink to EMail Soup">EMail Soup</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2023-03-03T23:42:06+00:00">
+                Published: Fri 03 March 2023
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://dfcsoftware.github.io/author/don-cohoon.html">Don Cohoon</a>
+        </address>
+<p>In <a href="https://dfcsoftware.github.io/category/fosstodon.html">fosstodon</a>.</p>
+
+</footer><!-- /.post-info -->                <p>Just completed a deep dive into E-Mail alphabet soup, PTR DNS, SPF, DKIM, DMARC, whew!</p>
+<p>Actually self-hosting E-Mail is easier once you understand how they work. I appreciate the pipe loops in Postfix, Unix sockets, and all the RFCs in between.</p>
+<p><a href="https://linux-in-the-house.pages.dev/E-Mail_Relay" rel="nofollow noopener noreferrer" target="_blank"><span class="invisible">https://</span><span class="ellipsis">linux-in-the-house.pages.dev/E</span><span class="invisible">-Mail_Relay</span></a></p>
+<p><a class="mention hashtag" href="https://fosstodon.org/tags/linux" rel="tag">#<span>linux</span></a> <a class="mention hashtag" href="https://fosstodon.org/tags/opensource" rel="tag">#<span>opensource</span></a> <a class="mention hashtag" href="https://fosstodon.org/tags/email" rel="tag">#<span>email …</span></a></p>
+                <a class="readmore" href="https://dfcsoftware.github.io/email-soup.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://dfcsoftware.github.io/cloud.html" rel="bookmark"
+                           title="Permalink to Cloud">Cloud</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2023-02-24T23:33:37+00:00">
+                Published: Fri 24 February 2023
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://dfcsoftware.github.io/author/don-cohoon.html">Don Cohoon</a>
+        </address>
+<p>In <a href="https://dfcsoftware.github.io/category/fosstodon.html">fosstodon</a>.</p>
+
+</footer><!-- /.post-info -->                <p>A cloud used to be floating in the sky, then it was a bubbly thing on a network diagram where weird things happen. Now a cloud just means &quot;Somebody elses computer.&quot;. </p>
+<p>My notes on setting up your *Self-Hosted* cloud:</p>
+<p><a href="https://linux-in-the-house.pages.dev/Cloud" rel="nofollow noopener noreferrer" target="_blank"><span class="invisible">https://</span><span class="ellipsis">linux-in-the-house.pages.dev/C</span><span class="invisible">loud</span></a></p>
+<p><a class="mention hashtag" href="https://fosstodon.org/tags/linux" rel="tag">#<span>linux</span></a> <a class="mention hashtag" href="https://fosstodon.org/tags/opensource" rel="tag">#<span>opensource</span></a> <a class="mention hashtag" href="https://fosstodon.org/tags/cloud" rel="tag">#<span>cloud</span></a></p>
+                <a class="readmore" href="https://dfcsoftware.github.io/cloud.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://dfcsoftware.github.io/postgresql.html" rel="bookmark"
+                           title="Permalink to PostgreSQL">PostgreSQL</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2023-02-23T19:54:38+00:00">
+                Published: Thu 23 February 2023
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://dfcsoftware.github.io/author/don-cohoon.html">Don Cohoon</a>
+        </address>
+<p>In <a href="https://dfcsoftware.github.io/category/fosstodon.html">fosstodon</a>.</p>
+
+</footer><!-- /.post-info -->                <p>My favorite database, <a class="mention hashtag" href="https://fosstodon.org/tags/postgresql" rel="tag">#<span>postgresql</span></a> has captured current attention after years of using <a class="mention hashtag" href="https://fosstodon.org/tags/oracle" rel="tag">#<span>oracle</span></a> on <a class="mention hashtag" href="https://fosstodon.org/tags/redhat" rel="tag">#<span>redhat</span></a> .</p>
+<p>Love reading Cooper Press <span class="h-card"><a class="u-url mention" href="https://birdsite.slashdev.space/users/cooperpress">@<span>cooperpress</span></a></span> <a href="https://postgresweekly.com/" rel="nofollow noopener noreferrer" target="_blank"><span class="invisible">https://</span><span class="">postgresweekly.com/</span><span class="invisible"></span></a> and using PL/pgsql <a href="https://www.postgresql.org/docs/current/plpgsql.html" rel="nofollow noopener noreferrer" target="_blank"><span class="invisible">https://www.</span><span class="ellipsis">postgresql.org/docs/current/pl</span><span class="invisible">pgsql.html</span></a>.</p>
+<p>As usual, here are my notes on PostgreSQL:</p>
+<p><a href="https://linux-in-the-house.pages.dev/Postgresql" rel="nofollow noopener noreferrer" target="_blank"><span class="invisible">https://</span><span class="ellipsis">linux-in-the-house.pages.dev/P</span><span class="invisible">ostgresql …</span></a></p>
+                <a class="readmore" href="https://dfcsoftware.github.io/postgresql.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://dfcsoftware.github.io/email.html" rel="bookmark"
+                           title="Permalink to EMail">EMail</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2023-02-08T02:07:35+00:00">
+                Published: Wed 08 February 2023
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://dfcsoftware.github.io/author/don-cohoon.html">Don Cohoon</a>
+        </address>
+<p>In <a href="https://dfcsoftware.github.io/category/fosstodon.html">fosstodon</a>.</p>
+
+</footer><!-- /.post-info -->                <p>Running an e-mail server at home required many e-mails strung together to make it work. </p>
+<p>I put them in a chapter of the book “Linux in the House”</p>
+<p>The oldest internet app…</p>
+<p><a href="https://linux-in-the-house.pages.dev/E-Mail" rel="nofollow noopener noreferrer" target="_blank"><span class="invisible">https://</span><span class="ellipsis">linux-in-the-house.pages.dev/E</span><span class="invisible">-Mail</span></a></p>
+<p><a class="mention hashtag" href="https://fosstodon.org/tags/linux" rel="tag">#<span>linux</span></a> <a class="mention hashtag" href="https://fosstodon.org/tags/email" rel="tag">#<span>email</span></a> <a class="mention hashtag" href="https://fosstodon.org/tags/opensource" rel="tag">#<span>opensource</span></a> </p>
+<p>Hope this helps,<br />—Don</p>
+                <a class="readmore" href="https://dfcsoftware.github.io/email.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://dfcsoftware.github.io/setup-server.html" rel="bookmark"
+                           title="Permalink to Setup Server">Setup Server</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2023-02-02T10:20:00-05:00">
+                Published: Thu 02 February 2023
+        </abbr>
+		<br />
+        <abbr class="modified" title="2024-05-01T09:30:00-04:00">
+                Updated: Wed 01 May 2024
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://dfcsoftware.github.io/author/don-cohoon.html">Don Cohoon</a>
+        </address>
+<p>In <a href="https://dfcsoftware.github.io/category/linux.html">linux</a>.</p>
+
+</footer><!-- /.post-info -->                <h1 id="set-up-a-new-server">Set Up a New Server</h1>
+<p>I use this as a guide to enable proper monitoring and maintenance of any new server on the network.</p>
+<p><br/></p>
+<hr>
+<div class="toc"><span class="toctitle">Table of Contents</span><ul>
+<li><a href="#set-up-a-new-server">Set Up a New Server</a><ul>
+<li><a href="#sample-home-network">Sample Home Network:</a></li>
+<li><a href="#check-your-network">Check your Network</a></li>
+<li><a href="#update-package-repository">Update Package Repository</a><ul>
+<li><a href="#debian">Debian</a></li>
+<li><a href="#redhat">RedHat</a></li>
+</ul>
+</li>
+<li><a href="#new-user-and-group-to-use">New User and Group to Use</a><ul>
+<li><a href="#debian_1">Debian …</a></li></ul></li></ul></li></ul></div>
+                <a class="readmore" href="https://dfcsoftware.github.io/setup-server.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://dfcsoftware.github.io/nas.html" rel="bookmark"
+                           title="Permalink to NAS">NAS</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2023-02-02T00:41:54+00:00">
+                Published: Thu 02 February 2023
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://dfcsoftware.github.io/author/don-cohoon.html">Don Cohoon</a>
+        </address>
+<p>In <a href="https://dfcsoftware.github.io/category/fosstodon.html">fosstodon</a>.</p>
+
+</footer><!-- /.post-info -->                <p>Network File Systems in a secure network are my home away from home. I used to have files scattered all over until i mounted NFS on every host. </p>
+<p>As usual, here are my notes:</p>
+<p><a href="https://linux-in-the-house.pages.dev/NAS" rel="nofollow noopener noreferrer" target="_blank"><span class="invisible">https://</span><span class="ellipsis">linux-in-the-house.pages.dev/N</span><span class="invisible">AS</span></a></p>
+<p>-Don</p>
+<p><a class="mention hashtag" href="https://fosstodon.org/tags/linux" rel="tag">#<span>linux</span></a> <a class="mention hashtag" href="https://fosstodon.org/tags/opensource" rel="tag">#<span>opensource</span></a> <a class="mention hashtag" href="https://fosstodon.org/tags/nfs" rel="tag">#<span>nfs</span></a></p>
+                <a class="readmore" href="https://dfcsoftware.github.io/nas.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+<nav>
+  <ul>
+        <li class="horizontal"><a href="https://dfcsoftware.github.io/index.html">&Lang;</a></li>
+        <li class="horizontal"><a href="https://dfcsoftware.github.io/index.html">&lang;</a></li>
+    <li class="horizontal">Page 2 / 3</li>
+        <li class="horizontal"><a href="https://dfcsoftware.github.io/index3.html">&rang;</a></li>
+        <li class="horizontal"><a href="https://dfcsoftware.github.io/index3.html">&Rang;</a></li>
+  </ul>
+</nav>
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://getpelican.com/">Pelican</a></li>
+                            <li><a href="https://www.python.org/">Python.org</a></li>
+                            <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="https://dfcsoftware.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <p>
+                Site by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>, via <a rel="nofollow" href="https://www.python.org/">Python</a>.
+                </p><!-- /#about -->
+
+                <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

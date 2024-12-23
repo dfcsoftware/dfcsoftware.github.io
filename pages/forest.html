@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="generator" content="Pelican" />
+        <title>Forest</title>
+        <link rel="stylesheet" href="https://dfcsoftware.github.io/theme/css/main.css" />
+        <link href="https://dfcsoftware.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="dcfsoftware Linux Home Administration Atom Feed" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <table>
+                    <td><h1><a href="https://dfcsoftware.github.io/">dcfsoftware Linux Home Administration</a></h1></td>
+                    <td>   <!-- Note the usage of `type=module` here as this is an ES6 module --> <script type="module">
+    // Use ES module import syntax to import functionality from the module
+    // that we have compiled.
+    //
+    // Note that the `default` import is an initialization function which
+    // will "boot" the module and make it ready to use. Currently browsers
+    // don't support natively imported WebAssembly as an ES module, but
+    // eventually the manual initialization won't be required!
+    // import { search, default as init } from './tinysearch_engine.js';
+    import { search, default as init } from '/tinysearch_engine.js';
+    window.search = search;
+
+    async function run() {
+      // First up we need to actually load the wasm file, so we use the
+      // default export to inform it where the wasm file is located on the
+      // server, and then we wait on the returned promise to wait for the
+      // wasm to be loaded.
+      //
+      // Note that instead of a string here you can also pass in an instance
+      // of `WebAssembly.Module` which allows you to compile your own module.
+      // Also note that the promise, when resolved, yields the wasm module's
+      // exports which is the same as importing the `*_bg` module in other
+      // modes
+      await init('/tinysearch_engine_bg.wasm');
+    }
+
+    run();
+  </script>
+
+  <script>
+    // And afterwards we can use all the functionality defined in wasm.
+    function doSearch() {
+      let value = document.getElementById("searcher").value;
+      console.log(`Search query: ${value}`);
+
+      const results = search(value, 5);
+
+      console.log(`Results: ${results}`);
+
+      let ul = document.getElementById("results");
+      ul.innerHTML = "";
+
+      for (i = 0; i < results.length; i++) {
+        var li = document.createElement("li");
+
+        let [title, url] = results[i];
+        let elemlink = document.createElement('a');
+        elemlink.innerHTML = title;
+        elemlink.setAttribute('href', url);
+        li.appendChild(elemlink);
+
+        ul.appendChild(li);
+      }
+    }
+  </script>
+
+<div style="text-align:right"> 
+  <h2> 
+    <object type="image/svg+xml" data="/theme/images/search.svg" style="width:5%; height:10%;">
+       Search<!-- fallback image in CSS -->
+    </object>
+    <input type="text" id="searcher" onkeyup="doSearch()">
+  </h2>
+  <ul style="list-style-type: none;text-align: left;" id="results">
+  </ul>
+</div> </td>
+                </table>
+                <nav><ul>
+                    <li><a href="https://dfcsoftware.github.io/category/forest.html">forest</a></li>
+                    <li><a href="https://dfcsoftware.github.io/category/fosstodon.html">fosstodon</a></li>
+                    <li><a href="https://dfcsoftware.github.io/category/linux.html">linux</a></li>
+                    <li><a href="https://dfcsoftware.github.io/category/writing.html">writing</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+    <h1 class="entry-title">Forest</h1>
+    
+    <h1 id="2023-october">2023 - October</h1>
+<!-- toc -->
+
+<hr>
+<h1 id="forest-administration-system">Forest Administration System</h1>
+<p>Last Updated:  29-October-2023
+Version:  2.x</p>
+<ul>
+<li>Finally got my alerts working, so when a host goes haywire I get an alert on the Phone and Cloud, with E-Mail as backup.</li>
+</ul>
+<p>Hope this helps, <br>
+-- Don</p>
+<p>alert.sh and log.sh are meant to run a few times per hour
+and send alerts if watch thresholds are exceeded.</p>
+<ul>
+<li>alert.sh - Usually runs on one host and monitors other hosts, using a normal user ssh tunnel.</li>
+<li>log.sh - Usually runs on each host as root.</li>
+</ul>
+<p>When any new file is uploaded into the
+ <em>new alert user</em> space, an entry will be written
+  to the NextCloud Conversation <name> with the name and link
+  to that file.</p>
+<p>On your Phone you can install NextCloud Talk, log in 
+  as the new alert user and recieve notifications.
+  Bonus: Your watch will alert you too!</p>
+<p>On your Phone you can install NextCloud Sync, log in 
+  as the new alert user and read notification files.</p>
+<h1 id="quick-start">Quick Start</h1>
+<h2 id="on-controller-host">On Controller host</h2>
+<ul>
+<li>If you do not have a controller host, just untar the files in ~/forest,</li>
+</ul>
+<p>otherwise deploy:</p>
+<div class="highlight"><pre><span></span><code>   a. ~/forest/bin/deploy.sh first-time &lt;host&gt;
+</code></pre></div>
+
+<h2 id="on-each-host">On Each Host</h2>
+<ul>
+<li>Install (Dependencies: make gcc)</li>
+</ul>
+<div class="highlight"><pre><span></span><code>   a. cd ~/forest/install/db
+      1) unzip oracle_berkely_DB...zip
+      2) cd db-18.1.40/build_unix
+      3) ../dist/configure
+      4) make
+      5) sudo make install
+      6) rm -r db-18.1.40/ when done to save space
+   b. cd ~/forest/install/
+      1) tar -xvf nbs.tar
+      2) cd nbs
+      3) make clean
+      4) make
+   c. cd ~/forest/install/
+      1) tar -xvf retail.tar
+      2) cd retail
+      3) make clean
+      4) make
+   d. cd ~/forest/install/
+      1) tar -xvf cron.tar
+      2) cd cron
+      3) make clean
+      4) make
+   e. cd ~/forest
+      1) ln -s /home/bob/forest/config/ /home/bob/.config/forest/
+         #     ^ install location       ^ user home/.config/ 
+      2) sudo mkdir /root/.config
+         sudo ln -s /home/bob/forest/config/forest.txt /root/.config/forest.txt
+         #          ^ install location                 ^ root home/.config/ 
+   f. cd ~/forest/install/
+      1) install.sh
+      2) backup_links.sh
+</code></pre></div>
+
+<h2 id="on-controller-host_1">On Controller host</h2>
+<ul>
+<li>Configure and Deploy Configuration</li>
+</ul>
+<div class="highlight"><pre><span></span><code>   a. Create ~/forest/config/config.&lt;host&gt; parameters using examples in config/samples
+   b. Create alert function config parameters (df.&lt;host&gt;, logwatch.&lt;host&gt;, util.&lt;host&gt;, etc)
+       in ~/forest/config/ using examples in config/samples
+   c. Create ~/forest/config/hosts.&lt;host&gt; file using example in config/samples
+   d. Create ~/forest/config/cron.&lt;host&gt; schedule using example in config/samples
+   f. Deploy configuration files to &lt;host&gt;
+      1) ~/forest/bin/deploy.sh host &lt;host&gt;
+      2) On the **target** &lt;host&gt; : Schedule the jobs: ~/forest/bin/schedule.sh
+</code></pre></div>
+
+<blockquote>
+<p><strong>All</strong> configuration changes need to be done on the controller host, then deploy.sh to &lt;host&gt;, or else the next deploy will overwrite them.</p>
+</blockquote>
+<ul>
+<li>Check Alerts, Jobs, and Watch Real-time stats</li>
+</ul>
+<div class="highlight"><pre><span></span><code>   a. ~/forest/bin/watch.sh - Watch alert functions run
+   b. ~/forest/bin/react.sh - See alerts and log entries, and react on them
+   c. ~/forest/bin/jobs.sh - Check scheduled cronjobs
+      1) backup_home.sh
+      2) backup_db.sh
+      3) cert_expire.sh
+      4) more...
+</code></pre></div>
+
+<blockquote>
+<p>Schedule will wait for the duration of the specified forward date and time, <strong>at the time it is run</strong>. If daylight savings runs <strong>in-between</strong> the schedule execution time for this job and run time for this job , it does <strong>not</strong> change the wait time. For instance, in the fall, we fall back one hour, so instead of running at 8am the job will run at 7am; however the next runs will be at 8am as specified.</p>
+</blockquote>
+<h1 id="concepts">Concepts</h1>
+<p>The Forest implements ssh 'doors' to other hosts of the forest using alarms.sh for automated watching from the controller host.</p>
+<p>Conceptually, during a door invocation the client thread that issues the door procedure call migrates to the server process associated with the door, and starts executing the procedure while in the address space of the server. When the service procedure is finished, a door return operation is performed and the thread migrates back to the client's address space with the results, if any, from the procedure call. </p>
+<h1 id="installation">Installation</h1>
+<ul>
+<li>Download</li>
+</ul>
+<p><a href="https://github.com/dfcsoftware/watch">https://github.com/dfcsoftware/watch</a></p>
+<p>Copy all files to ~/forest, or whatever directory you like, 
+just change this documents' references of </p>
+<div class="highlight"><pre><span></span><code>/home/bob
+</code></pre></div>
+
+<p>to </p>
+<div class="highlight"><pre><span></span><code>_your_ directory.
+</code></pre></div>
+
+<p>Delete any lines in files /etc/issue and /etc/issue.net as they will interfere with function monitors doing ssh into a host causing alerts every time.</p>
+<p>Files: /etc/issue, /etc/issue.net</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>-i
+$<span class="w"> </span>&gt;<span class="w"> </span>/etc/issue
+$<span class="w"> </span>&gt;<span class="w"> </span>/etc/issue.net
+</code></pre></div>
+
+<h1 id="configuration">Configuration</h1>
+<p>deploy.sh will create a config directory structure:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/.config/forest
+</code></pre></div>
+
+<p>Create config file:</p>
+<p>File: ~/.config/forest/config.<host></p>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="n">CLOUD_USER</span><span class="o">=&lt;</span><span class="n">nextcloud</span><span class="w"> </span><span class="n">user</span><span class="o">&gt;</span>
+<span class="k">export</span><span class="w"> </span><span class="n">CLOUD_PASS</span><span class="o">=</span><span class="s2">&quot;&lt;nextcloud password&gt;</span>
+<span class="k">export</span><span class="w"> </span><span class="n">CLOUD_DIR</span><span class="o">=</span><span class="n">alert</span>
+<span class="k">export</span><span class="w"> </span><span class="n">CLOUD_SERVER</span><span class="o">=</span><span class="s2">&quot;https://www.example.com/nextcloud&quot;</span>
+<span class="k">export</span><span class="w"> </span><span class="n">CLOUD_LOG</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">bob</span><span class="o">/</span><span class="n">forest</span><span class="o">/</span><span class="nb">log</span><span class="o">/</span><span class="n">cloud</span><span class="o">.</span><span class="n">log</span>
+<span class="k">export</span><span class="w"> </span><span class="n">LOCAL_DIR</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">bob</span><span class="o">/</span><span class="n">forest</span>
+<span class="k">export</span><span class="w"> </span><span class="n">SSH_USER</span><span class="o">=</span><span class="n">bob</span>
+<span class="k">export</span><span class="w"> </span><span class="n">LD_LIBRARY_PATH</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">BerkeleyDB</span><span class="o">.</span><span class="mf">18.1</span><span class="o">/</span><span class="n">lib</span><span class="p">:</span><span class="o">$</span><span class="n">LD_LIBRARY_PATH</span>
+</code></pre></div>
+
+<ul>
+<li>Make sure the LOCAL_DIR/alert exists</li>
+</ul>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="si">${</span><span class="nv">LOCAL_DIR</span><span class="si">}</span>/alert
+</code></pre></div>
+
+<ul>
+<li>Make sure CLOUD_LOG is writeable</li>
+</ul>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>touch<span class="w"> </span><span class="si">${</span><span class="nv">CLOUD_LOG</span><span class="si">}</span>
+</code></pre></div>
+
+<ul>
+<li>Create an hosts.txt list of hosts to monitor</li>
+</ul>
+<p>File: ~/.config/forest/hosts.txt</p>
+<div class="highlight"><pre><span></span><code>#                  ssh  Remote       Remote           Backup   Function
+#       Host       Port Script        Home             Home    Monitors
+# ---------------- ---- ------ ---------------------- ------  ----------------------------
+   vm1              22    0    /home/bob                1      df util memory 0
+   vm2              23    1    /home/sam                0      df 0    memory 0
+#
+# Remote Script: 1=run moniter script that is on remote machine 
+#                0=run monitor script on local, through ssh tunnel
+# Function Monitors: Forest script to run. 0 = skip.
+# Backup Home: 1=yes, 0=no
+</code></pre></div>
+
+<h1 id="schedule-alertsh-in-cron">Schedule alert.sh in cron</h1>
+<p>i.e.: every 20 minutes</p>
+<p>File: /etc/cron.d/alert </p>
+<div class="highlight"><pre><span></span><code><span class="err">#</span><span class="w"> </span><span class="n">Run</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">alert</span><span class="w"> </span><span class="n">analysis</span>
+<span class="n">SHELL</span><span class="o">=/</span><span class="n">bin</span><span class="o">/</span><span class="n">bash</span>
+<span class="k">PATH</span><span class="o">=/</span><span class="nl">sbin</span><span class="p">:</span><span class="o">/</span><span class="nl">bin</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nl">sbin</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span>
+<span class="n">MAILTO</span><span class="o">=</span><span class="ss">&quot;bob@bob.com&quot;</span>
+<span class="o">*/</span><span class="mi">20</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">bob</span><span class="o">/</span><span class="n">forest</span><span class="o">/</span><span class="n">alert</span><span class="p">.</span><span class="n">sh</span>
+</code></pre></div>
+
+<h1 id="copy-ssh-keys-to-remote">Copy ssh keys to remote</h1>
+<p>If remote monitoring is desired; </p>
+<ul>
+<li>Generate and copy the <em>linux</em> ssh keys.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ssh-key-gen
+$<span class="w"> </span>ssh-copy-id<span class="w"> </span>&lt;remote<span class="w"> </span>hosts&gt;
+</code></pre></div>
+
+<blockquote>
+<p>Make sure the directory leading up to the remote destination has 755 permissions, and the final home directory is 700.</p>
+</blockquote>
+<p>The remote desination must have the ~/.ssh directory, with chmod 700</p>
+<h1 id="alert-functions">Alert Functions</h1>
+<p>This is a seperate file for each functional alert, and sometimes host.</p>
+<blockquote>
+<p>Remote Hosts need their <em>own</em> config file(s)</p>
+</blockquote>
+<ul>
+<li>On the Remote Host(s):</li>
+</ul>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/.config/forest
+</code></pre></div>
+
+<p>Example of <strong>df</strong> functional monitor. Each script will describe it's own.</p>
+<p>File:  ~/.config/forest/df.<hostname></p>
+<div class="highlight"><pre><span></span><code>Usage-Percent-Limit   File-System        Mount-Point
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mf">34</span><span class="w">                    </span><span class="s">&quot;/dev/mmcblk1p2&quot;</span><span class="w">   </span><span class="s">&quot;/&quot;</span>
+<span class="mf">38</span><span class="w">                    </span><span class="s">&quot;/dev/mmcblk1p1&quot;</span><span class="w">   </span><span class="s">&quot;/boot/firmware&quot;</span><span class="w"> </span>
+<span class="mf">16</span><span class="w">                    </span><span class="s">&quot;/dev/md0&quot;</span><span class="w">         </span><span class="s">&quot;/mnt/raid1&quot;</span>
+</code></pre></div>
+
+<p>Dependencies:</p>
+<ul>
+<li>Performance Co-Pilot - <a href="https://pcp.io/">https://pcp.io/</a></li>
+</ul>
+<blockquote>
+<p>dnf=RedHat; apt=Debian</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>pcp<span class="w"> </span>cockpit-pcp<span class="w"> </span>python3-pcp<span class="w"> </span><span class="c1"># default from cockpit web install</span>
+$<span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>pcp<span class="w"> </span>cockpit-pcp<span class="w"> </span>python3-pcp<span class="w"> </span><span class="c1"># default from cockpit web install</span>
+<span class="c1">#   - Systemd Services:</span>
+<span class="c1">#     pmcd.service</span>
+<span class="c1">#     pmlogger.service</span>
+<span class="c1">#     pmie.service</span>
+<span class="c1">#     pmproxy.service</span>
+<span class="c1">#</span>
+$<span class="w"> </span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>pcp-export-pcp2json<span class="w">         </span><span class="c1"># pcp2json</span>
+$<span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>pcp-export-pcp2json<span class="w">         </span><span class="c1"># pcp2json</span>
+<span class="c1">#     Debian 11 may need to add;</span>
+<span class="c1">#      File: /etc/apt/sources.list.d/unstable.list</span>
+<span class="c1">#       deb http://deb.debian.org/debian/ unstable main</span>
+<span class="c1">#     Also may need to run: pip install requests</span>
+$<span class="w"> </span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>pcp-system-tools<span class="w">            </span><span class="c1"># pmrep</span>
+<span class="c1">#</span>
+$<span class="w"> </span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>jq<span class="w">                          </span><span class="c1"># json parser</span>
+$<span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>jq<span class="w">                          </span><span class="c1"># json parser</span>
+<span class="c1">#</span>
+$<span class="w"> </span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>jc<span class="w">                          </span><span class="c1"># json commands</span>
+$<span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>jc<span class="w">                          </span><span class="c1"># json commands</span>
+<span class="c1">#</span>
+$<span class="w"> </span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>ncdu<span class="w">                        </span><span class="c1"># Text-based disk usage viewer</span>
+$<span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ncdu<span class="w">                        </span><span class="c1"># Text-based disk usage viewer</span>
+<span class="c1">#</span>
+$<span class="w"> </span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>nmon<span class="w">                        </span><span class="c1"># Text-based system utilization viewer</span>
+$<span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>nmon<span class="w">                        </span><span class="c1"># Text-based system utilization viewer</span>
+</code></pre></div>
+
+<h2 id="default-is-to-send-an-e-mail-if-limits-are-exceeded">Default is to send an e-mail if limits are exceeded</h2>
+<p>To stop E-Mail, add a SEND_MAIL export to the config.txt file.</p>
+<ul>
+<li>0 = NO</li>
+<li>1 = YES</li>
+</ul>
+<p>File: ~/.config/forest/config.$HOST</p>
+<div class="highlight"><pre><span></span><code><span class="o">~</span>
+<span class="k">export</span><span class="w"> </span><span class="n">SEND_MAIL</span><span class="o">=</span><span class="mi">0</span>
+<span class="o">~</span>
+</code></pre></div>
+
+<h1 id="nextcloud-flow-notifications">NextCloud Flow Notifications</h1>
+<ul>
+<li>Create <em>new alert user</em> in NextCloud</li>
+<li>Add the NextCloud server as SERVER in ~/.config/forest/config.txt</li>
+<li>Add the NextCloud user as CLOUD_USER in ~/.config/forest/config.txt</li>
+<li>
+<p>Add the NextCloud user's password as CLOUD_PASS in ~/.config/forest/config.txt</p>
+</li>
+<li>
+<p>As the <em>new alert user</em> in NextCloud;</p>
+</li>
+<li>Go to Talk<ul>
+<li>Create a new group Conversation <name></li>
+</ul>
+</li>
+<li>Go to Files and create a new alert directory<ul>
+<li>Add it as the CLOUD_DIR to ~/.config/forest/config.txt</li>
+</ul>
+</li>
+<li>Go to Personal Settings &gt; Flow<ul>
+<li>Add a new flow <em>Write to conversasion</em> (blue)</li>
+<li>When: File created</li>
+<li>and: File size (upload) is greater than 0 MB</li>
+<li>-&gt; Write to conversasion using the<ul>
+<li>Conversation <name> created above</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Reference: </p>
+<ul>
+<li><a href="https://github.com/nextcloud/flow_notifications">https://github.com/nextcloud/flow_notifications</a></li>
+<li><a href="august#configuration">Example config.txt</a></li>
+</ul>
+<h1 id="savelogsh">savelog.sh</h1>
+<p>This is used to save off several copies of the last sync.sh process sending alerts to the NextCloud server.</p>
+<blockquote>
+<p>The logs are better viewed using the <em>lnav</em> Linu package. <code>lnav ~/forest/log/</code></p>
+</blockquote>
+<p>This is released on many OS packages, but not all,
+so it is included here. Thanks very much to the original authors!</p>
+<p>Reference:</p>
+<ul>
+<li><a href="https://launchpad.net/ubuntu/xenial/+package/debianutils">https://launchpad.net/ubuntu/xenial/+package/debianutils</a></li>
+<li><a href="https://manpages.ubuntu.com/manpages/xenial/en/man8/savelog.8.html">https://manpages.ubuntu.com/manpages/xenial/en/man8/savelog.8.html</a></li>
+<li><a href="https://opensource.apple.com/source/uucp/uucp-10/uucp/contrib/savelog.sh.auto.html">https://opensource.apple.com/source/uucp/uucp-10/uucp/contrib/savelog.sh.auto.html</a></li>
+<li><a href="https://rhel.pkgs.org/8/lux/uucp-1.07-65.el8.lux.x86_64.rpm.html">https://rhel.pkgs.org/8/lux/uucp-1.07-65.el8.lux.x86_64.rpm.html</a></li>
+</ul>
+<h1 id="logsh-log-watcher">log.sh - Log Watcher</h1>
+<p>This script runs as root on each node to search for Never Before Seen (NBS) entries in a log file.
+It needs to be scheduled in cron.</p>
+<p>The flow is:</p>
+<ol>
+<li>cron runs log.sh</li>
+</ol>
+<p>File: /etc/cron.d/logwatcher</p>
+<div class="highlight"><pre><span></span><code><span class="err">#</span><span class="w"> </span><span class="nf">Log</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Watcher</span>
+<span class="k">PATH</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="nl">sysstat</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nl">sbin</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nl">sbin</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nl">bin</span><span class="p">:</span><span class="o">/</span><span class="nl">sbin</span><span class="p">:</span><span class="o">/</span><span class="n">bin</span>
+<span class="n">MAILTO</span><span class="o">=</span><span class="ss">&quot;bob@bob.com&quot;</span>
+<span class="err">#</span><span class="w"> </span><span class="n">Run</span><span class="w"> </span><span class="nf">Log</span><span class="w"> </span><span class="n">watcher</span>
+<span class="o">*/</span><span class="mi">20</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">bob</span><span class="w">  </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">bob</span><span class="o">/</span><span class="n">forest</span><span class="o">/</span><span class="nf">log</span><span class="p">.</span><span class="n">sh</span><span class="w"> </span>
+</code></pre></div>
+
+<ol>
+<li>log.sh reads config file ~/.config/forest/logwatch.<hostname></li>
+</ol>
+<p>Up to two filters may be specified.</p>
+<p>File: logwatch.vm7</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># File: logwatch.vm7</span>
+<span class="c1">#           DB                      File                               Alert  Email          Filter </span>
+<span class="c1"># ------------------------- ----------------------------------------- ------ ------ -----------------------------------#</span>
+<span class="n">apache</span><span class="o">-</span><span class="n">access</span><span class="w">                </span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="nb">log</span><span class="o">/</span><span class="n">apache2</span><span class="o">/</span><span class="n">access</span><span class="o">.</span><span class="n">log</span><span class="w">               </span><span class="n">N</span><span class="w">      </span><span class="n">Y</span><span class="w">     </span><span class="n">geturl</span><span class="o">.</span><span class="n">pl</span><span class="w"> </span><span class="n">skip_local_ips</span><span class="o">.</span><span class="n">sh</span>
+<span class="n">apache</span><span class="o">-</span><span class="n">error</span><span class="w">                 </span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="nb">log</span><span class="o">/</span><span class="n">apache2</span><span class="o">/</span><span class="n">error</span><span class="o">.</span><span class="n">log</span><span class="w">                </span><span class="n">Y</span><span class="w">      </span><span class="n">Y</span><span class="w">     </span><span class="n">geturl</span><span class="o">.</span><span class="n">pl</span>
+<span class="n">apache</span><span class="o">-</span><span class="n">other_vhosts_access</span><span class="w">   </span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="nb">log</span><span class="o">/</span><span class="n">apache2</span><span class="o">/</span><span class="n">other_vhosts_access</span><span class="o">.</span><span class="n">log</span><span class="w">  </span><span class="n">Y</span><span class="w">      </span><span class="n">Y</span><span class="w">     </span><span class="n">geturl</span><span class="o">.</span><span class="n">pl</span>
+</code></pre></div>
+
+<ol>
+<li>New lines in File are read by retail, filtered by any and all Filters supplied.</li>
+<li>DB is checked if this has been seen before and can be ignored.</li>
+<li>Any remainging lines are sent to the alert directory and an Email sent, if Y in config.txt.</li>
+<li>A sync for new alert files is done, sending new files to the cloud (NextCloud).</li>
+<li>NextCloud will send a Talk alert to the CLOUD_USER for new files. These are viewable on a Phone or Watch, if running the Talk app.</li>
+</ol>
+<p>The following software packages have to be installed and compiled locally:
+ * Berkerly DB - <a href="https://www.oracle.com/database/technologies/related/berkeleydb-downloads.html#">https://www.oracle.com/database/technologies/related/berkeleydb-downloads.html#</a></p>
+<blockquote>
+<p>Re-directs to oracle: <a href="https://www.oracle.com/database/technologies/related/berkeleydb-downloads.html#">https://www.oracle.com/database/technologies/related/berkeleydb-downloads.html#</a>  Need to log into oracle, download (via-download manager or wget.sh script proveded)</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="o">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="o">~/</span><span class="n">forest</span><span class="o">/</span><span class="n">install</span><span class="o">/</span><span class="n">db</span>
+<span class="o">$</span><span class="w"> </span><span class="n">unzip</span><span class="w"> </span><span class="o">&lt;</span><span class="n">download</span><span class="o">&gt;</span>
+<span class="o">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="o">.</span><span class="n">e</span><span class="o">.</span><span class="p">:</span><span class="w"> </span><span class="n">db</span><span class="o">-</span><span class="mf">18.1</span><span class="o">.</span><span class="mi">40</span>
+</code></pre></div>
+
+<ul>
+<li>To perform a standard UNIX build of Berkeley DB; <ol>
+<li>Change to the build_unix directory</li>
+<li>Enter the following two commands:</li>
+</ol>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>../dist/configure
+$<span class="w"> </span>make
+</code></pre></div>
+
+<ul>
+<li>This will build the Berkeley DB library.</li>
+<li>To install the Berkeley DB library, enter the following command:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>make<span class="w"> </span>install
+</code></pre></div>
+
+<ul>
+<li>Add/Create
+     File: ${CONFIG_DIR}/config.${HOSTNAME}</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="n">LD_LIBRARY_PATH</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">BerkeleyDB</span><span class="o">.</span><span class="mf">18.1</span><span class="o">/</span><span class="n">lib</span>
+</code></pre></div>
+
+<ul>
+<li>Never Before Seen (NBS) - <a href="http://ranum.com/security/computer_security/code/nbs.tar">http://ranum.com/security/computer_security/code/nbs.tar</a></li>
+</ul>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/forest/install
+$<span class="w"> </span>tar<span class="w"> </span>-xvf<span class="w"> </span>install/nbs.tar
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>nbs
+$<span class="w"> </span>make<span class="w"> </span>clean
+$<span class="w"> </span>make<span class="w"> </span>all
+</code></pre></div>
+
+<ul>
+<li>Retail - <a href="https://github.com/mbucc/retail">https://github.com/mbucc/retail</a></li>
+</ul>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/forest/install
+$<span class="w"> </span>tar<span class="w"> </span>-xvf<span class="w"> </span>install/retail.tar
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>retail
+$<span class="w"> </span>make<span class="w"> </span>clean
+$<span class="w"> </span>make
+</code></pre></div>
+
+<p>Install nbs and retail:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/forest/install/
+$<span class="w"> </span>install.sh
+</code></pre></div>
+
+<p>Refer to the log.sh script for more instructions.</p>
+<p>Reference: </p>
+<ul>
+<li>Marcus Ranum <a href="http://ranum.com/security/computer_security/code/index.html">http://ranum.com/security/computer_security/code/index.html</a></li>
+<li><a href="../E-Mail_Relay#logwatcher">Logwatcher.sh</a></li>
+</ul>
+<h1 id="trouble-resolution">Trouble Resolution</h1>
+<h2 id="armv7l-debian-10">armv7l Debian 10</h2>
+<p>The pmlogger systemd daemon had issues being installed, and the following log instructions solved it.</p>
+<div class="highlight"><pre><span></span><code><span class="nv">Aug</span><span class="w"> </span><span class="mi">08</span><span class="w"> </span><span class="mi">11</span>:<span class="mi">07</span>:<span class="mi">39</span><span class="w"> </span><span class="nv">bob</span>.<span class="nv">example</span>.<span class="nv">com</span><span class="w"> </span><span class="nv">systemd</span>[<span class="mi">1</span>]:<span class="w"> </span><span class="nv">Starting</span><span class="w"> </span><span class="nv">LSB</span>:<span class="w"> </span><span class="nv">Control</span><span class="w"> </span><span class="nv">pmlogger</span><span class="w"> </span><span class="ss">(</span><span class="nv">the</span><span class="w"> </span><span class="nv">performance</span><span class="w"> </span><span class="nv">metrics</span><span class="w"> </span><span class="nv">logger</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">PCP</span><span class="ss">)</span>...
+<span class="nv">Aug</span><span class="w"> </span><span class="mi">08</span><span class="w"> </span><span class="mi">11</span>:<span class="mi">07</span>:<span class="mi">43</span><span class="w"> </span><span class="nv">bob</span>.<span class="nv">example</span>.<span class="nv">com</span><span class="w"> </span><span class="nv">pmlogger</span>[<span class="mi">913</span>]:<span class="w"> </span><span class="o">/</span><span class="nv">etc</span><span class="o">/</span><span class="nv">init</span>.<span class="nv">d</span><span class="o">/</span><span class="nv">pmlogger</span>:<span class="w"> </span><span class="nv">Warning</span>:<span class="w"> </span><span class="nv">Performance</span><span class="w"> </span><span class="nv">Co</span><span class="o">-</span><span class="nv">Pilot</span><span class="w"> </span><span class="nv">archive</span><span class="w"> </span><span class="nv">logger</span><span class="ss">(</span><span class="nv">s</span><span class="ss">)</span><span class="w"> </span><span class="nv">not</span><span class="w"> </span><span class="nv">permanently</span><span class="w"> </span><span class="nv">enabled</span>.
+<span class="nv">Aug</span><span class="w"> </span><span class="mi">08</span><span class="w"> </span><span class="mi">11</span>:<span class="mi">07</span>:<span class="mi">43</span><span class="w"> </span><span class="nv">bob</span>.<span class="nv">example</span>.<span class="nv">com</span><span class="w"> </span><span class="nv">pmlogger</span>[<span class="mi">913</span>]:<span class="w">     </span><span class="nv">To</span><span class="w"> </span><span class="nv">enable</span><span class="w"> </span><span class="nv">pmlogger</span>,<span class="w"> </span><span class="nv">run</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">following</span><span class="w"> </span><span class="nv">as</span><span class="w"> </span><span class="nv">root</span>:
+<span class="nv">Aug</span><span class="w"> </span><span class="mi">08</span><span class="w"> </span><span class="mi">11</span>:<span class="mi">07</span>:<span class="mi">44</span><span class="w"> </span><span class="nv">bob</span>.<span class="nv">example</span>.<span class="nv">com</span><span class="w"> </span><span class="nv">pmlogger</span>[<span class="mi">913</span>]:<span class="w">          </span><span class="nv">update</span><span class="o">-</span><span class="nv">rc</span>.<span class="nv">d</span><span class="w"> </span><span class="o">-</span><span class="nv">f</span><span class="w"> </span><span class="nv">pmlogger</span><span class="w"> </span><span class="nv">remove</span>
+<span class="nv">Aug</span><span class="w"> </span><span class="mi">08</span><span class="w"> </span><span class="mi">11</span>:<span class="mi">07</span>:<span class="mi">44</span><span class="w"> </span><span class="nv">bob</span>.<span class="nv">example</span>.<span class="nv">com</span><span class="w"> </span><span class="nv">pmlogger</span>[<span class="mi">913</span>]:<span class="w">          </span><span class="nv">update</span><span class="o">-</span><span class="nv">rc</span>.<span class="nv">d</span><span class="w"> </span><span class="nv">pmlogger</span><span class="w"> </span><span class="nv">defaults</span><span class="w"> </span><span class="mi">94</span><span class="w"> </span><span class="mi">06</span>
+</code></pre></div>
+
+<h1 id="files">Files</h1>
+<div class="highlight"><pre><span></span><code><span class="p">.</span>
+<span class="o">|--</span><span class="w"> </span><span class="nx">Readme</span><span class="p">.</span><span class="nx">md</span>
+<span class="o">|--</span><span class="w"> </span><span class="nx">Readme</span><span class="p">.</span><span class="nx">sh</span>
+<span class="o">|-+</span><span class="w"> </span><span class="nx">alert</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="nx">Monitered</span><span class="w"> </span><span class="nx">events</span>
+<span class="o">|-+</span><span class="w"> </span><span class="nx">bin</span><span class="w">     </span><span class="o">*</span><span class="w"> </span><span class="nx">Executables</span>
+<span class="o">|-+</span><span class="w"> </span><span class="nx">config</span><span class="w">  </span><span class="o">*</span><span class="w"> </span><span class="nx">Configurations</span>
+<span class="o">|-+</span><span class="w"> </span><span class="nx">filters</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">Log</span><span class="w"> </span><span class="nx">file</span><span class="w"> </span><span class="nx">selection</span><span class="w"> </span><span class="nx">criteria</span>
+<span class="o">|-+</span><span class="w"> </span><span class="nx">include</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">Compiler</span><span class="w"> </span><span class="nx">includes</span>
+<span class="o">|-+</span><span class="w"> </span><span class="nx">install</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">Installation</span><span class="w"> </span><span class="nx">packages</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">scripts</span>
+<span class="o">|-+</span><span class="w"> </span><span class="nx">lib</span><span class="w">     </span><span class="o">*</span><span class="w"> </span><span class="nx">Compiled</span><span class="w"> </span><span class="nx">shared</span><span class="w"> </span><span class="nx">libraries</span>
+<span class="o">|-+</span><span class="w"> </span><span class="nx">log</span><span class="w">     </span><span class="o">*</span><span class="w"> </span><span class="nx">Log</span><span class="w"> </span><span class="nx">files</span><span class="w"> </span><span class="nx">from</span><span class="w"> </span><span class="nx">Forest</span><span class="w"> </span><span class="nx">activities</span>
+<span class="o">|-+</span><span class="w"> </span><span class="nx">share</span><span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="nx">Compiler</span><span class="w"> </span><span class="nx">documentation</span>
+<span class="o">|-+</span><span class="w"> </span><span class="nx">status</span><span class="w">  </span><span class="o">*</span><span class="w"> </span><span class="nx">Log</span><span class="w"> </span><span class="nx">watcher</span><span class="w"> </span><span class="nx">databases</span>
+<span class="o">|-+</span><span class="w"> </span><span class="nx">test</span><span class="w">    </span><span class="o">*</span><span class="w"> </span><span class="nx">Unit</span><span class="w"> </span><span class="nx">test</span><span class="w"> </span><span class="nx">scripts</span>
+<span class="o">|-+</span><span class="w"> </span><span class="nx">tmp</span><span class="w">     </span><span class="o">*</span><span class="w"> </span><span class="nx">Temporary</span><span class="w"> </span><span class="nx">files</span>
+<span class="err">`</span><span class="o">--</span><span class="w"> </span><span class="nx">version</span><span class="p">.</span><span class="nx">txt</span>
+</code></pre></div>
+
+<h1 id="git-clone">git clone</h1>
+<p>Clones a repository into a newly created directory, creates remote-tracking branches for each branch in the cloned repository (visible using git branch --remotes), and creates and checks out an initial branch that is forked from the cloned repository’s currently active branch.</p>
+<p>After the clone, a plain git fetch without arguments will update all the remote-tracking branches, and a git pull without arguments will in addition merge the remote master branch into the current master branch, if any (this is untrue when "--single-branch" is given; see below).</p>
+<blockquote>
+<p>master changed to main in 2020</p>
+<p>origin” is not special
+Just like the branch name “master” does not have any special meaning in Git, neither does “origin”. While “master” is the default name for a starting branch when you run git init which is the only reason it’s widely used, “origin” is the <strong>default name for a remote when you run git clone</strong>. If you run git clone -o booyah instead, then you will have booyah/master as your default remote branch.</p>
+</blockquote>
+<p>Remote-tracking branch names take the form <remote>/<branch>. </p>
+<p>For instance, if you wanted to see what the master branch on your origin remote looked like as of the last time you communicated with it, you would check the origin/master branch. If you were working on an issue with a partner and they pushed up an iss53 branch, you might have your own local iss53 branch, but the branch on the server would be represented by the remote-tracking branch origin/iss53.</p>
+<h2 id="downstream-vs-upstream">Downstream vs. Upstream</h2>
+<div class="highlight"><pre><span></span><code><span class="o">|---------------------------</span><span class="w"> </span><span class="nc">time</span><span class="w"> </span><span class="o">-----------------------------&gt;</span><span class="w"> </span>
+<span class="o">|---</span><span class="w"> </span><span class="n">master</span><span class="w"> </span><span class="o">----</span><span class="w"> </span><span class="n">downstream</span><span class="w"> </span><span class="o">-------&gt;</span><span class="w"> </span><span class="o">-------</span><span class="w"> </span><span class="n">upstream</span><span class="w"> </span><span class="o">---------&gt;</span>
+<span class="o">|</span><span class="w">            </span><span class="o">|</span><span class="w">                                              </span><span class="o">^</span>
+<span class="o">|</span><span class="w">            </span><span class="o">+--&gt;</span><span class="w"> </span><span class="n">remote</span><span class="w"> </span><span class="n">_clone_</span><span class="w">     </span><span class="k">from</span><span class="w"> </span><span class="n">master</span><span class="w"> </span><span class="n">_pull_</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="o">+</span>
+<span class="o">|</span><span class="w">                 </span><span class="o">[</span><span class="n">maybe need to</span><span class="o">]</span><span class="w">    </span><span class="k">from</span><span class="w"> </span><span class="n">remote</span><span class="w"> </span><span class="n">_push_</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="o">+</span>
+<span class="o">|</span><span class="w">                 </span><span class="o">[</span><span class="n">_fetch/merge_</span><span class="o">]</span>
+<span class="o">|</span><span class="w">                 </span><span class="o">[</span><span class="n">other people&#39;s</span><span class="o">]</span>
+<span class="o">|</span><span class="w">                 </span><span class="o">[</span><span class="n">commits</span><span class="o">]</span><span class="w"> </span>
+</code></pre></div>
+
+<h2 id="git-remote-repository-access">Git remote repository access</h2>
+<h3 id="create-a-bare-repo-no-working-files">Create a bare repo, no working files</h3>
+<p>There are two types of repos, one is 'bare' in that it contains no files that you can work with, only git indexed objects. It is suitable for <strong>sharing</strong> between other 'working files' repos.</p>
+<ul>
+<li>Create a sharing git repository on a system with raid disks and network access.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>mkdir<span class="w"> </span>backups/forest.git
+$<span class="w"> </span><span class="nb">cd</span><span class="w">    </span>backups/forest.git
+$<span class="w"> </span>git<span class="w"> </span>init<span class="w"> </span>--bare
+</code></pre></div>
+
+<ul>
+<li>On working hosts where you want to track files, create a working repo, populate it with files, ane push it to the sharing repo.</li>
+</ul>
+<p>```:
+$ mkdir ~/forest
+$ cd    ~/forest
+$ git init </p>
+<h1 id="_1"></h1>
+<p>$ [copy your files into the new directory]</p>
+<h1 id="then-add-them-to-your-local-git-repo">Then add them to your local git repo</h1>
+<p>$ git add .
+$ git commit</p>
+<h1 id="push-them-to-the-sharing-repo-with-the-set-upstream-option">Push them to the sharing repo, with the <code>--set-upstream</code> option</h1>
+<p>$ git push --set-upstream git+ssh://nas.doncohoon.com:/mnt/vol002/nfs2_share/backups/forest.git master</p>
+<p>Enumerating objects: 12507, done.
+Counting objects: 100% (12507/12507), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (6304/6304), done.
+Writing objects: 100% (12507/12507), 95.18 MiB | 12.71 MiB/s, done.
+Total 12507 (delta 6643), reused 9514 (delta 5966), pack-reused 0
+remote: Resolving deltas: 100% (6643/6643), done.
+To git+ssh://nas.doncohoon.com:/mnt/vol002/nfs2_share/backups/forest.git
+ * [new branch]      master -&gt; master
+Branch 'master' set up to track remote branch 'master' from 'git+ssh://nas.doncohoon.com:/mnt/vol002/nfs2_share/backups/forest.git’.</p>
+<div class="highlight"><pre><span></span><code>You can see the sharing repo definition here:
+
+File: .git/config
+</code></pre></div>
+
+<p>[branch "master"]
+    remote = git+ssh://nas.doncohoon.com:/mnt/vol002/nfs2_share/backups/forest.git
+    merge = refs/heads/master</p>
+<div class="highlight"><pre><span></span><code><span class="k">*</span> Pushing commits to a remote repository
+
+Run ```git push origin main``` to push your local changes to your online repository. (push &lt;source&gt; &lt;destination&gt;)
+
+<span class="k">*</span> Pulling commits from a remote repository
+
+Run ```git pull origin``` to pull other committed changes to your local repository. (pull &lt;source&gt;)
+
+<span class="k">*</span> Getting everything from a remote repository
+
+For new hosts you can grab all the files by using ```git clone <span class="gs">*remotename*</span>```. This will create a &#39;working directory&#39; on your local machine.
+
+<span class="k">*</span> Summary
+</code></pre></div>
+
+<p>$ git remote add progit https://github.com/progit/progit2.git # [1]
+$ git fetch progit                                            # [2]
+$ git branch --set-upstream-to=progit/master master           # [3]
+$ git config --local remote.pushDefault origin                # [4]</p>
+<div class="highlight"><pre><span></span><code><span class="mf">1.</span><span class="w"> </span><span class="n">Add</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="n">repository</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">give</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">name</span><span class="mf">.</span><span class="w"> </span><span class="n">Here</span><span class="p">,</span><span class="w"> </span><span class="n">I</span><span class="w"> </span><span class="n">have</span><span class="w"> </span><span class="n">chosen</span><span class="w"> </span><span class="kr">to</span><span class="w"> </span><span class="n">call</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="n">progit</span><span class="mf">.</span><span class="w"> </span>
+<span class="mf">2.</span><span class="w"> </span><span class="kr">Get</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">reference</span><span class="w"> </span><span class="kr">on</span><span class="w"> </span><span class="n">progit</span><span class="err">’</span><span class="n">s</span><span class="w"> </span><span class="n">branches</span><span class="p">,</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">particular</span><span class="w"> </span><span class="n">master</span><span class="mf">.</span>
+<span class="mf">3.</span><span class="w"> </span><span class="n">Set</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">master</span><span class="w"> </span><span class="n">branch</span><span class="w"> </span><span class="kr">to</span><span class="w"> </span><span class="n">fetch</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">progit</span><span class="w"> </span><span class="c1">remote.</span>
+<span class="mf">4.</span><span class="w"> </span><span class="kd">Def</span><span class="n">ine</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="kd">def</span><span class="n">ault</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">repository</span><span class="w"> </span><span class="kr">to</span><span class="w"> </span><span class="ow">or</span><span class="n">igin</span><span class="mf">.</span>
+
+<span class="kr">On</span><span class="n">ce</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">done</span><span class="p">,</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">workflow</span><span class="w"> </span><span class="n">becomes</span><span class="w"> </span><span class="n">much</span><span class="w"> </span><span class="n">simpler</span><span class="p">:</span>
+</code></pre></div>
+
+<p>$ git checkout master # [1]
+$ git pull            # [2]
+$ git push            # [3]</p>
+<div class="highlight"><pre><span></span><code><span class="mf">1.</span><span class="w"> </span><span class="kr">If</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">were</span><span class="w"> </span><span class="kr">on</span><span class="w"> </span><span class="n">another</span><span class="w"> </span><span class="n">branch</span><span class="p">,</span><span class="w"> </span><span class="kr">return</span><span class="w"> </span><span class="kr">to</span><span class="w"> </span><span class="n">master</span><span class="mf">.</span>
+<span class="mf">2.</span><span class="w"> </span><span class="n">Fetch</span><span class="w"> </span><span class="n">changes</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">progit</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">merge</span><span class="w"> </span><span class="n">changes</span><span class="w"> </span><span class="nb">int</span><span class="n">o</span><span class="w"> </span><span class="n">master</span><span class="mf">.</span><span class="w"> </span>
+<span class="mf">3.</span><span class="w"> </span><span class="n">Push</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">master</span><span class="w"> </span><span class="n">branch</span><span class="w"> </span><span class="kr">to</span><span class="w"> </span><span class="ow">or</span><span class="n">igin</span><span class="mf">.</span>
+
+<span class="n">Reference</span><span class="p">:</span><span class="w"> </span>
+
+<span class="o">*</span><span class="w"> </span><span class="o">&lt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">git</span><span class="o">-</span><span class="n">scm</span><span class="mf">.</span><span class="n">com</span><span class="o">/</span><span class="n">book</span><span class="o">/</span><span class="n">en</span><span class="o">/</span><span class="n">v2</span><span class="o">&gt;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">pp190</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Keep</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">GitHub</span><span class="w"> </span><span class="n">public</span><span class="w"> </span><span class="n">repository</span><span class="w"> </span><span class="n">up</span><span class="o">-</span><span class="kr">to</span><span class="o">-</span><span class="n">date</span>
+
+<span class="err">##</span><span class="w"> </span><span class="n">Multiple</span><span class="w"> </span><span class="c1">remote git repositories</span>
+
+<span class="mf">1.</span><span class="w"> </span><span class="n">John</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">Jessica</span><span class="w"> </span><span class="n">both</span><span class="w"> </span><span class="n">clone</span><span class="w"> </span><span class="nb">int</span><span class="n">o</span><span class="w"> </span><span class="n">their</span><span class="w"> </span><span class="c1">remotes</span>
+</code></pre></div>
+
+<p>$ git clone john@githost:simplegit.git
+...
+$ git commit -am 'Remove invalid default value'
+  [master 738ee87] Remove invalid default value
+......
+$ git clone jessica@githost:simplegit.git
+...
+ $ git commit -am 'Add reset task'
+  [master fbff5bc] Add reset task
+   1 files changed, 1 insertions(+), 0 deletions(-)</p>
+<div class="highlight"><pre><span></span><code><span class="mf">2.</span><span class="w"> </span><span class="n">Jessica</span><span class="w"> </span><span class="n">makes</span><span class="w"> </span><span class="n">changes</span><span class="p">,</span><span class="w"> </span><span class="n">commits</span><span class="w"> </span><span class="nb">int</span><span class="n">o</span><span class="w"> </span><span class="n">her</span><span class="w"> </span><span class="c1">remote, the pushes to the server</span>
+</code></pre></div>
+
+<p>$ git commit -am 'Add reset task'
+[master fbff5bc] Add reset task</p>
+<p>$ git push origin master
+...
+To jessica@githost:simplegit.git
+1edee6b..fbff5bc master -&gt; master</p>
+<div class="highlight"><pre><span></span><code><span class="mf">3.</span><span class="w"> </span><span class="n">John</span><span class="w"> </span><span class="n">makes</span><span class="w"> </span><span class="n">changes</span><span class="p">,</span><span class="w"> </span><span class="n">commits</span><span class="w"> </span><span class="nb">int</span><span class="n">o</span><span class="w"> </span><span class="n">his</span><span class="w"> </span><span class="c1">remote, then tries to push them to the same server</span>
+</code></pre></div>
+
+<p>$ git commit -am 'Remove invalid default value'
+  [master 738ee87] Remove invalid default value
+   1 files changed, 1 insertions(+), 1 deletions(-)
+...
+$ git push origin master
+...
+! [rejected] master -&gt; master (non-fast forward)
+error: failed to push some refs to 'john@githost:simplegit.git</p>
+<div class="highlight"><pre><span></span><code><span class="n">John</span><span class="w"> </span><span class="n">must</span><span class="w"> </span><span class="k">first</span><span class="w"> </span><span class="k">fetch</span><span class="w"> </span><span class="n">Jessica</span><span class="err">’</span><span class="n">s</span><span class="w"> </span><span class="n">upstream</span><span class="w"> </span><span class="n">changes</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="k">merge</span><span class="w"> </span><span class="n">them</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">his</span><span class="w"> </span><span class="k">local</span><span class="w"> </span><span class="n">repository</span><span class="w"> </span><span class="k">before</span><span class="w"> </span><span class="n">he</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">allowed</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">push</span><span class="p">.</span>
+
+<span class="mf">4.</span><span class="w"> </span><span class="k">As</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">first</span><span class="w"> </span><span class="n">step</span><span class="p">,</span><span class="w"> </span><span class="n">John</span><span class="w"> </span><span class="n">fetches</span><span class="w"> </span><span class="n">Jessica</span><span class="err">’</span><span class="n">s</span><span class="w"> </span><span class="k">work</span><span class="w"> </span><span class="o">[</span><span class="n">fbff5</span><span class="o">]</span><span class="w"> </span><span class="p">(</span><span class="n">this</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="n">fetches</span><span class="w"> </span><span class="n">Jessica</span><span class="err">’</span><span class="n">s</span><span class="w"> </span><span class="n">upstream</span><span class="w"> </span><span class="k">work</span><span class="p">,</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="n">does</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">yet</span>
+<span class="k">merge</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">John</span><span class="err">’</span><span class="n">s</span><span class="w"> </span><span class="k">work</span><span class="p">)</span><span class="err">:</span>
+</code></pre></div>
+
+<p>$ git fetch origin
+...
+From john@githost:simplegit
++ 049d078...fbff5bc master -&gt; origin/master</p>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+
+<p>John's
+Master
+commit
+  |
+[738ee] -&gt; [1edee] -&gt; [4b078]
+              ^
+[fbff5] ------+
+  |
+Origin Master</p>
+<div class="highlight"><pre><span></span><code><span class="mf">5.</span><span class="w"> </span><span class="n">Now</span><span class="w"> </span><span class="n">John</span><span class="err">&#39;</span><span class="n">s</span><span class="w"> </span><span class="k">work</span><span class="w"> </span><span class="o">[</span><span class="n">738ee</span><span class="o">]</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="k">merge</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">Jessica</span><span class="err">’</span><span class="n">s</span><span class="w"> </span><span class="k">work</span><span class="w"> </span><span class="o">[</span><span class="n">fbff5</span><span class="o">]</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">he</span><span class="w"> </span><span class="n">fetched</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">his</span><span class="w"> </span><span class="n">own</span><span class="w"> </span><span class="k">local</span><span class="w"> </span><span class="k">work</span><span class="err">:</span>
+</code></pre></div>
+
+<p>$ git merge origin/master</p>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+
+<p>Origin
+ Master
+   |        John
+[72bbc] -&gt; [738ee] -&gt; [1edee] -&gt; [4b078]
+   |                     ^
+   |       Jessica       |            <br>
+   +-----&gt; [fbff5] ------+            <br>
+              |                       <br>
+          Origin Master  </p>
+<div class="highlight"><pre><span></span><code><span class="mf">6.</span><span class="w"> </span><span class="n">At</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">point</span><span class="p">,</span><span class="w"> </span><span class="n">John</span><span class="w"> </span><span class="n">might</span><span class="w"> </span><span class="n">want</span><span class="w"> </span><span class="kr">to</span><span class="w"> </span><span class="n">test</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="kr">new</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="kr">to</span><span class="w"> </span><span class="n">make</span><span class="w"> </span><span class="n">sure</span><span class="w"> </span><span class="n">none</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">Jessica</span><span class="err">’</span><span class="n">s</span><span class="w"> </span><span class="n">work</span><span class="w"> </span><span class="n">affects</span><span class="w"> </span><span class="n">any</span>
+<span class="n">of</span><span class="w"> </span><span class="n">his</span><span class="w"> </span><span class="ow">and</span><span class="p">,</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="n">long</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="n">everything</span><span class="w"> </span><span class="n">seems</span><span class="w"> </span><span class="n">fine</span><span class="p">,</span><span class="w"> </span><span class="n">he</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">finally</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="kr">new</span><span class="w"> </span><span class="n">merged</span><span class="w"> </span><span class="n">work</span><span class="w"> </span><span class="n">up</span><span class="w"> </span><span class="kr">to</span><span class="w"> </span><span class="n">the</span>
+<span class="n">server</span><span class="p">:</span>
+</code></pre></div>
+
+<p>$ git push origin master
+...
+To john@githost:simplegit.git
+fbff5bc..72bbc59 master -&gt; master</p>
+<p>```</p>
+<p>Reference:</p>
+<ul>
+<li><a href="https://git-scm.com/book/en/v2">https://git-scm.com/book/en/v2</a> : pp131 - Private Small Team</li>
+</ul>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://getpelican.com/">Pelican</a></li>
+                            <li><a href="https://www.python.org/">Python.org</a></li>
+                            <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="https://dfcsoftware.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <p>
+                Site by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>, via <a rel="nofollow" href="https://www.python.org/">Python</a>.
+                </p><!-- /#about -->
+
+                <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
