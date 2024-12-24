@@ -113,9 +113,21 @@
 </footer><!-- /.post-info -->      <h1 id="mirror-disks">Mirror Disks</h1>
 <p>Mirroring disks on Linux is simple and prudent to ensure your data survives hardware, software and human failures. All data from one disk is duplicated on another disk and if any <strong>one</strong> disk fails, you will never know it. So it is important after setting up to monitor the disk array.</p>
 <hr>
-<p>[ TOC ]</p>
+<div class="toc"><span class="toctitle">Table of Contents</span><ul>
+<li><a href="#mirror-disks">Mirror Disks</a><ul>
+<li><a href="#install-mdadm">Install mdadm</a></li>
+<li><a href="#assembling-your-arrays">Assembling your arrays</a></li>
+<li><a href="#status-of-array">Status of array</a></li>
+<li><a href="#adding-a-drive-to-a-mirror">Adding a drive to a mirror</a></li>
+<li><a href="#creating-a-mirror-raid">Creating a mirror raid</a></li>
+<li><a href="#configuration-file">Configuration File</a></li>
+<li><a href="#auto-mount-array">Auto Mount Array</a></li>
+<li><a href="#monitor-array">Monitor Array</a></li>
+</ul>
+</li>
+</ul>
+</div>
 <hr>
-<p>Mirroring disks on Linux is simple and prudent to ensure your data survives hardware, software and human failures. All data from one disk is duplicated on another disk and if any <strong>one</strong> disk fails, you will never know it. So it is important after setting up to monitor the disk array.</p>
 <h2 id="install-mdadm">Install mdadm</h2>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>mdadm
 </code></pre></div>

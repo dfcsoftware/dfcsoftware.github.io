@@ -113,9 +113,54 @@
 </footer><!-- /.post-info -->      <h1 id="network-attached-storage-nas">Network Attached Storage (NAS)</h1>
 <p>The NAS provides a safe place to store important data. Set this up before running E-Mail or a cloud service because it is the best place to put important files. If an E-Mail server crashes you still have all your E-Mail files on the NFS (see below) attached NAS server. That's what it's for.</p>
 <hr>
-<p>[ TOC ]</p>
+<div class="toc"><span class="toctitle">Table of Contents</span><ul>
+<li><a href="#network-attached-storage-nas">Network Attached Storage (NAS)</a><ul>
+<li><a href="#truenas-storage">TrueNAS Storage</a><ul>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#configuration">Configuration</a></li>
+</ul>
+</li>
+<li><a href="#1-httpswwwtruenascomdocsscalegettingstartedinstallconsolesetupmenuscale">1. https://www.truenas.com/docs/scale/gettingstarted/install/consolesetupmenuscale/</a></li>
+<li><a href="#2-httpswwwtruenascomdocsscalegettingstartedinstallsetupstoragescale">2. https://www.truenas.com/docs/scale/gettingstarted/install/setupstoragescale/</a></li>
+<li><a href="#3-httpswwwtruenascomdocsscalegettingstartedinstallsetupsharing">3. https://www.truenas.com/docs/scale/gettingstarted/install/setupsharing/</a></li>
+<li><a href="#4-httpswwwtruenascomdocsscalegettingstartedinstallsetupbackupscale">4. https://www.truenas.com/docs/scale/gettingstarted/install/setupbackupscale/</a></li>
+</ul>
+</li>
+<li><a href="#unixlinux-server-network-file-system-nfs">Unix/Linux Server - Network File System (NFS)</a><ul>
+<li><a href="#install-nfs-software">Install NFS software</a></li>
+<li><a href="#enable-nfs-service">Enable NFS Service</a></li>
+<li><a href="#create-directory-to-share">Create Directory to Share</a></li>
+<li><a href="#export-share">Export Share</a></li>
+<li><a href="#load-exports-into-live-system">Load exports into live system</a></li>
+<li><a href="#connect-to-nfs-server-from-linux-client">Connect to NFS server from Linux client</a><ul>
+<li><a href="#install-software-on-client">Install Software on Client</a></li>
+<li><a href="#mount-directory">Mount Directory</a></li>
+<li><a href="#make-mount-permanent">Make mount permanent</a></li>
+</ul>
+</li>
+<li><a href="#nfs-mount-on-macos-client">NFS mount on Macos Client</a><ul>
+<li><a href="#create-local-directory">Create local directory</a></li>
+<li><a href="#mount">Mount</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#microsoft-windows-smbcifs">Microsoft Windows (SMB/CIFS)</a><ul>
+<li><a href="#disabling-the-automatic-printer-sharing">Disabling the Automatic Printer Sharing</a></li>
+<li><a href="#restart-samba">Restart Samba</a></li>
+<li><a href="#add-linux-owner">Add Linux owner</a></li>
+<li><a href="#add-smb-user">Add SMB User</a></li>
+<li><a href="#secure-the-filesystem">Secure the filesystem</a></li>
+<li><a href="#samba-share-mount-on-linux-client">Samba Share mount on Linux client</a></li>
+<li><a href="#samba-share-mount-on-mac-client">Samba Share mount on Mac client</a></li>
+</ul>
+</li>
+<li><a href="#mirror-disks-for-failure-protection">Mirror Disks for Failure Protection</a></li>
+<li><a href="#virtual-machines">Virtual Machines</a></li>
+<li><a href="#continue">Continue</a></li>
+</ul>
+</div>
 <hr>
-<p>The NAS provides a safe place to store important data. Set this up before running E-Mail or a cloud service because it is the best place to put important files. If an E-Mail server crashes you still have all your E-Mail files on the NFS (see below) attached NAS server. That's what it's for.</p>
 <p>Three (common) ways to do this:</p>
 <ol>
 <li>TrueNAS Storage</li>
