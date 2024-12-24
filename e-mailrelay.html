@@ -109,15 +109,180 @@
                 By                         <a class="url fn" href="https://dfcsoftware.github.io/author/don-cohoon.html">Don Cohoon</a>
         </address>
 <p>In <a href="https://dfcsoftware.github.io/category/linux.html">linux</a>.</p>
-<p>tags: <a href="https://dfcsoftware.github.io/tag/linux.html">linux</a> <a href="https://dfcsoftware.github.io/tag/email.html">email</a> </p>
+<p>tags: <a href="https://dfcsoftware.github.io/tag/email.html">email</a> </p>
 </footer><!-- /.post-info -->      <h1 id="e-mail-relay">E-Mail Relay</h1>
 <p>The following diagrams are what this document will accomplish. The challenge is to obtain and keep a good reputation that other E-Mail handlers around the world will accept. Otherwise your messages will be dumped in the trash can (SPAM) or sent back to you (bounced). </p>
 <hr>
-<p>[ toc ]</p>
+<div class="toc"><span class="toctitle">Table of Contents</span><ul>
+<li><a href="#e-mail-relay">E-Mail Relay</a></li>
+<li><a href="#overview">Overview</a><ul>
+<li><a href="#outgoing-relay-from-inside-home">Outgoing: Relay from Inside Home</a></li>
+<li><a href="#outgoing-relay-from-outside-home">Outgoing: Relay from Outside Home</a></li>
+<li><a href="#incoming-transport-from-internet">Incoming: Transport from Internet</a></li>
+</ul>
+</li>
+<li><a href="#vps">VPS</a></li>
+<li><a href="#secure-vps-on-your-domainorg">Secure VPS on your-domain.org</a><ul>
+<li><a href="#check-network">Check Network</a></li>
+<li><a href="#update-package-repository">Update Package Repository</a></li>
+<li><a href="#create-new-users">Create New User(s)</a></li>
+<li><a href="#set-host-and-domain">Set Host and Domain</a></li>
+<li><a href="#set-date-and-time">Set Date and Time</a></li>
+<li><a href="#monitor-crack-attempts">Monitor crack attempts</a><ul>
+<li><a href="#install-firewall-and-fail2ban-on-your-domainorg">Install firewall and fail2ban on your-domain.org</a><ul>
+<li><a href="#add-rules-for-e-mail-smtp-and-smtps">Add rules for E-Mail smtp and smtps.</a></li>
+<li><a href="#configure-fail2ban">Configure fail2ban</a><ul>
+<li><a href="#secure-postfix">Secure postfix</a></li>
+<li><a href="#secure-ssh">Secure ssh</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#log-monitors-on-your-domainorg">Log Monitors on your-domain.org</a><ul>
+<li><a href="#install-logwatch">Install Logwatch</a></li>
+<li><a href="#install-logcheck">Install Logcheck:</a></li>
+</ul>
+</li>
+<li><a href="#logwatcher">LogWatcher</a><ul>
+<li><a href="#create">Create</a></li>
+<li><a href="#schedule">Schedule</a></li>
+<li><a href="#filters">Filters</a></li>
+<li><a href="#make-the-scripts-executable">Make the Scripts Executable</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#apache-install-enable-on-your-domainorg">Apache install (enable) on your-domain.org</a><ul>
+<li><a href="#add-ssl">Add SSL</a></li>
+</ul>
+</li>
+<li><a href="#dns-registrar-your-domainorg">DNS Registrar (your-domain.org)</a><ul>
+<li><a href="#dns-updates">DNS Updates</a><ul>
+<li><a href="#create-ptr-record">Create PTR Record</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#certbot-certificate-management-for-lets-encrypt">certbot - Certificate Management for Let's Encrypt</a><ul>
+<li><a href="#install">Install</a></li>
+<li><a href="#configure">Configure</a></li>
+</ul>
+</li>
+<li><a href="#apache-disable">Apache (disable)</a></li>
+<li><a href="#postfix-e-mail-transport-agent">postfix - E-Mail Transport Agent</a><ul>
+<li><a href="#install-on-your-domainorg">Install on your-domain.org</a></li>
+<li><a href="#configure-on-your-domainorg">Configure on your-domain.org</a><ul>
+<li><a href="#complete-maincf-file-contents">Complete main.cf file contents</a></li>
+<li><a href="#complete-relay-contents-of-mastercf">Complete relay contents of master.cf</a></li>
+</ul>
+</li>
+<li><a href="#reload-config">Reload Config</a></li>
+<li><a href="#definitions-of-master-fields">Definitions of master fields</a></li>
+</ul>
+</li>
+<li><a href="#proxy-postfix-using-transport-maps-for-incoming-mails-on-your-domainorg">Proxy Postfix using Transport Maps for Incoming Mails on your-domain.org</a><ul>
+<li><a href="#configure_1">Configure</a></li>
+<li><a href="#transport-definitions">Transport Definitions</a></li>
+<li><a href="#make-it-a-database">Make it a database</a></li>
+<li><a href="#reload-config_1">Reload Config</a></li>
+</ul>
+</li>
+<li><a href="#proxy-postfix-relay-for-smtp-outgoing-mails">Proxy Postfix Relay for SMTP Outgoing Mails</a><ul>
+<li><a href="#change-mx-records-in-no-ipcom-from-mail1no-ipcom-to-mailyour-domainorg">Change MX records in no-ip.com from mail1.no-ip.com to mail.your-domain.org</a></li>
+<li><a href="#change-txt-spf-record-in-no-ipcom-from-noip-to">Change TXT spf record in no-ip.com from noip, to:</a></li>
+<li><a href="#change-your-domaincom-postfixmaincf-relay-to-your-domainorg">Change your-domain.com postfix/main.cf relay to your-domain.org</a></li>
+<li><a href="#add-your-domainorg-unix-login-on-host-your-domaincom">Add your-domain.org unix login on host your-domain.com</a></li>
+<li><a href="#enable-tls-on-your-domainorg">Enable TLS on your-domain.org</a><ul>
+<li><a href="#or">OR</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#clients-mail-user-agents-mua">Clients Mail User Agents (MUA)</a><ul>
+<li><a href="#mua-connection-definitions">MUA Connection Definitions</a><ul>
+<li><a href="#read-mail">Read Mail</a></li>
+<li><a href="#send-mail">Send Mail</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#debug">Debug</a><ul>
+<li><a href="#if-mail-queues-up-to-sendresend-you-can-check-and-clear-to-queue">If mail queues up to send/resend, you can check and clear to queue</a><ul>
+<li><a href="#list-mail-queue">List mail queue</a></li>
+<li><a href="#look-at-message">Look at message</a></li>
+<li><a href="#flush-queue">Flush queue</a></li>
+<li><a href="#or_1">or</a></li>
+</ul>
+</li>
+<li><a href="#install-a-mail-user-agent-for-ssh">Install a Mail User Agent for ssh</a></li>
+<li><a href="#install-a-nice-ssh-capable-log-reader">Install a nice ssh capable log reader</a></li>
+<li><a href="#install-a-package-marking-tool">Install a package marking tool</a></li>
+<li><a href="#certificate-expiration-check">Certificate Expiration Check</a></li>
+</ul>
+</li>
+<li><a href="#configuring-spf-policy-agent">Configuring SPF Policy Agent</a><ul>
+<li><a href="#install-required-packages">Install required packages:</a></li>
+<li><a href="#test-spf">Test SPF</a></li>
+<li><a href="#configure-spf">Configure SPF</a></li>
+<li><a href="#restart-postfix">Restart Postfix.</a></li>
+<li><a href="#debug-spf">Debug SPF</a></li>
+<li><a href="#block-domains-and-e-mail-addresses-using-postfix-access">Block Domains and E-Mail Addresses using Postfix access</a></li>
+</ul>
+</li>
+<li><a href="#setting-up-dkim">Setting up DKIM</a><ul>
+<li><a href="#install-opendkim">Install OpenDKIM</a></li>
+<li><a href="#configure-opendkim">Configure OpenDKIM</a><ul>
+<li><a href="#map-domains-to-keys">Map Domains to Keys</a></li>
+<li><a href="#hosts-to-ignore-when-verifying-signatures">Hosts to ignore when verifying signatures</a></li>
+<li><a href="#a-set-of-internal-hosts-whose-mail-should-be-signed">A set of internal hosts whose mail should be signed</a></li>
+</ul>
+</li>
+<li><a href="#create-signing-table-key-table-and-trusted-hosts-file">Create Signing Table, Key Table and Trusted Hosts File</a><ul>
+<li><a href="#check-directory-structure-for-opendkim">Check directory structure for OpenDKIM</a></li>
+<li><a href="#create-the-signing-table">Create the signing table</a></li>
+<li><a href="#create-the-key-table">Create the key table</a></li>
+<li><a href="#create-the-trusted-hosts-file">Create the trusted hosts file</a></li>
+</ul>
+</li>
+<li><a href="#generate-privatepublic-keypair">Generate Private/Public Keypair</a><ul>
+<li><a href="#create-a-separate-folder-for-the-domain">Create a separate folder for the domain.</a></li>
+<li><a href="#generate-keys-using-opendkim-genkey-tool">Generate keys using opendkim-genkey tool.</a></li>
+</ul>
+</li>
+<li><a href="#publish-your-public-key-in-dns-records">Publish Your Public Key in DNS Records</a></li>
+<li><a href="#test-dkim-key">Test DKIM Key</a></li>
+<li><a href="#connect-postfix-to-opendkim">Connect Postfix to OpenDKIM</a><ul>
+<li><a href="#set-socket-to-local">Set Socket to local</a></li>
+<li><a href="#add-opendkim-to-postfix-maincf">Add openDKIM to Postfix main.cf</a></li>
+<li><a href="#restart-opendkim-and-postfix-service">Restart opendkim and postfix service</a></li>
+</ul>
+</li>
+<li><a href="#spf-and-dkim-check">SPF and DKIM Check</a></li>
+<li><a href="#postfix-cant-connect-to-opendkim">Postfix Can’t Connect to OpenDKIM</a></li>
+<li><a href="#configuration-error-in-email-client">Configuration Error in Email Client</a><ul>
+<li><a href="#wrong-settings">Wrong Settings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#testing-email-score-and-placement">Testing Email Score and Placement</a></li>
+<li><a href="#what-is-dmarc">What is DMARC?</a><ul>
+<li><a href="#create-dmarc-record">Create DMARC Record</a><ul>
+<li><a href="#dmarc-record-txt">DMARC Record TXT</a></li>
+</ul>
+</li>
+<li><a href="#dmarc-record-check">DMARC Record Check</a></li>
+<li><a href="#dmarc-test-e-mail">DMARC Test E-Mail</a></li>
+<li><a href="#interpret-a-dmarc-report">Interpret a DMARC Report</a></li>
+</ul>
+</li>
+</ul>
+</div>
 <hr>
 <h1 id="overview">Overview</h1>
-<p>The following diagrams are what this document will accomplish. The challenge is to obtain and keep a good reputation that other E-Mail handlers around the world will accept. Otherwise your messages will be dumped in the trash can (SPAM) or sent back to you (bounced). </p>
-<p>It is a combination of:</p>
+<p>E-Mail Relay is a combination of:</p>
 <ul>
 <li>IP Address Reputation</li>
 <li>DNS assignment of an E-Mail name to that IP Address</li>
