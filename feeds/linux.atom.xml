@@ -33,7 +33,7 @@
 &lt;p&gt;&lt;a href="e-mail.html"&gt;E-Mail&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;a href="e-mailrelay.md"&gt;E-Mail Relay&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="e-mailrelay.html"&gt;E-Mail Relay&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;a href="postgresql.html"&gt;PostgreSQL&lt;/a&gt;&lt;/p&gt;
@@ -66,7 +66,7 @@
 &lt;p&gt;&lt;a href="ncmpcpp.html"&gt;ncmpcpp MPD Control&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id="articles"&gt;Articles:&lt;/h2&gt;
+&lt;h2 id="articles"&gt;Articles&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;a href="docker.html"&gt;Docker&lt;/a&gt;&lt;/p&gt;
