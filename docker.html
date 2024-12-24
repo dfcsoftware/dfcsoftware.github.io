@@ -7,7 +7,7 @@
         <title>Docker</title>
         <link rel="stylesheet" href="https://dfcsoftware.github.io/theme/css/main.css" />
         <link href="https://dfcsoftware.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Linux Home Administration Atom Feed" />
-        <meta name="description" content="Migrating my blog, first step is some useful common commands to check out the status of docker containers. Glad that **docker prune** saved me..." />
+        <meta name="description" content="Table of Contents Docker Prune unused containers, images and cache Check a container's logs Inspect a container Check for container filesystem..." />
 </head>
 
 <body id="index" class="home">
@@ -82,9 +82,9 @@
 </div> </td>
                 </table>
                 <nav><ul>
+                    <li><a href="https://dfcsoftware.github.io/category/2023.html">2023</a></li>
                     <li><a href="https://dfcsoftware.github.io/category/forest.html">forest</a></li>
-                    <li class="active"><a href="https://dfcsoftware.github.io/category/fosstodon.html">fosstodon</a></li>
-                    <li><a href="https://dfcsoftware.github.io/category/linux.html">linux</a></li>
+                    <li class="active"><a href="https://dfcsoftware.github.io/category/linux.html">linux</a></li>
                     <li><a href="https://dfcsoftware.github.io/category/writing.html">writing</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
@@ -98,19 +98,216 @@
 
     <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2023-04-17T14:15:14+00:00">
-                Published: Mon 17 April 2023
+        <abbr class="published" title="2023-01-23T00:00:00-05:00">
+                Published: Mon 23 January 2023
+        </abbr>
+		<br />
+        <abbr class="modified" title="2024-04-19T09:30:00-04:00">
+                Updated: Fri 19 April 2024
         </abbr>
 
         <address class="vcard author">
                 By                         <a class="url fn" href="https://dfcsoftware.github.io/author/don-cohoon.html">Don Cohoon</a>
         </address>
-<p>In <a href="https://dfcsoftware.github.io/category/fosstodon.html">fosstodon</a>.</p>
+<p>In <a href="https://dfcsoftware.github.io/category/linux.html">linux</a>.</p>
 
-</footer><!-- /.post-info -->      <p>Migrating my blog, first step is some useful common commands to check out the status of docker containers.</p>
-<p>Glad that **docker prune** saved me over 2GB disk space!</p>
-<p><a href="https://dfcsoftware.github.com/2023/january" rel="nofollow noopener noreferrer" target="_blank"><span class="invisible">https://</span><span class="ellipsis">dfcsoftware.github.com/2</span><span class="invisible">023/january</span></a></p>
-<p><a class="mention hashtag" href="https://fosstodon.org/tags/linux" rel="tag">#<span>linux</span></a> <a class="mention hashtag" href="https://fosstodon.org/tags/opensource" rel="tag">#<span>opensource</span></a> <a class="mention hashtag" href="https://fosstodon.org/tags/docker" rel="tag">#<span>docker</span></a></p>
+</footer><!-- /.post-info -->      <!-- toc -->
+<hr>
+<div class="toc"><span class="toctitle">Table of Contents</span><ul>
+<li><a href="#docker">Docker</a><ul>
+<li><a href="#prune-unused-containers-images-and-cache">Prune unused containers, images and cache</a></li>
+<li><a href="#check-a-containers-logs">Check a container's logs</a></li>
+<li><a href="#inspect-a-container">Inspect a container</a></li>
+<li><a href="#check-for-container-filesystem-changes-since-start">Check for container filesystem changes since start</a></li>
+<li><a href="#check-container-running-processes">Check container running processes</a></li>
+<li><a href="#check-container-statistics">Check container statistics</a></li>
+<li><a href="#check-docker-networks">Check docker networks</a></li>
+<li><a href="#move-data-files">Move data files</a></li>
+<li><a href="#upgrade-a-container">Upgrade a container</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<hr>
+<hr>
+<h1 id="docker">Docker</h1>
+<p>Docker is a way to manage containers, which are like namespaces or jails. Here are some useful common commands to check out the status of these containers.</p>
+<h2 id="prune-unused-containers-images-and-cache">Prune unused containers, images and cache</h2>
+<p>This can free up disk space.</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>system<span class="w"> </span>prune
+WARNING!<span class="w"> </span>This<span class="w"> </span>will<span class="w"> </span>remove:
+<span class="w">  </span>-<span class="w"> </span>all<span class="w"> </span>stopped<span class="w"> </span>containers
+<span class="w">  </span>-<span class="w"> </span>all<span class="w"> </span>networks<span class="w"> </span>not<span class="w"> </span>used<span class="w"> </span>by<span class="w"> </span>at<span class="w"> </span>least<span class="w"> </span>one<span class="w"> </span>container
+<span class="w">  </span>-<span class="w"> </span>all<span class="w"> </span>dangling<span class="w"> </span>images
+<span class="w">  </span>-<span class="w"> </span>all<span class="w"> </span>dangling<span class="w"> </span>build<span class="w"> </span>cache
+
+Are<span class="w"> </span>you<span class="w"> </span>sure<span class="w"> </span>you<span class="w"> </span>want<span class="w"> </span>to<span class="w"> </span><span class="k">continue</span>?<span class="w"> </span><span class="o">[</span>y/N<span class="o">]</span><span class="w"> </span>y
+Deleted<span class="w"> </span>Containers:
+e91363806fd869a4f9349fc2de4faf26cc6b4b26a7fdbf16c5535c13ef46f995
+
+Deleted<span class="w"> </span>Images:
+untagged:<span class="w"> </span>homeassistant/home-assistant@sha256:1b4a62627444841ad222aaf3795b90581c2f8b712762c8d7d6b6cf9a42045ea8
+deleted:<span class="w"> </span>sha256:8a975b58aacfc196fbe3eeb34810b9068e8a50d953ff88b67504d1c2351940d7
+deleted:<span class="w"> </span>sha256:8df0a83f8a5a8360e6deef1187b2dbf6c27b7fe57584bca0b657671363a20729
+deleted:<span class="w"> </span>sha256:abdac85af7ebbecf80442d554fa655133eb4ee2dbf4d96136caf1615e7f82992
+deleted:<span class="w"> </span>sha256:b992bfbe5047c28682b5cc7ce976e418b5402113ee404143a4de208214f322f7
+deleted:<span class="w"> </span>sha256:84e4d6e3db7ee758f3089b2f28ed3b1d248e31c72604004fdfdd34970c1a47
+...
+Total<span class="w"> </span>reclaimed<span class="w"> </span>space:<span class="w"> </span><span class="m">3</span>.556GB
+</code></pre></div>
+
+<p>Reference: <a href="https://docs.docker.com/engine/reference/commandline/system_prune/">https://docs.docker.com/engine/reference/commandline/system_prune/</a></p>
+<h2 id="check-a-containers-logs">Check a container's logs</h2>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>homeassistant
+...
+Traceback<span class="w"> </span><span class="o">(</span>most<span class="w"> </span>recent<span class="w"> </span>call<span class="w"> </span>last<span class="o">)</span>:
+<span class="w">  </span>File<span class="w"> </span><span class="s2">&quot;/usr/local/lib/python3.10/site-packages/pyatv/protocols/airplay/__init__.py&quot;</span>,<span class="w"> </span>line<span class="w"> </span><span class="m">258</span>,<span class="w"> </span><span class="k">in</span><span class="w"> </span>_connect_rc
+<span class="w">    </span>await<span class="w"> </span>control.start<span class="o">(</span>str<span class="o">(</span>core.config.address<span class="o">)</span>,<span class="w"> </span>control_port,<span class="w"> </span>credentials<span class="o">)</span>
+<span class="w">  </span>File<span class="w"> </span><span class="s2">&quot;/usr/local/lib/python3.10/site-packages/pyatv/protocols/airplay/remote_control.py&quot;</span>,<span class="w"> </span>line<span class="w"> </span><span class="m">60</span>,<span class="w"> </span><span class="k">in</span><span class="w"> </span>start
+<span class="w">    </span>await<span class="w"> </span>self._setup_event_channel<span class="o">(</span>self.connection.remote_ip<span class="o">)</span>
+<span class="w">  </span>File<span class="w"> </span><span class="s2">&quot;/usr/local/lib/python3.10/site-packages/pyatv/protocols/airplay/remote_control.py&quot;</span>,<span class="w"> </span>line<span class="w"> </span><span class="m">102</span>,<span class="w"> </span><span class="k">in</span><span class="w"> </span>_setup_event_channel
+<span class="w">    </span><span class="nv">resp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>await<span class="w"> </span>self._setup<span class="o">(</span>
+...
+</code></pre></div>
+
+<h2 id="inspect-a-container">Inspect a container</h2>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>container<span class="w"> </span>inspect<span class="w">  </span>homeassistant
+<span class="o">[</span>
+<span class="w">    </span><span class="o">{</span>
+<span class="w">        </span><span class="s2">&quot;Id&quot;</span>:<span class="w"> </span><span class="s2">&quot;0baa0742e18858ebea97a93ee5a97f0fb09f369d504d3f6d1252c8c35234ac91&quot;</span>,
+<span class="w">        </span><span class="s2">&quot;Created&quot;</span>:<span class="w"> </span><span class="s2">&quot;2023-04-16T23:45:06.042429674Z&quot;</span>,
+<span class="w">        </span><span class="s2">&quot;Path&quot;</span>:<span class="w"> </span><span class="s2">&quot;/init&quot;</span>,
+<span class="w">        </span><span class="s2">&quot;Args&quot;</span>:<span class="w"> </span><span class="o">[]</span>,
+<span class="w">        </span><span class="s2">&quot;State&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">            </span><span class="s2">&quot;Status&quot;</span>:<span class="w"> </span><span class="s2">&quot;running&quot;</span>,
+<span class="w">            </span><span class="s2">&quot;Running&quot;</span>:<span class="w"> </span>true,
+<span class="w">            </span><span class="s2">&quot;Paused&quot;</span>:<span class="w"> </span>false,
+<span class="w">            </span><span class="s2">&quot;Restarting&quot;</span>:<span class="w"> </span>false,
+<span class="w">            </span><span class="s2">&quot;OOMKilled&quot;</span>:<span class="w"> </span>false,
+<span class="w">            </span><span class="s2">&quot;Dead&quot;</span>:<span class="w"> </span>false,
+<span class="w">            </span><span class="s2">&quot;Pid&quot;</span>:<span class="w"> </span><span class="m">2378698</span>,
+<span class="w">            </span><span class="s2">&quot;ExitCode&quot;</span>:<span class="w"> </span><span class="m">0</span>,
+<span class="w">            </span><span class="s2">&quot;Error&quot;</span>:<span class="w"> </span><span class="s2">&quot;&quot;</span>,
+<span class="w">            </span><span class="s2">&quot;StartedAt&quot;</span>:<span class="w"> </span><span class="s2">&quot;2023-04-16T23:45:06.981493189Z&quot;</span>,
+<span class="w">            </span><span class="s2">&quot;FinishedAt&quot;</span>:<span class="w"> </span><span class="s2">&quot;0001-01-01T00:00:00Z&quot;</span>
+<span class="w">        </span><span class="o">}</span>,
+...
+</code></pre></div>
+
+<h2 id="check-for-container-filesystem-changes-since-start">Check for container filesystem changes since start</h2>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>diff<span class="w"> </span>&lt;container<span class="w"> </span>name&gt;
+</code></pre></div>
+
+<h2 id="check-container-running-processes">Check container running processes</h2>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>top<span class="w"> </span>homeassistant
+UID<span class="w">                 </span>PID<span class="w">                 </span>PPID<span class="w">                </span>C<span class="w">                   </span>STIME<span class="w">               </span>TTY<span class="w">                 </span>TIME<span class="w">                </span>CMD
+root<span class="w">                </span><span class="m">2378698</span><span class="w">             </span><span class="m">2378670</span><span class="w">             </span><span class="m">0</span><span class="w">                   </span><span class="m">19</span>:45<span class="w">               </span>?<span class="w">                   </span><span class="m">00</span>:00:00<span class="w">            </span>/package/admin/s6/command/s6-svscan<span class="w"> </span>-d4<span class="w"> </span>--<span class="w"> </span>/run/service
+root<span class="w">                </span><span class="m">2378732</span><span class="w">             </span><span class="m">2378698</span><span class="w">             </span><span class="m">0</span><span class="w">                   </span><span class="m">19</span>:45<span class="w">               </span>?<span class="w">                   </span><span class="m">00</span>:00:00<span class="w">            </span>s6-supervise<span class="w"> </span>s6-linux-init-shutdownd
+root<span class="w">                </span><span class="m">2378733</span><span class="w">             </span><span class="m">2378732</span><span class="w">             </span><span class="m">0</span><span class="w">                   </span><span class="m">19</span>:45<span class="w">               </span>?<span class="w">                   </span><span class="m">00</span>:00:00<span class="w">            </span>/package/admin/s6-linux-init/command/s6-linux-init-shutdownd<span class="w"> </span>-c<span class="w"> </span>/run/s6/basedir<span class="w"> </span>-g<span class="w"> </span><span class="m">3000</span><span class="w"> </span>-C<span class="w"> </span>-B
+root<span class="w">                </span><span class="m">2378742</span><span class="w">             </span><span class="m">2378698</span><span class="w">             </span><span class="m">0</span><span class="w">                   </span><span class="m">19</span>:45<span class="w">               </span>?<span class="w">                   </span><span class="m">00</span>:00:00<span class="w">            </span>s6-supervise<span class="w"> </span>s6rc-fdholder
+root<span class="w">                </span><span class="m">2378743</span><span class="w">             </span><span class="m">2378698</span><span class="w">             </span><span class="m">0</span><span class="w">                   </span><span class="m">19</span>:45<span class="w">               </span>?<span class="w">                   </span><span class="m">00</span>:00:00<span class="w">            </span>s6-supervise<span class="w"> </span>s6rc-oneshot-runner
+root<span class="w">                </span><span class="m">2378751</span><span class="w">             </span><span class="m">2378743</span><span class="w">             </span><span class="m">0</span><span class="w">                   </span><span class="m">19</span>:45<span class="w">               </span>?<span class="w">                   </span><span class="m">00</span>:00:00<span class="w">            </span>/package/admin/s6/command/s6-ipcserverd<span class="w"> </span>-1<span class="w"> </span>--<span class="w"> </span>/package/admin/s6/command/s6-ipcserver-access<span class="w"> </span>-v0<span class="w"> </span>-E<span class="w"> </span>-l0<span class="w"> </span>-i<span class="w"> </span>data/rules<span class="w"> </span>--<span class="w"> </span>/package/admin/s6/command/s6-sudod<span class="w"> </span>-t<span class="w"> </span><span class="m">30000</span><span class="w"> </span>--<span class="w"> </span>/package/admin/s6-rc/command/s6-rc-oneshot-run<span class="w"> </span>-l<span class="w"> </span>../..<span class="w"> </span>--
+root<span class="w">                </span><span class="m">2378782</span><span class="w">             </span><span class="m">2378698</span><span class="w">             </span><span class="m">0</span><span class="w">                   </span><span class="m">19</span>:45<span class="w">               </span>?<span class="w">                   </span><span class="m">00</span>:00:00<span class="w">            </span>s6-supervise<span class="w"> </span>home-assistant
+root<span class="w">                </span><span class="m">2378784</span><span class="w">             </span><span class="m">2378782</span><span class="w">             </span><span class="m">1</span><span class="w">                   </span><span class="m">19</span>:45<span class="w">               </span>?<span class="w">                   </span><span class="m">00</span>:00:15<span class="w">            </span>python3<span class="w"> </span>-m<span class="w"> </span>homeassistant<span class="w"> </span>--config<span class="w"> </span>/config
+</code></pre></div>
+
+<h2 id="check-container-statistics">Check container statistics</h2>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>stats<span class="w"> </span>homeassistant
+
+CONTAINER<span class="w"> </span>ID<span class="w">   </span>NAME<span class="w">            </span>CPU<span class="w"> </span>%<span class="w">     </span>MEM<span class="w"> </span>USAGE<span class="w"> </span>/<span class="w"> </span>LIMIT<span class="w">     </span>MEM<span class="w"> </span>%<span class="w">     </span>NET<span class="w"> </span>I/O<span class="w">   </span>BLOCK<span class="w"> </span>I/O<span class="w">        </span>PIDS
+0baa0742e188<span class="w">   </span>homeassistant<span class="w">   </span><span class="m">0</span>.23%<span class="w">     </span><span class="m">217</span>.6MiB<span class="w"> </span>/<span class="w"> </span><span class="m">15</span>.52GiB<span class="w">   </span><span class="m">1</span>.37%<span class="w">     </span>0B<span class="w"> </span>/<span class="w"> </span>0B<span class="w">   </span>102MB<span class="w"> </span>/<span class="w"> </span><span class="m">10</span>.5MB<span class="w">   </span><span class="m">21</span>
+</code></pre></div>
+
+<h2 id="check-docker-networks">Check docker networks</h2>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>network<span class="w"> </span>ls
+NETWORK<span class="w"> </span>ID<span class="w">     </span>NAME<span class="w">      </span>DRIVER<span class="w">    </span>SCOPE
+b67081eb628c<span class="w">   </span>bridge<span class="w">    </span>bridge<span class="w">    </span><span class="nb">local</span>
+0921bc6a0760<span class="w">   </span>host<span class="w">      </span>host<span class="w">      </span><span class="nb">local</span>
+c8363d03e4cd<span class="w">   </span>none<span class="w">      </span>null<span class="w">      </span><span class="nb">local</span>
+
+$<span class="w"> </span>docker<span class="w"> </span>network<span class="w"> </span>inspect<span class="w">  </span>bridge
+<span class="o">[</span>
+<span class="w">    </span><span class="o">{</span>
+<span class="w">        </span><span class="s2">&quot;Name&quot;</span>:<span class="w"> </span><span class="s2">&quot;bridge&quot;</span>,
+<span class="w">        </span><span class="s2">&quot;Id&quot;</span>:<span class="w"> </span><span class="s2">&quot;b67081eb628c51d90d2f234df1c97580bc0d83fa52c300f2fbf4764556a14ba6&quot;</span>,
+<span class="w">        </span><span class="s2">&quot;Created&quot;</span>:<span class="w"> </span><span class="s2">&quot;2023-04-15T06:02:48.923361812-04:00&quot;</span>,
+<span class="w">        </span><span class="s2">&quot;Scope&quot;</span>:<span class="w"> </span><span class="s2">&quot;local&quot;</span>,
+<span class="w">        </span><span class="s2">&quot;Driver&quot;</span>:<span class="w"> </span><span class="s2">&quot;bridge&quot;</span>,
+<span class="w">        </span><span class="s2">&quot;EnableIPv6&quot;</span>:<span class="w"> </span>false,
+<span class="w">        </span><span class="s2">&quot;IPAM&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">            </span><span class="s2">&quot;Driver&quot;</span>:<span class="w"> </span><span class="s2">&quot;default&quot;</span>,
+<span class="w">            </span><span class="s2">&quot;Options&quot;</span>:<span class="w"> </span>null,
+<span class="w">            </span><span class="s2">&quot;Config&quot;</span>:<span class="w"> </span><span class="o">[</span>
+<span class="w">                </span><span class="o">{</span>
+<span class="w">                    </span><span class="s2">&quot;Subnet&quot;</span>:<span class="w"> </span><span class="s2">&quot;172.17.0.0/16&quot;</span>,
+<span class="w">                    </span><span class="s2">&quot;Gateway&quot;</span>:<span class="w"> </span><span class="s2">&quot;172.17.0.1&quot;</span>
+<span class="w">                </span><span class="o">}</span>
+<span class="w">            </span><span class="o">]</span>
+<span class="w">        </span><span class="o">}</span>,
+<span class="w">        </span><span class="s2">&quot;Internal&quot;</span>:<span class="w"> </span>false,
+<span class="w">        </span><span class="s2">&quot;Attachable&quot;</span>:<span class="w"> </span>false,
+<span class="w">        </span><span class="s2">&quot;Ingress&quot;</span>:<span class="w"> </span>false,
+<span class="w">        </span><span class="s2">&quot;ConfigFrom&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">            </span><span class="s2">&quot;Network&quot;</span>:<span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">        </span><span class="o">}</span>,
+<span class="w">        </span><span class="s2">&quot;ConfigOnly&quot;</span>:<span class="w"> </span>false,
+<span class="w">        </span><span class="s2">&quot;Containers&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">            </span><span class="s2">&quot;3357239a67204620012173ae3cd724a2508d9456d2aaabee7b1be3d7b351e6f7&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">                </span><span class="s2">&quot;Name&quot;</span>:<span class="w"> </span><span class="s2">&quot;zwave-js&quot;</span>,
+<span class="w">                </span><span class="s2">&quot;EndpointID&quot;</span>:<span class="w"> </span><span class="s2">&quot;7d50227167937e8ce5886abeb87411f66902eae494b4b3860ec133b77a39ecbd&quot;</span>,
+<span class="w">                </span><span class="s2">&quot;MacAddress&quot;</span>:<span class="w"> </span><span class="s2">&quot;02:42:ac:11:00:02&quot;</span>,
+<span class="w">                </span><span class="s2">&quot;IPv4Address&quot;</span>:<span class="w"> </span><span class="s2">&quot;172.17.0.2/16&quot;</span>,
+<span class="w">                </span><span class="s2">&quot;IPv6Address&quot;</span>:<span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">            </span><span class="o">}</span>
+<span class="w">        </span><span class="o">}</span>,
+<span class="w">        </span><span class="s2">&quot;Options&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">            </span><span class="s2">&quot;com.docker.network.bridge.default_bridge&quot;</span>:<span class="w"> </span><span class="s2">&quot;true&quot;</span>,
+<span class="w">            </span><span class="s2">&quot;com.docker.network.bridge.enable_icc&quot;</span>:<span class="w"> </span><span class="s2">&quot;true&quot;</span>,
+<span class="w">            </span><span class="s2">&quot;com.docker.network.bridge.enable_ip_masquerade&quot;</span>:<span class="w"> </span><span class="s2">&quot;true&quot;</span>,
+<span class="w">            </span><span class="s2">&quot;com.docker.network.bridge.host_binding_ipv4&quot;</span>:<span class="w"> </span><span class="s2">&quot;0.0.0.0&quot;</span>,
+<span class="w">            </span><span class="s2">&quot;com.docker.network.bridge.name&quot;</span>:<span class="w"> </span><span class="s2">&quot;docker0&quot;</span>,
+<span class="w">            </span><span class="s2">&quot;com.docker.network.driver.mtu&quot;</span>:<span class="w"> </span><span class="s2">&quot;1500&quot;</span>
+<span class="w">        </span><span class="o">}</span>,
+<span class="w">        </span><span class="s2">&quot;Labels&quot;</span>:<span class="w"> </span><span class="o">{}</span>
+<span class="w">    </span><span class="o">}</span>
+<span class="o">]</span>
+</code></pre></div>
+
+<h2 id="move-data-files">Move data files</h2>
+<p>Default docker installs will put the large containers into /var/lib/docker which may be a directory off root. It is better to put them on a seperate filesystem in case they grow unexpectedly.</p>
+<p>1 - Stop the docker daemon</p>
+<div class="highlight"><pre><span></span><code>sudo service docker stop
+</code></pre></div>
+
+<p>2 - Add a configuration file to tell the docker daemon what is the location of the data directory</p>
+<p>Change the data-root location:</p>
+<p>File: /etc/docker/daemon.json</p>
+<div class="highlight"><pre><span></span><code>{ 
+   &quot;data-root&quot;: &quot;/path/to/your/docker&quot; 
+}
+</code></pre></div>
+
+<p>3 - Copy the current data directory to the new one</p>
+<div class="highlight"><pre><span></span><code><span class="n">sudo</span><span class="w"> </span><span class="n">rsync</span><span class="w"> </span><span class="o">-</span><span class="n">aP</span><span class="w"> </span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">docker</span><span class="o">/</span><span class="w"> </span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">your</span><span class="o">/</span><span class="n">docker</span>
+</code></pre></div>
+
+<p>4 - Rename the old docker directory</p>
+<div class="highlight"><pre><span></span><code><span class="n">sudo</span><span class="w"> </span><span class="n">mv</span><span class="w"> </span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">docker</span><span class="w"> </span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">docker</span><span class="o">.</span><span class="n">old</span>
+</code></pre></div>
+
+<p>This is just a sanity check to see that everything is ok and docker daemon will effectively use the new location for its data.</p>
+<p>5 - Restart the docker daemon</p>
+<div class="highlight"><pre><span></span><code>sudo service docker start
+</code></pre></div>
+
+<p>6 - Test</p>
+<p>If everything is ok you should see no differences in using your docker containers. When you are sure that the new directory is being used correctly by docker daemon you can delete the old data directory.</p>
+<div class="highlight"><pre><span></span><code><span class="n">sudo</span><span class="w"> </span><span class="n">rm</span><span class="w"> </span><span class="o">-</span><span class="n">rf</span><span class="w"> </span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">docker</span><span class="o">.</span><span class="n">old</span>
+</code></pre></div>
+
+<h2 id="upgrade-a-container">Upgrade a container</h2>
+<p>Here is my documentation on upgrading the homeassistant docker container:</p>
+<p><a href="/home-assistant.html#upgrade">Upgrade HomeAssistant</a></p>
     </div><!-- /.entry-content -->
 
   </article>

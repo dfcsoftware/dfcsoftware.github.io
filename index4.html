@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="generator" content="Pelican" />
+        <title>Linux Home Administration</title>
+        <link rel="stylesheet" href="https://dfcsoftware.github.io/theme/css/main.css" />
+        <link href="https://dfcsoftware.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Linux Home Administration Atom Feed" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <table>
+                    <td><h1><a href="https://dfcsoftware.github.io/">Linux Home Administration</a></h1></td>
+                    <td>   <!-- Note the usage of `type=module` here as this is an ES6 module --> <script type="module">
+    // Use ES module import syntax to import functionality from the module
+    // that we have compiled.
+    //
+    // Note that the `default` import is an initialization function which
+    // will "boot" the module and make it ready to use. Currently browsers
+    // don't support natively imported WebAssembly as an ES module, but
+    // eventually the manual initialization won't be required!
+    // import { search, default as init } from './tinysearch_engine.js';
+    import { search, default as init } from '/tinysearch_engine.js';
+    window.search = search;
+
+    async function run() {
+      // First up we need to actually load the wasm file, so we use the
+      // default export to inform it where the wasm file is located on the
+      // server, and then we wait on the returned promise to wait for the
+      // wasm to be loaded.
+      //
+      // Note that instead of a string here you can also pass in an instance
+      // of `WebAssembly.Module` which allows you to compile your own module.
+      // Also note that the promise, when resolved, yields the wasm module's
+      // exports which is the same as importing the `*_bg` module in other
+      // modes
+      await init('/tinysearch_engine_bg.wasm');
+    }
+
+    run();
+  </script>
+
+  <script>
+    // And afterwards we can use all the functionality defined in wasm.
+    function doSearch() {
+      let value = document.getElementById("searcher").value;
+      console.log(`Search query: ${value}`);
+
+      const results = search(value, 5);
+
+      console.log(`Results: ${results}`);
+
+      let ul = document.getElementById("results");
+      ul.innerHTML = "";
+
+      for (i = 0; i < results.length; i++) {
+        var li = document.createElement("li");
+
+        let [title, url] = results[i];
+        let elemlink = document.createElement('a');
+        elemlink.innerHTML = title;
+        elemlink.setAttribute('href', url);
+        li.appendChild(elemlink);
+
+        ul.appendChild(li);
+      }
+    }
+  </script>
+
+<div style="text-align:right"> 
+  <h2> 
+    <object type="image/svg+xml" data="/theme/images/search.svg" style="width:5%; height:10%;">
+       Search<!-- fallback image in CSS -->
+    </object>
+    <input type="text" id="searcher" onkeyup="doSearch()">
+  </h2>
+  <ul style="list-style-type: none;text-align: left;" id="results">
+  </ul>
+</div> </td>
+                </table>
+                <nav><ul>
+                    <li><a href="https://dfcsoftware.github.io/category/2023.html">2023</a></li>
+                    <li><a href="https://dfcsoftware.github.io/category/forest.html">forest</a></li>
+                    <li><a href="https://dfcsoftware.github.io/category/linux.html">linux</a></li>
+                    <li><a href="https://dfcsoftware.github.io/category/writing.html">writing</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+                <section id="content" class="body">
+                    <ol id="posts-list" class="hfeed" start="9">
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://dfcsoftware.github.io/postgresql-move-database-to-another-filesystem.html" rel="bookmark"
+                           title="Permalink to Postgresql Move Database to Another Filesystem">Postgresql Move Database to Another Filesystem</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2023-01-25T10:20:00-05:00">
+                Published: Wed 25 January 2023
+        </abbr>
+		<br />
+        <abbr class="modified" title="2024-04-19T09:30:00-04:00">
+                Updated: Fri 19 April 2024
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://dfcsoftware.github.io/author/don-cohoon.html">Don Cohoon</a>
+        </address>
+<p>In <a href="https://dfcsoftware.github.io/category/linux.html">linux</a>.</p>
+
+</footer><!-- /.post-info -->                <h1 id="postgresql-move-database-to-another-filesystem">Postgresql Move Database to Another Filesystem</h1>
+<hr>
+<h4 id="table-of-contents">Table of Contents</h4>
+<!-- toc -->
+
+<hr>
+<p>Mainly used this on SBC (BeagleBone) computer to move a database from SD card (/var/lib...) to SSD disk (/data/lib...). A database will burn up an SD card quickly 😟</p>
+<h2 id="list-clusters-on-host">List clusters on host</h2>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pg_lsclusters
+Ver<span class="w"> </span>Cluster<span class="w"> </span>Port<span class="w"> </span>Status<span class="w"> </span>Owner<span class="w">    </span>Data …</code></pre></div>
+                <a class="readmore" href="https://dfcsoftware.github.io/postgresql-move-database-to-another-filesystem.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://dfcsoftware.github.io/web-certificate.html" rel="bookmark"
+                           title="Permalink to Web Certificate">Web Certificate</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2023-01-25T10:20:00-05:00">
+                Published: Wed 25 January 2023
+        </abbr>
+		<br />
+        <abbr class="modified" title="2024-04-19T09:30:00-04:00">
+                Updated: Fri 19 April 2024
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://dfcsoftware.github.io/author/don-cohoon.html">Don Cohoon</a>
+        </address>
+<p>In <a href="https://dfcsoftware.github.io/category/linux.html">linux</a>.</p>
+
+</footer><!-- /.post-info -->                <h1 id="web-certificate">Web Certificate</h1>
+<hr>
+<h4 id="table-of-contents">Table of Contents</h4>
+<!-- toc -->
+
+<hr>
+<p>Web certificates encrypt different messages over the public internet so nobody can see what these messages contain.</p>
+<h2 id="lets-encrypt-certificate-authority-ca">Let's Encrypt - Certificate Authority (CA)</h2>
+<p>Let's Encrypt offers free 90 day SSL/TLS internet certificates, so you can run https:// to encrypt web page bodies, instead of http …</p>
+                <a class="readmore" href="https://dfcsoftware.github.io/web-certificate.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://dfcsoftware.github.io/docker.html" rel="bookmark"
+                           title="Permalink to Docker">Docker</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2023-01-23T00:00:00-05:00">
+                Published: Mon 23 January 2023
+        </abbr>
+		<br />
+        <abbr class="modified" title="2024-04-19T09:30:00-04:00">
+                Updated: Fri 19 April 2024
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://dfcsoftware.github.io/author/don-cohoon.html">Don Cohoon</a>
+        </address>
+<p>In <a href="https://dfcsoftware.github.io/category/linux.html">linux</a>.</p>
+
+</footer><!-- /.post-info -->                <!-- toc -->
+<hr>
+<div class="toc"><span class="toctitle">Table of Contents</span><ul>
+<li><a href="#docker">Docker</a><ul>
+<li><a href="#prune-unused-containers-images-and-cache">Prune unused containers, images and cache</a></li>
+<li><a href="#check-a-containers-logs">Check a container's logs</a></li>
+<li><a href="#inspect-a-container">Inspect a container</a></li>
+<li><a href="#check-for-container-filesystem-changes-since-start">Check for container filesystem changes since start</a></li>
+<li><a href="#check-container-running-processes">Check container running processes</a></li>
+<li><a href="#check-container-statistics">Check container statistics</a></li>
+<li><a href="#check-docker-networks">Check docker networks</a></li>
+<li><a href="#move-data-files">Move data files</a></li>
+<li><a href="#upgrade-a-container">Upgrade a container</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<hr>
+<hr>
+<h1 id="docker">Docker</h1>
+<p>Docker is a way to manage containers, which are …</p>
+                <a class="readmore" href="https://dfcsoftware.github.io/docker.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://dfcsoftware.github.io/my-second-review.html" rel="bookmark"
+                           title="Permalink to My Second Review">My Second Review</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2010-12-03T10:20:00-05:00">
+                Published: Fri 03 December 2010
+        </abbr>
+		<br />
+        <abbr class="modified" title="2010-03-12T10:20:00-05:00">
+                Updated: Fri 12 March 2010
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://dfcsoftware.github.io/author/don-cohoon.html">Don Cohoon</a>
+        </address>
+<p>In <a href="https://dfcsoftware.github.io/category/linux.html">linux</a>.</p>
+
+</footer><!-- /.post-info -->                <p>Following is a review of my favorite mechanical mouse.</p>
+                <a class="readmore" href="https://dfcsoftware.github.io/my-second-review.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://dfcsoftware.github.io/my-writing-post.html" rel="bookmark"
+                           title="Permalink to My Writing Post">My Writing Post</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2010-12-03T10:20:00-05:00">
+                Published: Fri 03 December 2010
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://dfcsoftware.github.io/author/don-cohoon.html">Don Cohoon</a>
+        </address>
+<p>In <a href="https://dfcsoftware.github.io/category/writing.html">writing</a>.</p>
+
+</footer><!-- /.post-info -->                <p>Following is a story about my favorite ghost story.</p>
+                <a class="readmore" href="https://dfcsoftware.github.io/my-writing-post.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+<nav>
+  <ul>
+        <li class="horizontal"><a href="https://dfcsoftware.github.io/index.html">&Lang;</a></li>
+        <li class="horizontal"><a href="https://dfcsoftware.github.io/index3.html">&lang;</a></li>
+    <li class="horizontal">Page 4 / 4</li>
+  </ul>
+</nav>
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://getpelican.com/">Pelican</a></li>
+                            <li><a href="https://www.python.org/">Python.org</a></li>
+                            <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="https://dfcsoftware.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <p>
+                Site by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>, via <a rel="nofollow" href="https://www.python.org/">Python</a>.
+                </p><!-- /#about -->
+
+                <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

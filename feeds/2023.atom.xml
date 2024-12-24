@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>Linux Home Administration - 2023</title><link href="https://dfcsoftware.github.io/" rel="alternate"></link><link href="https://dfcsoftware.github.io/feeds/2023.atom.xml" rel="self"></link><id>https://dfcsoftware.github.io/</id><updated>2024-04-19T09:30:00-04:00</updated><entry><title>2023</title><link href="https://dfcsoftware.github.io/2023.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/2023.html</id><content type="html">&lt;ul&gt;
-&lt;li&gt;&lt;a href="./january.md"&gt;2023&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="./february.md"&gt;2023&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="./march.md"&gt;2023&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="./april.md"&gt;2023&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="./2023-january.md"&gt;2023 January&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="./2023-february.md"&gt;2023 February&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="./2023-march.md"&gt;2023 March&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="./2023-april.md"&gt;2023 April&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="./2023-june.md"&gt;2023 June&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="./2023-August.md"&gt;2023 August&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content><category term="2023"></category></entry><entry><title>2023 - April</title><link href="https://dfcsoftware.github.io/2023-april.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/2023-april.html</id><summary type="html">&lt;h1 id="2023-april"&gt;2023 - April&lt;/h1&gt;
 &lt;!-- toc --&gt;
 
@@ -1274,7 +1276,7 @@ $&lt;span class="w"&gt; &lt;/span&gt;docker&lt;span class="w"&gt; &lt;/span&gt;n
 
 &lt;h2 id="upgrade-a-container"&gt;Upgrade a container&lt;/h2&gt;
 &lt;p&gt;Here is my documentation on upgrading the homeassistant docker container:&lt;/p&gt;
-&lt;p&gt;&lt;a href="/HomeAssistant.html#upgrade"&gt;Upgrade HomeAssistant&lt;/a&gt;&lt;/p&gt;</content><category term="2023"></category></entry><entry><title>2023 - June</title><link href="https://dfcsoftware.github.io/2023-june.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/2023-june.html</id><summary type="html">&lt;h1 id="2023-june"&gt;2023 - June&lt;/h1&gt;
+&lt;p&gt;&lt;a href="/home-assistant.html#upgrade"&gt;Upgrade HomeAssistant&lt;/a&gt;&lt;/p&gt;</content><category term="2023"></category></entry><entry><title>2023 - June</title><link href="https://dfcsoftware.github.io/2023-june.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/2023-june.html</id><summary type="html">&lt;h1 id="2023-june"&gt;2023 - June&lt;/h1&gt;
 &lt;!-- toc --&gt;
 
 &lt;hr&gt;
