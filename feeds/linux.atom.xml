@@ -3,6 +3,7 @@
   Linux-in-the-House.svg&lt;!-- fallback image in CSS --&gt;
 &lt;/object&gt;
 
+&lt;h2 id="go-online"&gt;Go Online&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;a href="/introduction.html"&gt;Introduction&lt;/a&gt;&lt;/p&gt;
@@ -16,12 +17,18 @@
 &lt;li&gt;
 &lt;p&gt;&lt;a href="/Certificate.html"&gt;Web Secure Socket Layer (SSL) Certificate&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="get-some-hardware"&gt;Get Some Hardware&lt;/h2&gt;
+&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;a href="NAS.html"&gt;Network Attached Storags - NAS&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;a href="Mirror_Disks.html"&gt;Mirror Disks&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="run-some-apps"&gt;Run Some Apps&lt;/h2&gt;
+&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;a href="E-Mail.html"&gt;E-Mail&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
@@ -50,7 +57,7 @@
 &lt;p&gt;&lt;a href="Miniflux.html"&gt;News and RSS Reader&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Electronics on a BeagleBone](BeagleBone.html)&lt;/p&gt;
+&lt;p&gt;&lt;a href="BeagleBone.html"&gt;Electronics on a BeagleBone&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;a href="Media_Managment.html"&gt;Media (TV/Music) Management&lt;/a&gt;&lt;/p&gt;
@@ -58,12 +65,12 @@
 &lt;li&gt;
 &lt;p&gt;&lt;a href="ncmpcpp.html"&gt;ncmpcpp MPD Control&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Articles:&lt;/p&gt;
-&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;* &lt;a href="Docker.html"&gt;Docker&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="articles"&gt;Articles:&lt;/h2&gt;
 &lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="Docker.html"&gt;Docker&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;a href="EncryptingFiles.html"&gt;EncryptingFiles&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
