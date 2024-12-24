@@ -91,8 +91,8 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
-                    <h1><a href="https://dfcsoftware.github.io/postgresql-move-database-to-another-filesystem.html" rel="bookmark"
-                           title="Permalink to Postgresql Move Database to Another Filesystem">Postgresql Move Database to Another Filesystem</a></h1>
+                    <h1><a href="https://dfcsoftware.github.io/postgresqlupgrade.html" rel="bookmark"
+                           title="Permalink to PostgreSQLUpgrade">PostgreSQLUpgrade</a></h1>
                 </header>
 
                 <div class="entry-content">
@@ -110,14 +110,24 @@
         </address>
 <p>In <a href="https://dfcsoftware.github.io/category/linux.html">linux</a>.</p>
 <p>tags: <a href="https://dfcsoftware.github.io/tag/linux.html">linux</a> <a href="https://dfcsoftware.github.io/tag/systems.html">systems</a> <a href="https://dfcsoftware.github.io/tag/db.html">db</a> </p>
-</footer><!-- /.post-info -->                <h1 id="postgresql-move-database-to-another-filesystem">Postgresql Move Database to Another Filesystem</h1>
-<p>Mainly used this on SBC (BeagleBone) computer to move a database from SD card (/var/lib...) to SSD disk (/data/lib...). A database will burn up an SD card quickly 😟</p>
+</footer><!-- /.post-info -->                <h1 id="postgresql-install-and-upgrade">PostgreSQL Install and Upgrade</h1>
+<p>Oh my, installing Ubuntu 22.04 installed PostgreSQL 14... wonder what version I am using...</p>
 <hr>
 <div class="toc"><span class="toctitle">Table of Contents</span><ul>
-<li><a href="#postgresql-move-database-to-another-filesystem">Postgresql Move Database to Another Filesystem</a><ul>
-<li><a href="#list-clusters-on-host">List clusters on host</a></li>
-<li><a href="#show-data_dictionary">Show …</a></li></ul></li></ul></div>
-                <a class="readmore" href="https://dfcsoftware.github.io/postgresql-move-database-to-another-filesystem.html">read more</a>
+<li><a href="#postgresql-install-and-upgrade">PostgreSQL Install and Upgrade</a><ul>
+<li><a href="#establish-baseline">Establish Baseline</a><ul>
+<li><a href="#what-is-installed">What is installed?</a></li>
+<li><a href="#which-one-is-live">Which one is live</a></li>
+</ul>
+</li>
+<li><a href="#export-and-import-pg_dump">Export and Import (pg_dump)</a></li>
+<li><a href="#do-the-upgrade-pg_upgrade">Do the Upgrade (pg_upgrade)</a></li>
+<li><a href="#remove-old-postgresql-install">Remove old postgresql install</a></li>
+</ul>
+</li>
+<li><a href="#binsh">!/bin/sh</a><ul>
+<li><a href="#continue">Continue …</a></li></ul></li></ul></div>
+                <a class="readmore" href="https://dfcsoftware.github.io/postgresqlupgrade.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
 

@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="generator" content="Pelican" />
+        <title>MediaManagement</title>
+        <link rel="stylesheet" href="https://dfcsoftware.github.io/theme/css/main.css" />
+        <link href="https://dfcsoftware.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Linux Home Administration Atom Feed" />
+        <meta name="description" content="Media Management This is where I manage Music and Television files. [TOC] --- ## Music Player Daemon Hardware: * BeagleBone AI-32 with Debian..." />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <table>
+                    <td><h1><a href="https://dfcsoftware.github.io/">Linux Home Administration</a></h1></td>
+                    <td>   <!-- Note the usage of `type=module` here as this is an ES6 module --> <script type="module">
+    // Use ES module import syntax to import functionality from the module
+    // that we have compiled.
+    //
+    // Note that the `default` import is an initialization function which
+    // will "boot" the module and make it ready to use. Currently browsers
+    // don't support natively imported WebAssembly as an ES module, but
+    // eventually the manual initialization won't be required!
+    // import { search, default as init } from './tinysearch_engine.js';
+    import { search, default as init } from '/tinysearch_engine.js';
+    window.search = search;
+
+    async function run() {
+      // First up we need to actually load the wasm file, so we use the
+      // default export to inform it where the wasm file is located on the
+      // server, and then we wait on the returned promise to wait for the
+      // wasm to be loaded.
+      //
+      // Note that instead of a string here you can also pass in an instance
+      // of `WebAssembly.Module` which allows you to compile your own module.
+      // Also note that the promise, when resolved, yields the wasm module's
+      // exports which is the same as importing the `*_bg` module in other
+      // modes
+      await init('/tinysearch_engine_bg.wasm');
+    }
+
+    run();
+  </script>
+
+  <script>
+    // And afterwards we can use all the functionality defined in wasm.
+    function doSearch() {
+      let value = document.getElementById("searcher").value;
+      console.log(`Search query: ${value}`);
+
+      const results = search(value, 5);
+
+      console.log(`Results: ${results}`);
+
+      let ul = document.getElementById("results");
+      ul.innerHTML = "";
+
+      for (i = 0; i < results.length; i++) {
+        var li = document.createElement("li");
+
+        let [title, url] = results[i];
+        let elemlink = document.createElement('a');
+        elemlink.innerHTML = title;
+        elemlink.setAttribute('href', url);
+        li.appendChild(elemlink);
+
+        ul.appendChild(li);
+      }
+    }
+  </script>
+
+<div style="text-align:right"> 
+  <h2> 
+    <object type="image/svg+xml" data="/theme/images/search.svg" style="width:5%; height:10%;">
+       Search<!-- fallback image in CSS -->
+    </object>
+    <input type="text" id="searcher" onkeyup="doSearch()">
+  </h2>
+  <ul style="list-style-type: none;text-align: left;" id="results">
+  </ul>
+</div> </td>
+                </table>
+                <nav><ul>
+                    <li><a href="https://dfcsoftware.github.io/category/forest.html">forest</a></li>
+                    <li class="active"><a href="https://dfcsoftware.github.io/category/linux.html">linux</a></li>
+                    <li><a href="https://dfcsoftware.github.io/category/writing.html">writing</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://dfcsoftware.github.io/mediamanagement.html" rel="bookmark"
+           title="Permalink to MediaManagement">MediaManagement</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2023-01-25T10:20:00-05:00">
+                Published: Wed 25 January 2023
+        </abbr>
+		<br />
+        <abbr class="modified" title="2024-04-19T09:30:00-04:00">
+                Updated: Fri 19 April 2024
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://dfcsoftware.github.io/author/don-cohoon.html">Don Cohoon</a>
+        </address>
+<p>In <a href="https://dfcsoftware.github.io/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://dfcsoftware.github.io/tag/linux.html">linux</a> <a href="https://dfcsoftware.github.io/tag/systems.html">systems</a> </p>
+</footer><!-- /.post-info -->      <h1 id="media-management">Media Management</h1>
+<p>This is where I manage Music and Television files.</p>
+<div class="highlight"><pre><span></span><code><span class="k">[TOC]</span>
+
+<span class="na">---</span>
+
+<span class="c1">## Music Player Daemon</span>
+
+<span class="na">Hardware</span><span class="o">:</span>
+
+<span class="na">* BeagleBone AI-32 with Debian Linux</span>
+<span class="na">* TrueNAS container </span>
+
+<span class="na">Software</span><span class="o">:</span>
+
+<span class="na">* Linux</span><span class="o">:</span><span class="w"> </span><span class="s">mpd (server), and mpc, [ncmpcpp](ncmpcpp.md?fileId=598483) (clients)</span>
+</code></pre></div>
+
+<p>$ sudo apt-get install mpd mpc</p>
+<div class="highlight"><pre><span></span><code><span class="k">*</span> iOS: MaximumMPD (client for iPhone, iPad)
+
+![IMG_60BE35F3E1C0-1 (2).jpeg](.attachments.596467/IMG_60BE35F3E1C0-1%20%282%29.jpeg)
+
+<span class="gu">##</span># MPD Configuration
+
+File: /etc/mpd.conf
+</code></pre></div>
+
+<h1 id="an-example-configuration-file-for-mpd">An example configuration file for MPD.</h1>
+<h1 id="read-the-user-manual-for-documentation-httpwwwmusicpdorgdocuser">Read the user manual for documentation: http://www.musicpd.org/doc/user/</h1>
+<h1 id="or-usrsharedocmpdhtmluserhtml">or /usr/share/doc/mpd/html/user.html</h1>
+<h1 id="files-and-directories">Files and directories</h1>
+<h1 id="_1"></h1>
+<h1 id="this-setting-controls-the-top-directory-which-mpd-will-search-to-discover-the">This setting controls the top directory which MPD will search to discover the</h1>
+<h1 id="available-audio-files-and-add-them-to-the-daemons-online-database-this">available audio files and add them to the daemon's online database. This</h1>
+<h1 id="setting-defaults-to-the-xdg-directory-otherwise-the-music-directory-will-be">setting defaults to the XDG directory, otherwise the music directory will be</h1>
+<h1 id="be-disabled-and-audio-files-will-only-be-accepted-over-ipc-socket-using">be disabled and audio files will only be accepted over ipc socket (using</h1>
+<h1 id="file-protocol-or-streaming-files-over-an-accepted-protocol">file:// protocol) or streaming files over an accepted protocol.</h1>
+<h1 id="_2"></h1>
+<p>music_directory     "/data/bob/music/Music"</p>
+<h1 id="_3"></h1>
+<h1 id="this-setting-sets-the-mpd-internal-playlist-directory-the-purpose-of-this">This setting sets the MPD internal playlist directory. The purpose of this</h1>
+<h1 id="directory-is-storage-for-playlists-created-by-mpd-the-server-will-use">directory is storage for playlists created by MPD. The server will use</h1>
+<h1 id="playlist-files-not-created-by-the-server-but-only-if-they-are-in-the-mpd">playlist files not created by the server but only if they are in the MPD</h1>
+<h1 id="format-this-setting-defaults-to-playlist-saving-being-disabled">format. This setting defaults to playlist saving being disabled.</h1>
+<h1 id="_4"></h1>
+<p>playlist_directory      "/data/bob/music/mpd/playlists"</p>
+<h1 id="_5"></h1>
+<h1 id="this-setting-sets-the-location-of-the-mpd-database-this-file-is-used-to">This setting sets the location of the MPD database. This file is used to</h1>
+<h1 id="load-the-database-at-server-start-up-and-store-the-database-while-the">load the database at server start up and store the database while the</h1>
+<h1 id="server-is-not-up-this-setting-defaults-to-disabled-which-will-allow">server is not up. This setting defaults to disabled which will allow</h1>
+<h1 id="mpd-to-accept-files-over-ipc-socket-using-file-protocol-or-streaming">MPD to accept files over ipc socket (using file:// protocol) or streaming</h1>
+<h1 id="files-over-an-accepted-protocol">files over an accepted protocol.</h1>
+<h1 id="_6"></h1>
+<p>db_file         "/data/bob/music/mpd/tag_cache"</p>
+<h1 id="_7"></h1>
+<h1 id="these-settings-are-the-locations-for-the-daemon-log-files-for-the-daemon">These settings are the locations for the daemon log files for the daemon.</h1>
+<h1 id="these-logs-are-great-for-troubleshooting-depending-on-your-log_level">These logs are great for troubleshooting, depending on your log_level</h1>
+<h1 id="settings">settings.</h1>
+<h1 id="_8"></h1>
+<h1 id="the-special-value-syslog-makes-mpd-use-the-local-syslog-daemon-this">The special value "syslog" makes MPD use the local syslog daemon. This</h1>
+<h1 id="setting-defaults-to-logging-to-syslog-or-to-journal-if-mpd-was-started-as">setting defaults to logging to syslog, or to journal if mpd was started as</h1>
+<h1 id="a-systemd-service">a systemd service.</h1>
+<h1 id="_9"></h1>
+<p>log_file            "/var/log/mpd/mpd.log"</p>
+<h1 id="_10"></h1>
+<h1 id="this-setting-sets-the-location-of-the-file-which-stores-the-process-id">This setting sets the location of the file which stores the process ID</h1>
+<h1 id="for-use-of-mpd-kill-and-some-init-scripts-this-setting-is-disabled-by">for use of mpd --kill and some init scripts. This setting is disabled by</h1>
+<h1 id="default-and-the-pid-file-will-not-be-stored">default and the pid file will not be stored.</h1>
+<h1 id="_11"></h1>
+<p>pid_file            "/run/mpd/pid"</p>
+<h1 id="_12"></h1>
+<h1 id="this-setting-sets-the-location-of-the-file-which-contains-information-about">This setting sets the location of the file which contains information about</h1>
+<h1 id="most-variables-to-get-mpd-back-into-the-same-general-shape-it-was-in-before">most variables to get MPD back into the same general shape it was in before</h1>
+<h1 id="it-was-brought-down-this-setting-is-disabled-by-default-and-the-server">it was brought down. This setting is disabled by default and the server</h1>
+<h1 id="state-will-be-reset-on-server-start-up">state will be reset on server start up.</h1>
+<h1 id="_13"></h1>
+<p>state_file          "/data/bob/music/mpd/state"</p>
+<h1 id="_14"></h1>
+<h1 id="the-location-of-the-sticker-database-this-is-a-database-which">The location of the sticker database.  This is a database which</h1>
+<h1 id="manages-dynamic-information-attached-to-songs">manages dynamic information attached to songs.</h1>
+<h1 id="_15"></h1>
+<p>sticker_file                   "/data/bob/music/mpd/sticker.sql"</p>
+<h1 id="_16"></h1>
+<h6 id="_17"></h6>
+<h1 id="general-music-daemon-options">General music daemon options</h1>
+<h1 id="_18"></h1>
+<h1 id="this-setting-specifies-the-user-that-mpd-will-run-as-mpd-should-never-run-as">This setting specifies the user that MPD will run as. MPD should never run as</h1>
+<h1 id="root-and-you-may-use-this-setting-to-make-mpd-change-its-user-id-after">root and you may use this setting to make MPD change its user ID after</h1>
+<h1 id="initialization-this-setting-is-disabled-by-default-and-mpd-is-run-as-the">initialization. This setting is disabled by default and MPD is run as the</h1>
+<h1 id="current-user">current user.</h1>
+<h1 id="_19"></h1>
+<p>user                "mpd"</p>
+<h1 id="_20"></h1>
+<h1 id="this-setting-specifies-the-group-that-mpd-will-run-as-if-not-specified">This setting specifies the group that MPD will run as. If not specified</h1>
+<h1 id="primary-group-of-user-specified-with-user-setting-will-be-used-if-set">primary group of user specified with "user" setting will be used (if set).</h1>
+<h1 id="this-is-useful-if-mpd-needs-to-be-a-member-of-group-such-as-audio-to">This is useful if MPD needs to be a member of group such as "audio" to</h1>
+<h1 id="have-permission-to-use-sound-card">have permission to use sound card.</h1>
+<h1 id="_21"></h1>
+<h1 id="group-nogroup">group                          "nogroup"</h1>
+<h1 id="_22"></h1>
+<h1 id="this-setting-sets-the-address-for-the-daemon-to-listen-on-careful-attention">This setting sets the address for the daemon to listen on. Careful attention</h1>
+<h1 id="should-be-paid-if-this-is-assigned-to-anything-other-then-the-default-any">should be paid if this is assigned to anything other then the default, any.</h1>
+<h1 id="this-setting-can-deny-access-to-control-of-the-daemon-choose-any-if-you-want">This setting can deny access to control of the daemon. Choose any if you want</h1>
+<h1 id="to-have-mpd-listen-on-every-address-not-effective-if-systemd-socket">to have mpd listen on every address. Not effective if systemd socket</h1>
+<h1 id="activation-is-in-use">activation is in use.</h1>
+<h1 id="_23"></h1>
+<h1 id="for-network">For network</h1>
+<h1 id="bind_to_address-localhost">bind_to_address        "localhost"</h1>
+<p>bind_to_address     "0.0.0.0"</p>
+<h1 id="_24"></h1>
+<h1 id="and-for-unix-socket">And for Unix Socket</h1>
+<h1 id="bind_to_address-runmpdsocket">bind_to_address        "/run/mpd/socket"</h1>
+<h1 id="_25"></h1>
+<h1 id="this-setting-is-the-tcp-port-that-is-desired-for-the-daemon-to-get-assigned">This setting is the TCP port that is desired for the daemon to get assigned</h1>
+<h1 id="to">to.</h1>
+<h1 id="_26"></h1>
+<p>port                "6600"</p>
+<h1 id="_27"></h1>
+<h1 id="this-setting-controls-the-type-of-information-which-is-logged-available">This setting controls the type of information which is logged. Available</h1>
+<h1 id="setting-arguments-are-default-secure-or-verbose-the-verbose-setting">setting arguments are "default", "secure" or "verbose". The "verbose" setting</h1>
+<h1 id="argument-is-recommended-for-troubleshooting-though-can-quickly-stretch">argument is recommended for troubleshooting, though can quickly stretch</h1>
+<h1 id="available-resources-on-limited-hardware-storage">available resources on limited hardware storage.</h1>
+<h1 id="_28"></h1>
+<h1 id="log_level-default">log_level          "default"</h1>
+<h1 id="_29"></h1>
+<h1 id="setting-restore_paused-to-yes-puts-mpd-into-pause-mode-instead">Setting "restore_paused" to "yes" puts MPD into pause mode instead</h1>
+<h1 id="of-starting-playback-after-startup">of starting playback after startup.</h1>
+<h1 id="_30"></h1>
+<h1 id="restore_paused-no">restore_paused "no"</h1>
+<h1 id="_31"></h1>
+<h1 id="this-setting-enables-mpd-to-create-playlists-in-a-format-usable-by-other">This setting enables MPD to create playlists in a format usable by other</h1>
+<h1 id="music-players">music players.</h1>
+<h1 id="_32"></h1>
+<h1 id="save_absolute_paths_in_playlists-no">save_absolute_paths_in_playlists   "no"</h1>
+<h1 id="_33"></h1>
+<h1 id="this-setting-defines-a-list-of-tag-types-that-will-be-extracted-during-the">This setting defines a list of tag types that will be extracted during the</h1>
+<h1 id="audio-file-discovery-process-the-complete-list-of-possible-values-can-be">audio file discovery process. The complete list of possible values can be</h1>
+<h1 id="found-in-the-user-manual">found in the user manual.</h1>
+<h1 id="metadata_to_use-artistalbumtitletracknamegenredatecomposerperformerdisc">metadata_to_use    "artist,album,title,track,name,genre,date,composer,performer,disc"</h1>
+<h1 id="_34"></h1>
+<h1 id="this-example-just-enables-the-comment-tag-without-disabling-all">This example just enables the "comment" tag without disabling all</h1>
+<h1 id="the-other-supported-tags">the other supported tags:</h1>
+<h1 id="metadata_to_use-comment">metadata_to_use "+comment"</h1>
+<h1 id="_35"></h1>
+<h1 id="this-setting-enables-automatic-update-of-mpds-database-when-files-in">This setting enables automatic update of MPD's database when files in</h1>
+<h1 id="music_directory-are-changed">music_directory are changed.</h1>
+<h1 id="_36"></h1>
+<h1 id="auto_update-yes">auto_update    "yes"</h1>
+<h1 id="_37"></h1>
+<h1 id="limit-the-depth-of-the-directories-being-watched-0-means-only-watch">Limit the depth of the directories being watched, 0 means only watch</h1>
+<h1 id="the-music-directory-itself-there-is-no-limit-by-default">the music directory itself.  There is no limit by default.</h1>
+<h1 id="_38"></h1>
+<h1 id="auto_update_depth-3">auto_update_depth "3"</h1>
+<h1 id="_39"></h1>
+<h6 id="_40"></h6>
+<h1 id="symbolic-link-behavior">Symbolic link behavior</h1>
+<h1 id="_41"></h1>
+<h1 id="if-this-setting-is-set-to-yes-mpd-will-discover-audio-files-by-following">If this setting is set to "yes", MPD will discover audio files by following</h1>
+<h1 id="symbolic-links-outside-of-the-configured-music_directory">symbolic links outside of the configured music_directory.</h1>
+<h1 id="_42"></h1>
+<h1 id="follow_outside_symlinks-yes">follow_outside_symlinks    "yes"</h1>
+<h1 id="_43"></h1>
+<h1 id="if-this-setting-is-set-to-yes-mpd-will-discover-audio-files-by-following_1">If this setting is set to "yes", MPD will discover audio files by following</h1>
+<h1 id="symbolic-links-inside-of-the-configured-music_directory">symbolic links inside of the configured music_directory.</h1>
+<h1 id="_44"></h1>
+<h1 id="follow_inside_symlinks-yes">follow_inside_symlinks     "yes"</h1>
+<h1 id="_45"></h1>
+<h6 id="_46"></h6>
+<h1 id="zeroconf-avahi-service-discovery">Zeroconf / Avahi Service Discovery</h1>
+<h1 id="_47"></h1>
+<h1 id="if-this-setting-is-set-to-yes-service-information-will-be-published-with">If this setting is set to "yes", service information will be published with</h1>
+<h1 id="zeroconf-avahi">Zeroconf / Avahi.</h1>
+<h1 id="_48"></h1>
+<h1 id="zeroconf_enabled-yes">zeroconf_enabled       "yes"</h1>
+<h1 id="_49"></h1>
+<h1 id="the-argument-to-this-setting-will-be-the-zeroconf-avahi-unique-name-for">The argument to this setting will be the Zeroconf / Avahi unique name for</h1>
+<h1 id="this-mpd-server-on-the-network-h-will-be-replaced-with-the-hostname">this MPD server on the network. %h will be replaced with the hostname.</h1>
+<h1 id="_50"></h1>
+<h1 id="zeroconf_name-music-player-h">zeroconf_name          "Music Player @ %h"</h1>
+<h1 id="_51"></h1>
+<h6 id="_52"></h6>
+<h1 id="permissions">Permissions</h1>
+<h1 id="_53"></h1>
+<h1 id="if-this-setting-is-set-mpd-will-require-password-authorization-the-password">If this setting is set, MPD will require password authorization. The password</h1>
+<h1 id="setting-can-be-specified-multiple-times-for-different-password-profiles">setting can be specified multiple times for different password profiles.</h1>
+<h1 id="_54"></h1>
+<h1 id="password-passwordreadaddcontroladmin">password                        "password@read,add,control,admin"</h1>
+<h1 id="_55"></h1>
+<h1 id="this-setting-specifies-the-permissions-a-user-has-who-has-not-yet-logged-in">This setting specifies the permissions a user has who has not yet logged in.</h1>
+<h1 id="_56"></h1>
+<h1 id="default_permissions-readaddcontroladmin">default_permissions             "read,add,control,admin"</h1>
+<h1 id="_57"></h1>
+<h6 id="_58"></h6>
+<h1 id="database">Database</h1>
+<h1 id="_59"></h1>
+<h1 id="database_1">database {</h1>
+<h1 id="plugin-proxy">plugin "proxy"</h1>
+<h1 id="host-othermpdhost">host "other.mpd.host"</h1>
+<h1 id="port-6600">port "6600"</h1>
+<h1 id="_60">}</h1>
+<h1 id="input">Input</h1>
+<h1 id="_61"></h1>
+<p>input {
+        plugin "curl"</p>
+<h1 id="proxy-proxyispcom8080">proxy "proxy.isp.com:8080"</h1>
+<h1 id="proxy_user-user">proxy_user "user"</h1>
+<h1 id="proxy_password-password">proxy_password "password"</h1>
+<p>}</p>
+<h1 id="qobuz-input-plugin">QOBUZ input plugin</h1>
+<p>input {
+        enabled    "no"
+        plugin     "qobuz"</p>
+<h1 id="app_id-id">app_id     "ID"</h1>
+<h1 id="app_secret-secret">app_secret "SECRET"</h1>
+<h1 id="username-username">username   "USERNAME"</h1>
+<h1 id="password-password">password   "PASSWORD"</h1>
+<h1 id="format_id-n">format_id  "N"</h1>
+<p>}</p>
+<h1 id="tidal-input-plugin">TIDAL input plugin</h1>
+<p>input {
+        enabled      "no"
+        plugin       "tidal"</p>
+<h1 id="token-token">token        "TOKEN"</h1>
+<h1 id="username-username_1">username     "USERNAME"</h1>
+<h1 id="password-password_1">password     "PASSWORD"</h1>
+<h1 id="audioquality-q">audioquality "Q"</h1>
+<p>}</p>
+<h1 id="decoder">Decoder</h1>
+<h1 id="_62"></h1>
+<p>decoder {
+        plugin                  "hybrid_dsd"
+        enabled                 "no"</p>
+<h1 id="gapless-no">gapless                 "no"</h1>
+<p>}</p>
+<h1 id="_63"></h1>
+<h6 id="_64"></h6>
+<h1 id="audio-output">Audio Output</h1>
+<h1 id="_65"></h1>
+<h1 id="mpd-supports-various-audio-output-types-as-well-as-playing-through-multiple">MPD supports various audio output types, as well as playing through multiple</h1>
+<h1 id="audio-outputs-at-the-same-time-through-multiple-audio_output-settings">audio outputs at the same time, through multiple audio_output settings</h1>
+<h1 id="blocks-setting-this-block-is-optional-though-the-server-will-only-attempt">blocks. Setting this block is optional, though the server will only attempt</h1>
+<h1 id="autodetection-for-one-sound-card">autodetection for one sound card.</h1>
+<h1 id="_66"></h1>
+<h1 id="an-example-of-an-alsa-output">An example of an ALSA output:</h1>
+<h1 id="_67"></h1>
+<p>audio_output {
+    type        "alsa"
+    name        "Sabrent ALSA Device"
+    device      "hw:1"  # optional</p>
+<h1 id="device-hw00-optional">device      "hw:0,0"    # optional</h1>
+<h1 id="mixer_type-hardware-optional">mixer_type      "hardware"      # optional</h1>
+<h1 id="mixer_device-default-optional">mixer_device    "default"   # optional</h1>
+<h1 id="mixer_control-pcm-optional">mixer_control   "PCM"       # optional</h1>
+<h1 id="mixer_index-0-optional">mixer_index "0"     # optional</h1>
+<p>}</p>
+<h1 id="_68"></h1>
+<h1 id="bluetooth-through-pulesaudio">Bluetooth through pulesaudio</h1>
+<h1 id="audio_output">audio_output {</h1>
+<h1 id="type-pulse">type “pulse”</h1>
+<h1 id="name-fosi-audio">name “FOSI Audio”</h1>
+<h1 id="mixer_type-none">mixer_type “none”</h1>
+<h1 id="sink-bluez_sink7c58ca001963a2dp_sink">sink “bluez_sink.7C:58:CA:00:19:63.a2dp_sink”</h1>
+<h1 id="_69">}</h1>
+<h1 id="_70"></h1>
+<h1 id="an-example-of-an-oss-output">An example of an OSS output:</h1>
+<h1 id="_71"></h1>
+<h1 id="audio_output_1">audio_output {</h1>
+<h1 id="type-oss">type        "oss"</h1>
+<h1 id="name-my-oss-device">name        "My OSS Device"</h1>
+<h1 id="device-devdsp-optional">device      "/dev/dsp"  # optional</h1>
+<h1 id="mixer_type-hardware-optional_1">mixer_type      "hardware"      # optional</h1>
+<h1 id="mixer_device-devmixer-optional">mixer_device    "/dev/mixer"    # optional</h1>
+<h1 id="mixer_control-pcm-optional_1">mixer_control   "PCM"       # optional</h1>
+<h1 id="_72">}</h1>
+<h1 id="_73"></h1>
+<h1 id="an-example-of-a-shout-output-for-streaming-to-icecast">An example of a shout output (for streaming to Icecast):</h1>
+<h1 id="_74"></h1>
+<h1 id="audio_output_2">audio_output {</h1>
+<h1 id="type-shout">type        "shout"</h1>
+<h1 id="encoder-vorbis-optional">encoder     "vorbis"        # optional</h1>
+<h1 id="name-my-shout-stream">name        "My Shout Stream"</h1>
+<h1 id="host-localhost">host        "localhost"</h1>
+<h1 id="port-8000">port        "8000"</h1>
+<h1 id="mount-mpdogg">mount       "/mpd.ogg"</h1>
+<h1 id="password-hackme">password    "hackme"</h1>
+<h1 id="quality-50">quality     "5.0"</h1>
+<h1 id="bitrate-128">bitrate     "128"</h1>
+<h1 id="format-44100161">format      "44100:16:1"</h1>
+<h1 id="protocol-icecast2-optional">protocol    "icecast2"      # optional</h1>
+<h1 id="user-source-optional">user        "source"        # optional</h1>
+<h1 id="description-my-stream-description-optional">description "My Stream Description" # optional</h1>
+<h1 id="url-httpexamplecom-optional">url             "http://example.com"    # optional</h1>
+<h1 id="genre-jazz-optional">genre       "jazz"          # optional</h1>
+<h1 id="public-no-optional">public      "no"            # optional</h1>
+<h1 id="timeout-2-optional">timeout     "2"         # optional</h1>
+<h1 id="mixer_type-software-optional">mixer_type      "software"              # optional</h1>
+<h1 id="_75">}</h1>
+<h1 id="_76"></h1>
+<h1 id="an-example-of-a-recorder-output">An example of a recorder output:</h1>
+<h1 id="_77"></h1>
+<h1 id="audio_output_3">audio_output {</h1>
+<h1 id="type-recorder">type            "recorder"</h1>
+<h1 id="name-my-recorder">name            "My recorder"</h1>
+<h1 id="encoder-vorbis-optional-vorbis-or-lame">encoder         "vorbis"                # optional, vorbis or lame</h1>
+<h1 id="path-varlibmpdrecordermpdogg">path            "/var/lib/mpd/recorder/mpd.ogg"</h1>
+<h2 id="quality-50-do-not-define-if-bitrate-is-defined">quality         "5.0"                   # do not define if bitrate is defined</h2>
+<h1 id="bitrate-128-do-not-define-if-quality-is-defined">bitrate         "128"                   # do not define if quality is defined</h1>
+<h1 id="format-44100161_1">format          "44100:16:1"</h1>
+<h1 id="_78">}</h1>
+<h1 id="_79"></h1>
+<h1 id="an-example-of-a-httpd-output-built-in-http-streaming-server">An example of a httpd output (built-in HTTP streaming server):</h1>
+<h1 id="_80"></h1>
+<p>audio_output {
+    type        "httpd"
+    name        "My HTTP Stream"
+    encoder     "vorbis"        # optional, vorbis or lame
+    port        "8888"
+    bind_to_address "0.0.0.0"               # optional, IPv4 or IPv6
+    #quality        "5.0"           # do not define if bitrate is defined
+    bitrate     "128"           # do not define if quality is defined
+    format      "44100:16:1"
+    max_clients     "2"                     # optional 0=no limit
+}</p>
+<h1 id="_81"></h1>
+<h1 id="an-example-of-a-pulseaudio-output-streaming-to-a-remote-pulseaudio-server">An example of a pulseaudio output (streaming to a remote pulseaudio server)</h1>
+<h1 id="please-see-readmedebian-if-you-want-mpd-to-play-through-the-pulseaudio">Please see README.Debian if you want mpd to play through the pulseaudio</h1>
+<h1 id="daemon-started-as-part-of-your-graphical-desktop-session">daemon started as part of your graphical desktop session!</h1>
+<h1 id="_82"></h1>
+<h1 id="audio_output_4">audio_output {</h1>
+<h1 id="type-pulse_1">type        "pulse"</h1>
+<h1 id="name-my-pulse-output">name        "My Pulse Output"</h1>
+<h1 id="server-remote_server-optional">server      "remote_server"     # optional</h1>
+<h1 id="sink-remote_server_sink-optional">sink        "remote_server_sink"    # optional</h1>
+<h1 id="_83">}</h1>
+<h1 id="_84"></h1>
+<h1 id="an-example-of-a-winmm-output-windows-multimedia-api">An example of a winmm output (Windows multimedia API).</h1>
+<h1 id="_85"></h1>
+<h1 id="audio_output_5">audio_output {</h1>
+<h1 id="type-winmm">type        "winmm"</h1>
+<h1 id="name-my-winmm-output">name        "My WinMM output"</h1>
+<h1 id="device-digital-audio-spdif-high-definition-audio-device-optional">device      "Digital Audio (S/PDIF) (High Definition Audio Device)" # optional</h1>
+<h1 id="or">or</h1>
+<h1 id="device-0-optional">device      "0"     # optional</h1>
+<h1 id="mixer_type-hardware-optional_2">mixer_type  "hardware"  # optional</h1>
+<h1 id="_86">}</h1>
+<h1 id="_87"></h1>
+<h1 id="an-example-of-an-openal-output">An example of an openal output.</h1>
+<h1 id="_88"></h1>
+<h1 id="audio_output_6">audio_output {</h1>
+<h1 id="type-openal">type        "openal"</h1>
+<h1 id="name-my-openal-output">name        "My OpenAL output"</h1>
+<h1 id="device-digital-audio-spdif-high-definition-audio-device-optional_1">device      "Digital Audio (S/PDIF) (High Definition Audio Device)" # optional</h1>
+<h1 id="_89">}</h1>
+<h1 id="_90"></h1>
+<h2 id="example-pipe-output">Example "pipe" output:</h2>
+<h1 id="_91"></h1>
+<h1 id="audio_output_7">audio_output {</h1>
+<h1 id="type-pipe">type        "pipe"</h1>
+<h1 id="name-my-pipe">name        "my pipe"</h1>
+<h1 id="command-aplay-f-cd-2devnull">command     "aplay -f cd 2&gt;/dev/null"</h1>
+<h2 id="or-if-youre-want-to-use-audiocompress">Or if you're want to use AudioCompress</h2>
+<h1 id="command-audiocompress-m-aplay-f-cd-2devnull">command     "AudioCompress -m | aplay -f cd 2&gt;/dev/null"</h1>
+<h2 id="or-to-send-raw-pcm-stream-through-pcm">Or to send raw PCM stream through PCM:</h2>
+<h1 id="command-nc-exampleorg-8765">command     "nc example.org 8765"</h1>
+<h1 id="format-44100162">format      "44100:16:2"</h1>
+<h1 id="_92">}</h1>
+<h1 id="_93"></h1>
+<h2 id="an-example-of-a-null-output-for-no-audio-output">An example of a null output (for no audio output):</h2>
+<h1 id="_94"></h1>
+<h1 id="audio_output_8">audio_output {</h1>
+<h1 id="type-null">type        "null"</h1>
+<h1 id="name-my-null-output">name        "My Null Output"</h1>
+<h1 id="mixer_type-none-optional">mixer_type      "none"                  # optional</h1>
+<h1 id="_95">}</h1>
+<h1 id="_96"></h1>
+<h6 id="_97"></h6>
+<h1 id="normalization-automatic-volume-adjustments">Normalization automatic volume adjustments</h1>
+<h1 id="_98"></h1>
+<h1 id="this-setting-specifies-the-type-of-replaygain-to-use-this-setting-can-have">This setting specifies the type of ReplayGain to use. This setting can have</h1>
+<h1 id="the-argument-off-album-track-or-auto-auto-is-a-special-mode-that">the argument "off", "album", "track" or "auto". "auto" is a special mode that</h1>
+<h1 id="chooses-between-track-and-album-depending-on-the-current-state-of">chooses between "track" and "album" depending on the current state of</h1>
+<h1 id="random-playback-if-random-playback-is-enabled-then-track-mode-is-used">random playback. If random playback is enabled then "track" mode is used.</h1>
+<h1 id="see-httpwwwreplaygainorg-for-more-details-about-replaygain">See <a href="http://www.replaygain.org">http://www.replaygain.org</a> for more details about ReplayGain.</h1>
+<h1 id="this-setting-is-off-by-default">This setting is off by default.</h1>
+<h1 id="_99"></h1>
+<h1 id="replaygain-album">replaygain         "album"</h1>
+<h1 id="_100"></h1>
+<h1 id="this-setting-sets-the-pre-amp-used-for-files-that-have-replaygain-tags-by">This setting sets the pre-amp used for files that have ReplayGain tags. By</h1>
+<h1 id="default-this-setting-is-disabled">default this setting is disabled.</h1>
+<h1 id="_101"></h1>
+<h1 id="replaygain_preamp-0">replaygain_preamp      "0"</h1>
+<h1 id="_102"></h1>
+<h1 id="this-setting-sets-the-pre-amp-used-for-files-that-do-not-have-replaygain-tags">This setting sets the pre-amp used for files that do NOT have ReplayGain tags.</h1>
+<h1 id="by-default-this-setting-is-disabled">By default this setting is disabled.</h1>
+<h1 id="_103"></h1>
+<h1 id="replaygain_missing_preamp-0">replaygain_missing_preamp  "0"</h1>
+<h1 id="_104"></h1>
+<h1 id="this-setting-enables-or-disables-replaygain-limiting">This setting enables or disables ReplayGain limiting.</h1>
+<h1 id="mpd-calculates-actual-amplification-based-on-the-replaygain-tags">MPD calculates actual amplification based on the ReplayGain tags</h1>
+<h1 id="and-replaygain_preamp-replaygain_missing_preamp-setting">and replaygain_preamp / replaygain_missing_preamp setting.</h1>
+<h1 id="if-replaygain_limit-is-enabled-mpd-will-never-amplify-audio-signal">If replaygain_limit is enabled MPD will never amplify audio signal</h1>
+<h1 id="above-its-original-level-if-replaygain_limit-is-disabled-such-amplification">above its original level. If replaygain_limit is disabled such amplification</h1>
+<h1 id="might-occur-by-default-this-setting-is-enabled">might occur. By default this setting is enabled.</h1>
+<h1 id="_105"></h1>
+<h1 id="replaygain_limit-yes">replaygain_limit       "yes"</h1>
+<h1 id="_106"></h1>
+<h1 id="this-setting-enables-on-the-fly-normalization-volume-adjustment-this-will">This setting enables on-the-fly normalization volume adjustment. This will</h1>
+<h1 id="result-in-the-volume-of-all-playing-audio-to-be-adjusted-so-the-output-has">result in the volume of all playing audio to be adjusted so the output has</h1>
+<h1 id="equal-loudness-this-setting-is-disabled-by-default">equal "loudness". This setting is disabled by default.</h1>
+<h1 id="_107"></h1>
+<h1 id="volume_normalization-no">volume_normalization       "no"</h1>
+<h1 id="_108"></h1>
+<h6 id="_109"></h6>
+<h1 id="character-encoding">Character Encoding</h1>
+<h1 id="_110"></h1>
+<h1 id="if-file-or-directory-names-do-not-display-correctly-for-your-locale-then-you">If file or directory names do not display correctly for your locale then you</h1>
+<h1 id="may-need-to-modify-this-setting">may need to modify this setting.</h1>
+<h1 id="_111"></h1>
+<p>filesystem_charset      "UTF-8"</p>
+<h1 id="_112"></h1>
+<h6 id="_113"></h6>
+<div class="highlight"><pre><span></span><code>### MPD Daemon Processes
+
+These configurations keep the mpd daemon running after boot and restarted upon any failure.
+
+#### Linux
+
+FIle: /lib/systemd/system/mpd.service
+</code></pre></div>
+
+<p>[Unit]
+Description=Music Player Daemon
+Documentation=man:mpd(1) man:mpd.conf(5)
+Documentation=file:///usr/share/doc/mpd/user-manual.html
+After=network.target sound.target</p>
+<p>[Service]
+Type=notify
+EnvironmentFile=/etc/default/mpd
+ExecStart=/usr/bin/mpd --no-daemon $MPDCONF</p>
+<h1 id="enable-this-setting-to-ask-systemd-to-watch-over-mpd-see">Enable this setting to ask systemd to watch over MPD, see</h1>
+<h1 id="systemdservice5-this-is-disabled-by-default-because-it-causes">systemd.service(5).  This is disabled by default because it causes</h1>
+<h1 id="periodic-wakeups-which-are-unnecessary-if-mpd-is-not-playing">periodic wakeups which are unnecessary if MPD is not playing.</h1>
+<h1 id="watchdogsec120">WatchdogSec=120</h1>
+<h1 id="allow-mpd-to-use-real-time-priority-50">allow MPD to use real-time priority 50</h1>
+<p>LimitRTPRIO=50
+LimitRTTIME=infinity</p>
+<h1 id="disallow-writing-to-usr-bin-sbin">disallow writing to /usr, /bin, /sbin, ...</h1>
+<p>ProtectSystem=yes</p>
+<h1 id="more-paranoid-security-settings">more paranoid security settings</h1>
+<p>NoNewPrivileges=yes
+ProtectKernelTunables=yes
+ProtectControlGroups=yes
+ProtectKernelModules=yes</p>
+<h1 id="af_netlink-is-required-by-libsmbclient-or-it-will-exit-sigh">AF_NETLINK is required by libsmbclient, or it will exit() .. <em>sigh</em></h1>
+<p>RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX AF_NETLINK
+RestrictNamespaces=yes</p>
+<p>[Install]
+WantedBy=multi-user.target
+Also=mpd.socket</p>
+<div class="highlight"><pre><span></span><code><span class="c1">## Audio Player</span>
+
+<span class="n">Hardware</span><span class="p">:</span>
+
+<span class="o">*</span><span class="w"> </span><span class="n">host</span><span class="w"> </span><span class="p">(</span><span class="n">BeagleBone</span><span class="w"> </span><span class="n">AI</span><span class="o">-</span><span class="mi">64</span><span class="w"> </span><span class="n">Debian</span><span class="w"> </span><span class="n">Linux</span><span class="p">)</span><span class="o">.</span>
+
+<span class="n">Software</span><span class="p">:</span>
+
+<span class="o">*</span><span class="w"> </span><span class="n">Linux</span><span class="p">:</span><span class="w"> </span><span class="n">NextCloud</span><span class="w"> </span><span class="n">app</span><span class="w"> </span><span class="n">called</span><span class="w"> </span><span class="o">**</span><span class="n">audioplayer</span><span class="o">**</span><span class="p">,</span><span class="w"> </span><span class="n">visible</span><span class="w"> </span><span class="n">on</span><span class="w">  </span><span class="n">NextCloud</span><span class="w"> </span><span class="n">web</span><span class="w"> </span><span class="n">interface</span>
+
+<span class="n">The</span><span class="w"> </span><span class="n">music</span><span class="w"> </span><span class="n">files</span><span class="w"> </span><span class="n">reside</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="o">/</span><span class="n">Music</span><span class="w"> </span><span class="n">directory</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">nextcloud</span><span class="w"> </span><span class="n">account</span><span class="o">.</span>
+
+<span class="o">!</span><span class="p">[</span><span class="n">Audio</span><span class="o">-</span><span class="n">Player</span><span class="o">.</span><span class="n">png</span><span class="p">](</span><span class="o">.</span><span class="n">attachments</span><span class="o">.</span><span class="mi">596467</span><span class="o">/</span><span class="n">Audio</span><span class="o">-</span><span class="n">Player</span><span class="o">.</span><span class="n">png</span><span class="p">)</span>
+
+<span class="n">Reference</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">apps</span><span class="o">.</span><span class="n">nextcloud</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">audioplayer</span><span class="o">&gt;</span>
+
+<span class="c1">## Plex Television and Music Recordings</span>
+
+<span class="n">This</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">where</span><span class="w"> </span><span class="n">most</span><span class="w"> </span><span class="n">TV</span><span class="w"> </span><span class="n">shows</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">played</span><span class="w"> </span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">either</span><span class="w"> </span><span class="n">one</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">Apple</span><span class="o">-</span><span class="n">TVs</span><span class="o">.</span>
+
+<span class="n">Hardware</span><span class="p">:</span>
+
+<span class="o">*</span><span class="w"> </span><span class="n">TrueNAS</span><span class="w"> </span><span class="n">Scale</span><span class="w"> </span><span class="n">container</span>
+
+<span class="n">Software</span><span class="p">:</span>
+
+<span class="o">*</span><span class="w"> </span><span class="n">Debian</span><span class="p">:</span><span class="w"> </span><span class="n">Plex</span><span class="w"> </span><span class="n">Media</span><span class="w"> </span><span class="n">Server</span><span class="w"> </span><span class="n">app</span><span class="p">,</span><span class="w"> </span><span class="n">Web</span><span class="w"> </span><span class="n">Interface</span><span class="w"> </span><span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">32400</span><span class="o">/</span><span class="n">web</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span><span class="c1">#!/&gt;</span>
+<span class="o">*</span><span class="w"> </span><span class="n">iOS</span><span class="p">:</span><span class="w"> </span><span class="n">Plexamp</span><span class="w"> </span><span class="p">(</span><span class="n">Music</span><span class="p">)</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">Phone</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">Tablet</span>
+
+<span class="o">!</span><span class="p">[</span><span class="n">IMG_233B4FCE41DA</span><span class="o">-</span><span class="mf">1.j</span><span class="n">peg</span><span class="p">](</span><span class="o">.</span><span class="n">attachments</span><span class="o">.</span><span class="mi">596467</span><span class="o">/</span><span class="n">IMG_233B4FCE41DA</span><span class="o">-</span><span class="mf">1.j</span><span class="n">peg</span><span class="p">)</span>
+
+<span class="o">*</span><span class="w"> </span><span class="n">tvOS</span><span class="p">:</span><span class="w"> </span><span class="n">Plex</span><span class="w"> </span><span class="p">(</span><span class="n">Video</span><span class="p">,</span><span class="w"> </span><span class="n">Music</span><span class="p">)</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">Apple</span><span class="o">-</span><span class="n">TV</span>
+
+<span class="n">Libraries</span><span class="p">:</span>
+
+<span class="o">*</span><span class="w"> </span><span class="n">TV</span><span class="p">:</span><span class="w"> </span><span class="o">/</span><span class="n">tv_share</span><span class="o">/</span><span class="n">tv</span><span class="w"> </span><span class="p">(</span><span class="n">Recordings</span><span class="w"> </span><span class="n">come</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">OTA</span><span class="w"> </span><span class="n">HDHomeRun</span><span class="w"> </span><span class="n">below</span><span class="p">)</span>
+<span class="o">*</span><span class="w"> </span><span class="n">Movies</span><span class="p">:</span><span class="w"> </span><span class="o">~/</span><span class="n">tv_share</span><span class="o">/</span><span class="n">movies</span>
+<span class="o">*</span><span class="w"> </span><span class="n">Music</span><span class="p">:</span><span class="w"> </span><span class="o">~/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">Music</span>
+
+<span class="n">Reference</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">plex</span><span class="o">.</span><span class="n">tv</span><span class="o">/</span><span class="n">media</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">downloads</span><span class="o">/&gt;</span>
+
+<span class="c1">## Over-the-Air (OTA) HDHomeRun Television Recording</span>
+
+<span class="n">Hardware</span><span class="p">:</span>
+
+<span class="o">*</span><span class="w"> </span><span class="n">host</span><span class="w"> </span><span class="n">HDHomeRun</span><span class="w"> </span><span class="p">(</span><span class="n">Silicondust</span><span class="w"> </span><span class="n">Engineering</span><span class="w"> </span><span class="n">Flex</span><span class="o">-</span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">silicondust</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">product</span><span class="o">/</span><span class="n">hdhomerun</span><span class="o">-</span><span class="n">flex</span><span class="o">-</span><span class="mi">4</span><span class="n">k</span><span class="o">/&gt;</span><span class="p">)</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="mi">2</span><span class="n">TB</span><span class="w"> </span><span class="n">USB</span><span class="w"> </span><span class="n">SSD</span><span class="w"> </span><span class="n">locally</span><span class="w"> </span><span class="n">attached</span><span class="o">.</span>
+
+<span class="n">Software</span><span class="p">:</span>
+
+<span class="o">*</span><span class="w"> </span><span class="n">Built</span><span class="o">-</span><span class="ow">in</span><span class="w"> </span><span class="n">webservice</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">port</span><span class="w"> </span><span class="mi">80</span><span class="w"> </span><span class="p">(</span><span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">hdhomerun</span><span class="o">.</span><span class="n">local</span><span class="o">/&gt;</span><span class="p">)</span>
+<span class="o">*</span><span class="w"> </span><span class="n">iOS</span><span class="p">:</span><span class="w"> </span><span class="n">HDHomeRun</span><span class="w"> </span><span class="p">(</span><span class="n">Used</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">set</span><span class="w"> </span><span class="n">recordings</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">delete</span><span class="w"> </span><span class="n">old</span><span class="w"> </span><span class="n">shows</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">HDHomeRun</span><span class="w"> </span><span class="n">box</span><span class="p">)</span>
+
+<span class="o">!</span><span class="p">[</span><span class="n">IMG_5456720E92DB</span><span class="o">-</span><span class="mf">1.j</span><span class="n">peg</span><span class="p">](</span><span class="o">.</span><span class="n">attachments</span><span class="o">.</span><span class="mi">596467</span><span class="o">/</span><span class="n">IMG_5456720E92DB</span><span class="o">-</span><span class="mf">1.j</span><span class="n">peg</span><span class="p">)</span>
+
+<span class="o">*</span><span class="w"> </span><span class="n">Application</span><span class="w"> </span><span class="n">Programming</span><span class="w"> </span><span class="n">Interface</span><span class="w"> </span><span class="p">(</span><span class="n">API</span><span class="p">):</span><span class="w"> </span><span class="o">&lt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">info</span><span class="o">.</span><span class="n">hdhomerun</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">info</span><span class="o">/</span><span class="n">http_api</span><span class="o">&gt;</span>
+
+<span class="c1">### Copy TV Recordings</span>
+
+<span class="n">The</span><span class="w"> </span><span class="n">actual</span><span class="w"> </span><span class="n">recording</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">OTA</span><span class="w"> </span><span class="n">happens</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">HDHomeRun</span><span class="w"> </span><span class="n">box</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">I</span><span class="w"> </span><span class="n">copy</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">recordings</span><span class="w"> </span><span class="n">into</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">Plex</span><span class="w"> </span><span class="n">library</span><span class="w"> </span><span class="n">using</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">HDHomeRun</span><span class="w"> </span><span class="n">web</span><span class="w"> </span><span class="n">interface</span><span class="o">.</span><span class="w"> </span><span class="n">This</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">scheduled</span><span class="w"> </span><span class="n">once</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">day</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">cron</span><span class="o">.</span>
+
+<span class="n">File</span><span class="p">:</span><span class="w"> </span>\<span class="o">~/</span><span class="n">tv_share</span><span class="o">/</span><span class="n">tv</span><span class="o">/</span><span class="n">hdhomerun</span><span class="o">/</span><span class="n">get</span><span class="o">.</span><span class="n">sh</span>
+</code></pre></div>
+
+<h1 id="binbash">!/bin/bash</h1>
+<h1 id="-">-------------------------------------------------</h1>
+<h1 id="file-getsh">File get.sh</h1>
+<h1 id="usage-getsh">Usage: get.sh</h1>
+<h1 id="set-the-ip-address-of-the-hdhomerun-flex-box">Set the IP address of the HDHomeRun Flex box</h1>
+<h1 id="with-dvr-usb-disk-attached">with DVR USB disk attached</h1>
+<h1 id="_114"></h1>
+<h1 id="purpose-copy-recordings-to-the-shared-filesystem">Purpose: Copy recordings to the shared filesystem</h1>
+<h1 id="so-they-can-be-played-by-other-software">so they can be played by other software,</h1>
+<h1 id="ie-plex-infuse-vlc-etc">i.e.: Plex, Infuse, VLC, etc...</h1>
+<h1 id="_115"></h1>
+<h1 id="dependencies">Dependencies:</h1>
+<h1 id="-apt-install-jq">-apt install jq.</h1>
+<h1 id="-curl-is-installed-by-normal-os">-curl is installed by normal OS.</h1>
+<h1 id="-silicondustcom-dvr-subscription">-silicondust.com DVR subscription</h1>
+<h1 id="required-to-record-on-the-device-35-annual">required to record on the device, $35 annual</h1>
+<h1 id="hdhomerun_config-also-from-silicondustcom">hdhomerun_config also from silicondust.com</h1>
+<h1 id="_116"></h1>
+<h1 id="history">History:</h1>
+<h1 id="date-author-description">Date        Author      Description</h1>
+<h1 id="-_1">-----------  ----------  -----------------------</h1>
+<h1 id="22-jul-2021-don-cohoon-created-on-macos">22-Jul-2021  Don Cohoon  Created on MacOS</h1>
+<h1 id="20-jan-2023-don-cohoon-added-real_url-because">20-Jan-2023  Don Cohoon  Added REAL_URL because</h1>
+<h1 id="firmware-release-kept-ip-as-file-name-causing">firmware release kept ${IP} as file name causing</h1>
+<h1 id="of-zero-byte-files">of zero byte files</h1>
+<h1 id="-_2">-------------------------------------------------</h1>
+<p>MYHOME="/mnt/vol032"
+MYDIR="tv_share/tv"
+MYTESTFILE=${MYHOME}/tv_share/get.sh
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</p>
+<h1 id="-_3">-------------------------------------------------</h1>
+<h1 id="log">Log</h1>
+<p>function logit()
+{
+  echo $@
+  echo ${0} $(/bin/date) : $@ &gt;&gt;hdhomerun.log 2&gt;&amp;1
+}</p>
+<h1 id="-_4">-------------------------------------------------</h1>
+<h1 id="ensure-we-move-to-correct-directory">Ensure we move to correct directory</h1>
+<h1 id="_117"></h1>
+<p>cd ${MYHOME}/${MYDIR}
+if [ ! -f ${MYTESTFILE} ]; then
+  logit "=&gt; Cannot change to ${MYHOME}/${MYDIR}"
+  exit 2
+fi</p>
+<h1 id="-_5">-------------------------------------------------</h1>
+<h1 id="get-ip-address-of-tv-server">Get IP address of TV Server</h1>
+<h1 id="_118"></h1>
+<p>IP=$(/usr/local/bin/hdhomerun_config discover|awk '{print $6}')
+logit "=&gt; IP address of TV server is ${IP}"</p>
+<h1 id="-_6">-------------------------------------------------</h1>
+<h1 id="get-record-engine-status">Get Record engine status</h1>
+<h1 id="_119"></h1>
+<p>logit "=&gt; discover.json"
+/usr/bin/curl -s http://${IP}/discover.json &gt;discover.json 2&gt;&gt;hdhomerun.log</p>
+<h1 id="_120">^</h1>
+<h1 id="cat-discoverjson">cat discover.json</h1>
+<h1 id="logit">logit</h1>
+<h1 id="logit_1">logit ". . ."</h1>
+<h1 id="-_7">-------------------------------------------------</h1>
+<h1 id="get-recorded_filesjson-from-root-of-dvr">Get recorded_files.json from root of dvr</h1>
+<h1 id="_121"></h1>
+<p>logit "=&gt; recorded_files.json"
+/usr/bin/curl -s  --header 'Accept: <em>/</em>' \
+         --header 'Accept-Encoding: gzip, deflate' \
+         --header 'Accept-Language: en-US,en;q=0.5' \
+         --header 'Cache-Control: no-cache' \
+         --header 'Connection: keep-alive' \
+         --header 'Pragma: no cache' \
+         --header "Host: ${IP}" \
+         --header "Referer: http://${IP}/recorded_files.html" \
+         --header 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:89.0) Gecko/20100101 Firefox/89.0' \
+  http://${IP}/recorded_files.json?DisplayGroupID=root &gt; recorded_files.json 2&gt;&gt;hdhomerun.log
+  #            ^                   ^              ^ </p>
+<h1 id="cat-recorded_filesjson">cat recorded_files.json</h1>
+<h1 id="logit_2">logit</h1>
+<h1 id="logit_3">logit ". . ."</h1>
+<h1 id="-_8">-------------------------------------------------</h1>
+<h1 id="get-root-seriesids-from-recorded_filesjson">Get root SeriesIDs from recorded_files.json</h1>
+<h1 id="_122"></h1>
+<p>declare -a SeriesID
+SeriesID=($(/usr/bin/jq -r '.[] | .SeriesID' recorded_files.json))</p>
+<h1 id="for-i-0-i-seriesid-i">for (( i = 0 ; i &lt; ${#SeriesID[@]} ; i++))</h1>
+<h1 id="do">do</h1>
+<h1 id="logit-series-i-seriesidi">logit "Series [$i]: ${SeriesID[$i]}"</h1>
+<h1 id="done">done</h1>
+<h1 id="-_9">-------------------------------------------------</h1>
+<h1 id="get-root-titles-from-recorded_filesjson">Get root Titles from recorded_files.json</h1>
+<h1 id="_123"></h1>
+<p>declare -a Title
+/usr/bin/jq -r '.[] | .Title' recorded_files.json &gt; recorded_files.title
+let i=0
+while read t
+do
+  # Add new element at the end of the array
+  Title+=("${t}")
+  logit "Title [$i]: ${Title[$i]}"
+  let i++
+done &lt; recorded_files.title
+rm recorded_files.title</p>
+<h1 id="_124"></h1>
+<h1 id="-_10">-------------------------------------------------</h1>
+<h1 id="get-seriesid-recordings-into-titlerecorded_filesjson">Get SeriesID recordings, into "Title"/recorded_files.json</h1>
+<h1 id="_125"></h1>
+<p>for (( iSeriesID = 0 ; iSeriesID &lt; ${#SeriesID[@]} ; iSeriesID++))
+do
+  # Put Series into Title directory
+  mkdir -p "${Title[$iSeriesID]}"
+  cd       "${Title[$iSeriesID]}"</p>
+<p>logit "Downloading Series : ${Title[$iSeriesID]}/recorded_files.json"
+  /usr/bin/curl -s  --header 'Accept: <em>/</em>' \
+           --header 'Accept-Encoding: gzip, deflate' \
+           --header 'Accept-Language: en-US,en;q=0.5' \
+           --header 'Cache-Control: no-cache' \
+           --header 'Connection: keep-alive' \
+           --header 'Host: ${IP}' \
+           --header 'Pragma: no-cache' \
+           --header 'Referer: http://${IP}/recorded_files.html?SeriesID="${SeriesID[$iSeriesID]}"' \
+           --header 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:89.0) Gecko/20100101 Firefox/89.0' \
+    http://${IP}/recorded_files.json?SeriesID="${SeriesID[$iSeriesID]}" &gt; recorded_files.json 2&gt;&gt;hdhomerun.log
+    #            ^                   ^           ^
+  #-------------------------------------------------
+  # Get all PlayURL recordings for this SeriesID
+  #
+  unset PlayURL
+  declare -a PlayURL
+  PlayURL=($(/usr/bin/jq -r '.[] | .PlayURL' recorded_files.json))
+  for (( iPlayURL = 0 ; iPlayURL &lt; ${#PlayURL[@]} ; iPlayURL++))
+  do
+    logit "PlayURL [$iPlayURL]: ${PlayURL[$iPlayURL]}"
+  done</p>
+<p>#-------------------------------------------------
+  # Get all Filename recordings for this SeriesID
+  #
+  unset Filename
+  declare -a Filename
+  /usr/bin/jq -r '.[] | .Filename' recorded_files.json &gt; recorded_files.title
+  let iFilename=0
+  while read f
+  do</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Add new element at the end of the array</span>
+<span class="n">Filename</span><span class="o">+=</span><span class="p">(</span><span class="s2">&quot;${f}&quot;</span><span class="p">)</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="o">!</span><span class="w"> </span><span class="o">-</span><span class="n">f</span><span class="w"> </span><span class="s2">&quot;${Filename[$iFilename]}&quot;</span><span class="w"> </span><span class="p">];</span><span class="w"> </span><span class="n">then</span><span class="w"> </span><span class="c1"># New file, download it</span>
+<span class="w">  </span><span class="n">logit</span><span class="w"> </span><span class="s2">&quot;Downloading Filename [$iFilename]: ${Filename[$iFilename]}&quot;</span>
+<span class="w">  </span><span class="n">mail</span><span class="w"> </span><span class="o">-</span><span class="n">s</span><span class="w"> </span><span class="s2">&quot;HDHomeRun recording: Downloading Filename [$iFilename]: ${Filename[$iFilename]} - ${PlayURL[$iFilename]}&quot;</span><span class="w"> </span><span class="n">bob</span><span class="err">@</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="n">EOF</span>
+</code></pre></div>
+
+<p>$(/bin/date)
+EOF
+      #-------------------------------------------------
+      # Download Recording
+      #
+      REAL_URL=$(eval echo ${PlayURL[$iFilename]})
+      logit "RealURL: ${REAL_URL}"
+      /usr/bin/curl   --header 'Accept: <em>/</em>' \
+             --header 'Accept-Encoding: gzip, deflate' \
+             --header 'Accept-Language: en-US,en;q=0.5' \
+             --header 'Cache-Control: no-cache' \
+             --header 'Connection: keep-alive' \
+             --header 'Host: ${IP}' \
+             --header 'Pragma: no-cache' \
+             --header 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:89.0) Gecko/20100101 Firefox/89.0' \
+      "${REAL_URL}" &gt; "${Filename[$iFilename]}" 2&gt;&gt;hdhomerun.log
+      # ^                         ^
+    fi
+    # 
+    let iFilename++
+  done &lt; recorded_files.title</p>
+<p>rm recorded_files.title</p>
+<p># Back to main directory
+  cd ..
+done</p>
+<div class="highlight"><pre><span></span><code><span class="gu">##</span> curseradio
+
+Python project to listen to streaming internet radio from command line
+
+Files:
+
+<span class="k">*</span> \~/.local/share/curseradio/favourites.opml
+<span class="k">*</span> \~/radio.sh
+</code></pre></div>
+
+<h1 id="binbash_1">!/bin/bash</h1>
+<h1 id="sudo-apt-get-install-curseradio">sudo apt-get install curseradio</h1>
+<h1 id="git-clone-httpsgithubcomchronitiscurseradio">git clone https://github.com/chronitis/curseradio/</h1>
+<h2 id="cd">cd</h2>
+<p>cd curseradio</p>
+<h2 id="create-venv">create venv</h2>
+<h1 id="python3-m-venv-env">python3 -m venv env</h1>
+<h2 id="activate-vene">activate vene</h2>
+<p>source env/bin/activate</p>
+<h2 id="install-required-libraries-via-requirementstxt-file">install required libraries via requirements.txt file</h2>
+<h1 id="cat-requirementstxt">cat requirements.txt</h1>
+<h1 id="lxml">lxml</h1>
+<h1 id="requests">requests</h1>
+<h1 id="pyxdg">pyxdg</h1>
+<h2 id="pip-install">pip install</h2>
+<h1 id="pip-install-r-requirementstxt">pip install -r requirements.txt</h1>
+<h2 id="setuppy">setup.py</h2>
+<h1 id="pip-install-e">pip install -e .</h1>
+<h2 id="obtaining-filemediabobdatacurseradio">Obtaining file:///media/bob/data/curseradio</h2>
+<h2 id="installing-collected-packages-curseradio">Installing collected packages: curseradio</h2>
+<h2 id="running-setuppy-develop-for-curseradio">Running setup.py develop for curseradio</h2>
+<h2 id="successfully-installed-curseradio">Successfully installed curseradio</h2>
+<h2 id="_126"></h2>
+<h2 id="run-it">Run it!</h2>
+<p>curseradio</p>
+<h2 id="get-out-of-virtual-environment">Get out of virtual environment</h2>
+<p>deactivate</p>
+<div class="highlight"><pre><span></span><code>### cursoradio configuration file
+</code></pre></div>
+
+<p><outline type="audio" text="Handcrafted Radio (US)" URL="
+http://opml.radiotime.com/Tune.ashx?id=s97491" bitrate="128"
+reliability="98" guide_id="s97491" subtext="Jackson Browne - Doctor My
+Eyes" genre_id="g54" formats="mp3" playing="Jackson Browne - Doctor My
+Eyes" playing_image="http://cdn-albums.tunein.com/gn/WJRG9NQZCHq.jpg"
+item="station" image="http://cdn-radiotime-logos.tunein.com/s97491q.png
+" now_playing_id="s97491" preset_id="s97491"/>
+...
+from ~/.local/share/curseradio/favourites.opml
+```</p>
+<h1 id="conclusion">Conclusion</h1>
+<p>Now that you have sensed the sights and sounds of Video and Audio controlled and maintained by your computer, I wish to thank you for your interest in this book..</p>
+<p>Hopefully this little write up was of some help.</p>
+<p>Regards,<br>
+-- Don</p>
+<p>{{#include date.txt}}</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://getpelican.com/">Pelican</a></li>
+                            <li><a href="https://www.python.org/">Python.org</a></li>
+                            <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="https://dfcsoftware.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <p>
+                Site by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>, via <a rel="nofollow" href="https://www.python.org/">Python</a>.
+                </p><!-- /#about -->
+
+                <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
