@@ -116,23 +116,21 @@
 <div class="toc"><span class="toctitle">Table of Contents</span><ul>
 <li><a href="#virtual-machines">Virtual Machines</a><ul>
 <li><a href="#install-prerequisites">Install Prerequisites</a></li>
-</ul>
-</li>
-<li><a href="#add-bridge">add bridge</a></li>
-<li><a href="#add-interface">add interface</a></li>
-<li><a href="#-permanent-configuration-">-&gt; Permanent Configuration &lt;-</a></li>
-<li><a href="#_1"></a></li>
-<li><a href="#file-etcnetworkinterfaces">File: /etc/network/interfaces</a></li>
-<li><a href="#_2"></a></li>
-<li><a href="#this-file-describes-the-network-interfaces-available-on-your-system">This file describes the network interfaces available on your system</a></li>
-<li><a href="#and-how-to-activate-them-for-more-information-see-interfaces5">and how to activate them. For more information, see interfaces(5).</a></li>
-<li><a href="#the-loopback-network-interface">The loopback network interface</a></li>
-<li><a href="#usb-ethernet">USB Ethernet</a></li>
-<li><a href="#bridge-setup">Bridge setup</a><ul>
+<li><a href="#install-cockpit">Install Cockpit</a></li>
+<li><a href="#virtual-machines-in-cockpit">Virtual machines in Cockpit</a><ul>
+<li><a href="#create-storage-pools-with-cockpit">Create storage pools with Cockpit</a></li>
+<li><a href="#create-a-new-virtual-machine">Create a new virtual machine</a></li>
+<li><a href="#examine-a-virtual-machine">Examine a virtual machine</a></li>
+<li><a href="#network-on-a-virtual-machine">Network on a virtual machine</a><ul>
+<li><a href="#nat-vm-network-vm-network-default">NAT VM Network (VM network default)</a></li>
 <li><a href="#bridged-vm-network-physical-host-bridge">Bridged VM Network (Physical Host bridge)</a></li>
 <li><a href="#redhat-way-1">RedHat Way [1]</a></li>
 <li><a href="#debian-way">Debian Way</a></li>
+</ul>
+</li>
 <li><a href="#sharing-files-with-physical-and-virtual-hosts">Sharing files with physical and virtual hosts</a></li>
+</ul>
+</li>
 <li><a href="#virtual-storage-pools-on-nfs">Virtual Storage Pools on NFS</a></li>
 <li><a href="#clone-virtual-machine">Clone Virtual Machine</a><ul>
 <li><a href="#copy-data-files">Copy Data Files</a></li>
@@ -242,178 +240,167 @@ iface enxc87f54384756 inet manual
 auto br0
 iface br0 inet dhcp
     bridge_ports enxc87f54384756
-</code></pre></div>
-
-<p>$ ip a
+...
+$ ip a
 ~
-3: enxc87f54384756: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel master br0 state UP group default qlen 1000
+3: enxc87f54384756: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc fq_codel master br0 state UP group default qlen 1000
     link/ether c8:7f:54:93:56:44 brd ff:ff:ff:ff:ff:ff
 ~
-6: br0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
+6: br0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UP group default qlen 1000
     link/ether 86:32:53:56:4a:fa brd ff:ff:ff:ff:ff:ff
     inet 192.168.1.2/24 brd 192.168.1.1 scope global dynamic br0
        valid_lft 86082sec preferred_lft 86082sec
     inet6 fe80::8432:53ff:fe56:4edf/64 scope link 
-       valid_lft forever preferred_lft forever</p>
-<div class="highlight"><pre><span></span><code><span class="k">*</span> Debian - Single ethernet device bridge
+       valid_lft forever preferred_lft forever
 </code></pre></div>
 
-<p>apt install bridge-utils</p>
-<h1 id="add-bridge">add bridge</h1>
-<p>brctl addbr br0</p>
-<h1 id="add-interface">add interface</h1>
-<p>ip addr show
-brctl addif br0 eth0 </p>
-<p>https://wiki.debian.org/BridgeNetworkConnections
-sudo ifup br0</p>
-<h1 id="-permanent-configuration-">-&gt; Permanent Configuration &lt;-</h1>
-<h1 id="_1"></h1>
-<h1 id="file-etcnetworkinterfaces">File: /etc/network/interfaces</h1>
-<h1 id="_2"></h1>
-<h1 id="this-file-describes-the-network-interfaces-available-on-your-system">This file describes the network interfaces available on your system</h1>
-<h1 id="and-how-to-activate-them-for-more-information-see-interfaces5">and how to activate them. For more information, see interfaces(5).</h1>
-<p>source /etc/network/interfaces.d/*</p>
-<h1 id="the-loopback-network-interface">The loopback network interface</h1>
-<p>auto lo
-iface lo inet loopback</p>
-<h1 id="usb-ethernet">USB Ethernet</h1>
-<p>auto enxc87f54935633
-iface enxc87f54935633 inet manual</p>
-<h1 id="bridge-setup">Bridge setup</h1>
-<p>auto br0
-iface br0 inet dhcp
-    bridge_ports enxc87f54935633</p>
-<div class="highlight"><pre><span></span><code>Reference:
+<ul>
+<li>Debian - Single ethernet device bridge</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">apt</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">bridge</span><span class="o">-</span><span class="n">utils</span>
 
- <span class="k">*</span> &lt;https://wiki.debian.org/BridgeNetworkConnections&gt;
+<span class="c1"># add bridge</span>
+<span class="n">brctl</span><span class="w"> </span><span class="n">addbr</span><span class="w"> </span><span class="n">br0</span>
 
-Reference:
+<span class="c1"># add interface</span>
+<span class="n">ip</span><span class="w"> </span><span class="n">addr</span><span class="w"> </span><span class="n">show</span>
+<span class="n">brctl</span><span class="w"> </span><span class="n">addif</span><span class="w"> </span><span class="n">br0</span><span class="w"> </span><span class="n">eth0</span><span class="w"> </span>
 
- <span class="k">*</span> &lt;https://wiki.debian.org/BridgeNetworkConnections&gt;
- <span class="k">*</span> &lt;https://wiki.libvirt.org/Networking.html#debian-ubuntu-bridging&gt;
+<span class="n">https</span><span class="o">://</span><span class="n">wiki.debian.org</span><span class="o">/</span><span class="n">BridgeNetworkConnections</span>
+<span class="n">sudo</span><span class="w"> </span><span class="n">ifup</span><span class="w"> </span><span class="n">br0</span>
 
-<span class="k">&gt; </span><span class="ge">??? Apparmor and Selinux may require more permission. , maybe using /home, trying /local</span>
+<span class="c1"># -&gt; Permanent Configuration &lt;-</span>
+<span class="c1">#</span>
+<span class="c1"># File: /etc/network/interfaces</span>
+<span class="c1">#</span>
+<span class="c1"># This file describes the network interfaces available on your system</span>
+<span class="c1"># and how to activate them. For more information, see interfaces(5).</span>
 
-/etc/apparmor.d/local/abstractions/libvirt-qemu
+<span class="n">source</span><span class="w"> </span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">network</span><span class="o">/</span><span class="n">interfaces.d</span><span class="o">/*</span>
 
-<span class="k">-</span> Set user and group 
-File: /etc/libvirt/qemu.conf
+<span class="c1"># The loopback network interface</span>
+<span class="n">auto</span><span class="w"> </span><span class="n">lo</span>
+<span class="n">iface</span><span class="w"> </span><span class="n">lo</span><span class="w"> </span><span class="n">inet</span><span class="w"> </span><span class="n">loopback</span>
+
+<span class="c1"># USB Ethernet</span>
+<span class="n">auto</span><span class="w"> </span><span class="n">enxc87f54935633</span>
+<span class="n">iface</span><span class="w"> </span><span class="n">enxc87f54935633</span><span class="w"> </span><span class="n">inet</span><span class="w"> </span><span class="n">manual</span>
+
+<span class="c1"># Bridge setup</span>
+<span class="n">auto</span><span class="w"> </span><span class="n">br0</span>
+<span class="n">iface</span><span class="w"> </span><span class="n">br0</span><span class="w"> </span><span class="n">inet</span><span class="w"> </span><span class="n">dhcp</span>
+<span class="w">    </span><span class="n">bridge_ports</span><span class="w"> </span><span class="n">enxc87f54935633</span>
 </code></pre></div>
 
-<p>~
-user = "libvirt-qemu"
-group = "libvirt-qemu"
-~</p>
-<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="nx">Then</span><span class="w"> </span><span class="nx">reboot</span><span class="p">.</span>
-
-
-
-<span class="err">##</span><span class="w"> </span><span class="nx">Install</span><span class="w"> </span><span class="nx">Cockpit</span>
-
-<span class="nx">Cockpit</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">web</span><span class="w"> </span><span class="nx">based</span><span class="w"> </span><span class="nx">system</span><span class="w"> </span><span class="nx">allowing</span><span class="w"> </span><span class="nx">full</span><span class="w"> </span><span class="nx">management</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">systems</span><span class="p">,</span><span class="w"> </span><span class="nx">including</span><span class="w"> </span><span class="kd">virtual</span><span class="w"> </span><span class="nx">qemu</span><span class="w"> </span><span class="nx">systems</span><span class="p">.</span>
-
-<span class="nx">Install</span><span class="w"> </span><span class="nx">packages</span><span class="w"> </span><span class="nx">cockpit</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">cockpit</span><span class="o">-</span><span class="nx">machine</span><span class="p">.</span>
-
-<span class="p">&gt;</span><span class="w"> </span><span class="nx">Install</span><span class="w"> </span><span class="nx">postfix</span><span class="w"> </span><span class="nx">first</span><span class="w"> </span><span class="nx">on</span><span class="w"> </span><span class="nx">Debian</span><span class="p">,</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="nx">exim4</span><span class="w"> </span><span class="nx">mail</span><span class="w"> </span><span class="nx">server</span><span class="w"> </span><span class="nx">will</span><span class="w"> </span><span class="nx">be</span><span class="w"> </span><span class="nx">installed</span><span class="w"> </span><span class="nx">with</span><span class="w"> </span><span class="nx">cockpit</span>
+<p>Reference:</p>
+<ul>
+<li><a href="https://wiki.debian.org/BridgeNetworkConnections">https://wiki.debian.org/BridgeNetworkConnections</a></li>
+</ul>
+<p>Reference:</p>
+<ul>
+<li><a href="https://wiki.debian.org/BridgeNetworkConnections">https://wiki.debian.org/BridgeNetworkConnections</a></li>
+<li><a href="https://wiki.libvirt.org/Networking.html#debian-ubuntu-bridging">https://wiki.libvirt.org/Networking.html#debian-ubuntu-bridging</a></li>
+</ul>
+<blockquote>
+<p>??? Apparmor and Selinux may require more permission. , maybe using /home, trying /local</p>
+</blockquote>
+<p>/etc/apparmor.d/local/abstractions/libvirt-qemu</p>
+<ul>
+<li>Set user and group 
+File: /etc/libvirt/qemu.conf</li>
+</ul>
+<div class="highlight"><pre><span></span><code>~
+user = &quot;libvirt-qemu&quot;
+group = &quot;libvirt-qemu&quot;
+~
 </code></pre></div>
 
-<p>$ sudo dnf install cockpit cockpit-machines</p>
-<div class="highlight"><pre><span></span><code>Start Cockpit and libvirtd:
+<p>Then reboot.</p>
+<h2 id="install-cockpit">Install Cockpit</h2>
+<p>Cockpit is a web based system allowing full management of systems, including virtual qemu systems.</p>
+<p>Install packages cockpit and cockpit-machine.</p>
+<blockquote>
+<p>Install postfix first on Debian, or else exim4 mail server will be installed with cockpit</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>cockpit<span class="w"> </span>cockpit-machines
 </code></pre></div>
 
-<p>$ sudo systemctl enable --now libvirtd
-$ sudo systemctl start libvirtd
-$ sudo systemctl enable --now cockpit.socket</p>
-<div class="highlight"><pre><span></span><code><span class="n">To</span><span class="w"> </span><span class="n">log</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">Cockpit</span><span class="p">,</span><span class="w"> </span><span class="nb">open</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">web</span><span class="w"> </span><span class="n">browser</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">localhost</span><span class="p">:</span><span class="mi">9090</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">enter</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">Linux</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">password</span><span class="o">.</span>
-
-<span class="n">Reference</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">redhat</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">sysadmin</span><span class="o">/</span><span class="n">intro</span><span class="o">-</span><span class="n">cockpit</span><span class="o">&gt;</span>
-
-<span class="c1">## Virtual machines in Cockpit</span>
-
-<span class="n">Click</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">Virtual</span><span class="w"> </span><span class="n">machines</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="nb">open</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">virtual</span><span class="w"> </span><span class="n">machine</span><span class="w"> </span><span class="n">panel</span><span class="o">.</span>
-
-<span class="n">If</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">have</span><span class="w"> </span><span class="n">existing</span><span class="w"> </span><span class="n">virtual</span><span class="w"> </span><span class="n">machines</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">libvirt</span><span class="p">,</span><span class="w"> </span><span class="n">Cockpit</span><span class="w"> </span><span class="n">detects</span><span class="w"> </span><span class="n">them</span><span class="o">.</span><span class="w"> </span><span class="n">Should</span><span class="w"> </span><span class="n">Cockpit</span><span class="w"> </span><span class="n">fail</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">detect</span><span class="w"> </span><span class="n">existing</span><span class="w"> </span><span class="n">virtual</span><span class="w"> </span><span class="n">machines</span><span class="p">,</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="kn">import</span><span class="w"> </span><span class="nn">them</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="n">clicking</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">Import</span><span class="w"> </span><span class="n">VM</span><span class="w"> </span><span class="n">button</span><span class="o">.</span>
-
-<span class="n">Cockpit</span><span class="w"> </span><span class="n">knows</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">virtual</span><span class="w"> </span><span class="n">machine</span><span class="s1">&#39;s state and can start or stop it. In the pop-up menu on the right, you can clone, rename, and delete the virtual machine.</span>
-
-<span class="c1">### Create storage pools with Cockpit</span>
-
-<span class="n">A</span><span class="w"> </span><span class="n">storage</span><span class="w"> </span><span class="n">pool</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="n">space</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">designate</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">being</span><span class="w"> </span><span class="n">available</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">store</span><span class="w"> </span><span class="n">virtual</span><span class="w"> </span><span class="n">machine</span><span class="w"> </span><span class="n">images</span><span class="o">.</span><span class="w"> </span><span class="n">You</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">network</span><span class="w"> </span><span class="n">location</span><span class="p">,</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">iSCSI</span><span class="w"> </span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">filesystem</span><span class="o">.</span>
-
-<span class="n">In</span><span class="w"> </span><span class="n">Cockpit</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">create</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">storage</span><span class="w"> </span><span class="n">pool</span><span class="p">,</span><span class="w"> </span><span class="n">click</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">Storage</span><span class="w"> </span><span class="n">pool</span><span class="w"> </span><span class="n">button</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">top</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">virtual</span><span class="w"> </span><span class="n">machine</span><span class="w"> </span><span class="n">panel</span><span class="o">.</span>
-
-<span class="n">View</span><span class="w"> </span><span class="n">storage</span><span class="w"> </span><span class="n">pools</span>
+<p>Start Cockpit and libvirtd:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>libvirtd
+$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>libvirtd
+$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>cockpit.socket
 </code></pre></div>
 
-<p>$ sudo virsh pool-list --all --details
- Name   State     Autostart   Persistent   Capacity   Allocation   Available</p>
-<hr>
-<p>data   running   yes         yes          1.27 TiB   15.45 GiB    1.25 TiB</p>
-<div class="highlight"><pre><span></span><code><span class="n">If</span><span class="w"> </span><span class="n">no</span><span class="w"> </span><span class="n">storage</span><span class="w"> </span><span class="n">space</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">created</span><span class="p">,</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">default</span><span class="w"> </span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">machines</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">used</span><span class="o">.</span>
-
-<span class="n">Reference</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">access</span><span class="o">.</span><span class="n">redhat</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">documentation</span><span class="o">/</span><span class="n">en</span><span class="o">-</span><span class="n">us</span><span class="o">/</span><span class="n">red_hat_enterprise_linux</span><span class="o">/</span><span class="mi">9</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">configuring_and_managing_virtualization</span><span class="o">/</span><span class="n">managing</span><span class="o">-</span><span class="n">storage</span><span class="o">-</span><span class="k">for</span><span class="o">-</span><span class="n">virtual</span><span class="o">-</span><span class="n">machines_configuring</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="n">managing</span><span class="o">-</span><span class="n">virtualization</span><span class="c1">#assembly_managing-virtual-machine-storage-pools-using-the-cli_managing-storage-for-virtual-machines&gt;</span>
-
-<span class="c1">### Create a new virtual machine</span>
-
-<span class="n">To</span><span class="w"> </span><span class="n">create</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">Virtual</span><span class="w"> </span><span class="n">Machine</span><span class="p">,</span><span class="w"> </span><span class="n">click</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">Create</span><span class="w"> </span><span class="n">VM</span><span class="w"> </span><span class="n">button</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">right</span><span class="w"> </span><span class="n">side</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">virtual</span><span class="w"> </span><span class="n">machine</span><span class="w"> </span><span class="n">panel</span><span class="o">.</span>
-
-<span class="n">You</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">download</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">recent</span><span class="w"> </span><span class="n">operating</span><span class="w"> </span><span class="n">system</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">drop</span><span class="o">-</span><span class="n">down</span><span class="w"> </span><span class="n">list</span><span class="p">,</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">choose</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">ISO</span><span class="w"> </span><span class="n">image</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">local</span><span class="w"> </span><span class="n">drive</span><span class="p">,</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">have</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">virtual</span><span class="w"> </span><span class="n">machine</span><span class="w"> </span><span class="n">boot</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">Preboot</span><span class="w"> </span><span class="n">Execution</span><span class="w"> </span><span class="n">Environment</span><span class="w"> </span><span class="p">(</span><span class="n">PXE</span><span class="p">)</span><span class="w"> </span><span class="n">server</span><span class="o">.</span>
-
-<span class="n">Reference</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">access</span><span class="o">.</span><span class="n">redhat</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">documentation</span><span class="o">/</span><span class="n">en</span><span class="o">-</span><span class="n">us</span><span class="o">/</span><span class="n">red_hat_enterprise_linux</span><span class="o">/</span><span class="mi">9</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">configuring_and_managing_virtualization</span><span class="o">/</span><span class="n">assembly_creating</span><span class="o">-</span><span class="n">virtual</span><span class="o">-</span><span class="n">machines_configuring</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="n">managing</span><span class="o">-</span><span class="n">virtualization</span><span class="o">&gt;</span>
-
-<span class="n">Start</span><span class="w"> </span><span class="n">it</span><span class="p">:</span>
+<p>To log in to Cockpit, open your web browser to localhost:9090 and enter your Linux username and password.</p>
+<p>Reference: <a href="https://www.redhat.com/sysadmin/intro-cockpit">https://www.redhat.com/sysadmin/intro-cockpit</a></p>
+<h2 id="virtual-machines-in-cockpit">Virtual machines in Cockpit</h2>
+<p>Click on Virtual machines to open the virtual machine panel.</p>
+<p>If you have existing virtual machines with libvirt, Cockpit detects them. Should Cockpit fail to detect existing virtual machines, you can import them by clicking the Import VM button.</p>
+<p>Cockpit knows the virtual machine's state and can start or stop it. In the pop-up menu on the right, you can clone, rename, and delete the virtual machine.</p>
+<h3 id="create-storage-pools-with-cockpit">Create storage pools with Cockpit</h3>
+<p>A storage pool is space that you designate as being available to store virtual machine images. You can set a network location, an iSCSI target, or a filesystem.</p>
+<p>In Cockpit, to create a storage pool, click the Storage pool button at the top of the virtual machine panel.</p>
+<p>View storage pools</p>
+<div class="highlight"><pre><span></span><code><span class="c">$ sudo virsh pool</span><span class="nb">-</span><span class="c">list </span><span class="nb">--</span><span class="c">all </span><span class="nb">--</span><span class="c">details</span>
+<span class="c"> Name   State     Autostart   Persistent   Capacity   Allocation   Available</span>
+<span class="nb">------------------------------------------------------------------------------</span>
+<span class="c"> data   running   yes         yes          1</span><span class="nt">.</span><span class="c">27 TiB   15</span><span class="nt">.</span><span class="c">45 GiB    1</span><span class="nt">.</span><span class="c">25 TiB</span>
 </code></pre></div>
 
-<p>virsh --connect qemu:///system start almalinux9-2023-10-6</p>
-<div class="highlight"><pre><span></span><code>Restart install:
+<p>If no storage space is created, the default /var/lib/machines will be used.</p>
+<p>Reference: <a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_and_managing_virtualization/managing-storage-for-virtual-machines_configuring-and-managing-virtualization#assembly_managing-virtual-machine-storage-pools-using-the-cli_managing-storage-for-virtual-machines">https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_and_managing_virtualization/managing-storage-for-virtual-machines_configuring-and-managing-virtualization#assembly_managing-virtual-machine-storage-pools-using-the-cli_managing-storage-for-virtual-machines</a></p>
+<h3 id="create-a-new-virtual-machine">Create a new virtual machine</h3>
+<p>To create a new Virtual Machine, click the Create VM button on the right side of the virtual machine panel.</p>
+<p>You can download a recent operating system version from a drop-down list, or you can choose an ISO image on your local drive, or you can have the virtual machine boot from a Preboot Execution Environment (PXE) server.</p>
+<p>Reference: <a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_and_managing_virtualization/assembly_creating-virtual-machines_configuring-and-managing-virtualization">https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_and_managing_virtualization/assembly_creating-virtual-machines_configuring-and-managing-virtualization</a></p>
+<p>Start it:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">virsh</span><span class="w"> </span><span class="o">--</span><span class="k">connect</span><span class="w"> </span><span class="nv">qemu</span>:<span class="o">///</span><span class="nv">system</span><span class="w"> </span><span class="nv">start</span><span class="w"> </span><span class="nv">almalinux9</span><span class="o">-</span><span class="mi">2023</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">6</span>
 </code></pre></div>
 
-<p>$ sudo virt-install --connect qemu:///system --quiet --os-variant almalinux9 --reinstall almalinux9-2023-10-6 --wait -1 --noautoconsole --install os=almalinux9 </p>
-<div class="highlight"><pre><span></span><code>### Examine a virtual machine
-
-Display the info about your virtual machines
+<p>Restart install:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>virt-install<span class="w"> </span>--connect<span class="w"> </span>qemu:///system<span class="w"> </span>--quiet<span class="w"> </span>--os-variant<span class="w"> </span>almalinux9<span class="w"> </span>--reinstall<span class="w"> </span>almalinux9-2023-10-6<span class="w"> </span>--wait<span class="w"> </span>-1<span class="w"> </span>--noautoconsole<span class="w"> </span>--install<span class="w"> </span><span class="nv">os</span><span class="o">=</span>almalinux9<span class="w"> </span>
 </code></pre></div>
 
-<p>$ virt-host-validate</p>
-<p>QEMU: Checking for hardware virtualization                                 : PASS
-QEMU: Checking if device /dev/kvm exists                                   : PASS
-QEMU: Checking if device /dev/kvm is accessible                            : PASS
-QEMU: Checking if device /dev/vhost-net exists                             : PASS
-QEMU: Checking if device /dev/net/tun exists                               : PASS
-QEMU: Checking for cgroup 'cpu' controller support                         : PASS
-QEMU: Checking for cgroup 'cpuacct' controller support                     : PASS
-QEMU: Checking for cgroup 'cpuset' controller support                      : PASS
-QEMU: Checking for cgroup 'memory' controller support                      : PASS
-QEMU: Checking for cgroup 'devices' controller support                     : WARN (Enable 'devices' in kernel Kconfig file or mount/enable cgroup controller in your system)
-QEMU: Checking for cgroup 'blkio' controller support                       : PASS
-QEMU: Checking for device assignment IOMMU support                         : PASS
-QEMU: Checking if IOMMU is enabled by kernel                               : WARN (IOMMU appears to be disabled in kernel. Add intel_iommu=on to kernel cmdline arguments)
-QEMU: Checking for secure guest support                                    : WARN (Unknown if this platform has Secure Guest support)</p>
-<div class="highlight"><pre><span></span><code>Start a VM
+<h3 id="examine-a-virtual-machine">Examine a virtual machine</h3>
+<p>Display the info about your virtual machines</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>virt-host-validate
+
+QEMU:<span class="w"> </span>Checking<span class="w"> </span><span class="k">for</span><span class="w"> </span>hardware<span class="w"> </span>virtualization<span class="w">                                 </span>:<span class="w"> </span>PASS
+QEMU:<span class="w"> </span>Checking<span class="w"> </span><span class="k">if</span><span class="w"> </span>device<span class="w"> </span>/dev/kvm<span class="w"> </span>exists<span class="w">                                   </span>:<span class="w"> </span>PASS
+QEMU:<span class="w"> </span>Checking<span class="w"> </span><span class="k">if</span><span class="w"> </span>device<span class="w"> </span>/dev/kvm<span class="w"> </span>is<span class="w"> </span>accessible<span class="w">                            </span>:<span class="w"> </span>PASS
+QEMU:<span class="w"> </span>Checking<span class="w"> </span><span class="k">if</span><span class="w"> </span>device<span class="w"> </span>/dev/vhost-net<span class="w"> </span>exists<span class="w">                             </span>:<span class="w"> </span>PASS
+QEMU:<span class="w"> </span>Checking<span class="w"> </span><span class="k">if</span><span class="w"> </span>device<span class="w"> </span>/dev/net/tun<span class="w"> </span>exists<span class="w">                               </span>:<span class="w"> </span>PASS
+QEMU:<span class="w"> </span>Checking<span class="w"> </span><span class="k">for</span><span class="w"> </span>cgroup<span class="w"> </span><span class="s1">&#39;cpu&#39;</span><span class="w"> </span>controller<span class="w"> </span>support<span class="w">                         </span>:<span class="w"> </span>PASS
+QEMU:<span class="w"> </span>Checking<span class="w"> </span><span class="k">for</span><span class="w"> </span>cgroup<span class="w"> </span><span class="s1">&#39;cpuacct&#39;</span><span class="w"> </span>controller<span class="w"> </span>support<span class="w">                     </span>:<span class="w"> </span>PASS
+QEMU:<span class="w"> </span>Checking<span class="w"> </span><span class="k">for</span><span class="w"> </span>cgroup<span class="w"> </span><span class="s1">&#39;cpuset&#39;</span><span class="w"> </span>controller<span class="w"> </span>support<span class="w">                      </span>:<span class="w"> </span>PASS
+QEMU:<span class="w"> </span>Checking<span class="w"> </span><span class="k">for</span><span class="w"> </span>cgroup<span class="w"> </span><span class="s1">&#39;memory&#39;</span><span class="w"> </span>controller<span class="w"> </span>support<span class="w">                      </span>:<span class="w"> </span>PASS
+QEMU:<span class="w"> </span>Checking<span class="w"> </span><span class="k">for</span><span class="w"> </span>cgroup<span class="w"> </span><span class="s1">&#39;devices&#39;</span><span class="w"> </span>controller<span class="w"> </span>support<span class="w">                     </span>:<span class="w"> </span>WARN<span class="w"> </span><span class="o">(</span>Enable<span class="w"> </span><span class="s1">&#39;devices&#39;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>kernel<span class="w"> </span>Kconfig<span class="w"> </span>file<span class="w"> </span>or<span class="w"> </span>mount/enable<span class="w"> </span>cgroup<span class="w"> </span>controller<span class="w"> </span><span class="k">in</span><span class="w"> </span>your<span class="w"> </span>system<span class="o">)</span>
+QEMU:<span class="w"> </span>Checking<span class="w"> </span><span class="k">for</span><span class="w"> </span>cgroup<span class="w"> </span><span class="s1">&#39;blkio&#39;</span><span class="w"> </span>controller<span class="w"> </span>support<span class="w">                       </span>:<span class="w"> </span>PASS
+QEMU:<span class="w"> </span>Checking<span class="w"> </span><span class="k">for</span><span class="w"> </span>device<span class="w"> </span>assignment<span class="w"> </span>IOMMU<span class="w"> </span>support<span class="w">                         </span>:<span class="w"> </span>PASS
+QEMU:<span class="w"> </span>Checking<span class="w"> </span><span class="k">if</span><span class="w"> </span>IOMMU<span class="w"> </span>is<span class="w"> </span>enabled<span class="w"> </span>by<span class="w"> </span>kernel<span class="w">                               </span>:<span class="w"> </span>WARN<span class="w"> </span><span class="o">(</span>IOMMU<span class="w"> </span>appears<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>disabled<span class="w"> </span><span class="k">in</span><span class="w"> </span>kernel.<span class="w"> </span>Add<span class="w"> </span><span class="nv">intel_iommu</span><span class="o">=</span>on<span class="w"> </span>to<span class="w"> </span>kernel<span class="w"> </span>cmdline<span class="w"> </span>arguments<span class="o">)</span>
+QEMU:<span class="w"> </span>Checking<span class="w"> </span><span class="k">for</span><span class="w"> </span>secure<span class="w"> </span>guest<span class="w"> </span>support<span class="w">                                    </span>:<span class="w"> </span>WARN<span class="w"> </span><span class="o">(</span>Unknown<span class="w"> </span><span class="k">if</span><span class="w"> </span>this<span class="w"> </span>platform<span class="w"> </span>has<span class="w"> </span>Secure<span class="w"> </span>Guest<span class="w"> </span>support<span class="o">)</span>
 </code></pre></div>
 
-<p>$ sudo virsh start demo-guest1</p>
-<div class="highlight"><pre><span></span><code>Stop a VM
+<p>Start a VM</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>virsh<span class="w"> </span>start<span class="w"> </span>demo-guest1
 </code></pre></div>
 
-<p>$ sudo virsh shutdown demo-guest1</p>
-<div class="highlight"><pre><span></span><code><span class="nx">VM</span><span class="w"> </span><span class="nx">Diagnostics</span><span class="p">:</span><span class="w"> </span><span class="p">&lt;</span><span class="nx">https</span><span class="p">:</span><span class="c1">//access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_and_managing_virtualization/diagnosing-virtual-machine-problems_configuring-and-managing-virtualization&gt;</span>
+<p>Stop a VM</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>virsh<span class="w"> </span>shutdown<span class="w"> </span>demo-guest1
+</code></pre></div>
 
-<span class="err">###</span><span class="w"> </span><span class="nx">Network</span><span class="w"> </span><span class="nx">on</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="kd">virtual</span><span class="w"> </span><span class="nx">machine</span>
-
-<span class="err">####</span><span class="w"> </span><span class="nx">NAT</span><span class="w"> </span><span class="nx">VM</span><span class="w"> </span><span class="nx">Network</span><span class="w"> </span><span class="p">(</span><span class="nx">VM</span><span class="w"> </span><span class="nx">network</span><span class="w"> </span><span class="o">*</span><span class="k">default</span><span class="o">*</span><span class="p">)</span>
-
-<span class="nx">By</span><span class="w"> </span><span class="o">*</span><span class="k">default</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">newly</span><span class="w"> </span><span class="nx">created</span><span class="w"> </span><span class="nx">VM</span><span class="w"> </span><span class="nx">connects</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">NAT</span><span class="o">-</span><span class="k">type</span><span class="w"> </span><span class="nx">network</span><span class="w"> </span><span class="nx">that</span><span class="w"> </span><span class="nx">uses</span><span class="w"> </span><span class="nx">virbr0</span><span class="p">,</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="kd">virtual</span><span class="w"> </span><span class="nx">bridge</span><span class="w"> </span><span class="nx">on</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">host</span><span class="p">.</span><span class="w"> </span><span class="nx">This</span><span class="w"> </span><span class="nx">ensures</span><span class="w"> </span><span class="nx">that</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">VM</span><span class="w"> </span><span class="nx">can</span><span class="w"> </span><span class="nx">use</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">host</span><span class="err">’</span><span class="nx">s</span><span class="w"> </span><span class="nx">network</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nx">controller</span><span class="w"> </span><span class="p">(</span><span class="nx">NIC</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nx">connecting</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">outside</span><span class="w"> </span><span class="nx">networks</span><span class="p">,</span><span class="w"> </span><span class="nx">but</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">VM</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="o">*</span><span class="k">not</span><span class="w"> </span><span class="nx">reachable</span><span class="w"> </span><span class="nx">from</span><span class="w"> </span><span class="kd">external</span><span class="w"> </span><span class="nx">systems</span><span class="o">*</span><span class="p">.</span>
-
-<span class="p">&gt;</span><span class="w"> </span><span class="nx">See</span><span class="w"> </span><span class="nx">file</span><span class="w"> </span><span class="o">/</span><span class="nx">etc</span><span class="o">/</span><span class="nx">libvirt</span><span class="o">/</span><span class="nx">network</span><span class="o">/</span><span class="k">default</span><span class="p">.</span><span class="nx">xml</span>
-
-
-<span class="err">```</span><span class="w"> </span><span class="nx">mermaid</span>
-<span class="nx">graph</span><span class="w"> </span><span class="nx">TD</span><span class="p">;</span>
-<span class="w">        </span><span class="nx">Router</span><span class="p">&lt;</span><span class="o">---&gt;</span><span class="nx">eth0</span><span class="p">;</span>
-<span class="w">        </span><span class="nx">PhysicalHost</span><span class="p">&lt;</span><span class="o">--</span><span class="p">&gt;</span><span class="nx">eth0</span><span class="p">;</span>
-<span class="w">        </span><span class="nx">NAT</span><span class="o">-</span><span class="nx">virbr0</span><span class="o">--</span><span class="p">&gt;</span><span class="nx">eth0</span><span class="p">;</span>
-<span class="w">        </span><span class="nx">VM</span><span class="o">--</span><span class="p">&gt;</span><span class="nx">NAT</span><span class="o">-</span><span class="nx">virbr0</span><span class="p">;</span>
+<p>VM Diagnostics: <a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_and_managing_virtualization/diagnosing-virtual-machine-problems_configuring-and-managing-virtualization">https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_and_managing_virtualization/diagnosing-virtual-machine-problems_configuring-and-managing-virtualization</a></p>
+<h3 id="network-on-a-virtual-machine">Network on a virtual machine</h3>
+<h4 id="nat-vm-network-vm-network-default">NAT VM Network (VM network <em>default</em>)</h4>
+<p>By <em>default</em>, a newly created VM connects to a NAT-type network that uses virbr0, the default virtual bridge on the host. This ensures that the VM can use the host’s network interface controller (NIC) for connecting to outside networks, but the VM is <em>not reachable from external systems</em>.</p>
+<blockquote>
+<p>See file /etc/libvirt/network/default.xml</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">TD</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Router</span><span class="o">&lt;---&gt;</span><span class="n">eth0</span><span class="p">;</span>
+<span class="w">        </span><span class="n">PhysicalHost</span><span class="o">&lt;--&gt;</span><span class="n">eth0</span><span class="p">;</span>
+<span class="w">        </span><span class="n">NAT</span><span class="o">-</span><span class="n">virbr0</span><span class="o">--&gt;</span><span class="n">eth0</span><span class="p">;</span>
+<span class="w">        </span><span class="n">VM</span><span class="o">--&gt;</span><span class="n">NAT</span><span class="o">-</span><span class="n">virbr0</span><span class="p">;</span>
 </code></pre></div>
 
 <h4 id="bridged-vm-network-physical-host-bridge">Bridged VM Network (Physical Host <em>bridge</em>)</h4>

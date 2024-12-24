@@ -113,7 +113,77 @@
 </footer><!-- /.post-info -->      <h1 id="e-mail">E-Mail</h1>
 <p>Electronic Mail (E-Mail) is a way to type letters onto a computer and send them to other people. These other people's computers will then use E-Mail to read your letters. It is an electronic version of the Post Office.</p>
 <hr>
-<p>[ TOC ]</p>
+<div class="toc"><span class="toctitle">Table of Contents</span><ul>
+<li><a href="#e-mail">E-Mail</a><ul>
+<li><a href="#dovecot-presents-e-mails-to-clients">Dovecot - Presents E-Mails to Clients</a><ul>
+<li><a href="#installation">Installation</a><ul>
+<li><a href="#debian">Debian</a></li>
+<li><a href="#redhat">RedHat</a></li>
+</ul>
+</li>
+<li><a href="#user-settings">User Settings</a></li>
+<li><a href="#non-default-settings">Non-Default Settings</a></li>
+<li><a href="#update-systemd-startup-service">Update systemd startup service</a></li>
+<li><a href="#sieve-filters-mail-to-certain-boxes">Sieve - filters mail to certain boxes</a></li>
+</ul>
+</li>
+<li><a href="#postfix-sends-and-recieves-e-mail-over-the-network">Postfix - sends and recieves e-mail over the network</a><ul>
+<li><a href="#configuration-main">Configuration - main</a></li>
+<li><a href="#configuration-login">Configuration - Login</a></li>
+<li><a href="#configuration-master">Configuration - Master</a></li>
+</ul>
+</li>
+<li><a href="#spamassasin-puts-spam-into-a-spam-folder-automatically">Spamassasin - Puts SPAM into a SPAM folder automatically</a><ul>
+<li><a href="#configure">Configure</a></li>
+<li><a href="#start-spamassassin-and-restart-postfix">Start spamassassin and restart postfix</a></li>
+<li><a href="#daily-update-in-etccrondaily">Daily update in /etc/cron.daily</a></li>
+<li><a href="#put-spamham-learning-into-a-script">Put spam/ham learning into a script</a></li>
+</ul>
+</li>
+<li><a href="#mail-readers">Mail Readers</a><ul>
+<li><a href="#mutt">Mutt</a><ul>
+<li><a href="#install">Install</a></li>
+<li><a href="#configure_1">Configure</a></li>
+</ul>
+</li>
+<li><a href="#evolution">Evolution</a><ul>
+<li><a href="#install_1">Install</a></li>
+<li><a href="#configure_2">Configure</a></li>
+</ul>
+</li>
+<li><a href="#thunderbird">Thunderbird</a><ul>
+<li><a href="#install_2">Install</a></li>
+<li><a href="#configure_3">Configure</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#offlineimap-makes-a-backup-copy-of-all-email">Offlineimap - Makes a backup copy of all email</a><ul>
+<li><a href="#install_3">Install</a></li>
+<li><a href="#configure_4">Configure</a></li>
+<li><a href="#schedule">Schedule</a></li>
+</ul>
+</li>
+<li><a href="#postfix-log-summary">Postfix Log Summary</a><ul>
+<li><a href="#install_4">Install</a></li>
+<li><a href="#schedule_1">Schedule</a></li>
+</ul>
+</li>
+<li><a href="#alternatives">Alternatives</a><ul>
+<li><a href="#exim4">exim4</a><ul>
+<li><a href="#what-it-does">What it does</a></li>
+</ul>
+</li>
+<li><a href="#iredmail">iRedMail</a></li>
+<li><a href="#mail-in-a-box">Mail-in-a-Box</a></li>
+<li><a href="#citadel">Citadel</a></li>
+</ul>
+</li>
+<li><a href="#continue">Continue</a></li>
+</ul>
+</li>
+</ul>
+</div>
 <hr>
 <p>Electronic Mail (E-Mail) is a way to type letters onto a computer and send them to other people. These other people's computers will then use E-Mail to read your letters. It is an electronic version of the Post Office.</p>
 <h2 id="dovecot-presents-e-mails-to-clients">Dovecot - Presents E-Mails to Clients</h2>

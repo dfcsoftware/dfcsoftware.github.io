@@ -7,7 +7,7 @@
         <title>NAS</title>
         <link rel="stylesheet" href="https://dfcsoftware.github.io/theme/css/main.css" />
         <link href="https://dfcsoftware.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Linux Home Administration Atom Feed" />
-        <meta name="description" content="Network File Systems in a secure network are my home away from home. I used to have files scattered all over until i mounted NFS on every host. As..." />
+        <meta name="description" content="Network Attached Storage (NAS) The NAS provides a safe place to store important data. Set this up before running E-Mail or a cloud service because..." />
 </head>
 
 <body id="index" class="home">
@@ -83,8 +83,7 @@
                 </table>
                 <nav><ul>
                     <li><a href="https://dfcsoftware.github.io/category/forest.html">forest</a></li>
-                    <li class="active"><a href="https://dfcsoftware.github.io/category/fosstodon.html">fosstodon</a></li>
-                    <li><a href="https://dfcsoftware.github.io/category/linux.html">linux</a></li>
+                    <li class="active"><a href="https://dfcsoftware.github.io/category/linux.html">linux</a></li>
                     <li><a href="https://dfcsoftware.github.io/category/writing.html">writing</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
@@ -98,20 +97,398 @@
 
     <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2023-02-02T00:41:54+00:00">
-                Published: Thu 02 February 2023
+        <abbr class="published" title="2023-01-25T10:20:00-05:00">
+                Published: Wed 25 January 2023
+        </abbr>
+		<br />
+        <abbr class="modified" title="2024-04-19T09:30:00-04:00">
+                Updated: Fri 19 April 2024
         </abbr>
 
         <address class="vcard author">
                 By                         <a class="url fn" href="https://dfcsoftware.github.io/author/don-cohoon.html">Don Cohoon</a>
         </address>
-<p>In <a href="https://dfcsoftware.github.io/category/fosstodon.html">fosstodon</a>.</p>
+<p>In <a href="https://dfcsoftware.github.io/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://dfcsoftware.github.io/tag/linux.html">linux</a> <a href="https://dfcsoftware.github.io/tag/systems.html">systems</a> <a href="https://dfcsoftware.github.io/tag/hardware.html">hardware</a> </p>
+</footer><!-- /.post-info -->      <h1 id="network-attached-storage-nas">Network Attached Storage (NAS)</h1>
+<p>The NAS provides a safe place to store important data. Set this up before running E-Mail or a cloud service because it is the best place to put important files. If an E-Mail server crashes you still have all your E-Mail files on the NFS (see below) attached NAS server. That's what it's for.</p>
+<hr>
+<div class="toc"><span class="toctitle">Table of Contents</span><ul>
+<li><a href="#network-attached-storage-nas">Network Attached Storage (NAS)</a><ul>
+<li><a href="#truenas-storage">TrueNAS Storage</a><ul>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#configuration">Configuration</a></li>
+</ul>
+</li>
+<li><a href="#1-httpswwwtruenascomdocsscalegettingstartedinstallconsolesetupmenuscale">1. https://www.truenas.com/docs/scale/gettingstarted/install/consolesetupmenuscale/</a></li>
+<li><a href="#2-httpswwwtruenascomdocsscalegettingstartedinstallsetupstoragescale">2. https://www.truenas.com/docs/scale/gettingstarted/install/setupstoragescale/</a></li>
+<li><a href="#3-httpswwwtruenascomdocsscalegettingstartedinstallsetupsharing">3. https://www.truenas.com/docs/scale/gettingstarted/install/setupsharing/</a></li>
+<li><a href="#4-httpswwwtruenascomdocsscalegettingstartedinstallsetupbackupscale">4. https://www.truenas.com/docs/scale/gettingstarted/install/setupbackupscale/</a></li>
+</ul>
+</li>
+<li><a href="#unixlinux-server-network-file-system-nfs">Unix/Linux Server - Network File System (NFS)</a><ul>
+<li><a href="#install-nfs-software">Install NFS software</a></li>
+<li><a href="#enable-nfs-service">Enable NFS Service</a></li>
+<li><a href="#create-directory-to-share">Create Directory to Share</a></li>
+<li><a href="#export-share">Export Share</a></li>
+<li><a href="#load-exports-into-live-system">Load exports into live system</a></li>
+<li><a href="#connect-to-nfs-server-from-linux-client">Connect to NFS server from Linux client</a><ul>
+<li><a href="#install-software-on-client">Install Software on Client</a></li>
+<li><a href="#mount-directory">Mount Directory</a></li>
+<li><a href="#make-mount-permanent">Make mount permanent</a></li>
+</ul>
+</li>
+<li><a href="#nfs-mount-on-macos-client">NFS mount on Macos Client</a><ul>
+<li><a href="#create-local-directory">Create local directory</a></li>
+<li><a href="#mount">Mount</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#microsoft-windows-smbcifs">Microsoft Windows (SMB/CIFS)</a><ul>
+<li><a href="#disabling-the-automatic-printer-sharing">Disabling the Automatic Printer Sharing</a></li>
+<li><a href="#restart-samba">Restart Samba</a></li>
+<li><a href="#add-linux-owner">Add Linux owner</a></li>
+<li><a href="#add-smb-user">Add SMB User</a></li>
+<li><a href="#secure-the-filesystem">Secure the filesystem</a></li>
+<li><a href="#samba-share-mount-on-linux-client">Samba Share mount on Linux client</a></li>
+<li><a href="#samba-share-mount-on-mac-client">Samba Share mount on Mac client</a></li>
+</ul>
+</li>
+<li><a href="#mirror-disks-for-failure-protection">Mirror Disks for Failure Protection</a></li>
+<li><a href="#virtual-machines">Virtual Machines</a></li>
+<li><a href="#continue">Continue</a></li>
+</ul>
+</div>
+<hr>
+<p>Three (common) ways to do this:</p>
+<ol>
+<li>TrueNAS Storage</li>
+<li>Microsoft Windows - SMB/CIFS</li>
+<li>Linux - NFS</li>
+</ol>
+<blockquote>
+<p>TrueNAS supports SMB/CIFS, NFS and several other protocols.</p>
+</blockquote>
+<h2 id="truenas-storage">TrueNAS Storage</h2>
+<p>This is a complete machine install that creates a TrueNAS Application <em>and</em> the operating system using either:</p>
+<ul>
+<li>Operating System -&gt; FreeBSD; TrueNAS -&gt; Core [1]</li>
+<li>Operating System -&gt; Linux;   TrueNAS -&gt; Scale [2]</li>
+</ul>
+<p>Personally I use Linux after running FreeBSD for years. Both have a complete Graphical Web Interface (GWI), with no need to learn the operating system details. Be aware this package will <strong>take over the whole machine</strong> and you <em>should not</em> install other packages or change the configuration without using the provided GWI.</p>
+<p>Additionally TrueNAS enables apps [3] to be installed with a single click. These are docker containers running the newer versions of popular applications.</p>
+<ol>
+<li><a href="https://www.truenas.com/download-truenas-core/#">https://www.truenas.com/download-truenas-core/#</a></li>
+<li><a href="https://www.truenas.com/download-truenas-scale/">https://www.truenas.com/download-truenas-scale/</a></li>
+<li><a href="https://www.truenas.com/apps/">https://www.truenas.com/apps/</a></li>
+</ol>
+<h3 id="installation">Installation</h3>
+<ul>
+<li>
+<p>Make sure you have at least three disks/SSDs. One for the Operating System (OS) and at least two more for data. An ideal setup would be one M2 on the motherboard for the OS, and five SATA disks (NAS friendly). Also at least 32GB RAM and a PCI 1Gbit ethernet network board.</p>
+</li>
+<li>
+<p>Download the iso image here:</p>
+</li>
+</ul>
+<p><a href="https://www.truenas.com/download-truenas-scale/">https://www.truenas.com/download-truenas-scale/</a></p>
+<ul>
+<li>Boot into the new image with a bootable USB stick  and do the install:</li>
+</ul>
+<p><a href="https://www.truenas.com/docs/scale/gettingstarted/install/installingscale/">https://www.truenas.com/docs/scale/gettingstarted/install/installingscale/</a></p>
+<h3 id="configuration">Configuration</h3>
+<ul>
+<li>Console Setup Menu Configuration [1]</li>
+</ul>
+<p>This article provides instructions on configuration network settings using the Console setup menu after you install TrueNAS SCALE from the iso file.</p>
+<h2 id="1-httpswwwtruenascomdocsscalegettingstartedinstallconsolesetupmenuscale">1. <a href="https://www.truenas.com/docs/scale/gettingstarted/install/consolesetupmenuscale/">https://www.truenas.com/docs/scale/gettingstarted/install/consolesetupmenuscale/</a></h2>
+<ul>
+<li>Setting Up Storage [2]</li>
+</ul>
+<p>This article provides basic instructions for setting up your first storage pool, and also provides storage requirement information.</p>
+<h2 id="2-httpswwwtruenascomdocsscalegettingstartedinstallsetupstoragescale">2. <a href="https://www.truenas.com/docs/scale/gettingstarted/install/setupstoragescale/">https://www.truenas.com/docs/scale/gettingstarted/install/setupstoragescale/</a></h2>
+<ul>
+<li>Setting Up Data Sharing [3]</li>
+</ul>
+<p>This article provides general information on setting up basic data sharing on TrueNAS SCALE.</p>
+<h2 id="3-httpswwwtruenascomdocsscalegettingstartedinstallsetupsharing">3. <a href="https://www.truenas.com/docs/scale/gettingstarted/install/setupsharing/">https://www.truenas.com/docs/scale/gettingstarted/install/setupsharing/</a></h2>
+<ul>
+<li>Backing Up TrueNAS [4]</li>
+</ul>
+<p>This article provides general information and instructions on setting up storage data backup solutions and saving the system configuration file in TrueNAS SCALE.</p>
+<h2 id="4-httpswwwtruenascomdocsscalegettingstartedinstallsetupbackupscale">4. <a href="https://www.truenas.com/docs/scale/gettingstarted/install/setupbackupscale/">https://www.truenas.com/docs/scale/gettingstarted/install/setupbackupscale/</a></h2>
+<p><strong>Set Admin User:</strong> Enable your personal userid for administration and use it to log into the web interface instead of root.</p>
+<ul>
+<li>
+<p>Add groups 544(builtin_administrators) and 27(sudo) as secondary groups to your personal user via the web interface.</p>
+</li>
+<li>
+<p>Credentials &gt; Local Users &gt;</p>
+</li>
+<li>Un-click 'Show Built-in Users' on  the top right</li>
+<li>Find user, select it, then edit</li>
+<li>Auxiliary Groups &gt; add: sudo and builtin_administrators</li>
+</ul>
+<blockquote>
+<p>For Core -&gt; Scale upgrades, you may need to unmount /var/tmp/firmware to unpack the update archive. Filesystem /var has more disk space.  <code>umount -f /var/tmp/firmware</code></p>
+</blockquote>
+<p>There is a large community of support around each of these, ready for research and question asking.</p>
+<p>It supports Redundant Array of Disks using ZFS [1], so one disk failure will not interrupt a running system, and you can <em>replace a failed drive</em> [2] (check out the GUI action) without loss of data.</p>
+<p>If you do not use TrueNAS, at least <em>Mirror your Disks</em> [3]</p>
+<ol>
+<li><a href="https://en.wikipedia.org/wiki/ZFS">https://en.wikipedia.org/wiki/ZFS</a></li>
+<li><a href="NAS_Disk_Replacement.html">NAS_Disk_Replacement</a></li>
+<li><a href="Mirror_Disks.html">Mirror_Disks</a></li>
+</ol>
+<h1 id="unixlinux-server-network-file-system-nfs">Unix/Linux Server - Network File System (NFS)</h1>
+<p>NFS allow one server to share it's filesystem to another server. To the other server the file system appears to be local, but all changes on the local client are actually done on the remote NFS server.</p>
+<h3 id="install-nfs-software">Install NFS software</h3>
+<p>On the server with the physical filesystem:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>nfs-kernel-server
+</code></pre></div>
 
-</footer><!-- /.post-info -->      <p>Network File Systems in a secure network are my home away from home. I used to have files scattered all over until i mounted NFS on every host. </p>
-<p>As usual, here are my notes:</p>
-<p><a href="https://dfcsoftware.github.com/NAS" rel="nofollow noopener noreferrer" target="_blank"><span class="invisible">https://</span><span class="ellipsis">dfcsoftware.github.com/N</span><span class="invisible">AS</span></a></p>
-<p>-Don</p>
-<p><a class="mention hashtag" href="https://fosstodon.org/tags/linux" rel="tag">#<span>linux</span></a> <a class="mention hashtag" href="https://fosstodon.org/tags/opensource" rel="tag">#<span>opensource</span></a> <a class="mention hashtag" href="https://fosstodon.org/tags/nfs" rel="tag">#<span>nfs</span></a></p>
+<h3 id="enable-nfs-service">Enable NFS Service</h3>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>nfs-server
+</code></pre></div>
+
+<h3 id="create-directory-to-share">Create Directory to Share</h3>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/media/nfs
+</code></pre></div>
+
+<h3 id="export-share">Export Share</h3>
+<p>Edit the <code>/etc/exports</code> configuration file. Here, you can configure which directories you’re sharing and who can access them. You can also set specific permissions for the shares to further limit access.</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>vi<span class="w"> </span>/etc/exports
+</code></pre></div>
+
+<p>In the file, each share gets its own line. That line begins with the location of the share on the server machine. Across from that, you can list the hostname of an accepted client, if is available in the server’s hosts file, or an IP or range of IPs. Directly behind the IP address, place the rules for the share in a set of parenthesis. Altogether, it should look something like this:</p>
+<div class="highlight"><pre><span></span><code>/media/nfs      192.168.1.0/24(rw,sync,no_subtree_check)
+</code></pre></div>
+
+<p>You can include as many shares as you like, provided each has its own line. You can also include more than one hostname or IP in each line and assign them different permissions. For example:</p>
+<div class="highlight"><pre><span></span><code>/media/nfs      192.168.1.112(rw,sync,no_subtree_check) 192.168.1.121(ro,sync,no_subtree_check)
+</code></pre></div>
+
+<p>In the second instance, each of those machines could view and read from the share, but only the computer at <code>192.168.1.112</code> could write to it.</p>
+<p>Options:</p>
+<p><code>ro</code> – specifies that the directory may only be mounted as read only<br>
+<code>rw</code> – grants both read and write permissions on the directory<br>
+<code>no_root_squash</code> – is an extremely dangerous option that allows remote root users the same privilege as the root user of the host machine<br>
+<code>subtree_check</code> – specifies that, in the case of a directory is exported instead of an entire filesystem, the host should verify the location of files and directories on the host filesystem<br>
+<code>no_subtree_check</code> – specifies that the host should not check the location of the files being accessed within the host filesystem<br>
+<code>sync</code> – this just ensures that the host keeps any changes uploaded to the shared directory in sync<br>
+<code>async</code> – ignores synchronization checks in favor of increased speed</p>
+<h3 id="load-exports-into-live-system">Load exports into live system</h3>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>exportfs<span class="w"> </span>-arv
+exporting<span class="w"> </span><span class="m">192</span>.168.1.0/24:/media/nfs
+</code></pre></div>
+
+<blockquote>
+<p>You should consider running NFS over a VLAN. The <a href="/linux-in-the-house/2023/february.html">February 2023 Blog</a> has information on setting up a vlan.</p>
+</blockquote>
+<h2 id="connect-to-nfs-server-from-linux-client">Connect to NFS server from Linux client</h2>
+<h3 id="install-software-on-client">Install Software on Client</h3>
+<p>On the remote server, access the NFS share over the network.</p>
+<p>Debian:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>nfs-common
+</code></pre></div>
+
+<p>Redhat:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>nfs-utils
+</code></pre></div>
+
+<p>See what servers are available. This also shows <em>allowed</em> IP addresses, so make sure <em>yours</em> is in the list.</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>showmount<span class="w"> </span>-e<span class="w"> </span>nas01
+Exports<span class="w"> </span>list<span class="w"> </span>on<span class="w"> </span>nas01:
+/mnt/nfs<span class="w"> </span><span class="m">192</span>.168.1.2<span class="w"> </span><span class="m">192</span>.168.1.3<span class="w">      </span>
+</code></pre></div>
+
+<h3 id="mount-directory">Mount Directory</h3>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/media/share
+
+$<span class="w"> </span>sudo<span class="w"> </span>mount<span class="w"> </span>-t<span class="w"> </span>nfs4<span class="w"> </span><span class="m">192</span>.168.1.110:/media/nfs<span class="w"> </span>/media/share
+</code></pre></div>
+
+<h3 id="make-mount-permanent">Make mount permanent</h3>
+<p>Add an entry to file /etc/fstab</p>
+<div class="highlight"><pre><span></span><code><span class="mf">192.168.1.110</span><span class="p">:</span><span class="o">/</span><span class="n">media</span><span class="o">/</span><span class="n">nfs</span><span class="w">    </span><span class="o">/</span><span class="n">media</span><span class="o">/</span><span class="n">share</span><span class="w">    </span><span class="n">nfs4</span><span class="w">    </span><span class="kd">def</span><span class="n">aults</span><span class="p">,</span><span class="n">user</span><span class="p">,</span><span class="n">exec</span><span class="w">     </span><span class="mf">0</span><span class="w">   </span><span class="mf">0</span>
+</code></pre></div>
+
+<p>Add <code>noauto</code> to the list of options to prevent your system from trying to mount it automatically.</p>
+<div class="highlight"><pre><span></span><code># NAS
+192.168.1.2:/mnt/nfs /data nfs rw,soft,intr,rsize=8192,wsize=8192,timeo=300,nofail,nolock 0 0
+</code></pre></div>
+
+<p>Reference: <a href="https://linuxconfig.org/how-to-configure-nfs-on-linux">https://linuxconfig.org/how-to-configure-nfs-on-linux</a></p>
+<h2 id="nfs-mount-on-macos-client">NFS mount on Macos Client</h2>
+<p>See what servers are available. This also shows <em>allowed</em> IP addresses, so make sure <em>yours</em> is in the list.</p>
+<div class="highlight"><pre><span></span><code><span class="c">% showmount -e nas01</span>
+<span class="n">Exports</span><span class="w"> </span><span class="s">list</span><span class="w"> </span><span class="s">on</span><span class="w"> </span><span class="s">nas01:</span>
+<span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">nfs</span><span class="w"> </span><span class="mf">192.168</span><span class="p">.</span><span class="mf">1.2</span><span class="w"> </span><span class="mf">192.168</span><span class="p">.</span><span class="mf">1.3</span><span class="w">      </span>
+</code></pre></div>
+
+<h3 id="create-local-directory">Create local directory</h3>
+<div class="highlight"><pre><span></span><code><span class="c">% mkdir $HOME/nfs</span>
+</code></pre></div>
+
+<h3 id="mount">Mount</h3>
+<p>Create a directory, say <code>/Users/don/nfs</code>, then mount nfs on it:</p>
+<div class="highlight"><pre><span></span><code><span class="c">% sudo mount -o rw -t nfs nas01:/nfs /Users/don/nfs</span>
+</code></pre></div>
+
+<p>Optional performance options</p>
+<div class="highlight"><pre><span></span><code>sudo mount -t nfs -o soft,intr,rsize=8192,wsize=8192,timeo=900,retrans=3,proto=tcp nas01:/nfs /Users/don/nfs
+</code></pre></div>
+
+<h1 id="microsoft-windows-smbcifs">Microsoft Windows (SMB/CIFS)</h1>
+<p>This is done on Linux using Samba software.</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>samba<span class="w"> </span>samba-common-bin
+</code></pre></div>
+
+<p>At the bottom of the config file, add:</p>
+<div class="highlight"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">sudo</span><span class="w"> </span><span class="n">vi</span><span class="w"> </span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">samba</span><span class="o">/</span><span class="n">smb</span><span class="p">.</span><span class="n">conf</span>
+
+<span class="o">~</span>
+<span class="o">[</span><span class="n">shared</span><span class="o">]</span>
+<span class="k">path</span><span class="o">=/</span><span class="n">mnt</span><span class="o">/</span><span class="n">raid1</span><span class="o">/</span><span class="n">shared</span>
+<span class="n">writeable</span><span class="o">=</span><span class="n">Yes</span>
+<span class="k">create</span><span class="w"> </span><span class="n">mask</span><span class="o">=</span><span class="mi">0777</span>
+<span class="n">directory</span><span class="w"> </span><span class="n">mask</span><span class="o">=</span><span class="mi">0777</span>
+<span class="k">public</span><span class="o">=</span><span class="k">no</span>
+<span class="o">~</span>
+<span class="err">:</span><span class="n">wq</span>
+</code></pre></div>
+
+<h3 id="disabling-the-automatic-printer-sharing">Disabling the Automatic Printer Sharing</h3>
+<p>To disable the automatic printer sharing:</p>
+<p>Add the following parameter to the [global] section of your <code>/etc/samba/smb.conf</code> file:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">load</span><span class="w"> </span><span class="n">printers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">no</span>
+</code></pre></div>
+
+<p>This will disable samba trying to open port 631 TCP every 12 minutes, eliminating ufw block warnings in the syslog.</p>
+<h3 id="restart-samba">Restart Samba</h3>
+<div class="highlight"><pre><span></span><code><span class="o">$</span><span class="w"> </span><span class="n">sudo</span><span class="w"> </span><span class="n">systemctl</span><span class="w"> </span><span class="n">restart</span><span class="w"> </span><span class="n">smbd</span>
+<span class="o">$</span><span class="w"> </span><span class="n">sudo</span><span class="w"> </span><span class="n">systemctl</span><span class="w"> </span><span class="n">status</span><span class="w"> </span><span class="n">smbd</span>
+<span class="err">●</span><span class="w"> </span><span class="n">smbd</span><span class="o">.</span><span class="n">service</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Samba</span><span class="w"> </span><span class="n">SMB</span><span class="w"> </span><span class="n">Daemon</span>
+<span class="w">   </span><span class="n">Loaded</span><span class="p">:</span><span class="w"> </span><span class="n">loaded</span><span class="w"> </span><span class="p">(</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">systemd</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">smbd</span><span class="o">.</span><span class="n">service</span><span class="p">;</span><span class="w"> </span><span class="n">enabled</span><span class="p">;</span><span class="w"> </span><span class="n">vendor</span><span class="w"> </span><span class="n">preset</span><span class="p">:</span><span class="w"> </span><span class="n">enabled</span><span class="p">)</span>
+<span class="w">   </span><span class="n">Active</span><span class="p">:</span><span class="w"> </span><span class="n">active</span><span class="w"> </span><span class="p">(</span><span class="n">running</span><span class="p">)</span><span class="w"> </span><span class="n">since</span><span class="w"> </span><span class="n">Fri</span><span class="w"> </span><span class="mi">2021</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">26</span><span class="w"> </span><span class="mi">19</span><span class="p">:</span><span class="mi">08</span><span class="p">:</span><span class="mi">12</span><span class="w"> </span><span class="n">UTC</span><span class="p">;</span><span class="w"> </span><span class="mi">5</span><span class="n">s</span><span class="w"> </span><span class="n">ago</span>
+<span class="w">     </span><span class="n">Docs</span><span class="p">:</span><span class="w"> </span><span class="n">man</span><span class="p">:</span><span class="n">smbd</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="w">           </span><span class="n">man</span><span class="p">:</span><span class="n">samba</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+<span class="w">           </span><span class="n">man</span><span class="p">:</span><span class="n">smb</span><span class="o">.</span><span class="n">conf</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="w">  </span><span class="n">Process</span><span class="p">:</span><span class="w"> </span><span class="mi">3337</span><span class="w"> </span><span class="n">ExecStartPre</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">samba</span><span class="o">/</span><span class="n">update</span><span class="o">-</span><span class="n">apparmor</span><span class="o">-</span><span class="n">samba</span><span class="o">-</span><span class="n">profile</span><span class="w"> </span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="n">exited</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="o">=</span><span class="mi">0</span><span class="o">/</span><span class="n">SUCCESS</span><span class="p">)</span>
+<span class="w"> </span><span class="n">Main</span><span class="w"> </span><span class="n">PID</span><span class="p">:</span><span class="w"> </span><span class="mi">3346</span><span class="w"> </span><span class="p">(</span><span class="n">smbd</span><span class="p">)</span>
+<span class="w">   </span><span class="n">Status</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;smbd: ready to serve connections...&quot;</span>
+<span class="w">    </span><span class="n">Tasks</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">(</span><span class="n">limit</span><span class="p">:</span><span class="w"> </span><span class="mi">951</span><span class="p">)</span>
+<span class="w">   </span><span class="n">Memory</span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="n">M</span>
+<span class="w">   </span><span class="n">CGroup</span><span class="p">:</span><span class="w"> </span><span class="o">/</span><span class="n">system</span><span class="o">.</span><span class="n">slice</span><span class="o">/</span><span class="n">smbd</span><span class="o">.</span><span class="n">service</span>
+<span class="w">           </span><span class="err">├─</span><span class="mi">3346</span><span class="w"> </span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">smbd</span><span class="w"> </span><span class="o">--</span><span class="n">foreground</span><span class="w"> </span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">process</span><span class="o">-</span><span class="n">group</span>
+<span class="w">           </span><span class="err">├─</span><span class="mi">3348</span><span class="w"> </span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">smbd</span><span class="w"> </span><span class="o">--</span><span class="n">foreground</span><span class="w"> </span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">process</span><span class="o">-</span><span class="n">group</span>
+<span class="w">           </span><span class="err">├─</span><span class="mi">3349</span><span class="w"> </span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">smbd</span><span class="w"> </span><span class="o">--</span><span class="n">foreground</span><span class="w"> </span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">process</span><span class="o">-</span><span class="n">group</span>
+<span class="w">           </span><span class="err">└─</span><span class="mi">3350</span><span class="w"> </span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">smbd</span><span class="w"> </span><span class="o">--</span><span class="n">foreground</span><span class="w"> </span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">process</span><span class="o">-</span><span class="n">group</span>
+
+<span class="n">Nov</span><span class="w"> </span><span class="mi">26</span><span class="w"> </span><span class="mi">19</span><span class="p">:</span><span class="mi">08</span><span class="p">:</span><span class="mi">09</span><span class="w"> </span><span class="n">beaglebone</span><span class="w"> </span><span class="n">systemd</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span><span class="w"> </span><span class="n">Starting</span><span class="w"> </span><span class="n">Samba</span><span class="w"> </span><span class="n">SMB</span><span class="w"> </span><span class="n">Daemon</span><span class="o">...</span>
+<span class="n">Nov</span><span class="w"> </span><span class="mi">26</span><span class="w"> </span><span class="mi">19</span><span class="p">:</span><span class="mi">08</span><span class="p">:</span><span class="mi">12</span><span class="w"> </span><span class="n">beaglebone</span><span class="w"> </span><span class="n">systemd</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span><span class="w"> </span><span class="n">Started</span><span class="w"> </span><span class="n">Samba</span><span class="w"> </span><span class="n">SMB</span><span class="w"> </span><span class="n">Daemon</span><span class="o">.</span>
+</code></pre></div>
+
+<h3 id="add-linux-owner">Add Linux owner</h3>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>adduser<span class="w"> </span>bone
+Adding<span class="w"> </span>user<span class="w"> </span><span class="sb">`</span>bone<span class="s1">&#39; ...</span>
+<span class="s1">Adding new group `bone&#39;</span><span class="w"> </span><span class="o">(</span><span class="m">1001</span><span class="o">)</span><span class="w"> </span>...
+Adding<span class="w"> </span>new<span class="w"> </span>user<span class="w"> </span><span class="sb">`</span>bone<span class="s1">&#39; (1001) with group `bone&#39;</span><span class="w"> </span>...
+Creating<span class="w"> </span>home<span class="w"> </span>directory<span class="w"> </span><span class="sb">`</span>/home/bone<span class="s1">&#39; ...</span>
+<span class="s1">Copying files from `/etc/skel&#39;</span><span class="w"> </span>...
+New<span class="w"> </span>password:
+Retype<span class="w"> </span>new<span class="w"> </span>password:
+passwd:<span class="w"> </span>password<span class="w"> </span>updated<span class="w"> </span>successfully
+Changing<span class="w"> </span>the<span class="w"> </span>user<span class="w"> </span>information<span class="w"> </span><span class="k">for</span><span class="w"> </span>bone
+Enter<span class="w"> </span>the<span class="w"> </span>new<span class="w"> </span>value,<span class="w"> </span>or<span class="w"> </span>press<span class="w"> </span>ENTER<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>default
+<span class="w">    </span>Full<span class="w"> </span>Name<span class="w"> </span><span class="o">[]</span>:<span class="w"> </span>bone
+<span class="w">    </span>Room<span class="w"> </span>Number<span class="w"> </span><span class="o">[]</span>:
+<span class="w">    </span>Work<span class="w"> </span>Phone<span class="w"> </span><span class="o">[]</span>:
+<span class="w">    </span>Home<span class="w"> </span>Phone<span class="w"> </span><span class="o">[]</span>:
+<span class="w">    </span>Other<span class="w"> </span><span class="o">[]</span>:
+Is<span class="w"> </span>the<span class="w"> </span>information<span class="w"> </span>correct?<span class="w"> </span><span class="o">[</span>Y/n<span class="o">]</span><span class="w"> </span>y
+Adding<span class="w"> </span>new<span class="w"> </span>user<span class="w"> </span><span class="sb">`</span>bone<span class="s1">&#39; to extra groups ...</span>
+<span class="s1">Adding user `bone&#39;</span><span class="w"> </span>to<span class="w"> </span>group<span class="w"> </span><span class="sb">`</span>dialout<span class="s1">&#39; ...</span>
+<span class="s1">Adding user `bone&#39;</span><span class="w"> </span>to<span class="w"> </span>group<span class="w"> </span><span class="sb">`</span>i2c<span class="s1">&#39; ...</span>
+<span class="s1">Adding user `bone&#39;</span><span class="w"> </span>to<span class="w"> </span>group<span class="w"> </span><span class="sb">`</span>spi<span class="s1">&#39; ...</span>
+<span class="s1">Adding user `bone&#39;</span><span class="w"> </span>to<span class="w"> </span>group<span class="w"> </span><span class="sb">`</span>cdrom<span class="s1">&#39; ...</span>
+<span class="s1">Adding user `bone&#39;</span><span class="w"> </span>to<span class="w"> </span>group<span class="w"> </span><span class="sb">`</span>floppy<span class="s1">&#39; ...</span>
+<span class="s1">Adding user `bone&#39;</span><span class="w"> </span>to<span class="w"> </span>group<span class="w"> </span><span class="sb">`</span>audio<span class="s1">&#39; ...</span>
+<span class="s1">Adding user `bone&#39;</span><span class="w"> </span>to<span class="w"> </span>group<span class="w"> </span><span class="sb">`</span>video<span class="s1">&#39; ...</span>
+<span class="s1">Adding user `bone&#39;</span><span class="w"> </span>to<span class="w"> </span>group<span class="w"> </span><span class="sb">`</span>plugdev<span class="s1">&#39; ...</span>
+<span class="s1">Adding user `bone&#39;</span><span class="w"> </span>to<span class="w"> </span>group<span class="w"> </span><span class="sb">`</span>users<span class="err">&#39;</span><span class="w"> </span>...
+</code></pre></div>
+
+<h3 id="add-smb-user">Add SMB User</h3>
+<p>Use different password for SMB:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>smbpasswd<span class="w"> </span>-a<span class="w"> </span>bone
+New<span class="w"> </span>SMB<span class="w"> </span>password:
+Retype<span class="w"> </span>new<span class="w"> </span>SMB<span class="w"> </span>password:
+Added<span class="w"> </span>user<span class="w"> </span>bone.
+</code></pre></div>
+
+<h3 id="secure-the-filesystem">Secure the filesystem</h3>
+<p>If you want to create file shares that are private to individual users, just create their own directory on the RAID array.</p>
+<div class="highlight"><pre><span></span><code>mkdir /mnt/raid1/shared/username
+sudo chown -R username /mnt/raid1/shared/username
+sudo chmod -R 700 /mnt/raid1/shared/username
+</code></pre></div>
+
+<p>Replace username with the user you want. Now only that user can access that directory.</p>
+<p>Alternatively, you can create additional entries in smb.conf for multiple shares.</p>
+<h2 id="samba-share-mount-on-linux-client">Samba Share mount on Linux client</h2>
+<div class="highlight"><pre><span></span><code><span class="c1">//nas/cifs2_share /mnt/share cifs credentials=/home/don/.smbcredentials,rw,noauto,user,uid=1000 0 0 </span>
+</code></pre></div>
+
+<p>Where credentials format is:</p>
+<p>File: /home/don/.smbcrendentials</p>
+<div class="highlight"><pre><span></span><code>user=&lt;name&gt;
+pass=&lt;password&gt;
+</code></pre></div>
+
+<h2 id="samba-share-mount-on-mac-client">Samba Share mount on Mac client</h2>
+<p>File: /Users/don/mount-smb.sh</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/zsh</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">USER</span><span class="o">=</span>&lt;user&gt;
+<span class="nb">export</span><span class="w"> </span><span class="nv">PASS</span><span class="o">=</span>&lt;password&gt;
+<span class="nb">export</span><span class="w"> </span><span class="nv">NAS</span><span class="o">=</span>&lt;<span class="m">192</span>.168.1.8&gt;
+<span class="nb">export</span><span class="w"> </span><span class="nv">HOME</span><span class="o">=</span>/Users/don
+<span class="c1">#</span>
+mkdir<span class="w"> </span>-p<span class="w"> </span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/share
+<span class="c1">#</span>
+/sbin/mount<span class="w"> </span>-t<span class="w"> </span>smbfs<span class="w"> </span>//<span class="si">${</span><span class="nv">USER</span><span class="si">}</span>:<span class="si">${</span><span class="nv">PASS</span><span class="si">}</span>@<span class="si">${</span><span class="nv">NAS</span><span class="si">}</span>/share<span class="w"> </span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/share
+</code></pre></div>
+
+<h1 id="mirror-disks-for-failure-protection">Mirror Disks for Failure Protection</h1>
+<p>TODO: Refer to the <a href="Mirror_Disks.md?fileId=673064">Mirror Disk</a> page.</p>
+<h1 id="virtual-machines">Virtual Machines</h1>
+<ul>
+<li>
+<p>Virtual Machines can be created via the web GUI, selection Virtualization. It uses the qemu/kvm method. If the selection is disabled, you may be able to fix that by going into the system BIOS and enabling the Secure VM (SVM) option or some other tweak.</p>
+</li>
+<li>
+<p>On AMD Ryzen, for example, it is found in the Advanced &gt; Tweaker section. Turn SVM from Disabled to Enabled, and try the VM screen on TrueNAS again.</p>
+</li>
+<li>
+<p>To create a VM, I used these option for Debian 12:</p>
+</li>
+<li>
+<p>Create a DataSet in advance, i.e.: Local-VM, assign it to your VM and new VM's Storage Volumes will reside there</p>
+</li>
+<li>Set Threads and Core to 1, VM hyper threading on AMD is not supported</li>
+<li>4 virtual CPUs, 1 core 1 hyper thread</li>
+<li>CPU Model: HOST Model</li>
+<li>8 GB memory</li>
+<li>Use Legacy BIOS, not UEFI</li>
+</ul>
+<blockquote>
+<p>After installing <em>OS...iso</em> file from the Virtual CD-ROM, power off the VM and go into it's settings. Under devices find CD-ROM and delete the device. This will keep it from rebooting back into the installer.</p>
+</blockquote>
+<h1 id="continue">Continue</h1>
+<p>Now that you have set a NAS data protection, consider installing an E-Mail server using some of that safe storage.</p>
+<p>Proceed in the order presented, some things are depending on prior setups.</p>
+<p>{{#include date.txt}}</p>
     </div><!-- /.entry-content -->
 
   </article>

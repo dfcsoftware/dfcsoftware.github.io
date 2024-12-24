@@ -33,7 +33,7 @@
 &lt;p&gt;&lt;a href="e-mail.html"&gt;E-Mail&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;a href="e-mail_relay.md"&gt;E-Mail Relay&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="e-mailrelay.md"&gt;E-Mail Relay&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;a href="postgresql.html"&gt;PostgreSQL&lt;/a&gt;&lt;/p&gt;
@@ -60,7 +60,7 @@
 &lt;p&gt;&lt;a href="beaglebone.html"&gt;Electronics on a BeagleBone&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;a href="media_managment.html"&gt;Media (TV/Music) Management&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="mediamanagment.html"&gt;Media (TV/Music) Management&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;a href="ncmpcpp.html"&gt;ncmpcpp MPD Control&lt;/a&gt;&lt;/p&gt;
@@ -112,9 +112,7 @@ A house is not a home without visitors&lt;/p&gt;
 &lt;li&gt;Connect all your trees into the forest.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;a href="/pages/forest.html"&gt;The Forest&lt;/a&gt;&lt;/p&gt;</content><category term="forest"></category><category term="forest"></category><category term="welcome"></category></entry><entry><title>Watch</title><link href="https://dfcsoftware.github.io/watch.html" rel="alternate"></link><published>2023-08-24T00:00:00-04:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-08-24:/watch.html</id><summary type="html">&lt;h1 id="watch-notification-system-v-2023095"&gt;Watch Notification System - v 2023.09.5&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;Finally got my alerts working, so when a host goes haywire I get an alert on the Phone and Cloud, with E-Mail as backup.&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;Finally got my alerts working, so when a host goes haywire I get an alert on the Phone and Cloud, with E-Mail as backup.&lt;/p&gt;
 &lt;hr&gt;
 &lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href="#watch-notification-system-v-2023095"&gt;Watch Notification System - v 2023.09.5&lt;/a&gt;&lt;ul&gt;
@@ -122,9 +120,7 @@ A house is not a home without visitors&lt;/p&gt;
 &lt;li&gt;&lt;a href="#configuration"&gt;Configuration&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#schedule-alertsh-in-cron"&gt;Schedule alert.sh in cron&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#copy-ssh-keys-to-remote"&gt;Copy ssh …&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;</summary><content type="html">&lt;h1 id="watch-notification-system-v-2023095"&gt;Watch Notification System - v 2023.09.5&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;Finally got my alerts working, so when a host goes haywire I get an alert on the Phone and Cloud, with E-Mail as backup.&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;Finally got my alerts working, so when a host goes haywire I get an alert on the Phone and Cloud, with E-Mail as backup.&lt;/p&gt;
 &lt;hr&gt;
 &lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href="#watch-notification-system-v-2023095"&gt;Watch Notification System - v 2023.09.5&lt;/a&gt;&lt;ul&gt;
@@ -474,23 +470,21 @@ It needs to be scheduled in cron.&lt;/p&gt;
 &lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href="#virtual-machines"&gt;Virtual Machines&lt;/a&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href="#install-prerequisites"&gt;Install Prerequisites&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href="#add-bridge"&gt;add bridge&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#add-interface"&gt;add interface&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#-permanent-configuration-"&gt;-&amp;gt; Permanent Configuration &amp;lt;-&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#_1"&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#file-etcnetworkinterfaces"&gt;File: /etc/network/interfaces&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#_2"&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#this-file-describes-the-network-interfaces-available-on-your-system"&gt;This file describes the network interfaces available on your system&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#and-how-to-activate-them-for-more-information-see-interfaces5"&gt;and how to activate them. For more information, see interfaces(5).&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#the-loopback-network-interface"&gt;The loopback network interface&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#usb-ethernet"&gt;USB Ethernet&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#bridge-setup"&gt;Bridge setup&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#install-cockpit"&gt;Install Cockpit&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#virtual-machines-in-cockpit"&gt;Virtual machines in Cockpit&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#create-storage-pools-with-cockpit"&gt;Create storage pools with Cockpit&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#create-a-new-virtual-machine"&gt;Create a new virtual machine&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#examine-a-virtual-machine"&gt;Examine a virtual machine&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#network-on-a-virtual-machine"&gt;Network on a virtual machine&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#nat-vm-network-vm-network-default"&gt;NAT VM Network (VM network default)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#bridged-vm-network-physical-host-bridge"&gt;Bridged VM Network (Physical Host bridge)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#redhat-way-1"&gt;RedHat Way [1]&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#debian-way"&gt;Debian Way&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;li&gt;&lt;a href="#sharing-files-with-physical-and-virtual-hosts"&gt;Sharing files with physical and virtual hosts&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;li&gt;&lt;a href="#virtual-storage-pools-on-nfs"&gt;Virtual Storage Pools on NFS&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#clone-virtual-machine"&gt;Clone Virtual Machine&lt;/a&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href="#copy-data-files"&gt;Copy Data Files&lt;/a&gt;&lt;/li&gt;
@@ -600,178 +594,167 @@ iface enxc87f54384756 inet manual
 auto br0
 iface br0 inet dhcp
     bridge_ports enxc87f54384756
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;$ ip a
+...
+$ ip a
 ~
-3: enxc87f54384756: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc fq_codel master br0 state UP group default qlen 1000
+3: enxc87f54384756: &amp;lt;BROADCAST,MULTICAST,UP,LOWER_UP&amp;gt; mtu 1500 qdisc fq_codel master br0 state UP group default qlen 1000
     link/ether c8:7f:54:93:56:44 brd ff:ff:ff:ff:ff:ff
 ~
-6: br0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UP group default qlen 1000
+6: br0: &amp;lt;BROADCAST,MULTICAST,UP,LOWER_UP&amp;gt; mtu 1500 qdisc noqueue state UP group default qlen 1000
     link/ether 86:32:53:56:4a:fa brd ff:ff:ff:ff:ff:ff
     inet 192.168.1.2/24 brd 192.168.1.1 scope global dynamic br0
        valid_lft 86082sec preferred_lft 86082sec
     inet6 fe80::8432:53ff:fe56:4edf/64 scope link 
-       valid_lft forever preferred_lft forever&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;*&lt;/span&gt; Debian - Single ethernet device bridge
+       valid_lft forever preferred_lft forever
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;apt install bridge-utils&lt;/p&gt;
-&lt;h1 id="add-bridge"&gt;add bridge&lt;/h1&gt;
-&lt;p&gt;brctl addbr br0&lt;/p&gt;
-&lt;h1 id="add-interface"&gt;add interface&lt;/h1&gt;
-&lt;p&gt;ip addr show
-brctl addif br0 eth0 &lt;/p&gt;
-&lt;p&gt;https://wiki.debian.org/BridgeNetworkConnections
-sudo ifup br0&lt;/p&gt;
-&lt;h1 id="-permanent-configuration-"&gt;-&amp;gt; Permanent Configuration &amp;lt;-&lt;/h1&gt;
-&lt;h1 id="_1"&gt;&lt;/h1&gt;
-&lt;h1 id="file-etcnetworkinterfaces"&gt;File: /etc/network/interfaces&lt;/h1&gt;
-&lt;h1 id="_2"&gt;&lt;/h1&gt;
-&lt;h1 id="this-file-describes-the-network-interfaces-available-on-your-system"&gt;This file describes the network interfaces available on your system&lt;/h1&gt;
-&lt;h1 id="and-how-to-activate-them-for-more-information-see-interfaces5"&gt;and how to activate them. For more information, see interfaces(5).&lt;/h1&gt;
-&lt;p&gt;source /etc/network/interfaces.d/*&lt;/p&gt;
-&lt;h1 id="the-loopback-network-interface"&gt;The loopback network interface&lt;/h1&gt;
-&lt;p&gt;auto lo
-iface lo inet loopback&lt;/p&gt;
-&lt;h1 id="usb-ethernet"&gt;USB Ethernet&lt;/h1&gt;
-&lt;p&gt;auto enxc87f54935633
-iface enxc87f54935633 inet manual&lt;/p&gt;
-&lt;h1 id="bridge-setup"&gt;Bridge setup&lt;/h1&gt;
-&lt;p&gt;auto br0
-iface br0 inet dhcp
-    bridge_ports enxc87f54935633&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Reference:
+&lt;ul&gt;
+&lt;li&gt;Debian - Single ethernet device bridge&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;install&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;bridge&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;utils&lt;/span&gt;
 
- &lt;span class="k"&gt;*&lt;/span&gt; &amp;lt;https://wiki.debian.org/BridgeNetworkConnections&amp;gt;
+&lt;span class="c1"&gt;# add bridge&lt;/span&gt;
+&lt;span class="n"&gt;brctl&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;addbr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;br0&lt;/span&gt;
 
-Reference:
+&lt;span class="c1"&gt;# add interface&lt;/span&gt;
+&lt;span class="n"&gt;ip&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;addr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;
+&lt;span class="n"&gt;brctl&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;addif&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;br0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;eth0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;
 
- &lt;span class="k"&gt;*&lt;/span&gt; &amp;lt;https://wiki.debian.org/BridgeNetworkConnections&amp;gt;
- &lt;span class="k"&gt;*&lt;/span&gt; &amp;lt;https://wiki.libvirt.org/Networking.html#debian-ubuntu-bridging&amp;gt;
+&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="o"&gt;://&lt;/span&gt;&lt;span class="n"&gt;wiki.debian.org&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;BridgeNetworkConnections&lt;/span&gt;
+&lt;span class="n"&gt;sudo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;ifup&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;br0&lt;/span&gt;
 
-&lt;span class="k"&gt;&amp;gt; &lt;/span&gt;&lt;span class="ge"&gt;??? Apparmor and Selinux may require more permission. , maybe using /home, trying /local&lt;/span&gt;
+&lt;span class="c1"&gt;# -&amp;gt; Permanent Configuration &amp;lt;-&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# File: /etc/network/interfaces&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# This file describes the network interfaces available on your system&lt;/span&gt;
+&lt;span class="c1"&gt;# and how to activate them. For more information, see interfaces(5).&lt;/span&gt;
 
-/etc/apparmor.d/local/abstractions/libvirt-qemu
+&lt;span class="n"&gt;source&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;network&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;interfaces.d&lt;/span&gt;&lt;span class="o"&gt;/*&lt;/span&gt;
 
-&lt;span class="k"&gt;-&lt;/span&gt; Set user and group 
-File: /etc/libvirt/qemu.conf
+&lt;span class="c1"&gt;# The loopback network interface&lt;/span&gt;
+&lt;span class="n"&gt;auto&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;lo&lt;/span&gt;
+&lt;span class="n"&gt;iface&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;lo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;inet&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;loopback&lt;/span&gt;
+
+&lt;span class="c1"&gt;# USB Ethernet&lt;/span&gt;
+&lt;span class="n"&gt;auto&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;enxc87f54935633&lt;/span&gt;
+&lt;span class="n"&gt;iface&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;enxc87f54935633&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;inet&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;manual&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Bridge setup&lt;/span&gt;
+&lt;span class="n"&gt;auto&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;br0&lt;/span&gt;
+&lt;span class="n"&gt;iface&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;br0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;inet&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;dhcp&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;bridge_ports&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;enxc87f54935633&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;~
-user = "libvirt-qemu"
-group = "libvirt-qemu"
-~&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;Then&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;reboot&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
-
-
-
-&lt;span class="err"&gt;##&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;Install&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;Cockpit&lt;/span&gt;
-
-&lt;span class="nx"&gt;Cockpit&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;is&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;a&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;web&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;based&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;system&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;allowing&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;full&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;management&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;of&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;systems&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;including&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kd"&gt;virtual&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;qemu&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;systems&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
-
-&lt;span class="nx"&gt;Install&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;packages&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;cockpit&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;and&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;cockpit&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;machine&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
-
-&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;Install&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;postfix&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;first&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;on&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;Debian&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;or&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;exim4&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;mail&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;server&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;will&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;be&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;installed&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;with&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;cockpit&lt;/span&gt;
+&lt;p&gt;Reference:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://wiki.debian.org/BridgeNetworkConnections"&gt;https://wiki.debian.org/BridgeNetworkConnections&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Reference:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://wiki.debian.org/BridgeNetworkConnections"&gt;https://wiki.debian.org/BridgeNetworkConnections&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.libvirt.org/Networking.html#debian-ubuntu-bridging"&gt;https://wiki.libvirt.org/Networking.html#debian-ubuntu-bridging&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;??? Apparmor and Selinux may require more permission. , maybe using /home, trying /local&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;/etc/apparmor.d/local/abstractions/libvirt-qemu&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Set user and group 
+File: /etc/libvirt/qemu.conf&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;~
+user = &amp;quot;libvirt-qemu&amp;quot;
+group = &amp;quot;libvirt-qemu&amp;quot;
+~
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;$ sudo dnf install cockpit cockpit-machines&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Start Cockpit and libvirtd:
+&lt;p&gt;Then reboot.&lt;/p&gt;
+&lt;h2 id="install-cockpit"&gt;Install Cockpit&lt;/h2&gt;
+&lt;p&gt;Cockpit is a web based system allowing full management of systems, including virtual qemu systems.&lt;/p&gt;
+&lt;p&gt;Install packages cockpit and cockpit-machine.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Install postfix first on Debian, or else exim4 mail server will be installed with cockpit&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;dnf&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;cockpit&lt;span class="w"&gt; &lt;/span&gt;cockpit-machines
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;$ sudo systemctl enable --now libvirtd
-$ sudo systemctl start libvirtd
-$ sudo systemctl enable --now cockpit.socket&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;To&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;log&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Cockpit&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;your&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;web&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;browser&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;localhost&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;9090&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;and&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;enter&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;your&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Linux&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;username&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;and&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;password&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
-
-&lt;span class="n"&gt;Reference&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;redhat&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;sysadmin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;intro&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;cockpit&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-
-&lt;span class="c1"&gt;## Virtual machines in Cockpit&lt;/span&gt;
-
-&lt;span class="n"&gt;Click&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;on&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Virtual&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;machines&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;virtual&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;machine&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;panel&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
-
-&lt;span class="n"&gt;If&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;you&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;have&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;existing&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;virtual&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;machines&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;with&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;libvirt&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Cockpit&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;detects&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;them&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Should&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Cockpit&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;fail&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;detect&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;existing&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;virtual&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;machines&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;you&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;can&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nn"&gt;them&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;by&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;clicking&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Import&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;VM&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;button&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
-
-&lt;span class="n"&gt;Cockpit&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;knows&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;virtual&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;machine&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;s state and can start or stop it. In the pop-up menu on the right, you can clone, rename, and delete the virtual machine.&lt;/span&gt;
-
-&lt;span class="c1"&gt;### Create storage pools with Cockpit&lt;/span&gt;
-
-&lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;storage&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;pool&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;is&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;space&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;that&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;you&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;designate&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;as&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;being&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;available&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;store&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;virtual&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;machine&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;images&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;You&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;can&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;set&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;network&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;location&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;an&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;iSCSI&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;target&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;or&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;filesystem&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
-
-&lt;span class="n"&gt;In&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Cockpit&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;create&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;storage&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;pool&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;click&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Storage&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;pool&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;button&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;at&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;top&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;of&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;virtual&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;machine&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;panel&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
-
-&lt;span class="n"&gt;View&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;storage&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;pools&lt;/span&gt;
+&lt;p&gt;Start Cockpit and libvirtd:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;systemctl&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;enable&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;--now&lt;span class="w"&gt; &lt;/span&gt;libvirtd
+$&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;systemctl&lt;span class="w"&gt; &lt;/span&gt;start&lt;span class="w"&gt; &lt;/span&gt;libvirtd
+$&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;systemctl&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;enable&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;--now&lt;span class="w"&gt; &lt;/span&gt;cockpit.socket
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;$ sudo virsh pool-list --all --details
- Name   State     Autostart   Persistent   Capacity   Allocation   Available&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;data   running   yes         yes          1.27 TiB   15.45 GiB    1.25 TiB&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;If&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;no&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;storage&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;space&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;is&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;created&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;default&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lib&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;machines&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;will&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;be&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;used&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
-
-&lt;span class="n"&gt;Reference&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;access&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;redhat&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;documentation&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;en&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;us&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;red_hat_enterprise_linux&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;html&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;configuring_and_managing_virtualization&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;managing&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;storage&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;virtual&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;machines_configuring&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="ow"&gt;and&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;managing&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;virtualization&lt;/span&gt;&lt;span class="c1"&gt;#assembly_managing-virtual-machine-storage-pools-using-the-cli_managing-storage-for-virtual-machines&amp;gt;&lt;/span&gt;
-
-&lt;span class="c1"&gt;### Create a new virtual machine&lt;/span&gt;
-
-&lt;span class="n"&gt;To&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;create&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;new&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Virtual&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Machine&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;click&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Create&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;VM&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;button&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;on&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;right&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;side&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;of&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;virtual&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;machine&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;panel&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
-
-&lt;span class="n"&gt;You&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;can&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;download&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;recent&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;operating&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;system&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;version&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;from&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;drop&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;down&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;list&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;or&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;you&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;can&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;choose&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;an&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;ISO&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;on&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;your&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;drive&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;or&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;you&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;can&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;have&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;virtual&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;machine&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;boot&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;from&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Preboot&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Execution&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Environment&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;PXE&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;server&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
-
-&lt;span class="n"&gt;Reference&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;access&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;redhat&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;documentation&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;en&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;us&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;red_hat_enterprise_linux&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;html&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;configuring_and_managing_virtualization&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;assembly_creating&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;virtual&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;machines_configuring&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="ow"&gt;and&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;managing&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;virtualization&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-
-&lt;span class="n"&gt;Start&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;it&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;p&gt;To log in to Cockpit, open your web browser to localhost:9090 and enter your Linux username and password.&lt;/p&gt;
+&lt;p&gt;Reference: &lt;a href="https://www.redhat.com/sysadmin/intro-cockpit"&gt;https://www.redhat.com/sysadmin/intro-cockpit&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="virtual-machines-in-cockpit"&gt;Virtual machines in Cockpit&lt;/h2&gt;
+&lt;p&gt;Click on Virtual machines to open the virtual machine panel.&lt;/p&gt;
+&lt;p&gt;If you have existing virtual machines with libvirt, Cockpit detects them. Should Cockpit fail to detect existing virtual machines, you can import them by clicking the Import VM button.&lt;/p&gt;
+&lt;p&gt;Cockpit knows the virtual machine's state and can start or stop it. In the pop-up menu on the right, you can clone, rename, and delete the virtual machine.&lt;/p&gt;
+&lt;h3 id="create-storage-pools-with-cockpit"&gt;Create storage pools with Cockpit&lt;/h3&gt;
+&lt;p&gt;A storage pool is space that you designate as being available to store virtual machine images. You can set a network location, an iSCSI target, or a filesystem.&lt;/p&gt;
+&lt;p&gt;In Cockpit, to create a storage pool, click the Storage pool button at the top of the virtual machine panel.&lt;/p&gt;
+&lt;p&gt;View storage pools&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c"&gt;$ sudo virsh pool&lt;/span&gt;&lt;span class="nb"&gt;-&lt;/span&gt;&lt;span class="c"&gt;list &lt;/span&gt;&lt;span class="nb"&gt;--&lt;/span&gt;&lt;span class="c"&gt;all &lt;/span&gt;&lt;span class="nb"&gt;--&lt;/span&gt;&lt;span class="c"&gt;details&lt;/span&gt;
+&lt;span class="c"&gt; Name   State     Autostart   Persistent   Capacity   Allocation   Available&lt;/span&gt;
+&lt;span class="nb"&gt;------------------------------------------------------------------------------&lt;/span&gt;
+&lt;span class="c"&gt; data   running   yes         yes          1&lt;/span&gt;&lt;span class="nt"&gt;.&lt;/span&gt;&lt;span class="c"&gt;27 TiB   15&lt;/span&gt;&lt;span class="nt"&gt;.&lt;/span&gt;&lt;span class="c"&gt;45 GiB    1&lt;/span&gt;&lt;span class="nt"&gt;.&lt;/span&gt;&lt;span class="c"&gt;25 TiB&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;virsh --connect qemu:///system start almalinux9-2023-10-6&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Restart install:
+&lt;p&gt;If no storage space is created, the default /var/lib/machines will be used.&lt;/p&gt;
+&lt;p&gt;Reference: &lt;a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_and_managing_virtualization/managing-storage-for-virtual-machines_configuring-and-managing-virtualization#assembly_managing-virtual-machine-storage-pools-using-the-cli_managing-storage-for-virtual-machines"&gt;https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_and_managing_virtualization/managing-storage-for-virtual-machines_configuring-and-managing-virtualization#assembly_managing-virtual-machine-storage-pools-using-the-cli_managing-storage-for-virtual-machines&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="create-a-new-virtual-machine"&gt;Create a new virtual machine&lt;/h3&gt;
+&lt;p&gt;To create a new Virtual Machine, click the Create VM button on the right side of the virtual machine panel.&lt;/p&gt;
+&lt;p&gt;You can download a recent operating system version from a drop-down list, or you can choose an ISO image on your local drive, or you can have the virtual machine boot from a Preboot Execution Environment (PXE) server.&lt;/p&gt;
+&lt;p&gt;Reference: &lt;a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_and_managing_virtualization/assembly_creating-virtual-machines_configuring-and-managing-virtualization"&gt;https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_and_managing_virtualization/assembly_creating-virtual-machines_configuring-and-managing-virtualization&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Start it:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nv"&gt;virsh&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="k"&gt;connect&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;qemu&lt;/span&gt;:&lt;span class="o"&gt;///&lt;/span&gt;&lt;span class="nv"&gt;system&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;start&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;almalinux9&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;2023&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;$ sudo virt-install --connect qemu:///system --quiet --os-variant almalinux9 --reinstall almalinux9-2023-10-6 --wait -1 --noautoconsole --install os=almalinux9 &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;### Examine a virtual machine
-
-Display the info about your virtual machines
+&lt;p&gt;Restart install:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;virt-install&lt;span class="w"&gt; &lt;/span&gt;--connect&lt;span class="w"&gt; &lt;/span&gt;qemu:///system&lt;span class="w"&gt; &lt;/span&gt;--quiet&lt;span class="w"&gt; &lt;/span&gt;--os-variant&lt;span class="w"&gt; &lt;/span&gt;almalinux9&lt;span class="w"&gt; &lt;/span&gt;--reinstall&lt;span class="w"&gt; &lt;/span&gt;almalinux9-2023-10-6&lt;span class="w"&gt; &lt;/span&gt;--wait&lt;span class="w"&gt; &lt;/span&gt;-1&lt;span class="w"&gt; &lt;/span&gt;--noautoconsole&lt;span class="w"&gt; &lt;/span&gt;--install&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;os&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;almalinux9&lt;span class="w"&gt; &lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;$ virt-host-validate&lt;/p&gt;
-&lt;p&gt;QEMU: Checking for hardware virtualization                                 : PASS
-QEMU: Checking if device /dev/kvm exists                                   : PASS
-QEMU: Checking if device /dev/kvm is accessible                            : PASS
-QEMU: Checking if device /dev/vhost-net exists                             : PASS
-QEMU: Checking if device /dev/net/tun exists                               : PASS
-QEMU: Checking for cgroup 'cpu' controller support                         : PASS
-QEMU: Checking for cgroup 'cpuacct' controller support                     : PASS
-QEMU: Checking for cgroup 'cpuset' controller support                      : PASS
-QEMU: Checking for cgroup 'memory' controller support                      : PASS
-QEMU: Checking for cgroup 'devices' controller support                     : WARN (Enable 'devices' in kernel Kconfig file or mount/enable cgroup controller in your system)
-QEMU: Checking for cgroup 'blkio' controller support                       : PASS
-QEMU: Checking for device assignment IOMMU support                         : PASS
-QEMU: Checking if IOMMU is enabled by kernel                               : WARN (IOMMU appears to be disabled in kernel. Add intel_iommu=on to kernel cmdline arguments)
-QEMU: Checking for secure guest support                                    : WARN (Unknown if this platform has Secure Guest support)&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Start a VM
+&lt;h3 id="examine-a-virtual-machine"&gt;Examine a virtual machine&lt;/h3&gt;
+&lt;p&gt;Display the info about your virtual machines&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;virt-host-validate
+
+QEMU:&lt;span class="w"&gt; &lt;/span&gt;Checking&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;hardware&lt;span class="w"&gt; &lt;/span&gt;virtualization&lt;span class="w"&gt;                                 &lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;PASS
+QEMU:&lt;span class="w"&gt; &lt;/span&gt;Checking&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;device&lt;span class="w"&gt; &lt;/span&gt;/dev/kvm&lt;span class="w"&gt; &lt;/span&gt;exists&lt;span class="w"&gt;                                   &lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;PASS
+QEMU:&lt;span class="w"&gt; &lt;/span&gt;Checking&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;device&lt;span class="w"&gt; &lt;/span&gt;/dev/kvm&lt;span class="w"&gt; &lt;/span&gt;is&lt;span class="w"&gt; &lt;/span&gt;accessible&lt;span class="w"&gt;                            &lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;PASS
+QEMU:&lt;span class="w"&gt; &lt;/span&gt;Checking&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;device&lt;span class="w"&gt; &lt;/span&gt;/dev/vhost-net&lt;span class="w"&gt; &lt;/span&gt;exists&lt;span class="w"&gt;                             &lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;PASS
+QEMU:&lt;span class="w"&gt; &lt;/span&gt;Checking&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;device&lt;span class="w"&gt; &lt;/span&gt;/dev/net/tun&lt;span class="w"&gt; &lt;/span&gt;exists&lt;span class="w"&gt;                               &lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;PASS
+QEMU:&lt;span class="w"&gt; &lt;/span&gt;Checking&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;cgroup&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;cpu&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;controller&lt;span class="w"&gt; &lt;/span&gt;support&lt;span class="w"&gt;                         &lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;PASS
+QEMU:&lt;span class="w"&gt; &lt;/span&gt;Checking&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;cgroup&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;cpuacct&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;controller&lt;span class="w"&gt; &lt;/span&gt;support&lt;span class="w"&gt;                     &lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;PASS
+QEMU:&lt;span class="w"&gt; &lt;/span&gt;Checking&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;cgroup&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;cpuset&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;controller&lt;span class="w"&gt; &lt;/span&gt;support&lt;span class="w"&gt;                      &lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;PASS
+QEMU:&lt;span class="w"&gt; &lt;/span&gt;Checking&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;cgroup&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;memory&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;controller&lt;span class="w"&gt; &lt;/span&gt;support&lt;span class="w"&gt;                      &lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;PASS
+QEMU:&lt;span class="w"&gt; &lt;/span&gt;Checking&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;cgroup&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;devices&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;controller&lt;span class="w"&gt; &lt;/span&gt;support&lt;span class="w"&gt;                     &lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;WARN&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;Enable&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;devices&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;kernel&lt;span class="w"&gt; &lt;/span&gt;Kconfig&lt;span class="w"&gt; &lt;/span&gt;file&lt;span class="w"&gt; &lt;/span&gt;or&lt;span class="w"&gt; &lt;/span&gt;mount/enable&lt;span class="w"&gt; &lt;/span&gt;cgroup&lt;span class="w"&gt; &lt;/span&gt;controller&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;your&lt;span class="w"&gt; &lt;/span&gt;system&lt;span class="o"&gt;)&lt;/span&gt;
+QEMU:&lt;span class="w"&gt; &lt;/span&gt;Checking&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;cgroup&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;blkio&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;controller&lt;span class="w"&gt; &lt;/span&gt;support&lt;span class="w"&gt;                       &lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;PASS
+QEMU:&lt;span class="w"&gt; &lt;/span&gt;Checking&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;device&lt;span class="w"&gt; &lt;/span&gt;assignment&lt;span class="w"&gt; &lt;/span&gt;IOMMU&lt;span class="w"&gt; &lt;/span&gt;support&lt;span class="w"&gt;                         &lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;PASS
+QEMU:&lt;span class="w"&gt; &lt;/span&gt;Checking&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;IOMMU&lt;span class="w"&gt; &lt;/span&gt;is&lt;span class="w"&gt; &lt;/span&gt;enabled&lt;span class="w"&gt; &lt;/span&gt;by&lt;span class="w"&gt; &lt;/span&gt;kernel&lt;span class="w"&gt;                               &lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;WARN&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;IOMMU&lt;span class="w"&gt; &lt;/span&gt;appears&lt;span class="w"&gt; &lt;/span&gt;to&lt;span class="w"&gt; &lt;/span&gt;be&lt;span class="w"&gt; &lt;/span&gt;disabled&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;kernel.&lt;span class="w"&gt; &lt;/span&gt;Add&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;intel_iommu&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;on&lt;span class="w"&gt; &lt;/span&gt;to&lt;span class="w"&gt; &lt;/span&gt;kernel&lt;span class="w"&gt; &lt;/span&gt;cmdline&lt;span class="w"&gt; &lt;/span&gt;arguments&lt;span class="o"&gt;)&lt;/span&gt;
+QEMU:&lt;span class="w"&gt; &lt;/span&gt;Checking&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;secure&lt;span class="w"&gt; &lt;/span&gt;guest&lt;span class="w"&gt; &lt;/span&gt;support&lt;span class="w"&gt;                                    &lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;WARN&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;Unknown&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;this&lt;span class="w"&gt; &lt;/span&gt;platform&lt;span class="w"&gt; &lt;/span&gt;has&lt;span class="w"&gt; &lt;/span&gt;Secure&lt;span class="w"&gt; &lt;/span&gt;Guest&lt;span class="w"&gt; &lt;/span&gt;support&lt;span class="o"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;$ sudo virsh start demo-guest1&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Stop a VM
+&lt;p&gt;Start a VM&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;virsh&lt;span class="w"&gt; &lt;/span&gt;start&lt;span class="w"&gt; &lt;/span&gt;demo-guest1
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;$ sudo virsh shutdown demo-guest1&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nx"&gt;VM&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;Diagnostics&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_and_managing_virtualization/diagnosing-virtual-machine-problems_configuring-and-managing-virtualization&amp;gt;&lt;/span&gt;
+&lt;p&gt;Stop a VM&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;virsh&lt;span class="w"&gt; &lt;/span&gt;shutdown&lt;span class="w"&gt; &lt;/span&gt;demo-guest1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;span class="err"&gt;###&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;Network&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;on&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;a&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kd"&gt;virtual&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;machine&lt;/span&gt;
-
-&lt;span class="err"&gt;####&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;NAT&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;VM&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;Network&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;VM&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;network&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="k"&gt;default&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="nx"&gt;By&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="k"&gt;default&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;a&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;newly&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;created&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;VM&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;connects&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;a&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;NAT&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;type&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;network&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;that&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;uses&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;virbr0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;default&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kd"&gt;virtual&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;bridge&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;on&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;host&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;This&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;ensures&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;that&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;VM&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;can&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;use&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;host&lt;/span&gt;&lt;span class="err"&gt;’&lt;/span&gt;&lt;span class="nx"&gt;s&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;network&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kd"&gt;interface&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;controller&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;NIC&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;connecting&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;outside&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;networks&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;but&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;VM&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;is&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="k"&gt;not&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;reachable&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;from&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kd"&gt;external&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;systems&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
-
-&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;See&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;file&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;libvirt&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;network&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="k"&gt;default&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;xml&lt;/span&gt;
-
-
-&lt;span class="err"&gt;```&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;mermaid&lt;/span&gt;
-&lt;span class="nx"&gt;graph&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;TD&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nx"&gt;Router&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="o"&gt;---&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;eth0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nx"&gt;PhysicalHost&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;eth0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nx"&gt;NAT&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;virbr0&lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;eth0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nx"&gt;VM&lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;NAT&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;virbr0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;p&gt;VM Diagnostics: &lt;a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_and_managing_virtualization/diagnosing-virtual-machine-problems_configuring-and-managing-virtualization"&gt;https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_and_managing_virtualization/diagnosing-virtual-machine-problems_configuring-and-managing-virtualization&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="network-on-a-virtual-machine"&gt;Network on a virtual machine&lt;/h3&gt;
+&lt;h4 id="nat-vm-network-vm-network-default"&gt;NAT VM Network (VM network &lt;em&gt;default&lt;/em&gt;)&lt;/h4&gt;
+&lt;p&gt;By &lt;em&gt;default&lt;/em&gt;, a newly created VM connects to a NAT-type network that uses virbr0, the default virtual bridge on the host. This ensures that the VM can use the host’s network interface controller (NIC) for connecting to outside networks, but the VM is &lt;em&gt;not reachable from external systems&lt;/em&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;See file /etc/libvirt/network/default.xml&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nf"&gt;graph&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;TD&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;Router&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;---&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;eth0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;PhysicalHost&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;--&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;eth0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;NAT&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;virbr0&lt;/span&gt;&lt;span class="o"&gt;--&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;eth0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;VM&lt;/span&gt;&lt;span class="o"&gt;--&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;NAT&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;virbr0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h4 id="bridged-vm-network-physical-host-bridge"&gt;Bridged VM Network (Physical Host &lt;em&gt;bridge&lt;/em&gt;)&lt;/h4&gt;
@@ -1304,8 +1287,7 @@ Pool&lt;span class="w"&gt; &lt;/span&gt;my_vm01&lt;span class="w"&gt; &lt;/span&
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href="#network-management"&gt;Network Management&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#network-management_1"&gt;Network Management&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#network-management"&gt;Network Management&lt;/a&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href="#nmcli"&gt;nmcli&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#ip"&gt;ip&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#ss"&gt;ss&lt;/a&gt;&lt;/li&gt;
@@ -1322,15 +1304,16 @@ Pool&lt;span class="w"&gt; &lt;/span&gt;my_vm01&lt;span class="w"&gt; &lt;/span&
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;hr&gt;
-&lt;hr&gt;
-&lt;h1 id="network-management_1"&gt;Network Management&lt;/h1&gt;
-&lt;p&gt;The command line offers a wealth of network management commands. Here are …&lt;/p&gt;</summary><content type="html">&lt;h1 id="network-management"&gt;Network Management&lt;/h1&gt;
+&lt;h2 id="nmcli"&gt;nmcli&lt;/h2&gt;
+&lt;p&gt;NetworkManager has a command line interface (CLI).&lt;/p&gt;
+&lt;p&gt;Get status:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;nmcli&lt;span class="w"&gt; &lt;/span&gt;general&lt;span class="w"&gt; &lt;/span&gt;status
+STATE&lt;span class="w"&gt;      &lt;/span&gt;CONNECTIVITY&lt;span class="w"&gt;  &lt;/span&gt;WIFI-HW …&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h1 id="network-management"&gt;Network Management&lt;/h1&gt;
 &lt;p&gt;The command line offers a wealth of network management commands. Here are some of my favorites.&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href="#network-management"&gt;Network Management&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#network-management_1"&gt;Network Management&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#network-management"&gt;Network Management&lt;/a&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href="#nmcli"&gt;nmcli&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#ip"&gt;ip&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#ss"&gt;ss&lt;/a&gt;&lt;/li&gt;
@@ -1347,9 +1330,6 @@ Pool&lt;span class="w"&gt; &lt;/span&gt;my_vm01&lt;span class="w"&gt; &lt;/span&
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;hr&gt;
-&lt;hr&gt;
-&lt;h1 id="network-management_1"&gt;Network Management&lt;/h1&gt;
-&lt;p&gt;The command line offers a wealth of network management commands. Here are some of my favorites.&lt;/p&gt;
 &lt;h2 id="nmcli"&gt;nmcli&lt;/h2&gt;
 &lt;p&gt;NetworkManager has a command line interface (CLI).&lt;/p&gt;
 &lt;p&gt;Get status:&lt;/p&gt;
@@ -6153,14 +6133,39 @@ log&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Starting
 &lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category><category term="linux"></category><category term="hardware"></category></entry><entry><title>Certificate</title><link href="https://dfcsoftware.github.io/certificate.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/certificate.html</id><summary type="html">&lt;h1 id="web-certificate"&gt;Web Certificate&lt;/h1&gt;
 &lt;p&gt;Web certificates encrypt different messages over the public internet so nobody can see what these messages contain.&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;[ toc ]&lt;/p&gt;
-&lt;hr&gt;
+&lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#web-certificate"&gt;Web Certificate&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#lets-encrypt-certificate-authority-ca"&gt;Let's Encrypt - Certificate Authority (CA)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#certbot-certificate-robot"&gt;Certbot - Certificate Robot&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#install"&gt;Install&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#configure"&gt;Configure&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#schedule"&gt;Schedule&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#renewal-is-done-on-web-host"&gt;Renewal is done on web host&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#apache-web-server-for-nextcloud"&gt;Apache - Web Server for Nextcloud&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#dovecot-server-for-e-mail-clients"&gt;Dovecot - Server for E-Mail …&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;</summary><content type="html">&lt;h1 id="web-certificate"&gt;Web Certificate&lt;/h1&gt;
 &lt;p&gt;Web certificates encrypt different messages over the public internet so nobody can see what these messages contain.&lt;/p&gt;
-&lt;h2 id="lets-encrypt-certificate-authority-ca"&gt;Let's Encrypt - Certificate Authority (CA)&lt;/h2&gt;
-&lt;p&gt;Let's Encrypt offers free 90 day SSL/TLS …&lt;/p&gt;</summary><content type="html">&lt;h1 id="web-certificate"&gt;Web Certificate&lt;/h1&gt;
-&lt;p&gt;Web certificates encrypt different messages over the public internet so nobody can see what these messages contain.&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;[ toc ]&lt;/p&gt;
+&lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#web-certificate"&gt;Web Certificate&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#lets-encrypt-certificate-authority-ca"&gt;Let's Encrypt - Certificate Authority (CA)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#certbot-certificate-robot"&gt;Certbot - Certificate Robot&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#install"&gt;Install&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#configure"&gt;Configure&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#schedule"&gt;Schedule&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#renewal-is-done-on-web-host"&gt;Renewal is done on web host&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#apache-web-server-for-nextcloud"&gt;Apache - Web Server for Nextcloud&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#dovecot-server-for-e-mail-clients"&gt;Dovecot - Server for E-Mail Clients&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#matrix-messaging-server"&gt;Matrix - Messaging Server&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#verify-certificate"&gt;Verify Certificate&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#continue"&gt;Continue&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
 &lt;hr&gt;
 &lt;p&gt;Web certificates encrypt different messages over the public internet so nobody can see what these messages contain.&lt;/p&gt;
 &lt;h2 id="lets-encrypt-certificate-authority-ca"&gt;Let's Encrypt - Certificate Authority (CA)&lt;/h2&gt;
@@ -6389,7 +6394,84 @@ tls_private_key_path: &amp;quot;/etc/letsencrypt/live/example.com/privkey.pem&am
 &lt;p&gt;A cloud used to be floating in the sky, then it was a bubbly thing on a network diagram where weird things happen. Now a cloud just means "Somebody else's computer.". Of course you get to it over a network and can share things, like files (pictures, music, documents …&lt;/p&gt;</summary><content type="html">&lt;h1 id="cloud"&gt;Cloud&lt;/h1&gt;
 &lt;p&gt;A cloud used to be floating in the sky, then it was a bubbly thing on a network diagram where weird things happen. Now a cloud just means "Somebody else's computer.". Of course you get to it over a network and can share things, like files (pictures, music, documents), contacts, calendars and chat, among other things.&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;[ TOC ]&lt;/p&gt;
+&lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#cloud"&gt;Cloud&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#syncthing"&gt;SyncThing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#warpinator"&gt;Warpinator&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#cryptomater"&gt;Cryptomater&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#nextcloud"&gt;NextCloud&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#services"&gt;Services&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#ios-app-nextcloud-talk"&gt;IOS App - NextCloud Talk&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#install-documentation"&gt;Install Documentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#install-steps"&gt;Install Steps&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#nextcloud-php-install"&gt;Nextcloud PHP Install&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#package-dependency-install"&gt;Package Dependency Install&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#create-empty-postgresql-database"&gt;Create Empty PostgreSQL Database&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#postgresql-database-authentication"&gt;PostgreSQL Database Authentication&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#no-database-password"&gt;No Database Password&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#database-password"&gt;Database Password&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#postgresql-database-populate-nextcloud-metadata"&gt;PostgreSQL Database Populate NextCloud Metadata&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#apache-web-server-nextcloud-configuration"&gt;Apache Web Server NextCloud Configuration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#apache-web-server-locale-settings"&gt;Apache Web Server Locale Settings&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#nextcloud-trusted-domains-and-e-mail-server-connection"&gt;NextCloud Trusted Domains and E-Mail Server Connection&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#nextcloud-php-configuration"&gt;NextCloud PHP Configuration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#nextcloud-redis-caching-configuration"&gt;NextCloud Redis Caching Configuration&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#move-the-shared-files-in-nextcloud-to-nas"&gt;Move the shared files in NextCloud to NAS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#nextcloud-command-line-client"&gt;Nextcloud Command Line Client&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#install"&gt;Install&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#usage"&gt;Usage&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#debug"&gt;Debug&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#talk-from-command-line"&gt;Talk from Command Line&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#talk-mattermost-shell-script"&gt;Talk Mattermost Shell Script&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#talk-mattermost-php-script"&gt;Talk Mattermost PHP Script&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#federated-sharing-between-nextcloud-servers"&gt;Federated Sharing Between Nextcloud Servers&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#in-both-nextcloud-hosts"&gt;In both Nextcloud hosts&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#in-sending-nextcloud"&gt;In Sending Nextcloud&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#in-receiving-nextcloud"&gt;In Receiving Nextcloud&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#offline-copy-of-contacts-and-calendar"&gt;Offline Copy of Contacts and Calendar&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#install-vdirsyncer-package"&gt;Install vdirsyncer package&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#configure-vdirsyncer"&gt;Configure vdirsyncer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#schedule-vdirsyncer"&gt;Schedule vdirsyncer&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#contacts-from-the-command-line"&gt;Contacts from the Command Line&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#install_1"&gt;Install&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#configure"&gt;Configure&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#run-it"&gt;Run it&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#calendars-from-the-command-line"&gt;Calendars from the Command Line&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#install_2"&gt;Install&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#configure_1"&gt;Configure&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#run-it_1"&gt;Run it&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#apache-block-malicious-hosts"&gt;Apache - Block Malicious Hosts&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#script"&gt;Script&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#usage_1"&gt;Usage&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#upgrade-nextcloud"&gt;Upgrade Nextcloud&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#upgrade-manually"&gt;Upgrade manually&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#continue"&gt;Continue&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
 &lt;hr&gt;
 &lt;p&gt;For me it means I can get to my stuff no matter where I am; &lt;em&gt;and&lt;/em&gt; my stuff is private unless I share it. So I keep it in my home, under lock and key. To share I have a few open ports, encrypted network traffic, and some protected disk arrays with timely backups.&lt;/p&gt;
 &lt;p&gt;If this sounds interesting so far, here are some contenders for the job:&lt;/p&gt;
@@ -7613,10 +7695,52 @@ $ sudo crontab -u apache -e
 &lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category><category term="linux"></category><category term="web"></category></entry><entry><title>DNS</title><link href="https://dfcsoftware.github.io/dns.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/dns.html</id><summary type="html">&lt;h1 id="domain-name-service-dns"&gt;Domain Name Service (DNS)&lt;/h1&gt;
 &lt;p&gt;A Domain Name Service (DNS) allows your E-Mail and Web Server to use a name instead of an IP Address, so other people can find you by name. Some Internet Service Providers (ISP) will change your IP address every few months in a residential environment.&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;[ toc …&lt;/p&gt;</summary><content type="html">&lt;h1 id="domain-name-service-dns"&gt;Domain Name Service (DNS)&lt;/h1&gt;
+&lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table …&lt;/span&gt;&lt;/div&gt;</summary><content type="html">&lt;h1 id="domain-name-service-dns"&gt;Domain Name Service (DNS)&lt;/h1&gt;
 &lt;p&gt;A Domain Name Service (DNS) allows your E-Mail and Web Server to use a name instead of an IP Address, so other people can find you by name. Some Internet Service Providers (ISP) will change your IP address every few months in a residential environment.&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;[ toc ]&lt;/p&gt;
+&lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#domain-name-service-dns"&gt;Domain Name Service (DNS)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#dynamic-dns-providers-ddns"&gt;Dynamic DNS Providers (DDNS)&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#dynamic-ip-address-and-e-mail"&gt;Dynamic IP Address and E-Mail&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#smtp2go"&gt;SMTP2GO&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#no-ip"&gt;No-IP&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#putting-it-all-together"&gt;Putting It All Together&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#e-mail-send-over-non-25-port-using-smtp2go-or-no-ip-alternative-smtp-address"&gt;E-Mail Send over non-25 port using SMTP2GO -or- NO-IP Alternative SMTP Address.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#e-mail-receive-over-non-25-port-using-no-ip-mail-reflector"&gt;E-Mail Receive over non-25 port using No-IP Mail Reflector.&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#no-ip_1"&gt;No-IP&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#dynamic-update-client"&gt;Dynamic Update Client&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#cloudflare"&gt;cloudflare&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#easydns"&gt;easyDNS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#dynu-dns"&gt;Dynu DNS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#namecheap"&gt;NameCheap&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#virtual-private-server-vps"&gt;Virtual Private Server (VPS)&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#inmotion"&gt;InMotion&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#hostwinds"&gt;Hostwinds&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#kamatera"&gt;Kamatera&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#install-a-web-server"&gt;Install a Web Server&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#apache"&gt;Apache&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#installation"&gt;Installation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#configuration"&gt;Configuration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#first-page"&gt;First Page&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#network-direction"&gt;Network Direction&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#the-big-test"&gt;The Big Test&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#continue"&gt;Continue&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
 &lt;hr&gt;
 &lt;p&gt;A Domain Name Service (DNS) allows your E-Mail and Web Server to use a name instead of an IP Address, so other people can find you by name. Some Internet Service Providers (ISP) will change your IP address every few months in a residential environment.&lt;/p&gt;
 &lt;p&gt;You pay a company to register [1] your unique name and assign it to an IP address. In turn they look up your IP address for anyone trying to connect to your name [2]. Kind of like the old telephone white/yellow pages where telephones were assigned to a fixed location (wire).&lt;/p&gt;
@@ -7970,12 +8094,83 @@ $&lt;span class="w"&gt; &lt;/span&gt;ls&lt;span class="w"&gt; &lt;/span&gt;-l&lt
 &lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category><category term="linux"></category><category term="web"></category></entry><entry><title>E-Mail</title><link href="https://dfcsoftware.github.io/e-mail.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/e-mail.html</id><summary type="html">&lt;h1 id="e-mail"&gt;E-Mail&lt;/h1&gt;
 &lt;p&gt;Electronic Mail (E-Mail) is a way to type letters onto a computer and send them to other people. These other people's computers will then use E-Mail to read your letters. It is an electronic version of the Post Office.&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;[ TOC ]&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;Electronic Mail (E-Mail) is a way to type letters …&lt;/p&gt;</summary><content type="html">&lt;h1 id="e-mail"&gt;E-Mail&lt;/h1&gt;
+&lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#e-mail"&gt;E-Mail&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#dovecot-presents-e-mails-to-clients"&gt;Dovecot - Presents E-Mails to Clients&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#installation"&gt;Installation …&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;</summary><content type="html">&lt;h1 id="e-mail"&gt;E-Mail&lt;/h1&gt;
 &lt;p&gt;Electronic Mail (E-Mail) is a way to type letters onto a computer and send them to other people. These other people's computers will then use E-Mail to read your letters. It is an electronic version of the Post Office.&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;[ TOC ]&lt;/p&gt;
+&lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#e-mail"&gt;E-Mail&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#dovecot-presents-e-mails-to-clients"&gt;Dovecot - Presents E-Mails to Clients&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#installation"&gt;Installation&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#debian"&gt;Debian&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#redhat"&gt;RedHat&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#user-settings"&gt;User Settings&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#non-default-settings"&gt;Non-Default Settings&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#update-systemd-startup-service"&gt;Update systemd startup service&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#sieve-filters-mail-to-certain-boxes"&gt;Sieve - filters mail to certain boxes&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#postfix-sends-and-recieves-e-mail-over-the-network"&gt;Postfix - sends and recieves e-mail over the network&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#configuration-main"&gt;Configuration - main&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#configuration-login"&gt;Configuration - Login&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#configuration-master"&gt;Configuration - Master&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#spamassasin-puts-spam-into-a-spam-folder-automatically"&gt;Spamassasin - Puts SPAM into a SPAM folder automatically&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#configure"&gt;Configure&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#start-spamassassin-and-restart-postfix"&gt;Start spamassassin and restart postfix&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#daily-update-in-etccrondaily"&gt;Daily update in /etc/cron.daily&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#put-spamham-learning-into-a-script"&gt;Put spam/ham learning into a script&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#mail-readers"&gt;Mail Readers&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#mutt"&gt;Mutt&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#install"&gt;Install&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#configure_1"&gt;Configure&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#evolution"&gt;Evolution&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#install_1"&gt;Install&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#configure_2"&gt;Configure&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#thunderbird"&gt;Thunderbird&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#install_2"&gt;Install&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#configure_3"&gt;Configure&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#offlineimap-makes-a-backup-copy-of-all-email"&gt;Offlineimap - Makes a backup copy of all email&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#install_3"&gt;Install&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#configure_4"&gt;Configure&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#schedule"&gt;Schedule&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#postfix-log-summary"&gt;Postfix Log Summary&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#install_4"&gt;Install&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#schedule_1"&gt;Schedule&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#alternatives"&gt;Alternatives&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#exim4"&gt;exim4&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#what-it-does"&gt;What it does&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#iredmail"&gt;iRedMail&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#mail-in-a-box"&gt;Mail-in-a-Box&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#citadel"&gt;Citadel&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#continue"&gt;Continue&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
 &lt;hr&gt;
 &lt;p&gt;Electronic Mail (E-Mail) is a way to type letters onto a computer and send them to other people. These other people's computers will then use E-Mail to read your letters. It is an electronic version of the Post Office.&lt;/p&gt;
 &lt;h2 id="dovecot-presents-e-mails-to-clients"&gt;Dovecot - Presents E-Mails to Clients&lt;/h2&gt;
@@ -10865,14 +11060,63 @@ DMARC&lt;span class="w"&gt; &lt;/span&gt;record&lt;span class="w"&gt; &lt;/span&
 &lt;/ul&gt;</content><category term="linux"></category><category term="linux"></category><category term="email"></category></entry><entry><title>HomeAssistant</title><link href="https://dfcsoftware.github.io/homeassistant.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/homeassistant.html</id><summary type="html">&lt;h1 id="home-assistant"&gt;Home Assistant&lt;/h1&gt;
 &lt;p&gt;This is a web based interface for automating things around the home. It can monitor doors, windows, motion detection and turn electrical things on and off.&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;[ toc ]&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;This is a web based interface for automating things around the home. It can monitor doors, windows, motion detection and turn …&lt;/p&gt;</summary><content type="html">&lt;h1 id="home-assistant"&gt;Home Assistant&lt;/h1&gt;
+&lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#home-assistant"&gt;Home Assistant&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#plug-in-zooz-s2-stick-700"&gt;Plug in Zooz S2 stick 700&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#install-software"&gt;Install Software&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#option-1-truenas-app"&gt;Option (1): TrueNAS App&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#1-app-for-home-assistant"&gt;(1) App for Home-Assistant&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#1-daemon-to-run-zwave-js-ui"&gt;(1 …&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;</summary><content type="html">&lt;h1 id="home-assistant"&gt;Home Assistant&lt;/h1&gt;
 &lt;p&gt;This is a web based interface for automating things around the home. It can monitor doors, windows, motion detection and turn electrical things on and off.&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;[ toc ]&lt;/p&gt;
+&lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#home-assistant"&gt;Home Assistant&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#plug-in-zooz-s2-stick-700"&gt;Plug in Zooz S2 stick 700&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#install-software"&gt;Install Software&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#option-1-truenas-app"&gt;Option (1): TrueNAS App&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#1-app-for-home-assistant"&gt;(1) App for Home-Assistant&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#1-daemon-to-run-zwave-js-ui"&gt;(1) Daemon to run ZWave-JS-UI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#1-skip-option-2-and-proceed-to-section-configuration-for-other-zooz-products"&gt;(1) Skip Option (2) and proceed to section -&amp;gt; Configuration for other Zooz products&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#option-2-docker-package-install"&gt;Option (2): Docker Package Install&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#2-install-docker-engine-on-ubuntu"&gt;(2) Install Docker Engine on Ubuntu&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#2-run-docker-to-install-homeassistant"&gt;(2) Run Docker to Install homeassistant&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#2-run-z-wave-js-server"&gt;(2) Run Z-Wave JS Server&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#2-check-docker-status"&gt;(2) Check Docker Status&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#2-move-containerimage-to-ssd-data"&gt;(2) Move Container/Image to SSD (/data)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#2-default-route-was-getting-messed-up-with-docker"&gt;(2) Default Route was getting messed up with docker&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#2-restarting"&gt;(2) Restarting&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#configuration-for-other-zooz-products"&gt;Configuration for other Zooz products&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#configuration-script-from-configurationyaml"&gt;Configuration script from configuration.yaml&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#sendmatrix-script"&gt;Sendmatrix script&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#automation"&gt;Automation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#upgrade"&gt;Upgrade&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#option-truenas"&gt;Option: TrueNAS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#option-docker"&gt;Option: Docker&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#lights-for-wall-e"&gt;Lights for WALL-E&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#_1"&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#circuit"&gt;Circuit&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#zen16-relay"&gt;ZEN16 Relay&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#alarm-light-radio-diagram"&gt;Alarm Light Radio - Diagram&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#z-wave-devices"&gt;Z-Wave Devices&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#purge"&gt;Purge&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#continue"&gt;Continue&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
 &lt;hr&gt;
-&lt;p&gt;This is a web based interface for automating things around the home. It can monitor doors, windows, motion detection and turn electrical things on and off.&lt;/p&gt;
 &lt;p&gt;The server software is in two pieces, Z-Wave JS and HASS. Z-Wave (nodejs) reads a USB stick and manages the connection and commands to various &lt;a href="https://www.z-wave.com/"&gt;Z-WAVE compatible wireless devices&lt;/a&gt;. HASS (python) displays and automates monitoring and reacting to the devices by communication to Z-Wave over the WebSocket service (ws://localhost:3000). I install and run the docker images of these packages.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;graph&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;TD&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;Home&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Assist&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;--&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;ws&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;--&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;Z&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Wave&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;JS&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;UI&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -12290,7 +12534,6 @@ $&lt;span class="w"&gt; &lt;/span&gt;tilde
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;hr&gt;
-&lt;p&gt;Matrix is a messaging system you can on your server. It allows your to send messages to a phone/watch from command line on the server. It is useful with HomeAssistant for monitoring the house.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Here is an example of a Matrix Client, called Element[1], available on iOS, Android and Desktops.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -13488,7 +13731,6 @@ from ~/.local/share/curseradio/favourites.opml
 &lt;/div&gt;
 &lt;hr&gt;
 &lt;p&gt;Reference: &lt;a href="https://miniflux.app/docs/installation.html#debian"&gt;https://miniflux.app/docs/installation.html#debian&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Miniflux is an RSS (Really Simple Syndication) server that will fetch and display RSS feeds from other websites. Also known as a &lt;em&gt;news reader&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;You can view these feeds from your web browser. They look like this:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="miniflux (2).png" src=".attachments.700615/miniflux%20%282%29.png"&gt;&lt;/p&gt;
 &lt;h2 id="database-configuration"&gt;Database Configuration&lt;/h2&gt;
@@ -13914,298 +14156,7 @@ rm&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$TMP&lt;/span&gt;
 &lt;span class="mi"&gt;57&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;root&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt; -x /usr/share/mdadm/checkarray &lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt; $(date +\%d) -le 7 &lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;then&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;share&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;mdadm&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;checkarray&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;cron&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="ow"&gt;all&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;idle&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;quiet&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;fi&lt;/span&gt;
 &lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Don&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;email&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;status&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;every&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;morning&lt;/span&gt;
 &lt;span class="mi"&gt;11&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;root&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;mnt&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;raid9&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;raid&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sh&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="linux"></category><category term="systems"></category><category term="hardware"></category></entry><entry><title>ncmpcpp</title><link href="https://dfcsoftware.github.io/ncmpcpp.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/ncmpcpp.html</id><summary type="html">&lt;h1 id="ncmpcpp-commands"&gt;NCMPCPP Commands&lt;/h1&gt;
-&lt;p&gt;Simply run this on your host running Music Player Daemon (MPD) over your ssh session&lt;/p&gt;
-&lt;hr&gt;
-&lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href="#ncmpcpp-commands"&gt;NCMPCPP Commands&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href="#install-ncmpcpp"&gt;Install ncmpcpp&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#using-ncmpcpp"&gt;Using ncmpcpp&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#keys-movement"&gt;Keys - Movement&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#keys-global"&gt;Keys - Global&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#keys-playlist"&gt;Keys - Playlist&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#keys-browser"&gt;Keys - Browser&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#keys-search-engine"&gt;Keys - Search engine&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#keys-media-library"&gt;Keys - Media library&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#keys-playlist-editor"&gt;Keys - Playlist editor&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#keys-browser_1"&gt;Keys - Browser&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#keys-search-engine_1"&gt;Keys - Search engine&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#keys-media-library_1"&gt;Keys - Media …&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;</summary><content type="html">&lt;h1 id="ncmpcpp-commands"&gt;NCMPCPP Commands&lt;/h1&gt;
-&lt;p&gt;Simply run this on your host running Music Player Daemon (MPD) over your ssh session&lt;/p&gt;
-&lt;hr&gt;
-&lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href="#ncmpcpp-commands"&gt;NCMPCPP Commands&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href="#install-ncmpcpp"&gt;Install ncmpcpp&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#using-ncmpcpp"&gt;Using ncmpcpp&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#keys-movement"&gt;Keys - Movement&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#keys-global"&gt;Keys - Global&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#keys-playlist"&gt;Keys - Playlist&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#keys-browser"&gt;Keys - Browser&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#keys-search-engine"&gt;Keys - Search engine&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#keys-media-library"&gt;Keys - Media library&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#keys-playlist-editor"&gt;Keys - Playlist editor&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#keys-browser_1"&gt;Keys - Browser&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#keys-search-engine_1"&gt;Keys - Search engine&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#keys-media-library_1"&gt;Keys - Media library&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#keys-playlist-editor_1"&gt;Keys - Playlist editor&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#keys-lyrics"&gt;Keys - Lyrics&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#keys-tiny-tag-editor"&gt;Keys - Tiny tag editor&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#keys-tag-editor"&gt;Keys - Tag editor&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;img alt="ncmpcpp.png" src=".attachments.596467/ncmpcpp.png"&gt;&lt;/p&gt;
-&lt;p&gt;Reference: &lt;a href="https://rybczak.net/ncmpcpp/"&gt;https://rybczak.net/ncmpcpp/&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id="install-ncmpcpp"&gt;Install ncmpcpp&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;apt-get&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;ncmpcpp
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h2 id="using-ncmpcpp"&gt;Using ncmpcpp&lt;/h2&gt;
-&lt;p&gt;Simply run this on your host running Music Player Daemon (MPD) over your ssh session&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;ncmpcpp
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;or run on one host connecting to MPD on another host, like this &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;ncmpcpp&lt;span class="w"&gt; &lt;/span&gt;--host&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;192&lt;/span&gt;.168.1.44&lt;span class="w"&gt; &lt;/span&gt;-p&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;6600&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;and you’ll see a ncurses-powered graphical user interface in your terminal.&lt;/p&gt;
-&lt;p&gt;Press &lt;em&gt;4&lt;/em&gt; and you should see your local music library, be able to change the selection using the arrow keys and press &lt;em&gt;Enter&lt;/em&gt; to play a song.&lt;/p&gt;
-&lt;p&gt;Doing this multiple times will create a &lt;em&gt;playlist&lt;/em&gt;, which allows you to move to the next track using the &lt;em&gt;&amp;gt;&lt;/em&gt; button (not the right arrow, the &lt;em&gt;&amp;gt;&lt;/em&gt; closing angle bracket character) and go back to the previous track with &lt;em&gt;&amp;lt;&lt;/em&gt;. The + and – buttons increase and decrease volume. The &lt;em&gt;Q&lt;/em&gt; button quits ncmpcpp but it doesn’t stop the music. You can play and pause with &lt;em&gt;P&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;You can see the current playlist by pressing the &lt;em&gt;1&lt;/em&gt; button (this is the default view). From this view you can press &lt;em&gt;i&lt;/em&gt; to look at the information (tags) about the current song. You can change the tags of the currently playing (or paused) song by pressing &lt;em&gt;6&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;Pressing the \ button will add (or remove) an informative panel at the top of the view. In the top left, you should see something that looks like this:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;[------]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Pressing the &lt;em&gt;r&lt;/em&gt;, &lt;em&gt;z&lt;/em&gt;, &lt;em&gt;y&lt;/em&gt;, &lt;em&gt;R&lt;/em&gt;, &lt;em&gt;x&lt;/em&gt; buttons will respectively toggle the &lt;em&gt;repeat&lt;/em&gt;, &lt;em&gt;random&lt;/em&gt;, &lt;em&gt;single&lt;/em&gt;, &lt;em&gt;consume&lt;/em&gt; and &lt;em&gt;crossfade&lt;/em&gt; playback modes and will replace one of the &lt;em&gt;–&lt;/em&gt; characters in that little indicator to the initial of the selected mode.&lt;/p&gt;
-&lt;p&gt;Pressing the &lt;em&gt;F1&lt;/em&gt; button will display some help text, which contains a list of keybindings, so there’s no need to write a complete list here. So now go on, be geeky, and play all your music from your terminal!&lt;/p&gt;
-&lt;p&gt;Reference: &lt;a href="https://github.com/ncmpcpp/ncmpcpp"&gt;https://github.com/ncmpcpp/ncmpcpp&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id="keys-movement"&gt;Keys - Movement&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Up k - Move cursor up&lt;/li&gt;
-&lt;li&gt;Down j - Move cursor down&lt;/li&gt;
-&lt;li&gt;[ - Move cursor up one album&lt;/li&gt;
-&lt;li&gt;] - Move cursor down one album&lt;/li&gt;
-&lt;li&gt;{ - Move cursor up one artist&lt;/li&gt;
-&lt;li&gt;} - Move cursor down one artist&lt;/li&gt;
-&lt;li&gt;Page Up - Page up&lt;/li&gt;
-&lt;li&gt;Page Down - Page down&lt;/li&gt;
-&lt;li&gt;Home - Home&lt;/li&gt;
-&lt;li&gt;End - End&lt;/li&gt;
-&lt;li&gt;Tab - Switch to next screen in sequence&lt;/li&gt;
-&lt;li&gt;Shift-Tab - Switch to previous screen in sequence&lt;/li&gt;
-&lt;li&gt;F1 - Show help&lt;/li&gt;
-&lt;li&gt;1 - Show playlist&lt;/li&gt;
-&lt;li&gt;2 - Show browser&lt;/li&gt;
-&lt;li&gt;3 - Show search engine&lt;/li&gt;
-&lt;li&gt;4 - Show media library&lt;/li&gt;
-&lt;li&gt;5 - Show playlist editor&lt;/li&gt;
-&lt;li&gt;6 - Show tag editor&lt;/li&gt;
-&lt;li&gt;7 - Show outputs&lt;/li&gt;
-&lt;li&gt;8 - Show music visualizer&lt;/li&gt;
-&lt;li&gt;= - Show clock&lt;/li&gt;
-&lt;li&gt;@ - Show server info&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="keys-global"&gt;Keys - Global&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;s - Stop&lt;/li&gt;
-&lt;li&gt;p - Pause&lt;/li&gt;
-&lt;li&gt;&amp;gt; - Next track&lt;/li&gt;
-&lt;li&gt;&amp;lt; - Previous track&lt;/li&gt;
-&lt;li&gt;Ctrl-H Backspace - Replay playing song&lt;/li&gt;
-&lt;li&gt;f - Seek forward in playing song&lt;/li&gt;
-&lt;li&gt;b - Seek backward in playing song&lt;/li&gt;
-&lt;li&gt;- Left - Decrease volume by 2%&lt;/li&gt;
-&lt;li&gt;Right + - Increase volume by 2%&lt;/li&gt;
-&lt;li&gt;t - Toggle space mode (select/add)&lt;/li&gt;
-&lt;li&gt;T - Toggle add mode (add or remove/always add)&lt;/li&gt;
-&lt;li&gt;| - Toggle mouse support&lt;/li&gt;
-&lt;li&gt;v - Reverse selection&lt;/li&gt;
-&lt;li&gt;V - Remove selection&lt;/li&gt;
-&lt;li&gt;B - Select songs of album around the cursor&lt;/li&gt;
-&lt;li&gt;a - Add selected items to playlist&lt;/li&gt;
-&lt;li&gt;` - Add random items to playlist&lt;/li&gt;
-&lt;li&gt;r - Toggle repeat mode&lt;/li&gt;
-&lt;li&gt;z - Toggle random mode&lt;/li&gt;
-&lt;li&gt;y - Toggle single mode&lt;/li&gt;
-&lt;li&gt;R - Toggle consume mode&lt;/li&gt;
-&lt;li&gt;Y - Toggle replay gain mode&lt;/li&gt;
-&lt;li&gt;# - Toggle bitrate visibility&lt;/li&gt;
-&lt;li&gt;Z - Shuffle playlist&lt;/li&gt;
-&lt;li&gt;x - Toggle crossfade mode&lt;/li&gt;
-&lt;li&gt;X - Set crossfade&lt;/li&gt;
-&lt;li&gt;u - Start music database update&lt;/li&gt;
-&lt;li&gt;\: - Execute command&lt;/li&gt;
-&lt;li&gt;Ctrl-F - Apply filter&lt;/li&gt;
-&lt;li&gt;/ - Find item forward&lt;/li&gt;
-&lt;li&gt;? - Find item backward&lt;/li&gt;
-&lt;li&gt;, - Jump to previous found item&lt;/li&gt;
-&lt;li&gt;. - Jump to next found item&lt;/li&gt;
-&lt;li&gt;w - Toggle find mode (normal/wrapped)&lt;/li&gt;
-&lt;li&gt;G - Locate song in browser&lt;/li&gt;
-&lt;li&gt;\~ - Locate song in media library&lt;/li&gt;
-&lt;li&gt;Ctrl-L - Lock/unlock current screen&lt;/li&gt;
-&lt;li&gt;Left h - Switch to master screen (left one)&lt;/li&gt;
-&lt;li&gt;Right l - Switch to slave screen (right one)&lt;/li&gt;
-&lt;li&gt;E - Locate song in tag editor&lt;/li&gt;
-&lt;li&gt;P - Toggle display mode&lt;/li&gt;
-&lt;li&gt;\ - Toggle user interface&lt;/li&gt;
-&lt;li&gt;! - Toggle displaying separators between albums&lt;/li&gt;
-&lt;li&gt;g - Jump to given position in playing song (formats: mm:ss, x%)&lt;/li&gt;
-&lt;li&gt;i - Show song info&lt;/li&gt;
-&lt;li&gt;I - Show artist info&lt;/li&gt;
-&lt;li&gt;L - Toggle lyrics fetcher&lt;/li&gt;
-&lt;li&gt;F - Toggle fetching lyrics for playing songs in background&lt;/li&gt;
-&lt;li&gt;q - Quit&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="keys-playlist"&gt;Keys - Playlist&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Enter - Play selected item&lt;/li&gt;
-&lt;li&gt;Delete - Delete selected item(s) from playlist&lt;/li&gt;
-&lt;li&gt;c - Clear playlist&lt;/li&gt;
-&lt;li&gt;C - Clear playlist except selected item(s)&lt;/li&gt;
-&lt;li&gt;Ctrl-P - Set priority of selected items&lt;/li&gt;
-&lt;li&gt;Ctrl-K m - Move selected item(s) up&lt;/li&gt;
-&lt;li&gt;n Ctrl-J - Move selected item(s) down&lt;/li&gt;
-&lt;li&gt;M - Move selected item(s) to cursor position&lt;/li&gt;
-&lt;li&gt;A - Add item to playlist&lt;/li&gt;
-&lt;li&gt;e - Edit song&lt;/li&gt;
-&lt;li&gt;S - Save playlist&lt;/li&gt;
-&lt;li&gt;Ctrl-V - Sort playlist&lt;/li&gt;
-&lt;li&gt;Ctrl-R - Reverse playlist&lt;/li&gt;
-&lt;li&gt;o - Jump to current song&lt;/li&gt;
-&lt;li&gt;U - Toggle playing song centering&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="keys-browser"&gt;Keys - Browser&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Enter - Enter directory/Add item to playlist and play it&lt;/li&gt;
-&lt;li&gt;Space - Add item to playlist/select it&lt;/li&gt;
-&lt;li&gt;e - Edit song&lt;/li&gt;
-&lt;li&gt;e - Edit directory name&lt;/li&gt;
-&lt;li&gt;e - Edit playlist name&lt;/li&gt;
-&lt;li&gt;2 - Browse MPD database/local filesystem&lt;/li&gt;
-&lt;li&gt;` - Toggle sort mode&lt;/li&gt;
-&lt;li&gt;o - Locate playing song&lt;/li&gt;
-&lt;li&gt;Ctrl-H Backspace - Jump to parent directory&lt;/li&gt;
-&lt;li&gt;Delete - Delete selected items from disk&lt;/li&gt;
-&lt;li&gt;G - Jump to playlist editor (playlists only)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="keys-search-engine"&gt;Keys - Search engine&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Enter - Add item to playlist and play it/change option&lt;/li&gt;
-&lt;li&gt;Space - Add item to playlist&lt;/li&gt;
-&lt;li&gt;e - Edit song&lt;/li&gt;
-&lt;li&gt;y - Start searching&lt;/li&gt;
-&lt;li&gt;3 - Reset search constraints and clear results&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="keys-media-library"&gt;Keys - Media library&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;4 - Switch between two/three columns mode&lt;/li&gt;
-&lt;li&gt;Left h - Previous column&lt;/li&gt;
-&lt;li&gt;Right l - Next column&lt;/li&gt;
-&lt;li&gt;Enter - Add item to playlist and play it&lt;/li&gt;
-&lt;li&gt;Space - Add item to playlist&lt;/li&gt;
-&lt;li&gt;e - Edit song&lt;/li&gt;
-&lt;li&gt;e - Edit tag (left column)/album (middle/right column)&lt;/li&gt;
-&lt;li&gt;` - Toggle type of tag used in left column&lt;/li&gt;
-&lt;li&gt;m - Toggle sort mode&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="keys-playlist-editor"&gt;Keys - Playlist editor&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Left h - Previous column&lt;/li&gt;
-&lt;li&gt;Right l - Next column&lt;/li&gt;
-&lt;li&gt;Enter - Add item to playlist and play it&lt;/li&gt;
-&lt;li&gt;Space - Add item to playlist/select it&lt;/li&gt;
-&lt;li&gt;e - Edit song&lt;/li&gt;
-&lt;li&gt;e - Edit playlist name&lt;/li&gt;
-&lt;li&gt;Ctrl-K m - Move selected item(s) up&lt;/li&gt;
-&lt;li&gt;n Ctrl-J - Move selected item(s) down&lt;/li&gt;
-&lt;li&gt;Delete - Delete selected playlists (left column)&lt;/li&gt;
-&lt;li&gt;C - Clear playlist except selected item(s)&lt;/li&gt;
-&lt;li&gt;Ctrl-P - Set priority of selected items&lt;/li&gt;
-&lt;li&gt;Ctrl-K m - Move selected item(s) up&lt;/li&gt;
-&lt;li&gt;n Ctrl-J - Move selected item(s) down&lt;/li&gt;
-&lt;li&gt;M - Move selected item(s) to cursor position&lt;/li&gt;
-&lt;li&gt;A - Add item to playlist&lt;/li&gt;
-&lt;li&gt;e - Edit song&lt;/li&gt;
-&lt;li&gt;S - Save playlist&lt;/li&gt;
-&lt;li&gt;Ctrl-V - Sort playlist&lt;/li&gt;
-&lt;li&gt;Ctrl-R - Reverse playlist&lt;/li&gt;
-&lt;li&gt;o - Jump to current song&lt;/li&gt;
-&lt;li&gt;U - Toggle playing song centering&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="keys-browser_1"&gt;Keys - Browser&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Enter - Enter directory/Add item to playlist and play it&lt;/li&gt;
-&lt;li&gt;Space - Add item to playlist/select it&lt;/li&gt;
-&lt;li&gt;e - Edit song&lt;/li&gt;
-&lt;li&gt;e - Edit directory name&lt;/li&gt;
-&lt;li&gt;e - Edit playlist name&lt;/li&gt;
-&lt;li&gt;2 - Browse MPD database/local filesystem&lt;/li&gt;
-&lt;li&gt;` - Toggle sort mode&lt;/li&gt;
-&lt;li&gt;o - Locate playing song&lt;/li&gt;
-&lt;li&gt;Ctrl-H Backspace - Jump to parent directory&lt;/li&gt;
-&lt;li&gt;Delete - Delete selected items from disk&lt;/li&gt;
-&lt;li&gt;G - Jump to playlist editor (playlists only)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="keys-search-engine_1"&gt;Keys - Search engine&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Enter - Add item to playlist and play it/change option&lt;/li&gt;
-&lt;li&gt;Space - Add item to playlist&lt;/li&gt;
-&lt;li&gt;e - Edit song&lt;/li&gt;
-&lt;li&gt;y - Start searching&lt;/li&gt;
-&lt;li&gt;3 - Reset search constraints and clear results&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="keys-media-library_1"&gt;Keys - Media library&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;4 - Switch between two/three columns mode&lt;/li&gt;
-&lt;li&gt;Left h - Previous column&lt;/li&gt;
-&lt;li&gt;Right l - Next column&lt;/li&gt;
-&lt;li&gt;Enter - Add item to playlist and play it&lt;/li&gt;
-&lt;li&gt;Space - Add item to playlist&lt;/li&gt;
-&lt;li&gt;e - Edit song&lt;/li&gt;
-&lt;li&gt;e - Edit tag (left column)/album (middle/right column)&lt;/li&gt;
-&lt;li&gt;` - Toggle type of tag used in left column&lt;/li&gt;
-&lt;li&gt;m - Toggle sort mode&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="keys-playlist-editor_1"&gt;Keys - Playlist editor&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Left h - Previous column&lt;/li&gt;
-&lt;li&gt;Right l - Next column&lt;/li&gt;
-&lt;li&gt;Enter - Add item to playlist and play it&lt;/li&gt;
-&lt;li&gt;Space - Add item to playlist/select it&lt;/li&gt;
-&lt;li&gt;e - Edit song&lt;/li&gt;
-&lt;li&gt;e - Edit playlist name&lt;/li&gt;
-&lt;li&gt;Ctrl-K m - Move selected item(s) up&lt;/li&gt;
-&lt;li&gt;n Ctrl-J - Move selected item(s) down&lt;/li&gt;
-&lt;li&gt;Delete - Delete selected playlists (left column)&lt;/li&gt;
-&lt;li&gt;Delete - Delete selected item(s) from playlist (right column)&lt;/li&gt;
-&lt;li&gt;c - Clear playlist&lt;/li&gt;
-&lt;li&gt;C - Clear playlist except selected items&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="keys-lyrics"&gt;Keys - Lyrics&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Space - Toggle reloading lyrics upon song change&lt;/li&gt;
-&lt;li&gt;e - Open lyrics in external editor&lt;/li&gt;
-&lt;li&gt;` - Refetch lyrics&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="keys-tiny-tag-editor"&gt;Keys - Tiny tag editor&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Enter - Edit tag&lt;/li&gt;
-&lt;li&gt;y - Save&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="keys-tag-editor"&gt;Keys - Tag editor&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Enter - Edit tag/filename of selected item (left column)&lt;/li&gt;
-&lt;li&gt;Enter - Perform operation on all/selected items (middle column)&lt;/li&gt;
-&lt;li&gt;Space - Switch to albums/directories view (left column)&lt;/li&gt;
-&lt;li&gt;Space - Select item (right column)&lt;/li&gt;
-&lt;li&gt;Left h - Previous column&lt;/li&gt;
-&lt;li&gt;Right l - Next column&lt;/li&gt;
-&lt;li&gt;Ctrl-H Backspace - Jump to parent directory (left column, directories view)&lt;/li&gt;
-&lt;/ul&gt;</content><category term="linux"></category><category term="linux"></category><category term="music"></category></entry><entry><title>Network Attached Storage (NAS)</title><link href="https://dfcsoftware.github.io/network-attached-storage-nas.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/network-attached-storage-nas.html</id><summary type="html">&lt;h1 id="network-attached-storage-nas"&gt;Network Attached Storage (NAS)&lt;/h1&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="linux"></category><category term="systems"></category><category term="hardware"></category></entry><entry><title>NAS</title><link href="https://dfcsoftware.github.io/nas.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/nas.html</id><summary type="html">&lt;h1 id="network-attached-storage-nas"&gt;Network Attached Storage (NAS)&lt;/h1&gt;
 &lt;p&gt;The NAS provides a safe place to store important data. Set this up before running E-Mail or a cloud service because it is the best place to put important files. If an E-Mail server crashes you still have all your E-Mail files on the NFS (see …&lt;/p&gt;</summary><content type="html">&lt;h1 id="network-attached-storage-nas"&gt;Network Attached Storage (NAS)&lt;/h1&gt;
 &lt;p&gt;The NAS provides a safe place to store important data. Set this up before running E-Mail or a cloud service because it is the best place to put important files. If an E-Mail server crashes you still have all your E-Mail files on the NFS (see below) attached NAS server. That's what it's for.&lt;/p&gt;
 &lt;hr&gt;
@@ -14584,62 +14535,346 @@ mkdir&lt;span class="w"&gt; &lt;/span&gt;-p&lt;span class="w"&gt; &lt;/span&gt;&
 &lt;h1 id="continue"&gt;Continue&lt;/h1&gt;
 &lt;p&gt;Now that you have set a NAS data protection, consider installing an E-Mail server using some of that safe storage.&lt;/p&gt;
 &lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;
-&lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category><category term="linux"></category><category term="systems"></category><category term="hardware"></category></entry><entry><title>Postgresql</title><link href="https://dfcsoftware.github.io/postgresql.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/postgresql.html</id><summary type="html">&lt;h2 id="postgresql"&gt;Postgresql&lt;/h2&gt;
-&lt;p&gt;Postgresql relational SQL database for systems. This is a great database with high reliablity,&lt;/p&gt;
+&lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category><category term="linux"></category><category term="systems"></category><category term="hardware"></category></entry><entry><title>ncmpcpp</title><link href="https://dfcsoftware.github.io/ncmpcpp.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/ncmpcpp.html</id><summary type="html">&lt;h1 id="ncmpcpp-commands"&gt;NCMPCPP Commands&lt;/h1&gt;
+&lt;p&gt;Simply run this on your host running Music Player Daemon (MPD) over your ssh session&lt;/p&gt;
 &lt;hr&gt;
 &lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href="#postgresql"&gt;Postgresql&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href="#installation-version-13"&gt;Installation (version 13)&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href="#install"&gt;Install&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#enable-auto-startup"&gt;Enable auto startup&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#check-out-all-these-options"&gt;Check out all these Options&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#clusters"&gt;Clusters&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#log-file"&gt;Log File&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#configuration-file"&gt;Configuration File&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#host-based-authentication-hba-file"&gt;Host Based Authentication (HBA) File&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#ncmpcpp-commands"&gt;NCMPCPP Commands&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#install-ncmpcpp"&gt;Install ncmpcpp&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#using-ncmpcpp"&gt;Using ncmpcpp&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#keys-movement"&gt;Keys - Movement&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#keys-global"&gt;Keys - Global&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#keys-playlist"&gt;Keys - Playlist&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#keys-browser"&gt;Keys - Browser&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#keys-search-engine"&gt;Keys - Search engine&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#keys-media-library"&gt;Keys - Media library&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#keys-playlist-editor"&gt;Keys - Playlist editor&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#keys-browser_1"&gt;Keys - Browser&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#keys-search-engine_1"&gt;Keys - Search engine&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#keys-media-library_1"&gt;Keys - Media …&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;</summary><content type="html">&lt;h1 id="ncmpcpp-commands"&gt;NCMPCPP Commands&lt;/h1&gt;
+&lt;p&gt;Simply run this on your host running Music Player Daemon (MPD) over your ssh session&lt;/p&gt;
+&lt;hr&gt;
+&lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#ncmpcpp-commands"&gt;NCMPCPP Commands&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#install-ncmpcpp"&gt;Install ncmpcpp&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#using-ncmpcpp"&gt;Using ncmpcpp&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#keys-movement"&gt;Keys - Movement&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#keys-global"&gt;Keys - Global&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#keys-playlist"&gt;Keys - Playlist&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#keys-browser"&gt;Keys - Browser&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#keys-search-engine"&gt;Keys - Search engine&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#keys-media-library"&gt;Keys - Media library&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#keys-playlist-editor"&gt;Keys - Playlist editor&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#keys-browser_1"&gt;Keys - Browser&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#keys-search-engine_1"&gt;Keys - Search engine&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#keys-media-library_1"&gt;Keys - Media library&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#keys-playlist-editor_1"&gt;Keys - Playlist editor&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#keys-lyrics"&gt;Keys - Lyrics&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#keys-tiny-tag-editor"&gt;Keys - Tiny tag editor&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#keys-tag-editor"&gt;Keys - Tag editor&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href="#psql-pager-pspg"&gt;psql pager - pspg&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href="#install_1"&gt;Install&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#helper-script"&gt;Helper Script&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#example"&gt;Example&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href="#continue"&gt;Continue&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;hr&gt;
-&lt;p&gt;Postgresql …&lt;/p&gt;</summary><content type="html">&lt;h2 id="postgresql"&gt;Postgresql&lt;/h2&gt;
-&lt;p&gt;Postgresql relational SQL database for systems. This is a great database with high reliablity,&lt;/p&gt;
-&lt;hr&gt;
-&lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href="#postgresql"&gt;Postgresql&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href="#installation-version-13"&gt;Installation (version 13)&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href="#install"&gt;Install&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#enable-auto-startup"&gt;Enable auto startup&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#check-out-all-these-options"&gt;Check out all these Options&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#clusters"&gt;Clusters&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#log-file"&gt;Log File&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#configuration-file"&gt;Configuration File&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#host-based-authentication-hba-file"&gt;Host Based Authentication (HBA) File&lt;/a&gt;&lt;/li&gt;
+&lt;p&gt;&lt;img alt="ncmpcpp.png" src=".attachments.596467/ncmpcpp.png"&gt;&lt;/p&gt;
+&lt;p&gt;Reference: &lt;a href="https://rybczak.net/ncmpcpp/"&gt;https://rybczak.net/ncmpcpp/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="install-ncmpcpp"&gt;Install ncmpcpp&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;apt-get&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;ncmpcpp
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id="using-ncmpcpp"&gt;Using ncmpcpp&lt;/h2&gt;
+&lt;p&gt;Simply run this on your host running Music Player Daemon (MPD) over your ssh session&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;ncmpcpp
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;or run on one host connecting to MPD on another host, like this &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;ncmpcpp&lt;span class="w"&gt; &lt;/span&gt;--host&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;192&lt;/span&gt;.168.1.44&lt;span class="w"&gt; &lt;/span&gt;-p&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;6600&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;and you’ll see a ncurses-powered graphical user interface in your terminal.&lt;/p&gt;
+&lt;p&gt;Press &lt;em&gt;4&lt;/em&gt; and you should see your local music library, be able to change the selection using the arrow keys and press &lt;em&gt;Enter&lt;/em&gt; to play a song.&lt;/p&gt;
+&lt;p&gt;Doing this multiple times will create a &lt;em&gt;playlist&lt;/em&gt;, which allows you to move to the next track using the &lt;em&gt;&amp;gt;&lt;/em&gt; button (not the right arrow, the &lt;em&gt;&amp;gt;&lt;/em&gt; closing angle bracket character) and go back to the previous track with &lt;em&gt;&amp;lt;&lt;/em&gt;. The + and – buttons increase and decrease volume. The &lt;em&gt;Q&lt;/em&gt; button quits ncmpcpp but it doesn’t stop the music. You can play and pause with &lt;em&gt;P&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;You can see the current playlist by pressing the &lt;em&gt;1&lt;/em&gt; button (this is the default view). From this view you can press &lt;em&gt;i&lt;/em&gt; to look at the information (tags) about the current song. You can change the tags of the currently playing (or paused) song by pressing &lt;em&gt;6&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Pressing the \ button will add (or remove) an informative panel at the top of the view. In the top left, you should see something that looks like this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;[------]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Pressing the &lt;em&gt;r&lt;/em&gt;, &lt;em&gt;z&lt;/em&gt;, &lt;em&gt;y&lt;/em&gt;, &lt;em&gt;R&lt;/em&gt;, &lt;em&gt;x&lt;/em&gt; buttons will respectively toggle the &lt;em&gt;repeat&lt;/em&gt;, &lt;em&gt;random&lt;/em&gt;, &lt;em&gt;single&lt;/em&gt;, &lt;em&gt;consume&lt;/em&gt; and &lt;em&gt;crossfade&lt;/em&gt; playback modes and will replace one of the &lt;em&gt;–&lt;/em&gt; characters in that little indicator to the initial of the selected mode.&lt;/p&gt;
+&lt;p&gt;Pressing the &lt;em&gt;F1&lt;/em&gt; button will display some help text, which contains a list of keybindings, so there’s no need to write a complete list here. So now go on, be geeky, and play all your music from your terminal!&lt;/p&gt;
+&lt;p&gt;Reference: &lt;a href="https://github.com/ncmpcpp/ncmpcpp"&gt;https://github.com/ncmpcpp/ncmpcpp&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="keys-movement"&gt;Keys - Movement&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Up k - Move cursor up&lt;/li&gt;
+&lt;li&gt;Down j - Move cursor down&lt;/li&gt;
+&lt;li&gt;[ - Move cursor up one album&lt;/li&gt;
+&lt;li&gt;] - Move cursor down one album&lt;/li&gt;
+&lt;li&gt;{ - Move cursor up one artist&lt;/li&gt;
+&lt;li&gt;} - Move cursor down one artist&lt;/li&gt;
+&lt;li&gt;Page Up - Page up&lt;/li&gt;
+&lt;li&gt;Page Down - Page down&lt;/li&gt;
+&lt;li&gt;Home - Home&lt;/li&gt;
+&lt;li&gt;End - End&lt;/li&gt;
+&lt;li&gt;Tab - Switch to next screen in sequence&lt;/li&gt;
+&lt;li&gt;Shift-Tab - Switch to previous screen in sequence&lt;/li&gt;
+&lt;li&gt;F1 - Show help&lt;/li&gt;
+&lt;li&gt;1 - Show playlist&lt;/li&gt;
+&lt;li&gt;2 - Show browser&lt;/li&gt;
+&lt;li&gt;3 - Show search engine&lt;/li&gt;
+&lt;li&gt;4 - Show media library&lt;/li&gt;
+&lt;li&gt;5 - Show playlist editor&lt;/li&gt;
+&lt;li&gt;6 - Show tag editor&lt;/li&gt;
+&lt;li&gt;7 - Show outputs&lt;/li&gt;
+&lt;li&gt;8 - Show music visualizer&lt;/li&gt;
+&lt;li&gt;= - Show clock&lt;/li&gt;
+&lt;li&gt;@ - Show server info&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/li&gt;
+&lt;h2 id="keys-global"&gt;Keys - Global&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;s - Stop&lt;/li&gt;
+&lt;li&gt;p - Pause&lt;/li&gt;
+&lt;li&gt;&amp;gt; - Next track&lt;/li&gt;
+&lt;li&gt;&amp;lt; - Previous track&lt;/li&gt;
+&lt;li&gt;Ctrl-H Backspace - Replay playing song&lt;/li&gt;
+&lt;li&gt;f - Seek forward in playing song&lt;/li&gt;
+&lt;li&gt;b - Seek backward in playing song&lt;/li&gt;
+&lt;li&gt;- Left - Decrease volume by 2%&lt;/li&gt;
+&lt;li&gt;Right + - Increase volume by 2%&lt;/li&gt;
+&lt;li&gt;t - Toggle space mode (select/add)&lt;/li&gt;
+&lt;li&gt;T - Toggle add mode (add or remove/always add)&lt;/li&gt;
+&lt;li&gt;| - Toggle mouse support&lt;/li&gt;
+&lt;li&gt;v - Reverse selection&lt;/li&gt;
+&lt;li&gt;V - Remove selection&lt;/li&gt;
+&lt;li&gt;B - Select songs of album around the cursor&lt;/li&gt;
+&lt;li&gt;a - Add selected items to playlist&lt;/li&gt;
+&lt;li&gt;` - Add random items to playlist&lt;/li&gt;
+&lt;li&gt;r - Toggle repeat mode&lt;/li&gt;
+&lt;li&gt;z - Toggle random mode&lt;/li&gt;
+&lt;li&gt;y - Toggle single mode&lt;/li&gt;
+&lt;li&gt;R - Toggle consume mode&lt;/li&gt;
+&lt;li&gt;Y - Toggle replay gain mode&lt;/li&gt;
+&lt;li&gt;# - Toggle bitrate visibility&lt;/li&gt;
+&lt;li&gt;Z - Shuffle playlist&lt;/li&gt;
+&lt;li&gt;x - Toggle crossfade mode&lt;/li&gt;
+&lt;li&gt;X - Set crossfade&lt;/li&gt;
+&lt;li&gt;u - Start music database update&lt;/li&gt;
+&lt;li&gt;\: - Execute command&lt;/li&gt;
+&lt;li&gt;Ctrl-F - Apply filter&lt;/li&gt;
+&lt;li&gt;/ - Find item forward&lt;/li&gt;
+&lt;li&gt;? - Find item backward&lt;/li&gt;
+&lt;li&gt;, - Jump to previous found item&lt;/li&gt;
+&lt;li&gt;. - Jump to next found item&lt;/li&gt;
+&lt;li&gt;w - Toggle find mode (normal/wrapped)&lt;/li&gt;
+&lt;li&gt;G - Locate song in browser&lt;/li&gt;
+&lt;li&gt;\~ - Locate song in media library&lt;/li&gt;
+&lt;li&gt;Ctrl-L - Lock/unlock current screen&lt;/li&gt;
+&lt;li&gt;Left h - Switch to master screen (left one)&lt;/li&gt;
+&lt;li&gt;Right l - Switch to slave screen (right one)&lt;/li&gt;
+&lt;li&gt;E - Locate song in tag editor&lt;/li&gt;
+&lt;li&gt;P - Toggle display mode&lt;/li&gt;
+&lt;li&gt;\ - Toggle user interface&lt;/li&gt;
+&lt;li&gt;! - Toggle displaying separators between albums&lt;/li&gt;
+&lt;li&gt;g - Jump to given position in playing song (formats: mm:ss, x%)&lt;/li&gt;
+&lt;li&gt;i - Show song info&lt;/li&gt;
+&lt;li&gt;I - Show artist info&lt;/li&gt;
+&lt;li&gt;L - Toggle lyrics fetcher&lt;/li&gt;
+&lt;li&gt;F - Toggle fetching lyrics for playing songs in background&lt;/li&gt;
+&lt;li&gt;q - Quit&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href="#psql-pager-pspg"&gt;psql pager - pspg&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href="#install_1"&gt;Install&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#helper-script"&gt;Helper Script&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#example"&gt;Example&lt;/a&gt;&lt;/li&gt;
+&lt;h2 id="keys-playlist"&gt;Keys - Playlist&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Enter - Play selected item&lt;/li&gt;
+&lt;li&gt;Delete - Delete selected item(s) from playlist&lt;/li&gt;
+&lt;li&gt;c - Clear playlist&lt;/li&gt;
+&lt;li&gt;C - Clear playlist except selected item(s)&lt;/li&gt;
+&lt;li&gt;Ctrl-P - Set priority of selected items&lt;/li&gt;
+&lt;li&gt;Ctrl-K m - Move selected item(s) up&lt;/li&gt;
+&lt;li&gt;n Ctrl-J - Move selected item(s) down&lt;/li&gt;
+&lt;li&gt;M - Move selected item(s) to cursor position&lt;/li&gt;
+&lt;li&gt;A - Add item to playlist&lt;/li&gt;
+&lt;li&gt;e - Edit song&lt;/li&gt;
+&lt;li&gt;S - Save playlist&lt;/li&gt;
+&lt;li&gt;Ctrl-V - Sort playlist&lt;/li&gt;
+&lt;li&gt;Ctrl-R - Reverse playlist&lt;/li&gt;
+&lt;li&gt;o - Jump to current song&lt;/li&gt;
+&lt;li&gt;U - Toggle playing song centering&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href="#continue"&gt;Continue&lt;/a&gt;&lt;/li&gt;
+&lt;h2 id="keys-browser"&gt;Keys - Browser&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Enter - Enter directory/Add item to playlist and play it&lt;/li&gt;
+&lt;li&gt;Space - Add item to playlist/select it&lt;/li&gt;
+&lt;li&gt;e - Edit song&lt;/li&gt;
+&lt;li&gt;e - Edit directory name&lt;/li&gt;
+&lt;li&gt;e - Edit playlist name&lt;/li&gt;
+&lt;li&gt;2 - Browse MPD database/local filesystem&lt;/li&gt;
+&lt;li&gt;` - Toggle sort mode&lt;/li&gt;
+&lt;li&gt;o - Locate playing song&lt;/li&gt;
+&lt;li&gt;Ctrl-H Backspace - Jump to parent directory&lt;/li&gt;
+&lt;li&gt;Delete - Delete selected items from disk&lt;/li&gt;
+&lt;li&gt;G - Jump to playlist editor (playlists only)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/div&gt;
-&lt;hr&gt;
+&lt;h2 id="keys-search-engine"&gt;Keys - Search engine&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Enter - Add item to playlist and play it/change option&lt;/li&gt;
+&lt;li&gt;Space - Add item to playlist&lt;/li&gt;
+&lt;li&gt;e - Edit song&lt;/li&gt;
+&lt;li&gt;y - Start searching&lt;/li&gt;
+&lt;li&gt;3 - Reset search constraints and clear results&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="keys-media-library"&gt;Keys - Media library&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;4 - Switch between two/three columns mode&lt;/li&gt;
+&lt;li&gt;Left h - Previous column&lt;/li&gt;
+&lt;li&gt;Right l - Next column&lt;/li&gt;
+&lt;li&gt;Enter - Add item to playlist and play it&lt;/li&gt;
+&lt;li&gt;Space - Add item to playlist&lt;/li&gt;
+&lt;li&gt;e - Edit song&lt;/li&gt;
+&lt;li&gt;e - Edit tag (left column)/album (middle/right column)&lt;/li&gt;
+&lt;li&gt;` - Toggle type of tag used in left column&lt;/li&gt;
+&lt;li&gt;m - Toggle sort mode&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="keys-playlist-editor"&gt;Keys - Playlist editor&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Left h - Previous column&lt;/li&gt;
+&lt;li&gt;Right l - Next column&lt;/li&gt;
+&lt;li&gt;Enter - Add item to playlist and play it&lt;/li&gt;
+&lt;li&gt;Space - Add item to playlist/select it&lt;/li&gt;
+&lt;li&gt;e - Edit song&lt;/li&gt;
+&lt;li&gt;e - Edit playlist name&lt;/li&gt;
+&lt;li&gt;Ctrl-K m - Move selected item(s) up&lt;/li&gt;
+&lt;li&gt;n Ctrl-J - Move selected item(s) down&lt;/li&gt;
+&lt;li&gt;Delete - Delete selected playlists (left column)&lt;/li&gt;
+&lt;li&gt;C - Clear playlist except selected item(s)&lt;/li&gt;
+&lt;li&gt;Ctrl-P - Set priority of selected items&lt;/li&gt;
+&lt;li&gt;Ctrl-K m - Move selected item(s) up&lt;/li&gt;
+&lt;li&gt;n Ctrl-J - Move selected item(s) down&lt;/li&gt;
+&lt;li&gt;M - Move selected item(s) to cursor position&lt;/li&gt;
+&lt;li&gt;A - Add item to playlist&lt;/li&gt;
+&lt;li&gt;e - Edit song&lt;/li&gt;
+&lt;li&gt;S - Save playlist&lt;/li&gt;
+&lt;li&gt;Ctrl-V - Sort playlist&lt;/li&gt;
+&lt;li&gt;Ctrl-R - Reverse playlist&lt;/li&gt;
+&lt;li&gt;o - Jump to current song&lt;/li&gt;
+&lt;li&gt;U - Toggle playing song centering&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="keys-browser_1"&gt;Keys - Browser&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Enter - Enter directory/Add item to playlist and play it&lt;/li&gt;
+&lt;li&gt;Space - Add item to playlist/select it&lt;/li&gt;
+&lt;li&gt;e - Edit song&lt;/li&gt;
+&lt;li&gt;e - Edit directory name&lt;/li&gt;
+&lt;li&gt;e - Edit playlist name&lt;/li&gt;
+&lt;li&gt;2 - Browse MPD database/local filesystem&lt;/li&gt;
+&lt;li&gt;` - Toggle sort mode&lt;/li&gt;
+&lt;li&gt;o - Locate playing song&lt;/li&gt;
+&lt;li&gt;Ctrl-H Backspace - Jump to parent directory&lt;/li&gt;
+&lt;li&gt;Delete - Delete selected items from disk&lt;/li&gt;
+&lt;li&gt;G - Jump to playlist editor (playlists only)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="keys-search-engine_1"&gt;Keys - Search engine&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Enter - Add item to playlist and play it/change option&lt;/li&gt;
+&lt;li&gt;Space - Add item to playlist&lt;/li&gt;
+&lt;li&gt;e - Edit song&lt;/li&gt;
+&lt;li&gt;y - Start searching&lt;/li&gt;
+&lt;li&gt;3 - Reset search constraints and clear results&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="keys-media-library_1"&gt;Keys - Media library&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;4 - Switch between two/three columns mode&lt;/li&gt;
+&lt;li&gt;Left h - Previous column&lt;/li&gt;
+&lt;li&gt;Right l - Next column&lt;/li&gt;
+&lt;li&gt;Enter - Add item to playlist and play it&lt;/li&gt;
+&lt;li&gt;Space - Add item to playlist&lt;/li&gt;
+&lt;li&gt;e - Edit song&lt;/li&gt;
+&lt;li&gt;e - Edit tag (left column)/album (middle/right column)&lt;/li&gt;
+&lt;li&gt;` - Toggle type of tag used in left column&lt;/li&gt;
+&lt;li&gt;m - Toggle sort mode&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="keys-playlist-editor_1"&gt;Keys - Playlist editor&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Left h - Previous column&lt;/li&gt;
+&lt;li&gt;Right l - Next column&lt;/li&gt;
+&lt;li&gt;Enter - Add item to playlist and play it&lt;/li&gt;
+&lt;li&gt;Space - Add item to playlist/select it&lt;/li&gt;
+&lt;li&gt;e - Edit song&lt;/li&gt;
+&lt;li&gt;e - Edit playlist name&lt;/li&gt;
+&lt;li&gt;Ctrl-K m - Move selected item(s) up&lt;/li&gt;
+&lt;li&gt;n Ctrl-J - Move selected item(s) down&lt;/li&gt;
+&lt;li&gt;Delete - Delete selected playlists (left column)&lt;/li&gt;
+&lt;li&gt;Delete - Delete selected item(s) from playlist (right column)&lt;/li&gt;
+&lt;li&gt;c - Clear playlist&lt;/li&gt;
+&lt;li&gt;C - Clear playlist except selected items&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="keys-lyrics"&gt;Keys - Lyrics&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Space - Toggle reloading lyrics upon song change&lt;/li&gt;
+&lt;li&gt;e - Open lyrics in external editor&lt;/li&gt;
+&lt;li&gt;` - Refetch lyrics&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="keys-tiny-tag-editor"&gt;Keys - Tiny tag editor&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Enter - Edit tag&lt;/li&gt;
+&lt;li&gt;y - Save&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="keys-tag-editor"&gt;Keys - Tag editor&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Enter - Edit tag/filename of selected item (left column)&lt;/li&gt;
+&lt;li&gt;Enter - Perform operation on all/selected items (middle column)&lt;/li&gt;
+&lt;li&gt;Space - Switch to albums/directories view (left column)&lt;/li&gt;
+&lt;li&gt;Space - Select item (right column)&lt;/li&gt;
+&lt;li&gt;Left h - Previous column&lt;/li&gt;
+&lt;li&gt;Right l - Next column&lt;/li&gt;
+&lt;li&gt;Ctrl-H Backspace - Jump to parent directory (left column, directories view)&lt;/li&gt;
+&lt;/ul&gt;</content><category term="linux"></category><category term="linux"></category><category term="music"></category></entry><entry><title>Postgresql</title><link href="https://dfcsoftware.github.io/postgresql.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/postgresql.html</id><summary type="html">&lt;h2 id="postgresql"&gt;Postgresql&lt;/h2&gt;
 &lt;p&gt;Postgresql relational SQL database for systems. This is a great database with high reliablity,
-performance and extendable. External extensions allow even more customizations.&lt;/p&gt;
+performance and extendable.&lt;/p&gt;
+&lt;hr&gt;
+&lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#postgresql"&gt;Postgresql&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#installation-version-13"&gt;Installation (version 13)&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#install"&gt;Install&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#enable-auto-startup"&gt;Enable auto startup&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#check-out-all-these-options"&gt;Check out all these Options&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#clusters"&gt;Clusters&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#log-file"&gt;Log File&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#configuration-file"&gt;Configuration File&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#host-based-authentication-hba-file"&gt;Host Based Authentication (HBA) File&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#psql-pager-pspg"&gt;psql pager - pspg&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#install_1"&gt;Install&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#helper-script"&gt;Helper Script …&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;</summary><content type="html">&lt;h2 id="postgresql"&gt;Postgresql&lt;/h2&gt;
+&lt;p&gt;Postgresql relational SQL database for systems. This is a great database with high reliablity,
+performance and extendable.&lt;/p&gt;
+&lt;hr&gt;
+&lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#postgresql"&gt;Postgresql&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#installation-version-13"&gt;Installation (version 13)&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#install"&gt;Install&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#enable-auto-startup"&gt;Enable auto startup&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#check-out-all-these-options"&gt;Check out all these Options&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#clusters"&gt;Clusters&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#log-file"&gt;Log File&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#configuration-file"&gt;Configuration File&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#host-based-authentication-hba-file"&gt;Host Based Authentication (HBA) File&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#psql-pager-pspg"&gt;psql pager - pspg&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#install_1"&gt;Install&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#helper-script"&gt;Helper Script&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#example"&gt;Example&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#continue"&gt;Continue&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;p&gt;This is a great database with high reliablity,&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;User Roles&lt;/li&gt;
 &lt;li&gt;Stored Procedures&lt;/li&gt;
@@ -15160,7 +15395,6 @@ mydb-#&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;select&lt;/span&
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;hr&gt;
-&lt;p&gt;Mainly used this on SBC (BeagleBone) computer to move a database from SD card (/var/lib...) to SSD disk (/data/lib...). A database will burn up an SD card quickly 😟&lt;/p&gt;
 &lt;h2 id="list-clusters-on-host"&gt;List clusters on host&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;pg_lsclusters
 Ver&lt;span class="w"&gt; &lt;/span&gt;Cluster&lt;span class="w"&gt; &lt;/span&gt;Port&lt;span class="w"&gt; &lt;/span&gt;Status&lt;span class="w"&gt; &lt;/span&gt;Owner&lt;span class="w"&gt;    &lt;/span&gt;Data&lt;span class="w"&gt; &lt;/span&gt;directory&lt;span class="w"&gt;              &lt;/span&gt;Log&lt;span class="w"&gt; &lt;/span&gt;file
@@ -15339,7 +15573,6 @@ Ver&lt;span class="w"&gt; &lt;/span&gt;Cluster&lt;span class="w"&gt; &lt;/span&g
 &lt;/div&gt;
 &lt;hr&gt;
 &lt;h2 id="establish-baseline"&gt;Establish Baseline&lt;/h2&gt;
-&lt;p&gt;Oh my, installing Ubuntu 22.04 installed PostgreSQL 14... wonder what version I am using...&lt;/p&gt;
 &lt;h4 id="what-is-installed"&gt;What is installed?&lt;/h4&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;-u&lt;span class="w"&gt; &lt;/span&gt;postgres&lt;span class="w"&gt; &lt;/span&gt;pg_lsclusters&lt;span class="w"&gt; &lt;/span&gt;
 Ver&lt;span class="w"&gt; &lt;/span&gt;Cluster&lt;span class="w"&gt; &lt;/span&gt;Port&lt;span class="w"&gt; &lt;/span&gt;Status&lt;span class="w"&gt;                &lt;/span&gt;Owner&lt;span class="w"&gt;     &lt;/span&gt;Data&lt;span class="w"&gt; &lt;/span&gt;directory&lt;span class="w"&gt;               &lt;/span&gt;Log&lt;span class="w"&gt; &lt;/span&gt;file
@@ -15977,17 +16210,15 @@ postgres&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="m"&gt;752078&lt;/sp
 &lt;p&gt;Docker is a way to manage containers, which are like namespaces or jails. Here are some useful common commands to check out the status of these containers.&lt;/p&gt;
 &lt;hr&gt;
 &lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href="#docker"&gt;Docker&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#docker_1"&gt;Docker&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#docker"&gt;Docker&lt;/a&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href="#prune-unused-containers-images-and-cache"&gt;Prune unused containers, images and cache&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#check-a-containers-logs"&gt;Check a container's logs&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#inspect-a-container"&gt;Inspect a container&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#check-for-container-filesystem-changes-since-start"&gt;Check for container filesystem …&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;</summary><content type="html">&lt;h1 id="docker"&gt;Docker&lt;/h1&gt;
+&lt;li&gt;&lt;a href="#check-for-container-filesystem-changes-since-start"&gt;Check for container filesystem changes …&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;</summary><content type="html">&lt;h1 id="docker"&gt;Docker&lt;/h1&gt;
 &lt;p&gt;Docker is a way to manage containers, which are like namespaces or jails. Here are some useful common commands to check out the status of these containers.&lt;/p&gt;
 &lt;hr&gt;
 &lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href="#docker"&gt;Docker&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#docker_1"&gt;Docker&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#docker"&gt;Docker&lt;/a&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href="#prune-unused-containers-images-and-cache"&gt;Prune unused containers, images and cache&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#check-a-containers-logs"&gt;Check a container's logs&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#inspect-a-container"&gt;Inspect a container&lt;/a&gt;&lt;/li&gt;
@@ -16002,9 +16233,6 @@ postgres&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="m"&gt;752078&lt;/sp
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;hr&gt;
-&lt;hr&gt;
-&lt;h1 id="docker_1"&gt;Docker&lt;/h1&gt;
-&lt;p&gt;Docker is a way to manage containers, which are like namespaces or jails. Here are some useful common commands to check out the status of these containers.&lt;/p&gt;
 &lt;h2 id="prune-unused-containers-images-and-cache"&gt;Prune unused containers, images and cache&lt;/h2&gt;
 &lt;p&gt;This can free up disk space.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;docker&lt;span class="w"&gt; &lt;/span&gt;system&lt;span class="w"&gt; &lt;/span&gt;prune

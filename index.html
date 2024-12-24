@@ -134,7 +134,7 @@
 <p><a href="e-mail.html">E-Mail</a></p>
 </li>
 <li>
-<p><a href="e-mail_relay.md">E-Mail Relay</a></p>
+<p><a href="e-mailrelay.md">E-Mail Relay</a></p>
 </li>
 <li>
 <p><a href="postgresql.html">PostgreSQL</a></p>
@@ -161,7 +161,7 @@
 <p><a href="beaglebone.html">Electronics on a BeagleBone</a></p>
 </li>
 <li>
-<p><a href="media_managment.html">Media (TV/Music) Management</a></p>
+<p><a href="mediamanagment.html">Media (TV/Music) Management</a></p>
 </li>
 <li>
 <p><a href="ncmpcpp.html">ncmpcpp MPD Control</a></p>
@@ -260,9 +260,7 @@ A house is not a home without visitors</p>
 <p>In <a href="https://dfcsoftware.github.io/category/linux.html">linux</a>.</p>
 <p>tags: <a href="https://dfcsoftware.github.io/tag/linux.html">linux</a> <a href="https://dfcsoftware.github.io/tag/systems.html">systems</a> </p>
 </footer><!-- /.post-info -->                <h1 id="watch-notification-system-v-2023095">Watch Notification System - v 2023.09.5</h1>
-<ul>
-<li>Finally got my alerts working, so when a host goes haywire I get an alert on the Phone and Cloud, with E-Mail as backup.</li>
-</ul>
+<p>Finally got my alerts working, so when a host goes haywire I get an alert on the Phone and Cloud, with E-Mail as backup.</p>
 <hr>
 <div class="toc"><span class="toctitle">Table of Contents</span><ul>
 <li><a href="#watch-notification-system-v-2023095">Watch Notification System - v 2023.09.5</a><ul>
@@ -329,8 +327,7 @@ A house is not a home without visitors</p>
 <p><br/></p>
 <hr>
 <div class="toc"><span class="toctitle">Table of Contents</span><ul>
-<li><a href="#network-management">Network Management</a></li>
-<li><a href="#network-management_1">Network Management</a><ul>
+<li><a href="#network-management">Network Management</a><ul>
 <li><a href="#nmcli">nmcli</a></li>
 <li><a href="#ip">ip</a></li>
 <li><a href="#ss">ss</a></li>
@@ -347,9 +344,11 @@ A house is not a home without visitors</p>
 </ul>
 </div>
 <hr>
-<hr>
-<h1 id="network-management_1">Network Management</h1>
-<p>The command line offers a wealth of network management commands. Here are …</p>
+<h2 id="nmcli">nmcli</h2>
+<p>NetworkManager has a command line interface (CLI).</p>
+<p>Get status:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>nmcli<span class="w"> </span>general<span class="w"> </span>status
+STATE<span class="w">      </span>CONNECTIVITY<span class="w">  </span>WIFI-HW …</code></pre></div>
                 <a class="readmore" href="https://dfcsoftware.github.io/networkmanagement.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
@@ -517,11 +516,18 @@ A house is not a home without visitors</p>
 </footer><!-- /.post-info -->                <h1 id="web-certificate">Web Certificate</h1>
 <p>Web certificates encrypt different messages over the public internet so nobody can see what these messages contain.</p>
 <hr>
-<p>[ toc ]</p>
-<hr>
-<p>Web certificates encrypt different messages over the public internet so nobody can see what these messages contain.</p>
-<h2 id="lets-encrypt-certificate-authority-ca">Let's Encrypt - Certificate Authority (CA)</h2>
-<p>Let's Encrypt offers free 90 day SSL/TLS …</p>
+<div class="toc"><span class="toctitle">Table of Contents</span><ul>
+<li><a href="#web-certificate">Web Certificate</a><ul>
+<li><a href="#lets-encrypt-certificate-authority-ca">Let's Encrypt - Certificate Authority (CA)</a></li>
+<li><a href="#certbot-certificate-robot">Certbot - Certificate Robot</a><ul>
+<li><a href="#install">Install</a></li>
+<li><a href="#configure">Configure</a></li>
+<li><a href="#schedule">Schedule</a></li>
+<li><a href="#renewal-is-done-on-web-host">Renewal is done on web host</a></li>
+</ul>
+</li>
+<li><a href="#apache-web-server-for-nextcloud">Apache - Web Server for Nextcloud</a></li>
+<li><a href="#dovecot-server-for-e-mail-clients">Dovecot - Server for E-Mail …</a></li></ul></li></ul></div>
                 <a class="readmore" href="https://dfcsoftware.github.io/certificate.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>

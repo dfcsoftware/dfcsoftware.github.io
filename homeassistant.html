@@ -113,9 +113,54 @@
 </footer><!-- /.post-info -->      <h1 id="home-assistant">Home Assistant</h1>
 <p>This is a web based interface for automating things around the home. It can monitor doors, windows, motion detection and turn electrical things on and off.</p>
 <hr>
-<p>[ toc ]</p>
+<div class="toc"><span class="toctitle">Table of Contents</span><ul>
+<li><a href="#home-assistant">Home Assistant</a><ul>
+<li><a href="#plug-in-zooz-s2-stick-700">Plug in Zooz S2 stick 700</a></li>
+<li><a href="#install-software">Install Software</a><ul>
+<li><a href="#option-1-truenas-app">Option (1): TrueNAS App</a><ul>
+<li><a href="#1-app-for-home-assistant">(1) App for Home-Assistant</a></li>
+<li><a href="#1-daemon-to-run-zwave-js-ui">(1) Daemon to run ZWave-JS-UI</a></li>
+<li><a href="#1-skip-option-2-and-proceed-to-section-configuration-for-other-zooz-products">(1) Skip Option (2) and proceed to section -&gt; Configuration for other Zooz products</a></li>
+</ul>
+</li>
+<li><a href="#option-2-docker-package-install">Option (2): Docker Package Install</a><ul>
+<li><a href="#2-install-docker-engine-on-ubuntu">(2) Install Docker Engine on Ubuntu</a></li>
+<li><a href="#2-run-docker-to-install-homeassistant">(2) Run Docker to Install homeassistant</a></li>
+<li><a href="#2-run-z-wave-js-server">(2) Run Z-Wave JS Server</a></li>
+<li><a href="#2-check-docker-status">(2) Check Docker Status</a></li>
+<li><a href="#2-move-containerimage-to-ssd-data">(2) Move Container/Image to SSD (/data)</a></li>
+<li><a href="#2-default-route-was-getting-messed-up-with-docker">(2) Default Route was getting messed up with docker</a></li>
+<li><a href="#2-restarting">(2) Restarting</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#configuration-for-other-zooz-products">Configuration for other Zooz products</a><ul>
+<li><a href="#configuration-script-from-configurationyaml">Configuration script from configuration.yaml</a></li>
+<li><a href="#sendmatrix-script">Sendmatrix script</a></li>
+<li><a href="#automation">Automation</a></li>
+</ul>
+</li>
+<li><a href="#upgrade">Upgrade</a><ul>
+<li><a href="#option-truenas">Option: TrueNAS</a></li>
+<li><a href="#option-docker">Option: Docker</a></li>
+</ul>
+</li>
+<li><a href="#lights-for-wall-e">Lights for WALL-E</a></li>
+<li><a href="#_1"></a></li>
+<li><a href="#circuit">Circuit</a><ul>
+<li><a href="#zen16-relay">ZEN16 Relay</a></li>
+<li><a href="#alarm-light-radio-diagram">Alarm Light Radio - Diagram</a></li>
+</ul>
+</li>
+<li><a href="#z-wave-devices">Z-Wave Devices</a></li>
+<li><a href="#purge">Purge</a></li>
+<li><a href="#continue">Continue</a></li>
+</ul>
+</li>
+</ul>
+</div>
 <hr>
-<p>This is a web based interface for automating things around the home. It can monitor doors, windows, motion detection and turn electrical things on and off.</p>
 <p>The server software is in two pieces, Z-Wave JS and HASS. Z-Wave (nodejs) reads a USB stick and manages the connection and commands to various <a href="https://www.z-wave.com/">Z-WAVE compatible wireless devices</a>. HASS (python) displays and automates monitoring and reacting to the devices by communication to Z-Wave over the WebSocket service (ws://localhost:3000). I install and run the docker images of these packages.</p>
 <div class="highlight"><pre><span></span><code><span class="n">graph</span><span class="w"> </span><span class="n">TD</span><span class="p">;</span>
 <span class="w">        </span><span class="n">Home</span><span class="o">-</span><span class="n">Assist</span><span class="o">&lt;--</span><span class="w"> </span><span class="n">ws</span><span class="w"> </span><span class="o">--&gt;</span><span class="n">Z</span><span class="o">-</span><span class="n">Wave</span><span class="o">-</span><span class="n">JS</span><span class="o">-</span><span class="n">UI</span><span class="p">;</span>

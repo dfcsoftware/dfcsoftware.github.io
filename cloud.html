@@ -113,7 +113,84 @@
 </footer><!-- /.post-info -->      <h1 id="cloud">Cloud</h1>
 <p>A cloud used to be floating in the sky, then it was a bubbly thing on a network diagram where weird things happen. Now a cloud just means "Somebody else's computer.". Of course you get to it over a network and can share things, like files (pictures, music, documents), contacts, calendars and chat, among other things.</p>
 <hr>
-<p>[ TOC ]</p>
+<div class="toc"><span class="toctitle">Table of Contents</span><ul>
+<li><a href="#cloud">Cloud</a></li>
+<li><a href="#syncthing">SyncThing</a></li>
+<li><a href="#warpinator">Warpinator</a></li>
+<li><a href="#cryptomater">Cryptomater</a></li>
+<li><a href="#nextcloud">NextCloud</a><ul>
+<li><a href="#services">Services</a><ul>
+<li><a href="#ios-app-nextcloud-talk">IOS App - NextCloud Talk</a></li>
+</ul>
+</li>
+<li><a href="#install-documentation">Install Documentation</a></li>
+<li><a href="#install-steps">Install Steps</a><ul>
+<li><a href="#nextcloud-php-install">Nextcloud PHP Install</a></li>
+<li><a href="#package-dependency-install">Package Dependency Install</a></li>
+<li><a href="#create-empty-postgresql-database">Create Empty PostgreSQL Database</a></li>
+<li><a href="#postgresql-database-authentication">PostgreSQL Database Authentication</a><ul>
+<li><a href="#no-database-password">No Database Password</a></li>
+<li><a href="#database-password">Database Password</a></li>
+</ul>
+</li>
+<li><a href="#postgresql-database-populate-nextcloud-metadata">PostgreSQL Database Populate NextCloud Metadata</a></li>
+<li><a href="#apache-web-server-nextcloud-configuration">Apache Web Server NextCloud Configuration</a></li>
+<li><a href="#apache-web-server-locale-settings">Apache Web Server Locale Settings</a></li>
+<li><a href="#nextcloud-trusted-domains-and-e-mail-server-connection">NextCloud Trusted Domains and E-Mail Server Connection</a></li>
+<li><a href="#nextcloud-php-configuration">NextCloud PHP Configuration</a></li>
+<li><a href="#nextcloud-redis-caching-configuration">NextCloud Redis Caching Configuration</a></li>
+</ul>
+</li>
+<li><a href="#move-the-shared-files-in-nextcloud-to-nas">Move the shared files in NextCloud to NAS</a></li>
+<li><a href="#nextcloud-command-line-client">Nextcloud Command Line Client</a><ul>
+<li><a href="#install">Install</a></li>
+<li><a href="#usage">Usage</a></li>
+</ul>
+</li>
+<li><a href="#debug">Debug</a></li>
+<li><a href="#talk-from-command-line">Talk from Command Line</a><ul>
+<li><a href="#talk-mattermost-shell-script">Talk Mattermost Shell Script</a></li>
+<li><a href="#talk-mattermost-php-script">Talk Mattermost PHP Script</a></li>
+</ul>
+</li>
+<li><a href="#federated-sharing-between-nextcloud-servers">Federated Sharing Between Nextcloud Servers</a><ul>
+<li><a href="#in-both-nextcloud-hosts">In both Nextcloud hosts</a></li>
+<li><a href="#in-sending-nextcloud">In Sending Nextcloud</a></li>
+<li><a href="#in-receiving-nextcloud">In Receiving Nextcloud</a></li>
+</ul>
+</li>
+<li><a href="#offline-copy-of-contacts-and-calendar">Offline Copy of Contacts and Calendar</a><ul>
+<li><a href="#install-vdirsyncer-package">Install vdirsyncer package</a></li>
+<li><a href="#configure-vdirsyncer">Configure vdirsyncer</a></li>
+<li><a href="#schedule-vdirsyncer">Schedule vdirsyncer</a></li>
+</ul>
+</li>
+<li><a href="#contacts-from-the-command-line">Contacts from the Command Line</a><ul>
+<li><a href="#install_1">Install</a></li>
+<li><a href="#configure">Configure</a></li>
+<li><a href="#run-it">Run it</a></li>
+</ul>
+</li>
+<li><a href="#calendars-from-the-command-line">Calendars from the Command Line</a><ul>
+<li><a href="#install_2">Install</a></li>
+<li><a href="#configure_1">Configure</a></li>
+<li><a href="#run-it_1">Run it</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#apache-block-malicious-hosts">Apache - Block Malicious Hosts</a><ul>
+<li><a href="#script">Script</a></li>
+<li><a href="#usage_1">Usage</a></li>
+</ul>
+</li>
+<li><a href="#upgrade-nextcloud">Upgrade Nextcloud</a><ul>
+<li><a href="#upgrade-manually">Upgrade manually</a></li>
+</ul>
+</li>
+<li><a href="#continue">Continue</a></li>
+</ul>
+</div>
 <hr>
 <p>For me it means I can get to my stuff no matter where I am; <em>and</em> my stuff is private unless I share it. So I keep it in my home, under lock and key. To share I have a few open ports, encrypted network traffic, and some protected disk arrays with timely backups.</p>
 <p>If this sounds interesting so far, here are some contenders for the job:</p>
