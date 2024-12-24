@@ -32,8 +32,6 @@ A house is not a home without visitors&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Finally got my alerts working, so when a host goes haywire I get an alert on the Phone and Cloud, with E-Mail as backup.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
-&lt;!-- toc --&gt;
 &lt;hr&gt;
 &lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href="#watch-notification-system-v-2023095"&gt;Watch Notification System - v 2023.09.5&lt;/a&gt;&lt;/li&gt;
@@ -43,8 +41,6 @@ A house is not a home without visitors&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Finally got my alerts working, so when a host goes haywire I get an alert on the Phone and Cloud, with E-Mail as backup.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
-&lt;!-- toc --&gt;
 &lt;hr&gt;
 &lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href="#watch-notification-system-v-2023095"&gt;Watch Notification System - v 2023.09.5&lt;/a&gt;&lt;/li&gt;
@@ -395,7 +391,7 @@ It needs to be scheduled in cron.&lt;/p&gt;
 &lt;span class="nv"&gt;Aug&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;08&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;11&lt;/span&gt;:&lt;span class="mi"&gt;07&lt;/span&gt;:&lt;span class="mi"&gt;43&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;bob&lt;/span&gt;.&lt;span class="nv"&gt;example&lt;/span&gt;.&lt;span class="nv"&gt;com&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;pmlogger&lt;/span&gt;[&lt;span class="mi"&gt;913&lt;/span&gt;]:&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="nv"&gt;To&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;enable&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;pmlogger&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;run&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;following&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;as&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;root&lt;/span&gt;:
 &lt;span class="nv"&gt;Aug&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;08&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;11&lt;/span&gt;:&lt;span class="mi"&gt;07&lt;/span&gt;:&lt;span class="mi"&gt;44&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;bob&lt;/span&gt;.&lt;span class="nv"&gt;example&lt;/span&gt;.&lt;span class="nv"&gt;com&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;pmlogger&lt;/span&gt;[&lt;span class="mi"&gt;913&lt;/span&gt;]:&lt;span class="w"&gt;          &lt;/span&gt;&lt;span class="nv"&gt;update&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;rc&lt;/span&gt;.&lt;span class="nv"&gt;d&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;f&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;pmlogger&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;remove&lt;/span&gt;
 &lt;span class="nv"&gt;Aug&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;08&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;11&lt;/span&gt;:&lt;span class="mi"&gt;07&lt;/span&gt;:&lt;span class="mi"&gt;44&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;bob&lt;/span&gt;.&lt;span class="nv"&gt;example&lt;/span&gt;.&lt;span class="nv"&gt;com&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;pmlogger&lt;/span&gt;[&lt;span class="mi"&gt;913&lt;/span&gt;]:&lt;span class="w"&gt;          &lt;/span&gt;&lt;span class="nv"&gt;update&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;rc&lt;/span&gt;.&lt;span class="nv"&gt;d&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;pmlogger&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;defaults&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;94&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;06&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category></entry><entry><title>Virtual Machines</title><link href="https://dfcsoftware.github.io/virtual-machines.html" rel="alternate"></link><published>2023-06-23T00:00:00-04:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-06-23:/virtual-machines.html</id><summary type="html">&lt;h1 id="virtual-machines"&gt;Virtual Machines&lt;/h1&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="linux"></category><category term="systems"></category></entry><entry><title>Virtual Machines</title><link href="https://dfcsoftware.github.io/virtual-machines.html" rel="alternate"></link><published>2023-06-23T00:00:00-04:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-06-23:/virtual-machines.html</id><summary type="html">&lt;h1 id="virtual-machines"&gt;Virtual Machines&lt;/h1&gt;
 &lt;p&gt;A Virtual Machine (VM) is a way to create a whole operating system, with many applications, that is able to be moved from one physical machine to another physical machine. This has advantages in case of hardware, location or network problems to quickly and correctly restore service.&lt;/p&gt;
 &lt;hr&gt;
 &lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table …&lt;/span&gt;&lt;/div&gt;</summary><content type="html">&lt;h1 id="virtual-machines"&gt;Virtual Machines&lt;/h1&gt;
@@ -1233,10 +1229,9 @@ Pool&lt;span class="w"&gt; &lt;/span&gt;my_vm01&lt;span class="w"&gt; &lt;/span&
 &lt;span class="n"&gt;└── virtlogd.conf&lt;/span&gt;
 
 &lt;span class="n"&gt;9 directories, 45 files&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category></entry><entry><title>Network Management</title><link href="https://dfcsoftware.github.io/network-management.html" rel="alternate"></link><published>2023-04-23T00:00:00-04:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-04-23:/network-management.html</id><summary type="html">&lt;h1 id="network-management"&gt;Network Management&lt;/h1&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="linux"></category><category term="systems"></category></entry><entry><title>Network Management</title><link href="https://dfcsoftware.github.io/network-management.html" rel="alternate"></link><published>2023-04-23T00:00:00-04:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-04-23:/network-management.html</id><summary type="html">&lt;h1 id="network-management"&gt;Network Management&lt;/h1&gt;
 &lt;p&gt;The command line offers a wealth of network management commands. Here are some of my favorites.&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
-&lt;!-- toc --&gt;
 &lt;hr&gt;
 &lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href="#network-management"&gt;Network Management&lt;/a&gt;&lt;/li&gt;
@@ -1262,7 +1257,6 @@ Pool&lt;span class="w"&gt; &lt;/span&gt;my_vm01&lt;span class="w"&gt; &lt;/span&
 &lt;p&gt;The command line offers a wealth of network management commands. Here are …&lt;/p&gt;</summary><content type="html">&lt;h1 id="network-management"&gt;Network Management&lt;/h1&gt;
 &lt;p&gt;The command line offers a wealth of network management commands. Here are some of my favorites.&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
-&lt;!-- toc --&gt;
 &lt;hr&gt;
 &lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href="#network-management"&gt;Network Management&lt;/a&gt;&lt;/li&gt;
@@ -1686,7 +1680,7 @@ responded
 &lt;h2 id="conclusion"&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;This was a short list, hoping to provide an introduction to managing your network from the command line.&lt;/p&gt;
 &lt;p&gt;Hope this helps,&lt;br&gt;
--- Don&lt;/p&gt;</content><category term="linux"></category></entry><entry><title>Encrypting Files</title><link href="https://dfcsoftware.github.io/encrypting-files.html" rel="alternate"></link><published>2023-03-23T00:00:00-04:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-03-23:/encrypting-files.html</id><summary type="html">&lt;h1 id="encrypting-files"&gt;Encrypting Files&lt;/h1&gt;
+-- Don&lt;/p&gt;</content><category term="linux"></category><category term="linux"></category><category term="network"></category></entry><entry><title>Encrypting Files</title><link href="https://dfcsoftware.github.io/encrypting-files.html" rel="alternate"></link><published>2023-03-23T00:00:00-04:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-03-23:/encrypting-files.html</id><summary type="html">&lt;h1 id="encrypting-files"&gt;Encrypting Files&lt;/h1&gt;
 &lt;p&gt;You should protect your carefully built system and it's files from abuse, tampering, or just plain spying. It's easy to do, what are you waiting for? Encrypt your data directory &lt;strong&gt;now&lt;/strong&gt;.&lt;/p&gt;
 &lt;hr&gt;
 &lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
@@ -1721,7 +1715,6 @@ responded
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-&lt;hr&gt;
 &lt;hr&gt;
 &lt;h1 id="encrypting-files_1"&gt;Encrypting Files&lt;/h1&gt;
 &lt;p&gt;You should protect your carefully built system and it's files from abuse, tampering, or just plain spying. It's easy to do, what are you waiting for? Encrypt your data directory &lt;strong&gt;now&lt;/strong&gt;.&lt;/p&gt;
@@ -2034,7 +2027,7 @@ $&lt;span class="w"&gt; &lt;/span&gt;cp&lt;span class="w"&gt; &lt;/span&gt;revok
 
 &lt;blockquote&gt;
 &lt;p&gt;This is more secure if you do not share your public key on a public server. You just have to find a secure way to share it, like your own cloud server.&lt;/p&gt;
-&lt;/blockquote&gt;</content><category term="linux"></category></entry><entry><title>Virtual IP</title><link href="https://dfcsoftware.github.io/virtual-ip.html" rel="alternate"></link><published>2023-02-23T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-02-23:/virtual-ip.html</id><summary type="html">&lt;h1 id="virtual-ip"&gt;Virtual IP&lt;/h1&gt;
+&lt;/blockquote&gt;</content><category term="linux"></category><category term="linux"></category><category term="security"></category></entry><entry><title>Virtual IP</title><link href="https://dfcsoftware.github.io/virtual-ip.html" rel="alternate"></link><published>2023-02-23T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-02-23:/virtual-ip.html</id><summary type="html">&lt;h1 id="virtual-ip"&gt;Virtual IP&lt;/h1&gt;
 &lt;p&gt;Virtual IP Interface behaves like a normal interface. All traffic routed to it will go through the master interface (for example, eth0) but with a VLAN tag. Only VLAN-aware devices can accept them if configured correctly, else the traffic is dropped. &lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;hr&gt;
@@ -2365,7 +2358,7 @@ default via 192.168.1.1 dev eno1 proto static
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Reference:
- * &lt;a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html-single/configuring_and_managing_networking/index#proc_configuring-vlan-tagging-by-using-nmstatectl_configuring-vlan-tagging"&gt;https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html-single/configuring_and_managing_networking/index#proc_configuring-vlan-tagging-by-using-nmstatectl_configuring-vlan-tagging&lt;/a&gt;&lt;/p&gt;</content><category term="linux"></category></entry><entry><title>Setup Server</title><link href="https://dfcsoftware.github.io/setup-server.html" rel="alternate"></link><published>2023-02-02T10:20:00-05:00</published><updated>2024-05-01T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-02-02:/setup-server.html</id><summary type="html">&lt;h1 id="set-up-a-new-server"&gt;Set Up a New Server&lt;/h1&gt;
+ * &lt;a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html-single/configuring_and_managing_networking/index#proc_configuring-vlan-tagging-by-using-nmstatectl_configuring-vlan-tagging"&gt;https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html-single/configuring_and_managing_networking/index#proc_configuring-vlan-tagging-by-using-nmstatectl_configuring-vlan-tagging&lt;/a&gt;&lt;/p&gt;</content><category term="linux"></category><category term="linux"></category><category term="network"></category></entry><entry><title>Setup Server</title><link href="https://dfcsoftware.github.io/setup-server.html" rel="alternate"></link><published>2023-02-02T10:20:00-05:00</published><updated>2024-05-01T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-02-02:/setup-server.html</id><summary type="html">&lt;h1 id="set-up-a-new-server"&gt;Set Up a New Server&lt;/h1&gt;
 &lt;p&gt;I use this as a guide to enable proper monitoring and maintenance of any new server on the network.&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;hr&gt;
@@ -4690,14 +4683,84 @@ echo $(who am i) &amp;#39; just logged on &amp;#39; $(hostname) &amp;#39; &amp;#
 &lt;p&gt;Proceeding in the order presented, some things are depending on prior setups.&lt;/p&gt;
 &lt;object type="image/svg+xml" data="/images/Linux-in-the-House2.svg" style="width:5%; height:10%; text-align: right"&gt;
   Linux-in-the-House.svg&lt;!-- fallback image in CSS --&gt;
-&lt;/object&gt;</content><category term="linux"></category></entry><entry><title>BeagleBone</title><link href="https://dfcsoftware.github.io/beaglebone.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/beaglebone.html</id><summary type="html">&lt;h1 id="beaglebone"&gt;BeagleBone&lt;/h1&gt;
-&lt;!-- toc --&gt;
-
-&lt;h2 id="sbc-singlesmall-board-computer"&gt;SBC (Single/Small Board Computer)&lt;/h2&gt;
+&lt;/object&gt;</content><category term="linux"></category><category term="linux"></category><category term="setup"></category></entry><entry><title>BeagleBone</title><link href="https://dfcsoftware.github.io/beaglebone.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/beaglebone.html</id><summary type="html">&lt;h1 id="beaglebone"&gt;BeagleBone&lt;/h1&gt;
 &lt;p&gt;The BeagleBone (BB) [1] line supports the Linux kernel and GPIO hardware connections to devices via device trees [2]. It is simular to the Rasberry-PI line, only BB is &lt;strong&gt;open source hardware&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;They run a full featured Debian distribution, capable of running C, C …&lt;/p&gt;</summary><content type="html">&lt;h1 id="beaglebone"&gt;BeagleBone&lt;/h1&gt;
-&lt;!-- toc --&gt;
-
+&lt;hr&gt;
+&lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#beaglebone"&gt;BeagleBone&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#sbc-singlesmall-board-computer"&gt;SBC (Single/Small Board Computer)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#serial-debug-connection"&gt;Serial Debug Connection&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#bbai-64-adapter"&gt;BBAI-64 Adapter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#screen-on-linux"&gt;Screen on Linux …&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;</summary><content type="html">&lt;h1 id="beaglebone"&gt;BeagleBone&lt;/h1&gt;
+&lt;p&gt;The BeagleBone (BB) [1] line supports the Linux kernel and GPIO hardware connections to devices via device trees [2]. It is simular to the Rasberry-PI line, only BB is &lt;strong&gt;open source hardware&lt;/strong&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#beaglebone"&gt;BeagleBone&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#sbc-singlesmall-board-computer"&gt;SBC (Single/Small Board Computer)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#serial-debug-connection"&gt;Serial Debug Connection&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#bbai-64-adapter"&gt;BBAI-64 Adapter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#screen-on-linux"&gt;Screen on Linux&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#recover-from-lost-root-password"&gt;Recover from lost root password&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#flash-new-operating-system"&gt;Flash new Operating System&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#boot-order"&gt;Boot Order&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#bbai-32-devmmcblk0p1-micro-sd-devmmcblk1p1-on-board-mmc"&gt;BBAI-32 /dev/mmcblk0p1 = Micro-SD; /dev/mmcblk1p1 = On-board mmc&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#bbai-64-devmmcblk1p1-micro-sd-devmmcblk0p1-on-board-mmc"&gt;BBAI-64 /dev/mmcblk1p1 = Micro-SD; /dev/mmcblk0p1 = On-board mmc&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#bb-ai-64-bit-uses-a-new-approach-extlinuxconf-1-that-will-probably-be-the-standard-going-forward-2"&gt;BB-AI 64-bit uses a new approach, extlinux.conf [1], that will probably be the standard going forward [2].&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#enable-flashing"&gt;Enable Flashing&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#bbai-32-flash"&gt;BBAI-32: Flash&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#bbai-64-flash"&gt;BBAI-64: Flash&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#flashing-process"&gt;Flashing Process&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#disable-flashing"&gt;Disable Flashing&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#bb-ai-32-bit"&gt;BB-AI 32-Bit&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#bb-ai-64-bit"&gt;BB-AI 64-Bit&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#duplicate-micro-sd-card"&gt;Duplicate Micro-SD card&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#update-software"&gt;Update Software&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#expand-sd-filesystem"&gt;Expand SD filesystem&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#disable-cloud9-development-platform"&gt;Disable cloud9 development platform&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#bb-bbai-tether-system"&gt;bb-bbai-tether system&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#bbai-64-switches"&gt;BBAI-64 Switches&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#bbai-64-hdmi-display-connection"&gt;BBAI-64 HDMI Display Connection&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#bbai-64-default-memory-device-tree"&gt;BBAI-64 default memory device tree&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#bbai-64-fix-broken-boot"&gt;BBAI-64 Fix 'broken boot'&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#bbai-64-user-leds"&gt;BBAI-64 User LEDs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#bbai-survival-guide"&gt;BBAI Survival Guide&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#real-time-clock-rtc-system-service-and-setup"&gt;Real Time Clock (RTC) system service and setup&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#service-file"&gt;Service File&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#seven-segment-display"&gt;Seven Segment Display&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#clock-code"&gt;Clock Code&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#music-player-for-the-car"&gt;Music Player for the Car&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#installed-three-buttons"&gt;Installed three buttons&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#wiring-pins"&gt;Wiring Pins&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#service"&gt;Service&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#forward"&gt;Forward&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#play"&gt;Play&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#remote"&gt;Remote&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#remote-stop"&gt;Remote Stop&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#reverse"&gt;Reverse&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#power-onoff-another-pc"&gt;Power on/off another PC&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#reference"&gt;Reference&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#continue"&gt;Continue&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;hr&gt;
 &lt;h2 id="sbc-singlesmall-board-computer"&gt;SBC (Single/Small Board Computer)&lt;/h2&gt;
 &lt;p&gt;The BeagleBone (BB) [1] line supports the Linux kernel and GPIO hardware connections to devices via device trees [2]. It is simular to the Rasberry-PI line, only BB is &lt;strong&gt;open source hardware&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;They run a full featured Debian distribution, capable of running C, C++, Rust, Python and node-js, all the way up to a PostgreSQL database. It comes with a web-based IDE called Cloud-9 [3] that can also run node-js programs on the BB. The AI line also supplies image recognition packages.&lt;/p&gt;
@@ -6025,17 +6088,11 @@ log&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Starting
 &lt;h1 id="continue"&gt;Continue&lt;/h1&gt;
 &lt;p&gt;Now that you have experimented with BeagleBone SBC, next our travels take us far away to Media Land. The sights and sounds of Video and Audio controlled and maintained by your computer.&lt;/p&gt;
 &lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;
-&lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category></entry><entry><title>Cloud</title><link href="https://dfcsoftware.github.io/cloud.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/cloud.html</id><summary type="html">&lt;h1 id="cloud"&gt;Cloud&lt;/h1&gt;
+&lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category><category term="linux"></category><category term="hardware"></category></entry><entry><title>Cloud</title><link href="https://dfcsoftware.github.io/cloud.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/cloud.html</id><summary type="html">&lt;h1 id="cloud"&gt;Cloud&lt;/h1&gt;
+&lt;p&gt;A cloud used to be floating in the sky, then it was a bubbly thing on a network diagram where weird things happen. Now a cloud just means "Somebody else's computer.". Of course you get to it over a network and can share things, like files (pictures, music, documents …&lt;/p&gt;</summary><content type="html">&lt;h1 id="cloud"&gt;Cloud&lt;/h1&gt;
+&lt;p&gt;A cloud used to be floating in the sky, then it was a bubbly thing on a network diagram where weird things happen. Now a cloud just means "Somebody else's computer.". Of course you get to it over a network and can share things, like files (pictures, music, documents), contacts, calendars and chat, among other things.&lt;/p&gt;
 &lt;hr&gt;
-&lt;h4 id="table-of-contents"&gt;Table of Contents&lt;/h4&gt;
-&lt;!-- toc --&gt;
-
-&lt;hr&gt;
-&lt;p&gt;A cloud used to be floating in the sky, then it was a bubbly thing on a network diagram where weird things happen. Now a cloud just means "Somebody else's computer.". Of course you get to it over a network and can share things, like files …&lt;/p&gt;</summary><content type="html">&lt;h1 id="cloud"&gt;Cloud&lt;/h1&gt;
-&lt;hr&gt;
-&lt;h4 id="table-of-contents"&gt;Table of Contents&lt;/h4&gt;
-&lt;!-- toc --&gt;
-
+&lt;p&gt;[ toc ]&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;A cloud used to be floating in the sky, then it was a bubbly thing on a network diagram where weird things happen. Now a cloud just means "Somebody else's computer.". Of course you get to it over a network and can share things, like files (pictures, music, documents), contacts, calendars and chat, among other things.&lt;/p&gt;
 &lt;p&gt;For me it means I can get to my stuff no matter where I am; &lt;em&gt;and&lt;/em&gt; my stuff is private unless I share it. So I keep it in my home, under lock and key. To share I have a few open ports, encrypted network traffic, and some protected disk arrays with timely backups.&lt;/p&gt;
@@ -7257,17 +7314,13 @@ $ sudo crontab -u apache -e
 &lt;h1 id="continue"&gt;Continue&lt;/h1&gt;
 &lt;p&gt;Now that you have Cloud, consider some Home Automation, like door and window security, lights and more.&lt;/p&gt;
 &lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;
-&lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category></entry><entry><title>Domain Name Service (DNS)</title><link href="https://dfcsoftware.github.io/domain-name-service-dns.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/domain-name-service-dns.html</id><summary type="html">&lt;h1 id="domain-name-service-dns"&gt;Domain Name Service (DNS)&lt;/h1&gt;
+&lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category><category term="linux"></category><category term="web"></category></entry><entry><title>Domain Name Service (DNS)</title><link href="https://dfcsoftware.github.io/domain-name-service-dns.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/domain-name-service-dns.html</id><summary type="html">&lt;h1 id="domain-name-service-dns"&gt;Domain Name Service (DNS)&lt;/h1&gt;
+&lt;p&gt;A Domain Name Service (DNS) allows your E-Mail and Web Server to use a name instead of an IP Address, so other people can find you by name. Some Internet Service Providers (ISP) will change your IP address every few months in a residential environment.&lt;/p&gt;
 &lt;hr&gt;
-&lt;h4 id="table-of-contents"&gt;Table of Contents&lt;/h4&gt;
-&lt;!-- toc --&gt;
-
+&lt;p&gt;[ toc …&lt;/p&gt;</summary><content type="html">&lt;h1 id="domain-name-service-dns"&gt;Domain Name Service (DNS)&lt;/h1&gt;
+&lt;p&gt;A Domain Name Service (DNS) allows your E-Mail and Web Server to use a name instead of an IP Address, so other people can find you by name. Some Internet Service Providers (ISP) will change your IP address every few months in a residential environment.&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;A Domain Name Service (DNS) allows your E-Mail and Web Server to use a name instead of an IP Address, so other people can find you by name. Some Internet Service Providers (ISP) will change your IP address every few months in a …&lt;/p&gt;</summary><content type="html">&lt;h1 id="domain-name-service-dns"&gt;Domain Name Service (DNS)&lt;/h1&gt;
-&lt;hr&gt;
-&lt;h4 id="table-of-contents"&gt;Table of Contents&lt;/h4&gt;
-&lt;!-- toc --&gt;
-
+&lt;p&gt;[ toc ]&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;A Domain Name Service (DNS) allows your E-Mail and Web Server to use a name instead of an IP Address, so other people can find you by name. Some Internet Service Providers (ISP) will change your IP address every few months in a residential environment.&lt;/p&gt;
 &lt;p&gt;You pay a company to register [1] your unique name and assign it to an IP address. In turn they look up your IP address for anyone trying to connect to your name [2]. Kind of like the old telephone white/yellow pages where telephones were assigned to a fixed location (wire).&lt;/p&gt;
@@ -7618,19 +7671,15 @@ $&lt;span class="w"&gt; &lt;/span&gt;ls&lt;span class="w"&gt; &lt;/span&gt;-l&lt
 &lt;h1 id="continue"&gt;Continue&lt;/h1&gt;
 &lt;p&gt;Now that you have set up an Internet name for your new server, consider giving it an internet certificate with Let's Encrypt.&lt;/p&gt;
 &lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;
-&lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category></entry><entry><title>E-Mail</title><link href="https://dfcsoftware.github.io/e-mail.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/e-mail.html</id><summary type="html">&lt;h1 id="e-mail"&gt;E-Mail&lt;/h1&gt;
-&lt;hr&gt;
-&lt;h4 id="table-of-contents"&gt;Table of Contents&lt;/h4&gt;
-&lt;!-- toc --&gt;
-
-&lt;hr&gt;
+&lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category><category term="linux"></category><category term="web"></category></entry><entry><title>E-Mail</title><link href="https://dfcsoftware.github.io/e-mail.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/e-mail.html</id><summary type="html">&lt;h1 id="e-mail"&gt;E-Mail&lt;/h1&gt;
 &lt;p&gt;Electronic Mail (E-Mail) is a way to type letters onto a computer and send them to other people. These other people's computers will then use E-Mail to read your letters. It is an electronic version of the Post Office.&lt;/p&gt;
-&lt;h2 id="dovecot-presents-e-mails-to-clients"&gt;Dovecot - Presents E-Mails to Clients&lt;/h2&gt;
-&lt;p&gt;Dovecot [1 …&lt;/p&gt;</summary><content type="html">&lt;h1 id="e-mail"&gt;E-Mail&lt;/h1&gt;
 &lt;hr&gt;
-&lt;h4 id="table-of-contents"&gt;Table of Contents&lt;/h4&gt;
-&lt;!-- toc --&gt;
-
+&lt;p&gt;[ toc ]&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Electronic Mail (E-Mail) is a way to type letters …&lt;/p&gt;</summary><content type="html">&lt;h1 id="e-mail"&gt;E-Mail&lt;/h1&gt;
+&lt;p&gt;Electronic Mail (E-Mail) is a way to type letters onto a computer and send them to other people. These other people's computers will then use E-Mail to read your letters. It is an electronic version of the Post Office.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;[ toc ]&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;Electronic Mail (E-Mail) is a way to type letters onto a computer and send them to other people. These other people's computers will then use E-Mail to read your letters. It is an electronic version of the Post Office.&lt;/p&gt;
 &lt;h2 id="dovecot-presents-e-mails-to-clients"&gt;Dovecot - Presents E-Mails to Clients&lt;/h2&gt;
@@ -8643,17 +8692,16 @@ sa-learn&lt;span class="w"&gt; &lt;/span&gt;-u&lt;span class="w"&gt; &lt;/span&g
 &lt;h2 id="continue"&gt;Continue&lt;/h2&gt;
 &lt;p&gt;Now that you have set up E-Mail on your server, you will need a Database for many more things, so now is a good time to install the versatile PostgreSQL database.&lt;/p&gt;
 &lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;
-&lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category></entry><entry><title>E-Mail Forward</title><link href="https://dfcsoftware.github.io/e-mail-forward.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/e-mail-forward.html</id><summary type="html">&lt;h1 id="e-mail-forward"&gt;E-Mail Forward&lt;/h1&gt;
+&lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category><category term="linux"></category><category term="email"></category></entry><entry><title>E-Mail Forward</title><link href="https://dfcsoftware.github.io/e-mail-forward.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/e-mail-forward.html</id><summary type="html">&lt;h1 id="e-mail-forward"&gt;E-Mail Forward&lt;/h1&gt;
+&lt;p&gt;The following diagrams are what this document will accomplish. The challenge is to obtain and keep a good reputation that other E-Mail handlers around the world will accept. Otherwise your messages will be dumped in the trash can (SPAM) or sent back to you (bounced). &lt;/p&gt;
 &lt;hr&gt;
-&lt;!-- toc --&gt;
-
+&lt;p&gt;[ toc ]&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1 id="overview"&gt;Overview&lt;/h1&gt;
+&lt;p&gt;The …&lt;/p&gt;</summary><content type="html">&lt;h1 id="e-mail-forward"&gt;E-Mail Forward&lt;/h1&gt;
 &lt;p&gt;The following diagrams are what this document will accomplish. The challenge is to obtain and keep a good reputation that other E-Mail handlers around the world will accept. Otherwise your messages will be dumped in the trash can (SPAM) or sent back to you (bounced). &lt;/p&gt;
-&lt;p&gt;It is …&lt;/p&gt;</summary><content type="html">&lt;h1 id="e-mail-forward"&gt;E-Mail Forward&lt;/h1&gt;
 &lt;hr&gt;
-&lt;!-- toc --&gt;
-
+&lt;p&gt;[ toc ]&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1 id="overview"&gt;Overview&lt;/h1&gt;
 &lt;p&gt;The following diagrams are what this document will accomplish. The challenge is to obtain and keep a good reputation that other E-Mail handlers around the world will accept. Otherwise your messages will be dumped in the trash can (SPAM) or sent back to you (bounced). &lt;/p&gt;
@@ -10518,13 +10566,16 @@ DMARC&lt;span class="w"&gt; &lt;/span&gt;record&lt;span class="w"&gt; &lt;/span&
 &lt;li&gt;&lt;a href="https://www.linuxbabe.com/mail-server/create-dmarc-record"&gt;https://www.linuxbabe.com/mail-server/create-dmarc-record&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://postmarkapp.com"&gt;https://postmarkapp.com&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://datatracker.ietf.org/doc/html/rfc7489#section-7.2"&gt;https://datatracker.ietf.org/doc/html/rfc7489#section-7.2&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><category term="linux"></category></entry><entry><title>Home Assistant</title><link href="https://dfcsoftware.github.io/home-assistant.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/home-assistant.html</id><summary type="html">&lt;h1 id="home-assistant"&gt;Home Assistant&lt;/h1&gt;
-&lt;!-- toc --&gt;
-
+&lt;/ul&gt;</content><category term="linux"></category><category term="linux"></category><category term="email"></category></entry><entry><title>Home Assistant</title><link href="https://dfcsoftware.github.io/home-assistant.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/home-assistant.html</id><summary type="html">&lt;h1 id="home-assistant"&gt;Home Assistant&lt;/h1&gt;
 &lt;p&gt;This is a web based interface for automating things around the home. It can monitor doors, windows, motion detection and turn electrical things on and off.&lt;/p&gt;
-&lt;p&gt;The server software is in two pieces, Z-Wave JS and HASS. Z-Wave (nodejs) reads a USB stick and manages the connection and …&lt;/p&gt;</summary><content type="html">&lt;h1 id="home-assistant"&gt;Home Assistant&lt;/h1&gt;
-&lt;!-- toc --&gt;
-
+&lt;hr&gt;
+&lt;p&gt;[ toc ]&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;This is a web based interface for automating things around the home. It can monitor doors, windows, motion detection and turn …&lt;/p&gt;</summary><content type="html">&lt;h1 id="home-assistant"&gt;Home Assistant&lt;/h1&gt;
+&lt;p&gt;This is a web based interface for automating things around the home. It can monitor doors, windows, motion detection and turn electrical things on and off.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;[ toc ]&lt;/p&gt;
+&lt;hr&gt;
 &lt;p&gt;This is a web based interface for automating things around the home. It can monitor doors, windows, motion detection and turn electrical things on and off.&lt;/p&gt;
 &lt;p&gt;The server software is in two pieces, Z-Wave JS and HASS. Z-Wave (nodejs) reads a USB stick and manages the connection and commands to various &lt;a href="https://www.z-wave.com/"&gt;Z-WAVE compatible wireless devices&lt;/a&gt;. HASS (python) displays and automates monitoring and reacting to the devices by communication to Z-Wave over the WebSocket service (ws://localhost:3000). I install and run the docker images of these packages.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;graph&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;TD&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -11593,7 +11644,7 @@ zwavejs_upgrade
 &lt;h2 id="continue"&gt;Continue&lt;/h2&gt;
 &lt;p&gt;Now that you have set up Home Automation-Mail on your server, you will need Matrix for sending out alerts, so now is a good time to install the super fast and secure messaging system.&lt;/p&gt;
 &lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;
-&lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category></entry><entry><title>Introduction</title><link href="https://dfcsoftware.github.io/introduction.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/introduction.html</id><summary type="html">&lt;p&gt;&lt;img alt="Linux-in-the-house.svg" src="/images/Linux-in-the-House2.svg"&gt;&lt;/p&gt;
+&lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category><category term="linux"></category><category term="systems"></category></entry><entry><title>Introduction</title><link href="https://dfcsoftware.github.io/introduction.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/introduction.html</id><summary type="html">&lt;p&gt;&lt;img alt="Linux-in-the-house.svg" src="/images/Linux-in-the-House2.svg"&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1 style="text-align: center;"&gt;Linux in the House&lt;/h1&gt;
 
@@ -11906,15 +11957,17 @@ $&lt;span class="w"&gt; &lt;/span&gt;tilde
 &lt;p&gt;Hi from RedHat!&lt;/p&gt;
 &lt;hr/&gt;
 
-&lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category></entry><entry><title>Matrix</title><link href="https://dfcsoftware.github.io/matrix.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/matrix.html</id><summary type="html">&lt;h1 id="matrix"&gt;Matrix&lt;/h1&gt;
-&lt;!-- toc --&gt;
-
-&lt;hr&gt;
+&lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category><category term="linux"></category></entry><entry><title>Matrix</title><link href="https://dfcsoftware.github.io/matrix.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/matrix.html</id><summary type="html">&lt;h1 id="matrix"&gt;Matrix&lt;/h1&gt;
 &lt;p&gt;Matrix is a messaging system you can on your server. It allows your to send messages to a phone/watch from command line on the server. It is useful with HomeAssistant for monitoring the house.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Here is an example of a Matrix Client, called Element[1], available on iOS …&lt;/p&gt;&lt;/blockquote&gt;</summary><content type="html">&lt;h1 id="matrix"&gt;Matrix&lt;/h1&gt;
-&lt;!-- toc --&gt;
-
+&lt;hr&gt;
+&lt;p&gt;[ TOC ]&lt;/p&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;p&gt;Matrix is a messaging system you can on your server. It allows your …&lt;/p&gt;</summary><content type="html">&lt;h1 id="matrix"&gt;Matrix&lt;/h1&gt;
+&lt;p&gt;Matrix is a messaging system you can on your server. It allows your to send messages to a phone/watch from command line on the server. It is useful with HomeAssistant for monitoring the house.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;[ TOC ]&lt;/p&gt;
+&lt;hr&gt;
 &lt;hr&gt;
 &lt;p&gt;Matrix is a messaging system you can on your server. It allows your to send messages to a phone/watch from command line on the server. It is useful with HomeAssistant for monitoring the house.&lt;/p&gt;
 &lt;blockquote&gt;
@@ -12310,7 +12363,7 @@ date&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;&amp;gt;&lt;span class="w"&gt; &
 &lt;h1 id="continue"&gt;Continue&lt;/h1&gt;
 &lt;p&gt;Now that you have set up Matrix Communication on your server, you can read some news to send to others. Read on to find out how to set up a local news/RSS reader.&lt;/p&gt;
 &lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;
-&lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category></entry><entry><title>Media Management</title><link href="https://dfcsoftware.github.io/media-management.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/media-management.html</id><summary type="html">&lt;h1 id="media-management"&gt;Media Management&lt;/h1&gt;
+&lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category><category term="linux"></category><category term="systems"></category></entry><entry><title>Media Management</title><link href="https://dfcsoftware.github.io/media-management.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/media-management.html</id><summary type="html">&lt;h1 id="media-management"&gt;Media Management&lt;/h1&gt;
 &lt;!-- toc --&gt;
 
 &lt;hr&gt;
@@ -13108,16 +13161,17 @@ deactivate
 &lt;p&gt;Hopefully this little write up was of some help.&lt;/p&gt;
 &lt;p&gt;Regards,&lt;br&gt;
 -- Don&lt;/p&gt;
-&lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category></entry><entry><title>Miniflux News Reader</title><link href="https://dfcsoftware.github.io/miniflux-news-reader.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/miniflux-news-reader.html</id><summary type="html">&lt;h1 id="miniflux-news-reader"&gt;Miniflux News Reader&lt;/h1&gt;
-&lt;!-- toc --&gt;
-
-&lt;p&gt;Reference: &lt;a href="https://miniflux.app/docs/installation.html#debian"&gt;https://miniflux.app/docs/installation.html#debian&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category><category term="linux"></category><category term="systems"></category></entry><entry><title>Miniflux News Reader</title><link href="https://dfcsoftware.github.io/miniflux-news-reader.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/miniflux-news-reader.html</id><summary type="html">&lt;h1 id="miniflux-news-reader"&gt;Miniflux News Reader&lt;/h1&gt;
 &lt;p&gt;Miniflux is an RSS (Really Simple Syndication) server that will fetch and display RSS feeds from other websites. Also known as a &lt;em&gt;news reader&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;You can view these feeds from your web browser. They look like this:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="miniflux (2).png" src=".attachments.700615/miniflux%20%282%29.png"&gt;&lt;/p&gt;
-&lt;h2 id="database-configuration"&gt;Database Configuration …&lt;/h2&gt;</summary><content type="html">&lt;h1 id="miniflux-news-reader"&gt;Miniflux News Reader&lt;/h1&gt;
-&lt;!-- toc --&gt;
-
+&lt;hr&gt;
+&lt;p&gt;[ TOC]&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Reference: &lt;a href="https://miniflux.app/docs/installation.html#debian"&gt;https://miniflux.app/docs/installation.html#debian&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Miniflux is an RSS (Really Simple Syndication) server that will fetch and display RSS …&lt;/p&gt;</summary><content type="html">&lt;h1 id="miniflux-news-reader"&gt;Miniflux News Reader&lt;/h1&gt;
+&lt;p&gt;Miniflux is an RSS (Really Simple Syndication) server that will fetch and display RSS feeds from other websites. Also known as a &lt;em&gt;news reader&lt;/em&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;[ TOC]&lt;/p&gt;
+&lt;hr&gt;
 &lt;p&gt;Reference: &lt;a href="https://miniflux.app/docs/installation.html#debian"&gt;https://miniflux.app/docs/installation.html#debian&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Miniflux is an RSS (Really Simple Syndication) server that will fetch and display RSS feeds from other websites. Also known as a &lt;em&gt;news reader&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;You can view these feeds from your web browser. They look like this:&lt;/p&gt;
@@ -13383,17 +13437,11 @@ Rule&lt;span class="w"&gt; &lt;/span&gt;added&lt;span class="w"&gt; &lt;/span&gt
 &lt;h1 id="continue"&gt;Continue&lt;/h1&gt;
 &lt;p&gt;Now that a world of news feeds are at your fingertips, how about doing some electronics work? Read on my friend for an introduction to BeagleBone boards.&lt;/p&gt;
 &lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;
-&lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category></entry><entry><title>Mirror Disks</title><link href="https://dfcsoftware.github.io/mirror-disks.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/mirror-disks.html</id><summary type="html">&lt;h1 id="mirror-disks"&gt;Mirror Disks&lt;/h1&gt;
+&lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category><category term="linux"></category><category term="systems"></category></entry><entry><title>Mirror Disks</title><link href="https://dfcsoftware.github.io/mirror-disks.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/mirror-disks.html</id><summary type="html">&lt;h1 id="mirror-disks"&gt;Mirror Disks&lt;/h1&gt;
+&lt;p&gt;Mirroring disks on Linux is simple and prudent to ensure your data survives hardware, software and human failures. All data from one disk is duplicated on another disk and if any &lt;strong&gt;one&lt;/strong&gt; disk fails, you will never know it. So it is important after setting up to monitor …&lt;/p&gt;</summary><content type="html">&lt;h1 id="mirror-disks"&gt;Mirror Disks&lt;/h1&gt;
+&lt;p&gt;Mirroring disks on Linux is simple and prudent to ensure your data survives hardware, software and human failures. All data from one disk is duplicated on another disk and if any &lt;strong&gt;one&lt;/strong&gt; disk fails, you will never know it. So it is important after setting up to monitor the disk array.&lt;/p&gt;
 &lt;hr&gt;
-&lt;h4 id="table-of-contents"&gt;Table of Contents&lt;/h4&gt;
-&lt;!-- toc --&gt;
-
-&lt;hr&gt;
-&lt;p&gt;Mirroring disks on Linux is simple and prudent to ensure your data survives hardware, software and human failures. All data from one disk is duplicated on another disk and if any &lt;strong&gt;one&lt;/strong&gt; disk fails, you will never know it. So it is important after setting …&lt;/p&gt;</summary><content type="html">&lt;h1 id="mirror-disks"&gt;Mirror Disks&lt;/h1&gt;
-&lt;hr&gt;
-&lt;h4 id="table-of-contents"&gt;Table of Contents&lt;/h4&gt;
-&lt;!-- toc --&gt;
-
+&lt;p&gt;[ TOC ]&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;Mirroring disks on Linux is simple and prudent to ensure your data survives hardware, software and human failures. All data from one disk is duplicated on another disk and if any &lt;strong&gt;one&lt;/strong&gt; disk fails, you will never know it. So it is important after setting up to monitor the disk array.&lt;/p&gt;
 &lt;h2 id="install-mdadm"&gt;Install mdadm&lt;/h2&gt;
@@ -13539,9 +13587,10 @@ rm&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$TMP&lt;/span&gt;
 &lt;span class="mi"&gt;57&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;root&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt; -x /usr/share/mdadm/checkarray &lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt; $(date +\%d) -le 7 &lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;then&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;share&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;mdadm&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;checkarray&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;cron&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="ow"&gt;all&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;idle&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;quiet&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;fi&lt;/span&gt;
 &lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Don&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;email&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;status&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;every&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;morning&lt;/span&gt;
 &lt;span class="mi"&gt;11&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;root&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;mnt&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;raid9&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;raid&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sh&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category></entry><entry><title>NCMPCPP Commands</title><link href="https://dfcsoftware.github.io/ncmpcpp-commands.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/ncmpcpp-commands.html</id><summary type="html">&lt;h1 id="ncmpcpp-commands"&gt;NCMPCPP Commands&lt;/h1&gt;
-&lt;!-- toc --&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="linux"></category><category term="systems"></category><category term="hardware"></category></entry><entry><title>NCMPCPP Commands</title><link href="https://dfcsoftware.github.io/ncmpcpp-commands.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/ncmpcpp-commands.html</id><summary type="html">&lt;h1 id="ncmpcpp-commands"&gt;NCMPCPP Commands&lt;/h1&gt;
+&lt;p&gt;Simply run this on your host running Music Player Daemon (MPD) over your ssh session&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;[ TOC ]&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;img alt="ncmpcpp.png" src=".attachments.596467/ncmpcpp.png"&gt;&lt;/p&gt;
 &lt;p&gt;Reference: &lt;a href="https://rybczak.net/ncmpcpp/"&gt;https://rybczak.net/ncmpcpp/&lt;/a&gt;&lt;/p&gt;
@@ -13554,10 +13603,10 @@ rm&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$TMP&lt;/span&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;ncmpcpp
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;or run on one host connecting to MPD on another host, like this &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;ncmpcpp&lt;span class="w"&gt; &lt;/span&gt;--host&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;192&lt;/span&gt;.168.1.44 …&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h1 id="ncmpcpp-commands"&gt;NCMPCPP Commands&lt;/h1&gt;
-&lt;!-- toc --&gt;
-
+&lt;p&gt;or run on …&lt;/p&gt;</summary><content type="html">&lt;h1 id="ncmpcpp-commands"&gt;NCMPCPP Commands&lt;/h1&gt;
+&lt;p&gt;Simply run this on your host running Music Player Daemon (MPD) over your ssh session&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;[ TOC ]&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;img alt="ncmpcpp.png" src=".attachments.596467/ncmpcpp.png"&gt;&lt;/p&gt;
 &lt;p&gt;Reference: &lt;a href="https://rybczak.net/ncmpcpp/"&gt;https://rybczak.net/ncmpcpp/&lt;/a&gt;&lt;/p&gt;
@@ -13808,17 +13857,11 @@ rm&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$TMP&lt;/span&gt;
 &lt;li&gt;Left h - Previous column&lt;/li&gt;
 &lt;li&gt;Right l - Next column&lt;/li&gt;
 &lt;li&gt;Ctrl-H Backspace - Jump to parent directory (left column, directories view)&lt;/li&gt;
-&lt;/ul&gt;</content><category term="linux"></category></entry><entry><title>Network Attached Storage (NAS)</title><link href="https://dfcsoftware.github.io/network-attached-storage-nas.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/network-attached-storage-nas.html</id><summary type="html">&lt;h1 id="network-attached-storage-nas"&gt;Network Attached Storage (NAS)&lt;/h1&gt;
+&lt;/ul&gt;</content><category term="linux"></category><category term="linux"></category><category term="music"></category></entry><entry><title>Network Attached Storage (NAS)</title><link href="https://dfcsoftware.github.io/network-attached-storage-nas.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/network-attached-storage-nas.html</id><summary type="html">&lt;h1 id="network-attached-storage-nas"&gt;Network Attached Storage (NAS)&lt;/h1&gt;
+&lt;p&gt;The NAS provides a safe place to store important data. Set this up before running E-Mail or a cloud service because it is the best place to put important files. If an E-Mail server crashes you still have all your E-Mail files on the NFS (see …&lt;/p&gt;</summary><content type="html">&lt;h1 id="network-attached-storage-nas"&gt;Network Attached Storage (NAS)&lt;/h1&gt;
+&lt;p&gt;The NAS provides a safe place to store important data. Set this up before running E-Mail or a cloud service because it is the best place to put important files. If an E-Mail server crashes you still have all your E-Mail files on the NFS (see below) attached NAS server. That's what it's for.&lt;/p&gt;
 &lt;hr&gt;
-&lt;h4 id="table-of-contents"&gt;Table of Contents&lt;/h4&gt;
-&lt;!-- toc --&gt;
-
-&lt;hr&gt;
-&lt;p&gt;The NAS provides a safe place to store important data. Set this up before running E-Mail or a cloud service because it is the best place to put important files. If an E-Mail server crashes you still have all your E-Mail files on …&lt;/p&gt;</summary><content type="html">&lt;h1 id="network-attached-storage-nas"&gt;Network Attached Storage (NAS)&lt;/h1&gt;
-&lt;hr&gt;
-&lt;h4 id="table-of-contents"&gt;Table of Contents&lt;/h4&gt;
-&lt;!-- toc --&gt;
-
+&lt;p&gt;[ TOC ]&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;The NAS provides a safe place to store important data. Set this up before running E-Mail or a cloud service because it is the best place to put important files. If an E-Mail server crashes you still have all your E-Mail files on the NFS (see below) attached NAS server. That's what it's for.&lt;/p&gt;
 &lt;p&gt;Three (common) ways to do this:&lt;/p&gt;
@@ -14148,11 +14191,10 @@ mkdir&lt;span class="w"&gt; &lt;/span&gt;-p&lt;span class="w"&gt; &lt;/span&gt;&
 &lt;h1 id="continue"&gt;Continue&lt;/h1&gt;
 &lt;p&gt;Now that you have set a NAS data protection, consider installing an E-Mail server using some of that safe storage.&lt;/p&gt;
 &lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;
-&lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category></entry><entry><title>Postgresql</title><link href="https://dfcsoftware.github.io/postgresql.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/postgresql.html</id><summary type="html">&lt;h2 id="postgresql"&gt;Postgresql&lt;/h2&gt;
+&lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category><category term="linux"></category><category term="systems"></category><category term="hardware"></category></entry><entry><title>Postgresql</title><link href="https://dfcsoftware.github.io/postgresql.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/postgresql.html</id><summary type="html">&lt;h2 id="postgresql"&gt;Postgresql&lt;/h2&gt;
+&lt;p&gt;Postgresql relational SQL database for systems. This is a great database with high reliablity,&lt;/p&gt;
 &lt;hr&gt;
-&lt;h4 id="table-of-contents"&gt;Table of Contents&lt;/h4&gt;
-&lt;!-- toc --&gt;
-
+&lt;p&gt;[ TOC ]&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;Postgresql relational SQL database for systems. This is a great database with high reliablity,
 performance and extendable. External extensions allow even more customizations.&lt;/p&gt;
@@ -14161,16 +14203,10 @@ performance and extendable. External extensions allow even more customizations.&
 &lt;li&gt;Stored Procedures&lt;/li&gt;
 &lt;li&gt;JSON native support&lt;/li&gt;
 &lt;li&gt;Filesystem access&lt;/li&gt;
-&lt;li&gt;Federation with other databases&lt;/li&gt;
-&lt;li&gt;Physical and logical replication&lt;/li&gt;
-&lt;li&gt;Partitioning&lt;/li&gt;
-&lt;li&gt;Small system requirements&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Reference: &lt;a href="https://www.postgresql.org/"&gt;https …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;h2 id="postgresql"&gt;Postgresql&lt;/h2&gt;
+&lt;li&gt;Federation with …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;h2 id="postgresql"&gt;Postgresql&lt;/h2&gt;
+&lt;p&gt;Postgresql relational SQL database for systems. This is a great database with high reliablity,&lt;/p&gt;
 &lt;hr&gt;
-&lt;h4 id="table-of-contents"&gt;Table of Contents&lt;/h4&gt;
-&lt;!-- toc --&gt;
-
+&lt;p&gt;[ TOC ]&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;Postgresql relational SQL database for systems. This is a great database with high reliablity,
 performance and extendable. External extensions allow even more customizations.&lt;/p&gt;
@@ -14666,22 +14702,43 @@ mydb-#&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;select&lt;/span&
 &lt;p&gt;Now that you have installed a shiny new database, consider how upgrades work.&lt;/p&gt;
 &lt;p&gt;In our next episode of Linux in the Home.&lt;/p&gt;
 &lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;
-&lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category></entry><entry><title>PostgreSQL Install and Upgrade</title><link href="https://dfcsoftware.github.io/postgresql-install-and-upgrade.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/postgresql-install-and-upgrade.html</id><summary type="html">&lt;h1 id="postgresql-install-and-upgrade"&gt;PostgreSQL Install and Upgrade&lt;/h1&gt;
-&lt;hr&gt;
-&lt;h4 id="table-of-contents"&gt;Table of Contents&lt;/h4&gt;
-&lt;!-- toc --&gt;
-
-&lt;hr&gt;
-&lt;h2 id="establish-baseline"&gt;Establish Baseline&lt;/h2&gt;
+&lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category><category term="linux"></category><category term="systems"></category><category term="db"></category></entry><entry><title>PostgreSQL Install and Upgrade</title><link href="https://dfcsoftware.github.io/postgresql-install-and-upgrade.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/postgresql-install-and-upgrade.html</id><summary type="html">&lt;h1 id="postgresql-install-and-upgrade"&gt;PostgreSQL Install and Upgrade&lt;/h1&gt;
 &lt;p&gt;Oh my, installing Ubuntu 22.04 installed PostgreSQL 14... wonder what version I am using...&lt;/p&gt;
-&lt;h4 id="what-is-installed"&gt;What is installed?&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;-u&lt;span class="w"&gt; &lt;/span&gt;postgres&lt;span class="w"&gt; &lt;/span&gt;pg_lsclusters&lt;span class="w"&gt; &lt;/span&gt;
-Ver&lt;span class="w"&gt; &lt;/span&gt;Cluster&lt;span class="w"&gt; &lt;/span&gt;Port&lt;span class="w"&gt; &lt;/span&gt;Status&lt;span class="w"&gt;                &lt;/span&gt;Owner&lt;span class="w"&gt;     &lt;/span&gt;Data&lt;span class="w"&gt; &lt;/span&gt;directory&lt;span class="w"&gt;               &lt;/span&gt;Log&lt;span class="w"&gt; &lt;/span&gt;file
-&lt;span class="m"&gt;9&lt;/span&gt;.3&lt;span class="w"&gt; &lt;/span&gt;main&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="m"&gt;5433&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;down,binaries_missing&lt;span class="w"&gt; &lt;/span&gt;&amp;lt;unknown&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;/var/lib/postgresql …&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h1 id="postgresql-install-and-upgrade"&gt;PostgreSQL Install and Upgrade&lt;/h1&gt;
 &lt;hr&gt;
-&lt;h4 id="table-of-contents"&gt;Table of Contents&lt;/h4&gt;
-&lt;!-- toc --&gt;
-
+&lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#postgresql-install-and-upgrade"&gt;PostgreSQL Install and Upgrade&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#establish-baseline"&gt;Establish Baseline&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#what-is-installed"&gt;What is installed?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#which-one-is-live"&gt;Which one is live&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#export-and-import-pg_dump"&gt;Export and Import (pg_dump)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#do-the-upgrade-pg_upgrade"&gt;Do the Upgrade (pg_upgrade)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#remove-old-postgresql-install"&gt;Remove old postgresql install&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#binsh"&gt;!/bin/sh&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#continue"&gt;Continue …&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;</summary><content type="html">&lt;h1 id="postgresql-install-and-upgrade"&gt;PostgreSQL Install and Upgrade&lt;/h1&gt;
+&lt;p&gt;Oh my, installing Ubuntu 22.04 installed PostgreSQL 14... wonder what version I am using...&lt;/p&gt;
+&lt;hr&gt;
+&lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#postgresql-install-and-upgrade"&gt;PostgreSQL Install and Upgrade&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#establish-baseline"&gt;Establish Baseline&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#what-is-installed"&gt;What is installed?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#which-one-is-live"&gt;Which one is live&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#export-and-import-pg_dump"&gt;Export and Import (pg_dump)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#do-the-upgrade-pg_upgrade"&gt;Do the Upgrade (pg_upgrade)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#remove-old-postgresql-install"&gt;Remove old postgresql install&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#binsh"&gt;!/bin/sh&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#continue"&gt;Continue&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
 &lt;hr&gt;
 &lt;h2 id="establish-baseline"&gt;Establish Baseline&lt;/h2&gt;
 &lt;p&gt;Oh my, installing Ubuntu 22.04 installed PostgreSQL 14... wonder what version I am using...&lt;/p&gt;
@@ -15318,20 +15375,33 @@ postgres&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="m"&gt;752078&lt;/sp
 &lt;p&gt;Now that you have upgraded to the happy new cluster, consider moving data files to a better database protection disk.&lt;/p&gt;
 &lt;p&gt;Same time, same channel, on the next episode of Linux in the Home.&lt;/p&gt;
 &lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;
-&lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category></entry><entry><title>Postgresql Move Database to Another Filesystem</title><link href="https://dfcsoftware.github.io/postgresql-move-database-to-another-filesystem.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/postgresql-move-database-to-another-filesystem.html</id><summary type="html">&lt;h1 id="postgresql-move-database-to-another-filesystem"&gt;Postgresql Move Database to Another Filesystem&lt;/h1&gt;
-&lt;hr&gt;
-&lt;h4 id="table-of-contents"&gt;Table of Contents&lt;/h4&gt;
-&lt;!-- toc --&gt;
-
-&lt;hr&gt;
+&lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category><category term="linux"></category><category term="systems"></category><category term="db"></category></entry><entry><title>Postgresql Move Database to Another Filesystem</title><link href="https://dfcsoftware.github.io/postgresql-move-database-to-another-filesystem.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/postgresql-move-database-to-another-filesystem.html</id><summary type="html">&lt;h1 id="postgresql-move-database-to-another-filesystem"&gt;Postgresql Move Database to Another Filesystem&lt;/h1&gt;
 &lt;p&gt;Mainly used this on SBC (BeagleBone) computer to move a database from SD card (/var/lib...) to SSD disk (/data/lib...). A database will burn up an SD card quickly 😟&lt;/p&gt;
-&lt;h2 id="list-clusters-on-host"&gt;List clusters on host&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;pg_lsclusters
-Ver&lt;span class="w"&gt; &lt;/span&gt;Cluster&lt;span class="w"&gt; &lt;/span&gt;Port&lt;span class="w"&gt; &lt;/span&gt;Status&lt;span class="w"&gt; &lt;/span&gt;Owner&lt;span class="w"&gt;    &lt;/span&gt;Data …&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h1 id="postgresql-move-database-to-another-filesystem"&gt;Postgresql Move Database to Another Filesystem&lt;/h1&gt;
 &lt;hr&gt;
-&lt;h4 id="table-of-contents"&gt;Table of Contents&lt;/h4&gt;
-&lt;!-- toc --&gt;
-
+&lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#postgresql-move-database-to-another-filesystem"&gt;Postgresql Move Database to Another Filesystem&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#list-clusters-on-host"&gt;List clusters on host&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#show-data_dictionary"&gt;Show …&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;</summary><content type="html">&lt;h1 id="postgresql-move-database-to-another-filesystem"&gt;Postgresql Move Database to Another Filesystem&lt;/h1&gt;
+&lt;p&gt;Mainly used this on SBC (BeagleBone) computer to move a database from SD card (/var/lib...) to SSD disk (/data/lib...). A database will burn up an SD card quickly 😟&lt;/p&gt;
+&lt;hr&gt;
+&lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#postgresql-move-database-to-another-filesystem"&gt;Postgresql Move Database to Another Filesystem&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#list-clusters-on-host"&gt;List clusters on host&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#show-data_dictionary"&gt;Show Data_Dictionary&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#stop-cluster"&gt;Stop Cluster&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#move-database-files"&gt;Move Database Files&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#save-old-database-directory"&gt;Save Old Database Directory&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#edit-configuration-to-point-to-new-directory"&gt;Edit Configuration to Point to New Directory&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#double-check-new-directory"&gt;Double Check New Directory&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#start-database-cluster-using-new-directory"&gt;Start Database Cluster Using New Directory&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#verify-database"&gt;Verify Database&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#cleanup-old-database-files"&gt;Cleanup Old Database Files&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#re-create-cluster"&gt;Re-Create Cluster&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#continue"&gt;Continue&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
 &lt;hr&gt;
 &lt;p&gt;Mainly used this on SBC (BeagleBone) computer to move a database from SD card (/var/lib...) to SSD disk (/data/lib...). A database will burn up an SD card quickly 😟&lt;/p&gt;
 &lt;h2 id="list-clusters-on-host"&gt;List clusters on host&lt;/h2&gt;
@@ -15473,19 +15543,17 @@ Ver&lt;span class="w"&gt; &lt;/span&gt;Cluster&lt;span class="w"&gt; &lt;/span&g
 &lt;p&gt;Now that you have moved that busy data to a suitable disk, consider setting up a cloud server to use that speedy database.&lt;/p&gt;
 &lt;p&gt;Join again soon on the next episode of Linux in the Home.&lt;/p&gt;
 &lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;
-&lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category></entry><entry><title>Web Certificate</title><link href="https://dfcsoftware.github.io/web-certificate.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/web-certificate.html</id><summary type="html">&lt;h1 id="web-certificate"&gt;Web Certificate&lt;/h1&gt;
+&lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category><category term="linux"></category><category term="systems"></category><category term="db"></category></entry><entry><title>Web Certificate</title><link href="https://dfcsoftware.github.io/web-certificate.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/web-certificate.html</id><summary type="html">&lt;h1 id="web-certificate"&gt;Web Certificate&lt;/h1&gt;
+&lt;p&gt;Web certificates encrypt different messages over the public internet so nobody can see what these messages contain.&lt;/p&gt;
 &lt;hr&gt;
-&lt;h4 id="table-of-contents"&gt;Table of Contents&lt;/h4&gt;
-&lt;!-- toc --&gt;
-
+&lt;p&gt;[ toc ]&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;Web certificates encrypt different messages over the public internet so nobody can see what these messages contain.&lt;/p&gt;
 &lt;h2 id="lets-encrypt-certificate-authority-ca"&gt;Let's Encrypt - Certificate Authority (CA)&lt;/h2&gt;
-&lt;p&gt;Let's Encrypt offers free 90 day SSL/TLS internet certificates, so you can run https:// to encrypt web page bodies, instead of http …&lt;/p&gt;</summary><content type="html">&lt;h1 id="web-certificate"&gt;Web Certificate&lt;/h1&gt;
+&lt;p&gt;Let's Encrypt offers free 90 day SSL/TLS …&lt;/p&gt;</summary><content type="html">&lt;h1 id="web-certificate"&gt;Web Certificate&lt;/h1&gt;
+&lt;p&gt;Web certificates encrypt different messages over the public internet so nobody can see what these messages contain.&lt;/p&gt;
 &lt;hr&gt;
-&lt;h4 id="table-of-contents"&gt;Table of Contents&lt;/h4&gt;
-&lt;!-- toc --&gt;
-
+&lt;p&gt;[ toc ]&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;Web certificates encrypt different messages over the public internet so nobody can see what these messages contain.&lt;/p&gt;
 &lt;h2 id="lets-encrypt-certificate-authority-ca"&gt;Let's Encrypt - Certificate Authority (CA)&lt;/h2&gt;
@@ -15710,7 +15778,7 @@ tls_private_key_path: &amp;quot;/etc/letsencrypt/live/example.com/privkey.pem&am
 &lt;h2 id="continue"&gt;Continue&lt;/h2&gt;
 &lt;p&gt;Now that you have set up a certificate for your new server, consider installing some Network Attached Storage.&lt;/p&gt;
 &lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;
-&lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category></entry><entry><title>Docker</title><link href="https://dfcsoftware.github.io/docker.html" rel="alternate"></link><published>2023-01-23T00:00:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-23:/docker.html</id><summary type="html">&lt;h1 id="docker"&gt;Docker&lt;/h1&gt;
+&lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category><category term="linux"></category><category term="security"></category><category term="web"></category></entry><entry><title>Docker</title><link href="https://dfcsoftware.github.io/docker.html" rel="alternate"></link><published>2023-01-23T00:00:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-23:/docker.html</id><summary type="html">&lt;h1 id="docker"&gt;Docker&lt;/h1&gt;
 &lt;p&gt;Docker is a way to manage containers, which are like namespaces or jails. Here are some useful common commands to check out the status of these containers.&lt;/p&gt;
 &lt;hr&gt;
 &lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
@@ -15917,4 +15985,4 @@ $&lt;span class="w"&gt; &lt;/span&gt;docker&lt;span class="w"&gt; &lt;/span&gt;n
 
 &lt;h2 id="upgrade-a-container"&gt;Upgrade a container&lt;/h2&gt;
 &lt;p&gt;Here is my documentation on upgrading the homeassistant docker container:&lt;/p&gt;
-&lt;p&gt;&lt;a href="/home-assistant.html#upgrade"&gt;Upgrade HomeAssistant&lt;/a&gt;&lt;/p&gt;</content><category term="linux"></category></entry><entry><title>My Second Review</title><link href="https://dfcsoftware.github.io/my-second-review.html" rel="alternate"></link><published>2010-12-03T10:20:00-05:00</published><updated>2010-03-12T10:20:00-05:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2010-12-03:/my-second-review.html</id><content type="html">&lt;p&gt;Following is a review of my favorite mechanical mouse.&lt;/p&gt;</content><category term="linux"></category></entry></feed>
+&lt;p&gt;&lt;a href="/home-assistant.html#upgrade"&gt;Upgrade HomeAssistant&lt;/a&gt;&lt;/p&gt;</content><category term="linux"></category><category term="linux"></category><category term="systems"></category></entry><entry><title>My Second Review</title><link href="https://dfcsoftware.github.io/my-second-review.html" rel="alternate"></link><published>2010-12-03T10:20:00-05:00</published><updated>2010-03-12T10:20:00-05:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2010-12-03:/my-second-review.html</id><content type="html">&lt;p&gt;Following is a review of my favorite mechanical mouse.&lt;/p&gt;</content><category term="linux"></category></entry></feed>
