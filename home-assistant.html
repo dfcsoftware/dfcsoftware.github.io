@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="generator" content="Pelican" />
+        <title>Home Assistant</title>
+        <link rel="stylesheet" href="http://10.123.50.59/theme/css/main.css" />
+        <link href="http://10.123.50.59/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Linux Home Administration Atom Feed" />
+        <meta name="description" content="Home Assistant This is a web based interface for automating things around the home. It can monitor doors, windows, motion detection and turn..." />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <table>
+                    <td><h1><a href="http://10.123.50.59/">Linux Home Administration</a></h1></td>
+                    <td>   <!-- Note the usage of `type=module` here as this is an ES6 module --> <script type="module">
+    // Use ES module import syntax to import functionality from the module
+    // that we have compiled.
+    //
+    // Note that the `default` import is an initialization function which
+    // will "boot" the module and make it ready to use. Currently browsers
+    // don't support natively imported WebAssembly as an ES module, but
+    // eventually the manual initialization won't be required!
+    // import { search, default as init } from './tinysearch_engine.js';
+    import { search, default as init } from '/tinysearch_engine.js';
+    window.search = search;
+
+    async function run() {
+      // First up we need to actually load the wasm file, so we use the
+      // default export to inform it where the wasm file is located on the
+      // server, and then we wait on the returned promise to wait for the
+      // wasm to be loaded.
+      //
+      // Note that instead of a string here you can also pass in an instance
+      // of `WebAssembly.Module` which allows you to compile your own module.
+      // Also note that the promise, when resolved, yields the wasm module's
+      // exports which is the same as importing the `*_bg` module in other
+      // modes
+      await init('/tinysearch_engine_bg.wasm');
+    }
+
+    run();
+  </script>
+
+  <script>
+    // And afterwards we can use all the functionality defined in wasm.
+    function doSearch() {
+      let value = document.getElementById("searcher").value;
+      console.log(`Search query: ${value}`);
+
+      const results = search(value, 5);
+
+      console.log(`Results: ${results}`);
+
+      let ul = document.getElementById("results");
+      ul.innerHTML = "";
+
+      for (i = 0; i < results.length; i++) {
+        var li = document.createElement("li");
+
+        let [title, url] = results[i];
+        let elemlink = document.createElement('a');
+        elemlink.innerHTML = title;
+        elemlink.setAttribute('href', url);
+        li.appendChild(elemlink);
+
+        ul.appendChild(li);
+      }
+    }
+  </script>
+
+<div style="text-align:right"> 
+  <h2> 
+    <object type="image/svg+xml" data="/theme/images/search.svg" style="width:5%; height:10%;">
+       Search<!-- fallback image in CSS -->
+    </object>
+    <input type="text" id="searcher" onkeyup="doSearch()">
+  </h2>
+  <ul style="list-style-type: none;text-align: left;" id="results">
+  </ul>
+</div> </td>
+                </table>
+                <nav><ul>
+                    <li><a href="http://10.123.50.59/category/2023.html">2023</a></li>
+                    <li><a href="http://10.123.50.59/category/forest.html">forest</a></li>
+                    <li class="active"><a href="http://10.123.50.59/category/linux.html">linux</a></li>
+                    <li><a href="http://10.123.50.59/category/writing.html">writing</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="http://10.123.50.59/home-assistant.html" rel="bookmark"
+           title="Permalink to Home Assistant">Home Assistant</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2023-01-25T10:20:00-05:00">
+                Published: Wed 25 January 2023
+        </abbr>
+		<br />
+        <abbr class="modified" title="2024-04-19T09:30:00-04:00">
+                Updated: Fri 19 April 2024
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="http://10.123.50.59/author/don-cohoon.html">Don Cohoon</a>
+        </address>
+<p>In <a href="http://10.123.50.59/category/linux.html">linux</a>.</p>
+
+</footer><!-- /.post-info -->      <h1 id="home-assistant">Home Assistant</h1>
+<!-- toc -->
+
+<p>This is a web based interface for automating things around the home. It can monitor doors, windows, motion detection and turn electrical things on and off.</p>
+<p>The server software is in two pieces, Z-Wave JS and HASS. Z-Wave (nodejs) reads a USB stick and manages the connection and commands to various <a href="https://www.z-wave.com/">Z-WAVE compatible wireless devices</a>. HASS (python) displays and automates monitoring and reacting to the devices by communication to Z-Wave over the WebSocket service (ws://localhost:3000). I install and run the docker images of these packages.</p>
+<div class="highlight"><pre><span></span><code><span class="n">graph</span><span class="w"> </span><span class="n">TD</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Home</span><span class="o">-</span><span class="n">Assist</span><span class="o">&lt;--</span><span class="w"> </span><span class="n">ws</span><span class="w"> </span><span class="o">--&gt;</span><span class="n">Z</span><span class="o">-</span><span class="n">Wave</span><span class="o">-</span><span class="n">JS</span><span class="o">-</span><span class="n">UI</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Home</span><span class="o">-</span><span class="n">Assist</span><span class="o">&lt;--</span><span class="w"> </span><span class="n">ip</span><span class="w"> </span><span class="o">--&gt;</span><span class="n">Camera</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Home</span><span class="o">-</span><span class="n">Assist</span><span class="o">&lt;--</span><span class="w"> </span><span class="n">ip</span><span class="w"> </span><span class="o">--&gt;</span><span class="n">TV</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Home</span><span class="o">-</span><span class="n">Assist</span><span class="o">&lt;--</span><span class="w"> </span><span class="n">ip</span><span class="w"> </span><span class="o">--&gt;</span><span class="n">Receiver</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Z</span><span class="o">-</span><span class="n">Wave</span><span class="o">-</span><span class="n">JS</span><span class="o">-</span><span class="n">UI</span><span class="o">&lt;--&gt;</span><span class="n">USB</span><span class="o">-</span><span class="n">Stick</span><span class="p">;</span>
+<span class="w">        </span><span class="n">USB</span><span class="o">-</span><span class="n">Stick</span><span class="o">&lt;-</span><span class="n">.</span><span class="w"> </span><span class="n">zw</span><span class="w"> </span><span class="n">.</span><span class="o">-&gt;</span><span class="n">Window</span><span class="o">-</span><span class="n">Alarm</span><span class="p">;</span>
+<span class="w">        </span><span class="n">USB</span><span class="o">-</span><span class="n">Stick</span><span class="o">&lt;-</span><span class="n">.</span><span class="w"> </span><span class="n">zw</span><span class="w"> </span><span class="n">.</span><span class="o">-&gt;</span><span class="n">Door</span><span class="o">-</span><span class="n">Alarm</span><span class="p">;</span>
+<span class="w">        </span><span class="n">USB</span><span class="o">-</span><span class="n">Stick</span><span class="o">&lt;-</span><span class="n">.</span><span class="w"> </span><span class="n">zw</span><span class="w"> </span><span class="n">.</span><span class="o">-&gt;</span><span class="n">Thermostat</span><span class="p">;</span>
+<span class="w">        </span><span class="n">USB</span><span class="o">-</span><span class="n">Stick</span><span class="o">&lt;-</span><span class="n">.</span><span class="w"> </span><span class="n">zw</span><span class="w"> </span><span class="n">.</span><span class="o">-&gt;</span><span class="n">Light</span><span class="o">-</span><span class="n">Switch</span><span class="p">;</span>
+<span class="w">        </span><span class="n">USB</span><span class="o">-</span><span class="n">Stick</span><span class="o">&lt;-</span><span class="n">.</span><span class="w"> </span><span class="n">zw</span><span class="w"> </span><span class="n">.</span><span class="o">-&gt;</span><span class="n">Motion</span><span class="o">-</span><span class="n">Detector</span><span class="p">;</span>
+</code></pre></div>
+
+<ul>
+<li>ws: WebSocket</li>
+<li>ip: TCP/IP</li>
+<li>zw: Z-Wave</li>
+</ul>
+<p>Reference:</p>
+<ul>
+<li><a href="https://www.home-assistant.io/">https://www.home-assistant.io/</a></li>
+<li><a href="https://zwave-js.github.io/node-zwave-js/#/">https://zwave-js.github.io/node-zwave-js/#/</a></li>
+</ul>
+<p><img alt="HomeAssistant.png" src=".attachments.567288/HomeAssistant.png"></p>
+<h2 id="plug-in-zooz-s2-stick-700">Plug in Zooz S2 stick 700</h2>
+<p>This is a USB radio for wireless communication to the Z-Wave family of home automation devices.</p>
+<p>Like:
+ * light switch
+ * door alarm
+ * window alarm
+ * motion detector
+ * thermostat</p>
+<p>Model (US): ZST10-700; US Frequency Band: 908.42 MHz; Z-Wave Plus: USB-A [1]</p>
+<p>Find the name of the device for the USB Stick. Here it is '/dev/ttyUSB0'.</p>
+<div class="highlight"><pre><span></span><code><span class="p">#</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">dmesg</span>
+<span class="p">[</span><span class="mf">1464395.479270</span><span class="p">]</span><span class="w"> </span><span class="n">usb</span><span class="w"> </span><span class="mh">1</span><span class="o">-</span><span class="mh">2</span><span class="o">:</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">full</span><span class="o">-</span><span class="n">speed</span><span class="w"> </span><span class="n">USB</span><span class="w"> </span><span class="n">device</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="mh">5</span><span class="w"> </span><span class="n">using</span><span class="w"> </span><span class="n">xhci_hcd</span>
+<span class="p">[</span><span class="mf">1464395.630085</span><span class="p">]</span><span class="w"> </span><span class="n">usb</span><span class="w"> </span><span class="mh">1</span><span class="o">-</span><span class="mh">2</span><span class="o">:</span><span class="w"> </span><span class="n">New</span><span class="w"> </span><span class="n">USB</span><span class="w"> </span><span class="n">device</span><span class="w"> </span><span class="n">found</span><span class="p">,</span><span class="w"> </span><span class="n">idVendor</span><span class="o">=</span><span class="mh">10</span><span class="n">c4</span><span class="p">,</span><span class="w"> </span><span class="n">idProduct</span><span class="o">=</span><span class="n">ea60</span><span class="p">,</span><span class="w"> </span><span class="n">bcdDevice</span><span class="o">=</span><span class="w"> </span><span class="mf">1.00</span>
+<span class="p">[</span><span class="mf">1464395.630087</span><span class="p">]</span><span class="w"> </span><span class="n">usb</span><span class="w"> </span><span class="mh">1</span><span class="o">-</span><span class="mh">2</span><span class="o">:</span><span class="w"> </span><span class="n">New</span><span class="w"> </span><span class="n">USB</span><span class="w"> </span><span class="n">device</span><span class="w"> </span><span class="nl">strings:</span><span class="w"> </span><span class="n">Mfr</span><span class="o">=</span><span class="mh">1</span><span class="p">,</span><span class="w"> </span><span class="n">Product</span><span class="o">=</span><span class="mh">2</span><span class="p">,</span><span class="w"> </span><span class="n">SerialNumber</span><span class="o">=</span><span class="mh">3</span>
+<span class="p">[</span><span class="mf">1464395.630088</span><span class="p">]</span><span class="w"> </span><span class="n">usb</span><span class="w"> </span><span class="mh">1</span><span class="o">-</span><span class="mh">2</span><span class="o">:</span><span class="w"> </span><span class="nl">Product:</span><span class="w"> </span><span class="n">CP2102N</span><span class="w"> </span><span class="n">USB</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">UART</span><span class="w"> </span><span class="n">Bridge</span><span class="w"> </span><span class="n">Controller</span>
+<span class="p">[</span><span class="mf">1464395.630090</span><span class="p">]</span><span class="w"> </span><span class="n">usb</span><span class="w"> </span><span class="mh">1</span><span class="o">-</span><span class="mh">2</span><span class="o">:</span><span class="w"> </span><span class="nl">Manufacturer:</span><span class="w"> </span><span class="n">Silicon</span><span class="w"> </span><span class="n">Labs</span>
+<span class="p">[</span><span class="mf">1464395.630091</span><span class="p">]</span><span class="w"> </span><span class="n">usb</span><span class="w"> </span><span class="mh">1</span><span class="o">-</span><span class="mh">2</span><span class="o">:</span><span class="w"> </span><span class="nl">SerialNumber:</span><span class="w"> </span><span class="n">f85326c6843ee812862437bcf28b3e41</span>
+<span class="p">[</span><span class="mf">1464395.666277</span><span class="p">]</span><span class="w"> </span><span class="nl">usbcore:</span><span class="w"> </span><span class="n">registered</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">interface</span><span class="w"> </span><span class="n">driver</span><span class="w"> </span><span class="n">usbserial_generic</span>
+<span class="p">[</span><span class="mf">1464395.666283</span><span class="p">]</span><span class="w"> </span><span class="nl">usbserial:</span><span class="w"> </span><span class="n">USB</span><span class="w"> </span><span class="n">Serial</span><span class="w"> </span><span class="n">support</span><span class="w"> </span><span class="n">registered</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">generic</span>
+<span class="p">[</span><span class="mf">1464395.667654</span><span class="p">]</span><span class="w"> </span><span class="nl">usbcore:</span><span class="w"> </span><span class="n">registered</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">interface</span><span class="w"> </span><span class="n">driver</span><span class="w"> </span><span class="n">cp210x</span>
+<span class="p">[</span><span class="mf">1464395.667665</span><span class="p">]</span><span class="w"> </span><span class="nl">usbserial:</span><span class="w"> </span><span class="n">USB</span><span class="w"> </span><span class="n">Serial</span><span class="w"> </span><span class="n">support</span><span class="w"> </span><span class="n">registered</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">cp210x</span>
+<span class="p">[</span><span class="mf">1464395.667689</span><span class="p">]</span><span class="w"> </span><span class="n">cp210x</span><span class="w"> </span><span class="mh">1</span><span class="o">-</span><span class="mh">2</span><span class="o">:</span><span class="mf">1.0</span><span class="o">:</span><span class="w"> </span><span class="n">cp210x</span><span class="w"> </span><span class="n">converter</span><span class="w"> </span><span class="n">detected</span>
+<span class="p">[</span><span class="mf">1464395.670018</span><span class="p">]</span><span class="w"> </span><span class="n">usb</span><span class="w"> </span><span class="mh">1</span><span class="o">-</span><span class="mh">2</span><span class="o">:</span><span class="w"> </span><span class="n">cp210x</span><span class="w"> </span><span class="n">converter</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="n">attached</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">ttyUSB0</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>lsusb
+Bus<span class="w"> </span><span class="m">002</span><span class="w"> </span>Device<span class="w"> </span><span class="m">001</span>:<span class="w"> </span>ID<span class="w"> </span>1d6b:0003<span class="w"> </span>Linux<span class="w"> </span>Foundation<span class="w"> </span><span class="m">3</span>.0<span class="w"> </span>root<span class="w"> </span>hub
+Bus<span class="w"> </span><span class="m">001</span><span class="w"> </span>Device<span class="w"> </span><span class="m">004</span>:<span class="w"> </span>ID<span class="w"> </span><span class="m">8087</span>:0a2b<span class="w"> </span>Intel<span class="w"> </span>Corp.<span class="w"> </span>
+Bus<span class="w"> </span><span class="m">001</span><span class="w"> </span>Device<span class="w"> </span><span class="m">003</span>:<span class="w"> </span>ID<span class="w"> </span>046d:c016<span class="w"> </span>Logitech,<span class="w"> </span>Inc.<span class="w"> </span>Optical<span class="w"> </span>Wheel<span class="w"> </span>Mouse
+Bus<span class="w"> </span><span class="m">001</span><span class="w"> </span>Device<span class="w"> </span><span class="m">005</span>:<span class="w"> </span>ID<span class="w"> </span>10c4:ea60<span class="w"> </span>Silicon<span class="w"> </span>Labs<span class="w"> </span>CP210x<span class="w"> </span>UART<span class="w"> </span>Bridge<span class="w"> </span>&lt;---<span class="w"> </span>this<span class="w"> </span>is<span class="w"> </span>it
+Bus<span class="w"> </span><span class="m">001</span><span class="w"> </span>Device<span class="w"> </span><span class="m">001</span>:<span class="w"> </span>ID<span class="w"> </span>1d6b:0002<span class="w"> </span>Linux<span class="w"> </span>Foundation<span class="w"> </span><span class="m">2</span>.0<span class="w"> </span>root<span class="w"> </span>hub
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ls<span class="w"> </span>-l<span class="w"> </span>/dev/ttyUSB0<span class="w"> </span>
+crw-rw----<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>dialout<span class="w"> </span><span class="m">188</span>,<span class="w"> </span><span class="m">0</span><span class="w"> </span>Aug<span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">08</span>:22<span class="w"> </span>/dev/ttyUSB0
+</code></pre></div>
+
+<p>Reference: </p>
+<ol>
+<li><a href="https://www.thesmartesthouse.com/products/zooz-usb-700-series-z-wave-plus-s2-stick-zst10-700">https://www.thesmartesthouse.com/products/zooz-usb-700-series-z-wave-plus-s2-stick-zst10-700</a></li>
+</ol>
+<h2 id="install-software">Install Software</h2>
+<h3 id="option-1-truenas-app">Option (1): TrueNAS App</h3>
+<p>If you already have <a href="NAS">TrueNAS</a> installed this is a much easier option. I run HA on TrueNAS Scale (Linux Debian) now. If your TrueNAS never moves from the HA device location, this makes even more sense than, say, a laptop.</p>
+<h4 id="1-app-for-home-assistant">(1) App for Home-Assistant</h4>
+<p>Home-Assistant is software to show and control your devices, and perform automation.</p>
+<ul>
+<li>
+<p>Using the TrueNAS web interface, select Apps. </p>
+</li>
+<li>
+<p>In the Tab, select Available Applilcations.</p>
+</li>
+<li>
+<p>Select the home-assistant app. Then select:</p>
+</li>
+<li>timezone</li>
+<li>under Storage, check Host Path and navagate to a spot on your NAS filesystem where you want your configuration.yaml, the input field is called <em>Host Path for Home Assistant Configuration Storage Volume</em> EX: <code>/mnt/vol042/ha/hass</code></li>
+<li>it should pick an open <em>port</em> for you, larger than 9001</li>
+<li>save, and Navigate your browser to the Home-Assistant console : &lt;http://localhost:\<port\>/control-panel> and create a new login.</li>
+</ul>
+<blockquote>
+<p>TrueNAS App puts event and statistics data in a postgresql database [1], instead of sqlite (the default).</p>
+</blockquote>
+<p>Access the database from the App menu (3 dots), then Shell.</p>
+<div class="highlight"><pre><span></span><code><span class="err">#</span><span class="w"> </span><span class="nx">psql</span><span class="w">  </span><span class="o">-</span><span class="nx">U</span><span class="w"> </span><span class="nx">postgres</span><span class="w"> </span><span class="o">-</span><span class="nx">d</span><span class="w"> </span><span class="nx">homeassistance</span>
+<span class="nx">psql</span><span class="w"> </span><span class="p">(</span><span class="m m-Double">13.1</span><span class="w"> </span><span class="p">(</span><span class="nx">Debian</span><span class="w"> </span><span class="m m-Double">13.1</span><span class="o">-</span><span class="mi">1</span><span class="p">.</span><span class="nx">pgdg100</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+<span class="nx">Type</span><span class="w"> </span><span class="s">&quot;help&quot;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nx">help</span><span class="p">.</span>
+
+<span class="nx">homeassistance</span><span class="p">=</span><span class="err">#</span><span class="w"> </span><span class="err">\</span><span class="nx">dt</span>
+<span class="w">                 </span><span class="nx">List</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">relations</span>
+<span class="w"> </span><span class="nx">Schema</span><span class="w"> </span><span class="o">|</span><span class="w">         </span><span class="nx">Name</span><span class="w">          </span><span class="o">|</span><span class="w"> </span><span class="nx">Type</span><span class="w">  </span><span class="o">|</span><span class="w">  </span><span class="nx">Owner</span><span class="w">   </span>
+<span class="o">--------+-----------------------+-------+----------</span>
+<span class="w"> </span><span class="nx">public</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">event_data</span><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nx">table</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">postgres</span>
+<span class="w"> </span><span class="nx">public</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">event_types</span><span class="w">           </span><span class="o">|</span><span class="w"> </span><span class="nx">table</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">postgres</span>
+<span class="w"> </span><span class="nx">public</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">events</span><span class="w">                </span><span class="o">|</span><span class="w"> </span><span class="nx">table</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">postgres</span>
+<span class="w"> </span><span class="nx">public</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">recorder_runs</span><span class="w">         </span><span class="o">|</span><span class="w"> </span><span class="nx">table</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">postgres</span>
+<span class="w"> </span><span class="nx">public</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">schema_changes</span><span class="w">        </span><span class="o">|</span><span class="w"> </span><span class="nx">table</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">postgres</span>
+<span class="w"> </span><span class="nx">public</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">state_attributes</span><span class="w">      </span><span class="o">|</span><span class="w"> </span><span class="nx">table</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">postgres</span>
+<span class="w"> </span><span class="nx">public</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">states</span><span class="w">                </span><span class="o">|</span><span class="w"> </span><span class="nx">table</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">postgres</span>
+<span class="w"> </span><span class="nx">public</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">states_meta</span><span class="w">           </span><span class="o">|</span><span class="w"> </span><span class="nx">table</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">postgres</span>
+<span class="w"> </span><span class="nx">public</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">statistics</span><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nx">table</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">postgres</span>
+<span class="w"> </span><span class="nx">public</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">statistics_meta</span><span class="w">       </span><span class="o">|</span><span class="w"> </span><span class="nx">table</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">postgres</span>
+<span class="w"> </span><span class="nx">public</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">statistics_runs</span><span class="w">       </span><span class="o">|</span><span class="w"> </span><span class="nx">table</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">postgres</span>
+<span class="w"> </span><span class="nx">public</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">statistics_short_term</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">table</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">postgres</span>
+<span class="p">(</span><span class="mi">12</span><span class="w"> </span><span class="nx">rows</span><span class="p">)</span>
+
+<span class="nx">homeassistance</span><span class="p">=</span><span class="err">#</span><span class="w"> </span><span class="nx">select</span><span class="w"> </span><span class="nx">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="nx">from</span><span class="w"> </span><span class="nx">events</span><span class="p">;</span>
+<span class="w"> </span><span class="nx">count</span><span class="w"> </span>
+<span class="o">-------</span>
+<span class="w">  </span><span class="mi">4470</span>
+<span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="nx">row</span><span class="p">)</span>
+
+<span class="nx">homeassistance</span><span class="p">=</span><span class="err">#</span><span class="w"> </span><span class="err">\</span><span class="nx">q</span>
+<span class="err">#</span><span class="w"> </span><span class="nx">exit</span>
+</code></pre></div>
+
+<p>Your Home-Assistant install will look for a configuration file in the docker /config directory. You can find it here [2]:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>docker<span class="w"> </span>ps<span class="w"> </span>--filter<span class="o">=</span><span class="s2">&quot;name=home-assistant&quot;</span><span class="p">|</span>head<span class="w"> </span>-2
+CONTAINER<span class="w"> </span>ID<span class="w">   </span>IMAGE<span class="w">                          </span>COMMAND<span class="w">                  </span>CREATED<span class="w">        </span>STATUS<span class="w">        </span>PORTS<span class="w">     </span>NAMES
+b87237af7a25<span class="w">   </span>homeassistant/home-assistant<span class="w">   </span><span class="s2">&quot;/init&quot;</span><span class="w">                  </span><span class="m">11</span><span class="w"> </span>hours<span class="w"> </span>ago<span class="w">   </span>Up<span class="w"> </span><span class="m">11</span><span class="w"> </span>hours<span class="w">             </span>k8s_home-assistant_home-assistant-d88b55479-rsgpb_ix-home-assistant_11a62bf0-b8e2-4108-a597-1a6c448dd01d_0
+
+<span class="c1"># Use the NAMES and grep for config</span>
+$<span class="w"> </span>sudo<span class="w"> </span>docker<span class="w"> </span>container<span class="w"> </span>inspect<span class="w">   </span>k8s_home-assistant_home-assistant-d88b55479-rsgpb_ix-home-assistant_11a62bf0-b8e2-4108-a597-1a6c448dd01d_0<span class="w"> </span><span class="p">|</span>grep<span class="w"> </span>config
+<span class="w">                </span><span class="s2">&quot;/mnt/vol042/ha/hass:/config&quot;</span>,
+<span class="w">                </span><span class="s2">&quot;Destination&quot;</span>:<span class="w"> </span><span class="s2">&quot;/config&quot;</span>,
+<span class="w">            </span><span class="s2">&quot;WorkingDir&quot;</span>:<span class="w"> </span><span class="s2">&quot;/config&quot;</span>,
+</code></pre></div>
+
+<p>The port number is here</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>docker<span class="w"> </span>container<span class="w"> </span>inspect<span class="w">   </span>k8s_home-assistant_home-assistant-d88b55479-rsgpb_ix-home-assistant_11a62bf0-b8e2-4108-a597-1a6c448dd01d_0<span class="w"> </span><span class="p">|</span>grep<span class="w"> </span><span class="nv">HOME_ASSISTANT_PORT</span><span class="o">=</span>
+<span class="w">                </span><span class="s2">&quot;HOME_ASSISTANT_PORT=tcp://172.17.216.154:22401&quot;</span>,
+</code></pre></div>
+
+<p>Just ignore the 172... IP Address, it is only for internal docker. A bridge network makes it available to the Host's public IP Address. This example port number is 22401, so I would put into my browser : http://localhost:22401/.  You may need to substitute <em>localhost</em> with your public IP Address.</p>
+<p>Reference:</p>
+<ol>
+<li><a href="https://www.home-assistant.io/integrations/recorder/">https://www.home-assistant.io/integrations/recorder/</a></li>
+<li><a href="https://docs.docker.com/engine/reference/commandline/ps/">https://docs.docker.com/engine/reference/commandline/ps/</a></li>
+</ol>
+<h4 id="1-daemon-to-run-zwave-js-ui">(1) Daemon to run ZWave-JS-UI</h4>
+<p>ZWave-JS-UI is a node application to interface with the USB stick and Home Assistant.</p>
+<ul>
+<li>Move to one level below your <em>Host Path</em> designated above for Home-Assistant (EX: <code>/mnt/vol042/ha</code>), and install ZWave-JS-UI [1]</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="o">$</span><span class="w"> </span><span class="n">mkdir</span><span class="w"> </span><span class="n">zwave</span><span class="o">-</span><span class="n">js</span><span class="o">-</span><span class="n">ui</span>
+<span class="o">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">zwave</span><span class="o">-</span><span class="n">js</span><span class="o">-</span><span class="n">ui</span>
+<span class="c1"># download latest version</span>
+<span class="o">$</span><span class="w"> </span><span class="n">curl</span><span class="w"> </span><span class="o">-</span><span class="n">s</span><span class="w"> </span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">repos</span><span class="o">/</span><span class="n">zwave</span><span class="o">-</span><span class="n">js</span><span class="o">/</span><span class="n">zwave</span><span class="o">-</span><span class="n">js</span><span class="o">-</span><span class="n">ui</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="n">latest</span><span class="w">  </span>\
+<span class="o">|</span><span class="w"> </span><span class="n">grep</span><span class="w"> </span><span class="s2">&quot;browser_download_url.*zip&quot;</span><span class="w"> </span>\
+<span class="o">|</span><span class="w"> </span><span class="n">cut</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="o">-</span><span class="n">f</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="w"> </span>\
+<span class="o">|</span><span class="w"> </span><span class="n">tr</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span>\<span class="s2">&quot; </span><span class="se">\</span>
+<span class="s2">| wget -i -</span>
+
+<span class="n">unzip</span><span class="w"> </span><span class="n">zwave</span><span class="o">-</span><span class="n">js</span><span class="o">-</span><span class="n">ui</span><span class="o">-</span><span class="n">v</span><span class="o">*.</span><span class="n">zip</span>
+</code></pre></div>
+
+<blockquote>
+<p>Put zwave-run.sh in TrueNAS &gt; System &gt; Advanced &gt; Init/Shutdown Scripts ... with POSTINIT</p>
+</blockquote>
+<p>File: zwave-run.sh</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="nv">DIR</span><span class="o">=</span>/mnt/vol042/ha
+<span class="nv">LOG</span><span class="o">=</span>zwave-run.log
+<span class="c1">#</span>
+<span class="nb">cd</span><span class="w"> </span><span class="si">${</span><span class="nv">DIR</span><span class="si">}</span>
+nohup<span class="w"> </span>sudo<span class="w"> </span><span class="si">${</span><span class="nv">DIR</span><span class="si">}</span>/zwave-js-ui-linux<span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="si">${</span><span class="nv">DIR</span><span class="si">}</span>/<span class="si">${</span><span class="nv">LOG</span><span class="si">}</span><span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">&amp;</span>
+</code></pre></div>
+
+<p>Navigate your browser to Z_Wave-JS-UI console : <a href="http://localhost:8091/control-panel">http://localhost:8091/control-panel</a> and perform the Z_Wave-JS-UI setup [1]. You may need to substitute <em>localhost</em> with your public IP Address.</p>
+<blockquote>
+<p>I disabled MQTT to get rid of <code>Error: connect ECONNREFUSED</code> messages in the debug log window of ZWave-JS-UI, since the HA to ZWAV communication is done via WebSockets (ws://localhost:3000).</p>
+</blockquote>
+<p>Reference: </p>
+<ol>
+<li><a href="https://zwave-js.github.io/zwave-js-ui/#/usage/setup">https://zwave-js.github.io/zwave-js-ui/#/usage/setup</a></li>
+</ol>
+<h4 id="1-skip-option-2-and-proceed-to-section-configuration-for-other-zooz-products">(1) Skip Option (2) and proceed to section -&gt; <a href="HomeAssistant#configuration-for-other-zooz-products">Configuration for other Zooz products</a></h4>
+<h3 id="option-2-docker-package-install">Option (2): Docker Package Install</h3>
+<p>This option installs and runs two docker images, one for Home-Assistant, and another for ZWave-JS-UI.</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
+
+$<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>ca-certificates<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>curl<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>gnupg<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>lsb-release
+</code></pre></div>
+
+<h4 id="2-install-docker-engine-on-ubuntu">(2) Install Docker Engine on Ubuntu</h4>
+<p>Follow the latest guide here:</p>
+<p><a href="https://docs.docker.com/engine/install/ubuntu/">https://docs.docker.com/engine/install/ubuntu/</a></p>
+<blockquote>
+<p>Make sure you are about to install Comunity Edition (ce) from the
+ Docker repo instead of the default Ubuntu repo by
+ adding Docker’s official GPG key, before setting up the repository</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>docker-ce<span class="w"> </span>docker-ce-cli<span class="w"> </span>containerd.io
+
+$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>docker
+</code></pre></div>
+
+<p>FYI: Docker download OS selection: <a href="https://download.docker.com/linux/">https://download.docker.com/linux/</a></p>
+<div class="highlight"><pre><span></span><code>centos/
+debian/
+fedora/
+raspbian/
+rhel/
+sles/
+static/
+ubuntu/
+</code></pre></div>
+
+<h4 id="2-run-docker-to-install-homeassistant">(2) Run Docker to Install homeassistant</h4>
+<blockquote>
+<p>May need to run docker with the <code>--init</code> parameter first. Then stop and restart without init.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="n">HOME</span><span class="o">=$</span><span class="p">(</span><span class="n">pwd</span><span class="p">)</span>
+<span class="o">$</span><span class="w"> </span><span class="n">sudo</span><span class="w"> </span><span class="n">usermod</span><span class="w"> </span><span class="o">-</span><span class="n">aG</span><span class="w"> </span><span class="n">docker</span><span class="w"> </span><span class="o">$</span><span class="n">USER</span>
+<span class="o">$</span><span class="w"> </span><span class="n">docker</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">--</span><span class="n">name</span><span class="w"> </span><span class="n">homeassistant</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">--</span><span class="n">restart</span><span class="o">=</span><span class="n">always</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">-</span><span class="n">v</span><span class="w"> </span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">localtime</span><span class="p">:</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">localtime</span><span class="p">:</span><span class="n">ro</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">-</span><span class="n">v</span><span class="w"> </span><span class="o">$</span><span class="p">{</span><span class="n">HOME</span><span class="p">}</span><span class="o">/</span><span class="n">hass</span><span class="p">:</span><span class="o">/</span><span class="n">config</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">--</span><span class="n">device</span><span class="w"> </span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ttyUSB0</span><span class="p">:</span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ttyUSB0</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">-</span><span class="n">e</span><span class="w"> </span><span class="s2">&quot;DISABLE_JEMALLOC=true&quot;</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">--</span><span class="n">network</span><span class="o">=</span><span class="n">host</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="mi">3000</span><span class="w"> </span>\
+<span class="w">  </span><span class="n">homeassistant</span><span class="o">/</span><span class="n">home</span><span class="o">-</span><span class="n">assistant</span><span class="p">:</span><span class="n">stable</span>
+<span class="c1">#</span>
+<span class="c1"># To Remove and re-install:</span>
+<span class="n">docker</span><span class="p">:</span><span class="w"> </span><span class="n">Error</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">daemon</span><span class="p">:</span><span class="w"> </span><span class="n">Conflict</span><span class="o">.</span><span class="w"> </span>
+<span class="n">The</span><span class="w"> </span><span class="n">container</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="s2">&quot;/homeassistant&quot;</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">already</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="n">container</span><span class="w"> </span><span class="s2">&quot;5113815f15cb79a0ea19f1888e6efdd39aa9108c60675fe10b515aa162c2e72b&quot;</span><span class="o">.</span><span class="w"> </span>
+<span class="n">You</span><span class="w"> </span><span class="n">have</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">remove</span><span class="w"> </span><span class="p">(</span><span class="ow">or</span><span class="w"> </span><span class="n">rename</span><span class="p">)</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">container</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">able</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">reuse</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">name</span><span class="o">.</span>
+<span class="n">See</span><span class="w"> </span><span class="s1">&#39;docker run --help&#39;</span><span class="o">.</span>
+
+<span class="c1"># docker stop 5113815f15cb79a0ea19f1888e6efdd39aa9108c60675fe10b515aa162c2e72b</span>
+<span class="mi">5113815</span><span class="n">f15cb79a0ea19f1888e6efdd39aa9108c60675fe10b515aa162c2e72b</span>
+
+<span class="c1"># docker rm 5113815f15cb79a0ea19f1888e6efdd39aa9108c60675fe10b515aa162c2e72b</span>
+<span class="mi">5113815</span><span class="n">f15cb79a0ea19f1888e6efdd39aa9108c60675fe10b515aa162c2e72b</span>
+</code></pre></div>
+
+<h4 id="2-run-z-wave-js-server">(2) Run Z-Wave JS Server</h4>
+<p>Create a new directory for the zwave-js server configuration files</p>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="n">HOME</span><span class="o">=$</span><span class="p">(</span><span class="n">pwd</span><span class="p">)</span>
+<span class="o">$</span><span class="w"> </span><span class="n">sudo</span><span class="w"> </span><span class="n">mkdir</span><span class="w"> </span><span class="o">$</span><span class="p">{</span><span class="n">HOME</span><span class="p">}</span><span class="o">/</span><span class="n">zwavejs</span>
+</code></pre></div>
+
+<p>Run the docker container (the first port listed is for the Z-Wave JS Web Interface, the second port is the Z-Wave JS WebSocket listener)</p>
+<blockquote>
+<p>May need to run docker with the <code>--init</code> parameter first. Then stop and restart without init.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--restart<span class="o">=</span>always<span class="w">  </span>-p<span class="w"> </span><span class="m">8091</span>:8091<span class="w"> </span>-p<span class="w"> </span><span class="m">3000</span>:3000<span class="w"> </span>--device<span class="o">=</span>/dev/ttyUSB0<span class="w"> </span>--name<span class="o">=</span><span class="s2">&quot;zwave-js&quot;</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;TZ=America/NewYork&quot;</span><span class="w"> </span>-v<span class="w"> </span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/zwavejs:/usr/src/app/store<span class="w"> </span>zwavejs/zwavejs2mqtt:latest
+</code></pre></div>
+
+<h4 id="2-check-docker-status">(2) Check Docker Status</h4>
+<div class="highlight"><pre><span></span><code><span class="cp"># docker ps</span>
+<span class="n">CONTAINER</span><span class="w"> </span><span class="n">ID</span><span class="w">   </span><span class="n">IMAGE</span><span class="w">                                 </span><span class="n">COMMAND</span><span class="w">                  </span><span class="n">CREATED</span><span class="w">          </span><span class="n">STATUS</span><span class="w">          </span><span class="n">PORTS</span><span class="w">                                                                                  </span><span class="n">NAMES</span>
+<span class="n">d977c2674a80</span><span class="w">   </span><span class="n">homeassistant</span><span class="o">/</span><span class="n">home</span><span class="o">-</span><span class="n">assistant</span><span class="o">:</span><span class="n">stable</span><span class="w">   </span><span class="s">&quot;/init&quot;</span><span class="w">                  </span><span class="mi">24</span><span class="w"> </span><span class="n">minutes</span><span class="w"> </span><span class="n">ago</span><span class="w">   </span><span class="n">Up</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="n">minutes</span><span class="w">                                                                                          </span><span class="n">homeassistant</span>
+<span class="mi">99769272</span><span class="n">d748</span><span class="w">   </span><span class="n">zwavejs</span><span class="o">/</span><span class="n">zwavejs2mqtt</span><span class="o">:</span><span class="n">latest</span><span class="w">           </span><span class="s">&quot;docker-entrypoint.s…&quot;</span><span class="w">   </span><span class="mi">42</span><span class="w"> </span><span class="n">minutes</span><span class="w"> </span><span class="n">ago</span><span class="w">   </span><span class="n">Up</span><span class="w"> </span><span class="mi">42</span><span class="w"> </span><span class="n">minutes</span><span class="w">   </span><span class="mf">0.0.0.0</span><span class="o">:</span><span class="mi">3000</span><span class="o">-&gt;</span><span class="mi">3000</span><span class="o">/</span><span class="n">tcp</span><span class="p">,</span><span class="w"> </span><span class="o">:::</span><span class="mi">3000</span><span class="o">-&gt;</span><span class="mi">3000</span><span class="o">/</span><span class="n">tcp</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0.0.0</span><span class="o">:</span><span class="mi">8091</span><span class="o">-&gt;</span><span class="mi">8091</span><span class="o">/</span><span class="n">tcp</span><span class="p">,</span><span class="w"> </span><span class="o">:::</span><span class="mi">8091</span><span class="o">-&gt;</span><span class="mi">8091</span><span class="o">/</span><span class="n">tcp</span><span class="w">   </span><span class="n">zwave</span><span class="o">-</span><span class="n">js</span>
+</code></pre></div>
+
+<h4 id="2-move-containerimage-to-ssd-data">(2) Move Container/Image to SSD (/data)</h4>
+<p>Put this file in /etc/docker/daemon.json:</p>
+<p>File: daemon.json </p>
+<div class="highlight"><pre><span></span><code>{ 
+   &quot;data-root&quot;: &quot;/data/docker&quot; 
+}
+</code></pre></div>
+
+<p>Stop docker</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>service<span class="w"> </span>docker<span class="w"> </span>stop
+</code></pre></div>
+
+<p>Make dorectory, copy files into it, change the old name</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>mkdir<span class="w"> </span>/data/docker
+
+$<span class="w"> </span>sudo<span class="w"> </span>rsync<span class="w"> </span>-aP<span class="w"> </span>/var/lib/docker/<span class="w"> </span>/data/docker
+
+$<span class="w"> </span>sudo<span class="w"> </span>mv<span class="w"> </span>/var/lib/docker<span class="w"> </span>/var/lib/docker.old
+</code></pre></div>
+
+<p>Ready to start on the new directory</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>service<span class="w"> </span>docker<span class="w"> </span>start
+</code></pre></div>
+
+<blockquote>
+<p>test . test . test . test . test . </p>
+</blockquote>
+<p>Then:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/var/lib/docker.old
+</code></pre></div>
+
+<h4 id="2-default-route-was-getting-messed-up-with-docker">(2) Default Route was getting messed up with docker</h4>
+<p>So changed <code>NetworkInterfaceBlacklist</code> in <em>connman main.cf</em> file as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="k">[General]</span>
+<span class="na">PreferredTechnologies</span><span class="o">=</span><span class="s">ethernet,wifi</span>
+<span class="na">SingleConnectedTechnology</span><span class="o">=</span><span class="s">false</span>
+<span class="na">AllowHostnameUpdates</span><span class="o">=</span><span class="s">false</span>
+<span class="na">PersistentTetheringMode</span><span class="o">=</span><span class="s">true</span>
+<span class="na">NetworkInterfaceBlacklist</span><span class="o">=</span><span class="s">SoftAp0,usb0,usb1,vmnet,vboxnet,virbr,ifb,veth-,vb-</span>
+<span class="na">Used to be</span><span class="o">:</span>
+<span class="na">NetworkInterfaceBlacklist</span><span class="o">=</span><span class="s">SoftAp0,usb0,usb1</span>
+<span class="na">...</span>
+<span class="na">Then restart connman</span><span class="o">:</span>
+<span class="na">$ sudo systemctl restart connman</span>
+</code></pre></div>
+
+<p>Reference: <a href="https://stackoverflow.com/questions/62176803/docker-is-overriding-my-default-route-configuration">https://stackoverflow.com/questions/62176803/docker-is-overriding-my-default-route-configuration</a></p>
+<h4 id="2-restarting">(2) Restarting</h4>
+<div class="highlight"><pre><span></span><code>::::::::::::::
+homeassistant_restart.sh
+::::::::::::::
+#homeassistant_restart.sh<span class="w"> </span>
+sudo<span class="w"> </span>docker<span class="w"> </span>restart<span class="w"> </span>homeassistant
+
+::::::::::::::
+homeassistant_shell.sh
+::::::::::::::
+docker<span class="w"> </span>exec<span class="w"> </span>-it<span class="w"> </span>homeassistant<span class="w"> </span>bash
+
+::::::::::::::
+docker_start.sh
+::::::::::::::
+#!/bin/bash
+TMP=$(mktemp)
+sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>docker
+#
+./docker_status.sh
+#
+sudo<span class="w"> </span>docker<span class="w"> </span>ps<span class="w"> </span>-a<span class="w"> </span>|<span class="w"> </span>while<span class="w"> </span>read<span class="w"> </span>CONTAINER
+do
+<span class="w"> </span>awk<span class="w"> </span>&#39;<span class="nv">$NF</span><span class="w"> </span>~<span class="w"> </span>/^zwave-js/<span class="w"> </span>||<span class="w"> </span><span class="nv">$NF</span><span class="w"> </span>~<span class="w"> </span>/^homeassistant/&#39;<span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="cp">${</span><span class="n">TMP</span><span class="cp">}</span>
+done<span class="w">  </span>
+#
+while<span class="w"> </span>read<span class="w"> </span>LINE
+do
+<span class="w"> </span>echo<span class="w"> </span><span class="cp">${</span><span class="n">LINE</span><span class="cp">}</span><span class="w"> </span>|<span class="w"> </span>awk<span class="w"> </span>&#39;{print<span class="w"> </span>&quot;Container<span class="w"> </span>&quot;<span class="w"> </span>$1<span class="w"> </span>&quot;<span class="w"> </span>is<span class="w"> </span>&quot;<span class="w"> </span><span class="nv">$NF</span>}&#39;
+<span class="w"> </span>sudo<span class="w"> </span>docker<span class="w"> </span>container<span class="w"> </span>start<span class="w"> </span>$(echo<span class="w"> </span><span class="cp">${</span><span class="n">LINE</span><span class="cp">}</span><span class="w"> </span>|<span class="w"> </span>awk<span class="w"> </span>&#39;{print<span class="w"> </span>$1}&#39;)
+done<span class="w"> </span><span class="err">&lt;</span><span class="cp">${</span><span class="n">TMP</span><span class="cp">}</span>
+#
+./docker_status.sh
+#
+rm<span class="w"> </span><span class="cp">${</span><span class="n">TMP</span><span class="cp">}</span>
+
+::::::::::::::
+docker_status.sh
+::::::::::::::
+#!/bin/bash
+sudo<span class="w"> </span>docker<span class="w"> </span>ps
+
+::::::::::::::
+docker_stop.sh
+::::::::::::::
+#!/bin/bash
+#------------------------
+#<span class="w"> </span>File:<span class="w"> </span>docker_stop.sh
+#------------------------
+./docker_status.sh
+sudo<span class="w"> </span>docker<span class="w"> </span>container<span class="w"> </span>ls<span class="w"> </span>--quiet<span class="w"> </span>|<span class="w"> </span>while<span class="w"> </span>read<span class="w"> </span>CONTAINER
+do
+<span class="w"> </span>echo<span class="w"> </span>&quot;Stopping<span class="w"> </span>container<span class="w"> </span><span class="nv">$CONTAINER</span>&quot;
+<span class="w"> </span>sudo<span class="w"> </span>docker<span class="w"> </span>container<span class="w"> </span>stop<span class="w"> </span><span class="nv">$CONTAINER</span>
+done<span class="w">  </span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>docker
+</code></pre></div>
+
+<h2 id="configuration-for-other-zooz-products">Configuration for other Zooz products</h2>
+<p>File: ${HOME}/hass/configuration.yaml</p>
+<div class="highlight"><pre><span></span><code><span class="err">#</span><span class="w"> </span><span class="n">Sun</span>
+<span class="nl">homeassistant</span><span class="p">:</span>
+<span class="w">  </span><span class="nl">time_zone</span><span class="p">:</span><span class="w"> </span><span class="n">America</span><span class="o">/</span><span class="n">New_York</span>
+
+<span class="err">#</span><span class="w"> </span><span class="n">Configure</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="n">setup</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">Home</span><span class="w"> </span><span class="n">Assistant</span><span class="w"> </span><span class="p">(</span><span class="n">frontend</span><span class="p">,</span><span class="w"> </span><span class="n">api</span><span class="p">,</span><span class="w"> </span><span class="n">etc</span><span class="p">)</span>
+<span class="nl">default_config</span><span class="p">:</span>
+
+<span class="err">#</span><span class="w"> </span><span class="nc">Text</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">speech</span>
+<span class="nl">tts</span><span class="p">:</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="nl">platform</span><span class="p">:</span><span class="w"> </span><span class="n">google_translate</span>
+
+<span class="nl">shell_command</span><span class="p">:</span>
+<span class="w">  </span><span class="nl">sms_light_off</span><span class="p">:</span><span class="w">              </span><span class="o">/</span><span class="n">config</span><span class="o">/</span><span class="n">script</span><span class="p">.</span><span class="n">sh</span><span class="w"> </span><span class="n">Outside</span><span class="w"> </span><span class="n">light</span><span class="w"> </span><span class="k">off</span>
+<span class="w">  </span><span class="nl">sms_light_on</span><span class="p">:</span><span class="w">               </span><span class="o">/</span><span class="n">config</span><span class="o">/</span><span class="n">script</span><span class="p">.</span><span class="n">sh</span><span class="w"> </span><span class="n">Outside</span><span class="w"> </span><span class="n">light</span><span class="w"> </span><span class="k">on</span>
+<span class="w">  </span><span class="nl">sms_motion_on</span><span class="p">:</span><span class="w">              </span><span class="o">/</span><span class="n">config</span><span class="o">/</span><span class="n">script</span><span class="p">.</span><span class="n">sh</span><span class="w"> </span><span class="n">Outside</span><span class="w"> </span><span class="n">motion</span><span class="w"> </span><span class="k">on</span>
+<span class="w">  </span><span class="nl">sms_garage_open</span><span class="p">:</span><span class="w">            </span><span class="o">/</span><span class="n">config</span><span class="o">/</span><span class="n">script</span><span class="p">.</span><span class="n">sh</span><span class="w"> </span><span class="n">Garage</span><span class="w"> </span><span class="n">door</span><span class="w"> </span><span class="k">open</span>
+<span class="w">  </span><span class="nl">sms_garage_closed</span><span class="p">:</span><span class="w">          </span><span class="o">/</span><span class="n">config</span><span class="o">/</span><span class="n">script</span><span class="p">.</span><span class="n">sh</span><span class="w"> </span><span class="n">Garage</span><span class="w"> </span><span class="n">door</span><span class="w"> </span><span class="n">closed</span>
+<span class="w">  </span><span class="nl">sms_basement_door_open</span><span class="p">:</span><span class="w">     </span><span class="o">/</span><span class="n">config</span><span class="o">/</span><span class="n">script</span><span class="p">.</span><span class="n">sh</span><span class="w"> </span><span class="n">Basement</span><span class="w"> </span><span class="n">door</span><span class="w"> </span><span class="k">open</span>
+<span class="w">  </span><span class="nl">sms_basement_door_closed</span><span class="p">:</span><span class="w">   </span><span class="o">/</span><span class="n">config</span><span class="o">/</span><span class="n">script</span><span class="p">.</span><span class="n">sh</span><span class="w"> </span><span class="n">Basement</span><span class="w"> </span><span class="n">door</span><span class="w"> </span><span class="n">closed</span>
+<span class="w">  </span><span class="nl">sms_basement_window_open</span><span class="p">:</span><span class="w">   </span><span class="o">/</span><span class="n">config</span><span class="o">/</span><span class="n">script</span><span class="p">.</span><span class="n">sh</span><span class="w"> </span><span class="n">Basement</span><span class="w"> </span><span class="k">window</span><span class="w"> </span><span class="k">open</span>
+<span class="w">  </span><span class="nl">sms_basement_window_closed</span><span class="p">:</span><span class="w"> </span><span class="o">/</span><span class="n">config</span><span class="o">/</span><span class="n">script</span><span class="p">.</span><span class="n">sh</span><span class="w"> </span><span class="n">Basement</span><span class="w"> </span><span class="k">window</span><span class="w"> </span><span class="n">closed</span>
+<span class="w">  </span><span class="nl">sms_dining_window_open</span><span class="p">:</span><span class="w">     </span><span class="o">/</span><span class="n">config</span><span class="o">/</span><span class="n">script</span><span class="p">.</span><span class="n">sh</span><span class="w"> </span><span class="n">Dining</span><span class="w"> </span><span class="n">room</span><span class="w"> </span><span class="k">window</span><span class="w"> </span><span class="k">open</span>
+<span class="w">  </span><span class="nl">sms_dining_window_closed</span><span class="p">:</span><span class="w">   </span><span class="o">/</span><span class="n">config</span><span class="o">/</span><span class="n">script</span><span class="p">.</span><span class="n">sh</span><span class="w"> </span><span class="n">Dining</span><span class="w"> </span><span class="n">room</span><span class="w"> </span><span class="k">window</span><span class="w"> </span><span class="n">closed</span>
+<span class="w">  </span><span class="nl">sms_front_door_open</span><span class="p">:</span><span class="w">        </span><span class="o">/</span><span class="n">config</span><span class="o">/</span><span class="n">script</span><span class="p">.</span><span class="n">sh</span><span class="w"> </span><span class="n">Front</span><span class="w"> </span><span class="n">door</span><span class="w"> </span><span class="k">open</span>
+<span class="w">  </span><span class="nl">sms_front_door_closed</span><span class="p">:</span><span class="w">      </span><span class="o">/</span><span class="n">config</span><span class="o">/</span><span class="n">script</span><span class="p">.</span><span class="n">sh</span><span class="w"> </span><span class="n">Front</span><span class="w"> </span><span class="n">door</span><span class="w"> </span><span class="n">closed</span>
+<span class="w">  </span><span class="nl">sms_sliding_door_open</span><span class="p">:</span><span class="w">      </span><span class="o">/</span><span class="n">config</span><span class="o">/</span><span class="n">script</span><span class="p">.</span><span class="n">sh</span><span class="w"> </span><span class="n">Sliding</span><span class="w"> </span><span class="n">door</span><span class="w"> </span><span class="k">open</span>
+<span class="w">  </span><span class="nl">sms_sliding_door_closed</span><span class="p">:</span><span class="w">    </span><span class="o">/</span><span class="n">config</span><span class="o">/</span><span class="n">script</span><span class="p">.</span><span class="n">sh</span><span class="w"> </span><span class="n">Sliding</span><span class="w"> </span><span class="n">door</span><span class="w"> </span><span class="n">closed</span>
+
+<span class="k">group</span><span class="err">:</span><span class="w"> </span><span class="err">!</span><span class="k">include</span><span class="w"> </span><span class="n">groups</span><span class="p">.</span><span class="n">yaml</span>
+<span class="nl">automation</span><span class="p">:</span><span class="w"> </span><span class="err">!</span><span class="k">include</span><span class="w"> </span><span class="n">automations</span><span class="p">.</span><span class="n">yaml</span>
+<span class="nl">script</span><span class="p">:</span><span class="w"> </span><span class="err">!</span><span class="k">include</span><span class="w"> </span><span class="n">scripts</span><span class="p">.</span><span class="n">yaml</span>
+<span class="nl">scene</span><span class="p">:</span><span class="w"> </span><span class="err">!</span><span class="k">include</span><span class="w"> </span><span class="n">scenes</span><span class="p">.</span><span class="n">yaml</span>
+
+
+<span class="err">#</span><span class="w"> </span><span class="n">E</span><span class="o">-</span><span class="n">mail</span>
+<span class="n">#notify</span><span class="err">:</span>
+<span class="err">#</span><span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="nl">name</span><span class="p">:</span><span class="w"> </span><span class="ss">&quot;NOTIFIER_NAME&quot;</span>
+<span class="err">#</span><span class="w">    </span><span class="nl">platform</span><span class="p">:</span><span class="w"> </span><span class="n">smtp</span>
+<span class="err">#</span><span class="w">    </span><span class="nl">sender</span><span class="p">:</span><span class="w"> </span><span class="ss">&quot;YOUR_SENDER&quot;</span>
+<span class="err">#</span><span class="w">    </span><span class="nl">recipient</span><span class="p">:</span><span class="w"> </span><span class="ss">&quot;YOUR_RECIPIENT&quot;</span>
+<span class="nl">notify</span><span class="p">:</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="nl">name</span><span class="p">:</span><span class="w"> </span><span class="ss">&quot;my_email&quot;</span>
+<span class="w">    </span><span class="nl">platform</span><span class="p">:</span><span class="w"> </span><span class="n">smtp</span>
+<span class="w">    </span><span class="nl">server</span><span class="p">:</span><span class="w"> </span><span class="ss">&quot;192.168.1.5&quot;</span>
+<span class="w">    </span><span class="nl">port</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span>
+<span class="w">    </span><span class="nl">timeout</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span>
+<span class="w">    </span><span class="nl">sender</span><span class="p">:</span><span class="w"> </span><span class="ss">&quot;me@example.com&quot;</span>
+<span class="w">    </span><span class="nl">encryption</span><span class="p">:</span><span class="w"> </span><span class="n">starttls</span>
+<span class="w">    </span><span class="nl">username</span><span class="p">:</span><span class="w"> </span><span class="ss">&quot;me@example.com&quot;</span>
+<span class="w">    </span><span class="nl">recipient</span><span class="p">:</span>
+<span class="w">      </span><span class="o">-</span><span class="w"> </span><span class="ss">&quot;me@example.com&quot;</span>
+<span class="w">    </span><span class="nl">sender_name</span><span class="p">:</span><span class="w"> </span><span class="ss">&quot;My Home Assistant&quot;</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="nl">name</span><span class="p">:</span><span class="w"> </span><span class="ss">&quot;my_page&quot;</span>
+<span class="w">    </span><span class="nl">platform</span><span class="p">:</span><span class="w"> </span><span class="n">smtp</span>
+<span class="w">    </span><span class="nl">server</span><span class="p">:</span><span class="w"> </span><span class="ss">&quot;192.168.1.5&quot;</span>
+<span class="w">    </span><span class="nl">port</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span>
+<span class="w">    </span><span class="nl">timeout</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span>
+<span class="w">    </span><span class="nl">sender</span><span class="p">:</span><span class="w"> </span><span class="ss">&quot;me@example.com&quot;</span>
+<span class="w">    </span><span class="nl">encryption</span><span class="p">:</span><span class="w"> </span><span class="n">starttls</span>
+<span class="w">    </span><span class="nl">username</span><span class="p">:</span><span class="w"> </span><span class="ss">&quot;me@example.com&quot;</span>
+<span class="w">    </span><span class="nl">recipient</span><span class="p">:</span>
+<span class="w">      </span><span class="o">-</span><span class="w"> </span><span class="ss">&quot;5551212@phonecompany.net&quot;</span>
+<span class="w">    </span><span class="nl">sender_name</span><span class="p">:</span><span class="w"> </span><span class="ss">&quot;Home Assist&quot;</span>
+
+<span class="err">#</span>
+<span class="err">#</span><span class="w"> </span><span class="n">Example</span><span class="w"> </span><span class="n">configuration</span><span class="p">.</span><span class="n">yaml</span><span class="w"> </span><span class="n">entry</span>
+<span class="nl">alert</span><span class="p">:</span>
+<span class="w">  </span><span class="nl">basement_door</span><span class="p">:</span>
+<span class="w">    </span><span class="nl">name</span><span class="p">:</span><span class="w"> </span><span class="n">Basement</span><span class="w"> </span><span class="n">door</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">open</span>
+<span class="w">    </span><span class="nl">done_message</span><span class="p">:</span><span class="w"> </span><span class="n">Basement</span><span class="w"> </span><span class="n">door</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">closed</span>
+<span class="w">    </span><span class="nl">entity_id</span><span class="p">:</span><span class="w"> </span><span class="n">binary_sensor</span><span class="p">.</span><span class="n">basement_door_dwzwave25_access_control_window_door_is_open</span>
+<span class="w">    </span><span class="k">state</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;on&quot;</span>
+<span class="w">    </span><span class="nl">repeat</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span>
+<span class="w">    </span><span class="nl">can_acknowledge</span><span class="p">:</span><span class="w"> </span><span class="k">true</span>
+<span class="w">    </span><span class="nl">skip_first</span><span class="p">:</span><span class="w"> </span><span class="k">false</span>
+<span class="w">    </span><span class="nl">notifiers</span><span class="p">:</span>
+<span class="w">      </span><span class="o">-</span><span class="w"> </span><span class="n">my_email</span>
+<span class="w">  </span><span class="nl">basement_window</span><span class="p">:</span>
+<span class="w">    </span><span class="nl">name</span><span class="p">:</span><span class="w"> </span><span class="n">Basement</span><span class="w"> </span><span class="k">window</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">open</span>
+<span class="w">    </span><span class="nl">done_message</span><span class="p">:</span><span class="w"> </span><span class="n">Basement</span><span class="w"> </span><span class="k">window</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">closed</span>
+<span class="w">    </span><span class="nl">entity_id</span><span class="p">:</span><span class="w"> </span><span class="n">binary_sensor</span><span class="p">.</span><span class="n">basement_window_dwzwave25_access_control_window_door_is_open</span>
+<span class="w">    </span><span class="k">state</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;on&quot;</span>
+<span class="w">    </span><span class="nl">repeat</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span>
+<span class="w">    </span><span class="nl">can_acknowledge</span><span class="p">:</span><span class="w"> </span><span class="k">true</span>
+<span class="w">    </span><span class="nl">skip_first</span><span class="p">:</span><span class="w"> </span><span class="k">false</span>
+<span class="w">    </span><span class="nl">notifiers</span><span class="p">:</span>
+<span class="w">      </span><span class="o">-</span><span class="w"> </span><span class="n">my_email</span>
+<span class="err">#</span><span class="w">     </span><span class="o">-</span><span class="w"> </span><span class="n">my_page</span>
+<span class="w">  </span><span class="nl">sliding_door</span><span class="p">:</span>
+<span class="w">    </span><span class="nl">name</span><span class="p">:</span><span class="w"> </span><span class="n">Sliding</span><span class="w"> </span><span class="n">door</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">open</span>
+<span class="w">    </span><span class="nl">done_message</span><span class="p">:</span><span class="w"> </span><span class="n">Sliding</span><span class="w"> </span><span class="n">door</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">closed</span>
+<span class="w">    </span><span class="nl">entity_id</span><span class="p">:</span><span class="w"> </span><span class="n">binary_sensor</span><span class="p">.</span><span class="n">sliding_door_dwzwave25_access_control_window_door_is_open</span>
+<span class="w">    </span><span class="k">state</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;on&quot;</span>
+<span class="w">    </span><span class="nl">repeat</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span>
+<span class="w">    </span><span class="nl">can_acknowledge</span><span class="p">:</span><span class="w"> </span><span class="k">true</span>
+<span class="w">    </span><span class="nl">skip_first</span><span class="p">:</span><span class="w"> </span><span class="k">false</span>
+<span class="w">    </span><span class="nl">notifiers</span><span class="p">:</span>
+<span class="w">      </span><span class="o">-</span><span class="w"> </span><span class="n">my_email</span>
+<span class="err">#</span><span class="w">      </span><span class="o">-</span><span class="w"> </span><span class="n">my_page</span>
+<span class="w">  </span><span class="nl">dining_window</span><span class="p">:</span>
+<span class="w">    </span><span class="nl">name</span><span class="p">:</span><span class="w"> </span><span class="n">Dining</span><span class="w"> </span><span class="k">window</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">open</span>
+<span class="w">    </span><span class="nl">done_message</span><span class="p">:</span><span class="w"> </span><span class="n">Dining</span><span class="w"> </span><span class="k">window</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">closed</span>
+<span class="w">    </span><span class="nl">entity_id</span><span class="p">:</span><span class="w"> </span><span class="n">binary_sensor</span><span class="p">.</span><span class="n">dining_room_window_dwzwave25_access_control_window_door_is_open</span>
+<span class="w">    </span><span class="k">state</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;on&quot;</span>
+<span class="w">    </span><span class="nl">repeat</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span>
+<span class="w">    </span><span class="nl">can_acknowledge</span><span class="p">:</span><span class="w"> </span><span class="k">true</span>
+<span class="w">    </span><span class="nl">skip_first</span><span class="p">:</span><span class="w"> </span><span class="k">false</span>
+<span class="w">    </span><span class="nl">notifiers</span><span class="p">:</span>
+<span class="w">      </span><span class="o">-</span><span class="w"> </span><span class="n">my_email</span>
+<span class="err">#</span><span class="w">      </span><span class="o">-</span><span class="w"> </span><span class="n">my_page</span>
+<span class="w">  </span><span class="nl">front_door</span><span class="p">:</span>
+<span class="w">    </span><span class="nl">name</span><span class="p">:</span><span class="w"> </span><span class="n">Front</span><span class="w"> </span><span class="n">Door</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">open</span>
+<span class="w">    </span><span class="nl">done_message</span><span class="p">:</span><span class="w"> </span><span class="n">Front</span><span class="w"> </span><span class="n">Door</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">closed</span>
+<span class="w">    </span><span class="nl">entity_id</span><span class="p">:</span><span class="w"> </span><span class="n">binary_sensor</span><span class="p">.</span><span class="n">front_door_dwzwave25_access_control_window_door_is_open</span>
+<span class="w">    </span><span class="k">state</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;on&quot;</span>
+<span class="w">    </span><span class="nl">repeat</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span>
+<span class="w">    </span><span class="nl">can_acknowledge</span><span class="p">:</span><span class="w"> </span><span class="k">true</span>
+<span class="w">    </span><span class="nl">skip_first</span><span class="p">:</span><span class="w"> </span><span class="k">false</span>
+<span class="w">    </span><span class="nl">notifiers</span><span class="p">:</span>
+<span class="w">      </span><span class="o">-</span><span class="w"> </span><span class="n">my_email</span>
+<span class="err">#</span><span class="w">     </span><span class="o">-</span><span class="w"> </span><span class="n">my_page</span>
+<span class="w">  </span><span class="nl">garage_door</span><span class="p">:</span>
+<span class="w">    </span><span class="nl">name</span><span class="p">:</span><span class="w"> </span><span class="n">garage</span><span class="w"> </span><span class="n">door</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">open</span>
+<span class="w">    </span><span class="nl">done_message</span><span class="p">:</span><span class="w"> </span><span class="n">garage</span><span class="w"> </span><span class="n">door</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">closed</span>
+<span class="w">    </span><span class="nl">entity_id</span><span class="p">:</span><span class="w"> </span><span class="n">switch</span><span class="p">.</span><span class="n">garage_door_relay_zen16_2_2</span>
+<span class="w">    </span><span class="k">state</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;off&quot;</span>
+<span class="w">    </span><span class="nl">repeat</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span>
+<span class="w">    </span><span class="nl">can_acknowledge</span><span class="p">:</span><span class="w"> </span><span class="k">true</span>
+<span class="w">    </span><span class="nl">skip_first</span><span class="p">:</span><span class="w"> </span><span class="k">false</span>
+<span class="w">    </span><span class="nl">notifiers</span><span class="p">:</span>
+<span class="w">      </span><span class="o">-</span><span class="w"> </span><span class="n">my_email</span>
+<span class="err">#</span><span class="w">      </span><span class="o">-</span><span class="w"> </span><span class="n">my_page</span>
+
+<span class="err">#</span><span class="w"> </span><span class="n">Switch</span><span class="w"> </span><span class="n">Timer</span>
+<span class="nl">input_number</span><span class="p">:</span>
+<span class="w">  </span><span class="nl">light_timer_minutes</span><span class="p">:</span>
+<span class="w">    </span><span class="nl">name</span><span class="p">:</span><span class="w"> </span><span class="ss">&quot;Light Timer&quot;</span>
+<span class="w">    </span><span class="nf">min</span><span class="err">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="nf">max</span><span class="err">:</span><span class="w"> </span><span class="mi">30</span>
+<span class="w">    </span><span class="nl">step</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="nl">input_boolean</span><span class="p">:</span>
+<span class="w">  </span><span class="nl">light_timer_enabled</span><span class="p">:</span>
+<span class="w">    </span><span class="nl">name</span><span class="p">:</span><span class="w"> </span><span class="ss">&quot;Light timer switch&quot;</span>
+<span class="w">    </span><span class="nl">initial</span><span class="p">:</span><span class="w"> </span><span class="k">on</span>
+<span class="w">    </span><span class="nl">icon</span><span class="p">:</span><span class="w"> </span><span class="nl">mdi</span><span class="p">:</span><span class="n">timelapse</span>
+</code></pre></div>
+
+<h3 id="configuration-script-from-configurationyaml">Configuration script from configuration.yaml</h3>
+<p>Log file will be picked up by script ${HOME}/matrix/sendmatrix.sh.</p>
+<p>NOTE: '/config' in docker is actually ${HOME}/hass, see script comments inside <em>sendmatrix.sh</em></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/hass/script.sh<span class="w"> </span>
+<span class="c1">#!/bin/bash</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="p">@</span><span class="si">}</span><span class="s2"> - </span><span class="k">$(</span>date<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span>&gt;&gt;<span class="w">  </span>/config/sendsms.log
+</code></pre></div>
+
+<h3 id="sendmatrix-script">Sendmatrix script</h3>
+<p>File: ${HOME}/matrix/sendmatrix.sh</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">#----------------------------------------------------</span>
+<span class="c1"># File: sendmatrix.sh</span>
+<span class="c1">#</span>
+<span class="c1"># Usage: sendmatrix.sh</span>
+<span class="c1">#</span>
+<span class="c1"># Purpose: Watch for new lines in a homeassistant (hass)</span>
+<span class="c1">#  file (${HOME}/hass/sendmatrix.log) and send an matrix </span>
+<span class="c1">#  message with those new line(s)</span>
+<span class="c1">#</span>
+<span class="c1"># Dependencies: </span>
+<span class="c1">#  - sudo apt-get install sendmatrix</span>
+<span class="c1">#  - sudo apt-get install inotifywait</span>
+<span class="c1">#  - retail : git clone https://github.com/mbucc/retail</span>
+<span class="c1">#  - NOTE: Docker configures / as /config for homeassistant</span>
+<span class="c1">#          and ${HOME}/hass is /</span>
+<span class="c1">#  - ${HOME}/hass/configuration.yaml</span>
+<span class="c1">#       ~</span>
+<span class="c1">#       shell_command:</span>
+<span class="c1">#         xmpp_light_off: /config/script.sh Outside light off</span>
+<span class="c1">#       ~</span>
+<span class="c1">#  - ${HOME}/hass/automations.yaml </span>
+<span class="c1">#       ~</span>
+<span class="c1">#       - service: shell_command.xmpp_light_off</span>
+<span class="c1">#       ~</span>
+<span class="c1">#  - ${HOME}/hass/script.sh</span>
+<span class="c1">#       #!/bin/bash</span>
+<span class="c1">#       echo &quot;${@} - $(date)&quot; &gt;&gt;  /config/sendxmpp.log</span>
+<span class="c1">#</span>
+<span class="c1"># Date     Author     Description</span>
+<span class="c1"># ----     ------     -----------</span>
+<span class="c1"># Sep-2021 Don Cohoon Created</span>
+<span class="c1">#----------------------------------------------------</span>
+<span class="nv">HOME</span><span class="o">=</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>
+
+<span class="c1"># configure hass interface</span>
+<span class="nv">DIR</span><span class="o">=</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/wave
+<span class="nv">OFFSET</span><span class="o">=</span><span class="si">${</span><span class="nv">DIR</span><span class="si">}</span>/sendmatrix.cnt
+<span class="nv">RESULT</span><span class="o">=</span><span class="si">${</span><span class="nv">DIR</span><span class="si">}</span>/sendmatrix.txt
+<span class="nv">MSGS</span><span class="o">=</span><span class="si">${</span><span class="nv">DIR</span><span class="si">}</span>/hass/sendsms.log
+<span class="nv">LOG</span><span class="o">=</span><span class="si">${</span><span class="nv">DIR</span><span class="si">}</span>/sendmatrix.log
+
+<span class="c1">#</span>
+date<span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="si">${</span><span class="nv">LOG</span><span class="si">}</span>
+<span class="c1"># monitor mode, look for file ${MSGS} modification</span>
+/usr/bin/inotifywait<span class="w"> </span>-m<span class="w"> </span>-e<span class="w"> </span>modify<span class="w"> </span><span class="si">${</span><span class="nv">MSGS</span><span class="si">}</span><span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="nb">read</span><span class="w"> </span>line
+<span class="k">do</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>date<span class="k">)</span><span class="s2"> - </span><span class="nv">$line</span><span class="s2">&quot;</span><span class="w">  </span>&gt;&gt;<span class="w"> </span><span class="si">${</span><span class="nv">LOG</span><span class="si">}</span>
+<span class="w">  </span><span class="c1"># grab any hass script.sh new lines since last time</span>
+<span class="w">  </span>/usr/local/bin/retail<span class="w"> </span>-T<span class="w"> </span><span class="si">${</span><span class="nv">OFFSET</span><span class="si">}</span><span class="w"> </span><span class="si">${</span><span class="nv">MSGS</span><span class="si">}</span><span class="w"> </span>&gt;<span class="w"> </span><span class="si">${</span><span class="nv">RESULT</span><span class="si">}</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>!<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">RESULT</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span>rm<span class="w"> </span><span class="si">${</span><span class="nv">RESULT</span><span class="si">}</span>
+<span class="w">  </span><span class="k">else</span>
+<span class="w">    </span><span class="c1"># send text message to phone</span>
+<span class="w">    </span>/bin/cat<span class="w"> </span><span class="si">${</span><span class="nv">RESULT</span><span class="si">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>/usr/local/bin/matrix-commander.py<span class="w"> </span>&gt;&gt;<span class="si">${</span><span class="nv">LOG</span><span class="si">}</span><span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+<span class="w">    </span><span class="c1"># nextcloud talk integration </span>
+<span class="w">    </span><span class="nv">MSG</span><span class="o">=</span><span class="k">$(</span>/bin/cat<span class="w"> </span><span class="si">${</span><span class="nv">RESULT</span><span class="si">}</span><span class="k">)</span>
+<span class="w">    </span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/nextcloud/talk_mattermost.sh<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">MSG</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="w">    </span><span class="c1">#</span>
+<span class="w">    </span>/bin/cat<span class="w"> </span><span class="si">${</span><span class="nv">RESULT</span><span class="si">}</span><span class="w"> </span>&gt;&gt;<span class="si">${</span><span class="nv">LOG</span><span class="si">}</span><span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+<span class="w">    </span>date<span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="si">${</span><span class="nv">LOG</span><span class="si">}</span>
+<span class="w">  </span><span class="k">fi</span>
+<span class="k">done</span>
+</code></pre></div>
+
+<h3 id="automation">Automation</h3>
+<blockquote>
+<p>Most of this configuration is done through the web interface: https://localhost:8123</p>
+</blockquote>
+<p>File: ${HOME}/hass/automation.yaml</p>
+<div class="highlight"><pre><span></span><code><span class="o">-</span><span class="w"> </span><span class="nx">id</span><span class="p">:</span><span class="w"> </span><span class="mi">380</span><span class="nx">e45ccb4934558ba07d3069830d3d2</span>
+<span class="w">  </span><span class="kd">alias</span><span class="p">:</span><span class="w"> </span><span class="nx">light</span><span class="w"> </span><span class="nx">timer</span>
+<span class="w">  </span><span class="nx">trigger</span><span class="p">:</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="nx">platform</span><span class="p">:</span><span class="w"> </span><span class="nx">state</span>
+<span class="w">    </span><span class="nx">entity_id</span><span class="p">:</span><span class="w"> </span><span class="nx">switch</span><span class="p">.</span><span class="nx">light_switch_zen23</span>
+<span class="w">    </span><span class="nx">to</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">on</span><span class="err">&#39;</span>
+<span class="w">  </span><span class="nx">condition</span><span class="p">:</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="nx">condition</span><span class="p">:</span><span class="w"> </span><span class="nx">state</span>
+<span class="w">    </span><span class="nx">entity_id</span><span class="p">:</span><span class="w"> </span><span class="nx">input_boolean</span><span class="p">.</span><span class="nx">light_timer_enabled</span>
+<span class="w">    </span><span class="nx">state</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">on</span><span class="err">&#39;</span>
+<span class="w">  </span><span class="nx">action</span><span class="p">:</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="nx">delay</span><span class="p">:</span>
+<span class="w">      </span><span class="nx">minutes</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;</span><span class="p">{{</span><span class="w"> </span><span class="nx">states</span><span class="p">(</span><span class="err">&#39;&#39;</span><span class="nx">input_number</span><span class="p">.</span><span class="nx">light_timer_minutes</span><span class="err">&#39;&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">int</span><span class="w"> </span><span class="p">}}</span><span class="err">&#39;</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="nx">service</span><span class="p">:</span><span class="w"> </span><span class="nx">switch</span><span class="p">.</span><span class="nx">turn_off</span>
+<span class="w">    </span><span class="nx">data</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">    </span><span class="nx">target</span><span class="p">:</span>
+<span class="w">      </span><span class="nx">entity_id</span><span class="p">:</span><span class="w"> </span><span class="nx">switch</span><span class="p">.</span><span class="nx">light_switch_zen23</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="nx">service</span><span class="p">:</span><span class="w"> </span><span class="nx">shell_command</span><span class="p">.</span><span class="nx">sms_light_off</span>
+<span class="w">  </span><span class="nx">mode</span><span class="p">:</span><span class="w"> </span><span class="nx">single</span>
+<span class="o">-</span><span class="w"> </span><span class="nx">id</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;</span><span class="mi">1625258268930</span><span class="err">&#39;</span>
+<span class="w">  </span><span class="kd">alias</span><span class="p">:</span><span class="w"> </span><span class="nx">Motion</span><span class="w"> </span><span class="nx">Light</span><span class="w"> </span><span class="nx">On</span>
+<span class="w">  </span><span class="nx">description</span><span class="p">:</span><span class="w"> </span><span class="nx">Turn</span><span class="w"> </span><span class="nx">on</span><span class="w"> </span><span class="nx">outside</span><span class="w"> </span><span class="nx">light</span><span class="w"> </span><span class="nx">switch</span><span class="w"> </span><span class="nx">when</span><span class="w"> </span><span class="nx">motion</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="nx">detected</span><span class="w"> </span><span class="nx">after</span><span class="w"> </span><span class="nx">sunset</span><span class="w"> </span><span class="k">and</span>
+<span class="w">    </span><span class="nx">before</span><span class="w"> </span><span class="nx">sunrise</span>
+<span class="w">  </span><span class="nx">trigger</span><span class="p">:</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="k">type</span><span class="p">:</span><span class="w"> </span><span class="nx">motion</span>
+<span class="w">    </span><span class="nx">platform</span><span class="p">:</span><span class="w"> </span><span class="nx">device</span>
+<span class="w">    </span><span class="nx">device_id</span><span class="p">:</span><span class="w"> </span><span class="nx">eeacc9737cf7b1b303418213aed42535</span>
+<span class="w">    </span><span class="nx">entity_id</span><span class="p">:</span><span class="w"> </span><span class="nx">binary_sensor</span><span class="p">.</span><span class="nx">outside_motion_zse29_home_security_motion_detection</span>
+<span class="w">    </span><span class="nx">domain</span><span class="p">:</span><span class="w"> </span><span class="nx">binary_sensor</span>
+<span class="w">  </span><span class="nx">condition</span><span class="p">:</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="k">type</span><span class="p">:</span><span class="w"> </span><span class="nx">is_illuminance</span>
+<span class="w">    </span><span class="nx">condition</span><span class="p">:</span><span class="w"> </span><span class="nx">device</span>
+<span class="w">    </span><span class="nx">device_id</span><span class="p">:</span><span class="w"> </span><span class="nx">eeacc9737cf7b1b303418213aed42535</span>
+<span class="w">    </span><span class="nx">entity_id</span><span class="p">:</span><span class="w"> </span><span class="nx">sensor</span><span class="p">.</span><span class="nx">outside_motion_zse29_illuminance</span>
+<span class="w">    </span><span class="nx">domain</span><span class="p">:</span><span class="w"> </span><span class="nx">sensor</span>
+<span class="w">    </span><span class="nx">below</span><span class="p">:</span><span class="w"> </span><span class="mi">150</span>
+<span class="w">  </span><span class="nx">action</span><span class="p">:</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="k">type</span><span class="p">:</span><span class="w"> </span><span class="nx">turn_on</span>
+<span class="w">    </span><span class="nx">device_id</span><span class="p">:</span><span class="w"> </span><span class="nx">d2e00f0815ff683a320e28e41ee73ea5</span>
+<span class="w">    </span><span class="nx">entity_id</span><span class="p">:</span><span class="w"> </span><span class="nx">switch</span><span class="p">.</span><span class="nx">light_switch_zen23</span>
+<span class="w">    </span><span class="nx">domain</span><span class="p">:</span><span class="w"> </span><span class="nx">switch</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="nx">service</span><span class="p">:</span><span class="w"> </span><span class="nx">shell_command</span><span class="p">.</span><span class="nx">sms_motion_on</span>
+<span class="w">  </span><span class="nx">mode</span><span class="p">:</span><span class="w"> </span><span class="nx">single</span>
+<span class="o">-</span><span class="w"> </span><span class="nx">id</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;</span><span class="mi">1628798611219</span><span class="err">&#39;</span>
+<span class="w">  </span><span class="kd">alias</span><span class="p">:</span><span class="w"> </span><span class="nx">bedroom</span><span class="o">-</span><span class="nx">alarm</span>
+<span class="w">  </span><span class="nx">description</span><span class="p">:</span><span class="w"> </span><span class="nx">Turn</span><span class="w"> </span><span class="nx">Bedroom</span><span class="w"> </span><span class="nx">Double</span><span class="w"> </span><span class="nx">Switch</span><span class="w"> </span><span class="nx">on</span><span class="w"> </span><span class="nx">at</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">certain</span><span class="w"> </span><span class="nx">time</span>
+<span class="w">  </span><span class="nx">trigger</span><span class="p">:</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="nx">platform</span><span class="p">:</span><span class="w"> </span><span class="nx">time</span>
+<span class="w">    </span><span class="nx">at</span><span class="p">:</span><span class="w"> </span><span class="mi">06</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="w">  </span><span class="nx">condition</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">  </span><span class="nx">action</span><span class="p">:</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="k">type</span><span class="p">:</span><span class="w"> </span><span class="nx">turn_on</span>
+<span class="w">    </span><span class="nx">device_id</span><span class="p">:</span><span class="w"> </span><span class="mi">92</span><span class="nx">a0858e5012690e2415f47ea4fb122c</span>
+<span class="w">    </span><span class="nx">entity_id</span><span class="p">:</span><span class="w"> </span><span class="nx">switch</span><span class="p">.</span><span class="nx">double_plug_zen25_bedroom</span>
+<span class="w">    </span><span class="nx">domain</span><span class="p">:</span><span class="w"> </span><span class="nx">switch</span>
+<span class="w">  </span><span class="nx">mode</span><span class="p">:</span><span class="w"> </span><span class="nx">single</span>
+<span class="o">-</span><span class="w"> </span><span class="nx">id</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;</span><span class="mi">1630351746501</span><span class="err">&#39;</span>
+<span class="w">  </span><span class="kd">alias</span><span class="p">:</span><span class="w"> </span><span class="nx">Garage</span><span class="w"> </span><span class="nx">Door</span><span class="w"> </span><span class="nx">Open</span>
+<span class="w">  </span><span class="nx">description</span><span class="p">:</span><span class="w"> </span><span class="nx">Garage</span><span class="w"> </span><span class="nx">door</span><span class="w"> </span><span class="nx">open</span><span class="w"> </span><span class="nx">sms</span><span class="w"> </span><span class="nx">message</span>
+<span class="w">  </span><span class="nx">trigger</span><span class="p">:</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="nx">platform</span><span class="p">:</span><span class="w"> </span><span class="nx">device</span>
+<span class="w">    </span><span class="k">type</span><span class="p">:</span><span class="w"> </span><span class="nx">turned_off</span>
+<span class="w">    </span><span class="nx">device_id</span><span class="p">:</span><span class="w"> </span><span class="mi">074</span><span class="nx">e290829b5399ed65b48c792f4f25b</span>
+<span class="w">    </span><span class="nx">entity_id</span><span class="p">:</span><span class="w"> </span><span class="nx">switch</span><span class="p">.</span><span class="nx">garage_door_relay_zen16_2_2</span>
+<span class="w">    </span><span class="nx">domain</span><span class="p">:</span><span class="w"> </span><span class="nx">switch</span>
+<span class="w">  </span><span class="nx">condition</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">  </span><span class="nx">action</span><span class="p">:</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="nx">service</span><span class="p">:</span><span class="w"> </span><span class="nx">shell_command</span><span class="p">.</span><span class="nx">sms_garage_open</span>
+<span class="w">  </span><span class="nx">mode</span><span class="p">:</span><span class="w"> </span><span class="nx">single</span>
+<span class="o">-</span><span class="w"> </span><span class="nx">id</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;</span><span class="mi">1630351876006</span><span class="err">&#39;</span>
+<span class="w">  </span><span class="kd">alias</span><span class="p">:</span><span class="w"> </span><span class="nx">Garage</span><span class="w"> </span><span class="nx">door</span><span class="w"> </span><span class="nx">closed</span>
+<span class="w">  </span><span class="nx">description</span><span class="p">:</span><span class="w"> </span><span class="nx">Garage</span><span class="w"> </span><span class="nx">door</span><span class="w"> </span><span class="nx">closed</span><span class="w"> </span><span class="nx">sms</span><span class="w"> </span><span class="nx">message</span>
+<span class="w">  </span><span class="nx">trigger</span><span class="p">:</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="nx">platform</span><span class="p">:</span><span class="w"> </span><span class="nx">device</span>
+<span class="w">    </span><span class="k">type</span><span class="p">:</span><span class="w"> </span><span class="nx">turned_on</span>
+<span class="w">    </span><span class="nx">device_id</span><span class="p">:</span><span class="w"> </span><span class="mi">074</span><span class="nx">e290829b5399ed65b48c792f4f25b</span>
+<span class="w">    </span><span class="nx">entity_id</span><span class="p">:</span><span class="w"> </span><span class="nx">switch</span><span class="p">.</span><span class="nx">garage_door_relay_zen16_2_2</span>
+<span class="w">    </span><span class="nx">domain</span><span class="p">:</span><span class="w"> </span><span class="nx">switch</span>
+<span class="w">  </span><span class="nx">condition</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">  </span><span class="nx">action</span><span class="p">:</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="nx">service</span><span class="p">:</span><span class="w"> </span><span class="nx">shell_command</span><span class="p">.</span><span class="nx">sms_garage_closed</span>
+<span class="w">  </span><span class="nx">mode</span><span class="p">:</span><span class="w"> </span><span class="nx">single</span>
+<span class="o">-</span><span class="w"> </span><span class="nx">id</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;</span><span class="mi">1631388354084</span><span class="err">&#39;</span>
+<span class="w">  </span><span class="kd">alias</span><span class="p">:</span><span class="w"> </span><span class="nx">Basement</span><span class="w"> </span><span class="nx">Door</span><span class="w"> </span><span class="nx">Open</span>
+<span class="w">  </span><span class="nx">description</span><span class="p">:</span><span class="w"> </span><span class="nx">Basement</span><span class="w"> </span><span class="nx">Door</span><span class="w"> </span><span class="nx">Open</span><span class="w"> </span><span class="nx">sms</span><span class="w"> </span><span class="nx">message</span>
+<span class="w">  </span><span class="nx">trigger</span><span class="p">:</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="k">type</span><span class="p">:</span><span class="w"> </span><span class="nx">opened</span>
+<span class="w">    </span><span class="nx">platform</span><span class="p">:</span><span class="w"> </span><span class="nx">device</span>
+<span class="w">    </span><span class="nx">device_id</span><span class="p">:</span><span class="w"> </span><span class="nx">f618398c8bdf0bce74b6c9a81b822da5</span>
+<span class="w">    </span><span class="nx">entity_id</span><span class="p">:</span><span class="w"> </span><span class="nx">binary_sensor</span><span class="p">.</span><span class="nx">basement_door_dwzwave25_access_control_window_door_is_open</span>
+<span class="w">    </span><span class="nx">domain</span><span class="p">:</span><span class="w"> </span><span class="nx">binary_sensor</span>
+<span class="w">  </span><span class="nx">condition</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">  </span><span class="nx">action</span><span class="p">:</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="nx">service</span><span class="p">:</span><span class="w"> </span><span class="nx">shell_command</span><span class="p">.</span><span class="nx">sms_basement_door_open</span>
+<span class="w">  </span><span class="nx">mode</span><span class="p">:</span><span class="w"> </span><span class="nx">single</span>
+<span class="o">-</span><span class="w"> </span><span class="nx">id</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;</span><span class="mi">1631388422907</span><span class="err">&#39;</span>
+<span class="w">  </span><span class="kd">alias</span><span class="p">:</span><span class="w"> </span><span class="nx">Basement</span><span class="w"> </span><span class="nx">Door</span><span class="w"> </span><span class="nx">Closed</span>
+<span class="w">  </span><span class="nx">description</span><span class="p">:</span><span class="w"> </span><span class="nx">Basement</span><span class="w"> </span><span class="nx">Door</span><span class="w"> </span><span class="nx">Closed</span><span class="w"> </span><span class="nx">sms</span><span class="w"> </span><span class="nx">message</span>
+<span class="w">  </span><span class="nx">trigger</span><span class="p">:</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="k">type</span><span class="p">:</span><span class="w"> </span><span class="nx">not_opened</span>
+<span class="w">    </span><span class="nx">platform</span><span class="p">:</span><span class="w"> </span><span class="nx">device</span>
+<span class="w">    </span><span class="nx">device_id</span><span class="p">:</span><span class="w"> </span><span class="nx">f618398c8bdf0bce74b6c9a81b822da5</span>
+<span class="w">    </span><span class="nx">entity_id</span><span class="p">:</span><span class="w"> </span><span class="nx">binary_sensor</span><span class="p">.</span><span class="nx">basement_door_dwzwave25_access_control_window_door_is_open</span>
+<span class="w">    </span><span class="nx">domain</span><span class="p">:</span><span class="w"> </span><span class="nx">binary_sensor</span>
+<span class="w">  </span><span class="nx">condition</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">  </span><span class="nx">action</span><span class="p">:</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="nx">service</span><span class="p">:</span><span class="w"> </span><span class="nx">shell_command</span><span class="p">.</span><span class="nx">sms_basement_door_closed</span>
+<span class="w">  </span><span class="nx">mode</span><span class="p">:</span><span class="w"> </span><span class="nx">single</span>
+<span class="o">-</span><span class="w"> </span><span class="nx">id</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;</span><span class="mi">1631389804064</span><span class="err">&#39;</span>
+<span class="w">  </span><span class="kd">alias</span><span class="p">:</span><span class="w"> </span><span class="nx">Basement</span><span class="w"> </span><span class="nx">Window</span><span class="w"> </span><span class="nx">Open</span>
+<span class="w">  </span><span class="nx">description</span><span class="p">:</span><span class="w"> </span><span class="nx">Basement</span><span class="w"> </span><span class="nx">Window</span><span class="w"> </span><span class="nx">Open</span><span class="w"> </span><span class="nx">sms</span><span class="w"> </span><span class="nx">message</span>
+<span class="w">  </span><span class="nx">trigger</span><span class="p">:</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="k">type</span><span class="p">:</span><span class="w"> </span><span class="nx">opened</span>
+<span class="w">    </span><span class="nx">platform</span><span class="p">:</span><span class="w"> </span><span class="nx">device</span>
+<span class="w">    </span><span class="nx">device_id</span><span class="p">:</span><span class="w"> </span><span class="mi">563036</span><span class="nx">dd16828af53955fa8eb0d4c4bf</span>
+<span class="w">    </span><span class="nx">entity_id</span><span class="p">:</span><span class="w"> </span><span class="nx">binary_sensor</span><span class="p">.</span><span class="nx">basement_window_dwzwave25_access_control_window_door_is_open</span>
+<span class="w">    </span><span class="nx">domain</span><span class="p">:</span><span class="w"> </span><span class="nx">binary_sensor</span>
+<span class="w">  </span><span class="nx">condition</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">  </span><span class="nx">action</span><span class="p">:</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="nx">service</span><span class="p">:</span><span class="w"> </span><span class="nx">shell_command</span><span class="p">.</span><span class="nx">sms_basement_window_open</span>
+<span class="w">  </span><span class="nx">mode</span><span class="p">:</span><span class="w"> </span><span class="nx">single</span>
+<span class="o">-</span><span class="w"> </span><span class="nx">id</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;</span><span class="mi">1631389885679</span><span class="err">&#39;</span>
+<span class="w">  </span><span class="kd">alias</span><span class="p">:</span><span class="w"> </span><span class="nx">Basement</span><span class="w"> </span><span class="nx">Window</span><span class="w"> </span><span class="nx">Closed</span>
+<span class="w">  </span><span class="nx">description</span><span class="p">:</span><span class="w"> </span><span class="nx">Basement</span><span class="w"> </span><span class="nx">Window</span><span class="w"> </span><span class="nx">Closed</span><span class="w"> </span><span class="nx">sms</span><span class="w"> </span><span class="nx">message</span>
+<span class="w">  </span><span class="nx">trigger</span><span class="p">:</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="k">type</span><span class="p">:</span><span class="w"> </span><span class="nx">not_opened</span>
+<span class="w">    </span><span class="nx">platform</span><span class="p">:</span><span class="w"> </span><span class="nx">device</span>
+<span class="w">    </span><span class="nx">device_id</span><span class="p">:</span><span class="w"> </span><span class="mi">563036</span><span class="nx">dd16828af53955fa8eb0d4c4bf</span>
+<span class="w">    </span><span class="nx">entity_id</span><span class="p">:</span><span class="w"> </span><span class="nx">binary_sensor</span><span class="p">.</span><span class="nx">basement_window_dwzwave25_access_control_window_door_is_open</span>
+<span class="w">    </span><span class="nx">domain</span><span class="p">:</span><span class="w"> </span><span class="nx">binary_sensor</span>
+<span class="w">  </span><span class="nx">condition</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">  </span><span class="nx">action</span><span class="p">:</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="nx">service</span><span class="p">:</span><span class="w"> </span><span class="nx">shell_command</span><span class="p">.</span><span class="nx">sms_basement_window_closed</span>
+<span class="w">  </span><span class="nx">mode</span><span class="p">:</span><span class="w"> </span><span class="nx">single</span>
+<span class="o">-</span><span class="w"> </span><span class="nx">id</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;</span><span class="mi">1631389952499</span><span class="err">&#39;</span>
+<span class="w">  </span><span class="kd">alias</span><span class="p">:</span><span class="w"> </span><span class="nx">Dining</span><span class="w"> </span><span class="nx">Room</span><span class="w"> </span><span class="nx">Window</span><span class="w"> </span><span class="nx">Open</span>
+<span class="w">  </span><span class="nx">description</span><span class="p">:</span><span class="w"> </span><span class="nx">Dining</span><span class="w"> </span><span class="nx">Room</span><span class="w"> </span><span class="nx">Window</span><span class="w"> </span><span class="nx">Open</span><span class="w"> </span><span class="nx">sms</span><span class="w"> </span><span class="nx">message</span>
+<span class="w">  </span><span class="nx">trigger</span><span class="p">:</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="k">type</span><span class="p">:</span><span class="w"> </span><span class="nx">opened</span>
+<span class="w">    </span><span class="nx">platform</span><span class="p">:</span><span class="w"> </span><span class="nx">device</span>
+<span class="w">    </span><span class="nx">device_id</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="nx">b803cd86b266ee0d15b1b00c3160b57</span>
+<span class="w">    </span><span class="nx">entity_id</span><span class="p">:</span><span class="w"> </span><span class="nx">binary_sensor</span><span class="p">.</span><span class="nx">dining_room_window_dwzwave25_access_control_window_door_is_open</span>
+<span class="w">    </span><span class="nx">domain</span><span class="p">:</span><span class="w"> </span><span class="nx">binary_sensor</span>
+<span class="w">  </span><span class="nx">condition</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">  </span><span class="nx">action</span><span class="p">:</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="nx">service</span><span class="p">:</span><span class="w"> </span><span class="nx">shell_command</span><span class="p">.</span><span class="nx">sms_dining_window_open</span>
+<span class="w">  </span><span class="nx">mode</span><span class="p">:</span><span class="w"> </span><span class="nx">single</span>
+<span class="o">-</span><span class="w"> </span><span class="nx">id</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;</span><span class="mi">1631390010729</span><span class="err">&#39;</span>
+<span class="w">  </span><span class="kd">alias</span><span class="p">:</span><span class="w"> </span><span class="nx">Dining</span><span class="w"> </span><span class="nx">Room</span><span class="w"> </span><span class="nx">Window</span><span class="w"> </span><span class="nx">Closed</span>
+<span class="w">  </span><span class="nx">description</span><span class="p">:</span><span class="w"> </span><span class="nx">Dining</span><span class="w"> </span><span class="nx">Room</span><span class="w"> </span><span class="nx">Window</span><span class="w"> </span><span class="nx">Closed</span><span class="w"> </span><span class="nx">sms</span><span class="w"> </span><span class="nx">message</span>
+<span class="w">  </span><span class="nx">trigger</span><span class="p">:</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="k">type</span><span class="p">:</span><span class="w"> </span><span class="nx">not_opened</span>
+<span class="w">    </span><span class="nx">platform</span><span class="p">:</span><span class="w"> </span><span class="nx">device</span>
+<span class="w">    </span><span class="nx">device_id</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="nx">b803cd86b266ee0d15b1b00c3160b57</span>
+<span class="w">    </span><span class="nx">entity_id</span><span class="p">:</span><span class="w"> </span><span class="nx">binary_sensor</span><span class="p">.</span><span class="nx">dining_room_window_dwzwave25_access_control_window_door_is_open</span>
+<span class="w">    </span><span class="nx">domain</span><span class="p">:</span><span class="w"> </span><span class="nx">binary_sensor</span>
+<span class="w">  </span><span class="nx">condition</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">  </span><span class="nx">action</span><span class="p">:</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="nx">service</span><span class="p">:</span><span class="w"> </span><span class="nx">shell_command</span><span class="p">.</span><span class="nx">sms_dining_window_closed</span>
+<span class="w">  </span><span class="nx">mode</span><span class="p">:</span><span class="w"> </span><span class="nx">single</span>
+<span class="o">-</span><span class="w"> </span><span class="nx">id</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;</span><span class="mi">1631390253290</span><span class="err">&#39;</span>
+<span class="w">  </span><span class="kd">alias</span><span class="p">:</span><span class="w"> </span><span class="nx">Front</span><span class="w"> </span><span class="nx">Door</span><span class="w"> </span><span class="nx">Open</span>
+<span class="w">  </span><span class="nx">description</span><span class="p">:</span><span class="w"> </span><span class="nx">Front</span><span class="w"> </span><span class="nx">Door</span><span class="w"> </span><span class="nx">Open</span><span class="w"> </span><span class="nx">sms</span><span class="w"> </span><span class="nx">message</span>
+<span class="w">  </span><span class="nx">trigger</span><span class="p">:</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="k">type</span><span class="p">:</span><span class="w"> </span><span class="nx">opened</span>
+<span class="w">    </span><span class="nx">platform</span><span class="p">:</span><span class="w"> </span><span class="nx">device</span>
+<span class="w">    </span><span class="nx">device_id</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="nx">df9b7813be834e418cf5d35165114b1</span>
+<span class="w">    </span><span class="nx">entity_id</span><span class="p">:</span><span class="w"> </span><span class="nx">binary_sensor</span><span class="p">.</span><span class="nx">front_door_dwzwave25_access_control_window_door_is_open</span>
+<span class="w">    </span><span class="nx">domain</span><span class="p">:</span><span class="w"> </span><span class="nx">binary_sensor</span>
+<span class="w">  </span><span class="nx">condition</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">  </span><span class="nx">action</span><span class="p">:</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="nx">service</span><span class="p">:</span><span class="w"> </span><span class="nx">shell_command</span><span class="p">.</span><span class="nx">sms_front_door_open</span>
+<span class="w">  </span><span class="nx">mode</span><span class="p">:</span><span class="w"> </span><span class="nx">single</span>
+<span class="o">-</span><span class="w"> </span><span class="nx">id</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;</span><span class="mi">1631390320024</span><span class="err">&#39;</span>
+<span class="w">  </span><span class="kd">alias</span><span class="p">:</span><span class="w"> </span><span class="nx">Front</span><span class="w"> </span><span class="nx">Door</span><span class="w"> </span><span class="nx">Closed</span>
+<span class="w">  </span><span class="nx">description</span><span class="p">:</span><span class="w"> </span><span class="nx">Front</span><span class="w"> </span><span class="nx">Door</span><span class="w"> </span><span class="nx">Closed</span><span class="w"> </span><span class="nx">sms</span><span class="w"> </span><span class="nx">message</span>
+<span class="w">  </span><span class="nx">trigger</span><span class="p">:</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="k">type</span><span class="p">:</span><span class="w"> </span><span class="nx">not_opened</span>
+<span class="w">    </span><span class="nx">platform</span><span class="p">:</span><span class="w"> </span><span class="nx">device</span>
+<span class="w">    </span><span class="nx">device_id</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="nx">df9b7813be834e418cf5d35165114b1</span>
+<span class="w">    </span><span class="nx">entity_id</span><span class="p">:</span><span class="w"> </span><span class="nx">binary_sensor</span><span class="p">.</span><span class="nx">front_door_dwzwave25_access_control_window_door_is_open</span>
+<span class="w">    </span><span class="nx">domain</span><span class="p">:</span><span class="w"> </span><span class="nx">binary_sensor</span>
+<span class="w">  </span><span class="nx">condition</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">  </span><span class="nx">action</span><span class="p">:</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="nx">service</span><span class="p">:</span><span class="w"> </span><span class="nx">shell_command</span><span class="p">.</span><span class="nx">sms_front_door_closed</span>
+<span class="w">  </span><span class="nx">mode</span><span class="p">:</span><span class="w"> </span><span class="nx">single</span>
+<span class="o">-</span><span class="w"> </span><span class="nx">id</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;</span><span class="mi">1631390388999</span><span class="err">&#39;</span>
+<span class="w">  </span><span class="kd">alias</span><span class="p">:</span><span class="w"> </span><span class="nx">Sliding</span><span class="w"> </span><span class="nx">Door</span><span class="w"> </span><span class="nx">Open</span>
+<span class="w">  </span><span class="nx">description</span><span class="p">:</span><span class="w"> </span><span class="nx">Sliding</span><span class="w"> </span><span class="nx">Door</span><span class="w"> </span><span class="nx">Open</span><span class="w"> </span><span class="nx">sms</span><span class="w"> </span><span class="nx">message</span>
+<span class="w">  </span><span class="nx">trigger</span><span class="p">:</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="k">type</span><span class="p">:</span><span class="w"> </span><span class="nx">opened</span>
+<span class="w">    </span><span class="nx">platform</span><span class="p">:</span><span class="w"> </span><span class="nx">device</span>
+<span class="w">    </span><span class="nx">device_id</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="nx">c2bfde83e328e220ee10dbd3b2f3085</span>
+<span class="w">    </span><span class="nx">entity_id</span><span class="p">:</span><span class="w"> </span><span class="nx">binary_sensor</span><span class="p">.</span><span class="nx">sliding_door_dwzwave25_access_control_window_door_is_open</span>
+<span class="w">    </span><span class="nx">domain</span><span class="p">:</span><span class="w"> </span><span class="nx">binary_sensor</span>
+<span class="w">  </span><span class="nx">condition</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">  </span><span class="nx">action</span><span class="p">:</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="nx">service</span><span class="p">:</span><span class="w"> </span><span class="nx">shell_command</span><span class="p">.</span><span class="nx">sms_sliding_door_open</span>
+<span class="w">  </span><span class="nx">mode</span><span class="p">:</span><span class="w"> </span><span class="nx">single</span>
+<span class="o">-</span><span class="w"> </span><span class="nx">id</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;</span><span class="mi">1631390452432</span><span class="err">&#39;</span>
+<span class="w">  </span><span class="kd">alias</span><span class="p">:</span><span class="w"> </span><span class="nx">Sliding</span><span class="w"> </span><span class="nx">Door</span><span class="w"> </span><span class="nx">Closed</span>
+<span class="w">  </span><span class="nx">description</span><span class="p">:</span><span class="w"> </span><span class="nx">Sliding</span><span class="w"> </span><span class="nx">Door</span><span class="w"> </span><span class="nx">Closed</span><span class="w"> </span><span class="nx">sms</span><span class="w">  </span><span class="nx">message</span>
+<span class="w">  </span><span class="nx">trigger</span><span class="p">:</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="k">type</span><span class="p">:</span><span class="w"> </span><span class="nx">not_opened</span>
+<span class="w">    </span><span class="nx">platform</span><span class="p">:</span><span class="w"> </span><span class="nx">device</span>
+<span class="w">    </span><span class="nx">device_id</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="nx">c2bfde83e328e220ee10dbd3b2f3085</span>
+<span class="w">    </span><span class="nx">entity_id</span><span class="p">:</span><span class="w"> </span><span class="nx">binary_sensor</span><span class="p">.</span><span class="nx">sliding_door_dwzwave25_access_control_window_door_is_open</span>
+<span class="w">    </span><span class="nx">domain</span><span class="p">:</span><span class="w"> </span><span class="nx">binary_sensor</span>
+<span class="w">  </span><span class="nx">condition</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">  </span><span class="nx">action</span><span class="p">:</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="nx">service</span><span class="p">:</span><span class="w"> </span><span class="nx">shell_command</span><span class="p">.</span><span class="nx">sms_sliding_door_closed</span>
+<span class="w">  </span><span class="nx">mode</span><span class="p">:</span><span class="w"> </span><span class="nx">single</span>
+</code></pre></div>
+
+<h2 id="upgrade">Upgrade</h2>
+<h3 id="option-truenas">Option: TrueNAS</h3>
+<ul>
+<li>Homeassistant app can be updated using TrueNAS app screen, 3 dot menu in the home-assistant app.</li>
+<li>Z-Wave-JS-UI latest can re <a href="HomeAssistant#daemon-to-run-zwave-js-ui">downloaded</a>.</li>
+</ul>
+<h3 id="option-docker">Option: Docker</h3>
+<p>You can find the latest, stable, and development builds on docker hub here: <a href="https://hub.docker.com/u/homeassistant">https://hub.docker.com/u/homeassistant</a></p>
+<p>During the upgrade your devices will continue to work fine, but please note any automations or access to the application will not be available, so it’s recommended to do this during a time that you know no automations will be running.</p>
+<blockquote>
+<p>Validate your current version</p>
+</blockquote>
+<p>Navigate to the Developer Tools section of Home Assistant. Here you can validate the latest version you currently have deployed.</p>
+<p>File: docker_upgrade.sh</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">#####################################################################</span>
+<span class="c1">#</span>
+<span class="c1"># File: docker_upgrade.sh</span>
+<span class="c1">#</span>
+<span class="c1"># Usage: sudo ./docker_upgrade.sh</span>
+<span class="c1">#</span>
+<span class="c1"># Purpose: Keep HomeAssistant up to date</span>
+<span class="c1">#</span>
+<span class="c1"># Dependencies: homeassistant and zwave-js are installed via docker</span>
+<span class="c1">#  Z-Wave USB device may be different</span>
+<span class="c1">#  Time zone may be different</span>
+<span class="c1">#</span>
+<span class="c1"># Process:</span>
+<span class="c1">#   1. Stop the current container</span>
+<span class="c1">#   2. Delete it</span>
+<span class="c1">#   3. Pull the new container from the docker hub</span>
+<span class="c1">#   4. Run the container again</span>
+<span class="c1">#</span>
+<span class="c1"># The config directory is not in the container, so it remains untouched.</span>
+<span class="c1">#</span>
+<span class="c1"># NOTE: Do this every time a new version of HA is released.</span>
+<span class="c1">#</span>
+<span class="c1"># History:</span>
+<span class="c1">#</span>
+<span class="c1">#   Who    When    Why</span>
+<span class="c1"># -------- ------- --------------------------------------------------</span>
+<span class="c1"># Don Cohoon  Dec 2022  Created from many, many, notes and searches</span>
+<span class="c1">#                        wish I took better notes to give credit.</span>
+<span class="c1">#####################################################################</span>
+<span class="nv">HOME</span><span class="o">=</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>
+<span class="c1">#</span>
+<span class="k">function</span><span class="w"> </span>homeassistant_upgrade<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w"> </span>docker<span class="w"> </span>stop<span class="w"> </span>homeassistant
+<span class="w"> </span>docker<span class="w"> </span>rm<span class="w"> </span>homeassistant
+<span class="w"> </span>docker<span class="w"> </span>pull<span class="w"> </span>homeassistant/home-assistant
+<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--name<span class="w"> </span>homeassistant<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--restart<span class="o">=</span>always<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-v<span class="w"> </span>/etc/localtime:/etc/localtime:ro<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-v<span class="w"> </span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/hass:/config<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--device<span class="w"> </span>/dev/ttyUSB0:/dev/ttyUSB0<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="s2">&quot;DISABLE_JEMALLOC=true&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--network<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-p<span class="w"> </span><span class="m">3000</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>homeassistant/home-assistant:stable
+<span class="o">}</span>
+<span class="c1">#####################################################################</span>
+<span class="k">function</span><span class="w"> </span>zwavejs_upgrade<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w"> </span>docker<span class="w"> </span>stop<span class="w"> </span>zwave-js
+<span class="w"> </span>docker<span class="w"> </span>rm<span class="w"> </span>zwave-js
+<span class="w"> </span>docker<span class="w"> </span>pull<span class="w"> </span>zwavejs/zwavejs2mqtt
+<span class="w"> </span>sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--restart<span class="o">=</span>always<span class="w">  </span><span class="se">\</span>
+<span class="w">  </span>-p<span class="w"> </span><span class="m">8091</span>:8091<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-p<span class="w"> </span><span class="m">3000</span>:3000<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--device<span class="o">=</span>/dev/ttyUSB0<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--name<span class="o">=</span><span class="s2">&quot;zwave-js&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-e<span class="w"> </span><span class="s2">&quot;TZ=America/NewYork&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/zwavejs:/usr/src/app/store<span class="w"> </span>zwavejs/zwavejs2mqtt:latest
+<span class="o">}</span>
+<span class="c1">#####################################################################</span>
+<span class="nv">ID</span><span class="o">=</span><span class="k">$(</span>id<span class="w"> </span>-un<span class="k">)</span>
+<span class="c1">#</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="si">${</span><span class="nv">ID</span><span class="si">}</span><span class="w"> </span>!<span class="o">=</span><span class="w"> </span><span class="s2">&quot;root&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;ERROR: Must be run as root&quot;</span>
+<span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+<span class="c1">#</span>
+<span class="c1"># homeassistant upgrade</span>
+<span class="c1">#</span>
+homeassistant_upgrade
+<span class="c1">#</span>
+<span class="c1"># zwave-js upgrade</span>
+<span class="c1">#</span>
+zwavejs_upgrade
+</code></pre></div>
+
+<blockquote>
+<p>Validate your new version number</p>
+</blockquote>
+<p>After a few minutes, navigate back to the Developers Tools page. Upon load, you should now be on the latest version of Home Assistant.</p>
+<blockquote>
+<p>More docker commands are in my Docker blog for <a href="2023/january.html#docker">January 2023</a></p>
+</blockquote>
+<h2 id="lights-for-wall-e">Lights for WALL-E</h2>
+<p>The relay module <a href="https://www.getzooz.com/zooz-zen16-multirelay/">ZEN16</a> is wired to a switch on the garage door. When it is open a red light is displayed on Wall-E, when the door is closed a green light is shown.</p>
+<p><img alt="Wall-E" src=".attachments.567288/IMG_3813.jpg"></p>
+<p>A USB charger is used to supply 5 volts DC (BAT1) to the circuit. Circuit switch S1 is connected to the ZEN16 relay R2 connection. Q1 is a 2N2222 transistor. A closed circuit supplies voltage to LED2, open circuit supplies voltage to LED1.</p>
+<p>Here is the electrical diagram for that:</p>
+<h2 id="_1"><img alt="Lights_for_Wall-E.png" src=".attachments.567288/Lights_for_Wall-E.png"></h2>
+<h2 id="circuit">Circuit</h2>
+<p><img alt="opoohbbehgacecel.png" src=".attachments.567288/opoohbbehgacecel.png"></p>
+<h3 id="zen16-relay">ZEN16 Relay</h3>
+<p>ZEN16 will monitor its switch Sw2 below, if is closed, then turn on relay R2, closing the circuit switch S1 above. Home Assistant will detect the change in relay R2 and issue notifications using its automation.yaml definition "<em>alias: Garage Door Open</em>".</p>
+<p>ZEN16 will respond to relay R1 on/off commands from Home Assistant. The automation.yaml definition is called "<em>alias: Bedroom Alarm</em>" and turns <strong>on</strong> relay R1 at 6:00am. A Home Assistant dashboard button is enabled to turn relay R1 <strong>off</strong>.</p>
+<p>Garage door connections:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Purpose</strong></th>
+<th><strong>Connection</strong></th>
+<th><strong>HomeAssistant Entity_ID</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Garage Door Switch</td>
+<td>Sw2</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Wall-E Light Circuit</td>
+<td>R2</td>
+<td>switch.garage_door_relay_zen16_2_2</td>
+</tr>
+<tr>
+<td>Alarm Light Radio</td>
+<td>R1</td>
+<td>switch.garage_door_relay_zen16_2</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="ZEN16" src=".attachments.567288/IMG_4324.jpg"></p>
+<h3 id="alarm-light-radio-diagram">Alarm Light Radio - Diagram</h3>
+<p>The Power-Tail-Switch is a 120v AC relay controlled by 5v DC. The ZEN16 acts as a switch to turn  relay R1 on and off. This opens/closes the 5v DC voltage flow to enable/disable the 102v AC voltage through the PowerSwitchTail, that sends power to the power strip turning on/off the radio and light plugged into it.</p>
+<p><img alt="AlarmClock-HomeAssistant.png" src=".attachments.567288/AlarmClock-HomeAssistant.png"></p>
+<h2 id="z-wave-devices">Z-Wave Devices</h2>
+<table>
+<thead>
+<tr>
+<th><strong>Manufacturer</strong></th>
+<th><strong>Product</strong></th>
+<th><strong>Product Code</strong></th>
+<th><strong>Name</strong></th>
+<th><strong>Location</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Silicon Labs</td>
+<td>700 Series-based Controller</td>
+<td>ZST10-700</td>
+<td>Controller ZST10-700</td>
+<td>Basement</td>
+</tr>
+<tr>
+<td>Ecolink</td>
+<td>Z-Wave Door/Window Sensor</td>
+<td>DWZWAVE25</td>
+<td>Basement Door DWZWAVE25</td>
+<td>Basement</td>
+</tr>
+<tr>
+<td>Zooz</td>
+<td>4-in-1 Sensor</td>
+<td>ZSE40</td>
+<td>Basement Motion ZSE40</td>
+<td>Basement</td>
+</tr>
+<tr>
+<td>Zooz</td>
+<td>Outdoor Motion Sensor</td>
+<td>ZSE29</td>
+<td>Outside Motion ZSE29</td>
+<td>Deck</td>
+</tr>
+<tr>
+<td>Zooz</td>
+<td>Multirelay</td>
+<td>ZEN16</td>
+<td>Garage Door Relay ZEN16</td>
+<td>Basement</td>
+</tr>
+<tr>
+<td>Zooz</td>
+<td>Double Plug</td>
+<td>ZEN25</td>
+<td>Double Plug ZEN25</td>
+<td>Basement</td>
+</tr>
+<tr>
+<td>Zooz</td>
+<td>Z-Wave Plus On/Off Toggle Switch v4</td>
+<td>ZEN23</td>
+<td>Light Switch ZEN23</td>
+<td>Basement</td>
+</tr>
+<tr>
+<td>Ecolink</td>
+<td>Z-Wave Door/Window Sensor</td>
+<td>DWZWAVE25</td>
+<td>Basement Window DWZWAVE25</td>
+<td>Basement</td>
+</tr>
+<tr>
+<td>Ecolink</td>
+<td>Z-Wave Door/Window Sensor</td>
+<td>DWZWAVE25</td>
+<td>Sliding Door DWZWAVE25</td>
+<td>Living Room</td>
+</tr>
+<tr>
+<td>Ecolink</td>
+<td>Z-Wave Door/Window Sensor</td>
+<td>DWZWAVE25</td>
+<td>Dining Room Window DWZWAVE25</td>
+<td>Dining Room</td>
+</tr>
+<tr>
+<td>Ecolink</td>
+<td>Z-Wave Door/Window Sensor</td>
+<td>DWZWAVE25</td>
+<td>Front Door DWZWAVE25</td>
+<td>Front Door</td>
+</tr>
+<tr>
+<td>Zooz</td>
+<td>Double Plug</td>
+<td>ZEN25</td>
+<td>Double Plug ZEN25 Bedroom</td>
+<td>Bedroom</td>
+</tr>
+<tr>
+<td>Honeywell</td>
+<td>T6 Pro Z-Wave Programmable Thermostat</td>
+<td>TH6320ZW</td>
+<td>Thermostat - T5</td>
+<td>Living Room</td>
+</tr>
+</tbody>
+</table>
+<h2 id="purge">Purge</h2>
+<p><img alt="HA-Purge.png" src=".attachments.567288/HA-Purge.png"></p>
+<h2 id="continue">Continue</h2>
+<p>Now that you have set up Home Automation-Mail on your server, you will need Matrix for sending out alerts, so now is a good time to install the super fast and secure messaging system.</p>
+<p>Proceed in the order presented, some things are depending on prior setups.</p>
+<p>{{#include date.txt}}</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://getpelican.com/">Pelican</a></li>
+                            <li><a href="https://www.python.org/">Python.org</a></li>
+                            <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="http://10.123.50.59/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <p>
+                Site by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>, via <a rel="nofollow" href="https://www.python.org/">Python</a>.
+                </p><!-- /#about -->
+
+                <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="generator" content="Pelican" />
+        <title>Miniflux News Reader</title>
+        <link rel="stylesheet" href="http://10.123.50.59/theme/css/main.css" />
+        <link href="http://10.123.50.59/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Linux Home Administration Atom Feed" />
+        <meta name="description" content="Miniflux News Reader Reference: https://miniflux.app/docs/installation.html#debian Miniflux is an RSS (Really Simple Syndication) server that will..." />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <table>
+                    <td><h1><a href="http://10.123.50.59/">Linux Home Administration</a></h1></td>
+                    <td>   <!-- Note the usage of `type=module` here as this is an ES6 module --> <script type="module">
+    // Use ES module import syntax to import functionality from the module
+    // that we have compiled.
+    //
+    // Note that the `default` import is an initialization function which
+    // will "boot" the module and make it ready to use. Currently browsers
+    // don't support natively imported WebAssembly as an ES module, but
+    // eventually the manual initialization won't be required!
+    // import { search, default as init } from './tinysearch_engine.js';
+    import { search, default as init } from '/tinysearch_engine.js';
+    window.search = search;
+
+    async function run() {
+      // First up we need to actually load the wasm file, so we use the
+      // default export to inform it where the wasm file is located on the
+      // server, and then we wait on the returned promise to wait for the
+      // wasm to be loaded.
+      //
+      // Note that instead of a string here you can also pass in an instance
+      // of `WebAssembly.Module` which allows you to compile your own module.
+      // Also note that the promise, when resolved, yields the wasm module's
+      // exports which is the same as importing the `*_bg` module in other
+      // modes
+      await init('/tinysearch_engine_bg.wasm');
+    }
+
+    run();
+  </script>
+
+  <script>
+    // And afterwards we can use all the functionality defined in wasm.
+    function doSearch() {
+      let value = document.getElementById("searcher").value;
+      console.log(`Search query: ${value}`);
+
+      const results = search(value, 5);
+
+      console.log(`Results: ${results}`);
+
+      let ul = document.getElementById("results");
+      ul.innerHTML = "";
+
+      for (i = 0; i < results.length; i++) {
+        var li = document.createElement("li");
+
+        let [title, url] = results[i];
+        let elemlink = document.createElement('a');
+        elemlink.innerHTML = title;
+        elemlink.setAttribute('href', url);
+        li.appendChild(elemlink);
+
+        ul.appendChild(li);
+      }
+    }
+  </script>
+
+<div style="text-align:right"> 
+  <h2> 
+    <object type="image/svg+xml" data="/theme/images/search.svg" style="width:5%; height:10%;">
+       Search<!-- fallback image in CSS -->
+    </object>
+    <input type="text" id="searcher" onkeyup="doSearch()">
+  </h2>
+  <ul style="list-style-type: none;text-align: left;" id="results">
+  </ul>
+</div> </td>
+                </table>
+                <nav><ul>
+                    <li><a href="http://10.123.50.59/category/2023.html">2023</a></li>
+                    <li><a href="http://10.123.50.59/category/forest.html">forest</a></li>
+                    <li class="active"><a href="http://10.123.50.59/category/linux.html">linux</a></li>
+                    <li><a href="http://10.123.50.59/category/writing.html">writing</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="http://10.123.50.59/miniflux-news-reader.html" rel="bookmark"
+           title="Permalink to Miniflux News Reader">Miniflux News Reader</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2023-01-25T10:20:00-05:00">
+                Published: Wed 25 January 2023
+        </abbr>
+		<br />
+        <abbr class="modified" title="2024-04-19T09:30:00-04:00">
+                Updated: Fri 19 April 2024
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="http://10.123.50.59/author/don-cohoon.html">Don Cohoon</a>
+        </address>
+<p>In <a href="http://10.123.50.59/category/linux.html">linux</a>.</p>
+
+</footer><!-- /.post-info -->      <h1 id="miniflux-news-reader">Miniflux News Reader</h1>
+<!-- toc -->
+
+<p>Reference: <a href="https://miniflux.app/docs/installation.html#debian">https://miniflux.app/docs/installation.html#debian</a></p>
+<p>Miniflux is an RSS (Really Simple Syndication) server that will fetch and display RSS feeds from other websites. Also known as a <em>news reader</em>.</p>
+<p>You can view these feeds from your web browser. They look like this:</p>
+<p><img alt="miniflux (2).png" src=".attachments.700615/miniflux%20%282%29.png"></p>
+<h2 id="database-configuration">Database Configuration</h2>
+<h3 id="creating-the-database"><strong>Creating the Database</strong></h3>
+<p>Here an example from the command line:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Switch to the postgres user</span>
+$ <span class="n">sudo</span> -<span class="n">u</span> <span class="n">postgres</span> <span class="n">bash</span>
+
+<span class="c1"># Create a database user for Miniflux</span>
+$ <span class="n">createuser</span> -<span class="n">P</span> <span class="n">miniflux</span>
+<span class="n">Enter</span> <span class="n">password</span> <span class="k">for</span> <span class="nb">new</span> <span class="n">role:</span> ******
+<span class="n">Enter</span> <span class="n">it</span> <span class="n">again:</span> ******
+
+<span class="c1"># Create a database for miniflux that belongs to our user</span>
+$ <span class="n">createdb</span> -<span class="n">O</span> <span class="n">miniflux</span> <span class="n">miniflux</span>
+
+<span class="c1"># Create the extension hstore as superuser</span>
+$ <span class="n">psql</span> <span class="n">miniflux</span> -<span class="n">c</span> <span class="s">&#39;create extension hstore&#39;</span>
+<span class="nb">CREATE</span> <span class="n">EXTENSION</span>
+</code></pre></div>
+
+<h3 id="enabling-hstore-extension-for-postgresql"><strong>Enabling HSTORE extension for Postgresql</strong></h3>
+<p>Creating Postgresql extensions requires the <code>SUPERUSER</code> privilege. Several solutions are available:</p>
+<ol>
+<li>Give <code>SUPERUSER</code> privileges to the miniflux user only during the schema migration:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>ALTER USER miniflux WITH SUPERUSER;
+-- Run the migrations (miniflux -migrate)
+ALTER USER miniflux WITH NOSUPERUSER;
+</code></pre></div>
+
+<ol>
+<li>You could <a href="https://www.postgresql.org/docs/current/static/sql-createextension.html%3E">create the hstore extension</a> with another user that have the <code>SUPERUSER</code> privileges before running the migrations.</li>
+</ol>
+<div class="highlight"><pre><span></span><code>sudo -u postgres psql $MINIFLUX_DATABASE
+<span class="k">&gt; </span><span class="ge">CREATE EXTENSION hstore;</span>
+</code></pre></div>
+
+<h2 id="debianubunturaspbian-package-installation">Debian/Ubuntu/Raspbian Package Installation</h2>
+<p>You must have Debian &gt;= 8 or Ubuntu &gt;= 16.04. When using the Debian package, the Miniflux daemon is supervised by systemd.</p>
+<ul>
+<li>Install the Debian package: <code>dpkg -i miniflux_2.0.13_amd64.deb</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="o">$</span><span class="w"> </span><span class="n">curl</span><span class="w"> </span><span class="o">-</span><span class="n">L</span><span class="w"> </span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">miniflux</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="mf">2.0</span><span class="o">.</span><span class="mi">39</span><span class="o">/</span><span class="n">miniflux_2</span><span class="o">.</span><span class="mf">0.39</span><span class="n">_arm64</span><span class="o">.</span><span class="n">deb</span><span class="w"> </span><span class="o">-</span><span class="n">o</span><span class="w"> </span><span class="n">miniflux_2</span><span class="o">.</span><span class="mf">0.39</span><span class="n">_arm64</span><span class="o">.</span><span class="n">deb</span>
+
+<span class="o">$</span><span class="w"> </span><span class="n">sudo</span><span class="w"> </span><span class="n">dpkg</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="n">miniflux_2</span><span class="o">.</span><span class="mf">0.39</span><span class="n">_arm64</span><span class="o">.</span><span class="n">deb</span><span class="w"> </span>
+<span class="n">Selecting</span><span class="w"> </span><span class="n">previously</span><span class="w"> </span><span class="n">unselected</span><span class="w"> </span><span class="n">package</span><span class="w"> </span><span class="n">miniflux</span><span class="o">.</span>
+<span class="p">(</span><span class="n">Reading</span><span class="w"> </span><span class="n">database</span><span class="w"> </span><span class="o">...</span><span class="w"> </span><span class="mi">118954</span><span class="w"> </span><span class="n">files</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">directories</span><span class="w"> </span><span class="n">currently</span><span class="w"> </span><span class="n">installed</span><span class="o">.</span><span class="p">)</span>
+<span class="n">Preparing</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">unpack</span><span class="w"> </span><span class="n">miniflux_2</span><span class="o">.</span><span class="mf">0.39</span><span class="n">_arm64</span><span class="o">.</span><span class="n">deb</span><span class="w"> </span><span class="o">...</span>
+<span class="n">Unpacking</span><span class="w"> </span><span class="n">miniflux</span><span class="w"> </span><span class="p">(</span><span class="mf">2.0</span><span class="o">.</span><span class="mi">39</span><span class="p">)</span><span class="w"> </span><span class="o">...</span>
+<span class="n">Setting</span><span class="w"> </span><span class="n">up</span><span class="w"> </span><span class="n">miniflux</span><span class="w"> </span><span class="p">(</span><span class="mf">2.0</span><span class="o">.</span><span class="mi">39</span><span class="p">)</span><span class="w"> </span><span class="o">...</span>
+<span class="n">Created</span><span class="w"> </span><span class="n">symlink</span><span class="w"> </span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">systemd</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">multi</span><span class="o">-</span><span class="n">user</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">wants</span><span class="o">/</span><span class="n">miniflux</span><span class="o">.</span><span class="n">service</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">systemd</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">miniflux</span><span class="o">.</span><span class="n">service</span><span class="o">.</span>
+<span class="n">Job</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">miniflux</span><span class="o">.</span><span class="n">service</span><span class="w"> </span><span class="n">failed</span><span class="w"> </span><span class="n">because</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">control</span><span class="w"> </span><span class="n">process</span><span class="w"> </span><span class="n">exited</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">error</span><span class="w"> </span><span class="n">code</span><span class="o">.</span>
+<span class="n">See</span><span class="w"> </span><span class="s2">&quot;systemctl status miniflux.service&quot;</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="s2">&quot;journalctl -xe&quot;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">details</span><span class="o">.</span>
+<span class="n">Processing</span><span class="w"> </span><span class="n">triggers</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">man</span><span class="o">-</span><span class="n">db</span><span class="w"> </span><span class="p">(</span><span class="mf">2.9</span><span class="o">.</span><span class="mi">4</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">...</span>
+</code></pre></div>
+
+<ul>
+<li>Define the environment variable <code>DATABASE_URL</code> if necessary</li>
+</ul>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>/etc/miniflux.conf<span class="w"> </span>
+<span class="c1"># See https://miniflux.app/docs/configuration.html</span>
+
+<span class="nv">RUN_MIGRATIONS</span><span class="o">=</span><span class="m">1</span>
+<span class="nv">DATABASE_URL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">user</span><span class="o">=</span>miniflux<span class="w"> </span><span class="nv">password</span><span class="o">=</span>**********<span class="w"> </span><span class="nv">dbname</span><span class="o">=</span>miniflux<span class="w"> </span><span class="nv">sslmode</span><span class="o">=</span>disable
+</code></pre></div>
+
+<ul>
+<li>Run the SQL migrations:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>miniflux<span class="w"> </span>-c<span class="w"> </span>/etc/miniflux.conf<span class="w"> </span>-migrate
+-&gt;<span class="w"> </span>Current<span class="w"> </span>schema<span class="w"> </span>version:<span class="w"> </span><span class="m">60</span>
+-&gt;<span class="w"> </span>Latest<span class="w"> </span>schema<span class="w"> </span>version:<span class="w"> </span><span class="m">60</span>
+</code></pre></div>
+
+<ul>
+<li>Create an admin user:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>miniflux<span class="w"> </span>-c<span class="w"> </span>/etc/miniflux.conf<span class="w"> </span>-create-admin
+Enter<span class="w"> </span>Username:<span class="w"> </span>nosey
+Enter<span class="w"> </span>Password:<span class="w"> </span>
+</code></pre></div>
+
+<ul>
+<li>Customize your configuration file <code>/etc/miniflux.conf</code> if necessary</li>
+</ul>
+<blockquote>
+<p>Config entries followed by a colon (:) are defaults, to change them use an equals (=) sign.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="n">DATABASE_URL</span> <span class="o">=</span> <span class="n">user</span><span class="o">=</span><span class="n">miniflux</span> <span class="n">password</span><span class="o">=************</span> <span class="n">dbname</span><span class="o">=</span><span class="n">miniflux</span> <span class="n">sslmode</span><span class="o">=</span><span class="n">disable</span>
+<span class="n">LOG_DATE_TIME</span><span class="o">=</span> <span class="n">true</span>
+<span class="n">DEBUG</span><span class="o">=</span> <span class="n">false</span>
+<span class="n">HTTP_SERVICE</span><span class="p">:</span> <span class="n">true</span>
+<span class="n">SCHEDULER_SERVICE</span><span class="p">:</span> <span class="n">true</span>
+<span class="n">HTTPS</span><span class="o">=</span> <span class="n">true</span>
+<span class="n">HSTS</span><span class="p">:</span> <span class="n">true</span>
+<span class="n">BASE_URL</span><span class="o">=</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">rss</span><span class="p">.</span><span class="n">example</span><span class="p">.</span><span class="n">com</span>
+<span class="n">ROOT_URL</span><span class="o">=</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">rss</span><span class="p">.</span><span class="n">example</span><span class="p">.</span><span class="n">com</span>
+<span class="n">BASE_PATH</span><span class="p">:</span> 
+<span class="n">LISTEN_ADDR</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">.</span><span class="mf">0.0</span><span class="p">:</span><span class="mi">8080</span>
+<span class="n">DATABASE_MAX_CONNS</span><span class="p">:</span> <span class="mi">20</span>
+<span class="n">DATABASE_MIN_CONNS</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">RUN_MIGRATIONS</span><span class="o">=</span> <span class="mi">1</span>
+<span class="n">CERT_FILE</span> <span class="o">=</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">letsencrypt</span><span class="o">/</span><span class="n">live</span><span class="o">/</span><span class="n">example</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">fullchain</span><span class="p">.</span><span class="n">pem</span>
+<span class="n">KEY_FILE</span> <span class="o">=</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">letsencrypt</span><span class="o">/</span><span class="n">live</span><span class="o">/</span><span class="n">example</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">privkey</span><span class="p">.</span><span class="n">pem</span>
+<span class="n">CERT_DOMAIN</span><span class="p">:</span> <span class="n">rss</span><span class="p">.</span><span class="n">example</span><span class="p">.</span><span class="n">com</span>
+<span class="n">CERT_CACHE</span><span class="p">:</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">cert_cache</span>
+<span class="n">CLEANUP_FREQUENCY_HOURS</span><span class="p">:</span> <span class="mi">24</span>
+<span class="n">CLEANUP_ARCHIVE_READ_DAYS</span><span class="p">:</span> <span class="mi">60</span>
+<span class="n">CLEANUP_REMOVE_SESSIONS_DAYS</span><span class="p">:</span> <span class="mi">30</span>
+<span class="n">WORKER_POOL_SIZE</span><span class="p">:</span> <span class="mi">5</span>
+<span class="n">POLLING_FREQUENCY</span><span class="p">:</span> <span class="mi">60</span>
+<span class="n">BATCH_SIZE</span><span class="p">:</span> <span class="mi">10</span>
+<span class="n">POLLING_SCHEDULER</span><span class="p">:</span> <span class="n">round_robin</span>
+<span class="n">SCHEDULER_ENTRY_FREQUENCY_MAX_INTERVAL</span><span class="p">:</span> <span class="mi">1440</span>
+<span class="n">SCHEDULER_ENTRY_FREQUENCY_MIN_INTERVAL</span><span class="p">:</span> <span class="mi">5</span>
+<span class="n">PROXY_IMAGES</span><span class="p">:</span> <span class="n">http</span><span class="o">-</span><span class="n">only</span>
+<span class="n">CREATE_ADMIN</span><span class="p">:</span> <span class="n">false</span>
+<span class="n">ADMIN_USERNAME</span><span class="o">=</span><span class="n">nosey</span>
+<span class="n">ADMIN_PASSWORD</span><span class="o">=**********</span>
+<span class="n">POCKET_CONSUMER_KEY</span><span class="p">:</span> 
+<span class="n">OAUTH2_USER_CREATION</span><span class="p">:</span> <span class="n">false</span>
+<span class="n">OAUTH2_CLIENT_ID</span><span class="p">:</span> 
+<span class="n">OAUTH2_CLIENT_SECRET</span><span class="p">:</span> 
+<span class="n">OAUTH2_REDIRECT_URL</span><span class="p">:</span> 
+<span class="n">OAUTH2_OIDC_DISCOVERY_ENDPOINT</span><span class="p">:</span> 
+<span class="n">OAUTH2_PROVIDER</span><span class="p">:</span> 
+<span class="n">HTTP_CLIENT_TIMEOUT</span><span class="p">:</span> <span class="mi">20</span>
+<span class="n">HTTP_CLIENT_MAX_BODY_SIZE</span><span class="p">:</span> <span class="mi">15728640</span>
+<span class="n">AUTH_PROXY_HEADER</span><span class="p">:</span> 
+<span class="n">AUTH_PROXY_USER_CREATION</span><span class="p">:</span> <span class="n">false</span>
+</code></pre></div>
+
+<ul>
+<li>Restart the process: sudo <code>systemctl restart miniflux</code></li>
+<li>Check the process status: sudo <code>systemctl status miniflux</code></li>
+<li>Enable firewall</li>
+</ul>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">8080</span>
+Rule<span class="w"> </span>added
+Rule<span class="w"> </span>added<span class="w"> </span><span class="o">(</span>v6<span class="o">)</span>
+</code></pre></div>
+
+<p>Note that you could also use the <a href="https://miniflux.app/docs/howto.html#apt-repo">Miniflux APT repository</a> instead of downloading manually the Debian package.</p>
+<p>Since Miniflux v2.0.25, the Debian package is available for multiple architectures: <code>amd64</code>, <code>arm64</code>, and <code>armhf</code>. This way, it’s very easy to install Miniflux on a Raspberry Pi.</p>
+<p>If you don’t want to run the SQL migrations manually each time you upgrade Miniflux, set the environment variable: <code>RUN_MIGRATIONS=1</code> in <code>/etc/miniflux.conf</code>.</p>
+<p>Systemd reads the environment variables from the file <code>/etc/miniflux.conf</code>. You must restart the service to take the new values into consideration.</p>
+<h2 id="exportimport-via-standard-opml-files">Export/Import via standard .opml files</h2>
+<p>Use the web interface, top menu <em>Feeds</em>, to Import/Export .opml files.</p>
+<h2 id="sample-rss-feeds">Sample RSS feeds</h2>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;opml</span><span class="w"> </span><span class="na">version=</span><span class="s">&quot;2.0&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;head&gt;</span>
+<span class="w">        </span><span class="nt">&lt;title&gt;</span>Miniflux<span class="nt">&lt;/title&gt;</span>
+<span class="w">        </span><span class="nt">&lt;dateCreated&gt;</span>Sun,<span class="w"> </span>23<span class="w"> </span>Oct<span class="w"> </span>2022<span class="w"> </span>14:55:57<span class="w"> </span>EDT<span class="nt">&lt;/dateCreated&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/head&gt;</span>
+<span class="w">    </span><span class="nt">&lt;body&gt;</span>
+<span class="w">        </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;All&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Bartosz Ciechanowski&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Bartosz Ciechanowski&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://ciechanow.ski/atom.xml&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://ciechanow.ski/&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Hacking on Go350&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Hacking on Go350&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://www.go350.com/index.xml&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://www.go350.com/&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;2ality – JavaScript and more&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;2ality – JavaScript and more&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://feeds.feedburner.com/2ality&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://2ality.com/&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;9Gag - Awesome - Hot&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;9Gag - Awesome - Hot&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://9gag.vamourir.fr/feeds/awesome/hot.xml&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://9gag.vamourir.fr/feeds/awesome/hot.xml&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;aka Ken Smith&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;aka Ken Smith&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;http://oldschool.scripting.com/KenSmith/rss.xml&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;http://oldschool.scripting.com/KenSmith/&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;A List Apart: The Full Feed&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;A List Apart: The Full Feed&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://feeds.feedburner.com/alistapart/main&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://alistapart.com&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Al Jazeera – Breaking News, World News and Video from Al Jazeera&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Al Jazeera – Breaking News, World News and Video from Al Jazeera&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://www.aljazeera.com/xml/rss/all.xml&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://www.aljazeera.com&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Articles — brandur.org&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Articles — brandur.org&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://brandur.org/articles.atom&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://brandur.org&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;BBC News - Home&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;BBC News - Home&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://feeds.bbci.co.uk/news/rss.xml&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://www.bbc.co.uk/news/&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;benjojo blog&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;benjojo blog&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://blog.benjojo.co.uk/rss.xml&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://blog.benjojo.co.uk&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Boing Boing&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Boing Boing&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://boingboing.net/feed&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://boingboing.net&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Brain Pickings&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Brain Pickings&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://feeds.feedburner.com/brainpickings/rss&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://www.brainpickings.org&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;CogDogBlog&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;CogDogBlog&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://cogdogblog.com/feed/&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://cogdogblog.com&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Colossal&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Colossal&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://www.thisiscolossal.com/feed/&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://www.thisiscolossal.com&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;CommitStrip&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;CommitStrip&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://www.commitstrip.com/en/feed/?&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://www.commitstrip.com&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;computers are bad&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;computers are bad&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://computer.rip/rss.xml&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://computer.rip&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Current Watches, Warnings and Advisories for Prince William (VAC153) Virginia Issued by the National Weather Service&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Current Watches, Warnings and Advisories for Prince William (VAC153) Virginia Issued by the National Weather Service&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://alerts.weather.gov/cap/wwaatmget.php?x=VAC153&amp;amp;y=0&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://alerts.weather.gov/cap/wwaatmget.php?x=VAC153&amp;amp;y=0&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Daemonic Dispatches&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Daemonic Dispatches&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;http://www.daemonology.net/blog/index.rss&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://www.daemonology.net/blog/&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Daring Fireball&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Daring Fireball&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://daringfireball.net/feeds/json&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://daringfireball.net/&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;death and gravity&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;death and gravity&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://death.andgravity.com/_feed/index.xml&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://death.andgravity.com/&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Dr. Brian Robert Callahan&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Dr. Brian Robert Callahan&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://briancallahan.net/blog/feed.xml&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://briancallahan.net/blog&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Drew DeVault&amp;#39;s blog&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Drew DeVault&amp;#39;s blog&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://drewdevault.com/blog/index.xml&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://drewdevault.com&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Eli Bendersky&amp;#39;s website&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Eli Bendersky&amp;#39;s website&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://eli.thegreenplace.net/feeds/all.atom.xml&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://eli.thegreenplace.net/&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;English Wikinews Atom feed.&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;English Wikinews Atom feed.&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://en.wikinews.org/w/index.php?title=Special:NewsFeed&amp;amp;feed=atom&amp;amp;categories=Published&amp;amp;notcategories=No%20publish%7CArchived%7CAutoArchived%7Cdisputed&amp;amp;namespace=0&amp;amp;count=30&amp;amp;hourcount=124&amp;amp;ordermethod=categoryadd&amp;amp;stablepages=only&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://en.wikinews.org/wiki/Main_Page&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;fabiensanglard.net&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;fabiensanglard.net&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://fabiensanglard.net/rss.xml&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://fabiensanglard.net&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;fasterthanli.me&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;fasterthanli.me&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://fasterthanli.me/index.xml&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://fasterthanli.me&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;flak&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;flak&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://flak.tedunangst.com/rss&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://flak.tedunangst.com/&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Geek&amp;amp;Poke&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Geek&amp;amp;Poke&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;http://feeds.feedburner.com/GeekAndPoke&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://geek-and-poke.com/&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Hacker News&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Hacker News&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://news.ycombinator.com/rss&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://news.ycombinator.com/&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;https://danluu.com/atom/index.xml&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;https://danluu.com/atom/index.xml&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://danluu.com/atom.xml&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://danluu.com/atom/index.xml&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;https://mikestone.me/&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;https://mikestone.me/&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://mikestone.me/feed.xml&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://mikestone.me/&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Ivan on Containers, Kubernetes, and Server-Side&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Ivan on Containers, Kubernetes, and Server-Side&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://iximiuz.com/feed.rss&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://iximiuz.com/&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Jeff Geerling&amp;#39;s Blog&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Jeff Geerling&amp;#39;s Blog&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://www.jeffgeerling.com/blog.xml&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;http://www.jeffgeerling.com/&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Jhey Tompkins Posts&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Jhey Tompkins Posts&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://jhey.dev/posts.xml&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://jhey.dev/&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Josh Comeau&amp;#39;s blog&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Josh Comeau&amp;#39;s blog&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://www.joshwcomeau.com/rss.xml&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://www.joshwcomeau.com/&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Joy of Tech (RSS Feed)&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Joy of Tech (RSS Feed)&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://www.geekculture.com/joyoftech/jotblog/atom.xml&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;http://joyoftech.com/joyoftech/&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Julia Evans&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Julia Evans&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://jvns.ca/atom.xml&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;http://jvns.ca&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;kottke.org&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;kottke.org&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;http://feeds.kottke.org/main&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;http://kottke.org/&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Laughing Squid&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Laughing Squid&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://laughingsquid.com/feed/&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://laughingsquid.com/&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;LibriVox&amp;#39;s New Releases&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;LibriVox&amp;#39;s New Releases&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://librivox.org/rss/latest_releases&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;http://librivox.org&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Lifehacker&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Lifehacker&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://lifehacker.com/rss&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://lifehacker.com&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Logos By Nick&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Logos By Nick&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://logosbynick.com/feed/&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://logosbynick.com&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;LWN.net&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;LWN.net&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://lwn.net/headlines/rss&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://lwn.net&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Manton Reece&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Manton Reece&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://www.manton.org/feed.xml&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://www.manton.org/&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Marco.org&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Marco.org&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://marco.org/rss&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://marco.org/&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Martin Fowler&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Martin Fowler&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://martinfowler.com/feed.atom&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://martinfowler.com&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;MaskRay&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;MaskRay&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://maskray.me/blog/atom.xml&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://maskray.me/blog/&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;matklad&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;matklad&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://matklad.github.io/feed.xml&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://matklad.github.io//&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Matthias Endler&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Matthias Endler&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://endler.dev/rss.xml&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://endler.dev&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Matt Might&amp;#39;s blog&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Matt Might&amp;#39;s blog&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://matt.might.net/articles/feed.rss&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;http://matt.might.net/&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Michael Tsai&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Michael Tsai&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://mjtsai.com/blog/feed/&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://mjtsai.com/blog&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Moments in Graphics&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Moments in Graphics&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;http://momentsingraphics.de/RSS.xml&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;http://momentsingraphics.de/&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;MonkeyUser&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;MonkeyUser&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://www.monkeyuser.com/feed.xml&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://www.monkeyuser.com&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Mr. Money Mustache&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Mr. Money Mustache&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://feeds.feedburner.com/MrMoneyMustache&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://www.mrmoneymustache.com&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Nackblog&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Nackblog&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;http://jnack.com/blog/feed/&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;http://jnack.com/blog&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;News : NPR&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;News : NPR&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://feeds.npr.org/1001/rss.xml&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://www.npr.org/templates/story/story.php?storyId=1001&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Nicky&amp;#39;s New Shtuff&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Nicky&amp;#39;s New Shtuff&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://ncase.me/feed.xml&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://ncase.me/&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;null program&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;null program&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://nullprogram.com/feed/&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://nullprogram.com&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;One Foot Tsunami&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;One Foot Tsunami&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://onefoottsunami.com/feed/json/&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://onefoottsunami.com/&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;OpenBSD Journal&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;OpenBSD Journal&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://www.undeadly.org/cgi?action=rss&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://www.undeadly.org/&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;OpenBSD Webzine&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;OpenBSD Webzine&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://webzine.puffy.cafe/atom.xml&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://webzine.puffy.cafe/&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Open Source Musings&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Open Source Musings&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://opensourcemusings.com/feed/&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://opensourcemusings.com/&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Open Source with Christopher Lydon&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Open Source with Christopher Lydon&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://radioopensource.org/feed/&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://radioopensource.org&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Paul E. McKenney&amp;#39;s Journal&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Paul E. McKenney&amp;#39;s Journal&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://paulmck.livejournal.com/data/rss&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://paulmck.livejournal.com/&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Phys.org - latest science and technology news stories&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Phys.org - latest science and technology news stories&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://phys.org/rss-feed/breaking/&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://phys.org/&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Schneier on Security&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Schneier on Security&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://www.schneier.com/feed/atom/&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://www.schneier.com/blog/&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Scott H Young&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Scott H Young&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;http://feeds.feedburner.com/scotthyoung/HAHx&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://www.scotthyoung.com/blog&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Scripting News&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Scripting News&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;http://scripting.com/rss.xml&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;http://scripting.com/&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Simon Willison&amp;#39;s Weblog&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Simon Willison&amp;#39;s Weblog&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://simonwillison.net/atom/everything/&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;http://simonwillison.net/&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Slashdot&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Slashdot&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;http://rss.slashdot.org/Slashdot/slashdot&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://slashdot.org/&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Stochastic Lifestyle&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Stochastic Lifestyle&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://www.stochasticlifestyle.com/feed/&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://www.stochasticlifestyle.com&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;swyx.io blog&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;swyx.io blog&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://www.swyx.io/api/rss.xml&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://swyx.io&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Tania Rascia | RSS Feed&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Tania Rascia | RSS Feed&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://www.taniarascia.com/rss.xml&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://www.taniarascia.com&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;The Atlantic&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;The Atlantic&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://feeds.feedburner.com/TheAtlantic&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://www.theatlantic.com/&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;The David Brownman Blog&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;The David Brownman Blog&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://xavd.id/blog/feeds/rss.xml&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://xavd.id&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;The Next Web&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;The Next Web&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://feeds2.feedburner.com/thenextweb&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://thenextweb.com&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;The Oatmeal - Comics, Quizzes, &amp;amp; Stories&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;The Oatmeal - Comics, Quizzes, &amp;amp; Stories&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://feeds.feedburner.com/oatmealfeed&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;http://theoatmeal.com/&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;The ryg blog&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;The ryg blog&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://fgiesen.wordpress.com/feed/&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://fgiesen.wordpress.com&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;The Sweet Setup&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;The Sweet Setup&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://thesweetsetup.com/feed/&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://thesweetsetup.com&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Varun Vachhar&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Varun Vachhar&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://varun.ca/rss.xml&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://varun.ca&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;webcomic name&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;webcomic name&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://webcomicname.com/rss&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://webcomicname.com/&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Whatever&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Whatever&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://whatever.scalzi.com/feed/&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://whatever.scalzi.com&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Wikipedia featured articles feed&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Wikipedia featured articles feed&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://en.wikipedia.org/w/api.php?action=featuredfeed&amp;amp;feed=featured&amp;amp;feedformat=atom&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://en.wikipedia.org/wiki/Main_Page&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Wikipedia picture of the day feed&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Wikipedia picture of the day feed&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://en.wikipedia.org/w/api.php?action=featuredfeed&amp;amp;feed=potd&amp;amp;feedformat=atom&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://en.wikipedia.org/wiki/Main_Page&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Writing - rachelbythebay&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Writing - rachelbythebay&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://rachelbythebay.com/w/atom.xml&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://rachelbythebay.com/w/&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;www.linusakesson.net&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;www.linusakesson.net&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;http://www.linusakesson.net/rssfeed.php&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;http://www.linusakesson.net/&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;xkcd.com&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;xkcd.com&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://xkcd.com/rss.xml&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://xkcd.com/&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Yahoo Tech&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Yahoo Tech&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://www.yahoo.com/tech/rss&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://finance.yahoo.com/tech&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">            </span><span class="nt">&lt;outline</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Zhenghao&amp;#39;s blog&quot;</span><span class="w"> </span><span class="na">text=</span><span class="s">&quot;Zhenghao&amp;#39;s blog&quot;</span><span class="w"> </span><span class="na">xmlUrl=</span><span class="s">&quot;https://www.zhenghao.io/rss.xml&quot;</span><span class="w"> </span><span class="na">htmlUrl=</span><span class="s">&quot;https://zhenghao.io&quot;</span><span class="nt">&gt;&lt;/outline&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/outline&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/opml&gt;</span>
+</code></pre></div>
+
+<h1 id="news-reader-over-ssh">News Reader over ssh</h1>
+<p>Just an alternative news reader to miniflux, Newsboat is an RSS/Atom feed reader for the text console. It's database of feeds is separate from miniflux and has no images.</p>
+<p>Reference:</p>
+<ul>
+<li><a href="https://newsboat.org/">https://newsboat.org/</a></li>
+<li><a href="https://github.com/newsboat/newsboat">https://github.com/newsboat/newsboat</a></li>
+</ul>
+<p><img alt="2.25-screenshot_1x-33f26153.png" src=".attachments.700615/2.25-screenshot_1x-33f26153.png"></p>
+<h1 id="continue">Continue</h1>
+<p>Now that a world of news feeds are at your fingertips, how about doing some electronics work? Read on my friend for an introduction to BeagleBone boards.</p>
+<p>Proceed in the order presented, some things are depending on prior setups.</p>
+<p>{{#include date.txt}}</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://getpelican.com/">Pelican</a></li>
+                            <li><a href="https://www.python.org/">Python.org</a></li>
+                            <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="http://10.123.50.59/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <p>
+                Site by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>, via <a rel="nofollow" href="https://www.python.org/">Python</a>.
+                </p><!-- /#about -->
+
+                <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
