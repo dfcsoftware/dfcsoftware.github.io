@@ -97,8 +97,8 @@
 
     <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2023-06-25T00:00:00-04:00">
-                Published: Sun 25 June 2023
+        <abbr class="published" title="2023-06-26T00:00:00-04:00">
+                Published: Mon 26 June 2023
         </abbr>
 		<br />
         <abbr class="modified" title="2024-04-19T09:30:00-04:00">
@@ -138,10 +138,6 @@
 </ul>
 </li>
 <li><a href="#if-the-ip-address-changed-in-the-vm">If the IP Address changed in the VM</a></li>
-</ul>
-</li>
-<li><a href="#ssh-copy">SSH Copy</a></li>
-<li><a href="#ssh-delete">SSH Delete</a><ul>
 <li><a href="#configuration-files">Configuration Files</a></li>
 </ul>
 </li>
@@ -513,10 +509,12 @@ $<span class="w"> </span>ip<span class="w"> </span>a<span class="w"> </span>show
 ~
 </code></pre></div>
 
-<p>Reference:
- * <a href="https://libvirt.org/formatnetwork.html#using-an-existing-host-bridge">https://libvirt.org/formatnetwork.html#using-an-existing-host-bridge</a>
- * <a href="https://libvirt.org/manpages/virsh.html">https://libvirt.org/manpages/virsh.html</a>
- * Virtual Machine XML file location: /etc/libvirt/qemu/</p>
+<p>Reference:</p>
+<ul>
+<li><a href="https://libvirt.org/formatnetwork.html#using-an-existing-host-bridge">https://libvirt.org/formatnetwork.html#using-an-existing-host-bridge</a></li>
+<li><a href="https://libvirt.org/manpages/virsh.html">https://libvirt.org/manpages/virsh.html</a></li>
+<li>Virtual Machine XML file location: /etc/libvirt/qemu/</li>
+</ul>
 <p>Afterwords it will look like this:</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>virsh<span class="w"> </span>domiflist<span class="w"> </span>vm_machine
 <span class="w"> </span>Interface<span class="w">   </span>Type<span class="w">     </span>Source<span class="w">   </span>Model<span class="w">    </span>MAC
@@ -858,13 +856,14 @@ Pool<span class="w"> </span>my_vm01<span class="w"> </span>unmarked<span class="
 <ul>
 <li>Copy new SSH keys with new IP address (delete old on remote)</li>
 </ul>
-<p>```</p>
-<h1 id="ssh-copy">SSH Copy</h1>
-<p>$ ssh-copy-id <remote IP></p>
-<h1 id="ssh-delete">SSH Delete</h1>
-<p>$ ssh <remote IP> grep -n <remote IP> ~/.ssh/known_hosts
+<div class="highlight"><pre><span></span><code><span class="gh">#</span> SSH Copy
+$ ssh-copy-id &lt;remote IP&gt;
+
+<span class="gh">#</span> SSH Delete
+$ ssh &lt;remote IP&gt; grep -n &lt;remote IP&gt; ~/.ssh/known_hosts
 2:192.168.1.4 ssh-rsa 
-  ```</p>
+</code></pre></div>
+
 <blockquote>
 <p>Delete line number 2 in file ~/.ssh/known_hosts on host <remote IP></p>
 </blockquote>
