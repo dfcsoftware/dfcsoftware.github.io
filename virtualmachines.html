@@ -141,8 +141,7 @@
 </ul>
 </li>
 <li><a href="#ssh-copy">SSH Copy</a></li>
-<li><a href="#ssh-delete">SSH Delete</a></li>
-<li><a href="#delete-line-number-2-in-file-sshknown_hosts-on-host">delete line number 2 in file ~/.ssh/known_hosts on host</a><ul>
+<li><a href="#ssh-delete">SSH Delete</a><ul>
 <li><a href="#configuration-files">Configuration Files</a></li>
 </ul>
 </li>
@@ -857,25 +856,25 @@ Pool<span class="w"> </span>my_vm01<span class="w"> </span>unmarked<span class="
 
 <h2 id="if-the-ip-address-changed-in-the-vm">If the IP Address changed in the VM</h2>
 <ul>
-<li>Copy new SSH keys with new IP address (delete old on remote)
-  ```</li>
+<li>Copy new SSH keys with new IP address (delete old on remote)</li>
 </ul>
+<p>```</p>
 <h1 id="ssh-copy">SSH Copy</h1>
 <p>$ ssh-copy-id <remote IP></p>
 <h1 id="ssh-delete">SSH Delete</h1>
 <p>$ ssh <remote IP> grep -n <remote IP> ~/.ssh/known_hosts
-2:192.168.1.4 ssh-rsa </p>
-<h1 id="delete-line-number-2-in-file-sshknown_hosts-on-host">delete line number 2 in file ~/.ssh/known_hosts on host <remote IP></h1>
-<p>```</p>
+2:192.168.1.4 ssh-rsa 
+  ```</p>
+<blockquote>
+<p>Delete line number 2 in file ~/.ssh/known_hosts on host <remote IP></p>
+</blockquote>
 <ul>
-<li>Edit apache configuration to reflect new IP address</li>
 <li>
-<p>File: /etc/httpd/conf/httpd.conf</p>
+<p>Edit apache configuration to reflect new IP address (File: /etc/httpd/conf/httpd.conf)</p>
 </li>
 <li>
-<p>Edit Nextcloud configuration, to add IP address to list of trusted hosts</p>
+<p>Edit Nextcloud configuration, to add IP address to list of trusted hosts (File: /var/www/nextcloud/config/config.php)</p>
 </li>
-<li>File: /var/www/nextcloud/config/config.php</li>
 </ul>
 <blockquote>
 <p>Restart apache to pick up changes <code>sudo systemctl restart httpd</code></p>
