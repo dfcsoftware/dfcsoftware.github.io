@@ -6333,8 +6333,7 @@ log&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Starting
 &lt;p&gt;Code for book: &lt;a href="https://github.com/derekmolloy/exploringBB"&gt;https://github.com/derekmolloy/exploringBB&lt;/a&gt;&lt;/p&gt;
 &lt;h1 id="continue"&gt;Continue&lt;/h1&gt;
 &lt;p&gt;Now that you have experimented with BeagleBone SBC, next our travels take us far away to Media Land. The sights and sounds of Video and Audio controlled and maintained by your computer.&lt;/p&gt;
-&lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;
-&lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category><category term="hardware"></category></entry><entry><title>Certificate</title><link href="https://dfcsoftware.github.io/certificate.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/certificate.html</id><summary type="html">&lt;h1 id="web-certificate"&gt;Web Certificate&lt;/h1&gt;
+&lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;</content><category term="linux"></category><category term="hardware"></category></entry><entry><title>Certificate</title><link href="https://dfcsoftware.github.io/certificate.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/certificate.html</id><summary type="html">&lt;h1 id="web-certificate"&gt;Web Certificate&lt;/h1&gt;
 &lt;p&gt;Web certificates encrypt different messages over the public internet so nobody can see what these messages contain.&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;hr&gt;
@@ -6595,8 +6594,7 @@ tls_private_key_path: &amp;quot;/etc/letsencrypt/live/example.com/privkey.pem&am
 
 &lt;h2 id="continue"&gt;Continue&lt;/h2&gt;
 &lt;p&gt;Now that you have set up a certificate for your new server, consider installing some Network Attached Storage.&lt;/p&gt;
-&lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;
-&lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category><category term="security"></category><category term="web"></category></entry><entry><title>Cloud</title><link href="https://dfcsoftware.github.io/cloud.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/cloud.html</id><summary type="html">&lt;h1 id="cloud-systems"&gt;Cloud Systems&lt;/h1&gt;
+&lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;</content><category term="linux"></category><category term="security"></category><category term="web"></category></entry><entry><title>Cloud</title><link href="https://dfcsoftware.github.io/cloud.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/cloud.html</id><summary type="html">&lt;h1 id="cloud-systems"&gt;Cloud Systems&lt;/h1&gt;
 &lt;p&gt;A cloud used to be floating in the sky, then it was a bubbly thing on a network diagram where weird things happen. Now a cloud just means "Somebody else's computer.". Of course you get to it over a network and can share things, like files (pictures, music …&lt;/p&gt;</summary><content type="html">&lt;h1 id="cloud-systems"&gt;Cloud Systems&lt;/h1&gt;
 &lt;p&gt;A cloud used to be floating in the sky, then it was a bubbly thing on a network diagram where weird things happen. Now a cloud just means "Somebody else's computer.". Of course you get to it over a network and can share things, like files (pictures, music, documents), contacts, calendars and chat, among other things.&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
@@ -7898,8 +7896,7 @@ $ sudo crontab -u apache -e
 &lt;p&gt;Reference: &lt;a href="https://docs.nextcloud.com/server/stable/admin_manual/maintenance/manual_upgrade.html"&gt;https://docs.nextcloud.com/server/stable/admin_manual/maintenance/manual_upgrade.html&lt;/a&gt;&lt;/p&gt;
 &lt;h1 id="continue"&gt;Continue&lt;/h1&gt;
 &lt;p&gt;Now that you have Cloud, consider some Home Automation, like door and window security, lights and more.&lt;/p&gt;
-&lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;
-&lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category><category term="systems"></category><category term="web"></category></entry><entry><title>DNS</title><link href="https://dfcsoftware.github.io/dns.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/dns.html</id><summary type="html">&lt;h1 id="domain-name-service-dns"&gt;Domain Name Service (DNS)&lt;/h1&gt;
+&lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;</content><category term="linux"></category><category term="systems"></category><category term="web"></category></entry><entry><title>DNS</title><link href="https://dfcsoftware.github.io/dns.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/dns.html</id><summary type="html">&lt;h1 id="domain-name-service-dns"&gt;Domain Name Service (DNS)&lt;/h1&gt;
 &lt;p&gt;A Domain Name Service (DNS) allows your E-Mail and Web Server to use a name instead of an IP Address, so other people can find you by name. Some Internet Service Providers (ISP) will change your IP address every few months in a residential environment.&lt;/p&gt;
 &lt;hr&gt;
 &lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table …&lt;/span&gt;&lt;/div&gt;</summary><content type="html">&lt;h1 id="domain-name-service-dns"&gt;Domain Name Service (DNS)&lt;/h1&gt;
@@ -8296,8 +8293,7 @@ $&lt;span class="w"&gt; &lt;/span&gt;ls&lt;span class="w"&gt; &lt;/span&gt;-l&lt
 &lt;p&gt;&lt;img alt="404.png" src=".attachments.863365/404.png"&gt;&lt;/p&gt;
 &lt;h1 id="continue"&gt;Continue&lt;/h1&gt;
 &lt;p&gt;Now that you have set up an Internet name for your new server, consider giving it an internet certificate with Let's Encrypt.&lt;/p&gt;
-&lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;
-&lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category><category term="web"></category></entry><entry><title>E-Mail</title><link href="https://dfcsoftware.github.io/e-mail.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/e-mail.html</id><summary type="html">&lt;h1 id="e-mail"&gt;E-Mail&lt;/h1&gt;
+&lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;</content><category term="linux"></category><category term="web"></category></entry><entry><title>E-Mail</title><link href="https://dfcsoftware.github.io/e-mail.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/e-mail.html</id><summary type="html">&lt;h1 id="e-mail"&gt;E-Mail&lt;/h1&gt;
 &lt;p&gt;Electronic Mail (E-Mail) is a way to type letters onto a computer and send them to other people. These other people's computers will then use E-Mail to read your letters. It is an electronic version of the Post Office.&lt;/p&gt;
 &lt;hr&gt;
 &lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
@@ -9387,8 +9383,7 @@ sa-learn&lt;span class="w"&gt; &lt;/span&gt;-u&lt;span class="w"&gt; &lt;/span&g
 &lt;/ol&gt;
 &lt;h2 id="continue"&gt;Continue&lt;/h2&gt;
 &lt;p&gt;Now that you have set up E-Mail on your server, you will need a Database for many more things, so now is a good time to install the versatile PostgreSQL database.&lt;/p&gt;
-&lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;
-&lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category><category term="email"></category></entry><entry><title>E-MailRelay</title><link href="https://dfcsoftware.github.io/e-mailrelay.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/e-mailrelay.html</id><summary type="html">&lt;h1 id="e-mail-relay"&gt;E-Mail Relay&lt;/h1&gt;
+&lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;</content><category term="linux"></category><category term="email"></category></entry><entry><title>E-MailRelay</title><link href="https://dfcsoftware.github.io/e-mailrelay.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/e-mailrelay.html</id><summary type="html">&lt;h1 id="e-mail-relay"&gt;E-Mail Relay&lt;/h1&gt;
 &lt;p&gt;The following diagrams are what this document will accomplish. The challenge is to obtain and keep a good reputation that other E-Mail handlers around the world will accept. Otherwise your messages will be dumped in the trash can (SPAM) or sent back to you (bounced). &lt;/p&gt;
 &lt;hr&gt;
 &lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents …&lt;/span&gt;&lt;/div&gt;</summary><content type="html">&lt;h1 id="e-mail-relay"&gt;E-Mail Relay&lt;/h1&gt;
@@ -12552,8 +12547,7 @@ zwavejs_upgrade
 &lt;p&gt;&lt;img alt="HA-Purge.png" src=".attachments.567288/HA-Purge.png"&gt;&lt;/p&gt;
 &lt;h2 id="continue"&gt;Continue&lt;/h2&gt;
 &lt;p&gt;Now that you have set up Home Automation-Mail on your server, you will need Matrix for sending out alerts, so now is a good time to install the super fast and secure messaging system.&lt;/p&gt;
-&lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;
-&lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category><category term="systems"></category></entry><entry><title>Introduction</title><link href="https://dfcsoftware.github.io/introduction.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/introduction.html</id><summary type="html">&lt;p&gt;&lt;img alt="Linux-in-the-house.svg" src="/images/Linux-in-the-House2.svg"&gt;&lt;/p&gt;
+&lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;</content><category term="linux"></category><category term="systems"></category></entry><entry><title>Introduction</title><link href="https://dfcsoftware.github.io/introduction.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/introduction.html</id><summary type="html">&lt;p&gt;&lt;img alt="Linux-in-the-house.svg" src="/images/Linux-in-the-House2.svg"&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1 style="text-align: center;"&gt;Linux in the House&lt;/h1&gt;
 
@@ -12865,9 +12859,7 @@ $&lt;span class="w"&gt; &lt;/span&gt;tilde
 &lt;h5 id="redhat"&gt;RedHat&lt;/h5&gt;
 &lt;p&gt;The RedHat Way&lt;/p&gt;
 &lt;p&gt;Hi from RedHat!&lt;/p&gt;
-&lt;hr/&gt;
-
-&lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category><category term="welcome"></category></entry><entry><title>Matrix</title><link href="https://dfcsoftware.github.io/matrix.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/matrix.html</id><summary type="html">&lt;h1 id="matrix-messaging"&gt;Matrix Messaging&lt;/h1&gt;
+&lt;hr/&gt;</content><category term="linux"></category><category term="welcome"></category></entry><entry><title>Matrix</title><link href="https://dfcsoftware.github.io/matrix.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/matrix.html</id><summary type="html">&lt;h1 id="matrix-messaging"&gt;Matrix Messaging&lt;/h1&gt;
 &lt;p&gt;Matrix is a messaging system you can on your server. It allows your to send messages to a phone/watch from command line on the server. It is useful with HomeAssistant for monitoring the house.&lt;/p&gt;
 &lt;hr&gt;
 &lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
@@ -13297,7 +13289,7 @@ date&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;&amp;gt;&lt;span class="w"&gt; &
 &lt;h1 id="continue"&gt;Continue&lt;/h1&gt;
 &lt;p&gt;Now that you have set up Matrix Communication on your server, you can read some news to send to others. Read on to find out how to set up a local news/RSS reader.&lt;/p&gt;
 &lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;
-&lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category><category term="systems"></category></entry><entry><title>MediaManagement</title><link href="https://dfcsoftware.github.io/mediamanagement.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/mediamanagement.html</id><summary type="html">&lt;h1 id="media-management-audiovideo"&gt;Media Management (audio/video)&lt;/h1&gt;
+&lt;p&gt;{attach}date.html)&lt;/p&gt;</content><category term="linux"></category><category term="systems"></category></entry><entry><title>MediaManagement</title><link href="https://dfcsoftware.github.io/mediamanagement.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/mediamanagement.html</id><summary type="html">&lt;h1 id="media-management-audiovideo"&gt;Media Management (audio/video)&lt;/h1&gt;
 &lt;p&gt;This is where I manage Music and Television files.&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;hr&gt;
@@ -14125,8 +14117,7 @@ deactivate
 &lt;p&gt;Now that you have sensed the sights and sounds of Video and Audio controlled and maintained by your computer, I wish to thank you for your interest in this book..&lt;/p&gt;
 &lt;p&gt;Hopefully this little write up was of some help.&lt;/p&gt;
 &lt;p&gt;Regards,&lt;br&gt;
--- Don&lt;/p&gt;
-&lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category><category term="systems"></category></entry><entry><title>Miniflux</title><link href="https://dfcsoftware.github.io/miniflux.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/miniflux.html</id><summary type="html">&lt;h1 id="miniflux-news-reader"&gt;Miniflux News Reader&lt;/h1&gt;
+-- Don&lt;/p&gt;</content><category term="linux"></category><category term="systems"></category></entry><entry><title>Miniflux</title><link href="https://dfcsoftware.github.io/miniflux.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/miniflux.html</id><summary type="html">&lt;h1 id="miniflux-news-reader"&gt;Miniflux News Reader&lt;/h1&gt;
 &lt;p&gt;Miniflux is an RSS (Really Simple Syndication) server that will fetch and display RSS feeds from other websites. Also known as a &lt;em&gt;news reader&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;hr&gt;
@@ -14422,8 +14413,7 @@ Rule&lt;span class="w"&gt; &lt;/span&gt;added&lt;span class="w"&gt; &lt;/span&gt
 &lt;p&gt;&lt;img alt="2.25-screenshot_1x-33f26153.png" src=".attachments.700615/2.25-screenshot_1x-33f26153.png"&gt;&lt;/p&gt;
 &lt;h1 id="continue"&gt;Continue&lt;/h1&gt;
 &lt;p&gt;Now that a world of news feeds are at your fingertips, how about doing some electronics work? Read on my friend for an introduction to BeagleBone boards.&lt;/p&gt;
-&lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;
-&lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category><category term="systems"></category></entry><entry><title>MirrorDisks</title><link href="https://dfcsoftware.github.io/mirrordisks.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/mirrordisks.html</id><summary type="html">&lt;h1 id="mirror-disks"&gt;Mirror Disks&lt;/h1&gt;
+&lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;</content><category term="linux"></category><category term="systems"></category></entry><entry><title>MirrorDisks</title><link href="https://dfcsoftware.github.io/mirrordisks.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/mirrordisks.html</id><summary type="html">&lt;h1 id="mirror-disks"&gt;Mirror Disks&lt;/h1&gt;
 &lt;p&gt;Mirroring disks on Linux is simple and prudent to ensure your data survives hardware, software and human failures. All data from one disk is duplicated on another disk and if any &lt;strong&gt;one&lt;/strong&gt; disk fails, you will never know it. So it is important after setting up to monitor …&lt;/p&gt;</summary><content type="html">&lt;h1 id="mirror-disks"&gt;Mirror Disks&lt;/h1&gt;
 &lt;p&gt;Mirroring disks on Linux is simple and prudent to ensure your data survives hardware, software and human failures. All data from one disk is duplicated on another disk and if any &lt;strong&gt;one&lt;/strong&gt; disk fails, you will never know it. So it is important after setting up to monitor the disk array.&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
@@ -14965,8 +14955,7 @@ mkdir&lt;span class="w"&gt; &lt;/span&gt;-p&lt;span class="w"&gt; &lt;/span&gt;&
 &lt;/blockquote&gt;
 &lt;h1 id="continue"&gt;Continue&lt;/h1&gt;
 &lt;p&gt;Now that you have set a NAS data protection, consider installing an E-Mail server using some of that safe storage.&lt;/p&gt;
-&lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;
-&lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category><category term="systems"></category><category term="hardware"></category></entry><entry><title>ncmpcpp</title><link href="https://dfcsoftware.github.io/ncmpcpp.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/ncmpcpp.html</id><summary type="html">&lt;h1 id="ncmpcpp-commands"&gt;NCMPCPP Commands&lt;/h1&gt;
+&lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;</content><category term="linux"></category><category term="systems"></category><category term="hardware"></category></entry><entry><title>ncmpcpp</title><link href="https://dfcsoftware.github.io/ncmpcpp.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/ncmpcpp.html</id><summary type="html">&lt;h1 id="ncmpcpp-commands"&gt;NCMPCPP Commands&lt;/h1&gt;
 &lt;p&gt;Simply run this on your host running Music Player Daemon (MPD) over your ssh session&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;hr&gt;
@@ -15800,8 +15789,7 @@ mydb-#&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;select&lt;/span&
 &lt;h2 id="continue"&gt;Continue&lt;/h2&gt;
 &lt;p&gt;Now that you have installed a shiny new database, consider how upgrades work.&lt;/p&gt;
 &lt;p&gt;In our next episode of Linux in the Home.&lt;/p&gt;
-&lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;
-&lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category><category term="systems"></category><category term="db"></category></entry><entry><title>PostgreSqlMove</title><link href="https://dfcsoftware.github.io/postgresqlmove.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/postgresqlmove.html</id><summary type="html">&lt;h1 id="postgresql-move-database-to-another-filesystem"&gt;Postgresql Move Database to Another Filesystem&lt;/h1&gt;
+&lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;</content><category term="linux"></category><category term="systems"></category><category term="db"></category></entry><entry><title>PostgreSqlMove</title><link href="https://dfcsoftware.github.io/postgresqlmove.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/postgresqlmove.html</id><summary type="html">&lt;h1 id="postgresql-move-database-to-another-filesystem"&gt;Postgresql Move Database to Another Filesystem&lt;/h1&gt;
 &lt;p&gt;Mainly used this on SBC (BeagleBone) computer to move a database from SD card (/var/lib...) to SSD disk (/data/lib...). A database will burn up an SD card quickly 😟&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;hr&gt;
@@ -15969,8 +15957,7 @@ Ver&lt;span class="w"&gt; &lt;/span&gt;Cluster&lt;span class="w"&gt; &lt;/span&g
 &lt;h1 id="continue"&gt;Continue&lt;/h1&gt;
 &lt;p&gt;Now that you have moved that busy data to a suitable disk, consider setting up a cloud server to use that speedy database.&lt;/p&gt;
 &lt;p&gt;Join again soon on the next episode of Linux in the Home.&lt;/p&gt;
-&lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;
-&lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category><category term="systems"></category><category term="db"></category></entry><entry><title>PostgreSQLUpgrade</title><link href="https://dfcsoftware.github.io/postgresqlupgrade.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/postgresqlupgrade.html</id><summary type="html">&lt;h1 id="postgresql-install-and-upgrade"&gt;PostgreSQL Install and Upgrade&lt;/h1&gt;
+&lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;</content><category term="linux"></category><category term="systems"></category><category term="db"></category></entry><entry><title>PostgreSQLUpgrade</title><link href="https://dfcsoftware.github.io/postgresqlupgrade.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/postgresqlupgrade.html</id><summary type="html">&lt;h1 id="postgresql-install-and-upgrade"&gt;PostgreSQL Install and Upgrade&lt;/h1&gt;
 &lt;p&gt;Oh my, installing Ubuntu 22.04 installed PostgreSQL 14... wonder what version I am using...&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;hr&gt;
@@ -16643,5 +16630,4 @@ postgres&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="m"&gt;752078&lt;/sp
 &lt;h2 id="continue"&gt;Continue&lt;/h2&gt;
 &lt;p&gt;Now that you have upgraded to the happy new cluster, consider moving data files to a better database protection disk.&lt;/p&gt;
 &lt;p&gt;Same time, same channel, on the next episode of Linux in the Home.&lt;/p&gt;
-&lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;
-&lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category><category term="systems"></category><category term="db"></category></entry><entry><title>My Second Review</title><link href="https://dfcsoftware.github.io/my-second-review.html" rel="alternate"></link><published>2010-12-03T10:20:00-05:00</published><updated>2010-03-12T10:20:00-05:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2010-12-03:/my-second-review.html</id><content type="html">&lt;p&gt;Following is a review of my favorite mechanical mouse.&lt;/p&gt;</content><category term="linux"></category></entry></feed>
+&lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;</content><category term="linux"></category><category term="systems"></category><category term="db"></category></entry><entry><title>My Second Review</title><link href="https://dfcsoftware.github.io/my-second-review.html" rel="alternate"></link><published>2010-12-03T10:20:00-05:00</published><updated>2010-03-12T10:20:00-05:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2010-12-03:/my-second-review.html</id><content type="html">&lt;p&gt;Following is a review of my favorite mechanical mouse.&lt;/p&gt;</content><category term="linux"></category></entry></feed>
