@@ -111,7 +111,7 @@ A house is not a home without visitors&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Connect all your trees into the forest.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;a href="/pages/forest.html"&gt;The Forest&lt;/a&gt;&lt;/p&gt;</content><category term="forest"></category><category term="forest"></category><category term="welcome"></category></entry><entry><title>Watch</title><link href="https://dfcsoftware.github.io/watch.html" rel="alternate"></link><published>2023-08-24T00:00:00-04:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-08-24:/watch.html</id><summary type="html">&lt;h1 id="watch-notification-system-v-2023095"&gt;Watch Notification System - v 2023.09.5&lt;/h1&gt;
+&lt;p&gt;&lt;a href="/pages/forest.html"&gt;The Forest&lt;/a&gt;&lt;/p&gt;</content><category term="forest"></category><category term="forest"></category><category term="welcome"></category></entry><entry><title>Watch</title><link href="https://dfcsoftware.github.io/watch.html" rel="alternate"></link><published>2023-08-25T00:00:00-04:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-08-25:/watch.html</id><summary type="html">&lt;h1 id="watch-notification-system-v-2023095"&gt;Watch Notification System - v 2023.09.5&lt;/h1&gt;
 &lt;p&gt;Finally got my alerts working, so when a host goes haywire I get an alert on the Phone and Cloud, with E-Mail as backup.&lt;/p&gt;
 &lt;hr&gt;
 &lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
@@ -461,9 +461,10 @@ It needs to be scheduled in cron.&lt;/p&gt;
 &lt;span class="nv"&gt;Aug&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;08&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;11&lt;/span&gt;:&lt;span class="mi"&gt;07&lt;/span&gt;:&lt;span class="mi"&gt;43&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;bob&lt;/span&gt;.&lt;span class="nv"&gt;example&lt;/span&gt;.&lt;span class="nv"&gt;com&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;pmlogger&lt;/span&gt;[&lt;span class="mi"&gt;913&lt;/span&gt;]:&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="nv"&gt;To&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;enable&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;pmlogger&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;run&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;following&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;as&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;root&lt;/span&gt;:
 &lt;span class="nv"&gt;Aug&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;08&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;11&lt;/span&gt;:&lt;span class="mi"&gt;07&lt;/span&gt;:&lt;span class="mi"&gt;44&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;bob&lt;/span&gt;.&lt;span class="nv"&gt;example&lt;/span&gt;.&lt;span class="nv"&gt;com&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;pmlogger&lt;/span&gt;[&lt;span class="mi"&gt;913&lt;/span&gt;]:&lt;span class="w"&gt;          &lt;/span&gt;&lt;span class="nv"&gt;update&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;rc&lt;/span&gt;.&lt;span class="nv"&gt;d&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;f&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;pmlogger&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;remove&lt;/span&gt;
 &lt;span class="nv"&gt;Aug&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;08&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;11&lt;/span&gt;:&lt;span class="mi"&gt;07&lt;/span&gt;:&lt;span class="mi"&gt;44&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;bob&lt;/span&gt;.&lt;span class="nv"&gt;example&lt;/span&gt;.&lt;span class="nv"&gt;com&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;pmlogger&lt;/span&gt;[&lt;span class="mi"&gt;913&lt;/span&gt;]:&lt;span class="w"&gt;          &lt;/span&gt;&lt;span class="nv"&gt;update&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;rc&lt;/span&gt;.&lt;span class="nv"&gt;d&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;pmlogger&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;defaults&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;94&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;06&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="systems"></category></entry><entry><title>VirtualMachines</title><link href="https://dfcsoftware.github.io/virtualmachines.html" rel="alternate"></link><published>2023-06-24T00:00:00-04:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-06-24:/virtualmachines.html</id><summary type="html">&lt;h1 id="virtual-machines-vm"&gt;Virtual Machines (VM)&lt;/h1&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="systems"></category></entry><entry><title>VirtualMachines</title><link href="https://dfcsoftware.github.io/virtualmachines.html" rel="alternate"></link><published>2023-06-25T00:00:00-04:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-06-25:/virtualmachines.html</id><summary type="html">&lt;h1 id="virtual-machines-vm"&gt;Virtual Machines (VM)&lt;/h1&gt;
 &lt;p&gt;A Virtual Machine (VM) is a way to create a whole operating system, with many applications, that is able to be moved from one physical machine to another physical machine. This has advantages in case of hardware, location or network problems to quickly and correctly restore service …&lt;/p&gt;</summary><content type="html">&lt;h1 id="virtual-machines-vm"&gt;Virtual Machines (VM)&lt;/h1&gt;
 &lt;p&gt;A Virtual Machine (VM) is a way to create a whole operating system, with many applications, that is able to be moved from one physical machine to another physical machine. This has advantages in case of hardware, location or network problems to quickly and correctly restore service.&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href="#virtual-machines-vm"&gt;Virtual Machines (VM)&lt;/a&gt;&lt;ul&gt;
@@ -1280,7 +1281,7 @@ Pool&lt;span class="w"&gt; &lt;/span&gt;my_vm01&lt;span class="w"&gt; &lt;/span&
 &lt;span class="n"&gt;└── virtlogd.conf&lt;/span&gt;
 
 &lt;span class="n"&gt;9 directories, 45 files&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="systems"></category></entry><entry><title>NetworkManagement</title><link href="https://dfcsoftware.github.io/networkmanagement.html" rel="alternate"></link><published>2023-04-24T00:00:00-04:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-04-24:/networkmanagement.html</id><summary type="html">&lt;h1 id="network-management"&gt;Network Management&lt;/h1&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="systems"></category></entry><entry><title>NetworkManagement</title><link href="https://dfcsoftware.github.io/networkmanagement.html" rel="alternate"></link><published>2023-04-25T00:00:00-04:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-04-25:/networkmanagement.html</id><summary type="html">&lt;h1 id="network-management"&gt;Network Management&lt;/h1&gt;
 &lt;p&gt;The command line offers a wealth of network management commands. Here are some of my favorites.&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;hr&gt;
@@ -1605,7 +1606,7 @@ $
 &lt;h2 id="firewalld"&gt;firewalld&lt;/h2&gt;
 &lt;p&gt;The &lt;a href="/Setup_Server.html?highlight=firewalld#firewall"&gt;Server Setup&lt;/a&gt; section of this book covers how to set up a firewall to protect your system network.&lt;/p&gt;
 &lt;h2 id="networkd"&gt;networkd&lt;/h2&gt;
-&lt;p&gt;The &lt;a href="/2023/february.html#networkd-virtual-ip"&gt;Feburary 2023 Blog&lt;/a&gt; covers networkd manipulation using netplan.&lt;/p&gt;
+&lt;p&gt;The &lt;a href="/VirtualIP.html"&gt;VirtualIP Article&lt;/a&gt; covers networkd manipulation using netplan.&lt;/p&gt;
 &lt;h2 id="tcpdump"&gt;tcpdump&lt;/h2&gt;
 &lt;p&gt;Here is a super useful program for tracing what is happening on your network.&lt;/p&gt;
 &lt;p&gt;For instance, you can watch a certain port for activity. In this example we watch port 81 (which is a web server).&lt;/p&gt;
@@ -1728,7 +1729,7 @@ responded
 &lt;h2 id="conclusion"&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;This was a short list, hoping to provide an introduction to managing your network from the command line.&lt;/p&gt;
 &lt;p&gt;Hope this helps,&lt;br&gt;
--- Don&lt;/p&gt;</content><category term="linux"></category><category term="network"></category></entry><entry><title>EncryptingFiles</title><link href="https://dfcsoftware.github.io/encryptingfiles.html" rel="alternate"></link><published>2023-03-24T00:00:00-04:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-03-24:/encryptingfiles.html</id><summary type="html">&lt;h1 id="encrypting-files"&gt;Encrypting Files&lt;/h1&gt;
+-- Don&lt;/p&gt;</content><category term="linux"></category><category term="network"></category></entry><entry><title>EncryptingFiles</title><link href="https://dfcsoftware.github.io/encryptingfiles.html" rel="alternate"></link><published>2023-03-25T00:00:00-04:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-03-25:/encryptingfiles.html</id><summary type="html">&lt;h1 id="encrypting-files"&gt;Encrypting Files&lt;/h1&gt;
 &lt;p&gt;You should protect your carefully built system and it's files from abuse, tampering, or just plain spying. It's easy to do, what are you waiting for? Encrypt your data directory &lt;strong&gt;now&lt;/strong&gt;.&lt;/p&gt;
 &lt;hr&gt;
 &lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
@@ -2071,7 +2072,7 @@ $&lt;span class="w"&gt; &lt;/span&gt;cp&lt;span class="w"&gt; &lt;/span&gt;revok
 
 &lt;blockquote&gt;
 &lt;p&gt;This is more secure if you do not share your public key on a public server. You just have to find a secure way to share it, like your own cloud server.&lt;/p&gt;
-&lt;/blockquote&gt;</content><category term="linux"></category><category term="security"></category></entry><entry><title>VirtualIP</title><link href="https://dfcsoftware.github.io/virtualip.html" rel="alternate"></link><published>2023-02-24T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-02-24:/virtualip.html</id><summary type="html">&lt;h1 id="virtual-ip-ethernet-interface"&gt;Virtual IP Ethernet Interface&lt;/h1&gt;
+&lt;/blockquote&gt;</content><category term="linux"></category><category term="security"></category></entry><entry><title>VirtualIP</title><link href="https://dfcsoftware.github.io/virtualip.html" rel="alternate"></link><published>2023-02-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-02-25:/virtualip.html</id><summary type="html">&lt;h1 id="virtual-ip-ethernet-interface"&gt;Virtual IP Ethernet Interface&lt;/h1&gt;
 &lt;p&gt;Virtual IP Interface behaves like a normal interface. All traffic routed to it will go through the master interface (for example, eth0) but with a VLAN tag. Only VLAN-aware devices can accept them if configured correctly, else the traffic is dropped. &lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;hr&gt;
@@ -6126,6 +6127,7 @@ log&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Starting
 &lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;
 &lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category><category term="hardware"></category></entry><entry><title>Certificate</title><link href="https://dfcsoftware.github.io/certificate.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/certificate.html</id><summary type="html">&lt;h1 id="web-certificate"&gt;Web Certificate&lt;/h1&gt;
 &lt;p&gt;Web certificates encrypt different messages over the public internet so nobody can see what these messages contain.&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href="#web-certificate"&gt;Web Certificate&lt;/a&gt;&lt;ul&gt;
@@ -6140,6 +6142,7 @@ log&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Starting
 &lt;li&gt;&lt;a href="#apache-web-server-for-nextcloud"&gt;Apache - Web Server for Nextcloud&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#dovecot-server-for-e-mail-clients"&gt;Dovecot - Server for E-Mail …&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;</summary><content type="html">&lt;h1 id="web-certificate"&gt;Web Certificate&lt;/h1&gt;
 &lt;p&gt;Web certificates encrypt different messages over the public internet so nobody can see what these messages contain.&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href="#web-certificate"&gt;Web Certificate&lt;/a&gt;&lt;ul&gt;
@@ -6387,6 +6390,7 @@ tls_private_key_path: &amp;quot;/etc/letsencrypt/live/example.com/privkey.pem&am
 &lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category><category term="security"></category><category term="web"></category></entry><entry><title>Cloud</title><link href="https://dfcsoftware.github.io/cloud.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/cloud.html</id><summary type="html">&lt;h1 id="cloud-systems"&gt;Cloud Systems&lt;/h1&gt;
 &lt;p&gt;A cloud used to be floating in the sky, then it was a bubbly thing on a network diagram where weird things happen. Now a cloud just means "Somebody else's computer.". Of course you get to it over a network and can share things, like files (pictures, music …&lt;/p&gt;</summary><content type="html">&lt;h1 id="cloud-systems"&gt;Cloud Systems&lt;/h1&gt;
 &lt;p&gt;A cloud used to be floating in the sky, then it was a bubbly thing on a network diagram where weird things happen. Now a cloud just means "Somebody else's computer.". Of course you get to it over a network and can share things, like files (pictures, music, documents), contacts, calendars and chat, among other things.&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href="#cloud-systems"&gt;Cloud Systems&lt;/a&gt;&lt;/li&gt;
@@ -11213,6 +11217,7 @@ DMARC&lt;span class="w"&gt; &lt;/span&gt;record&lt;span class="w"&gt; &lt;/span&
 &lt;li&gt;&lt;a href="https://datatracker.ietf.org/doc/html/rfc7489#section-7.2"&gt;https://datatracker.ietf.org/doc/html/rfc7489#section-7.2&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content><category term="linux"></category><category term="email"></category></entry><entry><title>HomeAssistant</title><link href="https://dfcsoftware.github.io/homeassistant.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/homeassistant.html</id><summary type="html">&lt;h1 id="home-assistant"&gt;Home Assistant&lt;/h1&gt;
 &lt;p&gt;This is a web based interface for automating things around the home. It can monitor doors, windows, motion detection and turn electrical things on and off.&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href="#home-assistant"&gt;Home Assistant&lt;/a&gt;&lt;ul&gt;
@@ -11222,6 +11227,7 @@ DMARC&lt;span class="w"&gt; &lt;/span&gt;record&lt;span class="w"&gt; &lt;/span&
 &lt;li&gt;&lt;a href="#1-app-for-home-assistant"&gt;(1) App for Home-Assistant&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#1-daemon-to-run-zwave-js-ui"&gt;(1 …&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;</summary><content type="html">&lt;h1 id="home-assistant"&gt;Home Assistant&lt;/h1&gt;
 &lt;p&gt;This is a web based interface for automating things around the home. It can monitor doors, windows, motion detection and turn electrical things on and off.&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href="#home-assistant"&gt;Home Assistant&lt;/a&gt;&lt;ul&gt;
@@ -12352,9 +12358,11 @@ zwavejs_upgrade
 &lt;p&gt;Feedback:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a rel="me" href="https://fosstodon.org/@LinuxintheHouse"&gt;Mastodon&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="&amp;#109;&amp;#97;&amp;#105;&amp;#108;&amp;#116;&amp;#111;&amp;#58;&amp;#109;&amp;#97;&amp;#105;&amp;#108;&amp;#64;&amp;#108;&amp;#105;&amp;#110;&amp;#117;&amp;#120;&amp;#45;&amp;#105;&amp;#110;&amp;#45;&amp;#116;&amp;#104;&amp;#101;&amp;#45;&amp;#104;&amp;#111;&amp;#117;&amp;#115;&amp;#101;&amp;#46;&amp;#111;&amp;#114;&amp;#103;"&gt;&amp;#109;&amp;#97;&amp;#105;&amp;#108;&amp;#64;&amp;#108;&amp;#105;&amp;#110;&amp;#117;&amp;#120;&amp;#45;&amp;#105;&amp;#110;&amp;#45;&amp;#116;&amp;#104;&amp;#101;&amp;#45;&amp;#104;&amp;#111;&amp;#117;&amp;#115;&amp;#101;&amp;#46;&amp;#111;&amp;#114;&amp;#103;&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"&gt;&lt;img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /&gt;&lt;/a&gt;&lt;br /&gt;This work is licensed under a &lt;a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"&gt;Creative Commons Attribution-NonCommercial-ShareAlike 4 …&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Linux-in-the-house.svg" src="/images/Linux-in-the-House2.svg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"&gt;&lt;img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /&gt;&lt;/a&gt;&lt;br /&gt;This work is licensed under a &lt;a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"&gt;Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License&lt;/a&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Tux Image By …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Linux-in-the-house.svg" src="/images/Linux-in-the-House2.svg"&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1 style="text-align: center;"&gt;Linux in the House&lt;/h1&gt;
 
@@ -12368,7 +12376,6 @@ zwavejs_upgrade
 &lt;p&gt;Feedback:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a rel="me" href="https://fosstodon.org/@LinuxintheHouse"&gt;Mastodon&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="&amp;#109;&amp;#97;&amp;#105;&amp;#108;&amp;#116;&amp;#111;&amp;#58;&amp;#109;&amp;#97;&amp;#105;&amp;#108;&amp;#64;&amp;#108;&amp;#105;&amp;#110;&amp;#117;&amp;#120;&amp;#45;&amp;#105;&amp;#110;&amp;#45;&amp;#116;&amp;#104;&amp;#101;&amp;#45;&amp;#104;&amp;#111;&amp;#117;&amp;#115;&amp;#101;&amp;#46;&amp;#111;&amp;#114;&amp;#103;"&gt;&amp;#109;&amp;#97;&amp;#105;&amp;#108;&amp;#64;&amp;#108;&amp;#105;&amp;#110;&amp;#117;&amp;#120;&amp;#45;&amp;#105;&amp;#110;&amp;#45;&amp;#116;&amp;#104;&amp;#101;&amp;#45;&amp;#104;&amp;#111;&amp;#117;&amp;#115;&amp;#101;&amp;#46;&amp;#111;&amp;#114;&amp;#103;&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"&gt;&lt;img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /&gt;&lt;/a&gt;&lt;br /&gt;This work is licensed under a &lt;a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"&gt;Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License&lt;/a&gt;.&lt;/p&gt;
 &lt;hr&gt;
@@ -13083,771 +13090,828 @@ date&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;&amp;gt;&lt;span class="w"&gt; &
 &lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;
 &lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category><category term="systems"></category></entry><entry><title>MediaManagement</title><link href="https://dfcsoftware.github.io/mediamanagement.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/mediamanagement.html</id><summary type="html">&lt;h1 id="media-management-audiovideo"&gt;Media Management (audio/video)&lt;/h1&gt;
 &lt;p&gt;This is where I manage Music and Television files.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[TOC]&lt;/span&gt;
-
-&lt;span class="na"&gt;---&lt;/span&gt;
-
-&lt;span class="c1"&gt;## Music Player Daemon&lt;/span&gt;
-
-&lt;span class="na"&gt;Hardware&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
-
-&lt;span class="na"&gt;* BeagleBone AI-32 with Debian Linux&lt;/span&gt;
-&lt;span class="na"&gt;* TrueNAS container &lt;/span&gt;
-
-&lt;span class="na"&gt;Software&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
-
-&lt;span class="na"&gt;* Linux&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;mpd (server), and mpc, [ncmpcpp](ncmpcpp.md?fileId=598483) (clients)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;$ sudo apt-get install mpd mpc&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;*&lt;/span&gt; iOS: MaximumMPD (client for iPhone, iPad)
-
-![IMG_60BE35F3E1C0-1 (2 …&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h1 id="media-management-audiovideo"&gt;Media Management (audio/video)&lt;/h1&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#media-management-audiovideo"&gt;Media Management (audio/video)&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#music-player-daemon"&gt;Music Player Daemon&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#mpd-configuration"&gt;MPD Configuration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#mpd-daemon-processes"&gt;MPD Daemon Processes&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#linux"&gt;Linux&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#audio-player"&gt;Audio Player&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#plex-television-and-music-recordings"&gt;Plex Television and Music Recordings&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#over-the-air-ota-hdhomerun-television-recording"&gt;Over-the-Air (OTA) HDHomeRun Television Recording&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#copy-tv-recordings"&gt;Copy TV Recordings&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#curseradio"&gt;curseradio&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#cursoradio-configuration-file"&gt;cursoradio configuration file&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#conclusion"&gt;Conclusion&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;h2 id="music-player-daemon"&gt;Music …&lt;/h2&gt;</summary><content type="html">&lt;h1 id="media-management-audiovideo"&gt;Media Management (audio/video)&lt;/h1&gt;
 &lt;p&gt;This is where I manage Music and Television files.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[TOC]&lt;/span&gt;
-
-&lt;span class="na"&gt;---&lt;/span&gt;
-
-&lt;span class="c1"&gt;## Music Player Daemon&lt;/span&gt;
-
-&lt;span class="na"&gt;Hardware&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
-
-&lt;span class="na"&gt;* BeagleBone AI-32 with Debian Linux&lt;/span&gt;
-&lt;span class="na"&gt;* TrueNAS container &lt;/span&gt;
-
-&lt;span class="na"&gt;Software&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
-
-&lt;span class="na"&gt;* Linux&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;mpd (server), and mpc, [ncmpcpp](ncmpcpp.md?fileId=598483) (clients)&lt;/span&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#media-management-audiovideo"&gt;Media Management (audio/video)&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#music-player-daemon"&gt;Music Player Daemon&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#mpd-configuration"&gt;MPD Configuration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#mpd-daemon-processes"&gt;MPD Daemon Processes&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#linux"&gt;Linux&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#audio-player"&gt;Audio Player&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#plex-television-and-music-recordings"&gt;Plex Television and Music Recordings&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#over-the-air-ota-hdhomerun-television-recording"&gt;Over-the-Air (OTA) HDHomeRun Television Recording&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#copy-tv-recordings"&gt;Copy TV Recordings&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#curseradio"&gt;curseradio&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#cursoradio-configuration-file"&gt;cursoradio configuration file&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#conclusion"&gt;Conclusion&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;h2 id="music-player-daemon"&gt;Music Player Daemon&lt;/h2&gt;
+&lt;p&gt;Hardware:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;BeagleBone AI-32 with Debian Linux&lt;/li&gt;
+&lt;li&gt;TrueNAS container &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Software:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux: mpd (server), and mpc, &lt;a href="ncmpcpp.md?fileId=598483"&gt;ncmpcpp&lt;/a&gt; (clients)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;apt-get&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;mpd&lt;span class="w"&gt; &lt;/span&gt;mpc
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;$ sudo apt-get install mpd mpc&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;*&lt;/span&gt; iOS: MaximumMPD (client for iPhone, iPad)
+&lt;ul&gt;
+&lt;li&gt;iOS: MaximumMPD (client for iPhone, iPad)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="IMG_60BE35F3E1C0-1 (2).jpeg" src=".attachments.596467/IMG_60BE35F3E1C0-1%20%282%29.jpeg"&gt;&lt;/p&gt;
+&lt;h3 id="mpd-configuration"&gt;MPD Configuration&lt;/h3&gt;
+&lt;p&gt;File: /etc/mpd.conf&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# An example configuration file for MPD.&lt;/span&gt;
+&lt;span class="c1"&gt;# Read the user manual for documentation: http://www.musicpd.org/doc/user/&lt;/span&gt;
+&lt;span class="c1"&gt;# or /usr/share/doc/mpd/html/user.html&lt;/span&gt;
 
-![IMG_60BE35F3E1C0-1 (2).jpeg](.attachments.596467/IMG_60BE35F3E1C0-1%20%282%29.jpeg)
 
-&lt;span class="gu"&gt;##&lt;/span&gt;# MPD Configuration
+&lt;span class="c1"&gt;# Files and directories #######################################################&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# This setting controls the top directory which MPD will search to discover the&lt;/span&gt;
+&lt;span class="c1"&gt;# available audio files and add them to the daemon&amp;#39;s online database. This&lt;/span&gt;
+&lt;span class="c1"&gt;# setting defaults to the XDG directory, otherwise the music directory will be&lt;/span&gt;
+&lt;span class="c1"&gt;# be disabled and audio files will only be accepted over ipc socket (using&lt;/span&gt;
+&lt;span class="c1"&gt;# file:// protocol) or streaming files over an accepted protocol.&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="n"&gt;music_directory&lt;/span&gt;&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/data/bob/music/Music&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# This setting sets the MPD internal playlist directory. The purpose of this&lt;/span&gt;
+&lt;span class="c1"&gt;# directory is storage for playlists created by MPD. The server will use&lt;/span&gt;
+&lt;span class="c1"&gt;# playlist files not created by the server but only if they are in the MPD&lt;/span&gt;
+&lt;span class="c1"&gt;# format. This setting defaults to playlist saving being disabled.&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="n"&gt;playlist_directory&lt;/span&gt;&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/data/bob/music/mpd/playlists&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# This setting sets the location of the MPD database. This file is used to&lt;/span&gt;
+&lt;span class="c1"&gt;# load the database at server start up and store the database while the&lt;/span&gt;
+&lt;span class="c1"&gt;# server is not up. This setting defaults to disabled which will allow&lt;/span&gt;
+&lt;span class="c1"&gt;# MPD to accept files over ipc socket (using file:// protocol) or streaming&lt;/span&gt;
+&lt;span class="c1"&gt;# files over an accepted protocol.&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="n"&gt;db_file&lt;/span&gt;&lt;span class="w"&gt;         &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/data/bob/music/mpd/tag_cache&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# These settings are the locations for the daemon log files for the daemon.&lt;/span&gt;
+&lt;span class="c1"&gt;# These logs are great for troubleshooting, depending on your log_level&lt;/span&gt;
+&lt;span class="c1"&gt;# settings.&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# The special value &amp;quot;syslog&amp;quot; makes MPD use the local syslog daemon. This&lt;/span&gt;
+&lt;span class="c1"&gt;# setting defaults to logging to syslog, or to journal if mpd was started as&lt;/span&gt;
+&lt;span class="c1"&gt;# a systemd service.&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="n"&gt;log_file&lt;/span&gt;&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/var/log/mpd/mpd.log&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# This setting sets the location of the file which stores the process ID&lt;/span&gt;
+&lt;span class="c1"&gt;# for use of mpd --kill and some init scripts. This setting is disabled by&lt;/span&gt;
+&lt;span class="c1"&gt;# default and the pid file will not be stored.&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="n"&gt;pid_file&lt;/span&gt;&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/run/mpd/pid&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# This setting sets the location of the file which contains information about&lt;/span&gt;
+&lt;span class="c1"&gt;# most variables to get MPD back into the same general shape it was in before&lt;/span&gt;
+&lt;span class="c1"&gt;# it was brought down. This setting is disabled by default and the server&lt;/span&gt;
+&lt;span class="c1"&gt;# state will be reset on server start up.&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="n"&gt;state_file&lt;/span&gt;&lt;span class="w"&gt;          &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/data/bob/music/mpd/state&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# The location of the sticker database.  This is a database which&lt;/span&gt;
+&lt;span class="c1"&gt;# manages dynamic information attached to songs.&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="n"&gt;sticker_file&lt;/span&gt;&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/data/bob/music/mpd/sticker.sql&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;###############################################################################&lt;/span&gt;
 
-File: /etc/mpd.conf
+
+&lt;span class="c1"&gt;# General music daemon options ################################################&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# This setting specifies the user that MPD will run as. MPD should never run as&lt;/span&gt;
+&lt;span class="c1"&gt;# root and you may use this setting to make MPD change its user ID after&lt;/span&gt;
+&lt;span class="c1"&gt;# initialization. This setting is disabled by default and MPD is run as the&lt;/span&gt;
+&lt;span class="c1"&gt;# current user.&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;mpd&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# This setting specifies the group that MPD will run as. If not specified&lt;/span&gt;
+&lt;span class="c1"&gt;# primary group of user specified with &amp;quot;user&amp;quot; setting will be used (if set).&lt;/span&gt;
+&lt;span class="c1"&gt;# This is useful if MPD needs to be a member of group such as &amp;quot;audio&amp;quot; to&lt;/span&gt;
+&lt;span class="c1"&gt;# have permission to use sound card.&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;#group                          &amp;quot;nogroup&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# This setting sets the address for the daemon to listen on. Careful attention&lt;/span&gt;
+&lt;span class="c1"&gt;# should be paid if this is assigned to anything other then the default, any.&lt;/span&gt;
+&lt;span class="c1"&gt;# This setting can deny access to control of the daemon. Choose any if you want&lt;/span&gt;
+&lt;span class="c1"&gt;# to have mpd listen on every address. Not effective if systemd socket&lt;/span&gt;
+&lt;span class="c1"&gt;# activation is in use.&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# For network&lt;/span&gt;
+&lt;span class="c1"&gt;#bind_to_address        &amp;quot;localhost&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;bind_to_address&lt;/span&gt;&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;0.0.0.0&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# And for Unix Socket&lt;/span&gt;
+&lt;span class="c1"&gt;#bind_to_address        &amp;quot;/run/mpd/socket&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# This setting is the TCP port that is desired for the daemon to get assigned&lt;/span&gt;
+&lt;span class="c1"&gt;# to.&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="n"&gt;port&lt;/span&gt;&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;6600&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# This setting controls the type of information which is logged. Available&lt;/span&gt;
+&lt;span class="c1"&gt;# setting arguments are &amp;quot;default&amp;quot;, &amp;quot;secure&amp;quot; or &amp;quot;verbose&amp;quot;. The &amp;quot;verbose&amp;quot; setting&lt;/span&gt;
+&lt;span class="c1"&gt;# argument is recommended for troubleshooting, though can quickly stretch&lt;/span&gt;
+&lt;span class="c1"&gt;# available resources on limited hardware storage.&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;#log_level          &amp;quot;default&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# Setting &amp;quot;restore_paused&amp;quot; to &amp;quot;yes&amp;quot; puts MPD into pause mode instead&lt;/span&gt;
+&lt;span class="c1"&gt;# of starting playback after startup.&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;#restore_paused &amp;quot;no&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# This setting enables MPD to create playlists in a format usable by other&lt;/span&gt;
+&lt;span class="c1"&gt;# music players.&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;#save_absolute_paths_in_playlists   &amp;quot;no&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# This setting defines a list of tag types that will be extracted during the&lt;/span&gt;
+&lt;span class="c1"&gt;# audio file discovery process. The complete list of possible values can be&lt;/span&gt;
+&lt;span class="c1"&gt;# found in the user manual.&lt;/span&gt;
+&lt;span class="c1"&gt;#metadata_to_use    &amp;quot;artist,album,title,track,name,genre,date,composer,performer,disc&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# This example just enables the &amp;quot;comment&amp;quot; tag without disabling all&lt;/span&gt;
+&lt;span class="c1"&gt;# the other supported tags:&lt;/span&gt;
+&lt;span class="c1"&gt;#metadata_to_use &amp;quot;+comment&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# This setting enables automatic update of MPD&amp;#39;s database when files in&lt;/span&gt;
+&lt;span class="c1"&gt;# music_directory are changed.&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;#auto_update    &amp;quot;yes&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# Limit the depth of the directories being watched, 0 means only watch&lt;/span&gt;
+&lt;span class="c1"&gt;# the music directory itself.  There is no limit by default.&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;#auto_update_depth &amp;quot;3&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;###############################################################################&lt;/span&gt;
+
+
+&lt;span class="c1"&gt;# Symbolic link behavior ######################################################&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# If this setting is set to &amp;quot;yes&amp;quot;, MPD will discover audio files by following&lt;/span&gt;
+&lt;span class="c1"&gt;# symbolic links outside of the configured music_directory.&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;#follow_outside_symlinks    &amp;quot;yes&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# If this setting is set to &amp;quot;yes&amp;quot;, MPD will discover audio files by following&lt;/span&gt;
+&lt;span class="c1"&gt;# symbolic links inside of the configured music_directory.&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;#follow_inside_symlinks     &amp;quot;yes&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;###############################################################################&lt;/span&gt;
+
+
+&lt;span class="c1"&gt;# Zeroconf / Avahi Service Discovery ##########################################&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# If this setting is set to &amp;quot;yes&amp;quot;, service information will be published with&lt;/span&gt;
+&lt;span class="c1"&gt;# Zeroconf / Avahi.&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;#zeroconf_enabled       &amp;quot;yes&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# The argument to this setting will be the Zeroconf / Avahi unique name for&lt;/span&gt;
+&lt;span class="c1"&gt;# this MPD server on the network. %h will be replaced with the hostname.&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;#zeroconf_name          &amp;quot;Music Player @ %h&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;###############################################################################&lt;/span&gt;
+
+
+&lt;span class="c1"&gt;# Permissions #################################################################&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# If this setting is set, MPD will require password authorization. The password&lt;/span&gt;
+&lt;span class="c1"&gt;# setting can be specified multiple times for different password profiles.&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;#password                        &amp;quot;password@read,add,control,admin&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# This setting specifies the permissions a user has who has not yet logged in.&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;#default_permissions             &amp;quot;read,add,control,admin&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;###############################################################################&lt;/span&gt;
+
+
+&lt;span class="c1"&gt;# Database #######################################################################&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+
+&lt;span class="c1"&gt;#database {&lt;/span&gt;
+&lt;span class="c1"&gt;#       plugin &amp;quot;proxy&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#       host &amp;quot;other.mpd.host&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#       port &amp;quot;6600&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#}&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Input #######################################################################&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+
+&lt;span class="n"&gt;input&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;plugin&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;curl&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#       proxy &amp;quot;proxy.isp.com:8080&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#       proxy_user &amp;quot;user&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#       proxy_password &amp;quot;password&amp;quot;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="c1"&gt;# QOBUZ input plugin&lt;/span&gt;
+&lt;span class="n"&gt;input&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;enabled&lt;/span&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;no&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;plugin&lt;/span&gt;&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;qobuz&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#        app_id     &amp;quot;ID&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#        app_secret &amp;quot;SECRET&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#        username   &amp;quot;USERNAME&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#        password   &amp;quot;PASSWORD&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#        format_id  &amp;quot;N&amp;quot;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="c1"&gt;# TIDAL input plugin&lt;/span&gt;
+&lt;span class="n"&gt;input&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;enabled&lt;/span&gt;&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;no&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;plugin&lt;/span&gt;&lt;span class="w"&gt;       &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;tidal&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#        token        &amp;quot;TOKEN&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#        username     &amp;quot;USERNAME&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#        password     &amp;quot;PASSWORD&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#        audioquality &amp;quot;Q&amp;quot;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Decoder #####################################################################&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+
+&lt;span class="n"&gt;decoder&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;plugin&lt;/span&gt;&lt;span class="w"&gt;                  &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;hybrid_dsd&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;enabled&lt;/span&gt;&lt;span class="w"&gt;                 &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;no&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#       gapless                 &amp;quot;no&amp;quot;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;###############################################################################&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Audio Output ################################################################&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# MPD supports various audio output types, as well as playing through multiple&lt;/span&gt;
+&lt;span class="c1"&gt;# audio outputs at the same time, through multiple audio_output settings&lt;/span&gt;
+&lt;span class="c1"&gt;# blocks. Setting this block is optional, though the server will only attempt&lt;/span&gt;
+&lt;span class="c1"&gt;# autodetection for one sound card.&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# An example of an ALSA output:&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="n"&gt;audio_output&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;type&lt;/span&gt;&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;alsa&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Sabrent ALSA Device&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;hw:1&amp;quot;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="c1"&gt;# optional&lt;/span&gt;
+&lt;span class="c1"&gt;#   device      &amp;quot;hw:0,0&amp;quot;    # optional&lt;/span&gt;
+&lt;span class="c1"&gt;#   mixer_type      &amp;quot;hardware&amp;quot;      # optional&lt;/span&gt;
+&lt;span class="c1"&gt;#   mixer_device    &amp;quot;default&amp;quot;   # optional&lt;/span&gt;
+&lt;span class="c1"&gt;#   mixer_control   &amp;quot;PCM&amp;quot;       # optional&lt;/span&gt;
+&lt;span class="c1"&gt;#   mixer_index &amp;quot;0&amp;quot;     # optional&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# Bluetooth through pulesaudio&lt;/span&gt;
+&lt;span class="c1"&gt;#audio_output {&lt;/span&gt;
+&lt;span class="c1"&gt;#  type “pulse”&lt;/span&gt;
+&lt;span class="c1"&gt;#  name “FOSI Audio”&lt;/span&gt;
+&lt;span class="c1"&gt;#  mixer_type “none”&lt;/span&gt;
+&lt;span class="c1"&gt;#  sink “bluez_sink.7C:58:CA:00:19:63.a2dp_sink”&lt;/span&gt;
+&lt;span class="c1"&gt;#}&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# An example of an OSS output:&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;#audio_output {&lt;/span&gt;
+&lt;span class="c1"&gt;#   type        &amp;quot;oss&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#   name        &amp;quot;My OSS Device&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#   device      &amp;quot;/dev/dsp&amp;quot;  # optional&lt;/span&gt;
+&lt;span class="c1"&gt;#   mixer_type      &amp;quot;hardware&amp;quot;      # optional&lt;/span&gt;
+&lt;span class="c1"&gt;#   mixer_device    &amp;quot;/dev/mixer&amp;quot;    # optional&lt;/span&gt;
+&lt;span class="c1"&gt;#   mixer_control   &amp;quot;PCM&amp;quot;       # optional&lt;/span&gt;
+&lt;span class="c1"&gt;#}&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# An example of a shout output (for streaming to Icecast):&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;#audio_output {&lt;/span&gt;
+&lt;span class="c1"&gt;#   type        &amp;quot;shout&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#   encoder     &amp;quot;vorbis&amp;quot;        # optional&lt;/span&gt;
+&lt;span class="c1"&gt;#   name        &amp;quot;My Shout Stream&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#   host        &amp;quot;localhost&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#   port        &amp;quot;8000&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#   mount       &amp;quot;/mpd.ogg&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#   password    &amp;quot;hackme&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#   quality     &amp;quot;5.0&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#   bitrate     &amp;quot;128&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#   format      &amp;quot;44100:16:1&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#   protocol    &amp;quot;icecast2&amp;quot;      # optional&lt;/span&gt;
+&lt;span class="c1"&gt;#   user        &amp;quot;source&amp;quot;        # optional&lt;/span&gt;
+&lt;span class="c1"&gt;#   description &amp;quot;My Stream Description&amp;quot; # optional&lt;/span&gt;
+&lt;span class="c1"&gt;#   url             &amp;quot;http://example.com&amp;quot;    # optional&lt;/span&gt;
+&lt;span class="c1"&gt;#   genre       &amp;quot;jazz&amp;quot;          # optional&lt;/span&gt;
+&lt;span class="c1"&gt;#   public      &amp;quot;no&amp;quot;            # optional&lt;/span&gt;
+&lt;span class="c1"&gt;#   timeout     &amp;quot;2&amp;quot;         # optional&lt;/span&gt;
+&lt;span class="c1"&gt;#   mixer_type      &amp;quot;software&amp;quot;              # optional&lt;/span&gt;
+&lt;span class="c1"&gt;#}&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# An example of a recorder output:&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;#audio_output {&lt;/span&gt;
+&lt;span class="c1"&gt;#       type            &amp;quot;recorder&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#       name            &amp;quot;My recorder&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#       encoder         &amp;quot;vorbis&amp;quot;                # optional, vorbis or lame&lt;/span&gt;
+&lt;span class="c1"&gt;#       path            &amp;quot;/var/lib/mpd/recorder/mpd.ogg&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;##      quality         &amp;quot;5.0&amp;quot;                   # do not define if bitrate is defined&lt;/span&gt;
+&lt;span class="c1"&gt;#       bitrate         &amp;quot;128&amp;quot;                   # do not define if quality is defined&lt;/span&gt;
+&lt;span class="c1"&gt;#       format          &amp;quot;44100:16:1&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#}&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# An example of a httpd output (built-in HTTP streaming server):&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="n"&gt;audio_output&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;type&lt;/span&gt;&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;httpd&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;My HTTP Stream&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;encoder&lt;/span&gt;&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;vorbis&amp;quot;&lt;/span&gt;&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="c1"&gt;# optional, vorbis or lame&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;port&lt;/span&gt;&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;8888&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;bind_to_address&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;0.0.0.0&amp;quot;&lt;/span&gt;&lt;span class="w"&gt;               &lt;/span&gt;&lt;span class="c1"&gt;# optional, IPv4 or IPv6&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="c1"&gt;#quality        &amp;quot;5.0&amp;quot;           # do not define if bitrate is defined&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;bitrate&lt;/span&gt;&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;128&amp;quot;&lt;/span&gt;&lt;span class="w"&gt;           &lt;/span&gt;&lt;span class="c1"&gt;# do not define if quality is defined&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;44100:16:1&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;max_clients&lt;/span&gt;&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;2&amp;quot;&lt;/span&gt;&lt;span class="w"&gt;                     &lt;/span&gt;&lt;span class="c1"&gt;# optional 0=no limit&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# An example of a pulseaudio output (streaming to a remote pulseaudio server)&lt;/span&gt;
+&lt;span class="c1"&gt;# Please see README.Debian if you want mpd to play through the pulseaudio&lt;/span&gt;
+&lt;span class="c1"&gt;# daemon started as part of your graphical desktop session!&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;#audio_output {&lt;/span&gt;
+&lt;span class="c1"&gt;#   type        &amp;quot;pulse&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#   name        &amp;quot;My Pulse Output&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#   server      &amp;quot;remote_server&amp;quot;     # optional&lt;/span&gt;
+&lt;span class="c1"&gt;#   sink        &amp;quot;remote_server_sink&amp;quot;    # optional&lt;/span&gt;
+&lt;span class="c1"&gt;#}&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# An example of a winmm output (Windows multimedia API).&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;#audio_output {&lt;/span&gt;
+&lt;span class="c1"&gt;#   type        &amp;quot;winmm&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#   name        &amp;quot;My WinMM output&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#   device      &amp;quot;Digital Audio (S/PDIF) (High Definition Audio Device)&amp;quot; # optional&lt;/span&gt;
+&lt;span class="c1"&gt;#       or&lt;/span&gt;
+&lt;span class="c1"&gt;#   device      &amp;quot;0&amp;quot;     # optional&lt;/span&gt;
+&lt;span class="c1"&gt;#   mixer_type  &amp;quot;hardware&amp;quot;  # optional&lt;/span&gt;
+&lt;span class="c1"&gt;#}&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# An example of an openal output.&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;#audio_output {&lt;/span&gt;
+&lt;span class="c1"&gt;#   type        &amp;quot;openal&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#   name        &amp;quot;My OpenAL output&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#   device      &amp;quot;Digital Audio (S/PDIF) (High Definition Audio Device)&amp;quot; # optional&lt;/span&gt;
+&lt;span class="c1"&gt;#}&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;## Example &amp;quot;pipe&amp;quot; output:&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;#audio_output {&lt;/span&gt;
+&lt;span class="c1"&gt;#   type        &amp;quot;pipe&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#   name        &amp;quot;my pipe&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#   command     &amp;quot;aplay -f cd 2&amp;gt;/dev/null&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;## Or if you&amp;#39;re want to use AudioCompress&lt;/span&gt;
+&lt;span class="c1"&gt;#   command     &amp;quot;AudioCompress -m | aplay -f cd 2&amp;gt;/dev/null&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;## Or to send raw PCM stream through PCM:&lt;/span&gt;
+&lt;span class="c1"&gt;#   command     &amp;quot;nc example.org 8765&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#   format      &amp;quot;44100:16:2&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#}&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;## An example of a null output (for no audio output):&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;#audio_output {&lt;/span&gt;
+&lt;span class="c1"&gt;#   type        &amp;quot;null&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#   name        &amp;quot;My Null Output&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#   mixer_type      &amp;quot;none&amp;quot;                  # optional&lt;/span&gt;
+&lt;span class="c1"&gt;#}&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;###############################################################################&lt;/span&gt;
+
+
+&lt;span class="c1"&gt;# Normalization automatic volume adjustments ##################################&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# This setting specifies the type of ReplayGain to use. This setting can have&lt;/span&gt;
+&lt;span class="c1"&gt;# the argument &amp;quot;off&amp;quot;, &amp;quot;album&amp;quot;, &amp;quot;track&amp;quot; or &amp;quot;auto&amp;quot;. &amp;quot;auto&amp;quot; is a special mode that&lt;/span&gt;
+&lt;span class="c1"&gt;# chooses between &amp;quot;track&amp;quot; and &amp;quot;album&amp;quot; depending on the current state of&lt;/span&gt;
+&lt;span class="c1"&gt;# random playback. If random playback is enabled then &amp;quot;track&amp;quot; mode is used.&lt;/span&gt;
+&lt;span class="c1"&gt;# See &amp;lt;http://www.replaygain.org&amp;gt; for more details about ReplayGain.&lt;/span&gt;
+&lt;span class="c1"&gt;# This setting is off by default.&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;#replaygain         &amp;quot;album&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# This setting sets the pre-amp used for files that have ReplayGain tags. By&lt;/span&gt;
+&lt;span class="c1"&gt;# default this setting is disabled.&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;#replaygain_preamp      &amp;quot;0&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# This setting sets the pre-amp used for files that do NOT have ReplayGain tags.&lt;/span&gt;
+&lt;span class="c1"&gt;# By default this setting is disabled.&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;#replaygain_missing_preamp  &amp;quot;0&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# This setting enables or disables ReplayGain limiting.&lt;/span&gt;
+&lt;span class="c1"&gt;# MPD calculates actual amplification based on the ReplayGain tags&lt;/span&gt;
+&lt;span class="c1"&gt;# and replaygain_preamp / replaygain_missing_preamp setting.&lt;/span&gt;
+&lt;span class="c1"&gt;# If replaygain_limit is enabled MPD will never amplify audio signal&lt;/span&gt;
+&lt;span class="c1"&gt;# above its original level. If replaygain_limit is disabled such amplification&lt;/span&gt;
+&lt;span class="c1"&gt;# might occur. By default this setting is enabled.&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;#replaygain_limit       &amp;quot;yes&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# This setting enables on-the-fly normalization volume adjustment. This will&lt;/span&gt;
+&lt;span class="c1"&gt;# result in the volume of all playing audio to be adjusted so the output has&lt;/span&gt;
+&lt;span class="c1"&gt;# equal &amp;quot;loudness&amp;quot;. This setting is disabled by default.&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;#volume_normalization       &amp;quot;no&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;###############################################################################&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Character Encoding ##########################################################&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# If file or directory names do not display correctly for your locale then you&lt;/span&gt;
+&lt;span class="c1"&gt;# may need to modify this setting.&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="n"&gt;filesystem_charset&lt;/span&gt;&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;UTF-8&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;###############################################################################&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;h1 id="an-example-configuration-file-for-mpd"&gt;An example configuration file for MPD.&lt;/h1&gt;
-&lt;h1 id="read-the-user-manual-for-documentation-httpwwwmusicpdorgdocuser"&gt;Read the user manual for documentation: http://www.musicpd.org/doc/user/&lt;/h1&gt;
-&lt;h1 id="or-usrsharedocmpdhtmluserhtml"&gt;or /usr/share/doc/mpd/html/user.html&lt;/h1&gt;
-&lt;h1 id="files-and-directories"&gt;Files and directories&lt;/h1&gt;
-&lt;h1 id="_1"&gt;&lt;/h1&gt;
-&lt;h1 id="this-setting-controls-the-top-directory-which-mpd-will-search-to-discover-the"&gt;This setting controls the top directory which MPD will search to discover the&lt;/h1&gt;
-&lt;h1 id="available-audio-files-and-add-them-to-the-daemons-online-database-this"&gt;available audio files and add them to the daemon's online database. This&lt;/h1&gt;
-&lt;h1 id="setting-defaults-to-the-xdg-directory-otherwise-the-music-directory-will-be"&gt;setting defaults to the XDG directory, otherwise the music directory will be&lt;/h1&gt;
-&lt;h1 id="be-disabled-and-audio-files-will-only-be-accepted-over-ipc-socket-using"&gt;be disabled and audio files will only be accepted over ipc socket (using&lt;/h1&gt;
-&lt;h1 id="file-protocol-or-streaming-files-over-an-accepted-protocol"&gt;file:// protocol) or streaming files over an accepted protocol.&lt;/h1&gt;
-&lt;h1 id="_2"&gt;&lt;/h1&gt;
-&lt;p&gt;music_directory     "/data/bob/music/Music"&lt;/p&gt;
-&lt;h1 id="_3"&gt;&lt;/h1&gt;
-&lt;h1 id="this-setting-sets-the-mpd-internal-playlist-directory-the-purpose-of-this"&gt;This setting sets the MPD internal playlist directory. The purpose of this&lt;/h1&gt;
-&lt;h1 id="directory-is-storage-for-playlists-created-by-mpd-the-server-will-use"&gt;directory is storage for playlists created by MPD. The server will use&lt;/h1&gt;
-&lt;h1 id="playlist-files-not-created-by-the-server-but-only-if-they-are-in-the-mpd"&gt;playlist files not created by the server but only if they are in the MPD&lt;/h1&gt;
-&lt;h1 id="format-this-setting-defaults-to-playlist-saving-being-disabled"&gt;format. This setting defaults to playlist saving being disabled.&lt;/h1&gt;
-&lt;h1 id="_4"&gt;&lt;/h1&gt;
-&lt;p&gt;playlist_directory      "/data/bob/music/mpd/playlists"&lt;/p&gt;
-&lt;h1 id="_5"&gt;&lt;/h1&gt;
-&lt;h1 id="this-setting-sets-the-location-of-the-mpd-database-this-file-is-used-to"&gt;This setting sets the location of the MPD database. This file is used to&lt;/h1&gt;
-&lt;h1 id="load-the-database-at-server-start-up-and-store-the-database-while-the"&gt;load the database at server start up and store the database while the&lt;/h1&gt;
-&lt;h1 id="server-is-not-up-this-setting-defaults-to-disabled-which-will-allow"&gt;server is not up. This setting defaults to disabled which will allow&lt;/h1&gt;
-&lt;h1 id="mpd-to-accept-files-over-ipc-socket-using-file-protocol-or-streaming"&gt;MPD to accept files over ipc socket (using file:// protocol) or streaming&lt;/h1&gt;
-&lt;h1 id="files-over-an-accepted-protocol"&gt;files over an accepted protocol.&lt;/h1&gt;
-&lt;h1 id="_6"&gt;&lt;/h1&gt;
-&lt;p&gt;db_file         "/data/bob/music/mpd/tag_cache"&lt;/p&gt;
-&lt;h1 id="_7"&gt;&lt;/h1&gt;
-&lt;h1 id="these-settings-are-the-locations-for-the-daemon-log-files-for-the-daemon"&gt;These settings are the locations for the daemon log files for the daemon.&lt;/h1&gt;
-&lt;h1 id="these-logs-are-great-for-troubleshooting-depending-on-your-log_level"&gt;These logs are great for troubleshooting, depending on your log_level&lt;/h1&gt;
-&lt;h1 id="settings"&gt;settings.&lt;/h1&gt;
-&lt;h1 id="_8"&gt;&lt;/h1&gt;
-&lt;h1 id="the-special-value-syslog-makes-mpd-use-the-local-syslog-daemon-this"&gt;The special value "syslog" makes MPD use the local syslog daemon. This&lt;/h1&gt;
-&lt;h1 id="setting-defaults-to-logging-to-syslog-or-to-journal-if-mpd-was-started-as"&gt;setting defaults to logging to syslog, or to journal if mpd was started as&lt;/h1&gt;
-&lt;h1 id="a-systemd-service"&gt;a systemd service.&lt;/h1&gt;
-&lt;h1 id="_9"&gt;&lt;/h1&gt;
-&lt;p&gt;log_file            "/var/log/mpd/mpd.log"&lt;/p&gt;
-&lt;h1 id="_10"&gt;&lt;/h1&gt;
-&lt;h1 id="this-setting-sets-the-location-of-the-file-which-stores-the-process-id"&gt;This setting sets the location of the file which stores the process ID&lt;/h1&gt;
-&lt;h1 id="for-use-of-mpd-kill-and-some-init-scripts-this-setting-is-disabled-by"&gt;for use of mpd --kill and some init scripts. This setting is disabled by&lt;/h1&gt;
-&lt;h1 id="default-and-the-pid-file-will-not-be-stored"&gt;default and the pid file will not be stored.&lt;/h1&gt;
-&lt;h1 id="_11"&gt;&lt;/h1&gt;
-&lt;p&gt;pid_file            "/run/mpd/pid"&lt;/p&gt;
-&lt;h1 id="_12"&gt;&lt;/h1&gt;
-&lt;h1 id="this-setting-sets-the-location-of-the-file-which-contains-information-about"&gt;This setting sets the location of the file which contains information about&lt;/h1&gt;
-&lt;h1 id="most-variables-to-get-mpd-back-into-the-same-general-shape-it-was-in-before"&gt;most variables to get MPD back into the same general shape it was in before&lt;/h1&gt;
-&lt;h1 id="it-was-brought-down-this-setting-is-disabled-by-default-and-the-server"&gt;it was brought down. This setting is disabled by default and the server&lt;/h1&gt;
-&lt;h1 id="state-will-be-reset-on-server-start-up"&gt;state will be reset on server start up.&lt;/h1&gt;
-&lt;h1 id="_13"&gt;&lt;/h1&gt;
-&lt;p&gt;state_file          "/data/bob/music/mpd/state"&lt;/p&gt;
-&lt;h1 id="_14"&gt;&lt;/h1&gt;
-&lt;h1 id="the-location-of-the-sticker-database-this-is-a-database-which"&gt;The location of the sticker database.  This is a database which&lt;/h1&gt;
-&lt;h1 id="manages-dynamic-information-attached-to-songs"&gt;manages dynamic information attached to songs.&lt;/h1&gt;
-&lt;h1 id="_15"&gt;&lt;/h1&gt;
-&lt;p&gt;sticker_file                   "/data/bob/music/mpd/sticker.sql"&lt;/p&gt;
-&lt;h1 id="_16"&gt;&lt;/h1&gt;
-&lt;h6 id="_17"&gt;&lt;/h6&gt;
-&lt;h1 id="general-music-daemon-options"&gt;General music daemon options&lt;/h1&gt;
-&lt;h1 id="_18"&gt;&lt;/h1&gt;
-&lt;h1 id="this-setting-specifies-the-user-that-mpd-will-run-as-mpd-should-never-run-as"&gt;This setting specifies the user that MPD will run as. MPD should never run as&lt;/h1&gt;
-&lt;h1 id="root-and-you-may-use-this-setting-to-make-mpd-change-its-user-id-after"&gt;root and you may use this setting to make MPD change its user ID after&lt;/h1&gt;
-&lt;h1 id="initialization-this-setting-is-disabled-by-default-and-mpd-is-run-as-the"&gt;initialization. This setting is disabled by default and MPD is run as the&lt;/h1&gt;
-&lt;h1 id="current-user"&gt;current user.&lt;/h1&gt;
-&lt;h1 id="_19"&gt;&lt;/h1&gt;
-&lt;p&gt;user                "mpd"&lt;/p&gt;
-&lt;h1 id="_20"&gt;&lt;/h1&gt;
-&lt;h1 id="this-setting-specifies-the-group-that-mpd-will-run-as-if-not-specified"&gt;This setting specifies the group that MPD will run as. If not specified&lt;/h1&gt;
-&lt;h1 id="primary-group-of-user-specified-with-user-setting-will-be-used-if-set"&gt;primary group of user specified with "user" setting will be used (if set).&lt;/h1&gt;
-&lt;h1 id="this-is-useful-if-mpd-needs-to-be-a-member-of-group-such-as-audio-to"&gt;This is useful if MPD needs to be a member of group such as "audio" to&lt;/h1&gt;
-&lt;h1 id="have-permission-to-use-sound-card"&gt;have permission to use sound card.&lt;/h1&gt;
-&lt;h1 id="_21"&gt;&lt;/h1&gt;
-&lt;h1 id="group-nogroup"&gt;group                          "nogroup"&lt;/h1&gt;
-&lt;h1 id="_22"&gt;&lt;/h1&gt;
-&lt;h1 id="this-setting-sets-the-address-for-the-daemon-to-listen-on-careful-attention"&gt;This setting sets the address for the daemon to listen on. Careful attention&lt;/h1&gt;
-&lt;h1 id="should-be-paid-if-this-is-assigned-to-anything-other-then-the-default-any"&gt;should be paid if this is assigned to anything other then the default, any.&lt;/h1&gt;
-&lt;h1 id="this-setting-can-deny-access-to-control-of-the-daemon-choose-any-if-you-want"&gt;This setting can deny access to control of the daemon. Choose any if you want&lt;/h1&gt;
-&lt;h1 id="to-have-mpd-listen-on-every-address-not-effective-if-systemd-socket"&gt;to have mpd listen on every address. Not effective if systemd socket&lt;/h1&gt;
-&lt;h1 id="activation-is-in-use"&gt;activation is in use.&lt;/h1&gt;
-&lt;h1 id="_23"&gt;&lt;/h1&gt;
-&lt;h1 id="for-network"&gt;For network&lt;/h1&gt;
-&lt;h1 id="bind_to_address-localhost"&gt;bind_to_address        "localhost"&lt;/h1&gt;
-&lt;p&gt;bind_to_address     "0.0.0.0"&lt;/p&gt;
-&lt;h1 id="_24"&gt;&lt;/h1&gt;
-&lt;h1 id="and-for-unix-socket"&gt;And for Unix Socket&lt;/h1&gt;
-&lt;h1 id="bind_to_address-runmpdsocket"&gt;bind_to_address        "/run/mpd/socket"&lt;/h1&gt;
-&lt;h1 id="_25"&gt;&lt;/h1&gt;
-&lt;h1 id="this-setting-is-the-tcp-port-that-is-desired-for-the-daemon-to-get-assigned"&gt;This setting is the TCP port that is desired for the daemon to get assigned&lt;/h1&gt;
-&lt;h1 id="to"&gt;to.&lt;/h1&gt;
-&lt;h1 id="_26"&gt;&lt;/h1&gt;
-&lt;p&gt;port                "6600"&lt;/p&gt;
-&lt;h1 id="_27"&gt;&lt;/h1&gt;
-&lt;h1 id="this-setting-controls-the-type-of-information-which-is-logged-available"&gt;This setting controls the type of information which is logged. Available&lt;/h1&gt;
-&lt;h1 id="setting-arguments-are-default-secure-or-verbose-the-verbose-setting"&gt;setting arguments are "default", "secure" or "verbose". The "verbose" setting&lt;/h1&gt;
-&lt;h1 id="argument-is-recommended-for-troubleshooting-though-can-quickly-stretch"&gt;argument is recommended for troubleshooting, though can quickly stretch&lt;/h1&gt;
-&lt;h1 id="available-resources-on-limited-hardware-storage"&gt;available resources on limited hardware storage.&lt;/h1&gt;
-&lt;h1 id="_28"&gt;&lt;/h1&gt;
-&lt;h1 id="log_level-default"&gt;log_level          "default"&lt;/h1&gt;
-&lt;h1 id="_29"&gt;&lt;/h1&gt;
-&lt;h1 id="setting-restore_paused-to-yes-puts-mpd-into-pause-mode-instead"&gt;Setting "restore_paused" to "yes" puts MPD into pause mode instead&lt;/h1&gt;
-&lt;h1 id="of-starting-playback-after-startup"&gt;of starting playback after startup.&lt;/h1&gt;
-&lt;h1 id="_30"&gt;&lt;/h1&gt;
-&lt;h1 id="restore_paused-no"&gt;restore_paused "no"&lt;/h1&gt;
-&lt;h1 id="_31"&gt;&lt;/h1&gt;
-&lt;h1 id="this-setting-enables-mpd-to-create-playlists-in-a-format-usable-by-other"&gt;This setting enables MPD to create playlists in a format usable by other&lt;/h1&gt;
-&lt;h1 id="music-players"&gt;music players.&lt;/h1&gt;
-&lt;h1 id="_32"&gt;&lt;/h1&gt;
-&lt;h1 id="save_absolute_paths_in_playlists-no"&gt;save_absolute_paths_in_playlists   "no"&lt;/h1&gt;
-&lt;h1 id="_33"&gt;&lt;/h1&gt;
-&lt;h1 id="this-setting-defines-a-list-of-tag-types-that-will-be-extracted-during-the"&gt;This setting defines a list of tag types that will be extracted during the&lt;/h1&gt;
-&lt;h1 id="audio-file-discovery-process-the-complete-list-of-possible-values-can-be"&gt;audio file discovery process. The complete list of possible values can be&lt;/h1&gt;
-&lt;h1 id="found-in-the-user-manual"&gt;found in the user manual.&lt;/h1&gt;
-&lt;h1 id="metadata_to_use-artistalbumtitletracknamegenredatecomposerperformerdisc"&gt;metadata_to_use    "artist,album,title,track,name,genre,date,composer,performer,disc"&lt;/h1&gt;
-&lt;h1 id="_34"&gt;&lt;/h1&gt;
-&lt;h1 id="this-example-just-enables-the-comment-tag-without-disabling-all"&gt;This example just enables the "comment" tag without disabling all&lt;/h1&gt;
-&lt;h1 id="the-other-supported-tags"&gt;the other supported tags:&lt;/h1&gt;
-&lt;h1 id="metadata_to_use-comment"&gt;metadata_to_use "+comment"&lt;/h1&gt;
-&lt;h1 id="_35"&gt;&lt;/h1&gt;
-&lt;h1 id="this-setting-enables-automatic-update-of-mpds-database-when-files-in"&gt;This setting enables automatic update of MPD's database when files in&lt;/h1&gt;
-&lt;h1 id="music_directory-are-changed"&gt;music_directory are changed.&lt;/h1&gt;
-&lt;h1 id="_36"&gt;&lt;/h1&gt;
-&lt;h1 id="auto_update-yes"&gt;auto_update    "yes"&lt;/h1&gt;
-&lt;h1 id="_37"&gt;&lt;/h1&gt;
-&lt;h1 id="limit-the-depth-of-the-directories-being-watched-0-means-only-watch"&gt;Limit the depth of the directories being watched, 0 means only watch&lt;/h1&gt;
-&lt;h1 id="the-music-directory-itself-there-is-no-limit-by-default"&gt;the music directory itself.  There is no limit by default.&lt;/h1&gt;
-&lt;h1 id="_38"&gt;&lt;/h1&gt;
-&lt;h1 id="auto_update_depth-3"&gt;auto_update_depth "3"&lt;/h1&gt;
-&lt;h1 id="_39"&gt;&lt;/h1&gt;
-&lt;h6 id="_40"&gt;&lt;/h6&gt;
-&lt;h1 id="symbolic-link-behavior"&gt;Symbolic link behavior&lt;/h1&gt;
-&lt;h1 id="_41"&gt;&lt;/h1&gt;
-&lt;h1 id="if-this-setting-is-set-to-yes-mpd-will-discover-audio-files-by-following"&gt;If this setting is set to "yes", MPD will discover audio files by following&lt;/h1&gt;
-&lt;h1 id="symbolic-links-outside-of-the-configured-music_directory"&gt;symbolic links outside of the configured music_directory.&lt;/h1&gt;
-&lt;h1 id="_42"&gt;&lt;/h1&gt;
-&lt;h1 id="follow_outside_symlinks-yes"&gt;follow_outside_symlinks    "yes"&lt;/h1&gt;
-&lt;h1 id="_43"&gt;&lt;/h1&gt;
-&lt;h1 id="if-this-setting-is-set-to-yes-mpd-will-discover-audio-files-by-following_1"&gt;If this setting is set to "yes", MPD will discover audio files by following&lt;/h1&gt;
-&lt;h1 id="symbolic-links-inside-of-the-configured-music_directory"&gt;symbolic links inside of the configured music_directory.&lt;/h1&gt;
-&lt;h1 id="_44"&gt;&lt;/h1&gt;
-&lt;h1 id="follow_inside_symlinks-yes"&gt;follow_inside_symlinks     "yes"&lt;/h1&gt;
-&lt;h1 id="_45"&gt;&lt;/h1&gt;
-&lt;h6 id="_46"&gt;&lt;/h6&gt;
-&lt;h1 id="zeroconf-avahi-service-discovery"&gt;Zeroconf / Avahi Service Discovery&lt;/h1&gt;
-&lt;h1 id="_47"&gt;&lt;/h1&gt;
-&lt;h1 id="if-this-setting-is-set-to-yes-service-information-will-be-published-with"&gt;If this setting is set to "yes", service information will be published with&lt;/h1&gt;
-&lt;h1 id="zeroconf-avahi"&gt;Zeroconf / Avahi.&lt;/h1&gt;
-&lt;h1 id="_48"&gt;&lt;/h1&gt;
-&lt;h1 id="zeroconf_enabled-yes"&gt;zeroconf_enabled       "yes"&lt;/h1&gt;
-&lt;h1 id="_49"&gt;&lt;/h1&gt;
-&lt;h1 id="the-argument-to-this-setting-will-be-the-zeroconf-avahi-unique-name-for"&gt;The argument to this setting will be the Zeroconf / Avahi unique name for&lt;/h1&gt;
-&lt;h1 id="this-mpd-server-on-the-network-h-will-be-replaced-with-the-hostname"&gt;this MPD server on the network. %h will be replaced with the hostname.&lt;/h1&gt;
-&lt;h1 id="_50"&gt;&lt;/h1&gt;
-&lt;h1 id="zeroconf_name-music-player-h"&gt;zeroconf_name          "Music Player @ %h"&lt;/h1&gt;
-&lt;h1 id="_51"&gt;&lt;/h1&gt;
-&lt;h6 id="_52"&gt;&lt;/h6&gt;
-&lt;h1 id="permissions"&gt;Permissions&lt;/h1&gt;
-&lt;h1 id="_53"&gt;&lt;/h1&gt;
-&lt;h1 id="if-this-setting-is-set-mpd-will-require-password-authorization-the-password"&gt;If this setting is set, MPD will require password authorization. The password&lt;/h1&gt;
-&lt;h1 id="setting-can-be-specified-multiple-times-for-different-password-profiles"&gt;setting can be specified multiple times for different password profiles.&lt;/h1&gt;
-&lt;h1 id="_54"&gt;&lt;/h1&gt;
-&lt;h1 id="password-passwordreadaddcontroladmin"&gt;password                        "password@read,add,control,admin"&lt;/h1&gt;
-&lt;h1 id="_55"&gt;&lt;/h1&gt;
-&lt;h1 id="this-setting-specifies-the-permissions-a-user-has-who-has-not-yet-logged-in"&gt;This setting specifies the permissions a user has who has not yet logged in.&lt;/h1&gt;
-&lt;h1 id="_56"&gt;&lt;/h1&gt;
-&lt;h1 id="default_permissions-readaddcontroladmin"&gt;default_permissions             "read,add,control,admin"&lt;/h1&gt;
-&lt;h1 id="_57"&gt;&lt;/h1&gt;
-&lt;h6 id="_58"&gt;&lt;/h6&gt;
-&lt;h1 id="database"&gt;Database&lt;/h1&gt;
-&lt;h1 id="_59"&gt;&lt;/h1&gt;
-&lt;h1 id="database_1"&gt;database {&lt;/h1&gt;
-&lt;h1 id="plugin-proxy"&gt;plugin "proxy"&lt;/h1&gt;
-&lt;h1 id="host-othermpdhost"&gt;host "other.mpd.host"&lt;/h1&gt;
-&lt;h1 id="port-6600"&gt;port "6600"&lt;/h1&gt;
-&lt;h1 id="_60"&gt;}&lt;/h1&gt;
-&lt;h1 id="input"&gt;Input&lt;/h1&gt;
-&lt;h1 id="_61"&gt;&lt;/h1&gt;
-&lt;p&gt;input {
-        plugin "curl"&lt;/p&gt;
-&lt;h1 id="proxy-proxyispcom8080"&gt;proxy "proxy.isp.com:8080"&lt;/h1&gt;
-&lt;h1 id="proxy_user-user"&gt;proxy_user "user"&lt;/h1&gt;
-&lt;h1 id="proxy_password-password"&gt;proxy_password "password"&lt;/h1&gt;
-&lt;p&gt;}&lt;/p&gt;
-&lt;h1 id="qobuz-input-plugin"&gt;QOBUZ input plugin&lt;/h1&gt;
-&lt;p&gt;input {
-        enabled    "no"
-        plugin     "qobuz"&lt;/p&gt;
-&lt;h1 id="app_id-id"&gt;app_id     "ID"&lt;/h1&gt;
-&lt;h1 id="app_secret-secret"&gt;app_secret "SECRET"&lt;/h1&gt;
-&lt;h1 id="username-username"&gt;username   "USERNAME"&lt;/h1&gt;
-&lt;h1 id="password-password"&gt;password   "PASSWORD"&lt;/h1&gt;
-&lt;h1 id="format_id-n"&gt;format_id  "N"&lt;/h1&gt;
-&lt;p&gt;}&lt;/p&gt;
-&lt;h1 id="tidal-input-plugin"&gt;TIDAL input plugin&lt;/h1&gt;
-&lt;p&gt;input {
-        enabled      "no"
-        plugin       "tidal"&lt;/p&gt;
-&lt;h1 id="token-token"&gt;token        "TOKEN"&lt;/h1&gt;
-&lt;h1 id="username-username_1"&gt;username     "USERNAME"&lt;/h1&gt;
-&lt;h1 id="password-password_1"&gt;password     "PASSWORD"&lt;/h1&gt;
-&lt;h1 id="audioquality-q"&gt;audioquality "Q"&lt;/h1&gt;
-&lt;p&gt;}&lt;/p&gt;
-&lt;h1 id="decoder"&gt;Decoder&lt;/h1&gt;
-&lt;h1 id="_62"&gt;&lt;/h1&gt;
-&lt;p&gt;decoder {
-        plugin                  "hybrid_dsd"
-        enabled                 "no"&lt;/p&gt;
-&lt;h1 id="gapless-no"&gt;gapless                 "no"&lt;/h1&gt;
-&lt;p&gt;}&lt;/p&gt;
-&lt;h1 id="_63"&gt;&lt;/h1&gt;
-&lt;h6 id="_64"&gt;&lt;/h6&gt;
-&lt;h1 id="audio-output"&gt;Audio Output&lt;/h1&gt;
-&lt;h1 id="_65"&gt;&lt;/h1&gt;
-&lt;h1 id="mpd-supports-various-audio-output-types-as-well-as-playing-through-multiple"&gt;MPD supports various audio output types, as well as playing through multiple&lt;/h1&gt;
-&lt;h1 id="audio-outputs-at-the-same-time-through-multiple-audio_output-settings"&gt;audio outputs at the same time, through multiple audio_output settings&lt;/h1&gt;
-&lt;h1 id="blocks-setting-this-block-is-optional-though-the-server-will-only-attempt"&gt;blocks. Setting this block is optional, though the server will only attempt&lt;/h1&gt;
-&lt;h1 id="autodetection-for-one-sound-card"&gt;autodetection for one sound card.&lt;/h1&gt;
-&lt;h1 id="_66"&gt;&lt;/h1&gt;
-&lt;h1 id="an-example-of-an-alsa-output"&gt;An example of an ALSA output:&lt;/h1&gt;
-&lt;h1 id="_67"&gt;&lt;/h1&gt;
-&lt;p&gt;audio_output {
-    type        "alsa"
-    name        "Sabrent ALSA Device"
-    device      "hw:1"  # optional&lt;/p&gt;
-&lt;h1 id="device-hw00-optional"&gt;device      "hw:0,0"    # optional&lt;/h1&gt;
-&lt;h1 id="mixer_type-hardware-optional"&gt;mixer_type      "hardware"      # optional&lt;/h1&gt;
-&lt;h1 id="mixer_device-default-optional"&gt;mixer_device    "default"   # optional&lt;/h1&gt;
-&lt;h1 id="mixer_control-pcm-optional"&gt;mixer_control   "PCM"       # optional&lt;/h1&gt;
-&lt;h1 id="mixer_index-0-optional"&gt;mixer_index "0"     # optional&lt;/h1&gt;
-&lt;p&gt;}&lt;/p&gt;
-&lt;h1 id="_68"&gt;&lt;/h1&gt;
-&lt;h1 id="bluetooth-through-pulesaudio"&gt;Bluetooth through pulesaudio&lt;/h1&gt;
-&lt;h1 id="audio_output"&gt;audio_output {&lt;/h1&gt;
-&lt;h1 id="type-pulse"&gt;type “pulse”&lt;/h1&gt;
-&lt;h1 id="name-fosi-audio"&gt;name “FOSI Audio”&lt;/h1&gt;
-&lt;h1 id="mixer_type-none"&gt;mixer_type “none”&lt;/h1&gt;
-&lt;h1 id="sink-bluez_sink7c58ca001963a2dp_sink"&gt;sink “bluez_sink.7C:58:CA:00:19:63.a2dp_sink”&lt;/h1&gt;
-&lt;h1 id="_69"&gt;}&lt;/h1&gt;
-&lt;h1 id="_70"&gt;&lt;/h1&gt;
-&lt;h1 id="an-example-of-an-oss-output"&gt;An example of an OSS output:&lt;/h1&gt;
-&lt;h1 id="_71"&gt;&lt;/h1&gt;
-&lt;h1 id="audio_output_1"&gt;audio_output {&lt;/h1&gt;
-&lt;h1 id="type-oss"&gt;type        "oss"&lt;/h1&gt;
-&lt;h1 id="name-my-oss-device"&gt;name        "My OSS Device"&lt;/h1&gt;
-&lt;h1 id="device-devdsp-optional"&gt;device      "/dev/dsp"  # optional&lt;/h1&gt;
-&lt;h1 id="mixer_type-hardware-optional_1"&gt;mixer_type      "hardware"      # optional&lt;/h1&gt;
-&lt;h1 id="mixer_device-devmixer-optional"&gt;mixer_device    "/dev/mixer"    # optional&lt;/h1&gt;
-&lt;h1 id="mixer_control-pcm-optional_1"&gt;mixer_control   "PCM"       # optional&lt;/h1&gt;
-&lt;h1 id="_72"&gt;}&lt;/h1&gt;
-&lt;h1 id="_73"&gt;&lt;/h1&gt;
-&lt;h1 id="an-example-of-a-shout-output-for-streaming-to-icecast"&gt;An example of a shout output (for streaming to Icecast):&lt;/h1&gt;
-&lt;h1 id="_74"&gt;&lt;/h1&gt;
-&lt;h1 id="audio_output_2"&gt;audio_output {&lt;/h1&gt;
-&lt;h1 id="type-shout"&gt;type        "shout"&lt;/h1&gt;
-&lt;h1 id="encoder-vorbis-optional"&gt;encoder     "vorbis"        # optional&lt;/h1&gt;
-&lt;h1 id="name-my-shout-stream"&gt;name        "My Shout Stream"&lt;/h1&gt;
-&lt;h1 id="host-localhost"&gt;host        "localhost"&lt;/h1&gt;
-&lt;h1 id="port-8000"&gt;port        "8000"&lt;/h1&gt;
-&lt;h1 id="mount-mpdogg"&gt;mount       "/mpd.ogg"&lt;/h1&gt;
-&lt;h1 id="password-hackme"&gt;password    "hackme"&lt;/h1&gt;
-&lt;h1 id="quality-50"&gt;quality     "5.0"&lt;/h1&gt;
-&lt;h1 id="bitrate-128"&gt;bitrate     "128"&lt;/h1&gt;
-&lt;h1 id="format-44100161"&gt;format      "44100:16:1"&lt;/h1&gt;
-&lt;h1 id="protocol-icecast2-optional"&gt;protocol    "icecast2"      # optional&lt;/h1&gt;
-&lt;h1 id="user-source-optional"&gt;user        "source"        # optional&lt;/h1&gt;
-&lt;h1 id="description-my-stream-description-optional"&gt;description "My Stream Description" # optional&lt;/h1&gt;
-&lt;h1 id="url-httpexamplecom-optional"&gt;url             "http://example.com"    # optional&lt;/h1&gt;
-&lt;h1 id="genre-jazz-optional"&gt;genre       "jazz"          # optional&lt;/h1&gt;
-&lt;h1 id="public-no-optional"&gt;public      "no"            # optional&lt;/h1&gt;
-&lt;h1 id="timeout-2-optional"&gt;timeout     "2"         # optional&lt;/h1&gt;
-&lt;h1 id="mixer_type-software-optional"&gt;mixer_type      "software"              # optional&lt;/h1&gt;
-&lt;h1 id="_75"&gt;}&lt;/h1&gt;
-&lt;h1 id="_76"&gt;&lt;/h1&gt;
-&lt;h1 id="an-example-of-a-recorder-output"&gt;An example of a recorder output:&lt;/h1&gt;
-&lt;h1 id="_77"&gt;&lt;/h1&gt;
-&lt;h1 id="audio_output_3"&gt;audio_output {&lt;/h1&gt;
-&lt;h1 id="type-recorder"&gt;type            "recorder"&lt;/h1&gt;
-&lt;h1 id="name-my-recorder"&gt;name            "My recorder"&lt;/h1&gt;
-&lt;h1 id="encoder-vorbis-optional-vorbis-or-lame"&gt;encoder         "vorbis"                # optional, vorbis or lame&lt;/h1&gt;
-&lt;h1 id="path-varlibmpdrecordermpdogg"&gt;path            "/var/lib/mpd/recorder/mpd.ogg"&lt;/h1&gt;
-&lt;h2 id="quality-50-do-not-define-if-bitrate-is-defined"&gt;quality         "5.0"                   # do not define if bitrate is defined&lt;/h2&gt;
-&lt;h1 id="bitrate-128-do-not-define-if-quality-is-defined"&gt;bitrate         "128"                   # do not define if quality is defined&lt;/h1&gt;
-&lt;h1 id="format-44100161_1"&gt;format          "44100:16:1"&lt;/h1&gt;
-&lt;h1 id="_78"&gt;}&lt;/h1&gt;
-&lt;h1 id="_79"&gt;&lt;/h1&gt;
-&lt;h1 id="an-example-of-a-httpd-output-built-in-http-streaming-server"&gt;An example of a httpd output (built-in HTTP streaming server):&lt;/h1&gt;
-&lt;h1 id="_80"&gt;&lt;/h1&gt;
-&lt;p&gt;audio_output {
-    type        "httpd"
-    name        "My HTTP Stream"
-    encoder     "vorbis"        # optional, vorbis or lame
-    port        "8888"
-    bind_to_address "0.0.0.0"               # optional, IPv4 or IPv6
-    #quality        "5.0"           # do not define if bitrate is defined
-    bitrate     "128"           # do not define if quality is defined
-    format      "44100:16:1"
-    max_clients     "2"                     # optional 0=no limit
-}&lt;/p&gt;
-&lt;h1 id="_81"&gt;&lt;/h1&gt;
-&lt;h1 id="an-example-of-a-pulseaudio-output-streaming-to-a-remote-pulseaudio-server"&gt;An example of a pulseaudio output (streaming to a remote pulseaudio server)&lt;/h1&gt;
-&lt;h1 id="please-see-readmedebian-if-you-want-mpd-to-play-through-the-pulseaudio"&gt;Please see README.Debian if you want mpd to play through the pulseaudio&lt;/h1&gt;
-&lt;h1 id="daemon-started-as-part-of-your-graphical-desktop-session"&gt;daemon started as part of your graphical desktop session!&lt;/h1&gt;
-&lt;h1 id="_82"&gt;&lt;/h1&gt;
-&lt;h1 id="audio_output_4"&gt;audio_output {&lt;/h1&gt;
-&lt;h1 id="type-pulse_1"&gt;type        "pulse"&lt;/h1&gt;
-&lt;h1 id="name-my-pulse-output"&gt;name        "My Pulse Output"&lt;/h1&gt;
-&lt;h1 id="server-remote_server-optional"&gt;server      "remote_server"     # optional&lt;/h1&gt;
-&lt;h1 id="sink-remote_server_sink-optional"&gt;sink        "remote_server_sink"    # optional&lt;/h1&gt;
-&lt;h1 id="_83"&gt;}&lt;/h1&gt;
-&lt;h1 id="_84"&gt;&lt;/h1&gt;
-&lt;h1 id="an-example-of-a-winmm-output-windows-multimedia-api"&gt;An example of a winmm output (Windows multimedia API).&lt;/h1&gt;
-&lt;h1 id="_85"&gt;&lt;/h1&gt;
-&lt;h1 id="audio_output_5"&gt;audio_output {&lt;/h1&gt;
-&lt;h1 id="type-winmm"&gt;type        "winmm"&lt;/h1&gt;
-&lt;h1 id="name-my-winmm-output"&gt;name        "My WinMM output"&lt;/h1&gt;
-&lt;h1 id="device-digital-audio-spdif-high-definition-audio-device-optional"&gt;device      "Digital Audio (S/PDIF) (High Definition Audio Device)" # optional&lt;/h1&gt;
-&lt;h1 id="or"&gt;or&lt;/h1&gt;
-&lt;h1 id="device-0-optional"&gt;device      "0"     # optional&lt;/h1&gt;
-&lt;h1 id="mixer_type-hardware-optional_2"&gt;mixer_type  "hardware"  # optional&lt;/h1&gt;
-&lt;h1 id="_86"&gt;}&lt;/h1&gt;
-&lt;h1 id="_87"&gt;&lt;/h1&gt;
-&lt;h1 id="an-example-of-an-openal-output"&gt;An example of an openal output.&lt;/h1&gt;
-&lt;h1 id="_88"&gt;&lt;/h1&gt;
-&lt;h1 id="audio_output_6"&gt;audio_output {&lt;/h1&gt;
-&lt;h1 id="type-openal"&gt;type        "openal"&lt;/h1&gt;
-&lt;h1 id="name-my-openal-output"&gt;name        "My OpenAL output"&lt;/h1&gt;
-&lt;h1 id="device-digital-audio-spdif-high-definition-audio-device-optional_1"&gt;device      "Digital Audio (S/PDIF) (High Definition Audio Device)" # optional&lt;/h1&gt;
-&lt;h1 id="_89"&gt;}&lt;/h1&gt;
-&lt;h1 id="_90"&gt;&lt;/h1&gt;
-&lt;h2 id="example-pipe-output"&gt;Example "pipe" output:&lt;/h2&gt;
-&lt;h1 id="_91"&gt;&lt;/h1&gt;
-&lt;h1 id="audio_output_7"&gt;audio_output {&lt;/h1&gt;
-&lt;h1 id="type-pipe"&gt;type        "pipe"&lt;/h1&gt;
-&lt;h1 id="name-my-pipe"&gt;name        "my pipe"&lt;/h1&gt;
-&lt;h1 id="command-aplay-f-cd-2devnull"&gt;command     "aplay -f cd 2&amp;gt;/dev/null"&lt;/h1&gt;
-&lt;h2 id="or-if-youre-want-to-use-audiocompress"&gt;Or if you're want to use AudioCompress&lt;/h2&gt;
-&lt;h1 id="command-audiocompress-m-aplay-f-cd-2devnull"&gt;command     "AudioCompress -m | aplay -f cd 2&amp;gt;/dev/null"&lt;/h1&gt;
-&lt;h2 id="or-to-send-raw-pcm-stream-through-pcm"&gt;Or to send raw PCM stream through PCM:&lt;/h2&gt;
-&lt;h1 id="command-nc-exampleorg-8765"&gt;command     "nc example.org 8765"&lt;/h1&gt;
-&lt;h1 id="format-44100162"&gt;format      "44100:16:2"&lt;/h1&gt;
-&lt;h1 id="_92"&gt;}&lt;/h1&gt;
-&lt;h1 id="_93"&gt;&lt;/h1&gt;
-&lt;h2 id="an-example-of-a-null-output-for-no-audio-output"&gt;An example of a null output (for no audio output):&lt;/h2&gt;
-&lt;h1 id="_94"&gt;&lt;/h1&gt;
-&lt;h1 id="audio_output_8"&gt;audio_output {&lt;/h1&gt;
-&lt;h1 id="type-null"&gt;type        "null"&lt;/h1&gt;
-&lt;h1 id="name-my-null-output"&gt;name        "My Null Output"&lt;/h1&gt;
-&lt;h1 id="mixer_type-none-optional"&gt;mixer_type      "none"                  # optional&lt;/h1&gt;
-&lt;h1 id="_95"&gt;}&lt;/h1&gt;
-&lt;h1 id="_96"&gt;&lt;/h1&gt;
-&lt;h6 id="_97"&gt;&lt;/h6&gt;
-&lt;h1 id="normalization-automatic-volume-adjustments"&gt;Normalization automatic volume adjustments&lt;/h1&gt;
-&lt;h1 id="_98"&gt;&lt;/h1&gt;
-&lt;h1 id="this-setting-specifies-the-type-of-replaygain-to-use-this-setting-can-have"&gt;This setting specifies the type of ReplayGain to use. This setting can have&lt;/h1&gt;
-&lt;h1 id="the-argument-off-album-track-or-auto-auto-is-a-special-mode-that"&gt;the argument "off", "album", "track" or "auto". "auto" is a special mode that&lt;/h1&gt;
-&lt;h1 id="chooses-between-track-and-album-depending-on-the-current-state-of"&gt;chooses between "track" and "album" depending on the current state of&lt;/h1&gt;
-&lt;h1 id="random-playback-if-random-playback-is-enabled-then-track-mode-is-used"&gt;random playback. If random playback is enabled then "track" mode is used.&lt;/h1&gt;
-&lt;h1 id="see-httpwwwreplaygainorg-for-more-details-about-replaygain"&gt;See &lt;a href="http://www.replaygain.org"&gt;http://www.replaygain.org&lt;/a&gt; for more details about ReplayGain.&lt;/h1&gt;
-&lt;h1 id="this-setting-is-off-by-default"&gt;This setting is off by default.&lt;/h1&gt;
-&lt;h1 id="_99"&gt;&lt;/h1&gt;
-&lt;h1 id="replaygain-album"&gt;replaygain         "album"&lt;/h1&gt;
-&lt;h1 id="_100"&gt;&lt;/h1&gt;
-&lt;h1 id="this-setting-sets-the-pre-amp-used-for-files-that-have-replaygain-tags-by"&gt;This setting sets the pre-amp used for files that have ReplayGain tags. By&lt;/h1&gt;
-&lt;h1 id="default-this-setting-is-disabled"&gt;default this setting is disabled.&lt;/h1&gt;
-&lt;h1 id="_101"&gt;&lt;/h1&gt;
-&lt;h1 id="replaygain_preamp-0"&gt;replaygain_preamp      "0"&lt;/h1&gt;
-&lt;h1 id="_102"&gt;&lt;/h1&gt;
-&lt;h1 id="this-setting-sets-the-pre-amp-used-for-files-that-do-not-have-replaygain-tags"&gt;This setting sets the pre-amp used for files that do NOT have ReplayGain tags.&lt;/h1&gt;
-&lt;h1 id="by-default-this-setting-is-disabled"&gt;By default this setting is disabled.&lt;/h1&gt;
-&lt;h1 id="_103"&gt;&lt;/h1&gt;
-&lt;h1 id="replaygain_missing_preamp-0"&gt;replaygain_missing_preamp  "0"&lt;/h1&gt;
-&lt;h1 id="_104"&gt;&lt;/h1&gt;
-&lt;h1 id="this-setting-enables-or-disables-replaygain-limiting"&gt;This setting enables or disables ReplayGain limiting.&lt;/h1&gt;
-&lt;h1 id="mpd-calculates-actual-amplification-based-on-the-replaygain-tags"&gt;MPD calculates actual amplification based on the ReplayGain tags&lt;/h1&gt;
-&lt;h1 id="and-replaygain_preamp-replaygain_missing_preamp-setting"&gt;and replaygain_preamp / replaygain_missing_preamp setting.&lt;/h1&gt;
-&lt;h1 id="if-replaygain_limit-is-enabled-mpd-will-never-amplify-audio-signal"&gt;If replaygain_limit is enabled MPD will never amplify audio signal&lt;/h1&gt;
-&lt;h1 id="above-its-original-level-if-replaygain_limit-is-disabled-such-amplification"&gt;above its original level. If replaygain_limit is disabled such amplification&lt;/h1&gt;
-&lt;h1 id="might-occur-by-default-this-setting-is-enabled"&gt;might occur. By default this setting is enabled.&lt;/h1&gt;
-&lt;h1 id="_105"&gt;&lt;/h1&gt;
-&lt;h1 id="replaygain_limit-yes"&gt;replaygain_limit       "yes"&lt;/h1&gt;
-&lt;h1 id="_106"&gt;&lt;/h1&gt;
-&lt;h1 id="this-setting-enables-on-the-fly-normalization-volume-adjustment-this-will"&gt;This setting enables on-the-fly normalization volume adjustment. This will&lt;/h1&gt;
-&lt;h1 id="result-in-the-volume-of-all-playing-audio-to-be-adjusted-so-the-output-has"&gt;result in the volume of all playing audio to be adjusted so the output has&lt;/h1&gt;
-&lt;h1 id="equal-loudness-this-setting-is-disabled-by-default"&gt;equal "loudness". This setting is disabled by default.&lt;/h1&gt;
-&lt;h1 id="_107"&gt;&lt;/h1&gt;
-&lt;h1 id="volume_normalization-no"&gt;volume_normalization       "no"&lt;/h1&gt;
-&lt;h1 id="_108"&gt;&lt;/h1&gt;
-&lt;h6 id="_109"&gt;&lt;/h6&gt;
-&lt;h1 id="character-encoding"&gt;Character Encoding&lt;/h1&gt;
-&lt;h1 id="_110"&gt;&lt;/h1&gt;
-&lt;h1 id="if-file-or-directory-names-do-not-display-correctly-for-your-locale-then-you"&gt;If file or directory names do not display correctly for your locale then you&lt;/h1&gt;
-&lt;h1 id="may-need-to-modify-this-setting"&gt;may need to modify this setting.&lt;/h1&gt;
-&lt;h1 id="_111"&gt;&lt;/h1&gt;
-&lt;p&gt;filesystem_charset      "UTF-8"&lt;/p&gt;
-&lt;h1 id="_112"&gt;&lt;/h1&gt;
-&lt;h6 id="_113"&gt;&lt;/h6&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;### MPD Daemon Processes
+&lt;h3 id="mpd-daemon-processes"&gt;MPD Daemon Processes&lt;/h3&gt;
+&lt;p&gt;These configurations keep the mpd daemon running after boot and restarted upon any failure.&lt;/p&gt;
+&lt;h4 id="linux"&gt;Linux&lt;/h4&gt;
+&lt;p&gt;FIle: /lib/systemd/system/mpd.service&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[Unit]&lt;/span&gt;
+&lt;span class="na"&gt;Description&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;Music Player Daemon&lt;/span&gt;
+&lt;span class="na"&gt;Documentation&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;man:mpd(1) man:mpd.conf(5)&lt;/span&gt;
+&lt;span class="na"&gt;Documentation&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;file:///usr/share/doc/mpd/user-manual.html&lt;/span&gt;
+&lt;span class="na"&gt;After&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;network.target sound.target&lt;/span&gt;
 
-These configurations keep the mpd daemon running after boot and restarted upon any failure.
+&lt;span class="k"&gt;[Service]&lt;/span&gt;
+&lt;span class="na"&gt;Type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;notify&lt;/span&gt;
+&lt;span class="na"&gt;EnvironmentFile&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;/etc/default/mpd&lt;/span&gt;
+&lt;span class="na"&gt;ExecStart&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;/usr/bin/mpd --no-daemon $MPDCONF&lt;/span&gt;
 
-#### Linux
+&lt;span class="c1"&gt;# Enable this setting to ask systemd to watch over MPD, see&lt;/span&gt;
+&lt;span class="c1"&gt;# systemd.service(5).  This is disabled by default because it causes&lt;/span&gt;
+&lt;span class="c1"&gt;# periodic wakeups which are unnecessary if MPD is not playing.&lt;/span&gt;
+&lt;span class="c1"&gt;#WatchdogSec=120&lt;/span&gt;
 
-FIle: /lib/systemd/system/mpd.service
+&lt;span class="c1"&gt;# allow MPD to use real-time priority 50&lt;/span&gt;
+&lt;span class="na"&gt;LimitRTPRIO&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;50&lt;/span&gt;
+&lt;span class="na"&gt;LimitRTTIME&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;infinity&lt;/span&gt;
+
+&lt;span class="c1"&gt;# disallow writing to /usr, /bin, /sbin, ...&lt;/span&gt;
+&lt;span class="na"&gt;ProtectSystem&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;yes&lt;/span&gt;
+
+&lt;span class="c1"&gt;# more paranoid security settings&lt;/span&gt;
+&lt;span class="na"&gt;NoNewPrivileges&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;yes&lt;/span&gt;
+&lt;span class="na"&gt;ProtectKernelTunables&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;yes&lt;/span&gt;
+&lt;span class="na"&gt;ProtectControlGroups&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;yes&lt;/span&gt;
+&lt;span class="na"&gt;ProtectKernelModules&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;yes&lt;/span&gt;
+&lt;span class="c1"&gt;# AF_NETLINK is required by libsmbclient, or it will exit() .. *sigh*&lt;/span&gt;
+&lt;span class="na"&gt;RestrictAddressFamilies&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;AF_INET AF_INET6 AF_UNIX AF_NETLINK&lt;/span&gt;
+&lt;span class="na"&gt;RestrictNamespaces&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;yes&lt;/span&gt;
+
+&lt;span class="k"&gt;[Install]&lt;/span&gt;
+&lt;span class="na"&gt;WantedBy&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;multi-user.target&lt;/span&gt;
+&lt;span class="na"&gt;Also&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;mpd.socket&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;[Unit]
-Description=Music Player Daemon
-Documentation=man:mpd(1) man:mpd.conf(5)
-Documentation=file:///usr/share/doc/mpd/user-manual.html
-After=network.target sound.target&lt;/p&gt;
-&lt;p&gt;[Service]
-Type=notify
-EnvironmentFile=/etc/default/mpd
-ExecStart=/usr/bin/mpd --no-daemon $MPDCONF&lt;/p&gt;
-&lt;h1 id="enable-this-setting-to-ask-systemd-to-watch-over-mpd-see"&gt;Enable this setting to ask systemd to watch over MPD, see&lt;/h1&gt;
-&lt;h1 id="systemdservice5-this-is-disabled-by-default-because-it-causes"&gt;systemd.service(5).  This is disabled by default because it causes&lt;/h1&gt;
-&lt;h1 id="periodic-wakeups-which-are-unnecessary-if-mpd-is-not-playing"&gt;periodic wakeups which are unnecessary if MPD is not playing.&lt;/h1&gt;
-&lt;h1 id="watchdogsec120"&gt;WatchdogSec=120&lt;/h1&gt;
-&lt;h1 id="allow-mpd-to-use-real-time-priority-50"&gt;allow MPD to use real-time priority 50&lt;/h1&gt;
-&lt;p&gt;LimitRTPRIO=50
-LimitRTTIME=infinity&lt;/p&gt;
-&lt;h1 id="disallow-writing-to-usr-bin-sbin"&gt;disallow writing to /usr, /bin, /sbin, ...&lt;/h1&gt;
-&lt;p&gt;ProtectSystem=yes&lt;/p&gt;
-&lt;h1 id="more-paranoid-security-settings"&gt;more paranoid security settings&lt;/h1&gt;
-&lt;p&gt;NoNewPrivileges=yes
-ProtectKernelTunables=yes
-ProtectControlGroups=yes
-ProtectKernelModules=yes&lt;/p&gt;
-&lt;h1 id="af_netlink-is-required-by-libsmbclient-or-it-will-exit-sigh"&gt;AF_NETLINK is required by libsmbclient, or it will exit() .. &lt;em&gt;sigh&lt;/em&gt;&lt;/h1&gt;
-&lt;p&gt;RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX AF_NETLINK
-RestrictNamespaces=yes&lt;/p&gt;
-&lt;p&gt;[Install]
-WantedBy=multi-user.target
-Also=mpd.socket&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;## Audio Player&lt;/span&gt;
+&lt;h2 id="audio-player"&gt;Audio Player&lt;/h2&gt;
+&lt;p&gt;Hardware:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;host (BeagleBone AI-64 Debian Linux).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Software:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux: NextCloud app called &lt;strong&gt;audioplayer&lt;/strong&gt;, visible on  NextCloud web interface&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The music files reside in the /Music directory of the nextcloud account.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Audio-Player.png" src=".attachments.596467/Audio-Player.png"&gt;&lt;/p&gt;
+&lt;p&gt;Reference: &lt;a href="https://apps.nextcloud.com/apps/audioplayer"&gt;https://apps.nextcloud.com/apps/audioplayer&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="plex-television-and-music-recordings"&gt;Plex Television and Music Recordings&lt;/h2&gt;
+&lt;p&gt;This is where most TV shows are played from, on either one of the Apple-TVs.&lt;/p&gt;
+&lt;p&gt;Hardware:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;TrueNAS Scale container&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Software:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Debian: Plex Media Server app, Web Interface &lt;a href="http://127.0.0.1:32400/web/index.html#!/"&gt;http://127.0.0.1:32400/web/index.html#!/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;iOS: Plexamp (Music) on the Phone or Tablet&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="IMG_233B4FCE41DA-1.jpeg" src=".attachments.596467/IMG_233B4FCE41DA-1.jpeg"&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;tvOS: Plex (Video, Music) on the Apple-TV&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Libraries:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;TV: /tv_share/tv (Recordings come from OTA HDHomeRun below)&lt;/li&gt;
+&lt;li&gt;Movies: ~/tv_share/movies&lt;/li&gt;
+&lt;li&gt;Music: ~/nextcloud/Music&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Reference: &lt;a href="https://www.plex.tv/media-server-downloads/"&gt;https://www.plex.tv/media-server-downloads/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="over-the-air-ota-hdhomerun-television-recording"&gt;Over-the-Air (OTA) HDHomeRun Television Recording&lt;/h2&gt;
+&lt;p&gt;Hardware:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;host HDHomeRun (Silicondust Engineering Flex-4; &lt;a href="https://www.silicondust.com/product/hdhomerun-flex-4k/"&gt;https://www.silicondust.com/product/hdhomerun-flex-4k/&lt;/a&gt;) with 2TB USB SSD locally attached.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Software:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Built-in webservice on port 80 (&lt;a href="http://hdhomerun.local/"&gt;http://hdhomerun.local/&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;iOS: HDHomeRun (Used to set recordings and delete old shows on the HDHomeRun box)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="IMG_5456720E92DB-1.jpeg" src=".attachments.596467/IMG_5456720E92DB-1.jpeg"&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Application Programming Interface (API): &lt;a href="https://info.hdhomerun.com/info/http_api"&gt;https://info.hdhomerun.com/info/http_api&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="copy-tv-recordings"&gt;Copy TV Recordings&lt;/h3&gt;
+&lt;p&gt;The actual recording from OTA happens on the HDHomeRun box, and I copy the recordings into a Plex library using the HDHomeRun web interface. This is scheduled once a day in cron.&lt;/p&gt;
+&lt;p&gt;File: \~/tv_share/tv/hdhomerun/get.sh&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+&lt;span class="c1"&gt;#-------------------------------------------------&lt;/span&gt;
+&lt;span class="c1"&gt;# File get.sh&lt;/span&gt;
+&lt;span class="c1"&gt;# Usage: get.sh&lt;/span&gt;
+&lt;span class="c1"&gt;#   Set the IP address of the HDHomeRun Flex box&lt;/span&gt;
+&lt;span class="c1"&gt;#    with DVR USB disk attached&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# Purpose: Copy recordings to the shared filesystem &lt;/span&gt;
+&lt;span class="c1"&gt;#   so they can be played by other software,&lt;/span&gt;
+&lt;span class="c1"&gt;#   i.e.: Plex, Infuse, VLC, etc...&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# Dependencies: &lt;/span&gt;
+&lt;span class="c1"&gt;#  -apt install jq. &lt;/span&gt;
+&lt;span class="c1"&gt;#  -curl is installed by normal OS. &lt;/span&gt;
+&lt;span class="c1"&gt;#  -silicondust.com DVR subscription&lt;/span&gt;
+&lt;span class="c1"&gt;#   required to record on the device, $35 annual&lt;/span&gt;
+&lt;span class="c1"&gt;#   hdhomerun_config also from silicondust.com&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# History:&lt;/span&gt;
+&lt;span class="c1"&gt;#  Date        Author      Description&lt;/span&gt;
+&lt;span class="c1"&gt;# -----------  ----------  -----------------------&lt;/span&gt;
+&lt;span class="c1"&gt;# 22-Jul-2021  Don Cohoon  Created on MacOS&lt;/span&gt;
+&lt;span class="c1"&gt;# 20-Jan-2023  Don Cohoon  Added REAL_URL because&lt;/span&gt;
+&lt;span class="c1"&gt;#  firmware release kept ${IP} as file name causing&lt;/span&gt;
+&lt;span class="c1"&gt;#   of zero byte files&lt;/span&gt;
+&lt;span class="c1"&gt;#-------------------------------------------------&lt;/span&gt;
+&lt;span class="nv"&gt;MYHOME&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/mnt/vol032&amp;quot;&lt;/span&gt;
+&lt;span class="nv"&gt;MYDIR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;tv_share/tv&amp;quot;&lt;/span&gt;
+&lt;span class="nv"&gt;MYTESTFILE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;MYHOME&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;/tv_share/get.sh
+&lt;span class="nb"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+&lt;span class="c1"&gt;#-------------------------------------------------&lt;/span&gt;
+&lt;span class="c1"&gt;# Log&lt;/span&gt;
+&lt;span class="k"&gt;function&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;logit&lt;span class="o"&gt;()&lt;/span&gt;
+&lt;span class="o"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$@&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;0&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;/bin/date&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$@&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;&amp;gt;hdhomerun.log&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&amp;gt;&lt;span class="p"&gt;&amp;amp;&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
 
-&lt;span class="n"&gt;Hardware&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="c1"&gt;#-------------------------------------------------&lt;/span&gt;
+&lt;span class="c1"&gt;# Ensure we move to correct directory&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="nb"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;MYHOME&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;/&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;MYDIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;!&lt;span class="w"&gt; &lt;/span&gt;-f&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;MYTESTFILE&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;then&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;logit&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;=&amp;gt; Cannot change to &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;MYHOME&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;/&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;MYDIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nb"&gt;exit&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;
+&lt;span class="k"&gt;fi&lt;/span&gt;
 
-&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;host&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BeagleBone&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;AI&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;64&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Debian&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Linux&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;span class="c1"&gt;#-------------------------------------------------&lt;/span&gt;
+&lt;span class="c1"&gt;# Get IP address of TV Server&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="nv"&gt;IP&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;/usr/local/bin/hdhomerun_config&lt;span class="w"&gt; &lt;/span&gt;discover&lt;span class="p"&gt;|&lt;/span&gt;awk&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;{print $6}&amp;#39;&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;
+logit&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;=&amp;gt; IP address of TV server is &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;IP&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
 
-&lt;span class="n"&gt;Software&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="c1"&gt;#-------------------------------------------------&lt;/span&gt;
+&lt;span class="c1"&gt;# Get Record engine status &lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+logit&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;=&amp;gt; discover.json&amp;quot;&lt;/span&gt;
+/usr/bin/curl&lt;span class="w"&gt; &lt;/span&gt;-s&lt;span class="w"&gt; &lt;/span&gt;http://&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;IP&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;/discover.json&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;discover.json&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&amp;gt;&amp;gt;hdhomerun.log
+&lt;span class="c1"&gt;#                             ^&lt;/span&gt;
+&lt;span class="c1"&gt;#cat discover.json&lt;/span&gt;
+&lt;span class="c1"&gt;#logit &lt;/span&gt;
+&lt;span class="c1"&gt;#logit &amp;quot;. . .&amp;quot;&lt;/span&gt;
 
-&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Linux&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;NextCloud&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;called&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;audioplayer&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;visible&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;on&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="n"&gt;NextCloud&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;web&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;interface&lt;/span&gt;
+&lt;span class="c1"&gt;#-------------------------------------------------&lt;/span&gt;
+&lt;span class="c1"&gt;# Get recorded_files.json from root of dvr&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+logit&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;=&amp;gt; recorded_files.json&amp;quot;&lt;/span&gt;
+/usr/bin/curl&lt;span class="w"&gt; &lt;/span&gt;-s&lt;span class="w"&gt;  &lt;/span&gt;--header&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Accept: */*&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;         &lt;/span&gt;--header&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Accept-Encoding: gzip, deflate&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;         &lt;/span&gt;--header&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Accept-Language: en-US,en;q=0.5&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;         &lt;/span&gt;--header&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Cache-Control: no-cache&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;         &lt;/span&gt;--header&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Connection: keep-alive&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;         &lt;/span&gt;--header&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Pragma: no cache&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;         &lt;/span&gt;--header&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Host: &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;IP&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;         &lt;/span&gt;--header&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Referer: http://&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;IP&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;/recorded_files.html&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;         &lt;/span&gt;--header&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:89.0) Gecko/20100101 Firefox/89.0&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;http://&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;IP&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;/recorded_files.json?DisplayGroupID&lt;span class="o"&gt;=&lt;/span&gt;root&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;recorded_files.json&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&amp;gt;&amp;gt;hdhomerun.log
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="c1"&gt;#            ^                   ^              ^ &lt;/span&gt;
+&lt;span class="c1"&gt;#cat recorded_files.json &lt;/span&gt;
+&lt;span class="c1"&gt;#logit &lt;/span&gt;
+&lt;span class="c1"&gt;#logit &amp;quot;. . .&amp;quot;&lt;/span&gt;
 
-&lt;span class="n"&gt;The&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;music&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;files&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;reside&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;Music&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;directory&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;of&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;nextcloud&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;account&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;span class="c1"&gt;#-------------------------------------------------&lt;/span&gt;
+&lt;span class="c1"&gt;# Get root SeriesIDs from recorded_files.json&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="nb"&gt;declare&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;-a&lt;span class="w"&gt; &lt;/span&gt;SeriesID
+&lt;span class="nv"&gt;SeriesID&lt;/span&gt;&lt;span class="o"&gt;=(&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;/usr/bin/jq&lt;span class="w"&gt; &lt;/span&gt;-r&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;.[] | .SeriesID&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;recorded_files.json&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="c1"&gt;#for (( i = 0 ; i &amp;lt; ${#SeriesID[@]} ; i++))&lt;/span&gt;
+&lt;span class="c1"&gt;#do&lt;/span&gt;
+&lt;span class="c1"&gt;#  logit &amp;quot;Series [$i]: ${SeriesID[$i]}&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#done&lt;/span&gt;
 
-&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Audio&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Player&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;png&lt;/span&gt;&lt;span class="p"&gt;](&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;attachments&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;596467&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;Audio&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Player&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;png&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c1"&gt;#-------------------------------------------------&lt;/span&gt;
+&lt;span class="c1"&gt;# Get root Titles from recorded_files.json&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="nb"&gt;declare&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;-a&lt;span class="w"&gt; &lt;/span&gt;Title
+/usr/bin/jq&lt;span class="w"&gt; &lt;/span&gt;-r&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;.[] | .Title&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;recorded_files.json&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;recorded_files.title
+&lt;span class="nb"&gt;let&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+&lt;span class="k"&gt;while&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;read&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;t
+&lt;span class="k"&gt;do&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="c1"&gt;# Add new element at the end of the array&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nv"&gt;Title&lt;/span&gt;&lt;span class="o"&gt;+=(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;t&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;logit&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Title [&lt;/span&gt;&lt;span class="nv"&gt;$i&lt;/span&gt;&lt;span class="s2"&gt;]: &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;Title&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;$i&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nb"&gt;let&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;i++
+&lt;span class="k"&gt;done&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&amp;lt;&lt;span class="w"&gt; &lt;/span&gt;recorded_files.title
+rm&lt;span class="w"&gt; &lt;/span&gt;recorded_files.title
+&lt;span class="c1"&gt;#&lt;/span&gt;
 
-&lt;span class="n"&gt;Reference&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;apps&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nextcloud&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;apps&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;audioplayer&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="c1"&gt;#-------------------------------------------------&lt;/span&gt;
+&lt;span class="c1"&gt;# Get SeriesID recordings, into &amp;quot;Title&amp;quot;/recorded_files.json&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;((&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;iSeriesID&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;iSeriesID&lt;span class="w"&gt; &lt;/span&gt;&amp;lt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="si"&gt;${#&lt;/span&gt;&lt;span class="nv"&gt;SeriesID&lt;/span&gt;&lt;span class="p"&gt;[@]&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;iSeriesID++&lt;span class="o"&gt;))&lt;/span&gt;
+&lt;span class="k"&gt;do&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="c1"&gt;# Put Series into Title directory&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;mkdir&lt;span class="w"&gt; &lt;/span&gt;-p&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;Title&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;$iSeriesID&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt;&lt;span class="w"&gt;       &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;Title&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;$iSeriesID&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
 
-&lt;span class="c1"&gt;## Plex Television and Music Recordings&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;logit&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Downloading Series : &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;Title&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;$iSeriesID&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;/recorded_files.json&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;/usr/bin/curl&lt;span class="w"&gt; &lt;/span&gt;-s&lt;span class="w"&gt;  &lt;/span&gt;--header&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Accept: */*&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;           &lt;/span&gt;--header&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Accept-Encoding: gzip, deflate&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;           &lt;/span&gt;--header&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Accept-Language: en-US,en;q=0.5&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;           &lt;/span&gt;--header&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Cache-Control: no-cache&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;           &lt;/span&gt;--header&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Connection: keep-alive&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;           &lt;/span&gt;--header&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Host: ${IP}&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;           &lt;/span&gt;--header&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Pragma: no-cache&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;           &lt;/span&gt;--header&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Referer: http://${IP}/recorded_files.html?SeriesID=&amp;quot;${SeriesID[$iSeriesID]}&amp;quot;&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;           &lt;/span&gt;--header&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:89.0) Gecko/20100101 Firefox/89.0&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;http://&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;IP&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;/recorded_files.json?SeriesID&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;SeriesID&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;$iSeriesID&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;recorded_files.json&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&amp;gt;&amp;gt;hdhomerun.log
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="c1"&gt;#            ^                   ^           ^&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="c1"&gt;#-------------------------------------------------&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="c1"&gt;# Get all PlayURL recordings for this SeriesID&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nb"&gt;unset&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;PlayURL
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nb"&gt;declare&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;-a&lt;span class="w"&gt; &lt;/span&gt;PlayURL
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nv"&gt;PlayURL&lt;/span&gt;&lt;span class="o"&gt;=(&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;/usr/bin/jq&lt;span class="w"&gt; &lt;/span&gt;-r&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;.[] | .PlayURL&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;recorded_files.json&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;((&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;iPlayURL&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;iPlayURL&lt;span class="w"&gt; &lt;/span&gt;&amp;lt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="si"&gt;${#&lt;/span&gt;&lt;span class="nv"&gt;PlayURL&lt;/span&gt;&lt;span class="p"&gt;[@]&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;iPlayURL++&lt;span class="o"&gt;))&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="k"&gt;do&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;logit&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;PlayURL [&lt;/span&gt;&lt;span class="nv"&gt;$iPlayURL&lt;/span&gt;&lt;span class="s2"&gt;]: &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;PlayURL&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;$iPlayURL&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="k"&gt;done&lt;/span&gt;
 
-&lt;span class="n"&gt;This&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;is&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;where&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;most&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;TV&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;shows&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;are&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;played&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;from&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;on&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;either&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;one&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;of&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Apple&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;TVs&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="c1"&gt;#-------------------------------------------------&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="c1"&gt;# Get all Filename recordings for this SeriesID&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nb"&gt;unset&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;Filename
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nb"&gt;declare&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;-a&lt;span class="w"&gt; &lt;/span&gt;Filename
+&lt;span class="w"&gt;  &lt;/span&gt;/usr/bin/jq&lt;span class="w"&gt; &lt;/span&gt;-r&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;.[] | .Filename&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;recorded_files.json&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;recorded_files.title
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nb"&gt;let&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;iFilename&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="k"&gt;while&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;read&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;f
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="k"&gt;do&lt;/span&gt;
 
-&lt;span class="n"&gt;Hardware&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="c1"&gt;# Add new element at the end of the array&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nv"&gt;Filename&lt;/span&gt;&lt;span class="o"&gt;+=(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;f&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
 
-&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;TrueNAS&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Scale&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;container&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;!&lt;span class="w"&gt; &lt;/span&gt;-f&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;Filename&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;$iFilename&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;then&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# New file, download it&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;logit&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Downloading Filename [&lt;/span&gt;&lt;span class="nv"&gt;$iFilename&lt;/span&gt;&lt;span class="s2"&gt;]: &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;Filename&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;$iFilename&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;mail&lt;span class="w"&gt; &lt;/span&gt;-s&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;HDHomeRun recording: Downloading Filename [&lt;/span&gt;&lt;span class="nv"&gt;$iFilename&lt;/span&gt;&lt;span class="s2"&gt;]: &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;Filename&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;$iFilename&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt; - &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;PlayURL&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;$iFilename&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;bob@example.com&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;lt;&amp;lt;EOF&lt;/span&gt;
+&lt;span class="s"&gt;$(/bin/date)&lt;/span&gt;
+&lt;span class="s"&gt;EOF&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="c1"&gt;#-------------------------------------------------&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="c1"&gt;# Download Recording&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="nv"&gt;REAL_URL&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;&lt;span class="nb"&gt;eval&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;PlayURL&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;$iFilename&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;logit&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;RealURL: &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;REAL_URL&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;/usr/bin/curl&lt;span class="w"&gt;   &lt;/span&gt;--header&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Accept: */*&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;             &lt;/span&gt;--header&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Accept-Encoding: gzip, deflate&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;             &lt;/span&gt;--header&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Accept-Language: en-US,en;q=0.5&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;             &lt;/span&gt;--header&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Cache-Control: no-cache&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;             &lt;/span&gt;--header&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Connection: keep-alive&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;             &lt;/span&gt;--header&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Host: ${IP}&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;             &lt;/span&gt;--header&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Pragma: no-cache&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;             &lt;/span&gt;--header&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:89.0) Gecko/20100101 Firefox/89.0&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;REAL_URL&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;Filename&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;$iFilename&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&amp;gt;&amp;gt;hdhomerun.log
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="c1"&gt;# ^                         ^&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;fi&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="c1"&gt;# &lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nb"&gt;let&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;iFilename++
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="k"&gt;done&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&amp;lt;&lt;span class="w"&gt; &lt;/span&gt;recorded_files.title
 
-&lt;span class="n"&gt;Software&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;rm&lt;span class="w"&gt; &lt;/span&gt;recorded_files.title
 
-&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Debian&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Plex&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Media&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Server&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Web&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Interface&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="mf"&gt;127.0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mf"&gt;0.1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;32400&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;web&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;html&lt;/span&gt;&lt;span class="c1"&gt;#!/&amp;gt;&lt;/span&gt;
-&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;iOS&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Plexamp&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Music&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;on&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Phone&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;or&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Tablet&lt;/span&gt;
-
-&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;IMG_233B4FCE41DA&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;1.j&lt;/span&gt;&lt;span class="n"&gt;peg&lt;/span&gt;&lt;span class="p"&gt;](&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;attachments&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;596467&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;IMG_233B4FCE41DA&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;1.j&lt;/span&gt;&lt;span class="n"&gt;peg&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;tvOS&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Plex&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Video&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Music&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;on&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Apple&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;TV&lt;/span&gt;
-
-&lt;span class="n"&gt;Libraries&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-
-&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;TV&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;tv_share&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;tv&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Recordings&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;come&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;from&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;OTA&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;HDHomeRun&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;below&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Movies&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="n"&gt;tv_share&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;movies&lt;/span&gt;
-&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Music&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="n"&gt;nextcloud&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;Music&lt;/span&gt;
-
-&lt;span class="n"&gt;Reference&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;plex&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tv&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;media&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;server&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;downloads&lt;/span&gt;&lt;span class="o"&gt;/&amp;gt;&lt;/span&gt;
-
-&lt;span class="c1"&gt;## Over-the-Air (OTA) HDHomeRun Television Recording&lt;/span&gt;
-
-&lt;span class="n"&gt;Hardware&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-
-&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;host&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;HDHomeRun&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Silicondust&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Engineering&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Flex&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;silicondust&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;product&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;hdhomerun&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;flex&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;/&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;with&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="n"&gt;TB&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;USB&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;SSD&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;locally&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;attached&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
-
-&lt;span class="n"&gt;Software&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-
-&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Built&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="ow"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;webservice&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;on&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;port&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;80&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;hdhomerun&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="o"&gt;/&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;iOS&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;HDHomeRun&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Used&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;set&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;recordings&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;and&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;delete&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;old&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;shows&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;on&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;HDHomeRun&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;box&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;IMG_5456720E92DB&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;1.j&lt;/span&gt;&lt;span class="n"&gt;peg&lt;/span&gt;&lt;span class="p"&gt;](&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;attachments&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;596467&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;IMG_5456720E92DB&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;1.j&lt;/span&gt;&lt;span class="n"&gt;peg&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Application&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Programming&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Interface&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;API&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;info&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;hdhomerun&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;info&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;http_api&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-
-&lt;span class="c1"&gt;### Copy TV Recordings&lt;/span&gt;
-
-&lt;span class="n"&gt;The&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;actual&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;recording&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;from&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;OTA&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;happens&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;on&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;HDHomeRun&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;box&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;and&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;I&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;copy&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;recordings&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;into&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Plex&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;library&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;using&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;HDHomeRun&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;web&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;interface&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;This&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;is&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;scheduled&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;once&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;day&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;cron&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
-
-&lt;span class="n"&gt;File&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;\&lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="n"&gt;tv_share&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;tv&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;hdhomerun&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sh&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="c1"&gt;# Back to main directory&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;..
+&lt;span class="k"&gt;done&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;h1 id="binbash"&gt;!/bin/bash&lt;/h1&gt;
-&lt;h1 id="-"&gt;-------------------------------------------------&lt;/h1&gt;
-&lt;h1 id="file-getsh"&gt;File get.sh&lt;/h1&gt;
-&lt;h1 id="usage-getsh"&gt;Usage: get.sh&lt;/h1&gt;
-&lt;h1 id="set-the-ip-address-of-the-hdhomerun-flex-box"&gt;Set the IP address of the HDHomeRun Flex box&lt;/h1&gt;
-&lt;h1 id="with-dvr-usb-disk-attached"&gt;with DVR USB disk attached&lt;/h1&gt;
-&lt;h1 id="_114"&gt;&lt;/h1&gt;
-&lt;h1 id="purpose-copy-recordings-to-the-shared-filesystem"&gt;Purpose: Copy recordings to the shared filesystem&lt;/h1&gt;
-&lt;h1 id="so-they-can-be-played-by-other-software"&gt;so they can be played by other software,&lt;/h1&gt;
-&lt;h1 id="ie-plex-infuse-vlc-etc"&gt;i.e.: Plex, Infuse, VLC, etc...&lt;/h1&gt;
-&lt;h1 id="_115"&gt;&lt;/h1&gt;
-&lt;h1 id="dependencies"&gt;Dependencies:&lt;/h1&gt;
-&lt;h1 id="-apt-install-jq"&gt;-apt install jq.&lt;/h1&gt;
-&lt;h1 id="-curl-is-installed-by-normal-os"&gt;-curl is installed by normal OS.&lt;/h1&gt;
-&lt;h1 id="-silicondustcom-dvr-subscription"&gt;-silicondust.com DVR subscription&lt;/h1&gt;
-&lt;h1 id="required-to-record-on-the-device-35-annual"&gt;required to record on the device, $35 annual&lt;/h1&gt;
-&lt;h1 id="hdhomerun_config-also-from-silicondustcom"&gt;hdhomerun_config also from silicondust.com&lt;/h1&gt;
-&lt;h1 id="_116"&gt;&lt;/h1&gt;
-&lt;h1 id="history"&gt;History:&lt;/h1&gt;
-&lt;h1 id="date-author-description"&gt;Date        Author      Description&lt;/h1&gt;
-&lt;h1 id="-_1"&gt;-----------  ----------  -----------------------&lt;/h1&gt;
-&lt;h1 id="22-jul-2021-don-cohoon-created-on-macos"&gt;22-Jul-2021  Don Cohoon  Created on MacOS&lt;/h1&gt;
-&lt;h1 id="20-jan-2023-don-cohoon-added-real_url-because"&gt;20-Jan-2023  Don Cohoon  Added REAL_URL because&lt;/h1&gt;
-&lt;h1 id="firmware-release-kept-ip-as-file-name-causing"&gt;firmware release kept ${IP} as file name causing&lt;/h1&gt;
-&lt;h1 id="of-zero-byte-files"&gt;of zero byte files&lt;/h1&gt;
-&lt;h1 id="-_2"&gt;-------------------------------------------------&lt;/h1&gt;
-&lt;p&gt;MYHOME="/mnt/vol032"
-MYDIR="tv_share/tv"
-MYTESTFILE=${MYHOME}/tv_share/get.sh
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin&lt;/p&gt;
-&lt;h1 id="-_3"&gt;-------------------------------------------------&lt;/h1&gt;
-&lt;h1 id="log"&gt;Log&lt;/h1&gt;
-&lt;p&gt;function logit()
-{
-  echo $@
-  echo ${0} $(/bin/date) : $@ &amp;gt;&amp;gt;hdhomerun.log 2&amp;gt;&amp;amp;1
-}&lt;/p&gt;
-&lt;h1 id="-_4"&gt;-------------------------------------------------&lt;/h1&gt;
-&lt;h1 id="ensure-we-move-to-correct-directory"&gt;Ensure we move to correct directory&lt;/h1&gt;
-&lt;h1 id="_117"&gt;&lt;/h1&gt;
-&lt;p&gt;cd ${MYHOME}/${MYDIR}
-if [ ! -f ${MYTESTFILE} ]; then
-  logit "=&amp;gt; Cannot change to ${MYHOME}/${MYDIR}"
-  exit 2
-fi&lt;/p&gt;
-&lt;h1 id="-_5"&gt;-------------------------------------------------&lt;/h1&gt;
-&lt;h1 id="get-ip-address-of-tv-server"&gt;Get IP address of TV Server&lt;/h1&gt;
-&lt;h1 id="_118"&gt;&lt;/h1&gt;
-&lt;p&gt;IP=$(/usr/local/bin/hdhomerun_config discover|awk '{print $6}')
-logit "=&amp;gt; IP address of TV server is ${IP}"&lt;/p&gt;
-&lt;h1 id="-_6"&gt;-------------------------------------------------&lt;/h1&gt;
-&lt;h1 id="get-record-engine-status"&gt;Get Record engine status&lt;/h1&gt;
-&lt;h1 id="_119"&gt;&lt;/h1&gt;
-&lt;p&gt;logit "=&amp;gt; discover.json"
-/usr/bin/curl -s http://${IP}/discover.json &amp;gt;discover.json 2&amp;gt;&amp;gt;hdhomerun.log&lt;/p&gt;
-&lt;h1 id="_120"&gt;^&lt;/h1&gt;
-&lt;h1 id="cat-discoverjson"&gt;cat discover.json&lt;/h1&gt;
-&lt;h1 id="logit"&gt;logit&lt;/h1&gt;
-&lt;h1 id="logit_1"&gt;logit ". . ."&lt;/h1&gt;
-&lt;h1 id="-_7"&gt;-------------------------------------------------&lt;/h1&gt;
-&lt;h1 id="get-recorded_filesjson-from-root-of-dvr"&gt;Get recorded_files.json from root of dvr&lt;/h1&gt;
-&lt;h1 id="_121"&gt;&lt;/h1&gt;
-&lt;p&gt;logit "=&amp;gt; recorded_files.json"
-/usr/bin/curl -s  --header 'Accept: &lt;em&gt;/&lt;/em&gt;' \
-         --header 'Accept-Encoding: gzip, deflate' \
-         --header 'Accept-Language: en-US,en;q=0.5' \
-         --header 'Cache-Control: no-cache' \
-         --header 'Connection: keep-alive' \
-         --header 'Pragma: no cache' \
-         --header "Host: ${IP}" \
-         --header "Referer: http://${IP}/recorded_files.html" \
-         --header 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:89.0) Gecko/20100101 Firefox/89.0' \
-  http://${IP}/recorded_files.json?DisplayGroupID=root &amp;gt; recorded_files.json 2&amp;gt;&amp;gt;hdhomerun.log
-  #            ^                   ^              ^ &lt;/p&gt;
-&lt;h1 id="cat-recorded_filesjson"&gt;cat recorded_files.json&lt;/h1&gt;
-&lt;h1 id="logit_2"&gt;logit&lt;/h1&gt;
-&lt;h1 id="logit_3"&gt;logit ". . ."&lt;/h1&gt;
-&lt;h1 id="-_8"&gt;-------------------------------------------------&lt;/h1&gt;
-&lt;h1 id="get-root-seriesids-from-recorded_filesjson"&gt;Get root SeriesIDs from recorded_files.json&lt;/h1&gt;
-&lt;h1 id="_122"&gt;&lt;/h1&gt;
-&lt;p&gt;declare -a SeriesID
-SeriesID=($(/usr/bin/jq -r '.[] | .SeriesID' recorded_files.json))&lt;/p&gt;
-&lt;h1 id="for-i-0-i-seriesid-i"&gt;for (( i = 0 ; i &amp;lt; ${#SeriesID[@]} ; i++))&lt;/h1&gt;
-&lt;h1 id="do"&gt;do&lt;/h1&gt;
-&lt;h1 id="logit-series-i-seriesidi"&gt;logit "Series [$i]: ${SeriesID[$i]}"&lt;/h1&gt;
-&lt;h1 id="done"&gt;done&lt;/h1&gt;
-&lt;h1 id="-_9"&gt;-------------------------------------------------&lt;/h1&gt;
-&lt;h1 id="get-root-titles-from-recorded_filesjson"&gt;Get root Titles from recorded_files.json&lt;/h1&gt;
-&lt;h1 id="_123"&gt;&lt;/h1&gt;
-&lt;p&gt;declare -a Title
-/usr/bin/jq -r '.[] | .Title' recorded_files.json &amp;gt; recorded_files.title
-let i=0
-while read t
-do
-  # Add new element at the end of the array
-  Title+=("${t}")
-  logit "Title [$i]: ${Title[$i]}"
-  let i++
-done &amp;lt; recorded_files.title
-rm recorded_files.title&lt;/p&gt;
-&lt;h1 id="_124"&gt;&lt;/h1&gt;
-&lt;h1 id="-_10"&gt;-------------------------------------------------&lt;/h1&gt;
-&lt;h1 id="get-seriesid-recordings-into-titlerecorded_filesjson"&gt;Get SeriesID recordings, into "Title"/recorded_files.json&lt;/h1&gt;
-&lt;h1 id="_125"&gt;&lt;/h1&gt;
-&lt;p&gt;for (( iSeriesID = 0 ; iSeriesID &amp;lt; ${#SeriesID[@]} ; iSeriesID++))
-do
-  # Put Series into Title directory
-  mkdir -p "${Title[$iSeriesID]}"
-  cd       "${Title[$iSeriesID]}"&lt;/p&gt;
-&lt;p&gt;logit "Downloading Series : ${Title[$iSeriesID]}/recorded_files.json"
-  /usr/bin/curl -s  --header 'Accept: &lt;em&gt;/&lt;/em&gt;' \
-           --header 'Accept-Encoding: gzip, deflate' \
-           --header 'Accept-Language: en-US,en;q=0.5' \
-           --header 'Cache-Control: no-cache' \
-           --header 'Connection: keep-alive' \
-           --header 'Host: ${IP}' \
-           --header 'Pragma: no-cache' \
-           --header 'Referer: http://${IP}/recorded_files.html?SeriesID="${SeriesID[$iSeriesID]}"' \
-           --header 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:89.0) Gecko/20100101 Firefox/89.0' \
-    http://${IP}/recorded_files.json?SeriesID="${SeriesID[$iSeriesID]}" &amp;gt; recorded_files.json 2&amp;gt;&amp;gt;hdhomerun.log
-    #            ^                   ^           ^
-  #-------------------------------------------------
-  # Get all PlayURL recordings for this SeriesID
-  #
-  unset PlayURL
-  declare -a PlayURL
-  PlayURL=($(/usr/bin/jq -r '.[] | .PlayURL' recorded_files.json))
-  for (( iPlayURL = 0 ; iPlayURL &amp;lt; ${#PlayURL[@]} ; iPlayURL++))
-  do
-    logit "PlayURL [$iPlayURL]: ${PlayURL[$iPlayURL]}"
-  done&lt;/p&gt;
-&lt;p&gt;#-------------------------------------------------
-  # Get all Filename recordings for this SeriesID
-  #
-  unset Filename
-  declare -a Filename
-  /usr/bin/jq -r '.[] | .Filename' recorded_files.json &amp;gt; recorded_files.title
-  let iFilename=0
-  while read f
-  do&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Add new element at the end of the array&lt;/span&gt;
-&lt;span class="n"&gt;Filename&lt;/span&gt;&lt;span class="o"&gt;+=&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;${f}&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;${Filename[$iFilename]}&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;then&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# New file, download it&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="n"&gt;logit&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Downloading Filename [$iFilename]: ${Filename[$iFilename]}&amp;quot;&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="n"&gt;mail&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;HDHomeRun recording: Downloading Filename [$iFilename]: ${Filename[$iFilename]} - ${PlayURL[$iFilename]}&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;bob&lt;/span&gt;&lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="n"&gt;example&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;EOF&lt;/span&gt;
+&lt;h2 id="curseradio"&gt;curseradio&lt;/h2&gt;
+&lt;p&gt;Python project to listen to streaming internet radio from command line&lt;/p&gt;
+&lt;p&gt;Files:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;\~/.local/share/curseradio/favourites.opml&lt;/li&gt;
+&lt;li&gt;\~/radio.sh&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+&lt;span class="c1"&gt;#sudo apt-get install curseradio&lt;/span&gt;
+&lt;span class="c1"&gt;#git clone https://github.com/chronitis/curseradio/&lt;/span&gt;
+&lt;span class="c1"&gt;## cd&lt;/span&gt;
+&lt;span class="nb"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;curseradio
+&lt;span class="c1"&gt;## create venv&lt;/span&gt;
+&lt;span class="c1"&gt;#python3 -m venv env&lt;/span&gt;
+&lt;span class="c1"&gt;## activate vene&lt;/span&gt;
+&lt;span class="nb"&gt;source&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;env/bin/activate
+&lt;span class="c1"&gt;## install required libraries via requirements.txt file&lt;/span&gt;
+&lt;span class="c1"&gt;# cat requirements.txt &lt;/span&gt;
+&lt;span class="c1"&gt;#lxml&lt;/span&gt;
+&lt;span class="c1"&gt;#requests&lt;/span&gt;
+&lt;span class="c1"&gt;#pyxdg&lt;/span&gt;
+&lt;span class="c1"&gt;## pip install&lt;/span&gt;
+&lt;span class="c1"&gt;#pip install -r requirements.txt&lt;/span&gt;
+&lt;span class="c1"&gt;## setup.py&lt;/span&gt;
+&lt;span class="c1"&gt;# pip install -e .&lt;/span&gt;
+&lt;span class="c1"&gt;##Obtaining file:///media/bob/data/curseradio&lt;/span&gt;
+&lt;span class="c1"&gt;##Installing collected packages: curseradio&lt;/span&gt;
+&lt;span class="c1"&gt;##  Running setup.py develop for curseradio&lt;/span&gt;
+&lt;span class="c1"&gt;##Successfully installed curseradio&lt;/span&gt;
+&lt;span class="c1"&gt;##&lt;/span&gt;
+&lt;span class="c1"&gt;## Run it!&lt;/span&gt;
+curseradio
+&lt;span class="c1"&gt;## Get out of virtual environment&lt;/span&gt;
+deactivate
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;$(/bin/date)
-EOF
-      #-------------------------------------------------
-      # Download Recording
-      #
-      REAL_URL=$(eval echo ${PlayURL[$iFilename]})
-      logit "RealURL: ${REAL_URL}"
-      /usr/bin/curl   --header 'Accept: &lt;em&gt;/&lt;/em&gt;' \
-             --header 'Accept-Encoding: gzip, deflate' \
-             --header 'Accept-Language: en-US,en;q=0.5' \
-             --header 'Cache-Control: no-cache' \
-             --header 'Connection: keep-alive' \
-             --header 'Host: ${IP}' \
-             --header 'Pragma: no-cache' \
-             --header 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:89.0) Gecko/20100101 Firefox/89.0' \
-      "${REAL_URL}" &amp;gt; "${Filename[$iFilename]}" 2&amp;gt;&amp;gt;hdhomerun.log
-      # ^                         ^
-    fi
-    # 
-    let iFilename++
-  done &amp;lt; recorded_files.title&lt;/p&gt;
-&lt;p&gt;rm recorded_files.title&lt;/p&gt;
-&lt;p&gt;# Back to main directory
-  cd ..
-done&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gu"&gt;##&lt;/span&gt; curseradio
-
-Python project to listen to streaming internet radio from command line
-
-Files:
-
-&lt;span class="k"&gt;*&lt;/span&gt; \~/.local/share/curseradio/favourites.opml
-&lt;span class="k"&gt;*&lt;/span&gt; \~/radio.sh
+&lt;h3 id="cursoradio-configuration-file"&gt;cursoradio configuration file&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;outline&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;type&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;audio&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Handcrafted Radio (US)&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;URL&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;
+&lt;span class="s"&gt;http://opml.radiotime.com/Tune.ashx?id=s97491&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;bitrate&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;128&amp;quot;&lt;/span&gt;
+&lt;span class="nx"&gt;reliability&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;98&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;guide_id&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;s97491&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;subtext&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Jackson Browne - Doctor My&lt;/span&gt;
+&lt;span class="s"&gt;Eyes&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;genre_id&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;g54&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;formats&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;mp3&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;playing&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Jackson Browne - Doctor My&lt;/span&gt;
+&lt;span class="s"&gt;Eyes&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;playing_image&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://cdn-albums.tunein.com/gn/WJRG9NQZCHq.jpg&amp;quot;&lt;/span&gt;
+&lt;span class="nx"&gt;item&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;station&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;image&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://cdn-radiotime-logos.tunein.com/s97491q.png&lt;/span&gt;
+&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;now_playing_id&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;s97491&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;preset_id&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;s97491&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;
+&lt;span class="nx"&gt;from&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;local&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;share&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;curseradio&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;favourites&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;opml&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;h1 id="binbash_1"&gt;!/bin/bash&lt;/h1&gt;
-&lt;h1 id="sudo-apt-get-install-curseradio"&gt;sudo apt-get install curseradio&lt;/h1&gt;
-&lt;h1 id="git-clone-httpsgithubcomchronitiscurseradio"&gt;git clone https://github.com/chronitis/curseradio/&lt;/h1&gt;
-&lt;h2 id="cd"&gt;cd&lt;/h2&gt;
-&lt;p&gt;cd curseradio&lt;/p&gt;
-&lt;h2 id="create-venv"&gt;create venv&lt;/h2&gt;
-&lt;h1 id="python3-m-venv-env"&gt;python3 -m venv env&lt;/h1&gt;
-&lt;h2 id="activate-vene"&gt;activate vene&lt;/h2&gt;
-&lt;p&gt;source env/bin/activate&lt;/p&gt;
-&lt;h2 id="install-required-libraries-via-requirementstxt-file"&gt;install required libraries via requirements.txt file&lt;/h2&gt;
-&lt;h1 id="cat-requirementstxt"&gt;cat requirements.txt&lt;/h1&gt;
-&lt;h1 id="lxml"&gt;lxml&lt;/h1&gt;
-&lt;h1 id="requests"&gt;requests&lt;/h1&gt;
-&lt;h1 id="pyxdg"&gt;pyxdg&lt;/h1&gt;
-&lt;h2 id="pip-install"&gt;pip install&lt;/h2&gt;
-&lt;h1 id="pip-install-r-requirementstxt"&gt;pip install -r requirements.txt&lt;/h1&gt;
-&lt;h2 id="setuppy"&gt;setup.py&lt;/h2&gt;
-&lt;h1 id="pip-install-e"&gt;pip install -e .&lt;/h1&gt;
-&lt;h2 id="obtaining-filemediabobdatacurseradio"&gt;Obtaining file:///media/bob/data/curseradio&lt;/h2&gt;
-&lt;h2 id="installing-collected-packages-curseradio"&gt;Installing collected packages: curseradio&lt;/h2&gt;
-&lt;h2 id="running-setuppy-develop-for-curseradio"&gt;Running setup.py develop for curseradio&lt;/h2&gt;
-&lt;h2 id="successfully-installed-curseradio"&gt;Successfully installed curseradio&lt;/h2&gt;
-&lt;h2 id="_126"&gt;&lt;/h2&gt;
-&lt;h2 id="run-it"&gt;Run it!&lt;/h2&gt;
-&lt;p&gt;curseradio&lt;/p&gt;
-&lt;h2 id="get-out-of-virtual-environment"&gt;Get out of virtual environment&lt;/h2&gt;
-&lt;p&gt;deactivate&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;### cursoradio configuration file
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;outline type="audio" text="Handcrafted Radio (US)" URL="
-http://opml.radiotime.com/Tune.ashx?id=s97491" bitrate="128"
-reliability="98" guide_id="s97491" subtext="Jackson Browne - Doctor My
-Eyes" genre_id="g54" formats="mp3" playing="Jackson Browne - Doctor My
-Eyes" playing_image="http://cdn-albums.tunein.com/gn/WJRG9NQZCHq.jpg"
-item="station" image="http://cdn-radiotime-logos.tunein.com/s97491q.png
-" now_playing_id="s97491" preset_id="s97491"/&gt;
-...
-from ~/.local/share/curseradio/favourites.opml
-```&lt;/p&gt;
 &lt;h1 id="conclusion"&gt;Conclusion&lt;/h1&gt;
 &lt;p&gt;Now that you have sensed the sights and sounds of Video and Audio controlled and maintained by your computer, I wish to thank you for your interest in this book..&lt;/p&gt;
 &lt;p&gt;Hopefully this little write up was of some help.&lt;/p&gt;
@@ -13855,6 +13919,7 @@ from ~/.local/share/curseradio/favourites.opml
 -- Don&lt;/p&gt;
 &lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category><category term="systems"></category></entry><entry><title>Miniflux</title><link href="https://dfcsoftware.github.io/miniflux.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/miniflux.html</id><summary type="html">&lt;h1 id="miniflux-news-reader"&gt;Miniflux News Reader&lt;/h1&gt;
 &lt;p&gt;Miniflux is an RSS (Really Simple Syndication) server that will fetch and display RSS feeds from other websites. Also known as a &lt;em&gt;news reader&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href="#miniflux-news-reader"&gt;Miniflux News Reader&lt;/a&gt;&lt;ul&gt;
@@ -13866,6 +13931,7 @@ from ~/.local/share/curseradio/favourites.opml
 &lt;li&gt;&lt;a href="#debianubunturaspbian-package-installation"&gt;Debian/Ubuntu/Raspbian Package Installation&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#exportimport-via-standard-opml-files"&gt;Export/Import …&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;</summary><content type="html">&lt;h1 id="miniflux-news-reader"&gt;Miniflux News Reader&lt;/h1&gt;
 &lt;p&gt;Miniflux is an RSS (Really Simple Syndication) server that will fetch and display RSS feeds from other websites. Also known as a &lt;em&gt;news reader&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href="#miniflux-news-reader"&gt;Miniflux News Reader&lt;/a&gt;&lt;ul&gt;
@@ -14151,6 +14217,7 @@ Rule&lt;span class="w"&gt; &lt;/span&gt;added&lt;span class="w"&gt; &lt;/span&gt
 &lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category><category term="systems"></category></entry><entry><title>MirrorDisks</title><link href="https://dfcsoftware.github.io/mirrordisks.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/mirrordisks.html</id><summary type="html">&lt;h1 id="mirror-disks"&gt;Mirror Disks&lt;/h1&gt;
 &lt;p&gt;Mirroring disks on Linux is simple and prudent to ensure your data survives hardware, software and human failures. All data from one disk is duplicated on another disk and if any &lt;strong&gt;one&lt;/strong&gt; disk fails, you will never know it. So it is important after setting up to monitor …&lt;/p&gt;</summary><content type="html">&lt;h1 id="mirror-disks"&gt;Mirror Disks&lt;/h1&gt;
 &lt;p&gt;Mirroring disks on Linux is simple and prudent to ensure your data survives hardware, software and human failures. All data from one disk is duplicated on another disk and if any &lt;strong&gt;one&lt;/strong&gt; disk fails, you will never know it. So it is important after setting up to monitor the disk array.&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href="#mirror-disks"&gt;Mirror Disks&lt;/a&gt;&lt;ul&gt;
@@ -14313,6 +14380,7 @@ rm&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$TMP&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="systems"></category><category term="hardware"></category></entry><entry><title>NAS</title><link href="https://dfcsoftware.github.io/nas.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/nas.html</id><summary type="html">&lt;h1 id="network-attached-storage-nas"&gt;Network Attached Storage (NAS)&lt;/h1&gt;
 &lt;p&gt;The NAS provides a safe place to store important data. Set this up before running E-Mail or a cloud service because it is the best place to put important files. If an E-Mail server crashes you still have all your E-Mail files on the NFS (see …&lt;/p&gt;</summary><content type="html">&lt;h1 id="network-attached-storage-nas"&gt;Network Attached Storage (NAS)&lt;/h1&gt;
 &lt;p&gt;The NAS provides a safe place to store important data. Set this up before running E-Mail or a cloud service because it is the best place to put important files. If an E-Mail server crashes you still have all your E-Mail files on the NFS (see below) attached NAS server. That's what it's for.&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href="#network-attached-storage-nas"&gt;Network Attached Storage (NAS)&lt;/a&gt;&lt;ul&gt;
@@ -14691,6 +14759,7 @@ mkdir&lt;span class="w"&gt; &lt;/span&gt;-p&lt;span class="w"&gt; &lt;/span&gt;&
 &lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;
 &lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category><category term="systems"></category><category term="hardware"></category></entry><entry><title>ncmpcpp</title><link href="https://dfcsoftware.github.io/ncmpcpp.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/ncmpcpp.html</id><summary type="html">&lt;h1 id="ncmpcpp-commands"&gt;NCMPCPP Commands&lt;/h1&gt;
 &lt;p&gt;Simply run this on your host running Music Player Daemon (MPD) over your ssh session&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href="#ncmpcpp-commands"&gt;NCMPCPP Commands&lt;/a&gt;&lt;ul&gt;
@@ -14707,6 +14776,7 @@ mkdir&lt;span class="w"&gt; &lt;/span&gt;-p&lt;span class="w"&gt; &lt;/span&gt;&
 &lt;li&gt;&lt;a href="#keys-search-engine_1"&gt;Keys - Search engine&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#keys-media-library_1"&gt;Keys - Media …&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;</summary><content type="html">&lt;h1 id="ncmpcpp-commands"&gt;NCMPCPP Commands&lt;/h1&gt;
 &lt;p&gt;Simply run this on your host running Music Player Daemon (MPD) over your ssh session&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href="#ncmpcpp-commands"&gt;NCMPCPP Commands&lt;/a&gt;&lt;ul&gt;
@@ -16365,7 +16435,7 @@ postgres&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="m"&gt;752078&lt;/sp
 &lt;p&gt;Now that you have upgraded to the happy new cluster, consider moving data files to a better database protection disk.&lt;/p&gt;
 &lt;p&gt;Same time, same channel, on the next episode of Linux in the Home.&lt;/p&gt;
 &lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;
-&lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category><category term="systems"></category><category term="db"></category></entry><entry><title>Docker</title><link href="https://dfcsoftware.github.io/docker.html" rel="alternate"></link><published>2023-01-24T00:00:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-24:/docker.html</id><summary type="html">&lt;h1 id="docker"&gt;Docker&lt;/h1&gt;
+&lt;p&gt;{{#include date.txt}}&lt;/p&gt;</content><category term="linux"></category><category term="systems"></category><category term="db"></category></entry><entry><title>Docker</title><link href="https://dfcsoftware.github.io/docker.html" rel="alternate"></link><published>2023-01-25T00:00:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/docker.html</id><summary type="html">&lt;h1 id="docker"&gt;Docker&lt;/h1&gt;
 &lt;p&gt;Docker is a way to manage containers, which are like namespaces or jails. Here are some useful common commands to check out the status of these containers.&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;hr&gt;
