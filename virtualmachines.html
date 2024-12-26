@@ -142,7 +142,7 @@
 </li>
 <li><a href="#ssh-copy">SSH Copy</a></li>
 <li><a href="#ssh-delete">SSH Delete</a></li>
-<li><a href="#delete-line-number-2-in-file-sshknown_hosts-on-host-remote-ip">delete line number 2 in file ~/.ssh/known_hosts on host \&lt;remote IP&gt;</a><ul>
+<li><a href="#delete-line-number-2-in-file-sshknown_hosts-on-host">delete line number 2 in file ~/.ssh/known_hosts on host</a><ul>
 <li><a href="#configuration-files">Configuration Files</a></li>
 </ul>
 </li>
@@ -151,12 +151,14 @@
 <hr>
 <p>The following descriptions follow a VM on Redhat/AlmaLinux/RockyLinux/CENTOS 9 using qemu virtualizer and the Cockpit management web console. We also set the VM network up for external access and share files with the physical host's NFS mount. [1]</p>
 <ol>
-<li><a href="/NAS.html#connect-to-nfs-server-from-linux-client">NFS client</a></li>
+<li><a href="/nas.html#connect-to-nfs-server-from-linux-client">NFS client</a></li>
 </ol>
-<p>Reference: 
- * <a href="https://www.qemu.org/">https://www.qemu.org/</a>
- * <a href="https://libvirt.org/">https://libvirt.org/</a>
- * <a href="https://www.linux-kvm.org/page/Main_Page">https://www.linux-kvm.org/page/Main_Page</a></p>
+<p>Reference: </p>
+<ul>
+<li><a href="https://www.qemu.org/">https://www.qemu.org/</a></li>
+<li><a href="https://libvirt.org/">https://libvirt.org/</a></li>
+<li><a href="https://www.linux-kvm.org/page/Main_Page">https://www.linux-kvm.org/page/Main_Page</a></li>
+</ul>
 <h2 id="install-prerequisites">Install Prerequisites</h2>
 <p>Install the virtualization hypervisor packages.</p>
 <ul>
@@ -714,10 +716,12 @@ data /data virtiofs rw,noatime,_netdev 0 0
 <li>Ability to move VM from one host to another without copying data files</li>
 <li>Hardware upgrades, failures and network outages are easier to recover from</li>
 </ul>
-<p>To support multiple hosts, the definition files need to be copied and updated on each host in advance:
-  1. The VM definition file, located in /etc/libvirt/qemu/\&lt;VM Name&gt;.xml
-  2. The storage pool definition file, located in /etc/libvirt/storage/\&lt;storage pool name&gt;.xml
-  3. A virtual bridge definition file, located in /etc/netplan for Ubuntu or /etc/nmstate for RedHat</p>
+<p>To support multiple hosts, the definition files need to be copied and updated on each host in advance:</p>
+<ol>
+<li>The VM definition file, located in /etc/libvirt/qemu/<VM Name>.xml</li>
+<li>The storage pool definition file, located in /etc/libvirt/storage/<storage pool name>.xml</li>
+<li>A virtual bridge definition file, located in /etc/netplan for Ubuntu or /etc/nmstate for RedHat</li>
+</ol>
 <p>Define a storage pool at the host level and it will mount the NFS volume when libvirtd systemd process starts.</p>
 <p>The Source is your NFS client mount as exposed by the NFS server.</p>
 <p>The Target is your local NFS client directory to mount it on.</p>
@@ -763,33 +767,37 @@ $ sudo virsh vol-list --pool my_vm_pool --details
  test_vol02.qcow2   /vm_data/test_vol02.qcow2   file   2.00 GiB    0.65 GiB
 </code></pre></div>
 
-<p>Reference:
-  * /etc/libvirt/storage/\&lt;pool name&gt;.xml
-  * <a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_and_managing_virtualization/managing-storage-for-virtual-machines_configuring-and-managing-virtualization#proc_creating-nfs-based-storage-pools-using-the-web-console_assembly_managing-virtual-machine-storage-pools-using-the-web-console">https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_and_managing_virtualization/managing-storage-for-virtual-machines_configuring-and-managing-virtualization#proc_creating-nfs-based-storage-pools-using-the-web-console_assembly_managing-virtual-machine-storage-pools-using-the-web-console</a>* </p>
+<p>Reference:</p>
+<ul>
+<li>/etc/libvirt/storage/<pool name>.xml</li>
+<li><a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_and_managing_virtualization/managing-storage-for-virtual-machines_configuring-and-managing-virtualization#proc_creating-nfs-based-storage-pools-using-the-web-console_assembly_managing-virtual-machine-storage-pools-using-the-web-console">https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_and_managing_virtualization/managing-storage-for-virtual-machines_configuring-and-managing-virtualization#proc_creating-nfs-based-storage-pools-using-the-web-console_assembly_managing-virtual-machine-storage-pools-using-the-web-console</a>* </li>
+</ul>
 <h2 id="clone-virtual-machine">Clone Virtual Machine</h2>
-<p>1st clone:
-- Create vlan on 1st ethernet adapter (ensure network switch support vlans) [1]
-- Add NFS mount, if not already there [2]
-- Create nmstate bridge virbr0 on 2nd ethernet adapter (can use USB/Ethernet adapter) [3]
-- Re-create 1st adapter as fixed address in nmstate [4]
-- Create storage pool as type NFS, using Cockpit [5]
-- Import VM, using storage pool data as nfs, using Cockpit
-- Delete <em>default</em> VM network using Cockpit
-- Create VM network <em>bridge</em> on VM (use host's virbr0), using Cockpit
-- Change /etc/nmstate/<em>.applied to </em>.yml, reboot to get route working
-- Change owner of Storage Volume to <em>libvirtd-qemu</em> for Debian or <em>qemu</em> for RedHat on NAS</p>
+<p>1st clone:</p>
+<ul>
+<li>Create vlan on 1st ethernet adapter (ensure network switch support vlans) [1]</li>
+<li>Add NFS mount, if not already there [2]</li>
+<li>Create nmstate bridge virbr0 on 2nd ethernet adapter (can use USB/Ethernet adapter) [3]</li>
+<li>Re-create 1st adapter as fixed address in nmstate [4]</li>
+<li>Create storage pool as type NFS, using Cockpit [5]</li>
+<li>Import VM, using storage pool data as nfs, using Cockpit</li>
+<li>Delete <em>default</em> VM network using Cockpit</li>
+<li>Create VM network <em>bridge</em> on VM (use host's virbr0), using Cockpit</li>
+<li>Change /etc/nmstate/<em>.applied to </em>.yml, reboot to get route working</li>
+<li>Change owner of Storage Volume to <em>libvirtd-qemu</em> for Debian or <em>qemu</em> for RedHat on NAS</li>
+</ul>
 <blockquote>
 <p>It really helps to use a secondary network adapter, because the routing will be lost to the main IP and you have to use the console to get it back. Also one adapter can handle the NFS traffic while the other handles the VM traffic.</p>
 </blockquote>
 <ol>
 <li>
-<p><a href="february">vlan</a></p>
+<p><a href="/virtualip.html">vlan</a></p>
 </li>
 <li>
-<p><a href="/NAS#connect-to-nfs-server-from-linux-client">nfs</a></p>
+<p><a href="/nas.html#connect-to-nfs-server-from-linux-client">nfs</a></p>
 </li>
 <li>
-<p><a href="june#network-on-a-virtual-machine">Network on a virtual machine</a> </p>
+<p><a href="/virtualmachines.html#network-on-a-virtual-machine">Network on a virtual machine</a></p>
 </li>
 <li>
 <p>Fixed IP address; servers should have this</p>
@@ -830,7 +838,7 @@ $ sudo virsh vol-list --pool my_vm_pool --details
 </code></pre></div>
 
 <ol>
-<li><a href="june#virtual-storage-pools-on-nfs">VM NFS Storage Pool</a></li>
+<li><a href="/virtualmachines.html#virtual-storage-pools-on-nfs">VM NFS Storage Pool</a></li>
 </ol>
 <h3 id="copy-data-files">Copy Data Files</h3>
 <p>Now the easy part.</p>
@@ -853,11 +861,11 @@ Pool<span class="w"> </span>my_vm01<span class="w"> </span>unmarked<span class="
   ```</li>
 </ul>
 <h1 id="ssh-copy">SSH Copy</h1>
-<p>$ ssh-copy-id \&lt;remote IP&gt;</p>
+<p>$ ssh-copy-id <remote IP></p>
 <h1 id="ssh-delete">SSH Delete</h1>
-<p>$ ssh \&lt;remote IP&gt; grep -n \&lt;remote IP&gt; ~/.ssh/known_hosts
+<p>$ ssh <remote IP> grep -n <remote IP> ~/.ssh/known_hosts
 2:192.168.1.4 ssh-rsa </p>
-<h1 id="delete-line-number-2-in-file-sshknown_hosts-on-host-remote-ip">delete line number 2 in file ~/.ssh/known_hosts on host \&lt;remote IP&gt;</h1>
+<h1 id="delete-line-number-2-in-file-sshknown_hosts-on-host">delete line number 2 in file ~/.ssh/known_hosts on host <remote IP></h1>
 <p>```</p>
 <ul>
 <li>Edit apache configuration to reflect new IP address</li>
