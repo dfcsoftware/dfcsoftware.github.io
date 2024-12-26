@@ -1606,7 +1606,7 @@ $
 &lt;h2 id="firewalld"&gt;firewalld&lt;/h2&gt;
 &lt;p&gt;The &lt;a href="/Setup_Server.html?highlight=firewalld#firewall"&gt;Server Setup&lt;/a&gt; section of this book covers how to set up a firewall to protect your system network.&lt;/p&gt;
 &lt;h2 id="networkd"&gt;networkd&lt;/h2&gt;
-&lt;p&gt;The &lt;a href="/VirtualIP.html"&gt;VirtualIP Article&lt;/a&gt; covers networkd manipulation using netplan.&lt;/p&gt;
+&lt;p&gt;The &lt;a href="/virtualip.html"&gt;VirtualIP Article&lt;/a&gt; covers networkd manipulation using netplan.&lt;/p&gt;
 &lt;h2 id="tcpdump"&gt;tcpdump&lt;/h2&gt;
 &lt;p&gt;Here is a super useful program for tracing what is happening on your network.&lt;/p&gt;
 &lt;p&gt;For instance, you can watch a certain port for activity. In this example we watch port 81 (which is a web server).&lt;/p&gt;
