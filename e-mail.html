@@ -190,6 +190,7 @@
 <p>Dovecot supports Internet Message Access Protocol (IMAP, port 993) [5] as a server over the network to multiple clients at the same time. It is commonly referred to as a Mail Delivery Agent (MDA) delivering mail from a file repository on some server to the MUA.</p>
 <p>The Maildir database sets each E-Mail as a seperate file on the server, arranged into folders as dictated by the MUA. Indexing is automatic.</p>
 <p>Postfix [6] is a Mail Transfer Agent (MTA) that <em>receives</em> E-Mail over the Internet using Simple Mail Transfer Protocol (SMTP, port 25 [7]) and delivers it locally to Dovecot. MUA <em>sending</em> is also done by postfix using Submission (ports 587 [8], and 465 for SSL [9]). Message relay from one mail server to another is done by postfix using SMTP too.</p>
+<p><img alt="E-Mail" src="/images/graph-email.svg"></p>
 <div class="highlight"><pre><span></span><code><span class="n">sequenceDiagram</span>
 <span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">Thunderbird</span>
 <span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">Dovecot</span>
@@ -1230,7 +1231,7 @@ sa-learn<span class="w"> </span>-u<span class="w"> </span>debian-spamd<span clas
                 </p><!-- /#about -->
 
                 <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-                <p> Version:  3.24 </p>
+                <p> Version:  3.25 </p>
         </footer><!-- /#contentinfo -->
 
 </body>
