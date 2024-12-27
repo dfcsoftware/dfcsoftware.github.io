@@ -296,29 +296,11 @@
 <li>MTA - Mail Transport Agent; Postfix - Move messsages from one network stop to another</li>
 </ul>
 <h2 id="outgoing-relay-from-inside-home">Outgoing: Relay from Inside Home</h2>
-<div class="highlight"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">TD</span><span class="p">;</span>
-<span class="w">        </span><span class="n">Home_E</span><span class="o">-</span><span class="n">Mail</span><span class="p">.</span><span class="n">MUA</span><span class="o">--&gt;</span><span class="n">Home_Postfix</span><span class="p">.</span><span class="n">MTA</span><span class="p">;</span>
-<span class="w">        </span><span class="n">Home_Postfix</span><span class="p">.</span><span class="n">MTA</span><span class="o">--&gt;</span><span class="n">VPS_Postfix</span><span class="p">.</span><span class="n">MTA</span><span class="p">;</span>
-<span class="w">        </span><span class="n">VPS_Postfix</span><span class="p">.</span><span class="n">MTA</span><span class="o">--&gt;</span><span class="n">Internet</span><span class="p">;</span>
-</code></pre></div>
-
+<p><img alt="Send Mail from Home" src="/images/graph-email-relay.svg"></p>
 <h2 id="outgoing-relay-from-outside-home">Outgoing: Relay from Outside Home</h2>
-<div class="highlight"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">TD</span><span class="p">;</span>
-<span class="w">        </span><span class="n">Mobile_E</span><span class="o">-</span><span class="n">Mail</span><span class="p">.</span><span class="n">MUA</span><span class="o">--&gt;</span><span class="n">VPS_Postfix</span><span class="p">.</span><span class="n">MTA</span><span class="p">;</span>
-<span class="w">        </span><span class="n">VPS_Postfix</span><span class="p">.</span><span class="n">MTA</span><span class="o">&lt;--&gt;</span><span class="n">VPS_Dovecot</span><span class="p">.</span><span class="n">MDA</span><span class="p">;</span>
-<span class="w">        </span><span class="n">VPS_Dovecot</span><span class="p">.</span><span class="n">MDA</span><span class="o">&lt;--&gt;</span><span class="n">VPS_Linux</span><span class="p">;</span>
-<span class="w">        </span><span class="n">VPS_Postfix</span><span class="p">.</span><span class="n">MTA</span><span class="o">--&gt;</span><span class="n">Internet</span><span class="p">;</span>
-</code></pre></div>
-
+<p><img alt="Send Mail outside Home" src="/images/graph-email-relay2.svg"></p>
 <h2 id="incoming-transport-from-internet">Incoming: Transport from Internet</h2>
-<div class="highlight"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">TD</span><span class="p">;</span>
-<span class="w">        </span><span class="n">Internet</span><span class="o">--&gt;</span><span class="n">VPS_Postfix</span><span class="p">.</span><span class="n">MTA</span><span class="p">;</span>
-<span class="w">        </span><span class="n">VPS_Postfix</span><span class="p">.</span><span class="n">MTA</span><span class="o">--&gt;</span><span class="n">Home_Postfix</span><span class="p">.</span><span class="n">MTA</span><span class="p">;</span>
-<span class="w">        </span><span class="n">Home_Postfix</span><span class="p">.</span><span class="n">MTA</span><span class="o">--&gt;</span><span class="n">Home_Dovecot</span><span class="p">.</span><span class="n">MDA</span><span class="p">;</span>
-<span class="w">        </span><span class="n">Home_Dovecot</span><span class="p">.</span><span class="n">MDA</span><span class="o">&lt;--&gt;</span><span class="n">Home_Linux</span><span class="p">;</span>
-<span class="w">        </span><span class="n">Home_Dovecot</span><span class="p">.</span><span class="n">MDA</span><span class="o">--&gt;</span><span class="n">Home_E</span><span class="o">-</span><span class="n">Mail</span><span class="p">.</span><span class="n">MUA</span><span class="p">;</span>
-</code></pre></div>
-
+<p><img alt="Recieve Mail" src="/images/graph-email-relay3.svg"></p>
 <p>This document will use:</p>
 <ul>
 <li>your-domain.org : The E-Mail <em>relay</em> we are setting up in this document (VPS_Postfix)</li>
@@ -2179,7 +2161,7 @@ DMARC<span class="w"> </span>record<span class="w"> </span><span class="k">for</
                 </p><!-- /#about -->
 
                 <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-                <p> Version:  3.29 </p>
+                <p> Version:  3.30 </p>
         </footer><!-- /#contentinfo -->
 
 </body>
