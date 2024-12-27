@@ -180,22 +180,7 @@
 <h4 id="putting-it-all-together">Putting It All Together</h4>
 <p>If your ISP blocks port 25, here is a workflow you can use to send and receive E-Mails over the Internet to and from a Recipent using SMTP2GO service and NO-IP extra service.</p>
 <h5 id="e-mail-send-over-non-25-port-using-smtp2go-or-no-ip-alternative-smtp-address">E-Mail Send over non-25 port using SMTP2GO -or- NO-IP Alternative SMTP Address.</h5>
-<div class="highlight"><pre><span></span><code><span class="n">sequenceDiagram</span>
-<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">Your</span><span class="w"> </span><span class="n">Server</span>
-<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">SMTP2GO</span>
-<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">E</span><span class="o">-</span><span class="n">Mail</span><span class="w"> </span><span class="n">Contact</span>
-<span class="w">    </span><span class="n">Your</span><span class="w"> </span><span class="n">Server</span><span class="o">-&gt;&gt;</span><span class="n">SMTP2GO</span><span class="o">:</span><span class="w"> </span><span class="n">Sends</span><span class="w"> </span><span class="n">E</span><span class="o">-</span><span class="n">Mail</span><span class="w"> </span><span class="n">over</span><span class="w"> </span><span class="n">port</span><span class="w"> </span><span class="mi">2567</span>
-<span class="w">    </span><span class="n">SMTP2GO</span><span class="o">-&gt;&gt;</span><span class="n">E</span><span class="o">-</span><span class="n">Mail</span><span class="w"> </span><span class="n">Contact</span><span class="o">:</span><span class="w"> </span><span class="n">Sends</span><span class="w"> </span><span class="n">E</span><span class="o">-</span><span class="n">Mail</span><span class="w"> </span><span class="n">over</span><span class="w"> </span><span class="n">port</span><span class="w"> </span><span class="mi">25</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="n">sequenceDiagram</span>
-<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">Your</span><span class="w"> </span><span class="n">Server</span>
-<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">NO</span><span class="o">-</span><span class="n">IP</span>
-<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">E</span><span class="o">-</span><span class="n">Mail</span><span class="w"> </span><span class="n">Contact</span>
-<span class="w">    </span><span class="n">Your</span><span class="w"> </span><span class="n">Server</span><span class="o">-&gt;&gt;</span><span class="n">NO</span><span class="o">-</span><span class="n">IP</span><span class="o">:</span><span class="w"> </span><span class="n">Sends</span><span class="w"> </span><span class="n">E</span><span class="o">-</span><span class="n">Mail</span><span class="w"> </span><span class="n">over</span><span class="w"> </span><span class="n">port</span><span class="w"> </span><span class="mi">2567</span>
-<span class="w">    </span><span class="n">NO</span><span class="o">-</span><span class="n">IP</span><span class="o">-&gt;&gt;</span><span class="n">E</span><span class="o">-</span><span class="n">Mail</span><span class="w"> </span><span class="n">Contact</span><span class="o">:</span><span class="w"> </span><span class="n">Sends</span><span class="w"> </span><span class="n">E</span><span class="o">-</span><span class="n">Mail</span><span class="w"> </span><span class="n">over</span><span class="w"> </span><span class="n">port</span><span class="w"> </span><span class="mi">25</span>
-</code></pre></div>
-
+<p><img alt="SMTP2GO" src="/images/graph-smtp2go.svg"></p>
 <p><img alt="NO-IP" src="/images/graph-noip.svg"></p>
 <h5 id="e-mail-receive-over-non-25-port-using-no-ip-mail-reflector">E-Mail Receive over non-25 port using No-IP Mail Reflector.</h5>
 <div class="highlight"><pre><span></span><code><span class="n">sequenceDiagram</span>
@@ -541,7 +526,7 @@ $<span class="w"> </span>ls<span class="w"> </span>-l<span class="w"> </span>/va
                 </p><!-- /#about -->
 
                 <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-                <p> Version:  3.22 </p>
+                <p> Version:  3.23 </p>
         </footer><!-- /#contentinfo -->
 
 </body>
