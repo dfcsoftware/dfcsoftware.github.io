@@ -185,17 +185,6 @@
 <p>The Maildir database sets each E-Mail as a seperate file on the server, arranged into folders as dictated by the MUA. Indexing is automatic.</p>
 <p>Postfix [6] is a Mail Transfer Agent (MTA) that <em>receives</em> E-Mail over the Internet using Simple Mail Transfer Protocol (SMTP, port 25 [7]) and delivers it locally to Dovecot. MUA <em>sending</em> is also done by postfix using Submission (ports 587 [8], and 465 for SSL [9]). Message relay from one mail server to another is done by postfix using SMTP too.</p>
 <p><img alt="E-Mail" src="/images/graph-email.svg"></p>
-<div class="highlight"><pre><span></span><code><span class="n">sequenceDiagram</span>
-<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">Thunderbird</span>
-<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">Dovecot</span>
-<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">Postfix</span>
-<span class="w">    </span><span class="n">Thunderbird</span><span class="o">-&gt;&gt;</span><span class="n">Dovecot</span><span class="o">:</span><span class="w"> </span><span class="n">Manage</span><span class="w"> </span><span class="n">Mail</span><span class="w"> </span><span class="p">(</span><span class="n">IMAP</span><span class="p">)</span>
-<span class="w">    </span><span class="n">Postfix</span><span class="o">-&gt;&gt;</span><span class="n">Dovecot</span><span class="o">:</span><span class="w"> </span><span class="n">Receive</span><span class="w"> </span><span class="n">Mail</span>
-<span class="w">    </span><span class="n">Internet</span><span class="o">-&gt;&gt;</span><span class="n">Postfix</span><span class="o">:</span><span class="w"> </span><span class="n">Receive</span><span class="w"> </span><span class="n">Mail</span><span class="w"> </span><span class="p">(</span><span class="n">SMTP</span><span class="p">)</span>
-<span class="w">    </span><span class="n">Thunderbird</span><span class="o">-&gt;&gt;</span><span class="n">Postfix</span><span class="o">:</span><span class="w"> </span><span class="n">Send</span><span class="w"> </span><span class="n">Mail</span><span class="w"> </span><span class="p">(</span><span class="n">Submission</span><span class="p">)</span>
-<span class="w">    </span><span class="n">Postfix</span><span class="o">-&gt;&gt;</span><span class="n">Internet</span><span class="o">:</span><span class="w"> </span><span class="n">Send</span><span class="w"> </span><span class="n">Mail</span><span class="w"> </span><span class="p">(</span><span class="n">SMTP</span><span class="p">)</span>
-</code></pre></div>
-
 <ol>
 <li><a href="https://www.dovecot.org/">https://www.dovecot.org/</a></li>
 <li><a href="https://www.thunderbird.net/en-US/">https://www.thunderbird.net/en-US/</a></li>
@@ -223,6 +212,9 @@
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>dovecot<span class="w"> </span>dovecot-pigeonhole
 </code></pre></div>
 
+<blockquote>
+<p>Pigeonhole is the name of the project that adds support for the Sieve language (RFC 5228) and the ManageSieve protocol (RFC 5804) to the Dovecot Secure IMAP Server. In the literal sense, a pigeonhole is a a hole or recess inside a dovecot for pigeons to nest in. It is, however, also the name for one of a series of small, open compartments in a cabinet used for filing or sorting mail. As a verb, it describes the act of putting an item into one of those pigeonholes. The name `Pigeonhole' therefore well describes an important part of the functionality that this project adds to Dovecot: sorting and filing e-mail messages. </p>
+</blockquote>
 <h3 id="user-settings">User Settings</h3>
 <p>Create a symbolic link for the mail location (\~/Maildir) to an NFS mount that you created in the NAS page, such as <code>/home/&lt;user&gt;/Maildir</code>. This will provide the extra protection of ZFS for your E-Mail database, should a disk fail.</p>
 <p>For instance, for NFS Mount at <code>/media/share</code> and Linux <code>&lt;user&gt;@&lt;domain&gt;.com</code>:</p>
@@ -1257,7 +1249,7 @@ sa-learn<span class="w"> </span>-u<span class="w"> </span>debian-spamd<span clas
                 </p><!-- /#about -->
 
                 <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-                <p> Version:  3.28 </p>
+                <p> Version:  3.29 </p>
         </footer><!-- /#contentinfo -->
 
 </body>
