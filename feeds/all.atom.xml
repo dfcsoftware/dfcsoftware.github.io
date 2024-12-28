@@ -835,7 +835,7 @@ $&lt;span class="w"&gt; &lt;/span&gt;ip&lt;span class="w"&gt; &lt;/span&gt;a&lt;
 &lt;li&gt;The &lt;strong&gt;VM&lt;/strong&gt; should use virbr0 as it's network interface. Using Cockpit add a Bridged network to the &lt;strong&gt;VM&lt;/strong&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;image libvirt-bridge.png
-&lt;img alt="libvirt-bridge.png" src=".attachments.328473/libvirt-bridge.png"&gt;&lt;/p&gt;
+&lt;img alt="libvirt-bridge.png" src="/images/libvirt-bridge.png"&gt;&lt;/p&gt;
 &lt;p&gt;-&amp;gt; OR &amp;lt;- define it using virsh:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;virsh&lt;span class="w"&gt; &lt;/span&gt;edit&lt;span class="w"&gt; &lt;/span&gt;vm_machine
 &lt;span class="nt"&gt;&amp;lt;domain&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;kvm&amp;#39;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
@@ -957,7 +957,7 @@ $&lt;span class="w"&gt; &lt;/span&gt;ip&lt;span class="w"&gt; &lt;/span&gt;a&lt;
 &lt;li&gt;The &lt;strong&gt;VM&lt;/strong&gt; should use virbr0 as it's network interface. Using Cockpit add a Bridged network to the &lt;strong&gt;VM&lt;/strong&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;image libvirt-bridge.png
-&lt;img alt="libvirt-bridge.png" src=".attachments.328473/libvirt-bridge.png"&gt;&lt;/p&gt;
+&lt;img alt="libvirt-bridge.png" src="/images/libvirt-bridge.png"&gt;&lt;/p&gt;
 &lt;p&gt;-&amp;gt; OR &amp;lt;- define it using virsh:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;virsh&lt;span class="w"&gt; &lt;/span&gt;edit&lt;span class="w"&gt; &lt;/span&gt;vm_machine
 &lt;span class="nt"&gt;&amp;lt;domain&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;kvm&amp;#39;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
@@ -5009,7 +5009,7 @@ $&lt;span class="w"&gt; &lt;/span&gt;docker&lt;span class="w"&gt; &lt;/span&gt;n
 &lt;p&gt;For example:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;PocketBeagle  &lt;a href="https://www.beagleboard.org/boards/pocketbeagle-original"&gt;https://www.beagleboard.org/boards/pocketbeagle-original&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;img alt="pocketBeagle-hero-hand-400x222.png" src=".attachments.697174/pocketBeagle-hero-hand-400x222.png"&gt;&lt;/li&gt;
+&lt;li&gt;&lt;img alt="pocketBeagle-hero-hand-400x222.png" src="/images/pocketBeagle-hero-hand-400x222.png"&gt;&lt;/li&gt;
 &lt;li&gt;This runs:&lt;ul&gt;
 &lt;li&gt;Rebuilt Garfield clock with seven-segment-display and alarm, keeping track of daylight saving time changes.&lt;/li&gt;
 &lt;li&gt;Music box player.&lt;/li&gt;
@@ -5019,7 +5019,7 @@ $&lt;span class="w"&gt; &lt;/span&gt;docker&lt;span class="w"&gt; &lt;/span&gt;n
 &lt;hr&gt;
 &lt;ul&gt;
 &lt;li&gt;BBB (Black) &lt;a href="https://www.beagleboard.org/boards/beaglebone-black"&gt;https://www.beagleboard.org/boards/beaglebone-black&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;img alt="beagle-black-wired-shadow_no5v-1-400x400.png" src=".attachments.697174/beagle-black-wired-shadow_no5v-1-400x400.png"&gt;&lt;/li&gt;
+&lt;li&gt;&lt;img alt="beagle-black-wired-shadow_no5v-1-400x400.png" src="/images/beagle-black-wired-shadow_no5v-1-400x400.png"&gt;&lt;/li&gt;
 &lt;li&gt;This runs very capabily:&lt;ul&gt;
 &lt;li&gt;Music Player Daemon (MDP) [5]. You can control what is played on the command line or through a Phone App.&lt;/li&gt;
 &lt;li&gt;Control lights and relays. You can use the Python based Flask [6] package to create nice looking web apps for this.&lt;/li&gt;
@@ -5029,7 +5029,7 @@ $&lt;span class="w"&gt; &lt;/span&gt;docker&lt;span class="w"&gt; &lt;/span&gt;n
 &lt;hr&gt;
 &lt;ul&gt;
 &lt;li&gt;BBAI (AI 32-bit, arm71) &lt;a href="https://www.beagleboard.org/boards/beaglebone-ai"&gt;https://www.beagleboard.org/boards/beaglebone-ai&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;img alt="beagleboane-ai-heatsink-500x356.png" src=".attachments.697174/beagleboane-ai-heatsink-500x356.png"&gt;&lt;/li&gt;
+&lt;li&gt;&lt;img alt="beagleboane-ai-heatsink-500x356.png" src="/images/beagleboane-ai-heatsink-500x356.png"&gt;&lt;/li&gt;
 &lt;li&gt;Applications I used with this include:&lt;ul&gt;
 &lt;li&gt;NextCloud server (little slow).&lt;/li&gt;
 &lt;li&gt;Mini-Network Access Storage (NAS) with mirrored SSDs (mdadm).&lt;/li&gt;
@@ -5040,7 +5040,7 @@ $&lt;span class="w"&gt; &lt;/span&gt;docker&lt;span class="w"&gt; &lt;/span&gt;n
 &lt;hr&gt;
 &lt;ul&gt;
 &lt;li&gt;BBAI-64 (AI 64-bit; arm64) &lt;a href="https://www.beagleboard.org/boards/beaglebone-ai-64"&gt;https://www.beagleboard.org/boards/beaglebone-ai-64&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;img alt="BeagleBone_AI_64-400x333.webp" src=".attachments.697174/BeagleBone_AI_64-400x333.webp"&gt;&lt;/li&gt;
+&lt;li&gt;&lt;img alt="BeagleBone_AI_64-400x333.webp" src="/images/BeagleBone_AI_64-400x333.webp"&gt;&lt;/li&gt;
 &lt;li&gt;Very good at:&lt;ul&gt;
 &lt;li&gt;NextCloud server (runs good).&lt;/li&gt;
 &lt;li&gt;News Reader (MiniFlux).&lt;/li&gt;
@@ -5051,7 +5051,7 @@ $&lt;span class="w"&gt; &lt;/span&gt;docker&lt;span class="w"&gt; &lt;/span&gt;n
 &lt;hr&gt;
 &lt;ul&gt;
 &lt;li&gt;BeaglePlay is the latest offering (&lt;a href="https://www.beagleboard.org/boards/beagleplay"&gt;https://www.beagleboard.org/boards/beagleplay&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;img alt="BeaglePlay-front-500x281.jpg" src=".attachments.697174/BeaglePlay.webp"&gt;&lt;/li&gt;
+&lt;li&gt;&lt;img alt="BeaglePlay-front-500x281.jpg" src="/images/BeaglePlay.webp"&gt;&lt;/li&gt;
 &lt;li&gt;Quad Arm® Cortex®-A53 microprocessor subsystem @ 1.4GHz&lt;/li&gt;
 &lt;li&gt;Arm® Cortex®-M4F @ 400MHz&lt;/li&gt;
 &lt;li&gt;Dual-core PRU subsystem @ 333MHz&lt;/li&gt;
@@ -5079,7 +5079,7 @@ $&lt;span class="w"&gt; &lt;/span&gt;docker&lt;span class="w"&gt; &lt;/span&gt;n
 &lt;h2 id="serial-debug-connection"&gt;Serial Debug Connection&lt;/h2&gt;
 &lt;p&gt;You can get through severe boot errors where the network is not connecting or disk partition not mounted, using a USB to TTL-232 cable [1], also called FTDI. This will show all the boot messages and allow login, even recovery if the kernel will not boot.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Make sure it is 3.3 volt!&lt;/strong&gt; Connect the black wire to pin 1, orange/green to pin 4, yellow/white to pin5 directly on the SBC board.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="1 AU51n75Ls0JwfPeYMD6sIQ-547387362.png" src=".attachments.697174/1%20AU51n75Ls0JwfPeYMD6sIQ-547387362.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="1 AU51n75Ls0JwfPeYMD6sIQ-547387362.png" src="/images/1%20AU51n75Ls0JwfPeYMD6sIQ-547387362.png"&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;USB to TTL cable&lt;/p&gt;
@@ -5088,10 +5088,10 @@ $&lt;span class="w"&gt; &lt;/span&gt;docker&lt;span class="w"&gt; &lt;/span&gt;n
 &lt;p&gt;&lt;a href="https://www.adafruit.com/product/4331"&gt;https://www.adafruit.com/product/4331&lt;/a&gt;. &lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img alt="28W2088-40.webp" src=".attachments.697174/28W2088-40.webp"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="28W2088-40.webp" src="/images/28W2088-40.webp"&gt;&lt;/p&gt;
 &lt;h4 id="bbai-64-adapter"&gt;BBAI-64 Adapter&lt;/h4&gt;
 &lt;p&gt;The BBAI-64 has a 3-pin connector so it needs an adapter; Micro JST MX 1.25 4Pins Connector Plug Socket 1.25mm Pitch Female Connector PCB Socket 150mm Cable. The red wire is not used. Plug the other three wires into the USB/TTL adapter above, matching colors.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Screen Shot 2022-10-22 at 9.18.32 AM.png" src=".attachments.697174/Screen%20Shot%202022-10-22%20at%209.18.32%20AM.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Screen Shot 2022-10-22 at 9.18.32 AM.png" src="/images/Screen%20Shot%202022-10-22%20at%209.18.32%20AM.png"&gt;&lt;/p&gt;
 &lt;h4 id="screen-on-linux"&gt;Screen on Linux&lt;/h4&gt;
 &lt;p&gt;When you have connected USB-end of the serial cable to a Linux based system like Ubuntu, a new tty* device appears in the system. Note down its name. In my case, it was &lt;em&gt;/dev/ttyUSB0&lt;/em&gt;. Open a term and issue below command&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;screen&lt;span class="w"&gt; &lt;/span&gt;/dev/ttyUSB0&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;115200&lt;/span&gt;
@@ -5545,7 +5545,7 @@ tmpfs&lt;span class="w"&gt;           &lt;/span&gt;&lt;span class="m"&gt;5&lt;/s
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;&lt;img alt="BB_AI_USERLEDS_800px.png" src=".attachments.697174/BB_AI_USERLEDS_800px.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="BB_AI_USERLEDS_800px.png" src="/images/BB_AI_USERLEDS_800px.png"&gt;&lt;/p&gt;
 &lt;h2 id="bbai-survival-guide"&gt;BBAI Survival Guide&lt;/h2&gt;
 &lt;p&gt;&lt;a href="https://community.element14.com/challenges-projects/project14/visionthing/b/blog/posts/beaglebone-ai-survival-guide-v3-18-pwm-i2c-analog-digital-read-write-vision-ai-video-text-overlays-audio-hardware"&gt;https://community.element14.com/challenges-projects/project14/visionthing/b/blog/posts/beaglebone-ai-survival-guide-v3-18-pwm-i2c-analog-digital-read-write-vision-ai-video-text-overlays-audio-hardware&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id="real-time-clock-rtc-system-service-and-setup"&gt;Real Time Clock (RTC) system service and setup&lt;/h2&gt;
@@ -5735,8 +5735,8 @@ $&lt;span class="w"&gt; &lt;/span&gt;python&lt;span class="w"&gt; &lt;/span&gt;s
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id="wiring-pins"&gt;Wiring Pins&lt;/h3&gt;
-&lt;p&gt;&lt;img alt="BeagleBone-AI-2_1.png" src=".attachments.697174/BeagleBone-AI-2_1.png"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="BeagleBone-AI-2_2.png" src=".attachments.697174/BeagleBone-AI-2_2.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="BeagleBone-AI-2_1.png" src="/images/BeagleBone-AI-2_1.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="BeagleBone-AI-2_2.png" src="/images/BeagleBone-AI-2_2.png"&gt;&lt;/p&gt;
 &lt;h3 id="service"&gt;Service&lt;/h3&gt;
 &lt;p&gt;File: /etc/systemd/system/remote.service&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[Unit]&lt;/span&gt;
@@ -6764,7 +6764,7 @@ tls_private_key_path: &amp;quot;/etc/letsencrypt/live/example.com/privkey.pem&am
 &lt;li&gt;Talk can Send Messages to a phone from Command Line, used for HomeAssistant alerts and run via File: \~/matrix/sendmatrix.sh. Used for monitoring door and window alarms.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h5 id="ios-app-nextcloud-talk"&gt;IOS App - NextCloud Talk&lt;/h5&gt;
-&lt;p&gt;&lt;img alt="IMG_84D17B7CC129-1 (2).jpeg" src=".attachments.571041/IMG_84D17B7CC129-1.jpeg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="IMG_84D17B7CC129-1 (2).jpeg" src="/images/IMG_84D17B7CC129-1.jpeg"&gt;&lt;/p&gt;
 &lt;p&gt;NextCloud Talk uses the &lt;a href="matrix.md"&gt;Matrix service&lt;/a&gt; to detect changes to be sent.&lt;/p&gt;
 &lt;h2 id="install-documentation"&gt;Install Documentation&lt;/h2&gt;
 &lt;p&gt;First install the database;&lt;/p&gt;
@@ -8261,7 +8261,7 @@ $&lt;span class="w"&gt; &lt;/span&gt;ls&lt;span class="w"&gt; &lt;/span&gt;-l&lt
 &lt;p&gt;Now try your website by name: &lt;/p&gt;
 &lt;p&gt;&lt;code&gt;http://example.com&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;If all went well, you should see this:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="404.png" src=".attachments.863365/404.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="404.png" src="/images/404.png"&gt;&lt;/p&gt;
 &lt;h1 id="continue"&gt;Continue&lt;/h1&gt;
 &lt;p&gt;Now that you have set up an Internet name for your new server, consider giving it an internet certificate with Let's Encrypt.&lt;/p&gt;
 &lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;</content><category term="linux"></category><category term="web"></category></entry><entry><title>E-Mail</title><link href="https://dfcsoftware.github.io/e-mail.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/e-mail.html</id><summary type="html">&lt;h1 id="e-mail"&gt;E-Mail&lt;/h1&gt;
@@ -9039,7 +9039,7 @@ sa-learn&lt;span class="w"&gt; &lt;/span&gt;-u&lt;span class="w"&gt; &lt;/span&g
 &lt;h2 id="mail-readers"&gt;Mail Readers&lt;/h2&gt;
 &lt;h3 id="mutt"&gt;Mutt&lt;/h3&gt;
 &lt;p&gt;Mutt [1] is a text only e-mail reader, capable of running over an ssh connection.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="mutt_index.gif" src=".attachments.866248/mutt_index.gif"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="mutt_index.gif" src="/images/mutt_index.gif"&gt;&lt;/p&gt;
 &lt;h4 id="install"&gt;Install&lt;/h4&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;apt-get&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;mutt
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -9105,8 +9105,8 @@ sa-learn&lt;span class="w"&gt; &lt;/span&gt;-u&lt;span class="w"&gt; &lt;/span&g
 &lt;/ol&gt;
 &lt;h3 id="evolution"&gt;Evolution&lt;/h3&gt;
 &lt;p&gt;Evolution [1] is a Graphical User Interface (GUI) mail reader, the best one for Linux desktop.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="evolution_window-overview-layers.png" src=".attachments.866248/evolution_window-overview-layers.png"&gt;&lt;br&gt;
-&lt;img alt="evolution_legend.png" src=".attachments.866248/evolution_legend.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="evolution_window-overview-layers.png" src="/images/evolution_window-overview-layers.png"&gt;&lt;br&gt;
+&lt;img alt="evolution_legend.png" src="/images/evolution_legend.png"&gt;&lt;/p&gt;
 &lt;h4 id="install_1"&gt;Install&lt;/h4&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;apt-get&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;evolution
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -9118,7 +9118,7 @@ sa-learn&lt;span class="w"&gt; &lt;/span&gt;-u&lt;span class="w"&gt; &lt;/span&g
 &lt;/ol&gt;
 &lt;h3 id="thunderbird"&gt;Thunderbird&lt;/h3&gt;
 &lt;p&gt;Thunderbird [1] is a GUI mail reader, the best one for MacOS or Windows.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Thunderbird-email.png" src=".attachments.866248/Thunderbird-email.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Thunderbird-email.png" src="/images/Thunderbird-email.png"&gt;&lt;/p&gt;
 &lt;h4 id="install_2"&gt;Install&lt;/h4&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;apt-get&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;thunderbird
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -11413,7 +11413,6 @@ DMARC&lt;span class="w"&gt; &lt;/span&gt;record&lt;span class="w"&gt; &lt;/span&
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;a href="#lights-for-wall-e"&gt;Lights for WALL-E&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#_1"&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#circuit"&gt;Circuit&lt;/a&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href="#zen16-relay"&gt;ZEN16 Relay&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#alarm-light-radio-diagram"&gt;Alarm Light Radio - Diagram&lt;/a&gt;&lt;/li&gt;
@@ -11428,7 +11427,7 @@ DMARC&lt;span class="w"&gt; &lt;/span&gt;record&lt;span class="w"&gt; &lt;/span&
 &lt;/div&gt;
 &lt;hr&gt;
 &lt;p&gt;The server software is in two pieces, Z-Wave JS and HASS. Z-Wave (nodejs) reads a USB stick and manages the connection and commands to various &lt;a href="https://www.z-wave.com/"&gt;Z-WAVE compatible wireless devices&lt;/a&gt;. HASS (python) displays and automates monitoring and reacting to the devices by communication to Z-Wave over the WebSocket service (ws://localhost:3000). I install and run the docker images of these packages.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Home Assistant" src="images/graph-homeassistant.svg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Home Assistant" src="/images/graph-homeassistant.svg"&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;ws: WebSocket&lt;/li&gt;
 &lt;li&gt;ip: TCP/IP&lt;/li&gt;
@@ -11442,7 +11441,7 @@ Reference:&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;a href="https://zwave-js.github.io/node-zwave-js/#/"&gt;https://zwave-js.github.io/node-zwave-js/#/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img alt="HomeAssistant.png" src=".attachments.567288/HomeAssistant.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="HomeAssistant.png" src="/images/HomeAssistant.png"&gt;&lt;/p&gt;
 &lt;h2 id="plug-in-zooz-s2-stick-700"&gt;Plug in Zooz S2 stick 700&lt;/h2&gt;
 &lt;p&gt;This is a USB radio for wireless communication to the Z-Wave family of home automation devices.&lt;/p&gt;
 &lt;p&gt;Like:
@@ -12335,12 +12334,12 @@ zwavejs_upgrade
 &lt;/blockquote&gt;
 &lt;h2 id="lights-for-wall-e"&gt;Lights for WALL-E&lt;/h2&gt;
 &lt;p&gt;The relay module &lt;a href="https://www.getzooz.com/zooz-zen16-multirelay/"&gt;ZEN16&lt;/a&gt; is wired to a switch on the garage door. When it is open a red light is displayed on Wall-E, when the door is closed a green light is shown.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Wall-E" src=".attachments.567288/IMG_3813.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Wall-E" src="/images/IMG_3813.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;A USB charger is used to supply 5 volts DC (BAT1) to the circuit. Circuit switch S1 is connected to the ZEN16 relay R2 connection. Q1 is a 2N2222 transistor. A closed circuit supplies voltage to LED2, open circuit supplies voltage to LED1.&lt;/p&gt;
 &lt;p&gt;Here is the electrical diagram for that:&lt;/p&gt;
-&lt;h2 id="_1"&gt;&lt;img alt="Lights_for_Wall-E.png" src=".attachments.567288/Lights_for_Wall-E.png"&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="Lights_for_Wall-E.png" src="/images/Lights_for_Wall-E.png"&gt;&lt;/p&gt;
 &lt;h2 id="circuit"&gt;Circuit&lt;/h2&gt;
-&lt;p&gt;&lt;img alt="opoohbbehgacecel.png" src=".attachments.567288/opoohbbehgacecel.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="opoohbbehgacecel.png" src="/images/opoohbbehgacecel.png"&gt;&lt;/p&gt;
 &lt;h3 id="zen16-relay"&gt;ZEN16 Relay&lt;/h3&gt;
 &lt;p&gt;ZEN16 will monitor its switch Sw2 below, if is closed, then turn on relay R2, closing the circuit switch S1 above. Home Assistant will detect the change in relay R2 and issue notifications using its automation.yaml definition "&lt;em&gt;alias: Garage Door Open&lt;/em&gt;".&lt;/p&gt;
 &lt;p&gt;ZEN16 will respond to relay R1 on/off commands from Home Assistant. The automation.yaml definition is called "&lt;em&gt;alias: Bedroom Alarm&lt;/em&gt;" and turns &lt;strong&gt;on&lt;/strong&gt; relay R1 at 6:00am. A Home Assistant dashboard button is enabled to turn relay R1 &lt;strong&gt;off&lt;/strong&gt;.&lt;/p&gt;
@@ -12371,10 +12370,10 @@ zwavejs_upgrade
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;&lt;img alt="ZEN16" src=".attachments.567288/IMG_4324.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="ZEN16" src="/images/IMG_4324.jpg"&gt;&lt;/p&gt;
 &lt;h3 id="alarm-light-radio-diagram"&gt;Alarm Light Radio - Diagram&lt;/h3&gt;
 &lt;p&gt;The Power-Tail-Switch is a 120v AC relay controlled by 5v DC. The ZEN16 acts as a switch to turn  relay R1 on and off. This opens/closes the 5v DC voltage flow to enable/disable the 102v AC voltage through the PowerSwitchTail, that sends power to the power strip turning on/off the radio and light plugged into it.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="AlarmClock-HomeAssistant.png" src=".attachments.567288/AlarmClock-HomeAssistant.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="AlarmClock-HomeAssistant.png" src="/images/AlarmClock-HomeAssistant.png"&gt;&lt;/p&gt;
 &lt;h2 id="z-wave-devices"&gt;Z-Wave Devices&lt;/h2&gt;
 &lt;table&gt;
 &lt;thead&gt;
@@ -12481,7 +12480,7 @@ zwavejs_upgrade
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h2 id="purge"&gt;Purge&lt;/h2&gt;
-&lt;p&gt;&lt;img alt="HA-Purge.png" src=".attachments.567288/HA-Purge.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="HA-Purge.png" src="/images/HA-Purge.png"&gt;&lt;/p&gt;
 &lt;h2 id="continue"&gt;Continue&lt;/h2&gt;
 &lt;p&gt;Now that you have set up Home Automation-Mail on your server, you will need Matrix for sending out alerts, so now is a good time to install the super fast and secure messaging system.&lt;/p&gt;
 &lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;</content><category term="linux"></category><category term="systems"></category></entry><entry><title>Introduction</title><link href="https://dfcsoftware.github.io/introduction.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/introduction.html</id><summary type="html">&lt;p&gt;&lt;img alt="Linux-in-the-house.svg" src="/images/Linux-in-the-House2.svg"&gt;&lt;/p&gt;
@@ -12524,7 +12523,8 @@ zwavejs_upgrade
 &lt;p&gt;Created with:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;pelican: &lt;a href="https://getpelican.com/"&gt;https://getpelican.com/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;tinysearch: &lt;a href="https://github.com/tinysearch/tinysearch"&gt;https://github.com/tinysearch/tinysearch&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;pagefind: &lt;a href="https://pagefind.app/"&gt;https://pagefind.app/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;graphviz: &lt;a href="https://www.graphviz.org/"&gt;https://www.graphviz.org/&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;INKSCAPE: &lt;a href="https://inkscape.org/"&gt;https://inkscape.org/&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;vi: &lt;a href="https://en.wikipedia.org/wiki/Vi"&gt;https://en.wikipedia.org/wiki/Vi&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -12836,7 +12836,7 @@ $&lt;span class="w"&gt; &lt;/span&gt;tilde
 &lt;blockquote&gt;
 &lt;p&gt;Here is an example of a Matrix Client, called Element[1], available on iOS, Android and Desktops.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img alt="IMG_2070A268049A-1.jpeg" src=".attachments.569522/IMG_2070A268049A-1.jpeg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="IMG_2070A268049A-1.jpeg" src="/images/IMG_2070A268049A-1.jpeg"&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href="https://element.io/"&gt;https://element.io/&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
@@ -13301,7 +13301,7 @@ date&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;&amp;gt;&lt;span class="w"&gt; &
 &lt;ul&gt;
 &lt;li&gt;iOS: MaximumMPD (client for iPhone, iPad)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img alt="IMG_60BE35F3E1C0-1 (2).jpeg" src=".attachments.596467/IMG_60BE35F3E1C0-1%20%282%29.jpeg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="IMG_60BE35F3E1C0-1 (2).jpeg" src="/images/IMG_60BE35F3E1C0-1%20%282%29.jpeg"&gt;&lt;/p&gt;
 &lt;h3 id="mpd-configuration"&gt;MPD Configuration&lt;/h3&gt;
 &lt;p&gt;File: /etc/mpd.conf&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# An example configuration file for MPD.&lt;/span&gt;
@@ -13775,7 +13775,7 @@ date&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;&amp;gt;&lt;span class="w"&gt; &
 &lt;li&gt;Linux: NextCloud app called &lt;strong&gt;audioplayer&lt;/strong&gt;, visible on  NextCloud web interface&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;The music files reside in the /Music directory of the nextcloud account.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Audio-Player.png" src=".attachments.596467/Audio-Player.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Audio-Player.png" src="/images/Audio-Player.png"&gt;&lt;/p&gt;
 &lt;p&gt;Reference: &lt;a href="https://apps.nextcloud.com/apps/audioplayer"&gt;https://apps.nextcloud.com/apps/audioplayer&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id="plex-television-and-music-recordings"&gt;Plex Television and Music Recordings&lt;/h2&gt;
 &lt;p&gt;This is where most TV shows are played from, on either one of the Apple-TVs.&lt;/p&gt;
@@ -13788,7 +13788,7 @@ date&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;&amp;gt;&lt;span class="w"&gt; &
 &lt;li&gt;Debian: Plex Media Server app, Web Interface &lt;a href="http://127.0.0.1:32400/web/index.html#!/"&gt;http://127.0.0.1:32400/web/index.html#!/&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;iOS: Plexamp (Music) on the Phone or Tablet&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img alt="IMG_233B4FCE41DA-1.jpeg" src=".attachments.596467/IMG_233B4FCE41DA-1.jpeg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="IMG_233B4FCE41DA-1.jpeg" src="/images/IMG_233B4FCE41DA-1.jpeg"&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;tvOS: Plex (Video, Music) on the Apple-TV&lt;/li&gt;
 &lt;/ul&gt;
@@ -13809,7 +13809,7 @@ date&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;&amp;gt;&lt;span class="w"&gt; &
 &lt;li&gt;Built-in webservice on port 80 (&lt;a href="http://hdhomerun.local/"&gt;http://hdhomerun.local/&lt;/a&gt;)&lt;/li&gt;
 &lt;li&gt;iOS: HDHomeRun (Used to set recordings and delete old shows on the HDHomeRun box)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img alt="IMG_5456720E92DB-1.jpeg" src=".attachments.596467/IMG_5456720E92DB-1.jpeg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="IMG_5456720E92DB-1.jpeg" src="/images/IMG_5456720E92DB-1.jpeg"&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Application Programming Interface (API): &lt;a href="https://info.hdhomerun.com/info/http_api"&gt;https://info.hdhomerun.com/info/http_api&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -14088,7 +14088,7 @@ deactivate
 &lt;hr&gt;
 &lt;p&gt;Reference: &lt;a href="https://miniflux.app/docs/installation.html#debian"&gt;https://miniflux.app/docs/installation.html#debian&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;You can view these feeds from your web browser. They look like this:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="miniflux (2).png" src=".attachments.700615/miniflux%20%282%29.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="miniflux (2).png" src="/images/miniflux%20%282%29.png"&gt;&lt;/p&gt;
 &lt;h2 id="database-configuration"&gt;Database Configuration&lt;/h2&gt;
 &lt;h3 id="creating-the-database"&gt;&lt;strong&gt;Creating the Database&lt;/strong&gt;&lt;/h3&gt;
 &lt;p&gt;Here an example from the command line:&lt;/p&gt;
@@ -14346,7 +14346,7 @@ Rule&lt;span class="w"&gt; &lt;/span&gt;added&lt;span class="w"&gt; &lt;/span&gt
 &lt;li&gt;&lt;a href="https://newsboat.org/"&gt;https://newsboat.org/&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/newsboat/newsboat"&gt;https://github.com/newsboat/newsboat&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img alt="2.25-screenshot_1x-33f26153.png" src=".attachments.700615/2.25-screenshot_1x-33f26153.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="2.25-screenshot_1x-33f26153.png" src="/images/2.25-screenshot_1x-33f26153.png"&gt;&lt;/p&gt;
 &lt;h1 id="continue"&gt;Continue&lt;/h1&gt;
 &lt;p&gt;Now that a world of news feeds are at your fingertips, how about doing some electronics work? Read on my friend for an introduction to BeagleBone boards.&lt;/p&gt;
 &lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;</content><category term="linux"></category><category term="systems"></category></entry><entry><title>MirrorDisks</title><link href="https://dfcsoftware.github.io/mirrordisks.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/mirrordisks.html</id><summary type="html">&lt;h1 id="mirror-disks"&gt;Mirror Disks&lt;/h1&gt;
@@ -14935,7 +14935,7 @@ mkdir&lt;span class="w"&gt; &lt;/span&gt;-p&lt;span class="w"&gt; &lt;/span&gt;&
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;hr&gt;
-&lt;p&gt;&lt;img alt="ncmpcpp.png" src=".attachments.596467/ncmpcpp.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="ncmpcpp.png" src="/images/ncmpcpp.png"&gt;&lt;/p&gt;
 &lt;p&gt;Reference: &lt;a href="https://rybczak.net/ncmpcpp/"&gt;https://rybczak.net/ncmpcpp/&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id="install-ncmpcpp"&gt;Install ncmpcpp&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;apt-get&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;ncmpcpp
@@ -15721,7 +15721,7 @@ Remember to enter &lt;code&gt;:xx&lt;/code&gt; to run the pspg pager.&lt;/p&gt;
 mydb-#&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;select&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;*&lt;span class="w"&gt; &lt;/span&gt;from&lt;span class="w"&gt; &lt;/span&gt;mydb.log_file&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img alt="pspg.png" src=".attachments.680613/pspg.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="pspg.png" src="/images/pspg.png"&gt;&lt;/p&gt;
 &lt;h2 id="continue"&gt;Continue&lt;/h2&gt;
 &lt;p&gt;Now that you have installed a shiny new database, consider how upgrades work.&lt;/p&gt;
 &lt;p&gt;In our next episode of Linux in the Home.&lt;/p&gt;

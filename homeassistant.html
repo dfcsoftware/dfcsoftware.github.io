@@ -90,7 +90,6 @@
 </ul>
 </li>
 <li><a href="#lights-for-wall-e">Lights for WALL-E</a></li>
-<li><a href="#_1"></a></li>
 <li><a href="#circuit">Circuit</a><ul>
 <li><a href="#zen16-relay">ZEN16 Relay</a></li>
 <li><a href="#alarm-light-radio-diagram">Alarm Light Radio - Diagram</a></li>
@@ -105,7 +104,7 @@
 </div>
 <hr>
 <p>The server software is in two pieces, Z-Wave JS and HASS. Z-Wave (nodejs) reads a USB stick and manages the connection and commands to various <a href="https://www.z-wave.com/">Z-WAVE compatible wireless devices</a>. HASS (python) displays and automates monitoring and reacting to the devices by communication to Z-Wave over the WebSocket service (ws://localhost:3000). I install and run the docker images of these packages.</p>
-<p><img alt="Home Assistant" src="images/graph-homeassistant.svg"></p>
+<p><img alt="Home Assistant" src="/images/graph-homeassistant.svg"></p>
 <ul>
 <li>ws: WebSocket</li>
 <li>ip: TCP/IP</li>
@@ -119,7 +118,7 @@ Reference:</p>
 </li>
 <li><a href="https://zwave-js.github.io/node-zwave-js/#/">https://zwave-js.github.io/node-zwave-js/#/</a></li>
 </ul>
-<p><img alt="HomeAssistant.png" src=".attachments.567288/HomeAssistant.png"></p>
+<p><img alt="HomeAssistant.png" src="/images/HomeAssistant.png"></p>
 <h2 id="plug-in-zooz-s2-stick-700">Plug in Zooz S2 stick 700</h2>
 <p>This is a USB radio for wireless communication to the Z-Wave family of home automation devices.</p>
 <p>Like:
@@ -1012,12 +1011,12 @@ zwavejs_upgrade
 </blockquote>
 <h2 id="lights-for-wall-e">Lights for WALL-E</h2>
 <p>The relay module <a href="https://www.getzooz.com/zooz-zen16-multirelay/">ZEN16</a> is wired to a switch on the garage door. When it is open a red light is displayed on Wall-E, when the door is closed a green light is shown.</p>
-<p><img alt="Wall-E" src=".attachments.567288/IMG_3813.jpg"></p>
+<p><img alt="Wall-E" src="/images/IMG_3813.jpg"></p>
 <p>A USB charger is used to supply 5 volts DC (BAT1) to the circuit. Circuit switch S1 is connected to the ZEN16 relay R2 connection. Q1 is a 2N2222 transistor. A closed circuit supplies voltage to LED2, open circuit supplies voltage to LED1.</p>
 <p>Here is the electrical diagram for that:</p>
-<h2 id="_1"><img alt="Lights_for_Wall-E.png" src=".attachments.567288/Lights_for_Wall-E.png"></h2>
+<p><img alt="Lights_for_Wall-E.png" src="/images/Lights_for_Wall-E.png"></p>
 <h2 id="circuit">Circuit</h2>
-<p><img alt="opoohbbehgacecel.png" src=".attachments.567288/opoohbbehgacecel.png"></p>
+<p><img alt="opoohbbehgacecel.png" src="/images/opoohbbehgacecel.png"></p>
 <h3 id="zen16-relay">ZEN16 Relay</h3>
 <p>ZEN16 will monitor its switch Sw2 below, if is closed, then turn on relay R2, closing the circuit switch S1 above. Home Assistant will detect the change in relay R2 and issue notifications using its automation.yaml definition "<em>alias: Garage Door Open</em>".</p>
 <p>ZEN16 will respond to relay R1 on/off commands from Home Assistant. The automation.yaml definition is called "<em>alias: Bedroom Alarm</em>" and turns <strong>on</strong> relay R1 at 6:00am. A Home Assistant dashboard button is enabled to turn relay R1 <strong>off</strong>.</p>
@@ -1048,10 +1047,10 @@ zwavejs_upgrade
 </tr>
 </tbody>
 </table>
-<p><img alt="ZEN16" src=".attachments.567288/IMG_4324.jpg"></p>
+<p><img alt="ZEN16" src="/images/IMG_4324.jpg"></p>
 <h3 id="alarm-light-radio-diagram">Alarm Light Radio - Diagram</h3>
 <p>The Power-Tail-Switch is a 120v AC relay controlled by 5v DC. The ZEN16 acts as a switch to turn  relay R1 on and off. This opens/closes the 5v DC voltage flow to enable/disable the 102v AC voltage through the PowerSwitchTail, that sends power to the power strip turning on/off the radio and light plugged into it.</p>
-<p><img alt="AlarmClock-HomeAssistant.png" src=".attachments.567288/AlarmClock-HomeAssistant.png"></p>
+<p><img alt="AlarmClock-HomeAssistant.png" src="/images/AlarmClock-HomeAssistant.png"></p>
 <h2 id="z-wave-devices">Z-Wave Devices</h2>
 <table>
 <thead>
@@ -1158,7 +1157,7 @@ zwavejs_upgrade
 </tbody>
 </table>
 <h2 id="purge">Purge</h2>
-<p><img alt="HA-Purge.png" src=".attachments.567288/HA-Purge.png"></p>
+<p><img alt="HA-Purge.png" src="/images/HA-Purge.png"></p>
 <h2 id="continue">Continue</h2>
 <p>Now that you have set up Home Automation-Mail on your server, you will need Matrix for sending out alerts, so now is a good time to install the super fast and secure messaging system.</p>
 <p>Proceed in the order presented, some things are depending on prior setups.</p>
@@ -1197,7 +1196,7 @@ zwavejs_upgrade
                 </p><!-- /#about -->
 
                 <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-                <p> Version:  3.33 </p>
+                <p> Version:  3.35 </p>
         </footer><!-- /#contentinfo -->
 
 </body>
