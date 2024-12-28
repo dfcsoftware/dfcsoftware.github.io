@@ -163,27 +163,18 @@
 </div>
 <hr>
 <p>The server software is in two pieces, Z-Wave JS and HASS. Z-Wave (nodejs) reads a USB stick and manages the connection and commands to various <a href="https://www.z-wave.com/">Z-WAVE compatible wireless devices</a>. HASS (python) displays and automates monitoring and reacting to the devices by communication to Z-Wave over the WebSocket service (ws://localhost:3000). I install and run the docker images of these packages.</p>
-<div class="highlight"><pre><span></span><code><span class="n">graph</span><span class="w"> </span><span class="n">TD</span><span class="p">;</span>
-<span class="w">        </span><span class="n">Home</span><span class="o">-</span><span class="n">Assist</span><span class="o">&lt;--</span><span class="w"> </span><span class="n">ws</span><span class="w"> </span><span class="o">--&gt;</span><span class="n">Z</span><span class="o">-</span><span class="n">Wave</span><span class="o">-</span><span class="n">JS</span><span class="o">-</span><span class="n">UI</span><span class="p">;</span>
-<span class="w">        </span><span class="n">Home</span><span class="o">-</span><span class="n">Assist</span><span class="o">&lt;--</span><span class="w"> </span><span class="n">ip</span><span class="w"> </span><span class="o">--&gt;</span><span class="n">Camera</span><span class="p">;</span>
-<span class="w">        </span><span class="n">Home</span><span class="o">-</span><span class="n">Assist</span><span class="o">&lt;--</span><span class="w"> </span><span class="n">ip</span><span class="w"> </span><span class="o">--&gt;</span><span class="n">TV</span><span class="p">;</span>
-<span class="w">        </span><span class="n">Home</span><span class="o">-</span><span class="n">Assist</span><span class="o">&lt;--</span><span class="w"> </span><span class="n">ip</span><span class="w"> </span><span class="o">--&gt;</span><span class="n">Receiver</span><span class="p">;</span>
-<span class="w">        </span><span class="n">Z</span><span class="o">-</span><span class="n">Wave</span><span class="o">-</span><span class="n">JS</span><span class="o">-</span><span class="n">UI</span><span class="o">&lt;--&gt;</span><span class="n">USB</span><span class="o">-</span><span class="n">Stick</span><span class="p">;</span>
-<span class="w">        </span><span class="n">USB</span><span class="o">-</span><span class="n">Stick</span><span class="o">&lt;-</span><span class="n">.</span><span class="w"> </span><span class="n">zw</span><span class="w"> </span><span class="n">.</span><span class="o">-&gt;</span><span class="n">Window</span><span class="o">-</span><span class="n">Alarm</span><span class="p">;</span>
-<span class="w">        </span><span class="n">USB</span><span class="o">-</span><span class="n">Stick</span><span class="o">&lt;-</span><span class="n">.</span><span class="w"> </span><span class="n">zw</span><span class="w"> </span><span class="n">.</span><span class="o">-&gt;</span><span class="n">Door</span><span class="o">-</span><span class="n">Alarm</span><span class="p">;</span>
-<span class="w">        </span><span class="n">USB</span><span class="o">-</span><span class="n">Stick</span><span class="o">&lt;-</span><span class="n">.</span><span class="w"> </span><span class="n">zw</span><span class="w"> </span><span class="n">.</span><span class="o">-&gt;</span><span class="n">Thermostat</span><span class="p">;</span>
-<span class="w">        </span><span class="n">USB</span><span class="o">-</span><span class="n">Stick</span><span class="o">&lt;-</span><span class="n">.</span><span class="w"> </span><span class="n">zw</span><span class="w"> </span><span class="n">.</span><span class="o">-&gt;</span><span class="n">Light</span><span class="o">-</span><span class="n">Switch</span><span class="p">;</span>
-<span class="w">        </span><span class="n">USB</span><span class="o">-</span><span class="n">Stick</span><span class="o">&lt;-</span><span class="n">.</span><span class="w"> </span><span class="n">zw</span><span class="w"> </span><span class="n">.</span><span class="o">-&gt;</span><span class="n">Motion</span><span class="o">-</span><span class="n">Detector</span><span class="p">;</span>
-</code></pre></div>
-
+<p><img alt="Home Assistant" src="images/graph-homeassistant.svg"></p>
 <ul>
 <li>ws: WebSocket</li>
 <li>ip: TCP/IP</li>
-<li>zw: Z-Wave</li>
-</ul>
-<p>Reference:</p>
-<ul>
-<li><a href="https://www.home-assistant.io/">https://www.home-assistant.io/</a></li>
+<li>
+<p>zw: Z-Wave
+ con  <br>
+Reference:</p>
+</li>
+<li>
+<p><a href="https://www.home-assistant.io/">https://www.home-assistant.io/</a></p>
+</li>
 <li><a href="https://zwave-js.github.io/node-zwave-js/#/">https://zwave-js.github.io/node-zwave-js/#/</a></li>
 </ul>
 <p><img alt="HomeAssistant.png" src=".attachments.567288/HomeAssistant.png"></p>
@@ -1264,7 +1255,7 @@ zwavejs_upgrade
                 </p><!-- /#about -->
 
                 <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-                <p> Version:  3.30 </p>
+                <p> Version:  3.31 </p>
         </footer><!-- /#contentinfo -->
 
 </body>
