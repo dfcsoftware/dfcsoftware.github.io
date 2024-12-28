@@ -743,28 +743,13 @@ QEMU:&lt;span class="w"&gt; &lt;/span&gt;Checking&lt;span class="w"&gt; &lt;/spa
 &lt;blockquote&gt;
 &lt;p&gt;See file /etc/libvirt/network/default.xml&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nf"&gt;graph&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;TD&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;Router&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;---&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;eth0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;PhysicalHost&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;--&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;eth0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;NAT&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;virbr0&lt;/span&gt;&lt;span class="o"&gt;--&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;eth0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;VM&lt;/span&gt;&lt;span class="o"&gt;--&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;NAT&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;virbr0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
+&lt;p&gt;&lt;img alt="Virtual Machine NAT" src="/images/graph-virtual-machine.svg"&gt;&lt;/p&gt;
 &lt;h4 id="bridged-vm-network-physical-host-bridge"&gt;Bridged VM Network (Physical Host &lt;em&gt;bridge&lt;/em&gt;)&lt;/h4&gt;
 &lt;p&gt;If you require a VM to appear on the same &lt;em&gt;external&lt;/em&gt; network as the hypervisor, you must use bridged mode instead. To do so, attach the VM to a bridge device connected to the hypervisor’s physical network device.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;See file /etc/nmstate/50-create-bridge.yml below&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nf"&gt;graph&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;TD&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;Router&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;--&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;eth1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;eth1&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;--&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;bridge&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;virbr0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;bridge&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;virbr0&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;--&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;VM&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;Router&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;--&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;eth0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;PhysicalHost&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;--&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;eth0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;eth0&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;--&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;vlan1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;vlan1&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;--&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;NFS&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
+&lt;p&gt;&lt;img alt="Virtual Machine Bridge" src="/images/graph-virtual-machine2.svg"&gt;&lt;/p&gt;
 &lt;h4 id="redhat-way-1"&gt;RedHat Way [1]&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Create a nmstate configuration file on the physical host.&lt;/li&gt;

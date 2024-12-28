@@ -394,28 +394,13 @@ QEMU:<span class="w"> </span>Checking<span class="w"> </span><span class="k">for
 <blockquote>
 <p>See file /etc/libvirt/network/default.xml</p>
 </blockquote>
-<div class="highlight"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">TD</span><span class="p">;</span>
-<span class="w">        </span><span class="n">Router</span><span class="o">&lt;---&gt;</span><span class="n">eth0</span><span class="p">;</span>
-<span class="w">        </span><span class="n">PhysicalHost</span><span class="o">&lt;--&gt;</span><span class="n">eth0</span><span class="p">;</span>
-<span class="w">        </span><span class="n">NAT</span><span class="o">-</span><span class="n">virbr0</span><span class="o">--&gt;</span><span class="n">eth0</span><span class="p">;</span>
-<span class="w">        </span><span class="n">VM</span><span class="o">--&gt;</span><span class="n">NAT</span><span class="o">-</span><span class="n">virbr0</span><span class="p">;</span>
-</code></pre></div>
-
+<p><img alt="Virtual Machine NAT" src="/images/graph-virtual-machine.svg"></p>
 <h4 id="bridged-vm-network-physical-host-bridge">Bridged VM Network (Physical Host <em>bridge</em>)</h4>
 <p>If you require a VM to appear on the same <em>external</em> network as the hypervisor, you must use bridged mode instead. To do so, attach the VM to a bridge device connected to the hypervisor’s physical network device.</p>
 <blockquote>
 <p>See file /etc/nmstate/50-create-bridge.yml below</p>
 </blockquote>
-<div class="highlight"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">TD</span><span class="p">;</span>
-<span class="w">        </span><span class="n">Router</span><span class="o">&lt;--&gt;</span><span class="n">eth1</span><span class="p">;</span>
-<span class="w">        </span><span class="n">eth1</span><span class="o">&lt;--&gt;</span><span class="n">bridge</span><span class="o">-</span><span class="n">virbr0</span><span class="p">;</span>
-<span class="w">        </span><span class="n">bridge</span><span class="o">-</span><span class="n">virbr0</span><span class="o">&lt;--&gt;</span><span class="n">VM</span><span class="p">;</span>
-<span class="w">        </span><span class="n">Router</span><span class="o">&lt;--&gt;</span><span class="n">eth0</span><span class="p">;</span>
-<span class="w">        </span><span class="n">PhysicalHost</span><span class="o">&lt;--&gt;</span><span class="n">eth0</span><span class="p">;</span>
-<span class="w">        </span><span class="n">eth0</span><span class="o">&lt;--&gt;</span><span class="n">vlan1</span><span class="p">;</span>
-<span class="w">        </span><span class="n">vlan1</span><span class="o">&lt;--&gt;</span><span class="n">NFS</span><span class="p">;</span>
-</code></pre></div>
-
+<p><img alt="Virtual Machine Bridge" src="/images/graph-virtual-machine2.svg"></p>
 <h4 id="redhat-way-1">RedHat Way [1]</h4>
 <ul>
 <li>Create a nmstate configuration file on the physical host.</li>
@@ -971,7 +956,7 @@ $ ssh &lt;remote IP&gt; grep -n &lt;remote IP&gt; ~/.ssh/known_hosts
                 </p><!-- /#about -->
 
                 <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-                <p> Version:  3.31 </p>
+                <p> Version:  3.32 </p>
         </footer><!-- /#contentinfo -->
 
 </body>
