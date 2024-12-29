@@ -12555,7 +12555,7 @@ zwavejs_upgrade
 &lt;/blockquote&gt;
 &lt;p&gt;After a few minutes, navigate back to the Developers Tools page. Upon load, you should now be on the latest version of Home Assistant.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;More docker commands are in my Docker blog for &lt;a href="2023/january.html#docker"&gt;January 2023&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;More docker commands are in my &lt;a href="/docker.html"&gt;Docker&lt;/a&gt; article.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id="lights-for-wall-e"&gt;Lights for WALL-E&lt;/h2&gt;
 &lt;p&gt;The relay module &lt;a href="https://www.getzooz.com/zooz-zen16-multirelay/"&gt;ZEN16&lt;/a&gt; is wired to a switch on the garage door. When it is open a red light is displayed on Wall-E, when the door is closed a green light is shown.&lt;/p&gt;
@@ -14913,7 +14913,7 @@ exporting&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;192&lt;/span&
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;You should consider running NFS over a VLAN. The &lt;a href="/linux-in-the-house/2023/february.html"&gt;February 2023 Blog&lt;/a&gt; has information on setting up a vlan.&lt;/p&gt;
+&lt;p&gt;You should consider running NFS over a VLAN. The &lt;a href="/virtualip.html"&gt;Virtual IP&lt;/a&gt; article has information on setting up a vlan.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id="connect-to-nfs-server-from-linux-client"&gt;Connect to NFS server from Linux client&lt;/h2&gt;
 &lt;h3 id="install-software-on-client"&gt;Install Software on Client&lt;/h3&gt;
