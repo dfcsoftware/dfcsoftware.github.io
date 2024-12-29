@@ -91,24 +91,13 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;h2 id="thoughts"&gt;Thoughts&lt;/h2&gt;
+&lt;h2 id="regards"&gt;Regards&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Dedicated to my wife. She fixes the meals, I fix the house.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Prior Version (2023): &lt;a href="https://linux-in-the-house.pages.dev/"&gt;https://linux-in-the-house.pages.dev/&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Following is a sample of things to think about.&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;Prior Version (2023): &lt;a href="https://linux-in-the-house.pages.dev/"&gt;https://linux-in-the-house.pages.dev/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Early one foggy morning a white van whipped into the driveway and out pops two bearded fellows. "Hey, the wallpaper removers are here" I called out. Sure enough the camera alerted me as to an abnormal presence in the force.&lt;/p&gt;
-&lt;p&gt;It's not always been so easy, and assembling a security camera setup was something from Mad magazine in the 1960's that I achieved to some degree only lately. With an un-finished basement it was a breeze to run Cat-6 wires to each camera, even supplying power over ethernet (POE) to a latest breed of observers.&lt;/p&gt;
-&lt;p&gt;Following our birth to computers, from mechanical to electrical, monolithic to personal, microscopic chemicals and minerals beat their little binary hearts digested from human text. Standing on the hills of our ancestors we can only hope to provide something the world wants to use as long it works.&lt;/p&gt;
-&lt;p&gt;Thinking of such lofty goals, I am inspired to continue my journaley writings.&lt;/p&gt;
-&lt;p&gt;From here, for now;&lt;/p&gt;
-&lt;p&gt;-- Don&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Lock your computer's doors and windows,
 but remember:
@@ -10014,9 +10003,12 @@ log_check&lt;span class="w"&gt; &lt;/span&gt;.dovecot&lt;span class="w"&gt;  &lt
 &lt;li&gt;Watch - &lt;a href="/watch.html"&gt;System Alerts&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h1 id="apache-install-enable-on-your-domainorg"&gt;Apache install (enable) on &lt;em&gt;your-domain.org&lt;/em&gt;&lt;/h1&gt;
-&lt;p&gt;Click on this heading, then refer to these instructions, then come back here with the Back Arrow on the Browser:
- * &lt;a href="/dns.html#install-a-web-server"&gt;Apache Web Server&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Test it on http://&lt;domain.name&gt;&lt;/p&gt;
+&lt;p&gt;Click on this heading, then refer to these instructions, then come back here with the Back Arrow on the Browser:&lt;/p&gt;
+&lt;p&gt;&lt;a href="/dns.html#install-a-web-server"&gt;Apache Web Server&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Test it on:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;curl&lt;span class="w"&gt; &lt;/span&gt;http://&amp;lt;domain.name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
 &lt;h2 id="add-ssl"&gt;Add SSL&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Debian&lt;/li&gt;
