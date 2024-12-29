@@ -204,7 +204,7 @@ $<span class="w"> </span>&gt;<span class="w"> </span>/etc/issue.net
 </code></pre></div>
 
 <p>Create config file:</p>
-<p>File: ~/.config/forest/config.<host></p>
+<p>File: ~/.config/forest/config.\&lt;host&gt;</p>
 <div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="n">CLOUD_USER</span><span class="o">=&lt;</span><span class="n">nextcloud</span><span class="w"> </span><span class="n">user</span><span class="o">&gt;</span>
 <span class="k">export</span><span class="w"> </span><span class="n">CLOUD_PASS</span><span class="o">=</span><span class="s2">&quot;&lt;nextcloud password&gt;</span>
 <span class="k">export</span><span class="w"> </span><span class="n">CLOUD_DIR</span><span class="o">=</span><span class="n">alert</span>
@@ -400,7 +400,7 @@ It needs to be scheduled in cron.</p>
 </code></pre></div>
 
 <ol>
-<li>log.sh reads config file ~/.config/forest/logwatch.<hostname></li>
+<li>log.sh reads config file ~/.config/forest/logwatch.\&lt;hostname&gt;</li>
 </ol>
 <p>Up to two filters may be specified.</p>
 <p>File: logwatch.vm7</p>
@@ -558,7 +558,7 @@ $<span class="w"> </span>git<span class="w"> </span>init<span class="w"> </span>
 <span class="n">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="p">.</span>
 <span class="n">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">commit</span>
 <span class="cp"># Push them to the sharing repo, with the ```--set-upstream``` option</span>
-<span class="n">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="o">--</span><span class="n">set</span><span class="o">-</span><span class="n">upstream</span><span class="w"> </span><span class="n">git</span><span class="o">+</span><span class="n">ssh</span><span class="o">:</span><span class="c1">//nas.doncohoon.com:/mnt/vol002/nfs2_share/backups/forest.git master</span>
+<span class="n">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="o">--</span><span class="n">set</span><span class="o">-</span><span class="n">upstream</span><span class="w"> </span><span class="n">git</span><span class="o">+</span><span class="n">ssh</span><span class="o">:</span><span class="c1">//nas.example.com:/mnt/vol002/nfs2_share/backups/forest.git master</span>
 
 <span class="n">Enumerating</span><span class="w"> </span><span class="n">objects</span><span class="o">:</span><span class="w"> </span><span class="mi">12507</span><span class="p">,</span><span class="w"> </span><span class="n">done</span><span class="p">.</span>
 <span class="n">Counting</span><span class="w"> </span><span class="n">objects</span><span class="o">:</span><span class="w"> </span><span class="mi">100</span><span class="o">%</span><span class="w"> </span><span class="p">(</span><span class="mi">12507</span><span class="o">/</span><span class="mi">12507</span><span class="p">),</span><span class="w"> </span><span class="n">done</span><span class="p">.</span>
@@ -567,15 +567,15 @@ $<span class="w"> </span>git<span class="w"> </span>init<span class="w"> </span>
 <span class="n">Writing</span><span class="w"> </span><span class="n">objects</span><span class="o">:</span><span class="w"> </span><span class="mi">100</span><span class="o">%</span><span class="w"> </span><span class="p">(</span><span class="mi">12507</span><span class="o">/</span><span class="mi">12507</span><span class="p">),</span><span class="w"> </span><span class="mf">95.18</span><span class="w"> </span><span class="n">MiB</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mf">12.71</span><span class="w"> </span><span class="n">MiB</span><span class="o">/</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">done</span><span class="p">.</span>
 <span class="n">Total</span><span class="w"> </span><span class="mi">12507</span><span class="w"> </span><span class="p">(</span><span class="n">delta</span><span class="w"> </span><span class="mi">6643</span><span class="p">),</span><span class="w"> </span><span class="n">reused</span><span class="w"> </span><span class="mi">9514</span><span class="w"> </span><span class="p">(</span><span class="n">delta</span><span class="w"> </span><span class="mi">5966</span><span class="p">),</span><span class="w"> </span><span class="n">pack</span><span class="o">-</span><span class="n">reused</span><span class="w"> </span><span class="mi">0</span>
 <span class="nl">remote</span><span class="p">:</span><span class="w"> </span><span class="n">Resolving</span><span class="w"> </span><span class="n">deltas</span><span class="o">:</span><span class="w"> </span><span class="mi">100</span><span class="o">%</span><span class="w"> </span><span class="p">(</span><span class="mi">6643</span><span class="o">/</span><span class="mi">6643</span><span class="p">),</span><span class="w"> </span><span class="n">done</span><span class="p">.</span>
-<span class="n">To</span><span class="w"> </span><span class="n">git</span><span class="o">+</span><span class="n">ssh</span><span class="o">:</span><span class="c1">//nas.doncohoon.com:/mnt/vol002/nfs2_share/backups/forest.git</span>
+<span class="n">To</span><span class="w"> </span><span class="n">git</span><span class="o">+</span><span class="n">ssh</span><span class="o">:</span><span class="c1">//nas.example.com:/mnt/vol002/nfs2_share/backups/forest.git</span>
 <span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">[</span><span class="n">new</span><span class="w"> </span><span class="n">branch</span><span class="p">]</span><span class="w">      </span><span class="n">master</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">master</span>
-<span class="n">Branch</span><span class="w"> </span><span class="err">&#39;</span><span class="n">master</span><span class="err">&#39;</span><span class="w"> </span><span class="n">set</span><span class="w"> </span><span class="n">up</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">track</span><span class="w"> </span><span class="n">remote</span><span class="w"> </span><span class="n">branch</span><span class="w"> </span><span class="err">&#39;</span><span class="n">master</span><span class="err">&#39;</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="err">&#39;</span><span class="n">git</span><span class="o">+</span><span class="n">ssh</span><span class="o">:</span><span class="c1">//nas.doncohoon.com:/mnt/vol002/nfs2_share/backups/forest.git’.</span>
+<span class="n">Branch</span><span class="w"> </span><span class="err">&#39;</span><span class="n">master</span><span class="err">&#39;</span><span class="w"> </span><span class="n">set</span><span class="w"> </span><span class="n">up</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">track</span><span class="w"> </span><span class="n">remote</span><span class="w"> </span><span class="n">branch</span><span class="w"> </span><span class="err">&#39;</span><span class="n">master</span><span class="err">&#39;</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="err">&#39;</span><span class="n">git</span><span class="o">+</span><span class="n">ssh</span><span class="o">:</span><span class="c1">//nas.example.com:/mnt/vol/backups/forest.git’.</span>
 </code></pre></div>
 
 <p>You can see the sharing repo definition here:</p>
 <p>File: .git/config</p>
 <div class="highlight"><pre><span></span><code><span class="k">[branch &quot;master&quot;]</span>
-<span class="w">    </span><span class="na">remote</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">git+ssh://nas.doncohoon.com:/mnt/vol002/nfs2_share/backups/forest.git</span>
+<span class="w">    </span><span class="na">remote</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">git+ssh://nas.example.com:/mnt/vol/backups/forest.git</span>
 <span class="w">    </span><span class="na">merge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">refs/heads/master</span>
 </code></pre></div>
 
@@ -748,7 +748,7 @@ fbff5bc..72bbc59<span class="w"> </span>master<span class="w"> </span>-&gt;<span
                 </p><!-- /#about -->
 
                 <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-                <p> Version:  3.38 </p>
+                <p> Version:  3.39 </p>
         </footer><!-- /#contentinfo -->
 
 </body>
