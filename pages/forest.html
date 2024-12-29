@@ -69,11 +69,9 @@
 <li><a href="#create-a-bare-repo-no-working-files">Create a bare repo, no working files</a></li>
 </ul>
 </li>
+<li><a href="#multiple-remote-git-repositories">Multiple remote git repositories</a></li>
 </ul>
 </li>
-<li><a href="#_1"></a></li>
-<li><a href="#then-add-them-to-your-local-git-repo">Then add them to your local git repo</a></li>
-<li><a href="#push-them-to-the-sharing-repo-with-the-set-upstream-option">Push them to the sharing repo, with the --set-upstream option</a></li>
 </ul>
 </div>
 <hr>
@@ -178,6 +176,12 @@ and send alerts if watch thresholds are exceeded.</p>
 <li>Download</li>
 </ul>
 <p><a href="https://github.com/dfcsoftware/watch">https://github.com/dfcsoftware/watch</a></p>
+<ul>
+<li>or - clone</li>
+</ul>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dfcsoftware/watch
+</code></pre></div>
+
 <p>Copy all files to ~/forest, or whatever directory you like, 
 just change this documents' references of </p>
 <div class="highlight"><pre><span></span><code>/home/bob
@@ -518,7 +522,7 @@ $<span class="w"> </span>install.sh
 <p>origin” is not special
 Just like the branch name “master” does not have any special meaning in Git, neither does “origin”. While “master” is the default name for a starting branch when you run git init which is the only reason it’s widely used, “origin” is the <strong>default name for a remote when you run git clone</strong>. If you run git clone -o booyah instead, then you will have booyah/master as your default remote branch.</p>
 </blockquote>
-<p>Remote-tracking branch names take the form <remote>/<branch>. </p>
+<p>Remote-tracking branch names take the form \&lt;remote&gt;/\&lt;branch&gt;. </p>
 <p>For instance, if you wanted to see what the master branch on your origin remote looked like as of the last time you communicated with it, you would check the origin/master branch. If you were working on an issue with a partner and they pushed up an iss53 branch, you might have your own local iss53 branch, but the branch on the server would be represented by the remote-tracking branch origin/iss53.</p>
 <h2 id="downstream-vs-upstream">Downstream vs. Upstream</h2>
 <div class="highlight"><pre><span></span><code><span class="o">|---------------------------</span><span class="w"> </span><span class="nc">time</span><span class="w"> </span><span class="o">-----------------------------&gt;</span><span class="w"> </span>
@@ -545,156 +549,169 @@ $<span class="w"> </span>git<span class="w"> </span>init<span class="w"> </span>
 <ul>
 <li>On working hosts where you want to track files, create a working repo, populate it with files, ane push it to the sharing repo.</li>
 </ul>
-<p>```:
-$ mkdir ~/forest
-$ cd    ~/forest
-$ git init </p>
-<h1 id="_1"></h1>
-<p>$ [copy your files into the new directory]</p>
-<h1 id="then-add-them-to-your-local-git-repo">Then add them to your local git repo</h1>
-<p>$ git add .
-$ git commit</p>
-<h1 id="push-them-to-the-sharing-repo-with-the-set-upstream-option">Push them to the sharing repo, with the <code>--set-upstream</code> option</h1>
-<p>$ git push --set-upstream git+ssh://nas.doncohoon.com:/mnt/vol002/nfs2_share/backups/forest.git master</p>
-<p>Enumerating objects: 12507, done.
-Counting objects: 100% (12507/12507), done.
-Delta compression using up to 2 threads
-Compressing objects: 100% (6304/6304), done.
-Writing objects: 100% (12507/12507), 95.18 MiB | 12.71 MiB/s, done.
-Total 12507 (delta 6643), reused 9514 (delta 5966), pack-reused 0
-remote: Resolving deltas: 100% (6643/6643), done.
-To git+ssh://nas.doncohoon.com:/mnt/vol002/nfs2_share/backups/forest.git
- * [new branch]      master -&gt; master
-Branch 'master' set up to track remote branch 'master' from 'git+ssh://nas.doncohoon.com:/mnt/vol002/nfs2_share/backups/forest.git’.</p>
-<div class="highlight"><pre><span></span><code>You can see the sharing repo definition here:
+<div class="highlight"><pre><span></span><code><span class="n">$</span><span class="w"> </span><span class="n">mkdir</span><span class="w"> </span><span class="o">~/</span><span class="n">forest</span>
+<span class="n">$</span><span class="w"> </span><span class="n">cd</span><span class="w">    </span><span class="o">~/</span><span class="n">forest</span>
+<span class="n">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">init</span><span class="w"> </span>
+<span class="cp">#</span>
+<span class="n">$</span><span class="w"> </span><span class="p">[</span><span class="k">copy</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">files</span><span class="w"> </span><span class="n">into</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">directory</span><span class="p">]</span>
+<span class="cp"># Then add them to your local git repo</span>
+<span class="n">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="p">.</span>
+<span class="n">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">commit</span>
+<span class="cp"># Push them to the sharing repo, with the ```--set-upstream``` option</span>
+<span class="n">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="o">--</span><span class="n">set</span><span class="o">-</span><span class="n">upstream</span><span class="w"> </span><span class="n">git</span><span class="o">+</span><span class="n">ssh</span><span class="o">:</span><span class="c1">//nas.doncohoon.com:/mnt/vol002/nfs2_share/backups/forest.git master</span>
 
-File: .git/config
+<span class="n">Enumerating</span><span class="w"> </span><span class="n">objects</span><span class="o">:</span><span class="w"> </span><span class="mi">12507</span><span class="p">,</span><span class="w"> </span><span class="n">done</span><span class="p">.</span>
+<span class="n">Counting</span><span class="w"> </span><span class="n">objects</span><span class="o">:</span><span class="w"> </span><span class="mi">100</span><span class="o">%</span><span class="w"> </span><span class="p">(</span><span class="mi">12507</span><span class="o">/</span><span class="mi">12507</span><span class="p">),</span><span class="w"> </span><span class="n">done</span><span class="p">.</span>
+<span class="n">Delta</span><span class="w"> </span><span class="n">compression</span><span class="w"> </span><span class="n">using</span><span class="w"> </span><span class="n">up</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">threads</span>
+<span class="n">Compressing</span><span class="w"> </span><span class="n">objects</span><span class="o">:</span><span class="w"> </span><span class="mi">100</span><span class="o">%</span><span class="w"> </span><span class="p">(</span><span class="mi">6304</span><span class="o">/</span><span class="mi">6304</span><span class="p">),</span><span class="w"> </span><span class="n">done</span><span class="p">.</span>
+<span class="n">Writing</span><span class="w"> </span><span class="n">objects</span><span class="o">:</span><span class="w"> </span><span class="mi">100</span><span class="o">%</span><span class="w"> </span><span class="p">(</span><span class="mi">12507</span><span class="o">/</span><span class="mi">12507</span><span class="p">),</span><span class="w"> </span><span class="mf">95.18</span><span class="w"> </span><span class="n">MiB</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mf">12.71</span><span class="w"> </span><span class="n">MiB</span><span class="o">/</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">done</span><span class="p">.</span>
+<span class="n">Total</span><span class="w"> </span><span class="mi">12507</span><span class="w"> </span><span class="p">(</span><span class="n">delta</span><span class="w"> </span><span class="mi">6643</span><span class="p">),</span><span class="w"> </span><span class="n">reused</span><span class="w"> </span><span class="mi">9514</span><span class="w"> </span><span class="p">(</span><span class="n">delta</span><span class="w"> </span><span class="mi">5966</span><span class="p">),</span><span class="w"> </span><span class="n">pack</span><span class="o">-</span><span class="n">reused</span><span class="w"> </span><span class="mi">0</span>
+<span class="nl">remote</span><span class="p">:</span><span class="w"> </span><span class="n">Resolving</span><span class="w"> </span><span class="n">deltas</span><span class="o">:</span><span class="w"> </span><span class="mi">100</span><span class="o">%</span><span class="w"> </span><span class="p">(</span><span class="mi">6643</span><span class="o">/</span><span class="mi">6643</span><span class="p">),</span><span class="w"> </span><span class="n">done</span><span class="p">.</span>
+<span class="n">To</span><span class="w"> </span><span class="n">git</span><span class="o">+</span><span class="n">ssh</span><span class="o">:</span><span class="c1">//nas.doncohoon.com:/mnt/vol002/nfs2_share/backups/forest.git</span>
+<span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">[</span><span class="n">new</span><span class="w"> </span><span class="n">branch</span><span class="p">]</span><span class="w">      </span><span class="n">master</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">master</span>
+<span class="n">Branch</span><span class="w"> </span><span class="err">&#39;</span><span class="n">master</span><span class="err">&#39;</span><span class="w"> </span><span class="n">set</span><span class="w"> </span><span class="n">up</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">track</span><span class="w"> </span><span class="n">remote</span><span class="w"> </span><span class="n">branch</span><span class="w"> </span><span class="err">&#39;</span><span class="n">master</span><span class="err">&#39;</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="err">&#39;</span><span class="n">git</span><span class="o">+</span><span class="n">ssh</span><span class="o">:</span><span class="c1">//nas.doncohoon.com:/mnt/vol002/nfs2_share/backups/forest.git’.</span>
 </code></pre></div>
 
-<p>[branch "master"]
-    remote = git+ssh://nas.doncohoon.com:/mnt/vol002/nfs2_share/backups/forest.git
-    merge = refs/heads/master</p>
-<div class="highlight"><pre><span></span><code><span class="k">*</span> Pushing commits to a remote repository
-
-Run ```git push origin main``` to push your local changes to your online repository. (push &lt;source&gt; &lt;destination&gt;)
-
-<span class="k">*</span> Pulling commits from a remote repository
-
-Run ```git pull origin``` to pull other committed changes to your local repository. (pull &lt;source&gt;)
-
-<span class="k">*</span> Getting everything from a remote repository
-
-For new hosts you can grab all the files by using ```git clone <span class="gs">*remotename*</span>```. This will create a &#39;working directory&#39; on your local machine.
-
-<span class="k">*</span> Summary
+<p>You can see the sharing repo definition here:</p>
+<p>File: .git/config</p>
+<div class="highlight"><pre><span></span><code><span class="k">[branch &quot;master&quot;]</span>
+<span class="w">    </span><span class="na">remote</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">git+ssh://nas.doncohoon.com:/mnt/vol002/nfs2_share/backups/forest.git</span>
+<span class="w">    </span><span class="na">merge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">refs/heads/master</span>
 </code></pre></div>
 
-<p>$ git remote add progit https://github.com/progit/progit2.git # [1]
-$ git fetch progit                                            # [2]
-$ git branch --set-upstream-to=progit/master master           # [3]
-$ git config --local remote.pushDefault origin                # [4]</p>
-<div class="highlight"><pre><span></span><code><span class="mf">1.</span><span class="w"> </span><span class="n">Add</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="n">repository</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">give</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">name</span><span class="mf">.</span><span class="w"> </span><span class="n">Here</span><span class="p">,</span><span class="w"> </span><span class="n">I</span><span class="w"> </span><span class="n">have</span><span class="w"> </span><span class="n">chosen</span><span class="w"> </span><span class="kr">to</span><span class="w"> </span><span class="n">call</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="n">progit</span><span class="mf">.</span><span class="w"> </span>
-<span class="mf">2.</span><span class="w"> </span><span class="kr">Get</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">reference</span><span class="w"> </span><span class="kr">on</span><span class="w"> </span><span class="n">progit</span><span class="err">’</span><span class="n">s</span><span class="w"> </span><span class="n">branches</span><span class="p">,</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">particular</span><span class="w"> </span><span class="n">master</span><span class="mf">.</span>
-<span class="mf">3.</span><span class="w"> </span><span class="n">Set</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">master</span><span class="w"> </span><span class="n">branch</span><span class="w"> </span><span class="kr">to</span><span class="w"> </span><span class="n">fetch</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">progit</span><span class="w"> </span><span class="c1">remote.</span>
-<span class="mf">4.</span><span class="w"> </span><span class="kd">Def</span><span class="n">ine</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="kd">def</span><span class="n">ault</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">repository</span><span class="w"> </span><span class="kr">to</span><span class="w"> </span><span class="ow">or</span><span class="n">igin</span><span class="mf">.</span>
-
-<span class="kr">On</span><span class="n">ce</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">done</span><span class="p">,</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">workflow</span><span class="w"> </span><span class="n">becomes</span><span class="w"> </span><span class="n">much</span><span class="w"> </span><span class="n">simpler</span><span class="p">:</span>
+<ul>
+<li>Pushing commits to a remote repository</li>
+</ul>
+<p>Run <code>git push origin main</code> to push your local changes to your online repository. (push <source> <destination>)</p>
+<ul>
+<li>Pulling commits from a remote repository</li>
+</ul>
+<p>Run <code>git pull origin</code> to pull other committed changes to your local repository. (pull <source>)</p>
+<ul>
+<li>Getting everything from a remote repository</li>
+</ul>
+<p>For new hosts you can grab all the files by using <code>git clone *remotename*</code>. This will create a 'working directory' on your local machine.</p>
+<ul>
+<li>Summary</li>
+</ul>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>progit<span class="w"> </span>https://github.com/progit/progit2.git<span class="w"> </span><span class="c1"># [1]</span>
+$<span class="w"> </span>git<span class="w"> </span>fetch<span class="w"> </span>progit<span class="w">                                            </span><span class="c1"># [2]</span>
+$<span class="w"> </span>git<span class="w"> </span>branch<span class="w"> </span>--set-upstream-to<span class="o">=</span>progit/master<span class="w"> </span>master<span class="w">           </span><span class="c1"># [3]</span>
+$<span class="w"> </span>git<span class="w"> </span>config<span class="w"> </span>--local<span class="w"> </span>remote.pushDefault<span class="w"> </span>origin<span class="w">                </span><span class="c1"># [4]</span>
 </code></pre></div>
 
-<p>$ git checkout master # [1]
-$ git pull            # [2]
-$ git push            # [3]</p>
-<div class="highlight"><pre><span></span><code><span class="mf">1.</span><span class="w"> </span><span class="kr">If</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">were</span><span class="w"> </span><span class="kr">on</span><span class="w"> </span><span class="n">another</span><span class="w"> </span><span class="n">branch</span><span class="p">,</span><span class="w"> </span><span class="kr">return</span><span class="w"> </span><span class="kr">to</span><span class="w"> </span><span class="n">master</span><span class="mf">.</span>
-<span class="mf">2.</span><span class="w"> </span><span class="n">Fetch</span><span class="w"> </span><span class="n">changes</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">progit</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">merge</span><span class="w"> </span><span class="n">changes</span><span class="w"> </span><span class="nb">int</span><span class="n">o</span><span class="w"> </span><span class="n">master</span><span class="mf">.</span><span class="w"> </span>
-<span class="mf">3.</span><span class="w"> </span><span class="n">Push</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">master</span><span class="w"> </span><span class="n">branch</span><span class="w"> </span><span class="kr">to</span><span class="w"> </span><span class="ow">or</span><span class="n">igin</span><span class="mf">.</span>
-
-<span class="n">Reference</span><span class="p">:</span><span class="w"> </span>
-
-<span class="o">*</span><span class="w"> </span><span class="o">&lt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">git</span><span class="o">-</span><span class="n">scm</span><span class="mf">.</span><span class="n">com</span><span class="o">/</span><span class="n">book</span><span class="o">/</span><span class="n">en</span><span class="o">/</span><span class="n">v2</span><span class="o">&gt;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">pp190</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Keep</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">GitHub</span><span class="w"> </span><span class="n">public</span><span class="w"> </span><span class="n">repository</span><span class="w"> </span><span class="n">up</span><span class="o">-</span><span class="kr">to</span><span class="o">-</span><span class="n">date</span>
-
-<span class="err">##</span><span class="w"> </span><span class="n">Multiple</span><span class="w"> </span><span class="c1">remote git repositories</span>
-
-<span class="mf">1.</span><span class="w"> </span><span class="n">John</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">Jessica</span><span class="w"> </span><span class="n">both</span><span class="w"> </span><span class="n">clone</span><span class="w"> </span><span class="nb">int</span><span class="n">o</span><span class="w"> </span><span class="n">their</span><span class="w"> </span><span class="c1">remotes</span>
+<ol>
+<li>Add the source repository and give it a name. Here, I have chosen to call it progit. </li>
+<li>Get a reference on progit’s branches, in particular master.</li>
+<li>Set your master branch to fetch from the progit remote.</li>
+<li>Define the default push repository to origin.</li>
+</ol>
+<p>Once this is done, the workflow becomes much simpler:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>master<span class="w"> </span><span class="c1"># [1]</span>
+$<span class="w"> </span>git<span class="w"> </span>pull<span class="w">            </span><span class="c1"># [2]</span>
+$<span class="w"> </span>git<span class="w"> </span>push<span class="w">            </span><span class="c1"># [3]</span>
 </code></pre></div>
 
-<p>$ git clone john@githost:simplegit.git
+<ol>
+<li>If you were on another branch, return to master.</li>
+<li>Fetch changes from progit and merge changes into master. </li>
+<li>Push your master branch to origin.</li>
+</ol>
+<p>Reference: </p>
+<ul>
+<li><a href="https://git-scm.com/book/en/v2">https://git-scm.com/book/en/v2</a> : pp190 - Keep your GitHub public repository up-to-date</li>
+</ul>
+<h2 id="multiple-remote-git-repositories">Multiple remote git repositories</h2>
+<ol>
+<li>John and Jessica both clone into their remotes</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="n">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">clone</span><span class="w"> </span><span class="n">john</span><span class="p">@</span><span class="n">githost</span><span class="o">:</span><span class="n">simplegit</span><span class="p">.</span><span class="n">git</span>
+<span class="p">...</span>
+<span class="n">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">commit</span><span class="w"> </span><span class="o">-</span><span class="n">am</span><span class="w"> </span><span class="err">&#39;</span><span class="n">Remove</span><span class="w"> </span><span class="n">invalid</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="n">value</span><span class="err">&#39;</span>
+<span class="w">  </span><span class="p">[</span><span class="n">master</span><span class="w"> </span><span class="mi">738</span><span class="n">ee87</span><span class="p">]</span><span class="w"> </span><span class="n">Remove</span><span class="w"> </span><span class="n">invalid</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="n">value</span>
+<span class="p">......</span>
+<span class="n">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">clone</span><span class="w"> </span><span class="n">jessica</span><span class="p">@</span><span class="n">githost</span><span class="o">:</span><span class="n">simplegit</span><span class="p">.</span><span class="n">git</span>
+<span class="p">...</span>
+<span class="w"> </span><span class="n">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">commit</span><span class="w"> </span><span class="o">-</span><span class="n">am</span><span class="w"> </span><span class="err">&#39;</span><span class="n">Add</span><span class="w"> </span><span class="n">reset</span><span class="w"> </span><span class="n">task</span><span class="err">&#39;</span>
+<span class="w">  </span><span class="p">[</span><span class="n">master</span><span class="w"> </span><span class="n">fbff5bc</span><span class="p">]</span><span class="w"> </span><span class="n">Add</span><span class="w"> </span><span class="n">reset</span><span class="w"> </span><span class="n">task</span>
+<span class="w">   </span><span class="mi">1</span><span class="w"> </span><span class="n">files</span><span class="w"> </span><span class="n">changed</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">insertions</span><span class="p">(</span><span class="o">+</span><span class="p">),</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="n">deletions</span><span class="p">(</span><span class="o">-</span><span class="p">)</span>
+</code></pre></div>
+
+<ol>
+<li>Jessica makes changes, commits into her remote, the pushes to the server</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="n">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">commit</span><span class="w"> </span><span class="o">-</span><span class="n">am</span><span class="w"> </span><span class="err">&#39;</span><span class="n">Add</span><span class="w"> </span><span class="n">reset</span><span class="w"> </span><span class="n">task</span><span class="err">&#39;</span>
+<span class="p">[</span><span class="n">master</span><span class="w"> </span><span class="n">fbff5bc</span><span class="p">]</span><span class="w"> </span><span class="n">Add</span><span class="w"> </span><span class="n">reset</span><span class="w"> </span><span class="n">task</span>
+
+<span class="n">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">origin</span><span class="w"> </span><span class="n">master</span>
+<span class="p">...</span>
+<span class="n">To</span><span class="w"> </span><span class="n">jessica</span><span class="p">@</span><span class="n">githost</span><span class="o">:</span><span class="n">simplegit</span><span class="p">.</span><span class="n">git</span>
+<span class="mi">1</span><span class="n">edee6b</span><span class="p">..</span><span class="n">fbff5bc</span><span class="w"> </span><span class="n">master</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">master</span>
+</code></pre></div>
+
+<ol>
+<li>John makes changes, commits into his remote, then tries to push them to the same server</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="k">commit</span><span class="w"> </span><span class="o">-</span><span class="n">am</span><span class="w"> </span><span class="s1">&#39;Remove invalid default value&#39;</span>
+<span class="w">  </span><span class="o">[</span><span class="n">master 738ee87</span><span class="o">]</span><span class="w"> </span><span class="n">Remove</span><span class="w"> </span><span class="n">invalid</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="k">value</span>
+<span class="w">   </span><span class="mi">1</span><span class="w"> </span><span class="n">files</span><span class="w"> </span><span class="n">changed</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">insertions</span><span class="p">(</span><span class="o">+</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">deletions</span><span class="p">(</span><span class="o">-</span><span class="p">)</span>
+<span class="p">...</span>
+<span class="err">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">origin</span><span class="w"> </span><span class="n">master</span>
+<span class="p">...</span>
+<span class="err">!</span><span class="w"> </span><span class="o">[</span><span class="n">rejected</span><span class="o">]</span><span class="w"> </span><span class="n">master</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">master</span><span class="w"> </span><span class="p">(</span><span class="n">non</span><span class="o">-</span><span class="n">fast</span><span class="w"> </span><span class="n">forward</span><span class="p">)</span>
+<span class="nl">error</span><span class="p">:</span><span class="w"> </span><span class="n">failed</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="ow">some</span><span class="w"> </span><span class="n">refs</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="err">&#39;</span><span class="n">john</span><span class="nv">@githost</span><span class="err">:</span><span class="n">simplegit</span><span class="p">.</span><span class="n">git</span>
+</code></pre></div>
+
+<p>John must first fetch Jessica’s upstream changes and merge them into his local repository before he will be allowed to push.</p>
+<ol>
+<li>As a first step, John fetches Jessica’s work [fbff5] (this only fetches Jessica’s upstream work, it does not yet
+merge it into John’s work):</li>
+</ol>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>fetch<span class="w"> </span>origin
 ...
-$ git commit -am 'Remove invalid default value'
-  [master 738ee87] Remove invalid default value
-......
-$ git clone jessica@githost:simplegit.git
+From<span class="w"> </span>john@githost:simplegit
++<span class="w"> </span>049d078...fbff5bc<span class="w"> </span>master<span class="w"> </span>-&gt;<span class="w"> </span>origin/master
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">John</span><span class="err">&#39;</span><span class="n">s</span>
+<span class="n">Master</span>
+<span class="k">commit</span>
+<span class="w">  </span><span class="o">|</span>
+<span class="o">[</span><span class="n">738ee</span><span class="o">]</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="o">[</span><span class="n">1edee</span><span class="o">]</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="o">[</span><span class="n">4b078</span><span class="o">]</span>
+<span class="w">              </span><span class="o">^</span>
+<span class="o">[</span><span class="n">fbff5</span><span class="o">]</span><span class="w"> </span><span class="o">------+</span>
+<span class="w">  </span><span class="o">|</span>
+<span class="n">Origin</span><span class="w"> </span><span class="n">Master</span>
+</code></pre></div>
+
+<ol>
+<li>Now John's work [738ee] can merge with Jessica’s work [fbff5] that he fetched into his own local work:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>merge<span class="w"> </span>origin/master
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">Origin</span>
+<span class="w"> </span><span class="n">Master</span>
+<span class="w">   </span><span class="o">|</span><span class="w">        </span><span class="n">John</span>
+<span class="o">[</span><span class="n">72bbc</span><span class="o">]</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="o">[</span><span class="n">738ee</span><span class="o">]</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="o">[</span><span class="n">1edee</span><span class="o">]</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="o">[</span><span class="n">4b078</span><span class="o">]</span>
+<span class="w">   </span><span class="o">|</span><span class="w">                     </span><span class="o">^</span>
+<span class="w">   </span><span class="o">|</span><span class="w">       </span><span class="n">Jessica</span><span class="w">       </span><span class="o">|</span><span class="w">              </span>
+<span class="w">   </span><span class="o">+-----&gt;</span><span class="w"> </span><span class="o">[</span><span class="n">fbff5</span><span class="o">]</span><span class="w"> </span><span class="o">------+</span><span class="w">              </span>
+<span class="w">              </span><span class="o">|</span><span class="w">                         </span>
+<span class="w">          </span><span class="n">Origin</span><span class="w"> </span><span class="n">Master</span><span class="w">  </span>
+</code></pre></div>
+
+<ol>
+<li>At this point, John might want to test this new code to make sure none of Jessica’s work affects any
+of his and, as long as everything seems fine, he can finally push the new merged work up to the
+server:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>master
 ...
- $ git commit -am 'Add reset task'
-  [master fbff5bc] Add reset task
-   1 files changed, 1 insertions(+), 0 deletions(-)</p>
-<div class="highlight"><pre><span></span><code><span class="mf">2.</span><span class="w"> </span><span class="n">Jessica</span><span class="w"> </span><span class="n">makes</span><span class="w"> </span><span class="n">changes</span><span class="p">,</span><span class="w"> </span><span class="n">commits</span><span class="w"> </span><span class="nb">int</span><span class="n">o</span><span class="w"> </span><span class="n">her</span><span class="w"> </span><span class="c1">remote, the pushes to the server</span>
+To<span class="w"> </span>john@githost:simplegit.git
+fbff5bc..72bbc59<span class="w"> </span>master<span class="w"> </span>-&gt;<span class="w"> </span>master
 </code></pre></div>
 
-<p>$ git commit -am 'Add reset task'
-[master fbff5bc] Add reset task</p>
-<p>$ git push origin master
-...
-To jessica@githost:simplegit.git
-1edee6b..fbff5bc master -&gt; master</p>
-<div class="highlight"><pre><span></span><code><span class="mf">3.</span><span class="w"> </span><span class="n">John</span><span class="w"> </span><span class="n">makes</span><span class="w"> </span><span class="n">changes</span><span class="p">,</span><span class="w"> </span><span class="n">commits</span><span class="w"> </span><span class="nb">int</span><span class="n">o</span><span class="w"> </span><span class="n">his</span><span class="w"> </span><span class="c1">remote, then tries to push them to the same server</span>
-</code></pre></div>
-
-<p>$ git commit -am 'Remove invalid default value'
-  [master 738ee87] Remove invalid default value
-   1 files changed, 1 insertions(+), 1 deletions(-)
-...
-$ git push origin master
-...
-! [rejected] master -&gt; master (non-fast forward)
-error: failed to push some refs to 'john@githost:simplegit.git</p>
-<div class="highlight"><pre><span></span><code><span class="n">John</span><span class="w"> </span><span class="n">must</span><span class="w"> </span><span class="k">first</span><span class="w"> </span><span class="k">fetch</span><span class="w"> </span><span class="n">Jessica</span><span class="err">’</span><span class="n">s</span><span class="w"> </span><span class="n">upstream</span><span class="w"> </span><span class="n">changes</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="k">merge</span><span class="w"> </span><span class="n">them</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">his</span><span class="w"> </span><span class="k">local</span><span class="w"> </span><span class="n">repository</span><span class="w"> </span><span class="k">before</span><span class="w"> </span><span class="n">he</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">allowed</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">push</span><span class="p">.</span>
-
-<span class="mf">4.</span><span class="w"> </span><span class="k">As</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">first</span><span class="w"> </span><span class="n">step</span><span class="p">,</span><span class="w"> </span><span class="n">John</span><span class="w"> </span><span class="n">fetches</span><span class="w"> </span><span class="n">Jessica</span><span class="err">’</span><span class="n">s</span><span class="w"> </span><span class="k">work</span><span class="w"> </span><span class="o">[</span><span class="n">fbff5</span><span class="o">]</span><span class="w"> </span><span class="p">(</span><span class="n">this</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="n">fetches</span><span class="w"> </span><span class="n">Jessica</span><span class="err">’</span><span class="n">s</span><span class="w"> </span><span class="n">upstream</span><span class="w"> </span><span class="k">work</span><span class="p">,</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="n">does</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">yet</span>
-<span class="k">merge</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">John</span><span class="err">’</span><span class="n">s</span><span class="w"> </span><span class="k">work</span><span class="p">)</span><span class="err">:</span>
-</code></pre></div>
-
-<p>$ git fetch origin
-...
-From john@githost:simplegit
-+ 049d078...fbff5bc master -&gt; origin/master</p>
-<div class="highlight"><pre><span></span><code>
-</code></pre></div>
-
-<p>John's
-Master
-commit
-  |
-[738ee] -&gt; [1edee] -&gt; [4b078]
-              ^
-[fbff5] ------+
-  |
-Origin Master</p>
-<div class="highlight"><pre><span></span><code><span class="mf">5.</span><span class="w"> </span><span class="n">Now</span><span class="w"> </span><span class="n">John</span><span class="err">&#39;</span><span class="n">s</span><span class="w"> </span><span class="k">work</span><span class="w"> </span><span class="o">[</span><span class="n">738ee</span><span class="o">]</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="k">merge</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">Jessica</span><span class="err">’</span><span class="n">s</span><span class="w"> </span><span class="k">work</span><span class="w"> </span><span class="o">[</span><span class="n">fbff5</span><span class="o">]</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">he</span><span class="w"> </span><span class="n">fetched</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">his</span><span class="w"> </span><span class="n">own</span><span class="w"> </span><span class="k">local</span><span class="w"> </span><span class="k">work</span><span class="err">:</span>
-</code></pre></div>
-
-<p>$ git merge origin/master</p>
-<div class="highlight"><pre><span></span><code>
-</code></pre></div>
-
-<p>Origin
- Master
-   |        John
-[72bbc] -&gt; [738ee] -&gt; [1edee] -&gt; [4b078]
-   |                     ^
-   |       Jessica       |            <br>
-   +-----&gt; [fbff5] ------+            <br>
-              |                       <br>
-          Origin Master  </p>
-<div class="highlight"><pre><span></span><code><span class="mf">6.</span><span class="w"> </span><span class="n">At</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">point</span><span class="p">,</span><span class="w"> </span><span class="n">John</span><span class="w"> </span><span class="n">might</span><span class="w"> </span><span class="n">want</span><span class="w"> </span><span class="kr">to</span><span class="w"> </span><span class="n">test</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="kr">new</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="kr">to</span><span class="w"> </span><span class="n">make</span><span class="w"> </span><span class="n">sure</span><span class="w"> </span><span class="n">none</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">Jessica</span><span class="err">’</span><span class="n">s</span><span class="w"> </span><span class="n">work</span><span class="w"> </span><span class="n">affects</span><span class="w"> </span><span class="n">any</span>
-<span class="n">of</span><span class="w"> </span><span class="n">his</span><span class="w"> </span><span class="ow">and</span><span class="p">,</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="n">long</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="n">everything</span><span class="w"> </span><span class="n">seems</span><span class="w"> </span><span class="n">fine</span><span class="p">,</span><span class="w"> </span><span class="n">he</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">finally</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="kr">new</span><span class="w"> </span><span class="n">merged</span><span class="w"> </span><span class="n">work</span><span class="w"> </span><span class="n">up</span><span class="w"> </span><span class="kr">to</span><span class="w"> </span><span class="n">the</span>
-<span class="n">server</span><span class="p">:</span>
-</code></pre></div>
-
-<p>$ git push origin master
-...
-To john@githost:simplegit.git
-fbff5bc..72bbc59 master -&gt; master</p>
-<p>```</p>
 <p>Reference:</p>
 <ul>
 <li><a href="https://git-scm.com/book/en/v2">https://git-scm.com/book/en/v2</a> : pp131 - Private Small Team</li>
@@ -731,7 +748,7 @@ fbff5bc..72bbc59 master -&gt; master</p>
                 </p><!-- /#about -->
 
                 <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-                <p> Version:  3.37 </p>
+                <p> Version:  3.38 </p>
         </footer><!-- /#contentinfo -->
 
 </body>
