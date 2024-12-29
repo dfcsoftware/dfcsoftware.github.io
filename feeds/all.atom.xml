@@ -624,7 +624,7 @@ $&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;apt
 &lt;p&gt;Reference: &lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://github.com/nextcloud/flow_notifications"&gt;https://github.com/nextcloud/flow_notifications&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="august.html#configuration"&gt;Example config.txt&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/dfcsoftware/watch#configuration"&gt;Example config.txt&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id="savelogsh"&gt;savelog.sh&lt;/h2&gt;
 &lt;p&gt;This is used to save off several copies of the last sync.sh process sending alerts to the NextCloud server.&lt;/p&gt;
@@ -684,7 +684,7 @@ It needs to be scheduled in cron.&lt;/p&gt;
 &lt;p&gt;Reference: &lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Marcus Ranum &lt;a href="http://ranum.com/security/computer_security/code/index.html"&gt;http://ranum.com/security/computer_security/code/index.html&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="../E-Mail_Relay.html#logwatcher"&gt;Logwatcher.sh&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="/e-mailrelay.html#logwatcher"&gt;Logwatcher.sh&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id="trouble-resolution"&gt;Trouble Resolution&lt;/h2&gt;
 &lt;h4 id="armv7l-debian-10"&gt;armv7l Debian 10&lt;/h4&gt;
@@ -1819,18 +1819,18 @@ $
 
 &lt;p&gt;For wifi configuration, BeagleBone-AI-64, BeagleBonePlay (or later) moved from connman -&amp;gt; systemd-network, so wifi is now configured thru wpa_supplicant-wlan0.conf&lt;/p&gt;
 &lt;p&gt;You can use&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt;  &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;wpa_cli&lt;span class="w"&gt; &lt;/span&gt;-i&lt;span class="w"&gt; &lt;/span&gt;wlan0…
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt;  &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;wpa_cli&lt;span class="w"&gt; &lt;/span&gt;-i&lt;span class="w"&gt; &lt;/span&gt;wlan0
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Reference:&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;a href="/BeagleBone.html?highlight=connman#bb-bbai-tether-system"&gt;bbai-tether-system&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="/beaglebone.html#bb-bbai-tether-system"&gt;bbai-tether-system&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://gist.github.com/kylemanna/6930087"&gt;https://gist.github.com/kylemanna/6930087&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h2 id="firewalld"&gt;firewalld&lt;/h2&gt;
-&lt;p&gt;The &lt;a href="/Setup_Server.html?highlight=firewalld#firewall"&gt;Server Setup&lt;/a&gt; section of this book covers how to set up a firewall to protect your system network.&lt;/p&gt;
+&lt;p&gt;The &lt;a href="/setup-server.html#firewall"&gt;Server Setup&lt;/a&gt; section of this book covers how to set up a firewall to protect your system network.&lt;/p&gt;
 &lt;h2 id="networkd"&gt;networkd&lt;/h2&gt;
-&lt;p&gt;The &lt;a href="/virtualip.html"&gt;VirtualIP Article&lt;/a&gt; covers networkd manipulation using netplan.&lt;/p&gt;
+&lt;p&gt;The &lt;a href="/virtualip.html"&gt;Virtual IP Article&lt;/a&gt; covers networkd manipulation using netplan.&lt;/p&gt;
 &lt;h2 id="tcpdump"&gt;tcpdump&lt;/h2&gt;
 &lt;p&gt;Here is a super useful program for tracing what is happening on your network.&lt;/p&gt;
 &lt;p&gt;For instance, you can watch a certain port for activity. In this example we watch port 81 (which is a web server).&lt;/p&gt;
@@ -9777,7 +9777,7 @@ sa-learn&lt;span class="w"&gt; &lt;/span&gt;-u&lt;span class="w"&gt; &lt;/span&g
 &lt;/ul&gt;
 &lt;p&gt;Recommendation:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;[ ] Bring up a host on a VPS somewhere, and use the &lt;a href="Setup_Server.html"&gt;Setup Server&lt;/a&gt; instructions to secure it.&lt;/li&gt;
+&lt;li&gt;[ ] Bring up a host on a VPS somewhere, and use the &lt;a href="/setup-server.html"&gt;Setup Server&lt;/a&gt; instructions to secure it.&lt;/li&gt;
 &lt;li&gt;[ ] Get a domain name and certificate set up and working.&lt;/li&gt;
 &lt;li&gt;[ ] Install postfix/dovecot combo and relay to your main E-Mail host. Test sending out mail too.&lt;/li&gt;
 &lt;li&gt;[ ] Install and configure SPF Policy Agent. Test it and make sure all is well.&lt;/li&gt;
@@ -9810,27 +9810,27 @@ sa-learn&lt;span class="w"&gt; &lt;/span&gt;-u&lt;span class="w"&gt; &lt;/span&g
 &lt;/blockquote&gt;
 &lt;h2 id="check-network"&gt;Check Network&lt;/h2&gt;
 &lt;p&gt;Click on this heading, then refer to these instructions, then come back here with the Back Arrow on the Browser:
- * &lt;a href="Setup_Server.html#check-your-network"&gt;Network Check&lt;/a&gt;&lt;/p&gt;
+ * &lt;a href="/setup-server.html#check-your-network"&gt;Network Check&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id="update-package-repository"&gt;Update Package Repository&lt;/h2&gt;
 &lt;p&gt;Click on this heading, then refer to these instructions, then come back here with the Back Arrow on the Browser:
- * &lt;a href="Setup_Server.html#update-package-repository"&gt;Update Packages&lt;/a&gt;&lt;/p&gt;
+ * &lt;a href="/setup-server.html#update-package-repository"&gt;Update Packages&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id="create-new-users"&gt;Create New User(s)&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;The Linux mail user can be \&amp;lt;name&amp;gt;@example.com, to keep things clear.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Click on this heading, then refer to these instructions, then come back here with the Back Arrow on the Browser:
- * &lt;a href="Setup_Server.html#new-user-and-group-to-use"&gt;New Users&lt;/a&gt;&lt;/p&gt;
+ * &lt;a href="/setup-server.html#new-user-and-group-to-use"&gt;New Users&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id="set-host-and-domain"&gt;Set Host and Domain&lt;/h2&gt;
 &lt;p&gt;Click on this heading, then refer to these instructions, then come back here with the Back Arrow on the Browser:
- * &lt;a href="Setup_Server.html#set-your-host-and-domain-names"&gt;Host and Domain&lt;/a&gt;&lt;/p&gt;
+ * &lt;a href="/setup-server.html#set-your-host-and-domain-names"&gt;Host and Domain&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id="set-date-and-time"&gt;Set Date and Time&lt;/h2&gt;
 &lt;p&gt;Click on this heading, then refer to these instructions, then come back here with the Back Arrow on the Browser:
- * &lt;a href="Setup_Server.html#time-control"&gt;Date and Time Settings&lt;/a&gt;&lt;/p&gt;
+ * &lt;a href="/setup-server.html#time-control"&gt;Date and Time Settings&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id="monitor-crack-attempts"&gt;Monitor crack attempts&lt;/h2&gt;
 &lt;h3 id="install-firewall-and-fail2ban-on-your-domainorg"&gt;Install firewall and fail2ban on &lt;em&gt;your-domain.org&lt;/em&gt;&lt;/h3&gt;
 &lt;p&gt;Be sure the &lt;em&gt;system firewall&lt;/em&gt; is installed and also the "Block Bad Actors" &lt;em&gt;firewall.sh&lt;/em&gt; script.&lt;/p&gt;
 &lt;p&gt;Click on this heading, then refer to these instructions, then come back here with the Back Arrow on the Browser:
- * &lt;a href="Setup_Server.html#firewall"&gt;Firewall&lt;/a&gt;&lt;/p&gt;
+ * &lt;a href="/setup-server.html#firewall"&gt;Firewall&lt;/a&gt;&lt;/p&gt;
 &lt;h4 id="add-rules-for-e-mail-smtp-and-smtps"&gt;Add rules for E-Mail smtp and smtps.&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Debian:&lt;/li&gt;
@@ -9878,7 +9878,7 @@ $&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;ufw
 
 &lt;h4 id="configure-fail2ban"&gt;Configure fail2ban&lt;/h4&gt;
 &lt;p&gt;Click on this heading, then refer to these instructions, then come back here with the Back Arrow on the Browser:
- * &lt;a href="Setup_Server.html#fail2ban---automatic-firewall-blocking"&gt;Fail2ban&lt;/a&gt;&lt;/p&gt;
+ * &lt;a href="/setup-server.html#fail2ban---automatic-firewall-blocking"&gt;Fail2ban&lt;/a&gt;&lt;/p&gt;
 &lt;h5 id="secure-postfix"&gt;Secure postfix&lt;/h5&gt;
 &lt;p&gt;File: /etc/fail2ban/jail.d/postfix.local&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[postfix]&lt;/span&gt;
@@ -9915,10 +9915,10 @@ $&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;ufw
 &lt;h3 id="log-monitors-on-your-domainorg"&gt;Log Monitors  on &lt;em&gt;your-domain.org&lt;/em&gt;&lt;/h3&gt;
 &lt;h4 id="install-logwatch"&gt;Install Logwatch&lt;/h4&gt;
 &lt;p&gt;Click on this heading, then refer to these instructions, then come back here with the Back Arrow on the Browser:
- * &lt;a href="Setup_Server.html#logwatch---daily-alert-of-logging-activity"&gt;Logwatch&lt;/a&gt;&lt;/p&gt;
+ * &lt;a href="/setup-server.html#logwatch---daily-alert-of-logging-activity"&gt;Logwatch&lt;/a&gt;&lt;/p&gt;
 &lt;h4 id="install-logcheck"&gt;Install Logcheck:&lt;/h4&gt;
 &lt;p&gt;Click on this heading, then refer to these instructions, then come back here with the Back Arrow on the Browser:
- * &lt;a href="Setup_Server.html#logcheck---mails-anomalies-in-the-system-logfiles-to-the-admin"&gt;Logcheck&lt;/a&gt;&lt;/p&gt;
+ * &lt;a href="/setup-server.html#logcheck---mails-anomalies-in-the-system-logfiles-to-the-admin"&gt;Logcheck&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id="logwatcher"&gt;LogWatcher&lt;/h3&gt;
 &lt;h4 id="create"&gt;Create&lt;/h4&gt;
 &lt;p&gt;Put this script in the /root directory, and install the dependencies listed.&lt;/p&gt;
@@ -10018,12 +10018,12 @@ log_check&lt;span class="w"&gt; &lt;/span&gt;.dovecot&lt;span class="w"&gt;  &lt
 
 &lt;p&gt;Reference:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Watch - &lt;a href="2023/august#logsh---log-watcher"&gt;System Alerts&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Watch - &lt;a href="/watch.html"&gt;System Alerts&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h1 id="apache-install-enable-on-your-domainorg"&gt;Apache install (enable) on &lt;em&gt;your-domain.org&lt;/em&gt;&lt;/h1&gt;
 &lt;p&gt;Click on this heading, then refer to these instructions, then come back here with the Back Arrow on the Browser:
- * &lt;a href="DNS.html#install-a-web-server"&gt;Apache Web Server&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Test it on http://\&amp;lt;domain.name&amp;gt;&lt;/p&gt;
+ * &lt;a href="/dns.html#install-a-web-server"&gt;Apache Web Server&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Test it on http://&lt;domain.name&gt;&lt;/p&gt;
 &lt;h2 id="add-ssl"&gt;Add SSL&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Debian&lt;/li&gt;
@@ -10058,10 +10058,12 @@ log_check&lt;span class="w"&gt; &lt;/span&gt;.dovecot&lt;span class="w"&gt;  &lt
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h1 id="dns-registrar-your-domainorg"&gt;DNS Registrar (your-domain.org)&lt;/h1&gt;
-&lt;p&gt;Register name. &lt;/p&gt;
-&lt;p&gt;&lt;a href="https://godaddy.com"&gt;https://godaddy.com&lt;/a&gt;
-&lt;a href="https://www.namecheap.com/"&gt;https://www.namecheap.com/&lt;/a&gt;
-&lt;a href="https://www.domain.com/"&gt;https://www.domain.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Register your own name. &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://godaddy.com"&gt;https://godaddy.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.namecheap.com/"&gt;https://www.namecheap.com/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.domain.com/"&gt;https://www.domain.com/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h3 id="dns-updates"&gt;DNS Updates&lt;/h3&gt;
 &lt;p&gt;Create Advanced DNS records, using IP Address of VPS server:&lt;/p&gt;
 &lt;p&gt;HOST&lt;/p&gt;
@@ -10101,13 +10103,9 @@ $&lt;span class="w"&gt; &lt;/span&gt;dig&lt;span class="w"&gt; &lt;/span&gt;-t&l
 &lt;h1 id="certbot-certificate-management-for-lets-encrypt"&gt;certbot - Certificate Management for Let's Encrypt&lt;/h1&gt;
 &lt;p&gt;To create and maintain LetsEncrypt certificates using Apache web server&lt;/p&gt;
 &lt;h3 id="install"&gt;Install&lt;/h3&gt;
-&lt;!-- TOGGLE BUTTON --&gt;
-&lt;div&gt;&lt;label for="checkDebian-1" class="togButton"&gt;The Debian Way&lt;/label&gt;&lt;/div&gt;
-&lt;!-- CONTENT --&gt;
-&lt;p&gt;&lt;input type="checkbox" class="togCheckDebian" id="checkDebian-1"/&gt;&lt;/p&gt;
-&lt;div class="togContentDebian"&gt;
-
-
+&lt;ul&gt;
+&lt;li&gt;The Debian Way&lt;/li&gt;
+&lt;/ul&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;systemctl&lt;span class="w"&gt; &lt;/span&gt;unmask&lt;span class="w"&gt; &lt;/span&gt;apache2
 $&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;systemctl&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;enable&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;apache2
 $&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;systemctl&lt;span class="w"&gt; &lt;/span&gt;start&lt;span class="w"&gt; &lt;/span&gt;apache2
@@ -10115,16 +10113,10 @@ $&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;apt
 $&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;apt-get&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;python3-certbot-apache
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;/div&gt;
-
-&lt;!-- TOGGLE BUTTON --&gt;
-&lt;div&gt;&lt;label for="checkRedHat-1" class="togButton"&gt;The RedHat Way&lt;/label&gt;&lt;/div&gt;
-&lt;!-- CONTENT --&gt;
-&lt;p&gt;&lt;input type="checkbox" class="togCheckRedHat" id="checkRedHat-1"/&gt;&lt;/p&gt;
-&lt;div class="togContentRedHat"&gt;
-
-
+&lt;ul&gt;
+&lt;li&gt;The RedHat Way&lt;/li&gt;
+&lt;/ul&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;systemctl&lt;span class="w"&gt; &lt;/span&gt;unmask&lt;span class="w"&gt; &lt;/span&gt;httpd
 $&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;systemctl&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;enable&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;httpd
 $&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;systemctl&lt;span class="w"&gt; &lt;/span&gt;start&lt;span class="w"&gt; &lt;/span&gt;httpd
@@ -10132,9 +10124,7 @@ $&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;dnf
 $&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;dnf&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;python3-certbot-apache
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;/div&gt;
-
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;certbot&lt;span class="w"&gt;  &lt;/span&gt;plugins
 
 Saving&lt;span class="w"&gt; &lt;/span&gt;debug&lt;span class="w"&gt; &lt;/span&gt;log&lt;span class="w"&gt; &lt;/span&gt;to&lt;span class="w"&gt; &lt;/span&gt;/var/log/letsencrypt/letsencrypt.log
@@ -10221,13 +10211,9 @@ IMPORTANT&lt;span class="w"&gt; &lt;/span&gt;NOTES:
 
 &lt;h1 id="apache-disable"&gt;Apache (disable)&lt;/h1&gt;
 &lt;p&gt;Apache is not needed, so disable it to reduce threat footprint. &lt;/p&gt;
-&lt;!-- TOGGLE BUTTON --&gt;
-&lt;div&gt;&lt;label for="checkDebian-2" class="togButton"&gt;The Debian Way&lt;/label&gt;&lt;/div&gt;
-&lt;!-- CONTENT --&gt;
-&lt;p&gt;&lt;input type="checkbox" class="togCheckDebian" id="checkDebian-2"/&gt;&lt;/p&gt;
-&lt;div class="togContentDebian"&gt;
-
-
+&lt;ul&gt;
+&lt;li&gt;The Debian Way&lt;/li&gt;
+&lt;/ul&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;systemctl&lt;span class="w"&gt; &lt;/span&gt;stop&lt;span class="w"&gt; &lt;/span&gt;apache2
 $&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;systemctl&lt;span class="w"&gt; &lt;/span&gt;disable&lt;span class="w"&gt; &lt;/span&gt;apache2
 $&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;systemctl&lt;span class="w"&gt; &lt;/span&gt;mask&lt;span class="w"&gt; &lt;/span&gt;apache2
@@ -10235,16 +10221,10 @@ $&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;ufw
 &lt;span class="c1"&gt;# -&amp;gt; ufw delete &amp;lt;n&amp;gt; for ports 80 &amp;amp; 443&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;/div&gt;
-
-&lt;!-- TOGGLE BUTTON --&gt;
-&lt;div&gt;&lt;label for="checkRedHat-2" class="togButton"&gt;The RedHat Way&lt;/label&gt;&lt;/div&gt;
-&lt;!-- CONTENT --&gt;
-&lt;p&gt;&lt;input type="checkbox" class="togCheckRedHat" id="checkRedHat-2"/&gt;&lt;/p&gt;
-&lt;div class="togContentRedHat"&gt;
-
-
+&lt;ul&gt;
+&lt;li&gt;The RedHat Way&lt;/li&gt;
+&lt;/ul&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;systemctl&lt;span class="w"&gt; &lt;/span&gt;stop&lt;span class="w"&gt; &lt;/span&gt;httpd
 $&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;systemctl&lt;span class="w"&gt; &lt;/span&gt;disable&lt;span class="w"&gt; &lt;/span&gt;httpd
 $&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;systemctl&lt;span class="w"&gt; &lt;/span&gt;mask&lt;span class="w"&gt; &lt;/span&gt;httpd
@@ -10260,42 +10240,28 @@ $&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;fir
 &lt;span class="w"&gt;  &lt;/span&gt;success
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;/div&gt;
-
 &lt;p&gt;When the Let's Encrypt Certificate expires, you will need to enable it again and open up ports.&lt;/p&gt;
 &lt;h1 id="postfix-e-mail-transport-agent"&gt;postfix - E-Mail Transport Agent&lt;/h1&gt;
 &lt;p&gt;Install postfix MTA and remove exim4, if it is installed. Postfix is more mature and full-featured.&lt;/p&gt;
 &lt;p&gt;TLS &lt;a href="http://www.postfix.org/TLS_README.html"&gt;http://www.postfix.org/TLS_README.html&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id="install-on-your-domainorg"&gt;Install on &lt;em&gt;your-domain.org&lt;/em&gt;&lt;/h3&gt;
-&lt;!-- TOGGLE BUTTON --&gt;
-&lt;div&gt;&lt;label for="checkDebian-3" class="togButton"&gt;The Debian Way&lt;/label&gt;&lt;/div&gt;
-&lt;!-- CONTENT --&gt;
-&lt;p&gt;&lt;input type="checkbox" class="togCheckDebian" id="checkDebian-3"/&gt;&lt;/p&gt;
-&lt;div class="togContentDebian"&gt;
-
-
+&lt;ul&gt;
+&lt;li&gt;The Debian Way&lt;/li&gt;
+&lt;/ul&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;apt-get&lt;span class="w"&gt; &lt;/span&gt;remove&lt;span class="w"&gt; &lt;/span&gt;exim4-base
 $&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;apt-get&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;postfix
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;/div&gt;
-
-&lt;!-- TOGGLE BUTTON --&gt;
-&lt;div&gt;&lt;label for="checkRedHat-3" class="togButton"&gt;The RedHat Way&lt;/label&gt;&lt;/div&gt;
-&lt;!-- CONTENT --&gt;
-&lt;p&gt;&lt;input type="checkbox" class="togCheckRedHat" id="checkRedHat-3"/&gt;&lt;/p&gt;
-&lt;div class="togContentRedHat"&gt;
-
-
+&lt;ul&gt;
+&lt;li&gt;The RedHat Way&lt;/li&gt;
+&lt;/ul&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;dnf&lt;span class="w"&gt; &lt;/span&gt;remove&lt;span class="w"&gt; &lt;/span&gt;exim
 $&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;dnf&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;postfix
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;/div&gt;
-
 &lt;h3 id="configure-on-your-domainorg"&gt;Configure on &lt;em&gt;your-domain.org&lt;/em&gt;&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;ul&gt;
@@ -10603,34 +10569,24 @@ to clarify this is for transporting from .org to .com&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Two Steps:&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;install dovecot&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;install dovecot&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The Debian Way&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ol&gt;
-&lt;!-- TOGGLE BUTTON --&gt;
-&lt;div&gt;&lt;label for="checkDebian-4" class="togButton"&gt;The Debian Way&lt;/label&gt;&lt;/div&gt;
-&lt;!-- CONTENT --&gt;
-&lt;p&gt;&lt;input type="checkbox" class="togCheckDebian" id="checkDebian-4"/&gt;&lt;/p&gt;
-&lt;div class="togContentDebian"&gt;
-
-
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;apt-get&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;dovecot-core
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;/div&gt;
-
-&lt;!-- TOGGLE BUTTON --&gt;
-&lt;div&gt;&lt;label for="checkRedHat-4" class="togButton"&gt;The RedHat Way&lt;/label&gt;&lt;/div&gt;
-&lt;!-- CONTENT --&gt;
-&lt;p&gt;&lt;input type="checkbox" class="togCheckRedHat" id="checkRedHat-4"/&gt;&lt;/p&gt;
-&lt;div class="togContentRedHat"&gt;
-
-
+&lt;ul&gt;
+&lt;li&gt;The RedHat Way&lt;/li&gt;
+&lt;/ul&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;dnf&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;dovecot
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;/div&gt;
-
 &lt;p&gt;Add &lt;code&gt;login&lt;/code&gt; to dovecot auth&lt;/p&gt;
 &lt;p&gt;File: /etc/dovecot/conf.d/10-auth.conf&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;~
@@ -10825,16 +10781,16 @@ srw-rw----&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&g
 &lt;h4 id="read-mail"&gt;Read Mail&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Server: mail.example.com&lt;/li&gt;
-&lt;li&gt;User: \&amp;lt;linux user defined on the &lt;a href="E-Mail.html#user-settings"&gt;E-Mail&lt;/a&gt; .com host&amp;gt;&lt;/li&gt;
-&lt;li&gt;Password: \&amp;lt;linux user password defined on the &lt;a href="E-Mail.html#user-settings"&gt;E-Mail&lt;/a&gt; .com host&amp;gt;&lt;/li&gt;
+&lt;li&gt;User: \&amp;lt;linux user defined on the &lt;a href="/e-mail.html#user-settings"&gt;E-Mail&lt;/a&gt; .com host&amp;gt;&lt;/li&gt;
+&lt;li&gt;Password: \&amp;lt;linux user password defined on the &lt;a href="/e-mail.html#user-settings"&gt;E-Mail&lt;/a&gt; .com host&amp;gt;&lt;/li&gt;
 &lt;li&gt;SSL: ON&lt;/li&gt;
 &lt;li&gt;Port: 993&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id="send-mail"&gt;Send Mail&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Server: smtp.example.org&lt;/li&gt;
-&lt;li&gt;User: \&amp;lt;linux user defined &lt;a href="E-Mail_Relay.html#create-new-users"&gt;above&lt;/a&gt; on the E-Mail .org host&amp;gt;&lt;/li&gt;
-&lt;li&gt;Password: \&amp;lt;linux user password defined &lt;a href="E-Mail_Relay.html#create-new-users"&gt;above&lt;/a&gt; on the E-Mail .org host&amp;gt;&lt;/li&gt;
+&lt;li&gt;User: \&amp;lt;linux user defined &lt;a href="/e-mailrelay.html#create-new-users"&gt;above&lt;/a&gt; on the E-Mail .org host&amp;gt;&lt;/li&gt;
+&lt;li&gt;Password: \&amp;lt;linux user password defined &lt;a href="/e-mailrelay.html#create-new-users"&gt;above&lt;/a&gt; on the E-Mail .org host&amp;gt;&lt;/li&gt;
 &lt;li&gt;SSL: ON&lt;/li&gt;
 &lt;li&gt;Port: 465&lt;/li&gt;
 &lt;/ul&gt;
@@ -13478,7 +13434,7 @@ date&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;&amp;gt;&lt;span class="w"&gt; &
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;a href="#curseradio"&gt;curseradio&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href="#cursoradio-configuration-file"&gt;cursoradio configuration file&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#curseradio-configuration-file"&gt;curseradio configuration file&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
@@ -13508,7 +13464,7 @@ date&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;&amp;gt;&lt;span class="w"&gt; &
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;a href="#curseradio"&gt;curseradio&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href="#cursoradio-configuration-file"&gt;cursoradio configuration file&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#curseradio-configuration-file"&gt;curseradio configuration file&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
@@ -13525,7 +13481,7 @@ date&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;&amp;gt;&lt;span class="w"&gt; &
 &lt;/ul&gt;
 &lt;p&gt;Software:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Linux: mpd (server), and mpc, &lt;a href="ncmpcpp.md?fileId=598483"&gt;ncmpcpp&lt;/a&gt; (clients)&lt;/li&gt;
+&lt;li&gt;Linux: mpd (server), and mpc, &lt;a href="/ncmpcpp.html"&gt;ncmpcpp&lt;/a&gt; (clients)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;apt-get&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;mpd&lt;span class="w"&gt; &lt;/span&gt;mpc
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -14235,11 +14191,9 @@ rm&lt;span class="w"&gt; &lt;/span&gt;recorded_files.title
 
 &lt;h2 id="curseradio"&gt;curseradio&lt;/h2&gt;
 &lt;p&gt;Python project to listen to streaming internet radio from command line&lt;/p&gt;
-&lt;p&gt;Files:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;\~/.local/share/curseradio/favourites.opml&lt;/li&gt;
-&lt;li&gt;\~/radio.sh&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;Favourites File:&lt;/p&gt;
+&lt;p&gt;~/.local/share/curseradio/favourites.opml&lt;/p&gt;
+&lt;p&gt;File: ~/radio.sh&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
 &lt;span class="c1"&gt;#sudo apt-get install curseradio&lt;/span&gt;
 &lt;span class="c1"&gt;#git clone https://github.com/chronitis/curseradio/&lt;/span&gt;
@@ -14269,7 +14223,7 @@ curseradio
 deactivate
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;h3 id="cursoradio-configuration-file"&gt;cursoradio configuration file&lt;/h3&gt;
+&lt;h3 id="curseradio-configuration-file"&gt;curseradio configuration file&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;outline&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;type&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;audio&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Handcrafted Radio (US)&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;URL&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;
 &lt;span class="s"&gt;http://opml.radiotime.com/Tune.ashx?id=s97491&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;bitrate&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;128&amp;quot;&lt;/span&gt;
 &lt;span class="nx"&gt;reliability&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;98&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;guide_id&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;s97491&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;subtext&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Jackson Browne - Doctor My&lt;/span&gt;
@@ -14874,8 +14828,8 @@ rm&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$TMP&lt;/span&gt;
 &lt;p&gt;If you do not use TrueNAS, at least &lt;em&gt;Mirror your Disks&lt;/em&gt; [3]&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/ZFS"&gt;https://en.wikipedia.org/wiki/ZFS&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="NAS_Disk_Replacement.html"&gt;NAS_Disk_Replacement&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="Mirror_Disks.html"&gt;Mirror_Disks&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.truenas.com/docs/core/13.0/coretutorials/storage/disks/diskreplace/"&gt;https://www.truenas.com/docs/core/13.0/coretutorials/storage/disks/diskreplace/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="/mirrordisks.html"&gt;Mirror_Disks&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h1 id="unixlinux-server-network-file-system-nfs"&gt;Unix/Linux Server - Network File System (NFS)&lt;/h1&gt;
 &lt;p&gt;NFS allow one server to share it's filesystem to another server. To the other server the file system appears to be local, but all changes on the local client are actually done on the remote NFS server.&lt;/p&gt;
@@ -15097,7 +15051,7 @@ mkdir&lt;span class="w"&gt; &lt;/span&gt;-p&lt;span class="w"&gt; &lt;/span&gt;&
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h1 id="mirror-disks-for-failure-protection"&gt;Mirror Disks for Failure Protection&lt;/h1&gt;
-&lt;p&gt;TODO: Refer to the &lt;a href="Mirror_Disks.md?fileId=673064"&gt;Mirror Disk&lt;/a&gt; page.&lt;/p&gt;
+&lt;p&gt;Refer to the &lt;a href="/mirrordisks.md"&gt;Mirror Disk&lt;/a&gt; page.&lt;/p&gt;
 &lt;h1 id="virtual-machines"&gt;Virtual Machines&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -15505,7 +15459,7 @@ $&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;sys
 
 &lt;ol&gt;
 &lt;li&gt;&lt;a href="https://fedoraproject.org/wiki/PostgreSQL/README.rpm-dist"&gt;https://fedoraproject.org/wiki/PostgreSQL/README.rpm-dist&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="/Postgresql.html#clusters"&gt;Clusters&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="/postgresql.html#clusters"&gt;Clusters&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h4 id="check-out-all-these-options"&gt;Check out all these Options&lt;/h4&gt;
 &lt;p&gt;Check the databases installed, main (postgres) and two templates

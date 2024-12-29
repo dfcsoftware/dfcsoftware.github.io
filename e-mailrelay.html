@@ -250,7 +250,7 @@
 </ul>
 <p>Recommendation:</p>
 <ul>
-<li>[ ] Bring up a host on a VPS somewhere, and use the <a href="Setup_Server.html">Setup Server</a> instructions to secure it.</li>
+<li>[ ] Bring up a host on a VPS somewhere, and use the <a href="/setup-server.html">Setup Server</a> instructions to secure it.</li>
 <li>[ ] Get a domain name and certificate set up and working.</li>
 <li>[ ] Install postfix/dovecot combo and relay to your main E-Mail host. Test sending out mail too.</li>
 <li>[ ] Install and configure SPF Policy Agent. Test it and make sure all is well.</li>
@@ -283,27 +283,27 @@
 </blockquote>
 <h2 id="check-network">Check Network</h2>
 <p>Click on this heading, then refer to these instructions, then come back here with the Back Arrow on the Browser:
- * <a href="Setup_Server.html#check-your-network">Network Check</a></p>
+ * <a href="/setup-server.html#check-your-network">Network Check</a></p>
 <h2 id="update-package-repository">Update Package Repository</h2>
 <p>Click on this heading, then refer to these instructions, then come back here with the Back Arrow on the Browser:
- * <a href="Setup_Server.html#update-package-repository">Update Packages</a></p>
+ * <a href="/setup-server.html#update-package-repository">Update Packages</a></p>
 <h2 id="create-new-users">Create New User(s)</h2>
 <blockquote>
 <p>The Linux mail user can be \&lt;name&gt;@example.com, to keep things clear.</p>
 </blockquote>
 <p>Click on this heading, then refer to these instructions, then come back here with the Back Arrow on the Browser:
- * <a href="Setup_Server.html#new-user-and-group-to-use">New Users</a></p>
+ * <a href="/setup-server.html#new-user-and-group-to-use">New Users</a></p>
 <h2 id="set-host-and-domain">Set Host and Domain</h2>
 <p>Click on this heading, then refer to these instructions, then come back here with the Back Arrow on the Browser:
- * <a href="Setup_Server.html#set-your-host-and-domain-names">Host and Domain</a></p>
+ * <a href="/setup-server.html#set-your-host-and-domain-names">Host and Domain</a></p>
 <h2 id="set-date-and-time">Set Date and Time</h2>
 <p>Click on this heading, then refer to these instructions, then come back here with the Back Arrow on the Browser:
- * <a href="Setup_Server.html#time-control">Date and Time Settings</a></p>
+ * <a href="/setup-server.html#time-control">Date and Time Settings</a></p>
 <h2 id="monitor-crack-attempts">Monitor crack attempts</h2>
 <h3 id="install-firewall-and-fail2ban-on-your-domainorg">Install firewall and fail2ban on <em>your-domain.org</em></h3>
 <p>Be sure the <em>system firewall</em> is installed and also the "Block Bad Actors" <em>firewall.sh</em> script.</p>
 <p>Click on this heading, then refer to these instructions, then come back here with the Back Arrow on the Browser:
- * <a href="Setup_Server.html#firewall">Firewall</a></p>
+ * <a href="/setup-server.html#firewall">Firewall</a></p>
 <h4 id="add-rules-for-e-mail-smtp-and-smtps">Add rules for E-Mail smtp and smtps.</h4>
 <ul>
 <li>Debian:</li>
@@ -351,7 +351,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>ufw<span class="w"> </span>
 
 <h4 id="configure-fail2ban">Configure fail2ban</h4>
 <p>Click on this heading, then refer to these instructions, then come back here with the Back Arrow on the Browser:
- * <a href="Setup_Server.html#fail2ban---automatic-firewall-blocking">Fail2ban</a></p>
+ * <a href="/setup-server.html#fail2ban---automatic-firewall-blocking">Fail2ban</a></p>
 <h5 id="secure-postfix">Secure postfix</h5>
 <p>File: /etc/fail2ban/jail.d/postfix.local</p>
 <div class="highlight"><pre><span></span><code><span class="k">[postfix]</span>
@@ -388,10 +388,10 @@ $<span class="w"> </span>sudo<span class="w"> </span>ufw<span class="w"> </span>
 <h3 id="log-monitors-on-your-domainorg">Log Monitors  on <em>your-domain.org</em></h3>
 <h4 id="install-logwatch">Install Logwatch</h4>
 <p>Click on this heading, then refer to these instructions, then come back here with the Back Arrow on the Browser:
- * <a href="Setup_Server.html#logwatch---daily-alert-of-logging-activity">Logwatch</a></p>
+ * <a href="/setup-server.html#logwatch---daily-alert-of-logging-activity">Logwatch</a></p>
 <h4 id="install-logcheck">Install Logcheck:</h4>
 <p>Click on this heading, then refer to these instructions, then come back here with the Back Arrow on the Browser:
- * <a href="Setup_Server.html#logcheck---mails-anomalies-in-the-system-logfiles-to-the-admin">Logcheck</a></p>
+ * <a href="/setup-server.html#logcheck---mails-anomalies-in-the-system-logfiles-to-the-admin">Logcheck</a></p>
 <h3 id="logwatcher">LogWatcher</h3>
 <h4 id="create">Create</h4>
 <p>Put this script in the /root directory, and install the dependencies listed.</p>
@@ -491,12 +491,12 @@ log_check<span class="w"> </span>.dovecot<span class="w">  </span><span class="s
 
 <p>Reference:</p>
 <ul>
-<li>Watch - <a href="2023/august#logsh---log-watcher">System Alerts</a></li>
+<li>Watch - <a href="/watch.html">System Alerts</a></li>
 </ul>
 <h1 id="apache-install-enable-on-your-domainorg">Apache install (enable) on <em>your-domain.org</em></h1>
 <p>Click on this heading, then refer to these instructions, then come back here with the Back Arrow on the Browser:
- * <a href="DNS.html#install-a-web-server">Apache Web Server</a></p>
-<p>Test it on http://\&lt;domain.name&gt;</p>
+ * <a href="/dns.html#install-a-web-server">Apache Web Server</a></p>
+<p>Test it on http://<domain.name></p>
 <h2 id="add-ssl">Add SSL</h2>
 <ul>
 <li>Debian</li>
@@ -531,10 +531,12 @@ log_check<span class="w"> </span>.dovecot<span class="w">  </span><span class="s
 </code></pre></div>
 
 <h1 id="dns-registrar-your-domainorg">DNS Registrar (your-domain.org)</h1>
-<p>Register name. </p>
-<p><a href="https://godaddy.com">https://godaddy.com</a>
-<a href="https://www.namecheap.com/">https://www.namecheap.com/</a>
-<a href="https://www.domain.com/">https://www.domain.com/</a></p>
+<p>Register your own name. </p>
+<ul>
+<li><a href="https://godaddy.com">https://godaddy.com</a></li>
+<li><a href="https://www.namecheap.com/">https://www.namecheap.com/</a></li>
+<li><a href="https://www.domain.com/">https://www.domain.com/</a></li>
+</ul>
 <h3 id="dns-updates">DNS Updates</h3>
 <p>Create Advanced DNS records, using IP Address of VPS server:</p>
 <p>HOST</p>
@@ -574,13 +576,9 @@ $<span class="w"> </span>dig<span class="w"> </span>-t<span class="w"> </span>mx
 <h1 id="certbot-certificate-management-for-lets-encrypt">certbot - Certificate Management for Let's Encrypt</h1>
 <p>To create and maintain LetsEncrypt certificates using Apache web server</p>
 <h3 id="install">Install</h3>
-<!-- TOGGLE BUTTON -->
-<div><label for="checkDebian-1" class="togButton">The Debian Way</label></div>
-<!-- CONTENT -->
-<p><input type="checkbox" class="togCheckDebian" id="checkDebian-1"/></p>
-<div class="togContentDebian">
-
-
+<ul>
+<li>The Debian Way</li>
+</ul>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>unmask<span class="w"> </span>apache2
 $<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>apache2
 $<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>apache2
@@ -588,16 +586,10 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
 $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>python3-certbot-apache
 </code></pre></div>
 
-
 </div>
-
-<!-- TOGGLE BUTTON -->
-<div><label for="checkRedHat-1" class="togButton">The RedHat Way</label></div>
-<!-- CONTENT -->
-<p><input type="checkbox" class="togCheckRedHat" id="checkRedHat-1"/></p>
-<div class="togContentRedHat">
-
-
+<ul>
+<li>The RedHat Way</li>
+</ul>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>unmask<span class="w"> </span>httpd
 $<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>httpd
 $<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>httpd
@@ -605,9 +597,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>dnf<span class="w"> </span>
 $<span class="w"> </span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>python3-certbot-apache
 </code></pre></div>
 
-
 </div>
-
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>certbot<span class="w">  </span>plugins
 
 Saving<span class="w"> </span>debug<span class="w"> </span>log<span class="w"> </span>to<span class="w"> </span>/var/log/letsencrypt/letsencrypt.log
@@ -694,13 +684,9 @@ IMPORTANT<span class="w"> </span>NOTES:
 
 <h1 id="apache-disable">Apache (disable)</h1>
 <p>Apache is not needed, so disable it to reduce threat footprint. </p>
-<!-- TOGGLE BUTTON -->
-<div><label for="checkDebian-2" class="togButton">The Debian Way</label></div>
-<!-- CONTENT -->
-<p><input type="checkbox" class="togCheckDebian" id="checkDebian-2"/></p>
-<div class="togContentDebian">
-
-
+<ul>
+<li>The Debian Way</li>
+</ul>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>apache2
 $<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>disable<span class="w"> </span>apache2
 $<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>mask<span class="w"> </span>apache2
@@ -708,16 +694,10 @@ $<span class="w"> </span>sudo<span class="w"> </span>ufw<span class="w"> </span>
 <span class="c1"># -&gt; ufw delete &lt;n&gt; for ports 80 &amp; 443</span>
 </code></pre></div>
 
-
 </div>
-
-<!-- TOGGLE BUTTON -->
-<div><label for="checkRedHat-2" class="togButton">The RedHat Way</label></div>
-<!-- CONTENT -->
-<p><input type="checkbox" class="togCheckRedHat" id="checkRedHat-2"/></p>
-<div class="togContentRedHat">
-
-
+<ul>
+<li>The RedHat Way</li>
+</ul>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>httpd
 $<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>disable<span class="w"> </span>httpd
 $<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>mask<span class="w"> </span>httpd
@@ -733,42 +713,28 @@ $<span class="w"> </span>sudo<span class="w"> </span>firewall-cmd<span class="w"
 <span class="w">  </span>success
 </code></pre></div>
 
-
 </div>
-
 <p>When the Let's Encrypt Certificate expires, you will need to enable it again and open up ports.</p>
 <h1 id="postfix-e-mail-transport-agent">postfix - E-Mail Transport Agent</h1>
 <p>Install postfix MTA and remove exim4, if it is installed. Postfix is more mature and full-featured.</p>
 <p>TLS <a href="http://www.postfix.org/TLS_README.html">http://www.postfix.org/TLS_README.html</a></p>
 <h3 id="install-on-your-domainorg">Install on <em>your-domain.org</em></h3>
-<!-- TOGGLE BUTTON -->
-<div><label for="checkDebian-3" class="togButton">The Debian Way</label></div>
-<!-- CONTENT -->
-<p><input type="checkbox" class="togCheckDebian" id="checkDebian-3"/></p>
-<div class="togContentDebian">
-
-
+<ul>
+<li>The Debian Way</li>
+</ul>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>remove<span class="w"> </span>exim4-base
 $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>postfix
 </code></pre></div>
 
-
 </div>
-
-<!-- TOGGLE BUTTON -->
-<div><label for="checkRedHat-3" class="togButton">The RedHat Way</label></div>
-<!-- CONTENT -->
-<p><input type="checkbox" class="togCheckRedHat" id="checkRedHat-3"/></p>
-<div class="togContentRedHat">
-
-
+<ul>
+<li>The RedHat Way</li>
+</ul>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>dnf<span class="w"> </span>remove<span class="w"> </span>exim
 $<span class="w"> </span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>postfix
 </code></pre></div>
 
-
 </div>
-
 <h3 id="configure-on-your-domainorg">Configure on <em>your-domain.org</em></h3>
 <blockquote>
 <ul>
@@ -1076,34 +1042,24 @@ to clarify this is for transporting from .org to .com</p>
 </blockquote>
 <p>Two Steps:</p>
 <ol>
-<li>install dovecot</li>
+<li>
+<p>install dovecot</p>
+</li>
+<li>
+<p>The Debian Way</p>
+</li>
 </ol>
-<!-- TOGGLE BUTTON -->
-<div><label for="checkDebian-4" class="togButton">The Debian Way</label></div>
-<!-- CONTENT -->
-<p><input type="checkbox" class="togCheckDebian" id="checkDebian-4"/></p>
-<div class="togContentDebian">
-
-
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>dovecot-core
 </code></pre></div>
 
-
 </div>
-
-<!-- TOGGLE BUTTON -->
-<div><label for="checkRedHat-4" class="togButton">The RedHat Way</label></div>
-<!-- CONTENT -->
-<p><input type="checkbox" class="togCheckRedHat" id="checkRedHat-4"/></p>
-<div class="togContentRedHat">
-
-
+<ul>
+<li>The RedHat Way</li>
+</ul>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>dovecot
 </code></pre></div>
 
-
 </div>
-
 <p>Add <code>login</code> to dovecot auth</p>
 <p>File: /etc/dovecot/conf.d/10-auth.conf</p>
 <div class="highlight"><pre><span></span><code>~
@@ -1298,16 +1254,16 @@ srw-rw----<span class="w"> </span><span class="m">1</span><span class="w"> </spa
 <h4 id="read-mail">Read Mail</h4>
 <ul>
 <li>Server: mail.example.com</li>
-<li>User: \&lt;linux user defined on the <a href="E-Mail.html#user-settings">E-Mail</a> .com host&gt;</li>
-<li>Password: \&lt;linux user password defined on the <a href="E-Mail.html#user-settings">E-Mail</a> .com host&gt;</li>
+<li>User: \&lt;linux user defined on the <a href="/e-mail.html#user-settings">E-Mail</a> .com host&gt;</li>
+<li>Password: \&lt;linux user password defined on the <a href="/e-mail.html#user-settings">E-Mail</a> .com host&gt;</li>
 <li>SSL: ON</li>
 <li>Port: 993</li>
 </ul>
 <h4 id="send-mail">Send Mail</h4>
 <ul>
 <li>Server: smtp.example.org</li>
-<li>User: \&lt;linux user defined <a href="E-Mail_Relay.html#create-new-users">above</a> on the E-Mail .org host&gt;</li>
-<li>Password: \&lt;linux user password defined <a href="E-Mail_Relay.html#create-new-users">above</a> on the E-Mail .org host&gt;</li>
+<li>User: \&lt;linux user defined <a href="/e-mailrelay.html#create-new-users">above</a> on the E-Mail .org host&gt;</li>
+<li>Password: \&lt;linux user password defined <a href="/e-mailrelay.html#create-new-users">above</a> on the E-Mail .org host&gt;</li>
 <li>SSL: ON</li>
 <li>Port: 465</li>
 </ul>
@@ -2103,7 +2059,7 @@ DMARC<span class="w"> </span>record<span class="w"> </span><span class="k">for</
                 </p><!-- /#about -->
 
                 <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-                <p> Version:  3.42 </p>
+                <p> Version:  3.43 </p>
         </footer><!-- /#contentinfo -->
 
 </body>
