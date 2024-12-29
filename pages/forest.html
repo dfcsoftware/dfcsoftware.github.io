@@ -31,18 +31,52 @@
 <section id="content" class="body">
     <h1 class="entry-title">Forest</h1>
     
-    <h1 id="2023-october">2023 - October</h1>
-<!-- toc -->
-
-<hr>
-<h1 id="forest-administration-system">Forest Administration System</h1>
-<p>Last Updated:  29-October-2023
-Version:  2.x</p>
+    <h1 id="forest-administration-system">Forest Administration System</h1>
 <ul>
 <li>Finally got my alerts working, so when a host goes haywire I get an alert on the Phone and Cloud, with E-Mail as backup.</li>
 </ul>
 <p>Hope this helps, <br>
 -- Don</p>
+<hr>
+<div class="toc"><span class="toctitle">Table of Contents</span><ul>
+<li><a href="#forest-administration-system">Forest Administration System</a></li>
+<li><a href="#quick-start">Quick Start</a><ul>
+<li><a href="#on-controller-host">On Controller host</a></li>
+<li><a href="#on-each-host">On Each Host</a></li>
+<li><a href="#on-controller-host_1">On Controller host</a></li>
+</ul>
+</li>
+<li><a href="#concepts">Concepts</a></li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#configuration">Configuration</a></li>
+<li><a href="#schedule-alertsh-in-cron">Schedule alert.sh in cron</a></li>
+<li><a href="#copy-ssh-keys-to-remote">Copy ssh keys to remote</a></li>
+<li><a href="#alert-functions">Alert Functions</a><ul>
+<li><a href="#default-is-to-send-an-e-mail-if-limits-are-exceeded">Default is to send an e-mail if limits are exceeded</a></li>
+</ul>
+</li>
+<li><a href="#nextcloud-flow-notifications">NextCloud Flow Notifications</a></li>
+<li><a href="#savelogsh">savelog.sh</a></li>
+<li><a href="#logsh-log-watcher">log.sh - Log Watcher</a></li>
+<li><a href="#trouble-resolution">Trouble Resolution</a><ul>
+<li><a href="#armv7l-debian-10">armv7l Debian 10</a></li>
+</ul>
+</li>
+<li><a href="#files">Files</a></li>
+<li><a href="#git-clone">git clone</a><ul>
+<li><a href="#downstream-vs-upstream">Downstream vs. Upstream</a></li>
+<li><a href="#git-remote-repository-access">Git remote repository access</a><ul>
+<li><a href="#create-a-bare-repo-no-working-files">Create a bare repo, no working files</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_1"></a></li>
+<li><a href="#then-add-them-to-your-local-git-repo">Then add them to your local git repo</a></li>
+<li><a href="#push-them-to-the-sharing-repo-with-the-set-upstream-option">Push them to the sharing repo, with the --set-upstream option</a></li>
+</ul>
+</div>
+<hr>
 <p>alert.sh and log.sh are meant to run a few times per hour
 and send alerts if watch thresholds are exceeded.</p>
 <ul>
@@ -330,7 +364,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>
 <p>Reference: </p>
 <ul>
 <li><a href="https://github.com/nextcloud/flow_notifications">https://github.com/nextcloud/flow_notifications</a></li>
-<li><a href="august#configuration">Example config.txt</a></li>
+<li><a href="/watch.html#configuration">Example config.txt</a></li>
 </ul>
 <h1 id="savelogsh">savelog.sh</h1>
 <p>This is used to save off several copies of the last sync.sh process sending alerts to the NextCloud server.</p>
@@ -697,7 +731,7 @@ fbff5bc..72bbc59 master -&gt; master</p>
                 </p><!-- /#about -->
 
                 <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-                <p> Version:  3.36 </p>
+                <p> Version:  3.37 </p>
         </footer><!-- /#contentinfo -->
 
 </body>
