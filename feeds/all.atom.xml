@@ -86,6 +86,9 @@
 &lt;li&gt;
 &lt;p&gt;&lt;a href="/watch.html"&gt;Watch&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="/git.html"&gt;Version Control&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;h2 id="thoughts"&gt;Thoughts&lt;/h2&gt;
@@ -11793,6 +11796,9 @@ $&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;doc
 &lt;ul&gt;
 &lt;li&gt;Move to one level below your &lt;em&gt;Host Path&lt;/em&gt; designated above for Home-Assistant (EX: &lt;code&gt;/mnt/vol042/ha&lt;/code&gt;), and install ZWave-JS-UI [1]&lt;/li&gt;
 &lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Homeassistant supervisor (docker) uses : /usr/src/node_modules/.bin/zwave-server&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;$&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;mkdir&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;zwave&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;js&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;ui&lt;/span&gt;
 &lt;span class="o"&gt;$&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;zwave&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;js&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;ui&lt;/span&gt;
 &lt;span class="c1"&gt;# download latest version&lt;/span&gt;
@@ -14314,7 +14320,7 @@ deactivate
 &lt;hr&gt;
 &lt;p&gt;Reference: &lt;a href="https://miniflux.app/docs/installation.html#debian"&gt;https://miniflux.app/docs/installation.html#debian&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;You can view these feeds from your web browser. They look like this:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="miniflux (2).png" src="/images/miniflux%20%282%29.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="miniflux.png" src="/images/miniflux.png"&gt;&lt;/p&gt;
 &lt;h2 id="database-configuration"&gt;Database Configuration&lt;/h2&gt;
 &lt;h3 id="creating-the-database"&gt;&lt;strong&gt;Creating the Database&lt;/strong&gt;&lt;/h3&gt;
 &lt;p&gt;Here an example from the command line:&lt;/p&gt;

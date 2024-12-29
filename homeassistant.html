@@ -244,6 +244,9 @@ $<span class="w"> </span>sudo<span class="w"> </span>docker<span class="w"> </sp
 <ul>
 <li>Move to one level below your <em>Host Path</em> designated above for Home-Assistant (EX: <code>/mnt/vol042/ha</code>), and install ZWave-JS-UI [1]</li>
 </ul>
+<blockquote>
+<p>Homeassistant supervisor (docker) uses : /usr/src/node_modules/.bin/zwave-server</p>
+</blockquote>
 <div class="highlight"><pre><span></span><code><span class="o">$</span><span class="w"> </span><span class="n">mkdir</span><span class="w"> </span><span class="n">zwave</span><span class="o">-</span><span class="n">js</span><span class="o">-</span><span class="n">ui</span>
 <span class="o">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">zwave</span><span class="o">-</span><span class="n">js</span><span class="o">-</span><span class="n">ui</span>
 <span class="c1"># download latest version</span>
@@ -1196,7 +1199,7 @@ zwavejs_upgrade
                 </p><!-- /#about -->
 
                 <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-                <p> Version:  3.40 </p>
+                <p> Version:  3.41 </p>
         </footer><!-- /#contentinfo -->
 
 </body>
