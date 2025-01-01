@@ -9,7 +9,7 @@
 &lt;p&gt;&lt;a href="/linux-in-house/introduction.html"&gt;Introduction&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;a href="{ SITEURL }/setup-server.html"&gt;Setup a New Server&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="$SITEURL/setup-server.html"&gt;Setup a New Server&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;a href="/dns.html"&gt;Domain Name Services to Find Your Server&lt;/a&gt;&lt;/p&gt;
