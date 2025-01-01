@@ -12492,16 +12492,13 @@ zwavejs_upgrade
 &lt;blockquote&gt;
 &lt;hr&gt;
 &lt;p&gt;By: Don Cohoon&lt;/p&gt;
-&lt;p&gt;Website: &lt;a href="https://dfcsoftware.github.io/introduction.html"&gt;https://dfcsoftware.github.io/introduction.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Website: &lt;a href="https://dfcsoftware.github.io/linux-in-house/introduction.html"&gt;https://dfcsoftware.github.io/linux-in-house/introduction.html&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;RSS: &lt;a href="https://fosstodon.org/@LinuxintheHouse.rss"&gt;https://fosstodon.org/@LinuxintheHouse.rss&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Feedback:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a rel="me" href="https://fosstodon.org/@LinuxintheHouse"&gt;Mastodon&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"&gt;&lt;img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /&gt;&lt;/a&gt;&lt;br /&gt;This work is licensed under a &lt;a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"&gt;Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License&lt;/a&gt;.&lt;/p&gt;
-&lt;hr&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Tux …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Linux-in-the-house.svg" src="/linux-in-house/images/Linux-in-the-House2.svg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"&gt;&lt;img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /&gt;&lt;/a&gt;&lt;br /&gt;This work is licensed under a &lt;a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"&gt;Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License …&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Linux-in-the-house.svg" src="/linux-in-house/images/Linux-in-the-House2.svg"&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1 style="text-align: center;"&gt;Linux in the House&lt;/h1&gt;
 
@@ -12510,7 +12507,7 @@ zwavejs_upgrade
 &lt;blockquote&gt;
 &lt;hr&gt;
 &lt;p&gt;By: Don Cohoon&lt;/p&gt;
-&lt;p&gt;Website: &lt;a href="https://dfcsoftware.github.io/introduction.html"&gt;https://dfcsoftware.github.io/introduction.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Website: &lt;a href="https://dfcsoftware.github.io/linux-in-house/introduction.html"&gt;https://dfcsoftware.github.io/linux-in-house/introduction.html&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;RSS: &lt;a href="https://fosstodon.org/@LinuxintheHouse.rss"&gt;https://fosstodon.org/@LinuxintheHouse.rss&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Feedback:&lt;/p&gt;
 &lt;ul&gt;
@@ -12776,7 +12773,7 @@ $&lt;span class="w"&gt; &lt;/span&gt;tilde
 &lt;li&gt;&lt;a href="https://routersecurity.org/"&gt;https://routersecurity.org/&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://keepassxc.org/"&gt;https://keepassxc.org/&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h1 id="go-to-setup-a-new-server"&gt;Go to =&amp;gt; &lt;a href="/setup-server.html#setup-a-new-server"&gt;Setup a New Server&lt;/a&gt;&lt;/h1&gt;
+&lt;h1 id="go-to-setup-a-new-server"&gt;Go to =&amp;gt; &lt;a href="/linux-in-house/setup-server.html#setup-a-new-server"&gt;Setup a New Server&lt;/a&gt;&lt;/h1&gt;
 &lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;
 &lt;h1 id="conventions-used-in-this-book"&gt;Conventions used in this book&lt;/h1&gt;
 &lt;p&gt;Text in code block format, like this -&amp;gt; &lt;code&gt;code block&lt;/code&gt;, are meant to be executed on the Linux command line, or text to be copied into a configuration file.&lt;/p&gt;
