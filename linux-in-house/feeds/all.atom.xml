@@ -109,7 +109,7 @@ A house is not a home without visitors&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Connect all your trees into the forest.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;a href="/pages/forest.html"&gt;The Forest&lt;/a&gt;&lt;/p&gt;</content><category term="forest"></category><category term="forest"></category><category term="welcome"></category></entry><entry><title>git</title><link href="https://dfcsoftware.github.io/linux-in-house/git.html" rel="alternate"></link><published>2023-10-01T00:00:00-04:00</published><updated>2023-10-01T00:00:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-10-01:/linux-in-house/git.html</id><summary type="html">&lt;h1 id="git-clone"&gt;git clone&lt;/h1&gt;
+&lt;p&gt;&lt;a href="/linux-in-house/pages/forest.html"&gt;The Forest&lt;/a&gt;&lt;/p&gt;</content><category term="forest"></category><category term="forest"></category><category term="welcome"></category></entry><entry><title>git</title><link href="https://dfcsoftware.github.io/linux-in-house/git.html" rel="alternate"></link><published>2023-10-01T00:00:00-04:00</published><updated>2023-10-01T00:00:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-10-01:/linux-in-house/git.html</id><summary type="html">&lt;h1 id="git-clone"&gt;git clone&lt;/h1&gt;
 &lt;p&gt;Clones a repository into a newly created directory, creates remote-tracking branches for each branch in the cloned repository (visible using git branch --remotes), and creates and checks out an initial branch that is forked from the cloned repository’s currently active branch.&lt;/p&gt;
 &lt;hr&gt;
 &lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
@@ -673,7 +673,7 @@ It needs to be scheduled in cron.&lt;/p&gt;
 &lt;p&gt;Reference: &lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Marcus Ranum &lt;a href="http://ranum.com/security/computer_security/code/index.html"&gt;http://ranum.com/security/computer_security/code/index.html&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="/e-mailrelay.html#logwatcher"&gt;Logwatcher.sh&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="/linux-in-house/e-mailrelay.html#logwatcher"&gt;Logwatcher.sh&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id="trouble-resolution"&gt;Trouble Resolution&lt;/h2&gt;
 &lt;h4 id="armv7l-debian-10"&gt;armv7l Debian 10&lt;/h4&gt;
@@ -720,7 +720,7 @@ It needs to be scheduled in cron.&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;The following descriptions follow a VM on Redhat/AlmaLinux/RockyLinux/CENTOS 9 using qemu virtualizer and the Cockpit management web console. We also set the VM network up for external access and share files with the physical host's NFS mount. [1]&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;a href="/nas.html#connect-to-nfs-server-from-linux-client"&gt;NFS client&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="/linux-in-house/nas.html#connect-to-nfs-server-from-linux-client"&gt;NFS client&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Reference: &lt;/p&gt;
 &lt;ul&gt;
@@ -968,13 +968,13 @@ QEMU:&lt;span class="w"&gt; &lt;/span&gt;Checking&lt;span class="w"&gt; &lt;/spa
 &lt;blockquote&gt;
 &lt;p&gt;See file /etc/libvirt/network/default.xml&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img alt="Virtual Machine NAT" src="/images/graph-virtual-machine.svg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Virtual Machine NAT" src="/linux-in-house/images/graph-virtual-machine.svg"&gt;&lt;/p&gt;
 &lt;h4 id="bridged-vm-network-physical-host-bridge"&gt;Bridged VM Network (Physical Host &lt;em&gt;bridge&lt;/em&gt;)&lt;/h4&gt;
 &lt;p&gt;If you require a VM to appear on the same &lt;em&gt;external&lt;/em&gt; network as the hypervisor, you must use bridged mode instead. To do so, attach the VM to a bridge device connected to the hypervisor’s physical network device.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;See file /etc/nmstate/50-create-bridge.yml below&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img alt="Virtual Machine Bridge" src="/images/graph-virtual-machine2.svg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Virtual Machine Bridge" src="/linux-in-house/images/graph-virtual-machine2.svg"&gt;&lt;/p&gt;
 &lt;h4 id="redhat-way-1"&gt;RedHat Way [1]&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Create a nmstate configuration file on the physical host.&lt;/li&gt;
@@ -1053,7 +1053,7 @@ $&lt;span class="w"&gt; &lt;/span&gt;ip&lt;span class="w"&gt; &lt;/span&gt;a&lt;
 &lt;li&gt;The &lt;strong&gt;VM&lt;/strong&gt; should use virbr0 as it's network interface. Using Cockpit add a Bridged network to the &lt;strong&gt;VM&lt;/strong&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;image libvirt-bridge.png
-&lt;img alt="libvirt-bridge.png" src="/images/libvirt-bridge.png"&gt;&lt;/p&gt;
+&lt;img alt="libvirt-bridge.png" src="/linux-in-house/images/libvirt-bridge.png"&gt;&lt;/p&gt;
 &lt;p&gt;-&amp;gt; OR &amp;lt;- define it using virsh:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;virsh&lt;span class="w"&gt; &lt;/span&gt;edit&lt;span class="w"&gt; &lt;/span&gt;vm_machine
 &lt;span class="nt"&gt;&amp;lt;domain&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;kvm&amp;#39;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
@@ -1175,7 +1175,7 @@ $&lt;span class="w"&gt; &lt;/span&gt;ip&lt;span class="w"&gt; &lt;/span&gt;a&lt;
 &lt;li&gt;The &lt;strong&gt;VM&lt;/strong&gt; should use virbr0 as it's network interface. Using Cockpit add a Bridged network to the &lt;strong&gt;VM&lt;/strong&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;image libvirt-bridge.png
-&lt;img alt="libvirt-bridge.png" src="/images/libvirt-bridge.png"&gt;&lt;/p&gt;
+&lt;img alt="libvirt-bridge.png" src="/linux-in-house/images/libvirt-bridge.png"&gt;&lt;/p&gt;
 &lt;p&gt;-&amp;gt; OR &amp;lt;- define it using virsh:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;virsh&lt;span class="w"&gt; &lt;/span&gt;edit&lt;span class="w"&gt; &lt;/span&gt;vm_machine
 &lt;span class="nt"&gt;&amp;lt;domain&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;kvm&amp;#39;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
@@ -1347,13 +1347,13 @@ $ sudo virsh vol-list --pool my_vm_pool --details
 &lt;/blockquote&gt;
 &lt;ol&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;a href="/virtualip.html"&gt;vlan&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="/linux-in-house/virtualip.html"&gt;vlan&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;a href="/nas.html#connect-to-nfs-server-from-linux-client"&gt;nfs&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="/linux-in-house/nas.html#connect-to-nfs-server-from-linux-client"&gt;nfs&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;a href="/virtualmachines.html#network-on-a-virtual-machine"&gt;Network on a virtual machine&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="/linux-in-house/virtualmachines.html#network-on-a-virtual-machine"&gt;Network on a virtual machine&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Fixed IP address; servers should have this&lt;/p&gt;
@@ -1394,7 +1394,7 @@ $ sudo virsh vol-list --pool my_vm_pool --details
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;ol&gt;
-&lt;li&gt;&lt;a href="/virtualmachines.html#virtual-storage-pools-on-nfs"&gt;VM NFS Storage Pool&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="/linux-in-house/virtualmachines.html#virtual-storage-pools-on-nfs"&gt;VM NFS Storage Pool&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h3 id="copy-data-files"&gt;Copy Data Files&lt;/h3&gt;
 &lt;p&gt;Now the easy part.&lt;/p&gt;
@@ -1813,13 +1813,13 @@ $
 
 &lt;p&gt;Reference:&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;a href="/beaglebone.html#bb-bbai-tether-system"&gt;bbai-tether-system&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="/linux-in-house/beaglebone.html#bb-bbai-tether-system"&gt;bbai-tether-system&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://gist.github.com/kylemanna/6930087"&gt;https://gist.github.com/kylemanna/6930087&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h2 id="firewalld"&gt;firewalld&lt;/h2&gt;
-&lt;p&gt;The &lt;a href="/setup-server.html#firewall"&gt;Server Setup&lt;/a&gt; section of this book covers how to set up a firewall to protect your system network.&lt;/p&gt;
+&lt;p&gt;The &lt;a href="/linux-in-house/setup-server.html#firewall"&gt;Server Setup&lt;/a&gt; section of this book covers how to set up a firewall to protect your system network.&lt;/p&gt;
 &lt;h2 id="networkd"&gt;networkd&lt;/h2&gt;
-&lt;p&gt;The &lt;a href="/virtualip.html"&gt;Virtual IP Article&lt;/a&gt; covers networkd manipulation using netplan.&lt;/p&gt;
+&lt;p&gt;The &lt;a href="/linux-in-house/virtualip.html"&gt;Virtual IP Article&lt;/a&gt; covers networkd manipulation using netplan.&lt;/p&gt;
 &lt;h2 id="tcpdump"&gt;tcpdump&lt;/h2&gt;
 &lt;p&gt;Here is a super useful program for tracing what is happening on your network.&lt;/p&gt;
 &lt;p&gt;For instance, you can watch a certain port for activity. In this example we watch port 81 (which is a web server).&lt;/p&gt;
@@ -3415,7 +3415,7 @@ check host REACHABILITY with address 1.1.1.1
 &lt;p&gt;Munin is a networked resource monitoring tool (&lt;a href="https://guide.munin-monitoring.org/en/latest/reference/history.html#history"&gt;started in 2002&lt;/a&gt;) that can help analyze resource trends and &lt;em&gt;what just happened to kill our performance?&lt;/em&gt; problems. It is designed to be very plug and play.&lt;/p&gt;
 &lt;p&gt;A default installation provides a lot of graphs with almost no work. &lt;strong&gt;Requires Apache or nginx for graphs.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Reference: &lt;a href="http://guide.munin-monitoring.org/en/latest/tutorial/alert.html"&gt;http://guide.munin-monitoring.org/en/latest/tutorial/alert.html&lt;/a&gt;&lt;/p&gt;
-&lt;h4 id="_1"&gt;&lt;img alt="Munin-Architecture.png" src="/images/Munin-Architecture.png"&gt;&lt;/h4&gt;
+&lt;h4 id="_1"&gt;&lt;img alt="Munin-Architecture.png" src="/linux-in-house/images/Munin-Architecture.png"&gt;&lt;/h4&gt;
 &lt;p&gt;Installation&lt;/p&gt;
 &lt;p&gt;On &lt;em&gt;all&lt;/em&gt; nodes &lt;/p&gt;
 &lt;hr/&gt;
@@ -3638,10 +3638,10 @@ contact.email.command mail -s &amp;quot;Munin-notification for ${var:group} :: $
     diskstats_latency.mmcblk0.avgwait.critical -5:5
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;h4 id="graph-example"&gt;Graph Example&lt;img alt="munin.png" src="/images/munin.png"&gt;&lt;/h4&gt;
+&lt;h4 id="graph-example"&gt;Graph Example&lt;img alt="munin.png" src="/linux-in-house/images/munin.png"&gt;&lt;/h4&gt;
 &lt;h4 id="redhat-alternative"&gt;Redhat Alternative&lt;/h4&gt;
 &lt;p&gt;Cockpit&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Cockpit Dashboard" src="/images/Cockpit-dashboard.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Cockpit Dashboard" src="/linux-in-house/images/Cockpit-dashboard.png"&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo systemctl start Cockpit
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
@@ -5023,7 +5023,7 @@ default via 192.168.1.1 dev eno1 proto static
 &lt;p&gt;For example:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;PocketBeagle  &lt;a href="https://www.beagleboard.org/boards/pocketbeagle-original"&gt;https://www.beagleboard.org/boards/pocketbeagle-original&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;img alt="pocketBeagle-hero-hand-400x222.png" src="/images/pocketBeagle-hero-hand-400x222.png"&gt;&lt;/li&gt;
+&lt;li&gt;&lt;img alt="pocketBeagle-hero-hand-400x222.png" src="/linux-in-house/images/pocketBeagle-hero-hand-400x222.png"&gt;&lt;/li&gt;
 &lt;li&gt;This runs:&lt;ul&gt;
 &lt;li&gt;Rebuilt Garfield clock with seven-segment-display and alarm, keeping track of daylight saving time changes.&lt;/li&gt;
 &lt;li&gt;Music box player.&lt;/li&gt;
@@ -5033,7 +5033,7 @@ default via 192.168.1.1 dev eno1 proto static
 &lt;hr&gt;
 &lt;ul&gt;
 &lt;li&gt;BBB (Black) &lt;a href="https://www.beagleboard.org/boards/beaglebone-black"&gt;https://www.beagleboard.org/boards/beaglebone-black&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;img alt="beagle-black-wired-shadow_no5v-1-400x400.png" src="/images/beagle-black-wired-shadow_no5v-1-400x400.png"&gt;&lt;/li&gt;
+&lt;li&gt;&lt;img alt="beagle-black-wired-shadow_no5v-1-400x400.png" src="/linux-in-house/images/beagle-black-wired-shadow_no5v-1-400x400.png"&gt;&lt;/li&gt;
 &lt;li&gt;This runs very capabily:&lt;ul&gt;
 &lt;li&gt;Music Player Daemon (MDP) [5]. You can control what is played on the command line or through a Phone App.&lt;/li&gt;
 &lt;li&gt;Control lights and relays. You can use the Python based Flask [6] package to create nice looking web apps for this.&lt;/li&gt;
@@ -5043,7 +5043,7 @@ default via 192.168.1.1 dev eno1 proto static
 &lt;hr&gt;
 &lt;ul&gt;
 &lt;li&gt;BBAI (AI 32-bit, arm71) &lt;a href="https://www.beagleboard.org/boards/beaglebone-ai"&gt;https://www.beagleboard.org/boards/beaglebone-ai&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;img alt="beagleboane-ai-heatsink-500x356.png" src="/images/beagleboane-ai-heatsink-500x356.png"&gt;&lt;/li&gt;
+&lt;li&gt;&lt;img alt="beagleboane-ai-heatsink-500x356.png" src="/linux-in-house/images/beagleboane-ai-heatsink-500x356.png"&gt;&lt;/li&gt;
 &lt;li&gt;Applications I used with this include:&lt;ul&gt;
 &lt;li&gt;NextCloud server (little slow).&lt;/li&gt;
 &lt;li&gt;Mini-Network Access Storage (NAS) with mirrored SSDs (mdadm).&lt;/li&gt;
@@ -5054,7 +5054,7 @@ default via 192.168.1.1 dev eno1 proto static
 &lt;hr&gt;
 &lt;ul&gt;
 &lt;li&gt;BBAI-64 (AI 64-bit; arm64) &lt;a href="https://www.beagleboard.org/boards/beaglebone-ai-64"&gt;https://www.beagleboard.org/boards/beaglebone-ai-64&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;img alt="BeagleBone_AI_64-400x333.webp" src="/images/BeagleBone_AI_64-400x333.webp"&gt;&lt;/li&gt;
+&lt;li&gt;&lt;img alt="BeagleBone_AI_64-400x333.webp" src="/linux-in-house/images/BeagleBone_AI_64-400x333.webp"&gt;&lt;/li&gt;
 &lt;li&gt;Very good at:&lt;ul&gt;
 &lt;li&gt;NextCloud server (runs good).&lt;/li&gt;
 &lt;li&gt;News Reader (MiniFlux).&lt;/li&gt;
@@ -5065,7 +5065,7 @@ default via 192.168.1.1 dev eno1 proto static
 &lt;hr&gt;
 &lt;ul&gt;
 &lt;li&gt;BeaglePlay is the latest offering (&lt;a href="https://www.beagleboard.org/boards/beagleplay"&gt;https://www.beagleboard.org/boards/beagleplay&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;img alt="BeaglePlay-front-500x281.jpg" src="/images/BeaglePlay.webp"&gt;&lt;/li&gt;
+&lt;li&gt;&lt;img alt="BeaglePlay-front-500x281.jpg" src="/linux-in-house/images/BeaglePlay.webp"&gt;&lt;/li&gt;
 &lt;li&gt;Quad Arm® Cortex®-A53 microprocessor subsystem @ 1.4GHz&lt;/li&gt;
 &lt;li&gt;Arm® Cortex®-M4F @ 400MHz&lt;/li&gt;
 &lt;li&gt;Dual-core PRU subsystem @ 333MHz&lt;/li&gt;
@@ -5093,7 +5093,7 @@ default via 192.168.1.1 dev eno1 proto static
 &lt;h2 id="serial-debug-connection"&gt;Serial Debug Connection&lt;/h2&gt;
 &lt;p&gt;You can get through severe boot errors where the network is not connecting or disk partition not mounted, using a USB to TTL-232 cable [1], also called FTDI. This will show all the boot messages and allow login, even recovery if the kernel will not boot.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Make sure it is 3.3 volt!&lt;/strong&gt; Connect the black wire to pin 1, orange/green to pin 4, yellow/white to pin5 directly on the SBC board.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="1 AU51n75Ls0JwfPeYMD6sIQ-547387362.png" src="/images/1%20AU51n75Ls0JwfPeYMD6sIQ-547387362.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="AU51n75Ls0JwfPeYMD6sIQ-547387362.png" src="/linux-in-house/images/AU51n75Ls0JwfPeYMD6sIQ-547387362.png"&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;USB to TTL cable&lt;/p&gt;
@@ -5102,10 +5102,10 @@ default via 192.168.1.1 dev eno1 proto static
 &lt;p&gt;&lt;a href="https://www.adafruit.com/product/4331"&gt;https://www.adafruit.com/product/4331&lt;/a&gt;. &lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img alt="28W2088-40.webp" src="/images/28W2088-40.webp"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="28W2088-40.webp" src="/linux-in-house/images/28W2088-40.webp"&gt;&lt;/p&gt;
 &lt;h4 id="bbai-64-adapter"&gt;BBAI-64 Adapter&lt;/h4&gt;
 &lt;p&gt;The BBAI-64 has a 3-pin connector so it needs an adapter; Micro JST MX 1.25 4Pins Connector Plug Socket 1.25mm Pitch Female Connector PCB Socket 150mm Cable. The red wire is not used. Plug the other three wires into the USB/TTL adapter above, matching colors.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Screen Shot 2022-10-22 at 9.18.32 AM.png" src="/images/Screen%20Shot%202022-10-22%20at%209.18.32%20AM.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Screen Shot 2022-10-22 at 9.18.32 AM.png" src="/linux-in-house/images/Screen%20Shot%202022-10-22%20at%209.18.32%20AM.png"&gt;&lt;/p&gt;
 &lt;h4 id="screen-on-linux"&gt;Screen on Linux&lt;/h4&gt;
 &lt;p&gt;When you have connected USB-end of the serial cable to a Linux based system like Ubuntu, a new tty* device appears in the system. Note down its name. In my case, it was &lt;em&gt;/dev/ttyUSB0&lt;/em&gt;. Open a term and issue below command&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;screen&lt;span class="w"&gt; &lt;/span&gt;/dev/ttyUSB0&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;115200&lt;/span&gt;
@@ -5559,7 +5559,7 @@ tmpfs&lt;span class="w"&gt;           &lt;/span&gt;&lt;span class="m"&gt;5&lt;/s
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;&lt;img alt="BB_AI_USERLEDS_800px.png" src="/images/BB_AI_USERLEDS_800px.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="BB_AI_USERLEDS_800px.png" src="/linux-in-house/images/BB_AI_USERLEDS_800px.png"&gt;&lt;/p&gt;
 &lt;h2 id="bbai-survival-guide"&gt;BBAI Survival Guide&lt;/h2&gt;
 &lt;p&gt;&lt;a href="https://community.element14.com/challenges-projects/project14/visionthing/b/blog/posts/beaglebone-ai-survival-guide-v3-18-pwm-i2c-analog-digital-read-write-vision-ai-video-text-overlays-audio-hardware"&gt;https://community.element14.com/challenges-projects/project14/visionthing/b/blog/posts/beaglebone-ai-survival-guide-v3-18-pwm-i2c-analog-digital-read-write-vision-ai-video-text-overlays-audio-hardware&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id="real-time-clock-rtc-system-service-and-setup"&gt;Real Time Clock (RTC) system service and setup&lt;/h2&gt;
@@ -5749,8 +5749,8 @@ $&lt;span class="w"&gt; &lt;/span&gt;python&lt;span class="w"&gt; &lt;/span&gt;s
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id="wiring-pins"&gt;Wiring Pins&lt;/h3&gt;
-&lt;p&gt;&lt;img alt="BeagleBone-AI-2_1.png" src="/images/BeagleBone-AI-2_1.png"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="BeagleBone-AI-2_2.png" src="/images/BeagleBone-AI-2_2.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="BeagleBone-AI-2_1.png" src="/linux-in-house/images/BeagleBone-AI-2_1.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="BeagleBone-AI-2_2.png" src="/linux-in-house/images/BeagleBone-AI-2_2.png"&gt;&lt;/p&gt;
 &lt;h3 id="service"&gt;Service&lt;/h3&gt;
 &lt;p&gt;File: /etc/systemd/system/remote.service&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[Unit]&lt;/span&gt;
@@ -6778,7 +6778,7 @@ tls_private_key_path: &amp;quot;/etc/letsencrypt/live/example.com/privkey.pem&am
 &lt;li&gt;Talk can Send Messages to a phone from Command Line, used for HomeAssistant alerts and run via File: \~/matrix/sendmatrix.sh. Used for monitoring door and window alarms.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h5 id="ios-app-nextcloud-talk"&gt;IOS App - NextCloud Talk&lt;/h5&gt;
-&lt;p&gt;&lt;img alt="IMG_84D17B7CC129-1 (2).jpeg" src="/images/IMG_84D17B7CC129-1.jpeg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="IMG_84D17B7CC129-1 (2).jpeg" src="/linux-in-house/images/IMG_84D17B7CC129-1.jpeg"&gt;&lt;/p&gt;
 &lt;p&gt;NextCloud Talk uses the &lt;a href="matrix.md"&gt;Matrix service&lt;/a&gt; to detect changes to be sent.&lt;/p&gt;
 &lt;h2 id="install-documentation"&gt;Install Documentation&lt;/h2&gt;
 &lt;p&gt;First install the database;&lt;/p&gt;
@@ -7975,10 +7975,10 @@ $ sudo crontab -u apache -e
 &lt;h4 id="putting-it-all-together"&gt;Putting It All Together&lt;/h4&gt;
 &lt;p&gt;If your ISP blocks port 25, here is a workflow you can use to send and receive E-Mails over the Internet to and from a Recipent using SMTP2GO service and NO-IP extra service.&lt;/p&gt;
 &lt;h5 id="e-mail-send-over-non-25-port-using-smtp2go-or-no-ip-alternative-smtp-address"&gt;E-Mail Send over non-25 port using SMTP2GO -or- NO-IP Alternative SMTP Address.&lt;/h5&gt;
-&lt;p&gt;&lt;img alt="SMTP2GO" src="/images/graph-smtp2go.svg"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="NO-IP" src="/images/graph-noip.svg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="SMTP2GO" src="/linux-in-house/images/graph-smtp2go.svg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="NO-IP" src="/linux-in-house/images/graph-noip.svg"&gt;&lt;/p&gt;
 &lt;h5 id="e-mail-receive-over-non-25-port-using-no-ip-mail-reflector"&gt;E-Mail Receive over non-25 port using No-IP Mail Reflector.&lt;/h5&gt;
-&lt;p&gt;&lt;img alt="NO-IP" src="/images/graph-noip2.svg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="NO-IP" src="/linux-in-house/images/graph-noip2.svg"&gt;&lt;/p&gt;
 &lt;h2 id="no-ip_1"&gt;No-IP&lt;/h2&gt;
 &lt;p&gt;No-IP [1] handles IP Address to Domain Name Services (DNS) and registration of domains.&lt;/p&gt;
 &lt;p&gt;They offers DNS services, DDNS, E-Mail, network monitoring and SSL certificates. E-Mail services include IMAP, POP3, SMTP, E-Mail backup services, E-Mail reflection and filtering.&lt;/p&gt;
@@ -8275,7 +8275,7 @@ $&lt;span class="w"&gt; &lt;/span&gt;ls&lt;span class="w"&gt; &lt;/span&gt;-l&lt
 &lt;p&gt;Now try your website by name: &lt;/p&gt;
 &lt;p&gt;&lt;code&gt;http://example.com&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;If all went well, you should see this:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="404.png" src="/images/404.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="404.png" src="/linux-in-house/images/404.png"&gt;&lt;/p&gt;
 &lt;h1 id="continue"&gt;Continue&lt;/h1&gt;
 &lt;p&gt;Now that you have set up an Internet name for your new server, consider giving it an internet certificate with Let's Encrypt.&lt;/p&gt;
 &lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;</content><category term="linux"></category><category term="web"></category></entry><entry><title>E-Mail</title><link href="https://dfcsoftware.github.io/linux-in-house/e-mail.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/linux-in-house/e-mail.html</id><summary type="html">&lt;h1 id="e-mail"&gt;E-Mail&lt;/h1&gt;
@@ -8364,7 +8364,7 @@ $&lt;span class="w"&gt; &lt;/span&gt;ls&lt;span class="w"&gt; &lt;/span&gt;-l&lt
 &lt;p&gt;Dovecot supports Internet Message Access Protocol (IMAP, port 993) [5] as a server over the network to multiple clients at the same time. It is commonly referred to as a Mail Delivery Agent (MDA) delivering mail from a file repository on some server to the MUA.&lt;/p&gt;
 &lt;p&gt;The Maildir database sets each E-Mail as a seperate file on the server, arranged into folders as dictated by the MUA. Indexing is automatic.&lt;/p&gt;
 &lt;p&gt;Postfix [6] is a Mail Transfer Agent (MTA) that &lt;em&gt;receives&lt;/em&gt; E-Mail over the Internet using Simple Mail Transfer Protocol (SMTP, port 25 [7]) and delivers it locally to Dovecot. MUA &lt;em&gt;sending&lt;/em&gt; is also done by postfix using Submission (ports 587 [8], and 465 for SSL [9]). Message relay from one mail server to another is done by postfix using SMTP too.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="E-Mail" src="/images/graph-email.svg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="E-Mail" src="/linux-in-house/images/graph-email.svg"&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href="https://www.dovecot.org/"&gt;https://www.dovecot.org/&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.thunderbird.net/en-US/"&gt;https://www.thunderbird.net/en-US/&lt;/a&gt;&lt;/li&gt;
@@ -9053,7 +9053,7 @@ sa-learn&lt;span class="w"&gt; &lt;/span&gt;-u&lt;span class="w"&gt; &lt;/span&g
 &lt;h2 id="mail-readers"&gt;Mail Readers&lt;/h2&gt;
 &lt;h3 id="mutt"&gt;Mutt&lt;/h3&gt;
 &lt;p&gt;Mutt [1] is a text only e-mail reader, capable of running over an ssh connection.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="mutt_index.gif" src="/images/mutt_index.gif"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="mutt_index.gif" src="/linux-in-house/images/mutt_index.gif"&gt;&lt;/p&gt;
 &lt;h4 id="install"&gt;Install&lt;/h4&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;apt-get&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;mutt
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -9119,8 +9119,8 @@ sa-learn&lt;span class="w"&gt; &lt;/span&gt;-u&lt;span class="w"&gt; &lt;/span&g
 &lt;/ol&gt;
 &lt;h3 id="evolution"&gt;Evolution&lt;/h3&gt;
 &lt;p&gt;Evolution [1] is a Graphical User Interface (GUI) mail reader, the best one for Linux desktop.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="evolution_window-overview-layers.png" src="/images/evolution_window-overview-layers.png"&gt;&lt;br&gt;
-&lt;img alt="evolution_legend.png" src="/images/evolution_legend.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="evolution_window-overview-layers.png" src="/linux-in-house/images/evolution_window-overview-layers.png"&gt;&lt;br&gt;
+&lt;img alt="evolution_legend.png" src="/linux-in-house/images/evolution_legend.png"&gt;&lt;/p&gt;
 &lt;h4 id="install_1"&gt;Install&lt;/h4&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;apt-get&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;evolution
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -9132,7 +9132,7 @@ sa-learn&lt;span class="w"&gt; &lt;/span&gt;-u&lt;span class="w"&gt; &lt;/span&g
 &lt;/ol&gt;
 &lt;h3 id="thunderbird"&gt;Thunderbird&lt;/h3&gt;
 &lt;p&gt;Thunderbird [1] is a GUI mail reader, the best one for MacOS or Windows.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Thunderbird-email.png" src="/images/Thunderbird-email.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Thunderbird-email.png" src="/linux-in-house/images/Thunderbird-email.png"&gt;&lt;/p&gt;
 &lt;h4 id="install_2"&gt;Install&lt;/h4&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;apt-get&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;thunderbird
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -9550,11 +9550,11 @@ sa-learn&lt;span class="w"&gt; &lt;/span&gt;-u&lt;span class="w"&gt; &lt;/span&g
 &lt;li&gt;MTA - Mail Transport Agent; Postfix - Move messsages from one network stop to another&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id="outgoing-relay-from-inside-home"&gt;Outgoing: Relay from Inside Home&lt;/h2&gt;
-&lt;p&gt;&lt;img alt="Send Mail from Home" src="/images/graph-email-relay.svg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Send Mail from Home" src="/linux-in-house/images/graph-email-relay.svg"&gt;&lt;/p&gt;
 &lt;h2 id="outgoing-relay-from-outside-home"&gt;Outgoing: Relay from Outside Home&lt;/h2&gt;
-&lt;p&gt;&lt;img alt="Send Mail outside Home" src="/images/graph-email-relay2.svg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Send Mail outside Home" src="/linux-in-house/images/graph-email-relay2.svg"&gt;&lt;/p&gt;
 &lt;h2 id="incoming-transport-from-internet"&gt;Incoming: Transport from Internet&lt;/h2&gt;
-&lt;p&gt;&lt;img alt="Recieve Mail" src="/images/graph-email-relay3.svg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Recieve Mail" src="/linux-in-house/images/graph-email-relay3.svg"&gt;&lt;/p&gt;
 &lt;p&gt;This document will use:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;your-domain.org : The E-Mail &lt;em&gt;relay&lt;/em&gt; we are setting up in this document (VPS_Postfix)&lt;/li&gt;
@@ -9562,7 +9562,7 @@ sa-learn&lt;span class="w"&gt; &lt;/span&gt;-u&lt;span class="w"&gt; &lt;/span&g
 &lt;/ul&gt;
 &lt;p&gt;Recommendation:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;[ ] Bring up a host on a VPS somewhere, and use the &lt;a href="/setup-server.html"&gt;Setup Server&lt;/a&gt; instructions to secure it.&lt;/li&gt;
+&lt;li&gt;[ ] Bring up a host on a VPS somewhere, and use the &lt;a href="/linux-in-house/setup-server.html"&gt;Setup Server&lt;/a&gt; instructions to secure it.&lt;/li&gt;
 &lt;li&gt;[ ] Get a domain name and certificate set up and working.&lt;/li&gt;
 &lt;li&gt;[ ] Install postfix/dovecot combo and relay to your main E-Mail host. Test sending out mail too.&lt;/li&gt;
 &lt;li&gt;[ ] Install and configure SPF Policy Agent. Test it and make sure all is well.&lt;/li&gt;
@@ -9595,27 +9595,27 @@ sa-learn&lt;span class="w"&gt; &lt;/span&gt;-u&lt;span class="w"&gt; &lt;/span&g
 &lt;/blockquote&gt;
 &lt;h2 id="check-network"&gt;Check Network&lt;/h2&gt;
 &lt;p&gt;Click on this heading, then refer to these instructions, then come back here with the Back Arrow on the Browser:
- * &lt;a href="/setup-server.html#check-your-network"&gt;Network Check&lt;/a&gt;&lt;/p&gt;
+ * &lt;a href="/linux-in-house/setup-server.html#check-your-network"&gt;Network Check&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id="update-package-repository"&gt;Update Package Repository&lt;/h2&gt;
 &lt;p&gt;Click on this heading, then refer to these instructions, then come back here with the Back Arrow on the Browser:
- * &lt;a href="/setup-server.html#update-package-repository"&gt;Update Packages&lt;/a&gt;&lt;/p&gt;
+ * &lt;a href="/linux-in-house/setup-server.html#update-package-repository"&gt;Update Packages&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id="create-new-users"&gt;Create New User(s)&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;The Linux mail user can be \&amp;lt;name&amp;gt;@example.com, to keep things clear.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Click on this heading, then refer to these instructions, then come back here with the Back Arrow on the Browser:
- * &lt;a href="/setup-server.html#new-user-and-group-to-use"&gt;New Users&lt;/a&gt;&lt;/p&gt;
+ * &lt;a href="/linux-in-house/setup-server.html#new-user-and-group-to-use"&gt;New Users&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id="set-host-and-domain"&gt;Set Host and Domain&lt;/h2&gt;
 &lt;p&gt;Click on this heading, then refer to these instructions, then come back here with the Back Arrow on the Browser:
- * &lt;a href="/setup-server.html#set-your-host-and-domain-names"&gt;Host and Domain&lt;/a&gt;&lt;/p&gt;
+ * &lt;a href="/linux-in-house/setup-server.html#set-your-host-and-domain-names"&gt;Host and Domain&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id="set-date-and-time"&gt;Set Date and Time&lt;/h2&gt;
 &lt;p&gt;Click on this heading, then refer to these instructions, then come back here with the Back Arrow on the Browser:
- * &lt;a href="/setup-server.html#time-control"&gt;Date and Time Settings&lt;/a&gt;&lt;/p&gt;
+ * &lt;a href="/linux-in-house/setup-server.html#time-control"&gt;Date and Time Settings&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id="monitor-crack-attempts"&gt;Monitor crack attempts&lt;/h2&gt;
 &lt;h3 id="install-firewall-and-fail2ban-on-your-domainorg"&gt;Install firewall and fail2ban on &lt;em&gt;your-domain.org&lt;/em&gt;&lt;/h3&gt;
 &lt;p&gt;Be sure the &lt;em&gt;system firewall&lt;/em&gt; is installed and also the "Block Bad Actors" &lt;em&gt;firewall.sh&lt;/em&gt; script.&lt;/p&gt;
 &lt;p&gt;Click on this heading, then refer to these instructions, then come back here with the Back Arrow on the Browser:
- * &lt;a href="/setup-server.html#firewall"&gt;Firewall&lt;/a&gt;&lt;/p&gt;
+ * &lt;a href="/linux-in-house/setup-server.html#firewall"&gt;Firewall&lt;/a&gt;&lt;/p&gt;
 &lt;h4 id="add-rules-for-e-mail-smtp-and-smtps"&gt;Add rules for E-Mail smtp and smtps.&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Debian:&lt;/li&gt;
@@ -9662,8 +9662,10 @@ $&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;ufw
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h4 id="configure-fail2ban"&gt;Configure fail2ban&lt;/h4&gt;
-&lt;p&gt;Click on this heading, then refer to these instructions, then come back here with the Back Arrow on the Browser:
- * &lt;a href="/setup-server.html#fail2ban---automatic-firewall-blocking"&gt;Fail2ban&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Click on this heading, then refer to these instructions, then come back here with the Back Arrow on the Browser:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="/linux-in-house/setup-server.html#fail2ban-automatic-firewall-blocking"&gt;Fail2ban&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h5 id="secure-postfix"&gt;Secure postfix&lt;/h5&gt;
 &lt;p&gt;File: /etc/fail2ban/jail.d/postfix.local&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[postfix]&lt;/span&gt;
@@ -9700,10 +9702,10 @@ $&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;ufw
 &lt;h3 id="log-monitors-on-your-domainorg"&gt;Log Monitors  on &lt;em&gt;your-domain.org&lt;/em&gt;&lt;/h3&gt;
 &lt;h4 id="install-logwatch"&gt;Install Logwatch&lt;/h4&gt;
 &lt;p&gt;Click on this heading, then refer to these instructions, then come back here with the Back Arrow on the Browser:
- * &lt;a href="/setup-server.html#logwatch---daily-alert-of-logging-activity"&gt;Logwatch&lt;/a&gt;&lt;/p&gt;
+ * &lt;a href="/linux-in-house/setup-server.html#logwatch-daily-alert-of-logging-activity"&gt;Logwatch&lt;/a&gt;&lt;/p&gt;
 &lt;h4 id="install-logcheck"&gt;Install Logcheck:&lt;/h4&gt;
 &lt;p&gt;Click on this heading, then refer to these instructions, then come back here with the Back Arrow on the Browser:
- * &lt;a href="/setup-server.html#logcheck---mails-anomalies-in-the-system-logfiles-to-the-admin"&gt;Logcheck&lt;/a&gt;&lt;/p&gt;
+ * &lt;a href="/linux-in-house/setup-server.html#logcheck-mails-anomalies-in-the-system-logfiles-to-the-admin"&gt;Logcheck&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id="logwatcher"&gt;LogWatcher&lt;/h3&gt;
 &lt;h4 id="create"&gt;Create&lt;/h4&gt;
 &lt;p&gt;Put this script in the /root directory, and install the dependencies listed.&lt;/p&gt;
@@ -9803,11 +9805,11 @@ log_check&lt;span class="w"&gt; &lt;/span&gt;.dovecot&lt;span class="w"&gt;  &lt
 
 &lt;p&gt;Reference:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Watch - &lt;a href="/watch.html"&gt;System Alerts&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Watch - &lt;a href="/linux-in-house/watch.html"&gt;System Alerts&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h1 id="apache-install-enable-on-your-domainorg"&gt;Apache install (enable) on &lt;em&gt;your-domain.org&lt;/em&gt;&lt;/h1&gt;
 &lt;p&gt;Click on this heading, then refer to these instructions, then come back here with the Back Arrow on the Browser:&lt;/p&gt;
-&lt;p&gt;&lt;a href="/dns.html#install-a-web-server"&gt;Apache Web Server&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="/linux-in-house/dns.html#install-a-web-server"&gt;Apache Web Server&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Test it on:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;curl&lt;span class="w"&gt; &lt;/span&gt;http://&amp;lt;domain.name&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -10256,10 +10258,12 @@ to clarify this is for transporting from .org to .com&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;$&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;sudo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;postfix&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;reload&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;Reference:
- * &lt;a href="https://serverfault.com/questions/67134/proxy-mail-to-different-smtp-server-with-postfix"&gt;https://serverfault.com/questions/67134/proxy-mail-to-different-smtp-server-with-postfix&lt;/a&gt;
- * &lt;a href="http://www.postfix.org/postconf.5.html#permit_auth_destination"&gt;http://www.postfix.org/postconf.5.html#permit_auth_destination&lt;/a&gt;
- * &lt;a href="http://www.postfix.org/transport.5.html"&gt;http://www.postfix.org/transport.5.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Reference:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://serverfault.com/questions/67134/proxy-mail-to-different-smtp-server-with-postfix"&gt;https://serverfault.com/questions/67134/proxy-mail-to-different-smtp-server-with-postfix&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.postfix.org/postconf.5.html#permit_auth_destination"&gt;http://www.postfix.org/postconf.5.html#permit_auth_destination&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.postfix.org/transport.5.html"&gt;http://www.postfix.org/transport.5.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h1 id="proxy-postfix-relay-for-smtp-outgoing-mails"&gt;Proxy Postfix Relay for SMTP Outgoing Mails&lt;/h1&gt;
 &lt;p&gt;To send mails from a non-standard port, use a .com domain to relay to a .org domain, with the .org relay set to = (basically null) and the .com relay = ...org.&lt;/p&gt;
 &lt;h3 id="change-mx-records-in-no-ipcom-from-mail1no-ipcom-to-mailyour-domainorg"&gt;Change MX records in &lt;em&gt;no-ip.com&lt;/em&gt; from mail1.no-ip.com to mail.your-domain.org&lt;/h3&gt;
@@ -10569,16 +10573,16 @@ srw-rw----&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&g
 &lt;h4 id="read-mail"&gt;Read Mail&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Server: mail.example.com&lt;/li&gt;
-&lt;li&gt;User: \&amp;lt;linux user defined on the &lt;a href="/e-mail.html#user-settings"&gt;E-Mail&lt;/a&gt; .com host&amp;gt;&lt;/li&gt;
-&lt;li&gt;Password: \&amp;lt;linux user password defined on the &lt;a href="/e-mail.html#user-settings"&gt;E-Mail&lt;/a&gt; .com host&amp;gt;&lt;/li&gt;
+&lt;li&gt;User: &amp;lt;linux user defined on the &lt;a href="/linux-in-house/e-mail.html#user-settings"&gt;E-Mail&lt;/a&gt; .com host&amp;gt;&lt;/li&gt;
+&lt;li&gt;Password: &amp;lt;linux user password defined on the &lt;a href="/linux-in-house/e-mail.html#user-settings"&gt;E-Mail&lt;/a&gt; .com host&amp;gt;&lt;/li&gt;
 &lt;li&gt;SSL: ON&lt;/li&gt;
 &lt;li&gt;Port: 993&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id="send-mail"&gt;Send Mail&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Server: smtp.example.org&lt;/li&gt;
-&lt;li&gt;User: \&amp;lt;linux user defined &lt;a href="/e-mailrelay.html#create-new-users"&gt;above&lt;/a&gt; on the E-Mail .org host&amp;gt;&lt;/li&gt;
-&lt;li&gt;Password: \&amp;lt;linux user password defined &lt;a href="/e-mailrelay.html#create-new-users"&gt;above&lt;/a&gt; on the E-Mail .org host&amp;gt;&lt;/li&gt;
+&lt;li&gt;User: &amp;lt;linux user defined &lt;a href="/linux-in-house/e-mailrelay.html#create-new-users"&gt;above&lt;/a&gt; on the E-Mail .org host&amp;gt;&lt;/li&gt;
+&lt;li&gt;Password: &amp;lt;linux user password defined &lt;a href="/linux-in-house/e-mailrelay.html#create-new-users"&gt;above&lt;/a&gt; on the E-Mail .org host&amp;gt;&lt;/li&gt;
 &lt;li&gt;SSL: ON&lt;/li&gt;
 &lt;li&gt;Port: 465&lt;/li&gt;
 &lt;/ul&gt;
@@ -11403,7 +11407,7 @@ DMARC&lt;span class="w"&gt; &lt;/span&gt;record&lt;span class="w"&gt; &lt;/span&
 &lt;/div&gt;
 &lt;hr&gt;
 &lt;p&gt;The server software is in two pieces, Z-Wave JS and HASS. Z-Wave (nodejs) reads a USB stick and manages the connection and commands to various &lt;a href="https://www.z-wave.com/"&gt;Z-WAVE compatible wireless devices&lt;/a&gt;. HASS (python) displays and automates monitoring and reacting to the devices by communication to Z-Wave over the WebSocket service (ws://localhost:3000). I install and run the docker images of these packages.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Home Assistant" src="/images/graph-homeassistant.svg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Home Assistant" src="/linux-in-house/images/graph-homeassistant.svg"&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;ws: WebSocket&lt;/li&gt;
 &lt;li&gt;ip: TCP/IP&lt;/li&gt;
@@ -11417,7 +11421,7 @@ Reference:&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;a href="https://zwave-js.github.io/node-zwave-js/#/"&gt;https://zwave-js.github.io/node-zwave-js/#/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img alt="HomeAssistant.png" src="/images/HomeAssistant.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="HomeAssistant.png" src="/linux-in-house/images/HomeAssistant.png"&gt;&lt;/p&gt;
 &lt;h2 id="plug-in-zooz-s2-stick-700"&gt;Plug in Zooz S2 stick 700&lt;/h2&gt;
 &lt;p&gt;This is a USB radio for wireless communication to the Z-Wave family of home automation devices.&lt;/p&gt;
 &lt;p&gt;Like:
@@ -12333,16 +12337,16 @@ zwavejs_upgrade
 &lt;/blockquote&gt;
 &lt;p&gt;After a few minutes, navigate back to the Developers Tools page. Upon load, you should now be on the latest version of Home Assistant.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;More docker commands are in my &lt;a href="/docker.html"&gt;Docker&lt;/a&gt; article.&lt;/p&gt;
+&lt;p&gt;More docker commands are in my &lt;a href="/linux-in-house/docker.html"&gt;Docker&lt;/a&gt; article.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id="lights-for-wall-e"&gt;Lights for WALL-E&lt;/h2&gt;
 &lt;p&gt;The relay module &lt;a href="https://www.getzooz.com/zooz-zen16-multirelay/"&gt;ZEN16&lt;/a&gt; is wired to a switch on the garage door. When it is open a red light is displayed on Wall-E, when the door is closed a green light is shown.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Wall-E" src="/images/IMG_3813.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Wall-E" src="/linux-in-house/images/IMG_3813.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;A USB charger is used to supply 5 volts DC (BAT1) to the circuit. Circuit switch S1 is connected to the ZEN16 relay R2 connection. Q1 is a 2N2222 transistor. A closed circuit supplies voltage to LED2, open circuit supplies voltage to LED1.&lt;/p&gt;
 &lt;p&gt;Here is the electrical diagram for that:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Lights_for_Wall-E.png" src="/images/Lights_for_Wall-E.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Lights_for_Wall-E.png" src="/linux-in-house/images/Lights_for_Wall-E.png"&gt;&lt;/p&gt;
 &lt;h2 id="circuit"&gt;Circuit&lt;/h2&gt;
-&lt;p&gt;&lt;img alt="opoohbbehgacecel.png" src="/images/opoohbbehgacecel.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="opoohbbehgacecel.png" src="/linux-in-house/images/opoohbbehgacecel.png"&gt;&lt;/p&gt;
 &lt;h3 id="zen16-relay"&gt;ZEN16 Relay&lt;/h3&gt;
 &lt;p&gt;ZEN16 will monitor its switch Sw2 below, if is closed, then turn on relay R2, closing the circuit switch S1 above. Home Assistant will detect the change in relay R2 and issue notifications using its automation.yaml definition "&lt;em&gt;alias: Garage Door Open&lt;/em&gt;".&lt;/p&gt;
 &lt;p&gt;ZEN16 will respond to relay R1 on/off commands from Home Assistant. The automation.yaml definition is called "&lt;em&gt;alias: Bedroom Alarm&lt;/em&gt;" and turns &lt;strong&gt;on&lt;/strong&gt; relay R1 at 6:00am. A Home Assistant dashboard button is enabled to turn relay R1 &lt;strong&gt;off&lt;/strong&gt;.&lt;/p&gt;
@@ -12373,10 +12377,10 @@ zwavejs_upgrade
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;&lt;img alt="ZEN16" src="/images/IMG_4324.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="ZEN16" src="/linux-in-house/images/IMG_4324.jpg"&gt;&lt;/p&gt;
 &lt;h3 id="alarm-light-radio-diagram"&gt;Alarm Light Radio - Diagram&lt;/h3&gt;
 &lt;p&gt;The Power-Tail-Switch is a 120v AC relay controlled by 5v DC. The ZEN16 acts as a switch to turn  relay R1 on and off. This opens/closes the 5v DC voltage flow to enable/disable the 102v AC voltage through the PowerSwitchTail, that sends power to the power strip turning on/off the radio and light plugged into it.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="AlarmClock-HomeAssistant.png" src="/images/AlarmClock-HomeAssistant.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="AlarmClock-HomeAssistant.png" src="/linux-in-house/images/AlarmClock-HomeAssistant.png"&gt;&lt;/p&gt;
 &lt;h2 id="z-wave-devices"&gt;Z-Wave Devices&lt;/h2&gt;
 &lt;table&gt;
 &lt;thead&gt;
@@ -12483,7 +12487,7 @@ zwavejs_upgrade
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h2 id="purge"&gt;Purge&lt;/h2&gt;
-&lt;p&gt;&lt;img alt="HA-Purge.png" src="/images/HA-Purge.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="HA-Purge.png" src="/linux-in-house/images/HA-Purge.png"&gt;&lt;/p&gt;
 &lt;h2 id="continue"&gt;Continue&lt;/h2&gt;
 &lt;p&gt;Now that you have set up Home Automation-Mail on your server, you will need Matrix for sending out alerts, so now is a good time to install the super fast and secure messaging system.&lt;/p&gt;
 &lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;</content><category term="linux"></category><category term="systems"></category></entry><entry><title>Introduction</title><link href="https://dfcsoftware.github.io/linux-in-house/introduction.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/linux-in-house/introduction.html</id><summary type="html">&lt;p&gt;&lt;img alt="Linux-in-the-house.svg" src="/linux-in-house/images/Linux-in-the-House2.svg"&gt;&lt;/p&gt;
@@ -12531,7 +12535,7 @@ zwavejs_upgrade
 &lt;li&gt;INKSCAPE: &lt;a href="https://inkscape.org/"&gt;https://inkscape.org/&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;vi: &lt;a href="https://en.wikipedia.org/wiki/Vi"&gt;https://en.wikipedia.org/wiki/Vi&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;object type="image/svg+xml" data="/images/Linux-in-the-House2.svg" style="width:5%; height:10%; text-align: right"&gt;
+&lt;object type="image/svg+xml" data="/linux-in-house/images/Linux-in-the-House2.svg" style="width:5%; height:10%; text-align: right"&gt;
   Linux-in-the-House.svg&lt;!-- fallback image in CSS --&gt;
 &lt;/object&gt;
 
@@ -12539,7 +12543,7 @@ zwavejs_upgrade
 &lt;h4 id="preface"&gt;Preface&lt;/h4&gt;
 &lt;p&gt;Everyone with some computer skills should take control of &lt;em&gt;your&lt;/em&gt; data and programs in &lt;em&gt;your&lt;/em&gt; house, with a few minutes work every day to gain knowledge, security, and &lt;strong&gt;improve your life&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;This guide will walk through from beginner level to intermediate. You should be able to find something useful to you no matter what your current level of experience, even the most advanced. This book will explore mostly the software side (programs) of a home computer, while briefly looking at what hardware will support it.&lt;/p&gt;
-&lt;p&gt;Advanced users might want to jump ahead at this point to &lt;a href="/introduction.html#most-important-feature-of-all"&gt;The Most Import Feature of All&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Advanced users might want to jump ahead at this point to &lt;a href="/linux-in-house/introduction.html#most-important-feature-of-all"&gt;The Most Import Feature of All&lt;/a&gt;&lt;/p&gt;
 &lt;h5 id="build-your-own-pc-at-microcenter"&gt;Build Your Own PC at MicroCenter&lt;/h5&gt;
 &lt;p&gt;&lt;img alt="BuildYourOwnPC.jpg" src="/linux-in-house/images/BuildYourOwnPC.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;Reference: &lt;a href="https://www.microcenter.com/site/content/howtochooseyourpcparts.aspx"&gt;https://www.microcenter.com/site/content/howtochooseyourpcparts.aspx&lt;/a&gt;&lt;/p&gt;
@@ -12720,7 +12724,7 @@ SYNOPSIS
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h5 id="edit-files"&gt;Edit Files&lt;/h5&gt;
-&lt;p&gt;Learn how to edit files with vi &lt;a href="VI-TUTORIAL.pdf?fileId=828159"&gt;here&lt;/a&gt; [1] (thanks to the University of Tennessee)&lt;/p&gt;
+&lt;p&gt;Learn how to edit files with vi &lt;a href="/linux-in-house/images/VI-TUTORIAL.pdf"&gt;here&lt;/a&gt; [1] (thanks to the University of Tennessee)&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href="https://www.jics.utk.edu/files/images/csure-reu/PDF-DOC/VI-TUTORIAL.pdf"&gt;https://www.jics.utk.edu/files/images/csure-reu/PDF-DOC/VI-TUTORIAL.pdf&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
@@ -12839,7 +12843,7 @@ $&lt;span class="w"&gt; &lt;/span&gt;tilde
 &lt;blockquote&gt;
 &lt;p&gt;Here is an example of a Matrix Client, called Element[1], available on iOS, Android and Desktops.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img alt="IMG_2070A268049A-1.jpeg" src="/images/IMG_2070A268049A-1.jpeg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="IMG_2070A268049A-1.jpeg" src="/linux-in-house/images/IMG_2070A268049A-1.jpeg"&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href="https://element.io/"&gt;https://element.io/&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
@@ -13296,7 +13300,7 @@ date&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;&amp;gt;&lt;span class="w"&gt; &
 &lt;/ul&gt;
 &lt;p&gt;Software:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Linux: mpd (server), and mpc, &lt;a href="/ncmpcpp.html"&gt;ncmpcpp&lt;/a&gt; (clients)&lt;/li&gt;
+&lt;li&gt;Linux: mpd (server), and mpc, &lt;a href="/linux-in-house/ncmpcpp.html"&gt;ncmpcpp&lt;/a&gt; (clients)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;apt-get&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;mpd&lt;span class="w"&gt; &lt;/span&gt;mpc
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -13304,7 +13308,7 @@ date&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;&amp;gt;&lt;span class="w"&gt; &
 &lt;ul&gt;
 &lt;li&gt;iOS: MaximumMPD (client for iPhone, iPad)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img alt="IMG_60BE35F3E1C0-1 (2).jpeg" src="/images/IMG_60BE35F3E1C0-1%20%282%29.jpeg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="IMG_60BE35F3E1C0-1.jpeg" src="/linux-in-house/images/IMG_60BE35F3E1C0-1%20%282%29.jpeg"&gt;&lt;/p&gt;
 &lt;h3 id="mpd-configuration"&gt;MPD Configuration&lt;/h3&gt;
 &lt;p&gt;File: /etc/mpd.conf&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# An example configuration file for MPD.&lt;/span&gt;
@@ -13778,7 +13782,7 @@ date&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;&amp;gt;&lt;span class="w"&gt; &
 &lt;li&gt;Linux: NextCloud app called &lt;strong&gt;audioplayer&lt;/strong&gt;, visible on  NextCloud web interface&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;The music files reside in the /Music directory of the nextcloud account.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Audio-Player.png" src="/images/Audio-Player.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Audio-Player.png" src="/linux-in-house/images/Audio-Player.png"&gt;&lt;/p&gt;
 &lt;p&gt;Reference: &lt;a href="https://apps.nextcloud.com/apps/audioplayer"&gt;https://apps.nextcloud.com/apps/audioplayer&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id="plex-television-and-music-recordings"&gt;Plex Television and Music Recordings&lt;/h2&gt;
 &lt;p&gt;This is where most TV shows are played from, on either one of the Apple-TVs.&lt;/p&gt;
@@ -13791,7 +13795,7 @@ date&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;&amp;gt;&lt;span class="w"&gt; &
 &lt;li&gt;Debian: Plex Media Server app, Web Interface &lt;a href="http://127.0.0.1:32400/web/index.html#!/"&gt;http://127.0.0.1:32400/web/index.html#!/&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;iOS: Plexamp (Music) on the Phone or Tablet&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img alt="IMG_233B4FCE41DA-1.jpeg" src="/images/IMG_233B4FCE41DA-1.jpeg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="IMG_233B4FCE41DA-1.jpeg" src="/linux-in-house/images/IMG_233B4FCE41DA-1.jpeg"&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;tvOS: Plex (Video, Music) on the Apple-TV&lt;/li&gt;
 &lt;/ul&gt;
@@ -13812,7 +13816,7 @@ date&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;&amp;gt;&lt;span class="w"&gt; &
 &lt;li&gt;Built-in webservice on port 80 (&lt;a href="http://hdhomerun.local/"&gt;http://hdhomerun.local/&lt;/a&gt;)&lt;/li&gt;
 &lt;li&gt;iOS: HDHomeRun (Used to set recordings and delete old shows on the HDHomeRun box)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img alt="IMG_5456720E92DB-1.jpeg" src="/images/IMG_5456720E92DB-1.jpeg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="IMG_5456720E92DB-1.jpeg" src="/linux-in-house/images/IMG_5456720E92DB-1.jpeg"&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Application Programming Interface (API): &lt;a href="https://info.hdhomerun.com/info/http_api"&gt;https://info.hdhomerun.com/info/http_api&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -14089,7 +14093,7 @@ deactivate
 &lt;hr&gt;
 &lt;p&gt;Reference: &lt;a href="https://miniflux.app/docs/installation.html#debian"&gt;https://miniflux.app/docs/installation.html#debian&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;You can view these feeds from your web browser. They look like this:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="miniflux.png" src="/images/miniflux.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="miniflux.png" src="/linux-in-house/images/miniflux.png"&gt;&lt;/p&gt;
 &lt;h2 id="database-configuration"&gt;Database Configuration&lt;/h2&gt;
 &lt;h3 id="creating-the-database"&gt;&lt;strong&gt;Creating the Database&lt;/strong&gt;&lt;/h3&gt;
 &lt;p&gt;Here an example from the command line:&lt;/p&gt;
@@ -14347,7 +14351,7 @@ Rule&lt;span class="w"&gt; &lt;/span&gt;added&lt;span class="w"&gt; &lt;/span&gt
 &lt;li&gt;&lt;a href="https://newsboat.org/"&gt;https://newsboat.org/&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/newsboat/newsboat"&gt;https://github.com/newsboat/newsboat&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img alt="2.25-screenshot_1x-33f26153.png" src="/images/2.25-screenshot_1x-33f26153.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="2.25-screenshot_1x-33f26153.png" src="/linux-in-house/images/2.25-screenshot_1x-33f26153.png"&gt;&lt;/p&gt;
 &lt;h1 id="continue"&gt;Continue&lt;/h1&gt;
 &lt;p&gt;Now that a world of news feeds are at your fingertips, how about doing some electronics work? Read on my friend for an introduction to BeagleBone boards.&lt;/p&gt;
 &lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;</content><category term="linux"></category><category term="systems"></category></entry><entry><title>MirrorDisks</title><link href="https://dfcsoftware.github.io/linux-in-house/mirrordisks.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/linux-in-house/mirrordisks.html</id><summary type="html">&lt;h1 id="mirror-disks"&gt;Mirror Disks&lt;/h1&gt;
@@ -14644,7 +14648,7 @@ rm&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$TMP&lt;/span&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/ZFS"&gt;https://en.wikipedia.org/wiki/ZFS&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.truenas.com/docs/core/13.0/coretutorials/storage/disks/diskreplace/"&gt;https://www.truenas.com/docs/core/13.0/coretutorials/storage/disks/diskreplace/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="/mirrordisks.html"&gt;Mirror_Disks&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="/linux-in-house/mirrordisks.html"&gt;Mirror_Disks&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h1 id="unixlinux-server-network-file-system-nfs"&gt;Unix/Linux Server - Network File System (NFS)&lt;/h1&gt;
 &lt;p&gt;NFS allow one server to share it's filesystem to another server. To the other server the file system appears to be local, but all changes on the local client are actually done on the remote NFS server.&lt;/p&gt;
@@ -14689,7 +14693,7 @@ exporting&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;192&lt;/span&
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;You should consider running NFS over a VLAN. The &lt;a href="/virtualip.html"&gt;Virtual IP&lt;/a&gt; article has information on setting up a vlan.&lt;/p&gt;
+&lt;p&gt;You should consider running NFS over a VLAN. The &lt;a href="/linux-in-house/virtualip.html"&gt;Virtual IP&lt;/a&gt; article has information on setting up a vlan.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id="connect-to-nfs-server-from-linux-client"&gt;Connect to NFS server from Linux client&lt;/h2&gt;
 &lt;h3 id="install-software-on-client"&gt;Install Software on Client&lt;/h3&gt;
@@ -14866,7 +14870,7 @@ mkdir&lt;span class="w"&gt; &lt;/span&gt;-p&lt;span class="w"&gt; &lt;/span&gt;&
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h1 id="mirror-disks-for-failure-protection"&gt;Mirror Disks for Failure Protection&lt;/h1&gt;
-&lt;p&gt;Refer to the &lt;a href="/mirrordisks.md"&gt;Mirror Disk&lt;/a&gt; page.&lt;/p&gt;
+&lt;p&gt;Refer to the &lt;a href="/linux-in-house/mirrordisks.md"&gt;Mirror Disk&lt;/a&gt; page.&lt;/p&gt;
 &lt;h1 id="virtual-machines"&gt;Virtual Machines&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -14936,7 +14940,7 @@ mkdir&lt;span class="w"&gt; &lt;/span&gt;-p&lt;span class="w"&gt; &lt;/span&gt;&
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;hr&gt;
-&lt;p&gt;&lt;img alt="ncmpcpp.png" src="/images/ncmpcpp.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="ncmpcpp.png" src="/linux-in-house/images/ncmpcpp.png"&gt;&lt;/p&gt;
 &lt;p&gt;Reference: &lt;a href="https://rybczak.net/ncmpcpp/"&gt;https://rybczak.net/ncmpcpp/&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id="install-ncmpcpp"&gt;Install ncmpcpp&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;apt-get&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;ncmpcpp
@@ -15274,7 +15278,7 @@ $&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;sys
 
 &lt;ol&gt;
 &lt;li&gt;&lt;a href="https://fedoraproject.org/wiki/PostgreSQL/README.rpm-dist"&gt;https://fedoraproject.org/wiki/PostgreSQL/README.rpm-dist&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="/postgresql.html#clusters"&gt;Clusters&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="/linux-in-house/postgresql.html#clusters"&gt;Clusters&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h4 id="check-out-all-these-options"&gt;Check out all these Options&lt;/h4&gt;
 &lt;p&gt;Check the databases installed, main (postgres) and two templates
@@ -15722,7 +15726,7 @@ Remember to enter &lt;code&gt;:xx&lt;/code&gt; to run the pspg pager.&lt;/p&gt;
 mydb-#&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;select&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;*&lt;span class="w"&gt; &lt;/span&gt;from&lt;span class="w"&gt; &lt;/span&gt;mydb.log_file&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img alt="pspg.png" src="/images/pspg.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="pspg.png" src="/linux-in-house/images/pspg.png"&gt;&lt;/p&gt;
 &lt;h2 id="continue"&gt;Continue&lt;/h2&gt;
 &lt;p&gt;Now that you have installed a shiny new database, consider how upgrades work.&lt;/p&gt;
 &lt;p&gt;In our next episode of Linux in the Home.&lt;/p&gt;
@@ -16771,4 +16775,4 @@ $&lt;span class="w"&gt; &lt;/span&gt;docker&lt;span class="w"&gt; &lt;/span&gt;n
 
 &lt;h2 id="upgrade-a-container"&gt;Upgrade a container&lt;/h2&gt;
 &lt;p&gt;Here is my documentation on upgrading the homeassistant docker container:&lt;/p&gt;
-&lt;p&gt;&lt;a href="/homeassistant.html#upgrade"&gt;Upgrade HomeAssistant&lt;/a&gt;&lt;/p&gt;</content><category term="linux"></category><category term="systems"></category></entry><entry><title>My Second Review</title><link href="https://dfcsoftware.github.io/linux-in-house/my-second-review.html" rel="alternate"></link><published>2010-12-03T10:20:00-05:00</published><updated>2010-03-12T10:20:00-05:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2010-12-03:/linux-in-house/my-second-review.html</id><content type="html">&lt;p&gt;Following is a review of my favorite mechanical mouse.&lt;/p&gt;</content><category term="linux"></category></entry><entry><title>My Writing Post</title><link href="https://dfcsoftware.github.io/linux-in-house/my-writing-post.html" rel="alternate"></link><published>2010-12-03T10:20:00-05:00</published><updated>2010-12-03T10:20:00-05:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2010-12-03:/linux-in-house/my-writing-post.html</id><content type="html">&lt;p&gt;Following is a story about my favorite ghost story.&lt;/p&gt;</content><category term="writing"></category></entry></feed>
+&lt;p&gt;&lt;a href="/linux-in-house/homeassistant.html#upgrade"&gt;Upgrade HomeAssistant&lt;/a&gt;&lt;/p&gt;</content><category term="linux"></category><category term="systems"></category></entry><entry><title>My Second Review</title><link href="https://dfcsoftware.github.io/linux-in-house/my-second-review.html" rel="alternate"></link><published>2010-12-03T10:20:00-05:00</published><updated>2010-03-12T10:20:00-05:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2010-12-03:/linux-in-house/my-second-review.html</id><content type="html">&lt;p&gt;Following is a review of my favorite mechanical mouse.&lt;/p&gt;</content><category term="linux"></category></entry><entry><title>My Writing Post</title><link href="https://dfcsoftware.github.io/linux-in-house/my-writing-post.html" rel="alternate"></link><published>2010-12-03T10:20:00-05:00</published><updated>2010-12-03T10:20:00-05:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2010-12-03:/linux-in-house/my-writing-post.html</id><content type="html">&lt;p&gt;Following is a story about my favorite ghost story.&lt;/p&gt;</content><category term="writing"></category></entry></feed>

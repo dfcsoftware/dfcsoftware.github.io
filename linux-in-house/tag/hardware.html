@@ -128,7 +128,7 @@
 <p>For example:</p>
 <ul>
 <li>PocketBeagle  <a href="https://www.beagleboard.org/boards/pocketbeagle-original">https://www.beagleboard.org/boards/pocketbeagle-original</a></li>
-<li><img alt="pocketBeagle-hero-hand-400x222.png" src="/images/pocketBeagle-hero-hand-400x222.png"></li>
+<li><img alt="pocketBeagle-hero-hand-400x222.png" src="/linux-in-house/images/pocketBeagle-hero-hand-400x222.png"></li>
 <li>This runs:<ul>
 <li>Rebuilt Garfield clock with seven-segment-display and alarm, keeping track of daylight saving time changes.</li>
 <li>Music box player.</li>
@@ -138,7 +138,7 @@
 <hr>
 <ul>
 <li>BBB (Black) <a href="https://www.beagleboard.org/boards/beaglebone-black">https://www.beagleboard.org/boards/beaglebone-black</a></li>
-<li><img alt="beagle-black-wired-shadow_no5v-1-400x400.png" src="/images/beagle-black-wired-shadow_no5v-1-400x400.png"></li>
+<li><img alt="beagle-black-wired-shadow_no5v-1-400x400.png" src="/linux-in-house/images/beagle-black-wired-shadow_no5v-1-400x400.png"></li>
 <li>This runs very capabily:<ul>
 <li>Music Player Daemon (MDP) [5]. You can control what is played on the command line or through a Phone App.</li>
 <li>Control lights and relays. You can use the Python based Flask [6] package to create nice looking web apps for this.</li>
@@ -148,7 +148,7 @@
 <hr>
 <ul>
 <li>BBAI (AI 32-bit, arm71) <a href="https://www.beagleboard.org/boards/beaglebone-ai">https://www.beagleboard.org/boards/beaglebone-ai</a></li>
-<li><img alt="beagleboane-ai-heatsink-500x356.png" src="/images/beagleboane-ai-heatsink-500x356.png"></li>
+<li><img alt="beagleboane-ai-heatsink-500x356.png" src="/linux-in-house/images/beagleboane-ai-heatsink-500x356.png"></li>
 <li>Applications I used with this include:<ul>
 <li>NextCloud server (little slow).</li>
 <li>Mini-Network Access Storage (NAS) with mirrored SSDs (mdadm).</li>
@@ -159,7 +159,7 @@
 <hr>
 <ul>
 <li>BBAI-64 (AI 64-bit; arm64) <a href="https://www.beagleboard.org/boards/beaglebone-ai-64">https://www.beagleboard.org/boards/beaglebone-ai-64</a></li>
-<li><img alt="BeagleBone_AI_64-400x333.webp" src="/images/BeagleBone_AI_64-400x333.webp"></li>
+<li><img alt="BeagleBone_AI_64-400x333.webp" src="/linux-in-house/images/BeagleBone_AI_64-400x333.webp"></li>
 <li>Very good at:<ul>
 <li>NextCloud server (runs good).</li>
 <li>News Reader (MiniFlux).</li>
@@ -170,7 +170,7 @@
 <hr>
 <ul>
 <li>BeaglePlay is the latest offering (<a href="https://www.beagleboard.org/boards/beagleplay">https://www.beagleboard.org/boards/beagleplay</a>)</li>
-<li><img alt="BeaglePlay-front-500x281.jpg" src="/images/BeaglePlay.webp"></li>
+<li><img alt="BeaglePlay-front-500x281.jpg" src="/linux-in-house/images/BeaglePlay.webp"></li>
 <li>Quad Arm® Cortex®-A53 microprocessor subsystem @ 1.4GHz</li>
 <li>Arm® Cortex®-M4F @ 400MHz</li>
 <li>Dual-core PRU subsystem @ 333MHz</li>
@@ -198,7 +198,7 @@
 <h2 id="serial-debug-connection">Serial Debug Connection</h2>
 <p>You can get through severe boot errors where the network is not connecting or disk partition not mounted, using a USB to TTL-232 cable [1], also called FTDI. This will show all the boot messages and allow login, even recovery if the kernel will not boot.</p>
 <p><strong>Make sure it is 3.3 volt!</strong> Connect the black wire to pin 1, orange/green to pin 4, yellow/white to pin5 directly on the SBC board.</p>
-<p><img alt="1 AU51n75Ls0JwfPeYMD6sIQ-547387362.png" src="/images/1%20AU51n75Ls0JwfPeYMD6sIQ-547387362.png"></p>
+<p><img alt="AU51n75Ls0JwfPeYMD6sIQ-547387362.png" src="/linux-in-house/images/AU51n75Ls0JwfPeYMD6sIQ-547387362.png"></p>
 <ul>
 <li>
 <p>USB to TTL cable</p>
@@ -207,10 +207,10 @@
 <p><a href="https://www.adafruit.com/product/4331">https://www.adafruit.com/product/4331</a>. </p>
 </li>
 </ul>
-<p><img alt="28W2088-40.webp" src="/images/28W2088-40.webp"></p>
+<p><img alt="28W2088-40.webp" src="/linux-in-house/images/28W2088-40.webp"></p>
 <h4 id="bbai-64-adapter">BBAI-64 Adapter</h4>
 <p>The BBAI-64 has a 3-pin connector so it needs an adapter; Micro JST MX 1.25 4Pins Connector Plug Socket 1.25mm Pitch Female Connector PCB Socket 150mm Cable. The red wire is not used. Plug the other three wires into the USB/TTL adapter above, matching colors.</p>
-<p><img alt="Screen Shot 2022-10-22 at 9.18.32 AM.png" src="/images/Screen%20Shot%202022-10-22%20at%209.18.32%20AM.png"></p>
+<p><img alt="Screen Shot 2022-10-22 at 9.18.32 AM.png" src="/linux-in-house/images/Screen%20Shot%202022-10-22%20at%209.18.32%20AM.png"></p>
 <h4 id="screen-on-linux">Screen on Linux</h4>
 <p>When you have connected USB-end of the serial cable to a Linux based system like Ubuntu, a new tty* device appears in the system. Note down its name. In my case, it was <em>/dev/ttyUSB0</em>. Open a term and issue below command</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>screen<span class="w"> </span>/dev/ttyUSB0<span class="w"> </span><span class="m">115200</span>
@@ -664,7 +664,7 @@ tmpfs<span class="w">           </span><span class="m">5</span>.0M<span class="w
 </tr>
 </tbody>
 </table>
-<p><img alt="BB_AI_USERLEDS_800px.png" src="/images/BB_AI_USERLEDS_800px.png"></p>
+<p><img alt="BB_AI_USERLEDS_800px.png" src="/linux-in-house/images/BB_AI_USERLEDS_800px.png"></p>
 <h2 id="bbai-survival-guide">BBAI Survival Guide</h2>
 <p><a href="https://community.element14.com/challenges-projects/project14/visionthing/b/blog/posts/beaglebone-ai-survival-guide-v3-18-pwm-i2c-analog-digital-read-write-vision-ai-video-text-overlays-audio-hardware">https://community.element14.com/challenges-projects/project14/visionthing/b/blog/posts/beaglebone-ai-survival-guide-v3-18-pwm-i2c-analog-digital-read-write-vision-ai-video-text-overlays-audio-hardware</a></p>
 <h2 id="real-time-clock-rtc-system-service-and-setup">Real Time Clock (RTC) system service and setup</h2>
@@ -854,8 +854,8 @@ $<span class="w"> </span>python<span class="w"> </span>sevensegment_test.py
 </li>
 </ul>
 <h3 id="wiring-pins">Wiring Pins</h3>
-<p><img alt="BeagleBone-AI-2_1.png" src="/images/BeagleBone-AI-2_1.png"></p>
-<p><img alt="BeagleBone-AI-2_2.png" src="/images/BeagleBone-AI-2_2.png"></p>
+<p><img alt="BeagleBone-AI-2_1.png" src="/linux-in-house/images/BeagleBone-AI-2_1.png"></p>
+<p><img alt="BeagleBone-AI-2_2.png" src="/linux-in-house/images/BeagleBone-AI-2_2.png"></p>
 <h3 id="service">Service</h3>
 <p>File: /etc/systemd/system/remote.service</p>
 <div class="highlight"><pre><span></span><code><span class="k">[Unit]</span>
@@ -1537,7 +1537,7 @@ log<span class="w"> </span><span class="s2">&quot;Starting </span><span class="n
                 </p><!-- /#about -->
 
                 <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-                <p> Version:  3.55 </p>
+                <p> Version:  3.61 </p>
         </footer><!-- /#contentinfo -->
 
 </body>

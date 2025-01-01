@@ -90,7 +90,7 @@
 <hr>
 <p>The following descriptions follow a VM on Redhat/AlmaLinux/RockyLinux/CENTOS 9 using qemu virtualizer and the Cockpit management web console. We also set the VM network up for external access and share files with the physical host's NFS mount. [1]</p>
 <ol>
-<li><a href="/nas.html#connect-to-nfs-server-from-linux-client">NFS client</a></li>
+<li><a href="/linux-in-house/nas.html#connect-to-nfs-server-from-linux-client">NFS client</a></li>
 </ol>
 <p>Reference: </p>
 <ul>
@@ -338,13 +338,13 @@ QEMU:<span class="w"> </span>Checking<span class="w"> </span><span class="k">for
 <blockquote>
 <p>See file /etc/libvirt/network/default.xml</p>
 </blockquote>
-<p><img alt="Virtual Machine NAT" src="/images/graph-virtual-machine.svg"></p>
+<p><img alt="Virtual Machine NAT" src="/linux-in-house/images/graph-virtual-machine.svg"></p>
 <h4 id="bridged-vm-network-physical-host-bridge">Bridged VM Network (Physical Host <em>bridge</em>)</h4>
 <p>If you require a VM to appear on the same <em>external</em> network as the hypervisor, you must use bridged mode instead. To do so, attach the VM to a bridge device connected to the hypervisor’s physical network device.</p>
 <blockquote>
 <p>See file /etc/nmstate/50-create-bridge.yml below</p>
 </blockquote>
-<p><img alt="Virtual Machine Bridge" src="/images/graph-virtual-machine2.svg"></p>
+<p><img alt="Virtual Machine Bridge" src="/linux-in-house/images/graph-virtual-machine2.svg"></p>
 <h4 id="redhat-way-1">RedHat Way [1]</h4>
 <ul>
 <li>Create a nmstate configuration file on the physical host.</li>
@@ -423,7 +423,7 @@ $<span class="w"> </span>ip<span class="w"> </span>a<span class="w"> </span>show
 <li>The <strong>VM</strong> should use virbr0 as it's network interface. Using Cockpit add a Bridged network to the <strong>VM</strong>.</li>
 </ul>
 <p>image libvirt-bridge.png
-<img alt="libvirt-bridge.png" src="/images/libvirt-bridge.png"></p>
+<img alt="libvirt-bridge.png" src="/linux-in-house/images/libvirt-bridge.png"></p>
 <p>-&gt; OR &lt;- define it using virsh:</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>virsh<span class="w"> </span>edit<span class="w"> </span>vm_machine
 <span class="nt">&lt;domain</span><span class="w"> </span><span class="na">type=</span><span class="s">&#39;kvm&#39;</span><span class="nt">&gt;</span>
@@ -545,7 +545,7 @@ $<span class="w"> </span>ip<span class="w"> </span>a<span class="w"> </span>show
 <li>The <strong>VM</strong> should use virbr0 as it's network interface. Using Cockpit add a Bridged network to the <strong>VM</strong>.</li>
 </ul>
 <p>image libvirt-bridge.png
-<img alt="libvirt-bridge.png" src="/images/libvirt-bridge.png"></p>
+<img alt="libvirt-bridge.png" src="/linux-in-house/images/libvirt-bridge.png"></p>
 <p>-&gt; OR &lt;- define it using virsh:</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>virsh<span class="w"> </span>edit<span class="w"> </span>vm_machine
 <span class="nt">&lt;domain</span><span class="w"> </span><span class="na">type=</span><span class="s">&#39;kvm&#39;</span><span class="nt">&gt;</span>
@@ -717,13 +717,13 @@ $ sudo virsh vol-list --pool my_vm_pool --details
 </blockquote>
 <ol>
 <li>
-<p><a href="/virtualip.html">vlan</a></p>
+<p><a href="/linux-in-house/virtualip.html">vlan</a></p>
 </li>
 <li>
-<p><a href="/nas.html#connect-to-nfs-server-from-linux-client">nfs</a></p>
+<p><a href="/linux-in-house/nas.html#connect-to-nfs-server-from-linux-client">nfs</a></p>
 </li>
 <li>
-<p><a href="/virtualmachines.html#network-on-a-virtual-machine">Network on a virtual machine</a></p>
+<p><a href="/linux-in-house/virtualmachines.html#network-on-a-virtual-machine">Network on a virtual machine</a></p>
 </li>
 <li>
 <p>Fixed IP address; servers should have this</p>
@@ -764,7 +764,7 @@ $ sudo virsh vol-list --pool my_vm_pool --details
 </code></pre></div>
 
 <ol>
-<li><a href="/virtualmachines.html#virtual-storage-pools-on-nfs">VM NFS Storage Pool</a></li>
+<li><a href="/linux-in-house/virtualmachines.html#virtual-storage-pools-on-nfs">VM NFS Storage Pool</a></li>
 </ol>
 <h3 id="copy-data-files">Copy Data Files</h3>
 <p>Now the easy part.</p>
@@ -900,7 +900,7 @@ $ ssh &lt;remote IP&gt; grep -n &lt;remote IP&gt; ~/.ssh/known_hosts
                 </p><!-- /#about -->
 
                 <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-                <p> Version:  3.55 </p>
+                <p> Version:  3.61 </p>
         </footer><!-- /#contentinfo -->
 
 </body>

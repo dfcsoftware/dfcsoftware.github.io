@@ -240,11 +240,11 @@
 <li>MTA - Mail Transport Agent; Postfix - Move messsages from one network stop to another</li>
 </ul>
 <h2 id="outgoing-relay-from-inside-home">Outgoing: Relay from Inside Home</h2>
-<p><img alt="Send Mail from Home" src="/images/graph-email-relay.svg"></p>
+<p><img alt="Send Mail from Home" src="/linux-in-house/images/graph-email-relay.svg"></p>
 <h2 id="outgoing-relay-from-outside-home">Outgoing: Relay from Outside Home</h2>
-<p><img alt="Send Mail outside Home" src="/images/graph-email-relay2.svg"></p>
+<p><img alt="Send Mail outside Home" src="/linux-in-house/images/graph-email-relay2.svg"></p>
 <h2 id="incoming-transport-from-internet">Incoming: Transport from Internet</h2>
-<p><img alt="Recieve Mail" src="/images/graph-email-relay3.svg"></p>
+<p><img alt="Recieve Mail" src="/linux-in-house/images/graph-email-relay3.svg"></p>
 <p>This document will use:</p>
 <ul>
 <li>your-domain.org : The E-Mail <em>relay</em> we are setting up in this document (VPS_Postfix)</li>
@@ -252,7 +252,7 @@
 </ul>
 <p>Recommendation:</p>
 <ul>
-<li>[ ] Bring up a host on a VPS somewhere, and use the <a href="/setup-server.html">Setup Server</a> instructions to secure it.</li>
+<li>[ ] Bring up a host on a VPS somewhere, and use the <a href="/linux-in-house/setup-server.html">Setup Server</a> instructions to secure it.</li>
 <li>[ ] Get a domain name and certificate set up and working.</li>
 <li>[ ] Install postfix/dovecot combo and relay to your main E-Mail host. Test sending out mail too.</li>
 <li>[ ] Install and configure SPF Policy Agent. Test it and make sure all is well.</li>
@@ -285,27 +285,27 @@
 </blockquote>
 <h2 id="check-network">Check Network</h2>
 <p>Click on this heading, then refer to these instructions, then come back here with the Back Arrow on the Browser:
- * <a href="/setup-server.html#check-your-network">Network Check</a></p>
+ * <a href="/linux-in-house/setup-server.html#check-your-network">Network Check</a></p>
 <h2 id="update-package-repository">Update Package Repository</h2>
 <p>Click on this heading, then refer to these instructions, then come back here with the Back Arrow on the Browser:
- * <a href="/setup-server.html#update-package-repository">Update Packages</a></p>
+ * <a href="/linux-in-house/setup-server.html#update-package-repository">Update Packages</a></p>
 <h2 id="create-new-users">Create New User(s)</h2>
 <blockquote>
 <p>The Linux mail user can be \&lt;name&gt;@example.com, to keep things clear.</p>
 </blockquote>
 <p>Click on this heading, then refer to these instructions, then come back here with the Back Arrow on the Browser:
- * <a href="/setup-server.html#new-user-and-group-to-use">New Users</a></p>
+ * <a href="/linux-in-house/setup-server.html#new-user-and-group-to-use">New Users</a></p>
 <h2 id="set-host-and-domain">Set Host and Domain</h2>
 <p>Click on this heading, then refer to these instructions, then come back here with the Back Arrow on the Browser:
- * <a href="/setup-server.html#set-your-host-and-domain-names">Host and Domain</a></p>
+ * <a href="/linux-in-house/setup-server.html#set-your-host-and-domain-names">Host and Domain</a></p>
 <h2 id="set-date-and-time">Set Date and Time</h2>
 <p>Click on this heading, then refer to these instructions, then come back here with the Back Arrow on the Browser:
- * <a href="/setup-server.html#time-control">Date and Time Settings</a></p>
+ * <a href="/linux-in-house/setup-server.html#time-control">Date and Time Settings</a></p>
 <h2 id="monitor-crack-attempts">Monitor crack attempts</h2>
 <h3 id="install-firewall-and-fail2ban-on-your-domainorg">Install firewall and fail2ban on <em>your-domain.org</em></h3>
 <p>Be sure the <em>system firewall</em> is installed and also the "Block Bad Actors" <em>firewall.sh</em> script.</p>
 <p>Click on this heading, then refer to these instructions, then come back here with the Back Arrow on the Browser:
- * <a href="/setup-server.html#firewall">Firewall</a></p>
+ * <a href="/linux-in-house/setup-server.html#firewall">Firewall</a></p>
 <h4 id="add-rules-for-e-mail-smtp-and-smtps">Add rules for E-Mail smtp and smtps.</h4>
 <ul>
 <li>Debian:</li>
@@ -352,8 +352,10 @@ $<span class="w"> </span>sudo<span class="w"> </span>ufw<span class="w"> </span>
 </code></pre></div>
 
 <h4 id="configure-fail2ban">Configure fail2ban</h4>
-<p>Click on this heading, then refer to these instructions, then come back here with the Back Arrow on the Browser:
- * <a href="/setup-server.html#fail2ban---automatic-firewall-blocking">Fail2ban</a></p>
+<p>Click on this heading, then refer to these instructions, then come back here with the Back Arrow on the Browser:</p>
+<ul>
+<li><a href="/linux-in-house/setup-server.html#fail2ban-automatic-firewall-blocking">Fail2ban</a></li>
+</ul>
 <h5 id="secure-postfix">Secure postfix</h5>
 <p>File: /etc/fail2ban/jail.d/postfix.local</p>
 <div class="highlight"><pre><span></span><code><span class="k">[postfix]</span>
@@ -390,10 +392,10 @@ $<span class="w"> </span>sudo<span class="w"> </span>ufw<span class="w"> </span>
 <h3 id="log-monitors-on-your-domainorg">Log Monitors  on <em>your-domain.org</em></h3>
 <h4 id="install-logwatch">Install Logwatch</h4>
 <p>Click on this heading, then refer to these instructions, then come back here with the Back Arrow on the Browser:
- * <a href="/setup-server.html#logwatch---daily-alert-of-logging-activity">Logwatch</a></p>
+ * <a href="/linux-in-house/setup-server.html#logwatch-daily-alert-of-logging-activity">Logwatch</a></p>
 <h4 id="install-logcheck">Install Logcheck:</h4>
 <p>Click on this heading, then refer to these instructions, then come back here with the Back Arrow on the Browser:
- * <a href="/setup-server.html#logcheck---mails-anomalies-in-the-system-logfiles-to-the-admin">Logcheck</a></p>
+ * <a href="/linux-in-house/setup-server.html#logcheck-mails-anomalies-in-the-system-logfiles-to-the-admin">Logcheck</a></p>
 <h3 id="logwatcher">LogWatcher</h3>
 <h4 id="create">Create</h4>
 <p>Put this script in the /root directory, and install the dependencies listed.</p>
@@ -493,11 +495,11 @@ log_check<span class="w"> </span>.dovecot<span class="w">  </span><span class="s
 
 <p>Reference:</p>
 <ul>
-<li>Watch - <a href="/watch.html">System Alerts</a></li>
+<li>Watch - <a href="/linux-in-house/watch.html">System Alerts</a></li>
 </ul>
 <h1 id="apache-install-enable-on-your-domainorg">Apache install (enable) on <em>your-domain.org</em></h1>
 <p>Click on this heading, then refer to these instructions, then come back here with the Back Arrow on the Browser:</p>
-<p><a href="/dns.html#install-a-web-server">Apache Web Server</a></p>
+<p><a href="/linux-in-house/dns.html#install-a-web-server">Apache Web Server</a></p>
 <p>Test it on:</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>http://&lt;domain.name&gt;
 </code></pre></div>
@@ -946,10 +948,12 @@ to clarify this is for transporting from .org to .com</p>
 <div class="highlight"><pre><span></span><code><span class="o">$</span><span class="w"> </span><span class="n">sudo</span><span class="w"> </span><span class="n">postfix</span><span class="w"> </span><span class="n">reload</span>
 </code></pre></div>
 
-<p>Reference:
- * <a href="https://serverfault.com/questions/67134/proxy-mail-to-different-smtp-server-with-postfix">https://serverfault.com/questions/67134/proxy-mail-to-different-smtp-server-with-postfix</a>
- * <a href="http://www.postfix.org/postconf.5.html#permit_auth_destination">http://www.postfix.org/postconf.5.html#permit_auth_destination</a>
- * <a href="http://www.postfix.org/transport.5.html">http://www.postfix.org/transport.5.html</a></p>
+<p>Reference:</p>
+<ul>
+<li><a href="https://serverfault.com/questions/67134/proxy-mail-to-different-smtp-server-with-postfix">https://serverfault.com/questions/67134/proxy-mail-to-different-smtp-server-with-postfix</a></li>
+<li><a href="http://www.postfix.org/postconf.5.html#permit_auth_destination">http://www.postfix.org/postconf.5.html#permit_auth_destination</a></li>
+<li><a href="http://www.postfix.org/transport.5.html">http://www.postfix.org/transport.5.html</a></li>
+</ul>
 <h1 id="proxy-postfix-relay-for-smtp-outgoing-mails">Proxy Postfix Relay for SMTP Outgoing Mails</h1>
 <p>To send mails from a non-standard port, use a .com domain to relay to a .org domain, with the .org relay set to = (basically null) and the .com relay = ...org.</p>
 <h3 id="change-mx-records-in-no-ipcom-from-mail1no-ipcom-to-mailyour-domainorg">Change MX records in <em>no-ip.com</em> from mail1.no-ip.com to mail.your-domain.org</h3>
@@ -1259,16 +1263,16 @@ srw-rw----<span class="w"> </span><span class="m">1</span><span class="w"> </spa
 <h4 id="read-mail">Read Mail</h4>
 <ul>
 <li>Server: mail.example.com</li>
-<li>User: \&lt;linux user defined on the <a href="/e-mail.html#user-settings">E-Mail</a> .com host&gt;</li>
-<li>Password: \&lt;linux user password defined on the <a href="/e-mail.html#user-settings">E-Mail</a> .com host&gt;</li>
+<li>User: &lt;linux user defined on the <a href="/linux-in-house/e-mail.html#user-settings">E-Mail</a> .com host&gt;</li>
+<li>Password: &lt;linux user password defined on the <a href="/linux-in-house/e-mail.html#user-settings">E-Mail</a> .com host&gt;</li>
 <li>SSL: ON</li>
 <li>Port: 993</li>
 </ul>
 <h4 id="send-mail">Send Mail</h4>
 <ul>
 <li>Server: smtp.example.org</li>
-<li>User: \&lt;linux user defined <a href="/e-mailrelay.html#create-new-users">above</a> on the E-Mail .org host&gt;</li>
-<li>Password: \&lt;linux user password defined <a href="/e-mailrelay.html#create-new-users">above</a> on the E-Mail .org host&gt;</li>
+<li>User: &lt;linux user defined <a href="/linux-in-house/e-mailrelay.html#create-new-users">above</a> on the E-Mail .org host&gt;</li>
+<li>Password: &lt;linux user password defined <a href="/linux-in-house/e-mailrelay.html#create-new-users">above</a> on the E-Mail .org host&gt;</li>
 <li>SSL: ON</li>
 <li>Port: 465</li>
 </ul>
@@ -2064,7 +2068,7 @@ DMARC<span class="w"> </span>record<span class="w"> </span><span class="k">for</
                 </p><!-- /#about -->
 
                 <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-                <p> Version:  3.55 </p>
+                <p> Version:  3.61 </p>
         </footer><!-- /#contentinfo -->
 
 </body>
