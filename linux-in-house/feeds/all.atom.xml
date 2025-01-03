@@ -102,14 +102,11 @@
 &lt;p&gt;Lock your computer's doors and windows,
 but remember:
 A house is not a home without visitors&lt;/p&gt;
-&lt;/blockquote&gt;</content><category term="linux"></category><category term="think"></category></entry><entry><title>Welcome to the Forest</title><link href="https://dfcsoftware.github.io/linux-in-house/welcome-to-the-forest.html" rel="alternate"></link><published>2024-04-27T12:20:00-04:00</published><updated>2024-04-27T12:38:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2024-04-27:/linux-in-house/welcome-to-the-forest.html</id><summary type="html">&lt;p&gt;Connect all your trees into the forest&lt;/p&gt;</summary><content type="html">&lt;h1 id="linux-in-house"&gt;Linux in House&lt;/h1&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Dedicated to my wife. She fixes the meals, I fix the house.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;/blockquote&gt;</content><category term="linux"></category><category term="think"></category></entry><entry><title>Welcome to the Forest</title><link href="https://dfcsoftware.github.io/linux-in-house/welcome-to-the-forest.html" rel="alternate"></link><published>2024-04-27T12:20:00-04:00</published><updated>2024-04-27T12:38:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2024-04-27:/linux-in-house/welcome-to-the-forest.html</id><summary type="html">&lt;p&gt;Watch all your trees of a forest&lt;/p&gt;</summary><content type="html">&lt;h1 id="linux-in-house"&gt;Linux in House&lt;/h1&gt;
 &lt;ul&gt;
-&lt;li&gt;Connect all your trees into the forest.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;a href="/linux-in-house/watch.html"&gt;with the Watcher&lt;/a&gt;&lt;/p&gt;</content><category term="forest"></category><category term="forest"></category><category term="welcome"></category></entry><entry><title>git</title><link href="https://dfcsoftware.github.io/linux-in-house/git.html" rel="alternate"></link><published>2023-10-02T00:00:00-04:00</published><updated>2023-10-02T00:00:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-10-02:/linux-in-house/git.html</id><summary type="html">&lt;h1 id="git-clone"&gt;git clone&lt;/h1&gt;
+&lt;li&gt;Watch all your trees of a forest,
+  &lt;a href="/linux-in-house/watch.html"&gt;with the Watcher&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><category term="forest"></category><category term="forest"></category><category term="welcome"></category></entry><entry><title>git</title><link href="https://dfcsoftware.github.io/linux-in-house/git.html" rel="alternate"></link><published>2023-10-02T00:00:00-04:00</published><updated>2023-10-02T00:00:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-10-02:/linux-in-house/git.html</id><summary type="html">&lt;h1 id="git-clone"&gt;git clone&lt;/h1&gt;
 &lt;p&gt;Clones a repository into a newly created directory, creates remote-tracking branches for each branch in the cloned repository (visible using git branch --remotes), and creates and checks out an initial branch that is forked from the cloned repository’s currently active branch.&lt;/p&gt;
 &lt;hr&gt;
 &lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
