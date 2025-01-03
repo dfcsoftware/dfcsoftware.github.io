@@ -393,7 +393,7 @@ It needs to be scheduled in cron.</p>
 </code></pre></div>
 
 <ol>
-<li>log.sh reads config file ~/.config/forest/logwatch.\&lt;hostname&gt;</li>
+<li>log.sh reads config file ~/.config/forest/logwatch.<hostname></li>
 </ol>
 <p>Up to two filters may be specified.</p>
 <p>File: logwatch.vm7</p>
@@ -412,11 +412,13 @@ It needs to be scheduled in cron.</p>
 <li>A sync for new alert files is done, sending new files to the cloud (NextCloud).</li>
 <li>NextCloud will send a Talk alert to the CLOUD_USER for new files. These are viewable on a Phone or Watch, if running the Talk app.</li>
 </ol>
-<p>The following software packages have to be installed and compiled locally:
- * Berkerly DB - <a href="https://www.oracle.com/database/technologies/related/berkeleydb-downloads.html#">https://www.oracle.com/database/technologies/related/berkeleydb-downloads.html#</a></p>
-<blockquote>
+<p>The following software packages have to be installed and compiled locally:</p>
+<ul>
+<li>Berkerly DB - <a href="https://www.oracle.com/database/technologies/related/berkeleydb-downloads.html#">https://www.oracle.com/database/technologies/related/berkeleydb-downloads.html#</a><blockquote>
 <p>Re-directs to oracle: <a href="https://www.oracle.com/database/technologies/related/berkeleydb-downloads.html#">https://www.oracle.com/database/technologies/related/berkeleydb-downloads.html#</a>  Need to log into oracle, download (via-download manager or wget.sh script proveded)</p>
 </blockquote>
+</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="o">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="o">~/</span><span class="n">forest</span><span class="o">/</span><span class="n">install</span><span class="o">/</span><span class="n">db</span>
 <span class="o">$</span><span class="w"> </span><span class="n">unzip</span><span class="w"> </span><span class="o">&lt;</span><span class="n">download</span><span class="o">&gt;</span>
 <span class="o">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="o">.</span><span class="n">e</span><span class="o">.</span><span class="p">:</span><span class="w"> </span><span class="n">db</span><span class="o">-</span><span class="mf">18.1</span><span class="o">.</span><span class="mi">40</span>
@@ -441,9 +443,9 @@ $<span class="w"> </span>make
 </code></pre></div>
 
 <ul>
-<li>Add/Create
-     File: ${CONFIG_DIR}/config.${HOSTNAME}</li>
+<li>Add/Create</li>
 </ul>
+<p>File: ${CONFIG_DIR}/config.${HOSTNAME}</p>
 <div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="n">LD_LIBRARY_PATH</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">BerkeleyDB</span><span class="o">.</span><span class="mf">18.1</span><span class="o">/</span><span class="n">lib</span>
 </code></pre></div>
 
@@ -538,7 +540,7 @@ $<span class="w"> </span>install.sh
                 </p><!-- /#about -->
 
                 <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-                <p> Version:  3.65 </p>
+                <p> Version:  3.67 </p>
         </footer><!-- /#contentinfo -->
 
 </body>
