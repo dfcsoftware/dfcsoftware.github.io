@@ -41,8 +41,8 @@
 
     <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2023-10-02T00:00:00-04:00">
-                Published: Mon 02 October 2023
+        <abbr class="published" title="2023-10-15T00:00:00-04:00">
+                Published: Sun 15 October 2023
         </abbr>
 
         <address class="vcard author">
@@ -54,7 +54,8 @@
 <p>Clones a repository into a newly created directory, creates remote-tracking branches for each branch in the cloned repository (visible using git branch --remotes), and creates and checks out an initial branch that is forked from the cloned repository’s currently active branch.</p>
 <hr>
 <div class="toc"><span class="toctitle">Table of Contents</span><ul>
-<li><a href="#git-clone">git clone</a><ul>
+<li><a href="#git-clone">git clone</a></li>
+<li><a href="#git-gui">git gui</a><ul>
 <li><a href="#downstream-vs-upstream">Downstream vs. Upstream</a></li>
 <li><a href="#git-remote-repository-access">Git remote repository access</a><ul>
 <li><a href="#create-a-bare-repo-no-working-files">Create a bare repo, no working files</a></li>
@@ -66,13 +67,16 @@
 </ul>
 </div>
 <hr>
+<h1 id="git-gui">git gui</h1>
+<p>Git GUI is started by running gitk, then selecting File&gt;Start git gui.</p>
+<p><img alt="git GUI" src="/linux-in-house/images/gitk-git_gui.png"></p>
 <p>After the clone, a plain git fetch without arguments will update all the remote-tracking branches, and a git pull without arguments will in addition merge the remote master branch into the current master branch, if any (this is untrue when "--single-branch" is given; see below).</p>
 <blockquote>
 <p>master changed to main in 2020</p>
 <p>origin” is not special
 Just like the branch name “master” does not have any special meaning in Git, neither does “origin”. While “master” is the default name for a starting branch when you run git init which is the only reason it’s widely used, “origin” is the <strong>default name for a remote when you run git clone</strong>. If you run git clone -o booyah instead, then you will have booyah/master as your default remote branch.</p>
 </blockquote>
-<p>Remote-tracking branch names take the form \&lt;remote&gt;/\&lt;branch&gt;. </p>
+<p>Remote-tracking branch names take the form <remote>/<branch>. </p>
 <p>For instance, if you wanted to see what the master branch on your origin remote looked like as of the last time you communicated with it, you would check the origin/master branch. If you were working on an issue with a partner and they pushed up an iss53 branch, you might have your own local iss53 branch, but the branch on the server would be represented by the remote-tracking branch origin/iss53.</p>
 <h2 id="downstream-vs-upstream">Downstream vs. Upstream</h2>
 <div class="highlight"><pre><span></span><code><span class="o">|---------------------------</span><span class="w"> </span><span class="nc">time</span><span class="w"> </span><span class="o">-----------------------------&gt;</span><span class="w"> </span>
@@ -301,7 +305,7 @@ fbff5bc..72bbc59<span class="w"> </span>master<span class="w"> </span>-&gt;<span
                 </p><!-- /#about -->
 
                 <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-                <p> Version:  3.69 </p>
+                <p> Version:  3.73 </p>
         </footer><!-- /#contentinfo -->
 
 </body>
