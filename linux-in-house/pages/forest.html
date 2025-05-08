@@ -239,11 +239,19 @@ $<span class="w"> </span>&gt;<span class="w"> </span>/etc/issue.net
 <h1 id="schedule-alertsh-in-cron">Schedule alert.sh in cron</h1>
 <p>i.e.: every 20 minutes</p>
 <p>File: /etc/cron.d/alert </p>
-<div class="highlight"><pre><span></span><code><span class="err">#</span><span class="w"> </span><span class="n">Run</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">alert</span><span class="w"> </span><span class="n">analysis</span>
-<span class="n">SHELL</span><span class="o">=/</span><span class="n">bin</span><span class="o">/</span><span class="n">bash</span>
-<span class="k">PATH</span><span class="o">=/</span><span class="nl">sbin</span><span class="p">:</span><span class="o">/</span><span class="nl">bin</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nl">sbin</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span>
-<span class="n">MAILTO</span><span class="o">=</span><span class="ss">&quot;bob@bob.com&quot;</span>
-<span class="o">*/</span><span class="mi">20</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">bob</span><span class="o">/</span><span class="n">forest</span><span class="o">/</span><span class="n">alert</span><span class="p">.</span><span class="n">sh</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Run the alert analysis</span>
+<span class="n">SHELL</span><span class="o">=</span><span class="sr">/bin/</span><span class="n">bash</span>
+<span class="n">PATH</span><span class="o">=</span><span class="sr">/sbin:/</span><span class="n">bin:</span><span class="sr">/usr/s</span><span class="n">bin:</span><span class="sr">/usr/</span><span class="n">bin</span>
+<span class="n">MAILTO</span><span class="o">=</span><span class="s">&quot;bob@bob.com&quot;</span>
+<span class="c1"># Job definition:</span>
+<span class="c1"># .---------------- minute (0 - 59)</span>
+<span class="c1"># |  .------------- hour (0 - 23)</span>
+<span class="c1"># |  |  .---------- day of month (1 - 31)</span>
+<span class="c1"># |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...</span>
+<span class="c1"># |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat</span>
+<span class="c1"># |  |  |  |  |</span>
+<span class="c1"># *  *  *  *  * user-name command to be executed</span>
+<span class="o">*</span><span class="sr">/20 * * * * root /</span><span class="n">home</span><span class="sr">/bob/</span><span class="n">forest</span><span class="o">/</span><span class="n">alert</span><span class="o">.</span><span class="n">sh</span>
 </code></pre></div>
 
 <h1 id="copy-ssh-keys-to-remote">Copy ssh keys to remote</h1>
@@ -540,7 +548,7 @@ $<span class="w"> </span>install.sh
                 </p><!-- /#about -->
 
                 <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-                <p> Version:  3.80 </p>
+                <p> Version:  3.81 </p>
         </footer><!-- /#contentinfo -->
 
 </body>
