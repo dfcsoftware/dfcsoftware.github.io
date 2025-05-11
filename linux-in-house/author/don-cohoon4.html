@@ -5,86 +5,29 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="generator" content="Pelican" />
         <title>Linux Home Administration - Don Cohoon</title>
-        <link rel="stylesheet" href="https://dfcsoftware.github.io/theme/css/main.css" />
-        <link href="https://dfcsoftware.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Linux Home Administration Atom Feed" />
+        <link rel="icon" type="image/svg" href="https://dfcsoftware.github.io/linux-in-house/images/favicon.svg">
+        <link rel="stylesheet" href="https://dfcsoftware.github.io/linux-in-house/theme/css/main.css" type="text/css" />
+        <!-- <link rel="stylesheet" href="/theme/css/main.css" type="text/css" />  -->
+        <link href="https://dfcsoftware.github.io/linux-in-house/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Linux Home Administration Atom Feed" />
 </head>
 
 <body id="index" class="home">
         <header id="banner" class="body">
                 <table>
-                    <td><h1><a href="https://dfcsoftware.github.io/">Linux Home Administration</a></h1></td>
-                    <td>   <!-- Note the usage of `type=module` here as this is an ES6 module --> <script type="module">
-    // Use ES module import syntax to import functionality from the module
-    // that we have compiled.
-    //
-    // Note that the `default` import is an initialization function which
-    // will "boot" the module and make it ready to use. Currently browsers
-    // don't support natively imported WebAssembly as an ES module, but
-    // eventually the manual initialization won't be required!
-    // import { search, default as init } from './tinysearch_engine.js';
-    import { search, default as init } from '/tinysearch_engine.js';
-    window.search = search;
-
-    async function run() {
-      // First up we need to actually load the wasm file, so we use the
-      // default export to inform it where the wasm file is located on the
-      // server, and then we wait on the returned promise to wait for the
-      // wasm to be loaded.
-      //
-      // Note that instead of a string here you can also pass in an instance
-      // of `WebAssembly.Module` which allows you to compile your own module.
-      // Also note that the promise, when resolved, yields the wasm module's
-      // exports which is the same as importing the `*_bg` module in other
-      // modes
-      await init('/tinysearch_engine_bg.wasm');
-    }
-
-    run();
-  </script>
-
-  <script>
-    // And afterwards we can use all the functionality defined in wasm.
-    function doSearch() {
-      let value = document.getElementById("searcher").value;
-      console.log(`Search query: ${value}`);
-
-      const results = search(value, 5);
-
-      console.log(`Results: ${results}`);
-
-      let ul = document.getElementById("results");
-      ul.innerHTML = "";
-
-      for (i = 0; i < results.length; i++) {
-        var li = document.createElement("li");
-
-        let [title, url] = results[i];
-        let elemlink = document.createElement('a');
-        elemlink.innerHTML = title;
-        elemlink.setAttribute('href', url);
-        li.appendChild(elemlink);
-
-        ul.appendChild(li);
-      }
-    }
-  </script>
-
-<div style="text-align:right"> 
-  <h2> 
-    <object type="image/svg+xml" data="/theme/images/search.svg" style="width:5%; height:10%;">
-       Search<!-- fallback image in CSS -->
-    </object>
-    <input type="text" id="searcher" onkeyup="doSearch()">
-  </h2>
-  <ul style="list-style-type: none;text-align: left;" id="results">
-  </ul>
-</div> </td>
+                    <td><h1><a href="https://dfcsoftware.github.io/linux-in-house/">Linux Home Administration</a></h1></td>
+                    <td> <link href="/linux-in-house/pagefind/pagefind-ui.css" rel="stylesheet" type="text/css">
+<script src="/linux-in-house/pagefind/pagefind-ui.js"></script>
+<div id="search"></div>
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        new PagefindUI({ element: "#search", showSubResults: true });
+    });
+</script> </td>
                 </table>
                 <nav><ul>
-                    <li><a href="https://dfcsoftware.github.io/category/2023.html">2023</a></li>
-                    <li><a href="https://dfcsoftware.github.io/category/forest.html">forest</a></li>
-                    <li><a href="https://dfcsoftware.github.io/category/linux.html">linux</a></li>
-                    <li><a href="https://dfcsoftware.github.io/category/writing.html">writing</a></li>
+                    <li><a href="https://dfcsoftware.github.io/linux-in-house/category/linux.html">linux</a></li>
+                    <li><a href="https://dfcsoftware.github.io/linux-in-house/category/writing.html">writing</a></li>
+                    <li><a href="https://dfcsoftware.github.io/linux-in-house/category/zines.html">zines</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 
@@ -92,14 +35,14 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
-                    <h1><a href="https://dfcsoftware.github.io/postgresql-move-database-to-another-filesystem.html" rel="bookmark"
-                           title="Permalink to Postgresql Move Database to Another Filesystem">Postgresql Move Database to Another Filesystem</a></h1>
+                    <h1><a href="https://dfcsoftware.github.io/linux-in-house/virtualmachines.html" rel="bookmark"
+                           title="Permalink to VirtualMachines">VirtualMachines</a></h1>
                 </header>
 
                 <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2023-01-25T10:20:00-05:00">
-                Published: Wed 25 January 2023
+        <abbr class="published" title="2023-06-10T00:00:00-04:00">
+                Published: Sat 10 June 2023
         </abbr>
 		<br />
         <abbr class="modified" title="2024-04-19T09:30:00-04:00">
@@ -107,34 +50,26 @@
         </abbr>
 
         <address class="vcard author">
-                By                         <a class="url fn" href="https://dfcsoftware.github.io/author/don-cohoon.html">Don Cohoon</a>
+                By                         <a class="url fn" href="https://dfcsoftware.github.io/linux-in-house/author/don-cohoon.html">Don Cohoon</a>
         </address>
-<p>In <a href="https://dfcsoftware.github.io/category/linux.html">linux</a>.</p>
-
-</footer><!-- /.post-info -->                <h1 id="postgresql-move-database-to-another-filesystem">Postgresql Move Database to Another Filesystem</h1>
-<hr>
-<h4 id="table-of-contents">Table of Contents</h4>
-<!-- toc -->
-
-<hr>
-<p>Mainly used this on SBC (BeagleBone) computer to move a database from SD card (/var/lib...) to SSD disk (/data/lib...). A database will burn up an SD card quickly 😟</p>
-<h2 id="list-clusters-on-host">List clusters on host</h2>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pg_lsclusters
-Ver<span class="w"> </span>Cluster<span class="w"> </span>Port<span class="w"> </span>Status<span class="w"> </span>Owner<span class="w">    </span>Data …</code></pre></div>
-                <a class="readmore" href="https://dfcsoftware.github.io/postgresql-move-database-to-another-filesystem.html">read more</a>
+<p>In <a href="https://dfcsoftware.github.io/linux-in-house/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://dfcsoftware.github.io/linux-in-house/tag/systems.html">systems</a> </p>
+</footer><!-- /.post-info -->                <h1 id="virtual-machines-vm">Virtual Machines (VM)</h1>
+<p>A Virtual Machine (VM) is a way to create a whole operating system, with many applications, that is able to be moved from one physical machine to another physical machine. This has advantages in case of hardware, location or network problems to quickly and correctly restore service …</p>
+                <a class="readmore" href="https://dfcsoftware.github.io/linux-in-house/virtualmachines.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
 
             <li><article class="hentry">
                 <header>
-                    <h1><a href="https://dfcsoftware.github.io/web-certificate.html" rel="bookmark"
-                           title="Permalink to Web Certificate">Web Certificate</a></h1>
+                    <h1><a href="https://dfcsoftware.github.io/linux-in-house/networkmanagement.html" rel="bookmark"
+                           title="Permalink to NetworkManagement">NetworkManagement</a></h1>
                 </header>
 
                 <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2023-01-25T10:20:00-05:00">
-                Published: Wed 25 January 2023
+        <abbr class="published" title="2023-04-10T00:00:00-04:00">
+                Published: Mon 10 April 2023
         </abbr>
 		<br />
         <abbr class="modified" title="2024-04-19T09:30:00-04:00">
@@ -142,111 +77,312 @@ Ver<span class="w"> </span>Cluster<span class="w"> </span>Port<span class="w"> <
         </abbr>
 
         <address class="vcard author">
-                By                         <a class="url fn" href="https://dfcsoftware.github.io/author/don-cohoon.html">Don Cohoon</a>
+                By                         <a class="url fn" href="https://dfcsoftware.github.io/linux-in-house/author/don-cohoon.html">Don Cohoon</a>
         </address>
-<p>In <a href="https://dfcsoftware.github.io/category/linux.html">linux</a>.</p>
-
-</footer><!-- /.post-info -->                <h1 id="web-certificate">Web Certificate</h1>
-<hr>
-<h4 id="table-of-contents">Table of Contents</h4>
-<!-- toc -->
-
-<hr>
-<p>Web certificates encrypt different messages over the public internet so nobody can see what these messages contain.</p>
-<h2 id="lets-encrypt-certificate-authority-ca">Let's Encrypt - Certificate Authority (CA)</h2>
-<p>Let's Encrypt offers free 90 day SSL/TLS internet certificates, so you can run https:// to encrypt web page bodies, instead of http …</p>
-                <a class="readmore" href="https://dfcsoftware.github.io/web-certificate.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="https://dfcsoftware.github.io/docker.html" rel="bookmark"
-                           title="Permalink to Docker">Docker</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2023-01-23T00:00:00-05:00">
-                Published: Mon 23 January 2023
-        </abbr>
-		<br />
-        <abbr class="modified" title="2024-04-19T09:30:00-04:00">
-                Updated: Fri 19 April 2024
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="https://dfcsoftware.github.io/author/don-cohoon.html">Don Cohoon</a>
-        </address>
-<p>In <a href="https://dfcsoftware.github.io/category/linux.html">linux</a>.</p>
-
-</footer><!-- /.post-info -->                <h1 id="docker">Docker</h1>
-<p>Docker is a way to manage containers, which are like namespaces or jails. Here are some useful common commands to check out the status of these containers.</p>
+<p>In <a href="https://dfcsoftware.github.io/linux-in-house/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://dfcsoftware.github.io/linux-in-house/tag/network.html">network</a> </p>
+</footer><!-- /.post-info -->                <h1 id="network-management">Network Management</h1>
+<p>The command line offers a wealth of network management commands. Here are some of my favorites.</p>
+<p><br/></p>
 <hr>
 <div class="toc"><span class="toctitle">Table of Contents</span><ul>
-<li><a href="#docker">Docker</a></li>
-<li><a href="#docker_1">Docker</a><ul>
-<li><a href="#prune-unused-containers-images-and-cache">Prune unused containers, images and cache</a></li>
-<li><a href="#check-a-containers-logs">Check a container's logs</a></li>
-<li><a href="#inspect-a-container">Inspect a container</a></li>
-<li><a href="#check-for-container-filesystem-changes-since-start">Check for container filesystem …</a></li></ul></li></ul></div>
-                <a class="readmore" href="https://dfcsoftware.github.io/docker.html">read more</a>
+<li><a href="#network-management">Network Management</a><ul>
+<li><a href="#nmcli">nmcli</a></li>
+<li><a href="#ip">ip</a></li>
+<li><a href="#ss">ss</a></li>
+<li><a href="#connmanctl">connmanctl</a></li>
+<li><a href="#firewalld">firewalld</a></li>
+<li><a href="#networkd">networkd</a></li>
+<li><a href="#tcpdump">tcpdump</a></li>
+<li><a href="#arp-scan">arp-scan</a></li>
+<li><a href="#vnstat">vnstat</a></li>
+<li><a href="#nethogs">nethogs</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<hr>
+<h2 id="nmcli">nmcli</h2>
+<p>NetworkManager has a command line interface (CLI).</p>
+<p>Get status:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>nmcli<span class="w"> </span>general<span class="w"> </span>status
+STATE<span class="w">      </span>CONNECTIVITY<span class="w">  </span>WIFI-HW …</code></pre></div>
+                <a class="readmore" href="https://dfcsoftware.github.io/linux-in-house/networkmanagement.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
 
             <li><article class="hentry">
                 <header>
-                    <h1><a href="https://dfcsoftware.github.io/my-second-review.html" rel="bookmark"
-                           title="Permalink to My Second Review">My Second Review</a></h1>
+                    <h1><a href="https://dfcsoftware.github.io/linux-in-house/encryptingfiles.html" rel="bookmark"
+                           title="Permalink to EncryptingFiles">EncryptingFiles</a></h1>
                 </header>
 
                 <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2010-12-03T10:20:00-05:00">
-                Published: Fri 03 December 2010
+        <abbr class="published" title="2023-03-10T00:00:00-05:00">
+                Published: Fri 10 March 2023
         </abbr>
 		<br />
-        <abbr class="modified" title="2010-03-12T10:20:00-05:00">
-                Updated: Fri 12 March 2010
+        <abbr class="modified" title="2024-04-19T09:30:00-04:00">
+                Updated: Fri 19 April 2024
         </abbr>
 
         <address class="vcard author">
-                By                         <a class="url fn" href="https://dfcsoftware.github.io/author/don-cohoon.html">Don Cohoon</a>
+                By                         <a class="url fn" href="https://dfcsoftware.github.io/linux-in-house/author/don-cohoon.html">Don Cohoon</a>
         </address>
-<p>In <a href="https://dfcsoftware.github.io/category/linux.html">linux</a>.</p>
-
-</footer><!-- /.post-info -->                <p>Following is a review of my favorite mechanical mouse.</p>
-                <a class="readmore" href="https://dfcsoftware.github.io/my-second-review.html">read more</a>
+<p>In <a href="https://dfcsoftware.github.io/linux-in-house/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://dfcsoftware.github.io/linux-in-house/tag/security.html">security</a> </p>
+</footer><!-- /.post-info -->                <h1 id="encrypting-files">Encrypting Files</h1>
+<p>You should protect your carefully built system and it's files from abuse, tampering, or just plain spying. It's easy to do, what are you waiting for? Encrypt your data directory <strong>now</strong>.</p>
+<hr>
+<div class="toc"><span class="toctitle">Table of Contents</span><ul>
+<li><a href="#encrypting-files">Encrypting Files</a><ul>
+<li><a href="#encrypt-disk-partition-using-luks-format">Encrypt disk partition using LUKS Format</a></li>
+<li><a href="#encrypt-a-file">Encrypt a file</a></li>
+<li><a href="#gpg-key-files">GPG key files …</a></li></ul></li></ul></div>
+                <a class="readmore" href="https://dfcsoftware.github.io/linux-in-house/encryptingfiles.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
 
             <li><article class="hentry">
                 <header>
-                    <h1><a href="https://dfcsoftware.github.io/my-writing-post.html" rel="bookmark"
-                           title="Permalink to My Writing Post">My Writing Post</a></h1>
+                    <h1><a href="https://dfcsoftware.github.io/linux-in-house/virtualip.html" rel="bookmark"
+                           title="Permalink to VirtualIP">VirtualIP</a></h1>
                 </header>
 
                 <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2010-12-03T10:20:00-05:00">
-                Published: Fri 03 December 2010
+        <abbr class="published" title="2023-02-10T10:20:00-05:00">
+                Published: Fri 10 February 2023
+        </abbr>
+		<br />
+        <abbr class="modified" title="2024-04-19T09:30:00-04:00">
+                Updated: Fri 19 April 2024
         </abbr>
 
         <address class="vcard author">
-                By                         <a class="url fn" href="https://dfcsoftware.github.io/author/don-cohoon.html">Don Cohoon</a>
+                By                         <a class="url fn" href="https://dfcsoftware.github.io/linux-in-house/author/don-cohoon.html">Don Cohoon</a>
         </address>
-<p>In <a href="https://dfcsoftware.github.io/category/writing.html">writing</a>.</p>
+<p>In <a href="https://dfcsoftware.github.io/linux-in-house/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://dfcsoftware.github.io/linux-in-house/tag/network.html">network</a> </p>
+</footer><!-- /.post-info -->                <h1 id="virtual-ip-ethernet-interface">Virtual IP Ethernet Interface</h1>
+<p>Virtual IP Interface behaves like a normal interface. All traffic routed to it will go through the master interface (for example, eth0) but with a VLAN tag. Only VLAN-aware devices can accept them if configured correctly, else the traffic is dropped. </p>
+<p><br/></p>
+<hr>
+<div class="toc"><span class="toctitle">Table of Contents</span><ul>
+<li><a href="#virtual-ip-ethernet-interface">Virtual IP …</a></li></ul></div>
+                <a class="readmore" href="https://dfcsoftware.github.io/linux-in-house/virtualip.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
-</footer><!-- /.post-info -->                <p>Following is a story about my favorite ghost story.</p>
-                <a class="readmore" href="https://dfcsoftware.github.io/my-writing-post.html">read more</a>
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://dfcsoftware.github.io/linux-in-house/setup-server.html" rel="bookmark"
+                           title="Permalink to Setup Server">Setup Server</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2023-02-02T10:20:00-05:00">
+                Published: Thu 02 February 2023
+        </abbr>
+		<br />
+        <abbr class="modified" title="2024-05-01T09:30:00-04:00">
+                Updated: Wed 01 May 2024
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://dfcsoftware.github.io/linux-in-house/author/don-cohoon.html">Don Cohoon</a>
+        </address>
+<p>In <a href="https://dfcsoftware.github.io/linux-in-house/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://dfcsoftware.github.io/linux-in-house/tag/setup.html">setup</a> </p>
+</footer><!-- /.post-info -->                <h1 id="set-up-a-new-server">Set Up a New Server</h1>
+<p>I use this as a guide to enable proper monitoring and maintenance of any new server on the network.</p>
+<p><br/></p>
+<hr>
+<div class="toc"><span class="toctitle">Table of Contents</span><ul>
+<li><a href="#set-up-a-new-server">Set Up a New Server</a><ul>
+<li><a href="#sample-home-network">Sample Home Network:</a></li>
+<li><a href="#check-your-network">Check your Network</a></li>
+<li><a href="#update-package-repository">Update Package Repository</a><ul>
+<li><a href="#debian">Debian</a></li>
+<li><a href="#redhat">RedHat</a></li>
+</ul>
+</li>
+<li><a href="#new-user-and-group-to-use">New User and Group to Use</a><ul>
+<li><a href="#debian_1">Debian …</a></li></ul></li></ul></li></ul></div>
+                <a class="readmore" href="https://dfcsoftware.github.io/linux-in-house/setup-server.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://dfcsoftware.github.io/linux-in-house/beaglebone.html" rel="bookmark"
+                           title="Permalink to BeagleBone">BeagleBone</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2023-01-25T10:20:00-05:00">
+                Published: Wed 25 January 2023
+        </abbr>
+		<br />
+        <abbr class="modified" title="2024-04-19T09:30:00-04:00">
+                Updated: Fri 19 April 2024
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://dfcsoftware.github.io/linux-in-house/author/don-cohoon.html">Don Cohoon</a>
+        </address>
+<p>In <a href="https://dfcsoftware.github.io/linux-in-house/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://dfcsoftware.github.io/linux-in-house/tag/hardware.html">hardware</a> </p>
+</footer><!-- /.post-info -->                <h1 id="beaglebone-single-board-computer-sbc">BeagleBone Single Board Computer (SBC)</h1>
+<p>The BeagleBone (BB) [1] line supports the Linux kernel and GPIO hardware connections to devices via device trees [2]. It is simular to the Rasberry-PI line, only BB is <strong>open source hardware</strong>.</p>
+<hr>
+<div class="toc"><span class="toctitle">Table of Contents</span><ul>
+<li><a href="#beaglebone-single-board-computer-sbc">BeagleBone Single Board Computer (SBC)</a><ul>
+<li><a href="#sbc-singlesmall-board-computer">SBC (Single/Small Board Computer …</a></li></ul></li></ul></div>
+                <a class="readmore" href="https://dfcsoftware.github.io/linux-in-house/beaglebone.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://dfcsoftware.github.io/linux-in-house/certificate.html" rel="bookmark"
+                           title="Permalink to Certificate">Certificate</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2023-01-25T10:20:00-05:00">
+                Published: Wed 25 January 2023
+        </abbr>
+		<br />
+        <abbr class="modified" title="2024-04-19T09:30:00-04:00">
+                Updated: Fri 19 April 2024
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://dfcsoftware.github.io/linux-in-house/author/don-cohoon.html">Don Cohoon</a>
+        </address>
+<p>In <a href="https://dfcsoftware.github.io/linux-in-house/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://dfcsoftware.github.io/linux-in-house/tag/security.html">security</a> <a href="https://dfcsoftware.github.io/linux-in-house/tag/web.html">web</a> </p>
+</footer><!-- /.post-info -->                <h1 id="web-certificate">Web Certificate</h1>
+<p>Web certificates encrypt different messages over the public internet so nobody can see what these messages contain.</p>
+<p><br/></p>
+<hr>
+<div class="toc"><span class="toctitle">Table of Contents</span><ul>
+<li><a href="#web-certificate">Web Certificate</a><ul>
+<li><a href="#lets-encrypt-certificate-authority-ca">Let's Encrypt - Certificate Authority (CA)</a></li>
+<li><a href="#certbot-certificate-robot">Certbot - Certificate Robot</a><ul>
+<li><a href="#install">Install</a></li>
+<li><a href="#configure">Configure</a></li>
+<li><a href="#schedule">Schedule</a></li>
+<li><a href="#renewal-is-done-on-web-host">Renewal is done on web host</a></li>
+</ul>
+</li>
+<li><a href="#apache-web-server-for-nextcloud">Apache - Web Server for Nextcloud</a></li>
+<li><a href="#dovecot-server-for-e-mail-clients">Dovecot - Server for E-Mail …</a></li></ul></li></ul></div>
+                <a class="readmore" href="https://dfcsoftware.github.io/linux-in-house/certificate.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://dfcsoftware.github.io/linux-in-house/cloud.html" rel="bookmark"
+                           title="Permalink to Cloud">Cloud</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2023-01-25T10:20:00-05:00">
+                Published: Wed 25 January 2023
+        </abbr>
+		<br />
+        <abbr class="modified" title="2024-04-19T09:30:00-04:00">
+                Updated: Fri 19 April 2024
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://dfcsoftware.github.io/linux-in-house/author/don-cohoon.html">Don Cohoon</a>
+        </address>
+<p>In <a href="https://dfcsoftware.github.io/linux-in-house/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://dfcsoftware.github.io/linux-in-house/tag/systems.html">systems</a> <a href="https://dfcsoftware.github.io/linux-in-house/tag/web.html">web</a> </p>
+</footer><!-- /.post-info -->                <h1 id="cloud-systems">Cloud Systems</h1>
+<p>A cloud used to be floating in the sky, then it was a bubbly thing on a network diagram where weird things happen. Now a cloud just means "Somebody else's computer.". Of course you get to it over a network and can share things, like files (pictures, music …</p>
+                <a class="readmore" href="https://dfcsoftware.github.io/linux-in-house/cloud.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://dfcsoftware.github.io/linux-in-house/dns.html" rel="bookmark"
+                           title="Permalink to DNS">DNS</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2023-01-25T10:20:00-05:00">
+                Published: Wed 25 January 2023
+        </abbr>
+		<br />
+        <abbr class="modified" title="2024-04-19T09:30:00-04:00">
+                Updated: Fri 19 April 2024
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://dfcsoftware.github.io/linux-in-house/author/don-cohoon.html">Don Cohoon</a>
+        </address>
+<p>In <a href="https://dfcsoftware.github.io/linux-in-house/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://dfcsoftware.github.io/linux-in-house/tag/web.html">web</a> </p>
+</footer><!-- /.post-info -->                <h1 id="domain-name-service-dns">Domain Name Service (DNS)</h1>
+<p>A Domain Name Service (DNS) allows your E-Mail and Web Server to use a name instead of an IP Address, so other people can find you by name. Some Internet Service Providers (ISP) will change your IP address every few months in a residential environment.</p>
+<hr>
+<div class="toc"><span class="toctitle">Table …</span></div>
+                <a class="readmore" href="https://dfcsoftware.github.io/linux-in-house/dns.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://dfcsoftware.github.io/linux-in-house/e-mail.html" rel="bookmark"
+                           title="Permalink to E-Mail">E-Mail</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2023-01-25T10:20:00-05:00">
+                Published: Wed 25 January 2023
+        </abbr>
+		<br />
+        <abbr class="modified" title="2024-04-19T09:30:00-04:00">
+                Updated: Fri 19 April 2024
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://dfcsoftware.github.io/linux-in-house/author/don-cohoon.html">Don Cohoon</a>
+        </address>
+<p>In <a href="https://dfcsoftware.github.io/linux-in-house/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://dfcsoftware.github.io/linux-in-house/tag/email.html">email</a> </p>
+</footer><!-- /.post-info -->                <h1 id="e-mail">E-Mail</h1>
+<p>Electronic Mail (E-Mail) is a way to type letters onto a computer and send them to other people. These other people's computers will then use E-Mail to read your letters. It is an electronic version of the Post Office.</p>
+<hr>
+<div class="toc"><span class="toctitle">Table of Contents</span><ul>
+<li><a href="#e-mail">E-Mail</a><ul>
+<li><a href="#dovecot-presents-e-mails-to-clients">Dovecot - Presents E-Mails to Clients</a><ul>
+<li><a href="#installation">Installation …</a></li></ul></li></ul></li></ul></div>
+                <a class="readmore" href="https://dfcsoftware.github.io/linux-in-house/e-mail.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
 <nav>
   <ul>
-        <li class="horizontal"><a href="https://dfcsoftware.github.io/author/don-cohoon.html">&Lang;</a></li>
-        <li class="horizontal"><a href="https://dfcsoftware.github.io/author/don-cohoon3.html">&lang;</a></li>
-    <li class="horizontal">Page 4 / 4</li>
+        <li class="horizontal"><a href="https://dfcsoftware.github.io/linux-in-house/author/don-cohoon.html">&Lang;</a></li>
+        <li class="horizontal"><a href="https://dfcsoftware.github.io/linux-in-house/author/don-cohoon3.html">&lang;</a></li>
+    <li class="horizontal">Page 4 / 6</li>
+        <li class="horizontal"><a href="https://dfcsoftware.github.io/linux-in-house/author/don-cohoon5.html">&rang;</a></li>
+        <li class="horizontal"><a href="https://dfcsoftware.github.io/linux-in-house/author/don-cohoon6.html">&Rang;</a></li>
   </ul>
 </nav>
                 </section><!-- /#content -->
@@ -254,19 +390,23 @@ Ver<span class="w"> </span>Cluster<span class="w"> </span>Port<span class="w"> <
                 <div class="blogroll">
                         <h2>links</h2>
                         <ul>
-                            <li><a href="https://getpelican.com/">Pelican</a></li>
-                            <li><a href="https://www.python.org/">Python.org</a></li>
-                            <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
+                            <li><a href="https://lwn.net/">Linux Weekly News</a></li>
+                            <li><a href="https://fullcirclemagazine.org/">Full Circle Magazine</a></li>
+                            <li><a href="https://www.linuxjournal.com/">Linux Journal</a></li>
+                            <li><a href="https://www.linux-magazine.com/">Linux Magazine</a></li>
+                            <li><a href="https://www.thefarside.com/">The Far Side</a></li>
                         </ul>
                 </div><!-- /.blogroll -->
                 <div class="social">
                         <h2>social</h2>
                         <ul>
-                            <li><a href="https://dfcsoftware.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+                            <li><a href="https://dfcsoftware.github.io/linux-in-house/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
 
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
+                            <li><a href="https://fosstodon.org/@LinuxintheHouse">Feedback</a></li>
+                            <li><a href="https://fosstodon.org/@LinuxintheHouse.rss">Mastodon RSS feed</a></li>
+                            <li><a href="https://linux-in-the-house.pages.dev/">Book</a></li>
+                            <li><a href="/linux-in-house/author/don-cohoon.html">Created by: Don Cohoon</a></li>
+                            <li><a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License </a></li>
                         </ul>
                 </div><!-- /.social -->
         </section><!-- /#extras -->
@@ -277,6 +417,7 @@ Ver<span class="w"> </span>Cluster<span class="w"> </span>Port<span class="w"> <
                 </p><!-- /#about -->
 
                 <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+                <p> Version:  3.102 </p>
         </footer><!-- /#contentinfo -->
 
 </body>

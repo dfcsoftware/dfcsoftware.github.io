@@ -1,6 +1,301 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux Home Administration - writing</title><link href="https://dfcsoftware.github.io/linux-in-house/" rel="alternate"></link><link href="https://dfcsoftware.github.io/linux-in-house/feeds/writing.atom.xml" rel="self"></link><id>https://dfcsoftware.github.io/linux-in-house/</id><updated>2025-05-07T10:20:00-04:00</updated><entry><title>Credits</title><link href="https://dfcsoftware.github.io/linux-in-house/credits.html" rel="alternate"></link><published>2025-05-07T10:20:00-04:00</published><updated>2025-05-07T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-05-07:/linux-in-house/credits.html</id><content type="html">&lt;p&gt;mixed by" Twiggy Snap&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux Home Administration - writing</title><link href="https://dfcsoftware.github.io/linux-in-house/" rel="alternate"></link><link href="https://dfcsoftware.github.io/linux-in-house/feeds/writing.atom.xml" rel="self"></link><id>https://dfcsoftware.github.io/linux-in-house/</id><updated>2025-05-31T10:20:00-04:00</updated><entry><title>Epitath</title><link href="https://dfcsoftware.github.io/linux-in-house/epitath.html" rel="alternate"></link><published>2025-05-31T10:20:00-04:00</published><updated>2025-05-31T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-05-31:/linux-in-house/epitath.html</id><summary type="html">&lt;p&gt;Here I sit, like an out of work steam shovel in a gritty gutter wondering how it could happen to me.&lt;/p&gt;
+&lt;p&gt;Like a hammer cocked to fire, but not willing to focus on a single target, I blink, inhale deeply and slowly and blink again. I have a dream. This …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Here I sit, like an out of work steam shovel in a gritty gutter wondering how it could happen to me.&lt;/p&gt;
+&lt;p&gt;Like a hammer cocked to fire, but not willing to focus on a single target, I blink, inhale deeply and slowly and blink again. I have a dream. This is not a last will and  testament but perhaps an annual autobiography without so many details. Only the important sounding stuff. The things that peers respect and lifeless windbags repeat as if they had no life of their own (!). A meaningless drivel of bullets in which one or two sentences could suffice. Boiled down accomplishments to fit the format for want of the theme or even a plot to show. Be it ever so humble,&lt;/p&gt;
+&lt;p&gt;"I did my best." was all that appeared.&lt;/p&gt;
+&lt;p&gt;-- Don Cohoon (1996)&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt; ____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+ ¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>Gerrymandering</title><link href="https://dfcsoftware.github.io/linux-in-house/gerrymandering.html" rel="alternate"></link><published>2025-05-30T10:20:00-04:00</published><updated>2025-05-30T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-05-30:/linux-in-house/gerrymandering.html</id><content type="html">&lt;p&gt;&lt;img alt="Gerrymandering.jpg" src="/linux-in-house/images/Gerrymandering.JPG"&gt;&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt; ____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+ ¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>These Days</title><link href="https://dfcsoftware.github.io/linux-in-house/these-days.html" rel="alternate"></link><published>2025-05-29T10:20:00-04:00</published><updated>2025-05-29T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-05-29:/linux-in-house/these-days.html</id><summary type="html">&lt;p&gt;“These Days”&lt;/p&gt;
+&lt;p&gt;Well I’ve been out walkin’
+I don’t do that much talkin’ these days
+These days
+These days I seem to think a lot
+About the things that I forgot to do for you
+And all the times I had the chance to&lt;/p&gt;
+&lt;p&gt;And I had a …&lt;/p&gt;</summary><content type="html">&lt;p&gt;“These Days”&lt;/p&gt;
+&lt;p&gt;Well I’ve been out walkin’
+I don’t do that much talkin’ these days
+These days
+These days I seem to think a lot
+About the things that I forgot to do for you
+And all the times I had the chance to&lt;/p&gt;
+&lt;p&gt;And I had a lover
+And it’s so hard to risk another these days
+These days
+Now if I seem to be afraid to live the life that I have made in song
+Well, it’s just that I’ve been losin’ for so long&lt;/p&gt;
+&lt;p&gt;Well I’ll keep on movin’, movin’ on
+Things are bound to be improvin’ these days
+One of these days
+These days I’ll sit on corner stones
+And count the time in quarter tones to ten, my friend
+Don’t confront me with my failures
+I had not forgotten them&lt;/p&gt;
+&lt;p&gt;Written by Jackson Browne&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt; ____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+ ¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>Public Health</title><link href="https://dfcsoftware.github.io/linux-in-house/public-health.html" rel="alternate"></link><published>2025-05-28T10:20:00-04:00</published><updated>2025-05-28T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-05-28:/linux-in-house/public-health.html</id><content type="html">&lt;p&gt;Public health is
+about making
+collective
+decisions as a
+society that
+allow most
+people to make
+healthy choices
+by default.&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt; ____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+ ¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>Morning</title><link href="https://dfcsoftware.github.io/linux-in-house/morning.html" rel="alternate"></link><published>2025-05-27T10:20:00-04:00</published><updated>2025-05-27T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-05-27:/linux-in-house/morning.html</id><content type="html">&lt;p&gt;This morning&lt;/p&gt;
+&lt;p&gt;The clouds were grey&lt;/p&gt;
+&lt;p&gt;And the sky white&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt; ____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+ ¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>Survive</title><link href="https://dfcsoftware.github.io/linux-in-house/survive.html" rel="alternate"></link><published>2025-05-26T10:20:00-04:00</published><updated>2025-05-26T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-05-26:/linux-in-house/survive.html</id><content type="html">&lt;p&gt;courage&lt;/p&gt;
+&lt;p&gt;love&lt;/p&gt;
+&lt;p&gt;humor&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt; ____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+ ¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>Code</title><link href="https://dfcsoftware.github.io/linux-in-house/code.html" rel="alternate"></link><published>2025-05-25T10:20:00-04:00</published><updated>2025-05-25T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-05-25:/linux-in-house/code.html</id><content type="html">&lt;p&gt;&lt;img alt="Code.jpg" src="/linux-in-house/images/Code.jpg"&gt;&lt;/p&gt;</content><category term="writing"></category></entry><entry><title>HD Bed</title><link href="https://dfcsoftware.github.io/linux-in-house/hd-bed.html" rel="alternate"></link><published>2025-05-24T10:20:00-04:00</published><updated>2025-05-24T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-05-24:/linux-in-house/hd-bed.html</id><content type="html">&lt;p&gt;&lt;img alt="HD-bed.jpg" src="/linux-in-house/images/HD-bed.jpg"&gt;&lt;/p&gt;</content><category term="writing"></category></entry><entry><title>Person</title><link href="https://dfcsoftware.github.io/linux-in-house/person.html" rel="alternate"></link><published>2025-05-23T10:20:00-04:00</published><updated>2025-05-23T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-05-23:/linux-in-house/person.html</id><content type="html">&lt;p&gt;&lt;img alt="Person.jpg" src="/linux-in-house/images/Person.jpg"&gt;&lt;/p&gt;</content><category term="writing"></category></entry><entry><title>Beautiful</title><link href="https://dfcsoftware.github.io/linux-in-house/beautiful.html" rel="alternate"></link><published>2025-05-22T10:20:00-04:00</published><updated>2025-05-22T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-05-22:/linux-in-house/beautiful.html</id><content type="html">&lt;p&gt;It's a Beautiful&lt;/p&gt;
+&lt;p&gt;Algorithm&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt; ____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+ ¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>Friend</title><link href="https://dfcsoftware.github.io/linux-in-house/friend.html" rel="alternate"></link><published>2025-05-21T10:20:00-04:00</published><updated>2025-05-21T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-05-21:/linux-in-house/friend.html</id><content type="html">&lt;p&gt;Wood is my friend,&lt;/p&gt;
+&lt;p&gt;I have lots of&lt;/p&gt;
+&lt;p&gt;them, all over,&lt;/p&gt;
+&lt;p&gt;and they like me too.&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt; ____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+ ¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>Retire</title><link href="https://dfcsoftware.github.io/linux-in-house/retire.html" rel="alternate"></link><published>2025-05-21T10:20:00-04:00</published><updated>2025-05-21T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-05-21:/linux-in-house/retire.html</id><content type="html">&lt;p&gt;I won't retire until&lt;/p&gt;
+&lt;p&gt;my toes are sticking&lt;/p&gt;
+&lt;p&gt;straight up.&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt; ____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+ ¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>Cold</title><link href="https://dfcsoftware.github.io/linux-in-house/cold.html" rel="alternate"></link><published>2025-05-20T10:20:00-04:00</published><updated>2025-05-20T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-05-20:/linux-in-house/cold.html</id><content type="html">&lt;p&gt;She was so cool,&lt;/p&gt;
+&lt;p&gt;you could&lt;/p&gt;
+&lt;p&gt;store butter&lt;/p&gt;
+&lt;p&gt;in her&lt;/p&gt;
+&lt;p&gt;mouth.&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt; ____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+ ¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>Together</title><link href="https://dfcsoftware.github.io/linux-in-house/together.html" rel="alternate"></link><published>2025-05-19T10:20:00-04:00</published><updated>2025-05-19T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-05-19:/linux-in-house/together.html</id><content type="html">&lt;p&gt;You keep me&lt;/p&gt;
+&lt;p&gt;I'll keep you.&lt;/p&gt;
+&lt;p&gt;We make each&lt;/p&gt;
+&lt;p&gt;other.&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt; ____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+ ¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>Time</title><link href="https://dfcsoftware.github.io/linux-in-house/time.html" rel="alternate"></link><published>2025-05-18T10:20:00-04:00</published><updated>2025-05-18T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-05-18:/linux-in-house/time.html</id><content type="html">&lt;p&gt;Good things take a&lt;/p&gt;
+&lt;p&gt;long time,&lt;/p&gt;
+&lt;p&gt;While bad things&lt;/p&gt;
+&lt;p&gt;happen quickly.&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt; ____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+ ¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>Specialist</title><link href="https://dfcsoftware.github.io/linux-in-house/specialist.html" rel="alternate"></link><published>2025-05-17T10:20:00-04:00</published><updated>2025-05-17T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-05-17:/linux-in-house/specialist.html</id><content type="html">&lt;p&gt;Hair, Nose and Face Doctor&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt; ____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+ ¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>Work</title><link href="https://dfcsoftware.github.io/linux-in-house/work.html" rel="alternate"></link><published>2025-05-16T10:20:00-04:00</published><updated>2025-05-16T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-05-16:/linux-in-house/work.html</id><content type="html">&lt;p&gt;No matter how&lt;/p&gt;
+&lt;p&gt;smart you are,&lt;/p&gt;
+&lt;p&gt;you need to&lt;/p&gt;
+&lt;p&gt;learn to work&lt;/p&gt;
+&lt;p&gt;hard, it's a blessing.&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt; ____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+ ¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>Logic</title><link href="https://dfcsoftware.github.io/linux-in-house/logic.html" rel="alternate"></link><published>2025-05-15T10:20:00-04:00</published><updated>2025-05-15T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-05-15:/linux-in-house/logic.html</id><content type="html">&lt;p&gt;usually it's&lt;/p&gt;
+&lt;p&gt;not unusual&lt;/p&gt;
+&lt;p&gt;to disagree&lt;/p&gt;
+&lt;p&gt;how not to do&lt;/p&gt;
+&lt;p&gt;the right thing.&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt; ____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+ ¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>My Work</title><link href="https://dfcsoftware.github.io/linux-in-house/my-work.html" rel="alternate"></link><published>2025-05-14T10:20:00-04:00</published><updated>2025-05-14T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-05-14:/linux-in-house/my-work.html</id><content type="html">&lt;p&gt;I enjoy working&lt;/p&gt;
+&lt;p&gt;in silence,&lt;/p&gt;
+&lt;p&gt;it's my&lt;/p&gt;
+&lt;p&gt;canvas&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt; ____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+ ¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>Best Offer</title><link href="https://dfcsoftware.github.io/linux-in-house/best-offer.html" rel="alternate"></link><published>2025-05-13T10:20:00-04:00</published><updated>2025-05-13T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-05-13:/linux-in-house/best-offer.html</id><content type="html">&lt;ul&gt;
+&lt;li&gt;Tired of getting Ripped Off?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;-&amp;gt; Send $5.00&lt;/p&gt;
+&lt;p&gt;Together we can make&lt;/p&gt;
+&lt;p&gt;a difference&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt; ____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+ ¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>Tired</title><link href="https://dfcsoftware.github.io/linux-in-house/tired.html" rel="alternate"></link><published>2025-05-12T10:20:00-04:00</published><updated>2025-05-12T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-05-12:/linux-in-house/tired.html</id><content type="html">&lt;p&gt;I gotta get a&lt;/p&gt;
+&lt;p&gt;second wind,&lt;/p&gt;
+&lt;p&gt;I broke the&lt;/p&gt;
+&lt;p&gt;first one&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt; ____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+ ¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>Warning</title><link href="https://dfcsoftware.github.io/linux-in-house/warning.html" rel="alternate"></link><published>2025-05-11T10:20:00-04:00</published><updated>2025-05-11T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-05-11:/linux-in-house/warning.html</id><content type="html">&lt;p&gt;Beware of&lt;/p&gt;
+&lt;p&gt;the&lt;/p&gt;
+&lt;p&gt;Lawn&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt; ____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+ ¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>Anouncement</title><link href="https://dfcsoftware.github.io/linux-in-house/anouncement.html" rel="alternate"></link><published>2025-05-10T10:20:00-04:00</published><updated>2025-05-10T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-05-10:/linux-in-house/anouncement.html</id><content type="html">&lt;p&gt;Here at the agua&lt;/p&gt;
+&lt;p&gt;creek palatial&lt;/p&gt;
+&lt;p&gt;castle window,&lt;/p&gt;
+&lt;p&gt;the weather is&lt;/p&gt;
+&lt;p&gt;outside...&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt; ____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+ ¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>Which One</title><link href="https://dfcsoftware.github.io/linux-in-house/which-one.html" rel="alternate"></link><published>2025-05-09T10:20:00-04:00</published><updated>2025-05-09T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-05-09:/linux-in-house/which-one.html</id><content type="html">&lt;p&gt;Are you the&lt;/p&gt;
+&lt;p&gt;windshield&lt;/p&gt;
+&lt;p&gt;or the&lt;/p&gt;
+&lt;p&gt;bug?&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt; ____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+ ¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>Sun Protection</title><link href="https://dfcsoftware.github.io/linux-in-house/sun-protection.html" rel="alternate"></link><published>2025-05-08T11:20:00-04:00</published><updated>2025-05-08T11:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-05-08:/linux-in-house/sun-protection.html</id><content type="html">&lt;p&gt;slip - shirt on&lt;/p&gt;
+&lt;p&gt;slap - hat on&lt;/p&gt;
+&lt;p&gt;slop - sunscreen on&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt; ____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+ ¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>Credits</title><link href="https://dfcsoftware.github.io/linux-in-house/credits.html" rel="alternate"></link><published>2025-05-07T10:20:00-04:00</published><updated>2025-05-07T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-05-07:/linux-in-house/credits.html</id><content type="html">&lt;p&gt;mixed by" Twiggy Snap&lt;/p&gt;
 &lt;p&gt;editor: Lucky You&lt;/p&gt;
 &lt;p&gt;sound: Headdy Choke&lt;/p&gt;
 &lt;p&gt;producer: Spara Dimme&lt;/p&gt;
-&lt;p&gt;Facilities: Gotta Go&lt;/p&gt;</content><category term="writing"></category></entry><entry><title>My Writing Post</title><link href="https://dfcsoftware.github.io/linux-in-house/my-writing-post.html" rel="alternate"></link><published>2010-12-03T10:20:00-05:00</published><updated>2010-12-03T10:20:00-05:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2010-12-03:/linux-in-house/my-writing-post.html</id><content type="html">&lt;p&gt;Following is a story about my favorite ghost story.&lt;/p&gt;</content><category term="writing"></category></entry></feed>
+&lt;p&gt;Facilities: Gotta Go&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt; ____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+ ¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>My Writing Post</title><link href="https://dfcsoftware.github.io/linux-in-house/my-writing-post.html" rel="alternate"></link><published>2010-12-03T10:20:00-05:00</published><updated>2010-12-03T10:20:00-05:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2010-12-03:/linux-in-house/my-writing-post.html</id><content type="html">&lt;p&gt;Following is a story about my favorite ghost story.&lt;/p&gt;</content><category term="writing"></category></entry></feed>
