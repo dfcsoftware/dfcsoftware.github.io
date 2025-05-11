@@ -1,5 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux Home Administration - writing</title><link href="https://dfcsoftware.github.io/linux-in-house/" rel="alternate"></link><link href="https://dfcsoftware.github.io/linux-in-house/feeds/writing.atom.xml" rel="self"></link><id>https://dfcsoftware.github.io/linux-in-house/</id><updated>2025-05-31T10:20:00-04:00</updated><entry><title>Epitath</title><link href="https://dfcsoftware.github.io/linux-in-house/epitath.html" rel="alternate"></link><published>2025-05-31T10:20:00-04:00</published><updated>2025-05-31T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-05-31:/linux-in-house/epitath.html</id><summary type="html">&lt;p&gt;Here I sit, like an out of work steam shovel in a gritty gutter wondering how it could happen to me.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux Home Administration - writing</title><link href="https://dfcsoftware.github.io/linux-in-house/" rel="alternate"></link><link href="https://dfcsoftware.github.io/linux-in-house/feeds/writing.atom.xml" rel="self"></link><id>https://dfcsoftware.github.io/linux-in-house/</id><updated>2025-06-01T10:20:00-04:00</updated><entry><title>Open Source</title><link href="https://dfcsoftware.github.io/linux-in-house/open-source.html" rel="alternate"></link><published>2025-06-01T10:20:00-04:00</published><updated>2025-06-01T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-06-01:/linux-in-house/open-source.html</id><summary type="html">&lt;p&gt;Are you secure
+or scared?&lt;/p&gt;
+&lt;p&gt;Maybe you or your family struggled
+then thrived.&lt;/p&gt;
+&lt;p&gt;Your duty is to pass on a wealth or knowledge
+to your heirs.&lt;/p&gt;
+&lt;p&gt;Sell your labor,
+sell your invention,
+sell your enthusiasm,
+but don't sell your secrets.&lt;/p&gt;
+&lt;p&gt;Or should you...
+are you brave enough?&lt;/p&gt;
+&lt;p&gt;People sell their …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Are you secure
+or scared?&lt;/p&gt;
+&lt;p&gt;Maybe you or your family struggled
+then thrived.&lt;/p&gt;
+&lt;p&gt;Your duty is to pass on a wealth or knowledge
+to your heirs.&lt;/p&gt;
+&lt;p&gt;Sell your labor,
+sell your invention,
+sell your enthusiasm,
+but don't sell your secrets.&lt;/p&gt;
+&lt;p&gt;Or should you...
+are you brave enough?&lt;/p&gt;
+&lt;p&gt;People sell their creations every day,
+a chair,
+table,
+basket.&lt;/p&gt;
+&lt;p&gt;A chef sells food
+and maybe even ingredients.&lt;/p&gt;
+&lt;p&gt;But not the methods.&lt;/p&gt;
+&lt;p&gt;Why?&lt;/p&gt;
+&lt;p&gt;Secrets are lost through generations.&lt;/p&gt;
+&lt;p&gt;Language and books can change that.&lt;/p&gt;
+&lt;p&gt;Is this good?&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt; ____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+ ¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>Epitath</title><link href="https://dfcsoftware.github.io/linux-in-house/epitath.html" rel="alternate"></link><published>2025-05-31T10:20:00-04:00</published><updated>2025-05-31T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-05-31:/linux-in-house/epitath.html</id><summary type="html">&lt;p&gt;Here I sit, like an out of work steam shovel in a gritty gutter wondering how it could happen to me.&lt;/p&gt;
 &lt;p&gt;Like a hammer cocked to fire, but not willing to focus on a single target, I blink, inhale deeply and slowly and blink again. I have a dream. This …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Here I sit, like an out of work steam shovel in a gritty gutter wondering how it could happen to me.&lt;/p&gt;
 &lt;p&gt;Like a hammer cocked to fire, but not willing to focus on a single target, I blink, inhale deeply and slowly and blink again. I have a dream. This is not a last will and  testament but perhaps an annual autobiography without so many details. Only the important sounding stuff. The things that peers respect and lifeless windbags repeat as if they had no life of their own (!). A meaningless drivel of bullets in which one or two sentences could suffice. Boiled down accomplishments to fit the format for want of the theme or even a plot to show. Be it ever so humble,&lt;/p&gt;
 &lt;p&gt;"I did my best." was all that appeared.&lt;/p&gt;
@@ -298,4 +341,27 @@ by default.&lt;/p&gt;
 |____/ \___/|_| |_|                             
 
  ¯\_(ツ)_/¯
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>My Writing Post</title><link href="https://dfcsoftware.github.io/linux-in-house/my-writing-post.html" rel="alternate"></link><published>2010-12-03T10:20:00-05:00</published><updated>2010-12-03T10:20:00-05:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2010-12-03:/linux-in-house/my-writing-post.html</id><content type="html">&lt;p&gt;Following is a story about my favorite ghost story.&lt;/p&gt;</content><category term="writing"></category></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>My Writing Post</title><link href="https://dfcsoftware.github.io/linux-in-house/my-writing-post.html" rel="alternate"></link><published>2010-12-03T10:20:00-05:00</published><updated>2010-12-03T10:20:00-05:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2010-12-03:/linux-in-house/my-writing-post.html</id><summary type="html">&lt;p&gt;Following is a story about my favorite ghost story.&lt;/p&gt;
+&lt;p&gt;It was bought at a local thrift shop
+sitting in the window too long;
+burnt, dry, yellow and tagged at 50 cents.&lt;/p&gt;
+&lt;p&gt;How could you go wrong?&lt;/p&gt;
+&lt;p&gt;Dive right in, the pages are fine.&lt;/p&gt;
+&lt;p&gt;Focus, emotion, dialog, characters and
+oh no …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Following is a story about my favorite ghost story.&lt;/p&gt;
+&lt;p&gt;It was bought at a local thrift shop
+sitting in the window too long;
+burnt, dry, yellow and tagged at 50 cents.&lt;/p&gt;
+&lt;p&gt;How could you go wrong?&lt;/p&gt;
+&lt;p&gt;Dive right in, the pages are fine.&lt;/p&gt;
+&lt;p&gt;Focus, emotion, dialog, characters and
+oh no, is there a plot?&lt;/p&gt;
+&lt;p&gt;Destruction of peace with chaos.&lt;/p&gt;
+&lt;p&gt;600 pages in one night, it spooks me
+as I continue.&lt;/p&gt;
+&lt;p&gt;Acid burns through darkness as lines of
+words stream in and out.&lt;/p&gt;
+&lt;p&gt;Visual movement overcomes silence
+with mind over matter.&lt;/p&gt;
+&lt;p&gt;Another book in the wall.&lt;/p&gt;
+&lt;p&gt;Solar man coaxes sleep....&lt;/p&gt;</content><category term="writing"></category></entry></feed>
