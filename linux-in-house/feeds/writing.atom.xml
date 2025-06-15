@@ -1,5 +1,359 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux Home Administration - writing</title><link href="https://dfcsoftware.github.io/linux-in-house/" rel="alternate"></link><link href="https://dfcsoftware.github.io/linux-in-house/feeds/writing.atom.xml" rel="self"></link><id>https://dfcsoftware.github.io/linux-in-house/</id><updated>2025-06-07T10:20:00-04:00</updated><entry><title>Turn the Page</title><link href="https://dfcsoftware.github.io/linux-in-house/turn-the-page.html" rel="alternate"></link><published>2025-06-07T10:20:00-04:00</published><updated>2025-06-07T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-06-07:/linux-in-house/turn-the-page.html</id><summary type="html">&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Oh no, you said it.
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux Home Administration - writing</title><link href="https://dfcsoftware.github.io/linux-in-house/" rel="alternate"></link><link href="https://dfcsoftware.github.io/linux-in-house/feeds/writing.atom.xml" rel="self"></link><id>https://dfcsoftware.github.io/linux-in-house/</id><updated>2025-06-24T10:20:00-04:00</updated><entry><title>Right</title><link href="https://dfcsoftware.github.io/linux-in-house/right.html" rel="alternate"></link><published>2025-06-24T10:20:00-04:00</published><updated>2025-06-24T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-06-24:/linux-in-house/right.html</id><content type="html">&lt;p&gt;Why do we always convince ourselves,&lt;/p&gt;
+&lt;p&gt;we are right?&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt; ____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+ ¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>Robots</title><link href="https://dfcsoftware.github.io/linux-in-house/robots.html" rel="alternate"></link><published>2025-06-23T10:20:00-04:00</published><updated>2025-06-23T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-06-23:/linux-in-house/robots.html</id><summary type="html">&lt;h1 id="in-the-20st-century"&gt;In the 20st century:&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;A robot may not injure a human being or, through inaction, allow a human being to come to harm.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;A robot must obey the orders given it by human beings except where such orders would conflict with the First Law.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;A robot must protect its own …&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;</summary><content type="html">&lt;h1 id="in-the-20st-century"&gt;In the 20st century:&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;A robot may not injure a human being or, through inaction, allow a human being to come to harm.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;A robot must obey the orders given it by human beings except where such orders would conflict with the First Law.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;A robot must protect its own existence as long as such protection does not conflict with the First or Second Law.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Isaac Asimov;
+1942&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id="in-the-21st-century"&gt;In the 21st century:&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;The visual appearance of a robot makes a promise about what it can do and how smart it is. It needs to deliver or slightly overdeliver on that promise or it will not be accepted.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;When robots and people coexist in the same spaces, the robots must not take away from people’s agency, particularly when the robots are failing, as inevitably they will at times.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Technologies for robots need 10+ years of steady improvement beyond lab demos of the target tasks to mature to low cost and to have their limitations characterized well enough that they can deliver 99.9 percent of the time. Every 10 more years gets another 9 in reliability.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Rodney Brooks;
+06-Aug-2024&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Reference: &lt;a href="https://spectrum.ieee.org/rodney-brooks-three-laws-robotics"&gt;https://spectrum.ieee.org/rodney-brooks-three-laws-robotics&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt; ____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+ ¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>Today</title><link href="https://dfcsoftware.github.io/linux-in-house/today.html" rel="alternate"></link><published>2025-06-22T10:20:00-04:00</published><updated>2025-06-22T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-06-22:/linux-in-house/today.html</id><summary type="html">&lt;p&gt;Date - c. 480 BCE&lt;/p&gt;
+&lt;p&gt;"Today this mind does not stray and is under the harmony of control, even as a wild elephant is controlled by the trainer."&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;— Gautama Buddha (c. 563 BCE, 483 BCE)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt; ____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+ ¯\_(ツ)_ …&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;Date - c. 480 BCE&lt;/p&gt;
+&lt;p&gt;"Today this mind does not stray and is under the harmony of control, even as a wild elephant is controlled by the trainer."&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;— Gautama Buddha (c. 563 BCE, 483 BCE)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt; ____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+ ¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>Cult</title><link href="https://dfcsoftware.github.io/linux-in-house/cult.html" rel="alternate"></link><published>2025-06-21T10:20:00-04:00</published><updated>2025-06-21T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-06-21:/linux-in-house/cult.html</id><summary type="html">&lt;p&gt;Dr. Erica Brozovsky, PhD of the PBS series Otherwords explained how cult leaders use provocatively loaded language with their followers to create an adversarial relationship with the “other side” of their way of thinking – an “us versus them” mentality. It also keeps them invested, obedient, and ready to defend their …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Dr. Erica Brozovsky, PhD of the PBS series Otherwords explained how cult leaders use provocatively loaded language with their followers to create an adversarial relationship with the “other side” of their way of thinking – an “us versus them” mentality. It also keeps them invested, obedient, and ready to defend their way of thinking to anyone who questions them&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Loaded language is a general term for words or phrases that have deep emotional associations for the listener, like genocide, patriot, toxic, or vermin. …Through repetition, these leaders ingrained an intense emotional association in their follower’s psyche …They shut down argument and critical thinking, which is why they’re so handy to authoritarians who don’t like to be questioned.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Reference: &lt;a href="https://www.pbs.org/video/how-cult-leaders-use-language-cp8ggb/"&gt;https://www.pbs.org/video/how-cult-leaders-use-language-cp8ggb/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;How Cult Leaders Use Language&lt;/p&gt;
+&lt;p&gt;Season 4 Episode 6 | 10m 58sVideo has Closed Captions | CC&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;What do Gandhi, Martin Luther King, Jr., and Hitler have in common? They were all obsessively studied by Jim Jones, the cult leader who convinced and coerced more than 900 members of his "People's Temple" to commit suicide in the Jonestown Massacre. All these figures are known as "charismatic leaders," people who inspire intense devotion or emotional attachment.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Aired 06/20/2024 | Rating NR&lt;/p&gt;
+&lt;p&gt;From
+Digital Studios&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt; ____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+ ¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>Calculate</title><link href="https://dfcsoftware.github.io/linux-in-house/calculate.html" rel="alternate"></link><published>2025-06-20T10:20:00-04:00</published><updated>2025-06-20T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-06-20:/linux-in-house/calculate.html</id><content type="html">&lt;p&gt;Type into a calculator, then hold it upside down to display the word:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;word       number
+---------- ----------
+Google     376006
+eggshells  577345663
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Reference: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;grep&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;^[izehsglbo]*\([izehsglb]\|[izehsglb]o\)$&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;share&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dict&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;words&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt; ____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+ ¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>Declaration</title><link href="https://dfcsoftware.github.io/linux-in-house/declaration.html" rel="alternate"></link><published>2025-06-19T10:20:00-04:00</published><updated>2025-06-19T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-06-19:/linux-in-house/declaration.html</id><summary type="html">&lt;p&gt;Declaration of the Independence of the Mind — a passionate cry for using the power of art and intellectual work not for propaganda, destruction, and divisiveness, but for bringing the world together and elevating the human spirit through the invisible fellowship that transcends national, ethnic, and class boundaries.&lt;/p&gt;
+&lt;p&gt;Romain Rolland (January …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Declaration of the Independence of the Mind — a passionate cry for using the power of art and intellectual work not for propaganda, destruction, and divisiveness, but for bringing the world together and elevating the human spirit through the invisible fellowship that transcends national, ethnic, and class boundaries.&lt;/p&gt;
+&lt;p&gt;Romain Rolland (January 29, 1866–December 30, 1944) &lt;/p&gt;
+&lt;p&gt;Stefan Zweig captures the spirit of the declaration beautifully in his biography of Rolland, itself a sublime work of art:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The invisible republic of the spirit, the universal fatherland, has been established among the races and among the nations. Its frontiers are open to all who wish to dwell therein; its only law is that of brotherhood; its only enemies are hatred and arrogance between nations. Whoever makes his home within this invisible realm becomes a citizen of the world. He is the heir, not of one people but of all peoples. Henceforth he is an indweller in all tongues and in all countries, in the universal past and the universal future.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Reference: &lt;a href="http://www.amazon.com/exec/obidos/ASIN/2714436536/braipick-20"&gt;http://www.amazon.com/exec/obidos/ASIN/2714436536/braipick-20&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt; ____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+ ¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>Conversation</title><link href="https://dfcsoftware.github.io/linux-in-house/conversation.html" rel="alternate"></link><published>2025-06-18T10:20:00-04:00</published><updated>2025-06-18T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-06-18:/linux-in-house/conversation.html</id><summary type="html">&lt;p&gt;“The art of conversation is the art of hearing as well as of being heard. Some of the best talkers are, on this account, the worst company.” &lt;/p&gt;
+&lt;p&gt;(Excerpted from David Robson’s The Laws of Connection.)&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt; ____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+ ¯\_ …&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;“The art of conversation is the art of hearing as well as of being heard. Some of the best talkers are, on this account, the worst company.” &lt;/p&gt;
+&lt;p&gt;(Excerpted from David Robson’s The Laws of Connection.)&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt; ____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+ ¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>Last Free Article</title><link href="https://dfcsoftware.github.io/linux-in-house/last-free-article.html" rel="alternate"></link><published>2025-06-17T10:20:00-04:00</published><updated>2025-06-17T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-06-17:/linux-in-house/last-free-article.html</id><summary type="html">&lt;p&gt;I just loved reading this:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;mcsweeneys.net&lt;/p&gt;
+&lt;p&gt;You’ve Read Your Last Free Article, Such Is the Nature of Mortality&lt;/p&gt;
+&lt;p&gt;by Jessica Sedgewick&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id="mcsweeneys-internet-tendencys-patreon"&gt;McSWEENEY'S INTERNET TENDENCY'S PATREON&lt;/h1&gt;
+&lt;p&gt;This is your last free article. There will be no more, forever.&lt;/p&gt;
+&lt;p&gt;We’re offering a $9.99 monthly subscription for our award-winning …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I just loved reading this:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;mcsweeneys.net&lt;/p&gt;
+&lt;p&gt;You’ve Read Your Last Free Article, Such Is the Nature of Mortality&lt;/p&gt;
+&lt;p&gt;by Jessica Sedgewick&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id="mcsweeneys-internet-tendencys-patreon"&gt;McSWEENEY'S INTERNET TENDENCY'S PATREON&lt;/h1&gt;
+&lt;p&gt;This is your last free article. There will be no more, forever.&lt;/p&gt;
+&lt;p&gt;We’re offering a $9.99 monthly subscription for our award-winning journalism. But you won’t finish these articles anyway. Why waste it?&lt;/p&gt;
+&lt;p&gt;Our headlines just sit there on your browser—open tabs, like tombstones in a haunted cemetery of noncommitment.&lt;/p&gt;
+&lt;p&gt;In fleeting moments before work, or on the train, or your lunch hour, you open us for a few seconds. A few flits of knowledge telling you the best looks of the Met Gala or the latest change at the White House.&lt;/p&gt;
+&lt;p&gt;You may even meet someone who says a name you recognize from the headline. You will nod and say quietly, “Yes, yes, Olivia Rodrigo, I know.”&lt;/p&gt;
+&lt;p&gt;But you don’t know, not for sure. That’s because you didn’t finish your last free article.&lt;/p&gt;
+&lt;p&gt;This is your last free article. There will be no more, forever.&lt;/p&gt;
+&lt;p&gt;This is the last piece of information you will have about the outside world. The walls are closing in now. Prepare for a lifetime of ignorance. You will have to ask someone else what’s going on. Someone who is one of those rare things: a subscriber.&lt;/p&gt;
+&lt;p&gt;Don’t worry; you’ll still be able to do the crossword. For now. Just try to make use of the clues, though. Time will pass you by. Eight-letter word for the newest music trend? Try “hopeless.”&lt;/p&gt;
+&lt;p&gt;There once was a time when news was precious, but the old cries of “Hear ye! Hear ye!” have long been silenced. Since the days of Greeley, we have focused on exclusive content.&lt;/p&gt;
+&lt;p&gt;Some would travel great distances to inform people about the latest headlines. “The Civil War Is Over!” “President Lincoln Has Been Shot!” “Best Hoop Skirts for Wagon Trains.” Pretty important stuff if you ask me.&lt;/p&gt;
+&lt;p&gt;Tom Hanks was in a movie about that. Not that you would know. You skimmed our review because it was nominated for an Oscar.&lt;/p&gt;
+&lt;p&gt;No. Not The Post. The other one.&lt;/p&gt;
+&lt;p&gt;This is your last free article. There will be no more, forever.&lt;/p&gt;
+&lt;p&gt;In the future, your grandchildren will ask you questions. Questions about the world when you were young.&lt;/p&gt;
+&lt;p&gt;“Poppy, where were you when the first dog was elected president?”&lt;/p&gt;
+&lt;p&gt;“Granny, what was it like when we first made contact with alien life?”&lt;/p&gt;
+&lt;p&gt;You’ll have to say to them gently, softly, “To be honest, I have no fucking clue. I was out of free articles.”&lt;/p&gt;
+&lt;p&gt;Of course, you were always going to run out of free articles. All things in life are finite. All things must disappear.&lt;/p&gt;
+&lt;p&gt;Except us. There will always be more news. At least there will always be things to put in a listicle. We will always be there. We do have one gift article for you. It’s an obituary.&lt;/p&gt;
+&lt;p&gt;Reminds me of a great piece I read about an extinct species of pheasant. I won’t bore you too much. I know you haven’t read it.&lt;/p&gt;
+&lt;p&gt;This is your last free article. There will be no more, forever.&lt;/p&gt;
+&lt;p&gt;Please help support our writers and keep our site ad-free by becoming a patron today!&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt; ____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+ ¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>Projection</title><link href="https://dfcsoftware.github.io/linux-in-house/projection.html" rel="alternate"></link><published>2025-06-16T10:20:00-04:00</published><updated>2025-06-16T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-06-16:/linux-in-house/projection.html</id><summary type="html">&lt;h1 id="projection-as-a-deflective-propaganda-method"&gt;Projection as a deflective propaganda method&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;projection&lt;/code&gt;, the mental process by which people attribute to others what is in their own minds. &lt;/p&gt;
+&lt;p&gt;Ex:&lt;/p&gt;
+&lt;p&gt;If I just stole something, I would accuse the person next to me of stealing it so no one would suspect me&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt; ____          
+|  _ \  ___  _ __ …&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h1 id="projection-as-a-deflective-propaganda-method"&gt;Projection as a deflective propaganda method&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;projection&lt;/code&gt;, the mental process by which people attribute to others what is in their own minds. &lt;/p&gt;
+&lt;p&gt;Ex:&lt;/p&gt;
+&lt;p&gt;If I just stole something, I would accuse the person next to me of stealing it so no one would suspect me&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt; ____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+ ¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>Speak</title><link href="https://dfcsoftware.github.io/linux-in-house/speak.html" rel="alternate"></link><published>2025-06-15T10:20:00-04:00</published><updated>2025-06-15T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-06-15:/linux-in-house/speak.html</id><content type="html">&lt;p&gt;I like a man who speaks his mind,&lt;/p&gt;
+&lt;p&gt;As long as it’s not a lying mind.&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt; ____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+ ¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>Oberon</title><link href="https://dfcsoftware.github.io/linux-in-house/oberon.html" rel="alternate"></link><published>2025-06-14T10:20:00-04:00</published><updated>2025-06-14T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-06-14:/linux-in-house/oberon.html</id><summary type="html">&lt;h1 id="a-plea-for-lean-software-by-prof-niklaus-wirth"&gt;"A Plea for Lean Software" by Prof. Niklaus Wirth&lt;/h1&gt;
+&lt;p&gt;Published in: Computer Magazine ( Volume: 28, Issue: 2, February 1995) &lt;/p&gt;
+&lt;h3 id="here-are-nine-lessons-learned-from-the-oberon-project-that-might-be-worth-considering-by-anyone-embarking-on-a-new-software-design"&gt;Here are Nine Lessons Learned from the Oberon project that might be worth considering by anyone embarking on a new software design:&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;The exclusive use of a strongly typed language was …&lt;/li&gt;&lt;/ol&gt;</summary><content type="html">&lt;h1 id="a-plea-for-lean-software-by-prof-niklaus-wirth"&gt;"A Plea for Lean Software" by Prof. Niklaus Wirth&lt;/h1&gt;
+&lt;p&gt;Published in: Computer Magazine ( Volume: 28, Issue: 2, February 1995) &lt;/p&gt;
+&lt;h3 id="here-are-nine-lessons-learned-from-the-oberon-project-that-might-be-worth-considering-by-anyone-embarking-on-a-new-software-design"&gt;Here are Nine Lessons Learned from the Oberon project that might be worth considering by anyone embarking on a new software design:&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;The exclusive use of a strongly typed language was the most influential factor in designing this complex system in such short time. (The manpower was a small fraction of what would typically be expended for comparably sized projects based on other languages.) Static typing (a) lets the compiler pinpoint inconsistencies before program execution; (b) lets the designer change definitions and structures with less danger of negative consequences; and (c) speeds up the improvement process, which could include changes that might not otherwise be considered feasible.&lt;/li&gt;
+&lt;li&gt;The most difficult design task is to find the most appropriate decomposition of the whole into a module hierarchy, minimizing function and code duplications. Oberon is highly supportive in this respect by carrying type checks over module boundaries.&lt;/li&gt;
+&lt;li&gt;Oberon’s type extension construct was essential for designing an extensible system wherein new modules added functionality and new object classes integrated compatibly with the existing classes or data types. Extensibility is prerequisite to keeping a system streamlined from the outset. It also permits the system to be customized to accommodate specific applications at any time, notably without access to the source code.&lt;/li&gt;
+&lt;li&gt;In an extensible system, the key issue is to identify those primitives that offer the most flexibility for extensions, while avoiding a proliferation of primitives.&lt;/li&gt;
+&lt;li&gt;The belief that complex systems require armies of designers and programmers is wrong. A system that is not understood in its entirety, or at least to significant degree of detail by a single individual, should probably not be built.&lt;/li&gt;
+&lt;li&gt;Communication problems grow as the size of the design team grows. Whether they are obvious or not, when communication problems predominate, the team and the project are both in deep trouble.&lt;/li&gt;
+&lt;li&gt;Reducing complexity and size must be the goal in every step—in system specification, design, and in detailed programming. A programmer's competence should be judged by the ability to find simple solutions, certainly not by productivity measured in “number of lines ejected per day.” Prolific programmers contribute to certain disaster.&lt;/li&gt;
+&lt;li&gt;To gain experience, there is no substitute for one’s own programming effort. Organizing a team into managers, designers, programmers, analysts, and users is detrimental. All should participate (with differing degrees of emphasis) in all aspects of development. In particular, everyone—including managers—should also be product users for a time. This last measure is the best guarantee to correct mistakes and perhaps also to eliminate redundancies.&lt;/li&gt;
+&lt;li&gt;Programs should be written and polished until they acquire publication quality. It is infinitely more demanding to design a publishable program than one that “runs.” Programs should be written for human readers as well as for computers. If this notion contradicts certain vested interests in the commercial world, it should at least find no resistance in academia.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Reference: &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://ieeexplore.ieee.org/document/348001"&gt;https://ieeexplore.ieee.org/document/348001&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/sysprv/demo-corporate-documentation-public/blob/master/Niklaus%20Wirth%20-%20A%20Plea%20for%20Lean%20Software.pdf"&gt;https://github.com/sysprv/demo-corporate-documentation-public/blob/master/Niklaus%20Wirth%20-%20A%20Plea%20for%20Lean%20Software.pdf&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt; ____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+ ¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>Man or Boy</title><link href="https://dfcsoftware.github.io/linux-in-house/man-or-boy.html" rel="alternate"></link><published>2025-06-13T10:20:00-04:00</published><updated>2025-06-13T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-06-13:/linux-in-house/man-or-boy.html</id><content type="html">&lt;h1 id="algol-bulletin-no-17-july-1964"&gt;Algol Bulletin No. 17, July 1964&lt;/h1&gt;
+&lt;p&gt;&lt;img alt="A17P7.GIF" src="/linux-in-house/images/A17P7.GIF"&gt;&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt; ____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+ ¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>AI Trust</title><link href="https://dfcsoftware.github.io/linux-in-house/ai-trust.html" rel="alternate"></link><published>2025-06-12T10:20:00-04:00</published><updated>2025-06-12T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-06-12:/linux-in-house/ai-trust.html</id><summary type="html">&lt;p&gt;AI and Trust&lt;/p&gt;
+&lt;p&gt;Wise and just essay by Bruce Schneier about AI and trust.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A key idea is that we are predisposed to trust AI chat interfaces because they imitate humans, which means we are highly susceptible to profit-seeking biases baked into them.&lt;/p&gt;
+&lt;p&gt;Bruce suggests that what's needed is public …&lt;/p&gt;&lt;/blockquote&gt;</summary><content type="html">&lt;p&gt;AI and Trust&lt;/p&gt;
+&lt;p&gt;Wise and just essay by Bruce Schneier about AI and trust.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A key idea is that we are predisposed to trust AI chat interfaces because they imitate humans, which means we are highly susceptible to profit-seeking biases baked into them.&lt;/p&gt;
+&lt;p&gt;Bruce suggests that what's needed is public models, backed by government funds: "A public model is a model built by the public for the public. It requires political accountability, not just market accountability."&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Reference: &lt;a href="https://www.schneier.com/blog/archives/2023/12/ai-and-trust.html"&gt;https://www.schneier.com/blog/archives/2023/12/ai-and-trust.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt; ____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+ ¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>Sell</title><link href="https://dfcsoftware.github.io/linux-in-house/sell.html" rel="alternate"></link><published>2025-06-11T10:20:00-04:00</published><updated>2025-06-11T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-06-11:/linux-in-house/sell.html</id><content type="html">&lt;h2 id="once-we-undermine-trust-in-doctors-fact-checkers-and-scientists-well-be-able-to-sell-people-anything"&gt;“Once we undermine trust in doctors, fact checkers, and scientists, we’ll be able to sell people anything.”&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="suits.jpg" src="/linux-in-house/images/A-group-of-men-in-suits-are-sitting-around-a-conference-table.jpeg"&gt;&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt; ____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+ ¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>Inside</title><link href="https://dfcsoftware.github.io/linux-in-house/inside.html" rel="alternate"></link><published>2025-06-10T10:20:00-04:00</published><updated>2025-06-10T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-06-10:/linux-in-house/inside.html</id><summary type="html">&lt;p&gt;Illustrator Sofja Umarik describes her life as an introvert, further explaining how she navigates through a loud world that doesn’t always recognize quiet strength. Umarik also knows that she’s not alone, nor does she feel alone when she’s by herself.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Introverts are everywhere, and our quiet approach …&lt;/p&gt;&lt;/blockquote&gt;</summary><content type="html">&lt;p&gt;Illustrator Sofja Umarik describes her life as an introvert, further explaining how she navigates through a loud world that doesn’t always recognize quiet strength. Umarik also knows that she’s not alone, nor does she feel alone when she’s by herself.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Introverts are everywhere, and our quiet approach to life, our need for solitary time, isn’t a flaw – it’s a gift. But as an introvert it’s not always easy to realize how wonderful you are. The world feels like a place that rewards extroverts. Where being loud is mistaken for being confident and happy. …For those who speak softly, it’s easy to feel left out.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Umarik also talks about the physiological differences between introverts and extroverts.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;There are two important chemicals found in all our brains – dopamine and acetylcholine. Dopamine is like a hit of energy when we take risks or meet new people – and it makes extroverts feel great. But introverts are more sensitive to dopamine and get quickly over-stimulated. That’s why we prefer the more slow-burn feeling we get when our brains release acetylcholine. That happens when we concentrate, read, or focus our minds. It makes us introverts feel relaxed, alert and content.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Reference: &lt;a href="https://laughingsquid.com/the-genetic-and-physiological-differences-between-extrovert-and-introvert-personalities/"&gt;https://laughingsquid.com/the-genetic-and-physiological-differences-between-extrovert-and-introvert-personalities/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt; ____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+ ¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>Space Food</title><link href="https://dfcsoftware.github.io/linux-in-house/space-food.html" rel="alternate"></link><published>2025-06-09T10:20:00-04:00</published><updated>2025-06-09T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-06-09:/linux-in-house/space-food.html</id><summary type="html">&lt;p&gt;We can inkjet print delicious food. Or can we?
+How about 3-D printed pizza or Cake Writer?&lt;/p&gt;
+&lt;p&gt;You can not bake bread in space, because of crumbs,
+ unless you like tinkering with a no-knead recipe known to produce little to no crumbs.&lt;/p&gt;
+&lt;p&gt;Read more about Space Ovens and Auto Terra …&lt;/p&gt;</summary><content type="html">&lt;p&gt;We can inkjet print delicious food. Or can we?
+How about 3-D printed pizza or Cake Writer?&lt;/p&gt;
+&lt;p&gt;You can not bake bread in space, because of crumbs,
+ unless you like tinkering with a no-knead recipe known to produce little to no crumbs.&lt;/p&gt;
+&lt;p&gt;Read more about Space Ovens and Auto Terra bio-systems, 
+ in the Deep Space Food Challenge:&lt;/p&gt;
+&lt;p&gt;Reference:  &lt;a href="https://www.atlasobscura.com/articles/nasa-deep-space-food-challenge"&gt;https://www.atlasobscura.com/articles/nasa-deep-space-food-challenge&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt; ____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+ ¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>Claw</title><link href="https://dfcsoftware.github.io/linux-in-house/claw.html" rel="alternate"></link><published>2025-06-08T10:20:00-04:00</published><updated>2025-06-08T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-06-08:/linux-in-house/claw.html</id><content type="html">&lt;p&gt;This claw-handed hunchbacked cave dweller&lt;/p&gt;
+&lt;p&gt;has had too much focus on work.&lt;/p&gt;
+&lt;p&gt;It's time to visit our earth&lt;/p&gt;
+&lt;p&gt;and the things holding it together.&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt; ____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+ ¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>Turn the Page</title><link href="https://dfcsoftware.github.io/linux-in-house/turn-the-page.html" rel="alternate"></link><published>2025-06-07T10:20:00-04:00</published><updated>2025-06-07T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-06-07:/linux-in-house/turn-the-page.html</id><summary type="html">&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Oh no, you said it.
 
 I shake it off,
 and turn the page.
