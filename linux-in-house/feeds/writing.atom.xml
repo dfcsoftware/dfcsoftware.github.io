@@ -1,5 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux Home Administration - writing</title><link href="https://dfcsoftware.github.io/linux-in-house/" rel="alternate"></link><link href="https://dfcsoftware.github.io/linux-in-house/feeds/writing.atom.xml" rel="self"></link><id>https://dfcsoftware.github.io/linux-in-house/</id><updated>2025-07-14T10:20:00-04:00</updated><entry><title>Breathe</title><link href="https://dfcsoftware.github.io/linux-in-house/breathe.html" rel="alternate"></link><published>2025-07-14T10:20:00-04:00</published><updated>2025-07-14T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-07-14:/linux-in-house/breathe.html</id><summary type="html">&lt;p&gt;Are you receiving me?&lt;br&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux Home Administration - writing</title><link href="https://dfcsoftware.github.io/linux-in-house/" rel="alternate"></link><link href="https://dfcsoftware.github.io/linux-in-house/feeds/writing.atom.xml" rel="self"></link><id>https://dfcsoftware.github.io/linux-in-house/</id><updated>2025-07-15T10:20:00-04:00</updated><entry><title>Aphorism</title><link href="https://dfcsoftware.github.io/linux-in-house/aphorism.html" rel="alternate"></link><published>2025-07-15T10:20:00-04:00</published><updated>2025-07-15T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-07-15:/linux-in-house/aphorism.html</id><summary type="html">&lt;p&gt;From The Devil's Dictionary (1881-1906) [devil]:&lt;/p&gt;
+&lt;p&gt;APHORISM, n.  Predigested wisdom.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;  The flabby wine-skin of his brain
+  Yields to some pathologic strain,
+  And voids from its unstored abysm
+  The driblet of an aphorism.
+                                         &amp;quot;The Mad Philosopher,&amp;quot; 1697
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;-- Don Cohoon&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_ …&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;From The Devil's Dictionary (1881-1906) [devil]:&lt;/p&gt;
+&lt;p&gt;APHORISM, n.  Predigested wisdom.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;  The flabby wine-skin of his brain
+  Yields to some pathologic strain,
+  And voids from its unstored abysm
+  The driblet of an aphorism.
+                                         &amp;quot;The Mad Philosopher,&amp;quot; 1697
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;-- Don Cohoon&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>Breathe</title><link href="https://dfcsoftware.github.io/linux-in-house/breathe.html" rel="alternate"></link><published>2025-07-14T10:20:00-04:00</published><updated>2025-07-14T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-07-14:/linux-in-house/breathe.html</id><summary type="html">&lt;p&gt;Are you receiving me?&lt;br&gt;
 Is this voice on?&lt;br&gt;
 Like writing on the moon&lt;br&gt;
 it's too small&lt;br&gt;
@@ -35,7 +68,7 @@ but there used to be a time&lt;br&gt;
 when I un-leashed hours of&lt;br&gt;
 fury on the drums.&lt;br&gt;&lt;/p&gt;
 &lt;p&gt;Unforgettable times with other musicians&lt;br&gt;
-and that &lt;em&gt;magic moment&lt;/em&gt; happens.&lt;br&gt;
+when that &lt;em&gt;magic moment&lt;/em&gt; happens.&lt;br&gt;
 We are all synchronized&lt;br&gt;
 passing nods to handoffs&lt;br&gt;
 and crescendos through the bars&lt;br&gt;
