@@ -102,7 +102,129 @@
 &lt;p&gt;Lock your computer's doors and windows,
 but remember:
 A house is not a home without visitors&lt;/p&gt;
-&lt;/blockquote&gt;</content><category term="linux"></category><category term="think"></category></entry><entry><title>Aphorism</title><link href="https://dfcsoftware.github.io/linux-in-house/aphorism.html" rel="alternate"></link><published>2025-07-15T10:20:00-04:00</published><updated>2025-07-15T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-07-15:/linux-in-house/aphorism.html</id><summary type="html">&lt;p&gt;From The Devil's Dictionary (1881-1906) [devil]:&lt;/p&gt;
+&lt;/blockquote&gt;</content><category term="linux"></category><category term="think"></category></entry><entry><title>Feed Me</title><link href="https://dfcsoftware.github.io/linux-in-house/feed-me.html" rel="alternate"></link><published>2025-07-16T10:20:00-04:00</published><updated>2025-07-16T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-07-16:/linux-in-house/feed-me.html</id><summary type="html">&lt;h1 id="how-to-post-to-mastodon-using-your-personal-web-blogs-built-in-rss-feed"&gt;How to post to Mastodon using your personal web blog's built-in RSS feed&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;From Dave:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;I have an app running on this server called FeedToMasto, which apparently is watching that feed. It's been chugging away like an abandoned science fiction robot, seeing if I posted anything to my linkblog, and …&lt;/p&gt;&lt;/blockquote&gt;</summary><content type="html">&lt;h1 id="how-to-post-to-mastodon-using-your-personal-web-blogs-built-in-rss-feed"&gt;How to post to Mastodon using your personal web blog's built-in RSS feed&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;From Dave:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;I have an app running on this server called FeedToMasto, which apparently is watching that feed. It's been chugging away like an abandoned science fiction robot, seeing if I posted anything to my linkblog, and forwarding it to Mastodon if I have. Hello my robot friend, you were forgotten but still appreciated. It's open source, of course, and appears to be well-documented. If you're looking for example code that reads feeds and pushed the result to interesting places, this is for you.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Dave to the rescue!&lt;/p&gt;
+&lt;p&gt;Reference: &lt;a href="http://scripting.com/2025/07/15.html#a115347"&gt;http://scripting.com/2025/07/15.html#a115347&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="this-worked"&gt;This worked:&lt;/h1&gt;
+&lt;p&gt;I use the Pelican [1] static web site generator for this website, and it has an automatic RSS (atom) feed generator for all articles. The following method lets me &lt;em&gt;create&lt;/em&gt; posts on my Pelican site, with very little readers, and automatically post a link to new articles on fostodon.org, which has a larger audience.&lt;/p&gt;
+&lt;h3 id="install-node-and-npm-via-the-node-version-manager-nvm"&gt;Install node and npm via the Node Version Manager (nvm):&lt;/h3&gt;
+&lt;p&gt;(I removed the apt version of node and npm first)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;curl&lt;span class="w"&gt; &lt;/span&gt;-o-&lt;span class="w"&gt; &lt;/span&gt;https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;nvm-install.sh
+$&lt;span class="w"&gt; &lt;/span&gt;bash&lt;span class="w"&gt; &lt;/span&gt;-x&lt;span class="w"&gt; &lt;/span&gt;./nvm-install.sh
+$&lt;span class="w"&gt; &lt;/span&gt;nvm&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;node
+$&lt;span class="w"&gt; &lt;/span&gt;nvm&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;npm
+$&lt;span class="w"&gt; &lt;/span&gt;npm&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;request
+$&lt;span class="w"&gt; &lt;/span&gt;npm&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;websocket
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3 id="install-feedtomasto"&gt;Install feedToMasto:&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="mf"&gt;1.&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;clone&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="mf"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;scripting&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;feedToMasto&lt;/span&gt;
+&lt;span class="mf"&gt;2.&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;feedToMasto&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;
+&lt;span class="mf"&gt;3.&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;clone&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="mf"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;scripting&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;reallysimple&lt;/span&gt;
+&lt;span class="mf"&gt;4.&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;clone&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="mf"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;scripting&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;utils&lt;/span&gt;
+&lt;span class="mf"&gt;5.&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Change&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="mf"&gt;.&lt;/span&gt;&lt;span class="n"&gt;json&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hints&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="mf"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;scripting&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;feedToMasto&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;blob&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="kr"&gt;READ&lt;/span&gt;&lt;span class="n"&gt;ME&lt;/span&gt;&lt;span class="mf"&gt;.&lt;/span&gt;&lt;span class="n"&gt;md&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="mf"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;scripting&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;feedToMasto&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;issues&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mf"&gt;1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Step 5 requires you to &lt;strong&gt;log into your own Mastodon Instance [2]&lt;/strong&gt; (see below)
+and replace all of Dave's names with your own, in file -&amp;gt; config.json.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Backup config.json before editing&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Using the info from your Mastodon Instance [2], change:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;urlMastodonServer
+clientKey
+clientSecret
+accessToken
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Replace the json &lt;code&gt;feed&lt;/code&gt; array with your own.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This is where I put my github.io pages atom.xml feed url.
+&lt;a href="https://dfcsoftware.github.io/linux-in-house/feeds/writing.atom.xml"&gt;https://dfcsoftware.github.io/linux-in-house/feeds/writing.atom.xml&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;By default no existing posts will be processed&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Set &lt;em&gt;flOnlyPostNewItems to false&lt;/em&gt; to see all your existing posts on the first run!&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;delete bluesky and wordpress if you don't want that.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;By default they are disabled, so you can leave them.&lt;/p&gt;
+&lt;h3 id="run-it"&gt;Run it:&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;node&lt;span class="w"&gt; &lt;/span&gt;feedToMasto.js
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;It will echo your config.json, and if file stats.json does not exits, create it.
+Then it polls your &lt;code&gt;feed&lt;/code&gt; array urls for new posts... &lt;/p&gt;
+&lt;p&gt;When I post a new item to &lt;em&gt;my site&lt;/em&gt;, Pelican [1] updates the atom feed, and feedToMasto.js posts a link to the new article on Mastodon or bluesky, or wordpress, if enabled.&lt;/p&gt;
+&lt;p&gt;Just put &lt;code&gt;node feedToMasto.js&lt;/code&gt; in an /etc/init.d/rc.x or systemd daemon runner and voila' 
+&lt;em&gt;abandoned science fiction robot&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Thanks Dave!&lt;br&gt;
+-- Don Cohoon&lt;/p&gt;
+&lt;p&gt;Reference: &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://getpelican.com/"&gt;https://getpelican.com/&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Get Mastodon info&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id="on-your-mastodon-account"&gt;On your Mastodon account&lt;/h1&gt;
+&lt;p&gt;Click on Preferences, in the right margin.&lt;/p&gt;
+&lt;p&gt;Click on Development in the left margin.&lt;/p&gt;
+&lt;p&gt;Click on the New application button in the upper right corner.&lt;/p&gt;
+&lt;p&gt;You should see a form that looks like this. &lt;/p&gt;
+&lt;p&gt;&lt;img alt="feedToMastodon-newApplicationScreen.png" src="/linux-in-house/images/feedToMastodon-newApplicationScreen.png"&gt;&lt;/p&gt;
+&lt;p&gt;We're going to fill in the form.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Application name -- anything you like, perhaps feedToMasto.
+
+Application website -- anything you like.
+
+Redirect URI -- leave it as-is.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;In the Scopes section do the following.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Uncheck read.
+
+Check read:accounts.
+
+Uncheck write.
+
+Check write:statuses.
+
+Uncheck follow.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;When you're done the Scopes section should look like this.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="feedToMastodon-checkboxesScreen.png" src="/linux-in-house/images/feedToMastodon-checkboxesScreen.png"&gt;&lt;/p&gt;
+&lt;p&gt;Finally click the Submit button at the bottom of the page.&lt;/p&gt;
+&lt;p&gt;You should then see a list of your applications, with this new app on the list.&lt;/p&gt;
+&lt;p&gt;Click on the name of the new app to bring up a screen with various numeric strings you'll add to config.json.&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>Aphorism</title><link href="https://dfcsoftware.github.io/linux-in-house/aphorism.html" rel="alternate"></link><published>2025-07-15T10:20:00-04:00</published><updated>2025-07-15T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-07-15:/linux-in-house/aphorism.html</id><summary type="html">&lt;p&gt;From The Devil's Dictionary (1881-1906) [devil]:&lt;/p&gt;
 &lt;p&gt;APHORISM, n.  Predigested wisdom.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;  The flabby wine-skin of his brain
   Yields to some pathologic strain,
@@ -2059,7 +2181,7 @@ by default.&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>Welcome to the Zines</title><link href="https://dfcsoftware.github.io/linux-in-house/welcome-to-the-zines.html" rel="alternate"></link><published>2025-01-24T12:20:00-05:00</published><updated>2025-01-24T12:38:00-05:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-01-24:/linux-in-house/welcome-to-the-zines.html</id><summary type="html">&lt;p&gt;Read some Linux zines!&lt;/p&gt;</summary><content type="html">&lt;h1 id="linux-in-house"&gt;Linux in House&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="/linux-in-house/images/linux-in-house_v1.0.pdf"&gt;Introduction - January 2025.v1.0&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><category term="zines"></category><category term="zines"></category><category term="welcome"></category></entry><entry><title>git</title><link href="https://dfcsoftware.github.io/linux-in-house/git.html" rel="alternate"></link><published>2023-10-16T00:00:00-04:00</published><updated>2023-10-16T00:00:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-10-16:/linux-in-house/git.html</id><summary type="html">&lt;h1 id="git-clone"&gt;git clone&lt;/h1&gt;
+&lt;/ul&gt;</content><category term="zines"></category><category term="zines"></category><category term="welcome"></category></entry><entry><title>git</title><link href="https://dfcsoftware.github.io/linux-in-house/git.html" rel="alternate"></link><published>2023-10-17T00:00:00-04:00</published><updated>2023-10-17T00:00:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-10-17:/linux-in-house/git.html</id><summary type="html">&lt;h1 id="git-clone"&gt;git clone&lt;/h1&gt;
 &lt;p&gt;Clones a repository into a newly created directory, creates remote-tracking branches for each branch in the cloned repository (visible using git branch --remotes), and creates and checks out an initial branch that is forked from the cloned repository’s currently active branch.&lt;/p&gt;
 &lt;hr&gt;
 &lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
@@ -2283,7 +2405,7 @@ fbff5bc..72bbc59&lt;span class="w"&gt; &lt;/span&gt;master&lt;span class="w"&gt;
 &lt;p&gt;Reference:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://git-scm.com/book/en/v2"&gt;https://git-scm.com/book/en/v2&lt;/a&gt; : pp131 - Private Small Team&lt;/li&gt;
-&lt;/ul&gt;</content><category term="linux"></category></entry><entry><title>Watch</title><link href="https://dfcsoftware.github.io/linux-in-house/watch.html" rel="alternate"></link><published>2023-08-16T00:00:00-04:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-08-16:/linux-in-house/watch.html</id><summary type="html">&lt;h1 id="watch-notification-system-v-2023095"&gt;Watch Notification System - v 2023.09.5&lt;/h1&gt;
+&lt;/ul&gt;</content><category term="linux"></category></entry><entry><title>Watch</title><link href="https://dfcsoftware.github.io/linux-in-house/watch.html" rel="alternate"></link><published>2023-08-17T00:00:00-04:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-08-17:/linux-in-house/watch.html</id><summary type="html">&lt;h1 id="watch-notification-system-v-2023095"&gt;Watch Notification System - v 2023.09.5&lt;/h1&gt;
 &lt;p&gt;Finally got my alerts working, so when a host goes haywire I get an alert on the Phone and Cloud, with E-Mail as backup.&lt;/p&gt;
 &lt;hr&gt;
 &lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
@@ -2637,7 +2759,7 @@ It needs to be scheduled in cron.&lt;/p&gt;
 &lt;span class="nv"&gt;Aug&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;08&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;11&lt;/span&gt;:&lt;span class="mi"&gt;07&lt;/span&gt;:&lt;span class="mi"&gt;43&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;bob&lt;/span&gt;.&lt;span class="nv"&gt;example&lt;/span&gt;.&lt;span class="nv"&gt;com&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;pmlogger&lt;/span&gt;[&lt;span class="mi"&gt;913&lt;/span&gt;]:&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="nv"&gt;To&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;enable&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;pmlogger&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;run&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;following&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;as&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;root&lt;/span&gt;:
 &lt;span class="nv"&gt;Aug&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;08&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;11&lt;/span&gt;:&lt;span class="mi"&gt;07&lt;/span&gt;:&lt;span class="mi"&gt;44&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;bob&lt;/span&gt;.&lt;span class="nv"&gt;example&lt;/span&gt;.&lt;span class="nv"&gt;com&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;pmlogger&lt;/span&gt;[&lt;span class="mi"&gt;913&lt;/span&gt;]:&lt;span class="w"&gt;          &lt;/span&gt;&lt;span class="nv"&gt;update&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;rc&lt;/span&gt;.&lt;span class="nv"&gt;d&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;f&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;pmlogger&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;remove&lt;/span&gt;
 &lt;span class="nv"&gt;Aug&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;08&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;11&lt;/span&gt;:&lt;span class="mi"&gt;07&lt;/span&gt;:&lt;span class="mi"&gt;44&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;bob&lt;/span&gt;.&lt;span class="nv"&gt;example&lt;/span&gt;.&lt;span class="nv"&gt;com&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;pmlogger&lt;/span&gt;[&lt;span class="mi"&gt;913&lt;/span&gt;]:&lt;span class="w"&gt;          &lt;/span&gt;&lt;span class="nv"&gt;update&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;rc&lt;/span&gt;.&lt;span class="nv"&gt;d&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;pmlogger&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;defaults&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;94&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;06&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="systems"></category></entry><entry><title>VirtualMachines</title><link href="https://dfcsoftware.github.io/linux-in-house/virtualmachines.html" rel="alternate"></link><published>2023-06-16T00:00:00-04:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-06-16:/linux-in-house/virtualmachines.html</id><summary type="html">&lt;h1 id="virtual-machines-vm"&gt;Virtual Machines (VM)&lt;/h1&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="systems"></category></entry><entry><title>VirtualMachines</title><link href="https://dfcsoftware.github.io/linux-in-house/virtualmachines.html" rel="alternate"></link><published>2023-06-17T00:00:00-04:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-06-17:/linux-in-house/virtualmachines.html</id><summary type="html">&lt;h1 id="virtual-machines-vm"&gt;Virtual Machines (VM)&lt;/h1&gt;
 &lt;p&gt;A Virtual Machine (VM) is a way to create a whole operating system, with many applications, that is able to be moved from one physical machine to another physical machine. This has advantages in case of hardware, location or network problems to quickly and correctly restore service …&lt;/p&gt;</summary><content type="html">&lt;h1 id="virtual-machines-vm"&gt;Virtual Machines (VM)&lt;/h1&gt;
 &lt;p&gt;A Virtual Machine (VM) is a way to create a whole operating system, with many applications, that is able to be moved from one physical machine to another physical machine. This has advantages in case of hardware, location or network problems to quickly and correctly restore service.&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
@@ -3448,7 +3570,7 @@ $ ssh &amp;lt;remote IP&amp;gt; grep -n &amp;lt;remote IP&amp;gt; ~/.ssh/known_h
 &lt;span class="n"&gt;└── virtlogd.conf&lt;/span&gt;
 
 &lt;span class="n"&gt;9 directories, 45 files&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="systems"></category></entry><entry><title>NetworkManagement</title><link href="https://dfcsoftware.github.io/linux-in-house/networkmanagement.html" rel="alternate"></link><published>2023-04-16T00:00:00-04:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-04-16:/linux-in-house/networkmanagement.html</id><summary type="html">&lt;h1 id="network-management"&gt;Network Management&lt;/h1&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="systems"></category></entry><entry><title>NetworkManagement</title><link href="https://dfcsoftware.github.io/linux-in-house/networkmanagement.html" rel="alternate"></link><published>2023-04-17T00:00:00-04:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-04-17:/linux-in-house/networkmanagement.html</id><summary type="html">&lt;h1 id="network-management"&gt;Network Management&lt;/h1&gt;
 &lt;p&gt;The command line offers a wealth of network management commands. Here are some of my favorites.&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;hr&gt;
@@ -3896,7 +4018,7 @@ responded
 &lt;h2 id="conclusion"&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;This was a short list, hoping to provide an introduction to managing your network from the command line.&lt;/p&gt;
 &lt;p&gt;Hope this helps,&lt;br&gt;
--- Don&lt;/p&gt;</content><category term="linux"></category><category term="network"></category></entry><entry><title>EncryptingFiles</title><link href="https://dfcsoftware.github.io/linux-in-house/encryptingfiles.html" rel="alternate"></link><published>2023-03-16T00:00:00-04:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-03-16:/linux-in-house/encryptingfiles.html</id><summary type="html">&lt;h1 id="encrypting-files"&gt;Encrypting Files&lt;/h1&gt;
+-- Don&lt;/p&gt;</content><category term="linux"></category><category term="network"></category></entry><entry><title>EncryptingFiles</title><link href="https://dfcsoftware.github.io/linux-in-house/encryptingfiles.html" rel="alternate"></link><published>2023-03-17T00:00:00-04:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-03-17:/linux-in-house/encryptingfiles.html</id><summary type="html">&lt;h1 id="encrypting-files"&gt;Encrypting Files&lt;/h1&gt;
 &lt;p&gt;You should protect your carefully built system and it's files from abuse, tampering, or just plain spying. It's easy to do, what are you waiting for? Encrypt your data directory &lt;strong&gt;now&lt;/strong&gt;.&lt;/p&gt;
 &lt;hr&gt;
 &lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
@@ -4239,7 +4361,7 @@ $&lt;span class="w"&gt; &lt;/span&gt;cp&lt;span class="w"&gt; &lt;/span&gt;revok
 
 &lt;blockquote&gt;
 &lt;p&gt;This is more secure if you do not share your public key on a public server. You just have to find a secure way to share it, like your own cloud server.&lt;/p&gt;
-&lt;/blockquote&gt;</content><category term="linux"></category><category term="security"></category></entry><entry><title>VirtualIP</title><link href="https://dfcsoftware.github.io/linux-in-house/virtualip.html" rel="alternate"></link><published>2023-02-16T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-02-16:/linux-in-house/virtualip.html</id><summary type="html">&lt;h1 id="virtual-ip-ethernet-interface"&gt;Virtual IP Ethernet Interface&lt;/h1&gt;
+&lt;/blockquote&gt;</content><category term="linux"></category><category term="security"></category></entry><entry><title>VirtualIP</title><link href="https://dfcsoftware.github.io/linux-in-house/virtualip.html" rel="alternate"></link><published>2023-02-17T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-02-17:/linux-in-house/virtualip.html</id><summary type="html">&lt;h1 id="virtual-ip-ethernet-interface"&gt;Virtual IP Ethernet Interface&lt;/h1&gt;
 &lt;p&gt;Virtual IP Interface behaves like a normal interface. All traffic routed to it will go through the master interface (for example, eth0) but with a VLAN tag. Only VLAN-aware devices can accept them if configured correctly, else the traffic is dropped. &lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;hr&gt;
@@ -14758,433 +14880,4 @@ $&lt;span class="w"&gt; &lt;/span&gt;tilde
 &lt;h5 id="redhat"&gt;RedHat&lt;/h5&gt;
 &lt;p&gt;The RedHat Way&lt;/p&gt;
 &lt;p&gt;Hi from RedHat!&lt;/p&gt;
-&lt;hr/&gt;</content><category term="linux"></category><category term="welcome"></category></entry><entry><title>Matrix</title><link href="https://dfcsoftware.github.io/linux-in-house/matrix.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/linux-in-house/matrix.html</id><summary type="html">&lt;h1 id="matrix-messaging"&gt;Matrix Messaging&lt;/h1&gt;
-&lt;p&gt;Matrix is a messaging system you can on your server. It allows your to send messages to a phone/watch from command line on the server. It is useful with HomeAssistant for monitoring the house.&lt;/p&gt;
-&lt;hr&gt;
-&lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href="#matrix-messaging"&gt;Matrix Messaging&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href="#install"&gt;Install&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#configure"&gt;Configure&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#create-users"&gt;Create User(s)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#database"&gt;Database&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href="#you-can-convert-the-database-to-postgresql"&gt;You can …&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;</summary><content type="html">&lt;h1 id="matrix-messaging"&gt;Matrix Messaging&lt;/h1&gt;
-&lt;p&gt;Matrix is a messaging system you can on your server. It allows your to send messages to a phone/watch from command line on the server. It is useful with HomeAssistant for monitoring the house.&lt;/p&gt;
-&lt;hr&gt;
-&lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href="#matrix-messaging"&gt;Matrix Messaging&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href="#install"&gt;Install&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#configure"&gt;Configure&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#create-users"&gt;Create User(s)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#database"&gt;Database&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href="#you-can-convert-the-database-to-postgresql"&gt;You can convert the database to PostgreSQL&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href="#secure-configuration"&gt;Secure Configuration&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#matrix-commander-cli"&gt;Matrix Commander CLI&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#send-matrix"&gt;Send Matrix&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href="#debug"&gt;Debug&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href="#matrix-commander-credentials"&gt;matrix-commander credentials&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#change-user-password"&gt;Change User Password&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#matrix-client-server-api"&gt;Matrix Client-Server API&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href="#alternative-nextcloud-talk"&gt;Alternative: Nextcloud Talk&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#continue"&gt;Continue&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;hr&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Here is an example of a Matrix Client, called Element[1], available on iOS, Android and Desktops.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;img alt="IMG_2070A268049A-1.jpeg" src="/linux-in-house/images/IMG_2070A268049A-1.jpeg"&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href="https://element.io/"&gt;https://element.io/&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id="install"&gt;Install&lt;/h2&gt;
-&lt;p&gt;Matrix.org provides Debian/Ubuntu packages of Synapse via https://packages.matrix.org/debian/. To install the latest release:&lt;/p&gt;
-&lt;p&gt;Prerequsites:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo apt install -y lsb-release wget apt-transport-https
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Matrix.org packages&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nx"&gt;sudo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;wget&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;O&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;share&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;keyrings&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;matrix&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;org&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;archive&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;keyring&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;gpg&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//packages.matrix.org/debian/matrix-org-archive-keyring.gpg&lt;/span&gt;
-&lt;span class="nx"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;deb [signed-by=/usr/share/keyrings/matrix-org-archive-keyring.gpg] https://packages.matrix.org/debian/ $(lsb_release -cs) main&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;sudo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;tee&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;sources&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;list&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;d&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;matrix&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;org&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;list&lt;/span&gt;
-
-&lt;span class="nx"&gt;sudo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;apt&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;update&lt;/span&gt;
-&lt;span class="nx"&gt;sudo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;apt&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;install&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;matrix&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;synapse&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;py3&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Reference: &lt;a href="https://github.com/matrix-org/synapse/blob/master/INSTALL.md"&gt;https://github.com/matrix-org/synapse/blob/master/INSTALL.md&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id="configure"&gt;Configure&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Set the public_baseurl to your server's local IP address.&lt;/li&gt;
-&lt;li&gt;Set the listeners to your server's local IP address too.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;File: /etc/matrix-synapse/homeserver.yaml&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="nx"&gt;public_baseurl&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//example.com/&lt;/span&gt;
-&lt;span class="nx"&gt;public_baseurl&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//192.168.1.3/&lt;/span&gt;
-&lt;span class="o"&gt;~&lt;/span&gt;
-&lt;span class="nx"&gt;listeners&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;port&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;8008&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;tls&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;false&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;type&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;http&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;x_forwarded&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;true&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;bind_addresses&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="m m-Double"&gt;127.0.0.1&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="m m-Double"&gt;192.168.1.3&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;resources&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;names&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;client&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;federation&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nx"&gt;compress&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;false&lt;/span&gt;
-&lt;span class="o"&gt;~&lt;/span&gt;
-&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nx"&gt;wq&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Set the shared secret and enable registration so we can create users for ourselves. We can disable it later because anyone with the shared secret can register, whether enabled or not.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Create the shared secret like this:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;File: /etc/matrix-synapse/homeserver.yaml&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="nl"&gt;enable_registration:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;false&lt;/span&gt;
-&lt;span class="nl"&gt;enable_registration:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;true&lt;/span&gt;
-&lt;span class="o"&gt;~&lt;/span&gt;
-&lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;If&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;set&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;allows&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;registration&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;of&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;standard&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;or&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;admin&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;accounts&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;by&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;anyone&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;who&lt;/span&gt;
-&lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;has&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;shared&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;secret&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;even&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;registration&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;is&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;otherwise&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;disabled&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
-&lt;span class="p"&gt;#&lt;/span&gt;
-&lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Change&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;registration_shared_secret&lt;/span&gt;&lt;span class="p"&gt;&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;with&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;passphrase&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;generated&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;on&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;below&lt;/span&gt;
-&lt;span class="p"&gt;#&lt;/span&gt;
-&lt;span class="nl"&gt;registration_shared_secret:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;S9gYeYowVX49U6OG25EEROKU4b2gEU3S&amp;quot;&lt;/span&gt;
-&lt;span class="p"&gt;#&lt;/span&gt;
-&lt;span class="nl"&gt;server_name:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;localhost&lt;/span&gt;
-&lt;span class="p"&gt;#&lt;/span&gt;
-&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;wq&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h2 id="create-users"&gt;Create User(s)&lt;/h2&gt;
-&lt;p&gt;Using enable_registration=true, we can create users via register_new_matrix_user client.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;register_new_matrix_user&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;matrix&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;synapse&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;homeserver&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;yaml&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nl"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="nl"&gt;localhost&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;8008&lt;/span&gt;
-&lt;span class="k"&gt;New&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;user&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;localpart&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;bob&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;alice&lt;/span&gt;
-&lt;span class="nl"&gt;Password&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;
-&lt;span class="n"&gt;Confirm&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nl"&gt;password&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;
-&lt;span class="n"&gt;Make&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;admin&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;no&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;
-&lt;span class="n"&gt;Sending&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;registration&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;...&lt;/span&gt;
-&lt;span class="n"&gt;Success&lt;/span&gt;&lt;span class="err"&gt;!&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Must have python &amp;gt; 2.7.9&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Reference: &lt;a href="https://matrix-org.github.io/synapse/latest/usage/administration/admin_api/"&gt;https://matrix-org.github.io/synapse/latest/usage/administration/admin_api/&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id="database"&gt;Database&lt;/h2&gt;
-&lt;p&gt;Database is sqlite3, here:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;ls&lt;span class="w"&gt; &lt;/span&gt;/var/lib/matrix-synapse
-homeserver.db&lt;span class="w"&gt;  &lt;/span&gt;media
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Check your database settings in the configuration file, connect to the correct database using either psql [database name] (if using PostgreSQL) or sqlite3 path/to/your/database.db (if using SQLite) and elevate the user @foo:bar.com to server administrator.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;UPDATE&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;users&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;SET&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;admin&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;WHERE&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;@foo:bar.com&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;You can also revoke server admin by setting &lt;code&gt;admin = 0&lt;/code&gt; above.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Room administrators and server administrators are different. Server admins don't have any power over rooms. When you use the "Start chat" button in Riot, it'll set everyone as room admin.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h4 id="you-can-convert-the-database-to-postgresql"&gt;You can convert the database to PostgreSQL&lt;/h4&gt;
-&lt;p&gt;&lt;a href="https://github.com/matrix-org/synapse/blob/master/docs/postgres.md"&gt;https://github.com/matrix-org/synapse/blob/master/docs/postgres.md&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id="secure-configuration"&gt;Secure Configuration&lt;/h2&gt;
-&lt;p&gt;Once you have tested Matrix, created users and have a SSL/TLS certificate, you can enable external communication.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Turn off registrations and comment out the registration_key.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;File: /etc/matrix-synapse/homeserver.yaml&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;~&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="mi"&gt;46&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# This is set in /etc/matrix-synapse/conf.d/server_name.yaml for Debian installations.&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="mi"&gt;47&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# server_name: &amp;quot;SERVERNAME&amp;quot;&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="mi"&gt;48&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;server_name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;matrix&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;example&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;
-&lt;span class="o"&gt;~&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="mi"&gt;64&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# The public-facing base URL that clients use to access this Homeserver (not&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="mi"&gt;65&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# including _matrix/...). This is the same URL a user might enter into the&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="mi"&gt;66&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# &amp;#39;Custom Homeserver URL&amp;#39; field on their client. If you use Synapse with a&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="mi"&gt;67&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# reverse proxy, this should be the URL to reach Synapse via the proxy.&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="mi"&gt;68&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# Otherwise, it should be the URL to reach Synapse&amp;#39;s client HTTP listener (see&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="mi"&gt;69&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# &amp;#39;listeners&amp;#39; below).&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="mi"&gt;70&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;#&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="mi"&gt;71&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;#public_baseurl: https://example.com/&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="mi"&gt;72&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;public_baseurl&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;matrix&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;example&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;8448&lt;/span&gt;
-&lt;span class="o"&gt;~&lt;/span&gt;
-&lt;span class="mi"&gt;272&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;#&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;273&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;listeners&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;274&lt;/span&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="c1"&gt;# TLS-enabled listener: for when matrix traffic is sent directly to synapse.&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;275&lt;/span&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="c1"&gt;#&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;276&lt;/span&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="c1"&gt;# Disabled by default. To enable it, uncomment the following. (Note that you&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;277&lt;/span&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="c1"&gt;# will also need to give Synapse a TLS key and certificate: see the TLS section&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;278&lt;/span&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="c1"&gt;# below.)&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;279&lt;/span&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="c1"&gt;#&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;280&lt;/span&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;port&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;8448&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;281&lt;/span&gt;&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="n"&gt;type&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;282&lt;/span&gt;&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="n"&gt;tls&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="bp"&gt;true&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;283&lt;/span&gt;&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="n"&gt;bind_addresses&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;::1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;0.0.0.0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;284&lt;/span&gt;&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="n"&gt;resources&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;285&lt;/span&gt;&lt;span class="w"&gt;       &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;names&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;client&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;federation&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;286&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;287&lt;/span&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="c1"&gt;# Unsecure HTTP listener: for when matrix traffic passes through a reverse proxy&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;288&lt;/span&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="c1"&gt;# that unwraps TLS.&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;289&lt;/span&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="c1"&gt;#&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;290&lt;/span&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="c1"&gt;# If you plan to use a reverse proxy, please see&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;291&lt;/span&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="c1"&gt;# https://matrix-org.github.io/synapse/latest/reverse_proxy.html.&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;292&lt;/span&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="c1"&gt;#&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;293&lt;/span&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;port&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;8008&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;294&lt;/span&gt;&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="n"&gt;tls&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="bp"&gt;false&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;295&lt;/span&gt;&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="n"&gt;type&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;296&lt;/span&gt;&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="n"&gt;x_forwarded&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="bp"&gt;true&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;297&lt;/span&gt;&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="n"&gt;bind_addresses&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;::1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;127.0.0.1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;192.168.1.3&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;298&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;299&lt;/span&gt;&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="n"&gt;resources&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;300&lt;/span&gt;&lt;span class="w"&gt;       &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;names&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;client&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;federation&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;301&lt;/span&gt;&lt;span class="w"&gt;         &lt;/span&gt;&lt;span class="n"&gt;compress&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="bp"&gt;false&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;302&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;
-&lt;span class="o"&gt;~&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;547&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;## TLS ##&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;548&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;549&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# PEM-encoded X509 certificate for TLS.&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;550&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# This certificate, as of Synapse 1.0, will need to be a valid and verifiable&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;551&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# certificate, signed by a recognised Certificate Authority.&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;552&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;#&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;553&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# Be sure to use a `.pem` file that includes the full certificate chain including&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;554&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# any intermediate certificates (for instance, if using certbot, use&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;555&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# `fullchain.pem` as your certificate, not `cert.pem`).&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;556&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;#&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;557&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;#tls_certificate_path: &amp;quot;/etc/matrix-synapse/SERVERNAME.tls.crt&amp;quot;&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;558&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;tls_certificate_path&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/etc/letsencrypt/live/example.com/fullchain.pem&amp;quot;&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;559&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;560&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# PEM-encoded private key for TLS&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;561&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;#&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;562&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;#tls_private_key_path: &amp;quot;/etc/matrix-synapse/SERVERNAME.tls.key&amp;quot;&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;563&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;tls_private_key_path&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/etc/letsencrypt/live/example.com/privkey.pem&amp;quot;&lt;/span&gt;
-&lt;span class="o"&gt;~&lt;/span&gt;
-&lt;span class="mi"&gt;755&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;database&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;756&lt;/span&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;psycopg2&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;757&lt;/span&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;758&lt;/span&gt;&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;matrix_user&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;759&lt;/span&gt;&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="n"&gt;password&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;************&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;760&lt;/span&gt;&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="n"&gt;database&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;matrix&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;761&lt;/span&gt;&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="n"&gt;host&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mf"&gt;127.0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mf"&gt;0.1&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;762&lt;/span&gt;&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="n"&gt;cp_min&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;763&lt;/span&gt;&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="n"&gt;cp_max&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;764&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;765&lt;/span&gt;&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="c1"&gt;# seconds of inactivity after which TCP should send a keepalive message to the server&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;766&lt;/span&gt;&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="n"&gt;keepalives_idle&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;767&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;768&lt;/span&gt;&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="c1"&gt;# the number of seconds after which a TCP keepalive message that is not&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;769&lt;/span&gt;&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="c1"&gt;# acknowledged by the server should be retransmitted&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;770&lt;/span&gt;&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="n"&gt;keepalives_interval&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;771&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;772&lt;/span&gt;&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="c1"&gt;# the number of TCP keepalives that can be lost before the client&amp;#39;s connection&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;773&lt;/span&gt;&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="c1"&gt;# to the server is considered dead&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;774&lt;/span&gt;&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="n"&gt;keepalives_count&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;
-&lt;span class="o"&gt;~&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;777&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;## Logging ##&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;778&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;779&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# A yaml python logging config file as described by&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;780&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# https://docs.python.org/3.7/library/logging.config.html#configuration-dictionary-schema&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;781&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;#&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;782&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;log_config&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/etc/matrix-synapse/log.yaml&amp;quot;&lt;/span&gt;
-&lt;span class="o"&gt;~&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;906&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# Directory where uploaded images and attachments are stored.&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;907&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;#&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;908&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;media_store_path&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/var/lib/matrix-synapse/media&amp;quot;&lt;/span&gt;
-&lt;span class="o"&gt;~&lt;/span&gt;
-&lt;span class="mi"&gt;1139&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# Enable registration for new users.&lt;/span&gt;
-&lt;span class="mi"&gt;1140&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;#&lt;/span&gt;
-&lt;span class="mi"&gt;1141&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;#enable_registration: false&lt;/span&gt;
-&lt;span class="mi"&gt;1142&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;enable_registration&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="bp"&gt;false&lt;/span&gt;
-&lt;span class="o"&gt;~&lt;/span&gt;
-&lt;span class="mi"&gt;1190&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# If set, allows registration of standard or admin accounts by anyone who&lt;/span&gt;
-&lt;span class="mi"&gt;1191&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# has the shared secret, even if registration is otherwise disabled.&lt;/span&gt;
-&lt;span class="mi"&gt;1192&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;#&lt;/span&gt;
-&lt;span class="mi"&gt;1193&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;#registration_shared_secret: &amp;lt;PRIVATE STRING&amp;gt;&lt;/span&gt;
-&lt;span class="mi"&gt;1194&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;registration_shared_secret&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;*****************************&amp;quot;&lt;/span&gt;
-&lt;span class="o"&gt;~&lt;/span&gt;
-&lt;span class="mi"&gt;1438&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;## Signing Keys ##&lt;/span&gt;
-&lt;span class="mi"&gt;1439&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;
-&lt;span class="mi"&gt;1440&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# Path to the signing key to sign messages with&lt;/span&gt;
-&lt;span class="mi"&gt;1441&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;#&lt;/span&gt;
-&lt;span class="mi"&gt;1442&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;signing_key_path&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/etc/matrix-synapse/homeserver.signing.key&amp;quot;&lt;/span&gt;
-&lt;span class="o"&gt;~&lt;/span&gt;
-&lt;span class="c1"&gt;#trusted_key_servers:&lt;/span&gt;
-&lt;span class="mi"&gt;1500&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;#  - server_name: &amp;quot;my_trusted_server.example.com&amp;quot;&lt;/span&gt;
-&lt;span class="mi"&gt;1501&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;#    verify_keys:&lt;/span&gt;
-&lt;span class="mi"&gt;1502&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;#      &amp;quot;ed25519:auto&amp;quot;: &amp;quot;abcdefghijklmnopqrstuvwxyzabcdefghijklmopqr&amp;quot;&lt;/span&gt;
-&lt;span class="mi"&gt;1503&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;#  - server_name: &amp;quot;my_other_trusted_server.example.com&amp;quot;&lt;/span&gt;
-&lt;span class="mi"&gt;1504&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;#&lt;/span&gt;
-&lt;span class="mi"&gt;1505&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;trusted_key_servers&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;span class="mi"&gt;1506&lt;/span&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;server_name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;matrix.org&amp;quot;&lt;/span&gt;
-&lt;span class="o"&gt;~&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;File: /etc/matrix-synapse/conf.d/server_name.yaml&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt; # This file is autogenerated, and will be recreated on upgrade if it is deleted.
-&lt;span class="gh"&gt;#&lt;/span&gt; Any changes you make will be preserved.
-
-&lt;span class="gh"&gt;#&lt;/span&gt; The domain name of the server, with optional explicit port.
-&lt;span class="gh"&gt;#&lt;/span&gt; This is used by remote servers to connect to this server,
-&lt;span class="gh"&gt;#&lt;/span&gt; e.g. matrix.org, localhost:8080, etc.
-&lt;span class="gh"&gt;#&lt;/span&gt; This is also the last part of your UserID.
-&lt;span class="gh"&gt;#&lt;/span&gt;
-server_name: matrix.example.com
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h2 id="matrix-commander-cli"&gt;Matrix Commander CLI&lt;/h2&gt;
-&lt;p&gt;This will allow us to send text messages to our phone/watch from homeassistant.&lt;/p&gt;
-&lt;p&gt;Follow the instruction on the matrix-commander website. Specifically run with the &lt;code&gt;--login&lt;/code&gt; parameter to create ~/.config/matrix-commander/credentials.json file.&lt;/p&gt;
-&lt;p&gt;Reference: &lt;a href="https://github.com/8go/matrix-commander"&gt;https://github.com/8go/matrix-commander&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id="send-matrix"&gt;Send Matrix&lt;/h2&gt;
-&lt;p&gt;This script will assist in watching homeassistant for new messages, then sending them out.&lt;/p&gt;
-&lt;p&gt;File: ~/matrix/sendmatrix.sh &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
-&lt;span class="c1"&gt;#----------------------------------------------------&lt;/span&gt;
-&lt;span class="c1"&gt;# File: sendmatrix.sh&lt;/span&gt;
-&lt;span class="c1"&gt;#&lt;/span&gt;
-&lt;span class="c1"&gt;# Usage: sendmatrix.sh&lt;/span&gt;
-&lt;span class="c1"&gt;#&lt;/span&gt;
-&lt;span class="c1"&gt;# Purpose: Watch for new lines in a homeassistant (hass)&lt;/span&gt;
-&lt;span class="c1"&gt;#  file (${HOME}/wave/hass/sendmatrix.log) and send an matrix &lt;/span&gt;
-&lt;span class="c1"&gt;#  message with those new line(s)&lt;/span&gt;
-&lt;span class="c1"&gt;#&lt;/span&gt;
-&lt;span class="c1"&gt;# Dependencies: &lt;/span&gt;
-&lt;span class="c1"&gt;#  - git clone https://github.com/8go/matrix-commander.git&lt;/span&gt;
-&lt;span class="c1"&gt;#  - sudo apt-get install inotify-tools&lt;/span&gt;
-&lt;span class="c1"&gt;#  - retail : git clone https://github.com/mbucc/retail.git&lt;/span&gt;
-&lt;span class="c1"&gt;#  - NOTE: Docker configures / as /config for homeassistant&lt;/span&gt;
-&lt;span class="c1"&gt;#          and ~/wave/hass is /&lt;/span&gt;
-&lt;span class="c1"&gt;#  - ~/wave/hass/configuration.yaml&lt;/span&gt;
-&lt;span class="c1"&gt;#       ~&lt;/span&gt;
-&lt;span class="c1"&gt;#       shell_command:&lt;/span&gt;
-&lt;span class="c1"&gt;#         xmpp_light_off: /config/script.sh Outside light off&lt;/span&gt;
-&lt;span class="c1"&gt;#       ~&lt;/span&gt;
-&lt;span class="c1"&gt;#  - ~/wave/hass/automations.yaml &lt;/span&gt;
-&lt;span class="c1"&gt;#       ~&lt;/span&gt;
-&lt;span class="c1"&gt;#       - service: shell_command.xmpp_light_off&lt;/span&gt;
-&lt;span class="c1"&gt;#       ~&lt;/span&gt;
-&lt;span class="c1"&gt;#  - ~/wave/hass/script.sh&lt;/span&gt;
-&lt;span class="c1"&gt;#       #!/bin/bash&lt;/span&gt;
-&lt;span class="c1"&gt;#       echo &amp;quot;${@} - $(date)&amp;quot; &amp;gt;&amp;gt;  /config/sendxmpp.log&lt;/span&gt;
-&lt;span class="c1"&gt;#&lt;/span&gt;
-&lt;span class="c1"&gt;# Date     Author     Description&lt;/span&gt;
-&lt;span class="c1"&gt;# ----     ------     -----------&lt;/span&gt;
-&lt;span class="c1"&gt;# Sep-2021 Don Cohoon Created&lt;/span&gt;
-&lt;span class="c1"&gt;# Sep-2022 Don Cohoon Updated matrix-commander version&lt;/span&gt;
-&lt;span class="c1"&gt;# Oct-2022 Don Cohoon Fix matrix commander parameters&lt;/span&gt;
-&lt;span class="c1"&gt;#----------------------------------------------------&lt;/span&gt;
-&lt;span class="nv"&gt;HOME&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;HOME&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;
-
-&lt;span class="c1"&gt;# configure hass interface&lt;/span&gt;
-&lt;span class="nv"&gt;DIR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;HOME&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;/wave
-&lt;span class="nv"&gt;OFFSET&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;DIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;/sendmatrix.cnt
-&lt;span class="nv"&gt;RESULT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;DIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;/sendmatrix.txt
-&lt;span class="nv"&gt;MSGS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;DIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;/hass/sendsms.log
-&lt;span class="nv"&gt;LOG&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;DIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;/sendmatrix.log
-&lt;span class="nv"&gt;MATRIX_COMMANDER&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$HOME&lt;/span&gt;/.local/lib/python3.10/site-packages/matrix_commander/matrix_commander.py
-&lt;span class="nv"&gt;MATRIX_CONFIG&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$HOME&lt;/span&gt;/.config/matrix-commander/credentials.json
-&lt;span class="nv"&gt;MATRIX_STORE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$HOME&lt;/span&gt;/.config/matrix-commander/store
-&lt;span class="c1"&gt;#MATRIX_DEBUG=&amp;quot;-d&amp;quot;&lt;/span&gt;
-&lt;span class="nv"&gt;MATRIX_DEBUG&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;
-
-&lt;span class="c1"&gt;#&lt;/span&gt;
-date&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;LOG&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;
-&lt;span class="c1"&gt;# monitor mode, look for file ${MSGS} modification&lt;/span&gt;
-/usr/bin/inotifywait&lt;span class="w"&gt; &lt;/span&gt;-m&lt;span class="w"&gt; &lt;/span&gt;-e&lt;span class="w"&gt; &lt;/span&gt;modify&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;MSGS&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&amp;gt;&lt;span class="p"&gt;&amp;amp;&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;while&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;read&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;line
-&lt;span class="k"&gt;do&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;date&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt; - &lt;/span&gt;&lt;span class="nv"&gt;$line&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&amp;gt;&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;LOG&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="c1"&gt;# grab any hass script.sh new lines since last time&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;/usr/local/bin/retail&lt;span class="w"&gt; &lt;/span&gt;-T&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;OFFSET&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;MSGS&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;RESULT&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;!&lt;span class="w"&gt; &lt;/span&gt;-s&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;RESULT&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;then&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;rm&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;RESULT&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="k"&gt;else&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="c1"&gt;# send text message to phone&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nv"&gt;MSG&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;/bin/cat&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;RESULT&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;/bin/cat&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;RESULT&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;/usr/bin/python3&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;MATRIX_COMMANDER&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
-&lt;span class="w"&gt;      &lt;/span&gt;-c&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;MATRIX_CONFIG&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;-s&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;MATRIX_STORE&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;--no-ssl&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;MATRIX_DEBUG&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;-m&lt;span class="w"&gt; &lt;/span&gt;-&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;&amp;gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;LOG&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&amp;gt;&lt;span class="p"&gt;&amp;amp;&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="c1"&gt;# nextcloud talk integration &lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;HOME&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;/nextcloud/talk_mattermost.sh&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;MSG&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="c1"&gt;#&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;/bin/cat&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;RESULT&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;&amp;gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;LOG&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&amp;gt;&lt;span class="p"&gt;&amp;amp;&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;date&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;LOG&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="k"&gt;fi&lt;/span&gt;
-&lt;span class="k"&gt;done&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h1 id="debug"&gt;Debug&lt;/h1&gt;
-&lt;h2 id="matrix-commander-credentials"&gt;matrix-commander credentials&lt;/h2&gt;
-&lt;p&gt;This is the credentials.json file matrix-commander.py creates and uses.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;cat&lt;span class="w"&gt;  &lt;/span&gt;~/.config/matrix-commander/credentials.json&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;jq&lt;span class="w"&gt; &lt;/span&gt;.
-&lt;span class="o"&gt;{&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;homeserver&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;http://127.0.0.1:8008&amp;quot;&lt;/span&gt;,
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;device_id&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;GTSIKDHJEG&amp;quot;&lt;/span&gt;,
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;user_id&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;@user:matrix.example.com&amp;quot;&lt;/span&gt;,
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;room_id&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;!JshkYudiHksdhKHSKk:matrix.example.com&amp;quot;&lt;/span&gt;,
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;access_token&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;syt_ZTSjdlksshoidywlSKkDHIASLJW_0D2t3m&amp;quot;&lt;/span&gt;
-&lt;span class="o"&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;If you are interested in where the element values derive from, check these:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;device_id - &lt;a href="https://matrix-org.github.io/synapse/develop/admin_api/user_admin_api.html?highlight=device_id#show-a-device"&gt;https://matrix-org.github.io/synapse/develop/admin_api/user_admin_api.html?highlight=device_id#show-a-device&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;user_id - &lt;a href="https://matrix-org.github.io/synapse/develop/admin_api/user_admin_api.html"&gt;https://matrix-org.github.io/synapse/develop/admin_api/user_admin_api.html&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;room_id - &lt;a href="https://matrix-org.github.io/synapse/v1.41/admin_api/rooms.html"&gt;https://matrix-org.github.io/synapse/v1.41/admin_api/rooms.html&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;access_token - &lt;code&gt;curl -XPOST \
-  -d '{"type":"m.login.password", "user":"&amp;lt;userid&amp;gt;", "password":"&amp;lt;password&amp;gt;"}' \
-  "https://example.com:8448/_matrix/client/r0/login"&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="change-user-password"&gt;Change User Password&lt;/h2&gt;
-&lt;p&gt;As an admin, you can reset another user's password.&lt;/p&gt;
-&lt;p&gt;Login as an admin and save an access token.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nx"&gt;curl&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;XPOST&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;d&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;m.login.password&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;user&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;lt;userId&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;password&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;lt;pasword&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;https://localhost:8448/_matrix/client/r0/login&amp;quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Using that access token, reset any user's password.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;curl -XPOST -H &amp;quot;Authorization: Bearer &amp;lt;access_token&amp;gt;&amp;quot; -H &amp;quot;Content-Type: application/json&amp;quot; -d &amp;#39;{&amp;quot;new_password&amp;quot;:&amp;quot;&amp;lt;new_password&amp;gt;&amp;quot;}&amp;#39; &amp;quot;https://localhost:8448/_matrix/client/r0/admin/reset_password/&amp;lt;userId&amp;gt;&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;&lt;userId&gt; is fully qualified. E.g. @user:server.com&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Reference:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://github.com/matrix-org/synapse/blob/develop/docs/admin_api/user_admin_api.md"&gt;https://github.com/matrix-org/synapse/blob/develop/docs/admin_api/user_admin_api.md&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="matrix-client-server-api"&gt;Matrix Client-Server API&lt;/h2&gt;
-&lt;p&gt;The easiest way to administer a Matrix-Synapse server is through the Client-Server API [1].&lt;/p&gt;
-&lt;p&gt;Visit the API overview for many examples with code for: &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Server Administration, &lt;/li&gt;
-&lt;li&gt;Account Management, &lt;/li&gt;
-&lt;li&gt;Spaces, &lt;/li&gt;
-&lt;li&gt;Event Relationships, &lt;/li&gt;
-&lt;li&gt;Threads, &lt;/li&gt;
-&lt;li&gt;Room Participation, &lt;/li&gt;
-&lt;li&gt;Session Management, &lt;/li&gt;
-&lt;li&gt;Capabilities, &lt;/li&gt;
-&lt;li&gt;Room Creation, &lt;/li&gt;
-&lt;li&gt;Device Management, &lt;/li&gt;
-&lt;li&gt;Room Discovery, &lt;/li&gt;
-&lt;li&gt;Room Directory, &lt;/li&gt;
-&lt;li&gt;Room Membership, &lt;/li&gt;
-&lt;li&gt;End-to-End Encryption, &lt;/li&gt;
-&lt;li&gt;Push Notifications, &lt;/li&gt;
-&lt;li&gt;Presence, &lt;/li&gt;
-&lt;li&gt;User Data, &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;and more.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="https://matrix.org/docs/api/#overview"&gt;https://matrix.org/docs/api/#overview&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id="alternative-nextcloud-talk"&gt;Alternative: Nextcloud Talk&lt;/h1&gt;
-&lt;p&gt;NextCloud Talk is part of &lt;a href="Cloud.md?fileId=571041"&gt;NextCloud Services&lt;/a&gt;.&lt;/p&gt;
-&lt;h1 id="continue"&gt;Continue&lt;/h1&gt;
-&lt;p&gt;Now that you have set up Matrix Communication on your server, you can read some news to send to others. Read on to find out how to set up a local news/RSS reader.&lt;/p&gt;
-&lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;</content><category term="linux"></category><category term="systems"></category></entry></feed>
+&lt;hr/&gt;</content><category term="linux"></category><category term="welcome"></category></entry></feed>

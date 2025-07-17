@@ -1,5 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux Home Administration - writing</title><link href="https://dfcsoftware.github.io/linux-in-house/" rel="alternate"></link><link href="https://dfcsoftware.github.io/linux-in-house/feeds/writing.atom.xml" rel="self"></link><id>https://dfcsoftware.github.io/linux-in-house/</id><updated>2025-07-15T10:20:00-04:00</updated><entry><title>Aphorism</title><link href="https://dfcsoftware.github.io/linux-in-house/aphorism.html" rel="alternate"></link><published>2025-07-15T10:20:00-04:00</published><updated>2025-07-15T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-07-15:/linux-in-house/aphorism.html</id><summary type="html">&lt;p&gt;From The Devil's Dictionary (1881-1906) [devil]:&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux Home Administration - writing</title><link href="https://dfcsoftware.github.io/linux-in-house/" rel="alternate"></link><link href="https://dfcsoftware.github.io/linux-in-house/feeds/writing.atom.xml" rel="self"></link><id>https://dfcsoftware.github.io/linux-in-house/</id><updated>2025-07-16T10:20:00-04:00</updated><entry><title>Feed Me</title><link href="https://dfcsoftware.github.io/linux-in-house/feed-me.html" rel="alternate"></link><published>2025-07-16T10:20:00-04:00</published><updated>2025-07-16T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-07-16:/linux-in-house/feed-me.html</id><summary type="html">&lt;h1 id="how-to-post-to-mastodon-using-your-personal-web-blogs-built-in-rss-feed"&gt;How to post to Mastodon using your personal web blog's built-in RSS feed&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;From Dave:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;I have an app running on this server called FeedToMasto, which apparently is watching that feed. It's been chugging away like an abandoned science fiction robot, seeing if I posted anything to my linkblog, and …&lt;/p&gt;&lt;/blockquote&gt;</summary><content type="html">&lt;h1 id="how-to-post-to-mastodon-using-your-personal-web-blogs-built-in-rss-feed"&gt;How to post to Mastodon using your personal web blog's built-in RSS feed&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;From Dave:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;I have an app running on this server called FeedToMasto, which apparently is watching that feed. It's been chugging away like an abandoned science fiction robot, seeing if I posted anything to my linkblog, and forwarding it to Mastodon if I have. Hello my robot friend, you were forgotten but still appreciated. It's open source, of course, and appears to be well-documented. If you're looking for example code that reads feeds and pushed the result to interesting places, this is for you.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Dave to the rescue!&lt;/p&gt;
+&lt;p&gt;Reference: &lt;a href="http://scripting.com/2025/07/15.html#a115347"&gt;http://scripting.com/2025/07/15.html#a115347&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="this-worked"&gt;This worked:&lt;/h1&gt;
+&lt;p&gt;I use the Pelican [1] static web site generator for this website, and it has an automatic RSS (atom) feed generator for all articles. The following method lets me &lt;em&gt;create&lt;/em&gt; posts on my Pelican site, with very little readers, and automatically post a link to new articles on fostodon.org, which has a larger audience.&lt;/p&gt;
+&lt;h3 id="install-node-and-npm-via-the-node-version-manager-nvm"&gt;Install node and npm via the Node Version Manager (nvm):&lt;/h3&gt;
+&lt;p&gt;(I removed the apt version of node and npm first)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;curl&lt;span class="w"&gt; &lt;/span&gt;-o-&lt;span class="w"&gt; &lt;/span&gt;https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;nvm-install.sh
+$&lt;span class="w"&gt; &lt;/span&gt;bash&lt;span class="w"&gt; &lt;/span&gt;-x&lt;span class="w"&gt; &lt;/span&gt;./nvm-install.sh
+$&lt;span class="w"&gt; &lt;/span&gt;nvm&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;node
+$&lt;span class="w"&gt; &lt;/span&gt;nvm&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;npm
+$&lt;span class="w"&gt; &lt;/span&gt;npm&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;request
+$&lt;span class="w"&gt; &lt;/span&gt;npm&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;websocket
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3 id="install-feedtomasto"&gt;Install feedToMasto:&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="mf"&gt;1.&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;clone&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="mf"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;scripting&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;feedToMasto&lt;/span&gt;
+&lt;span class="mf"&gt;2.&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;feedToMasto&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;
+&lt;span class="mf"&gt;3.&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;clone&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="mf"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;scripting&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;reallysimple&lt;/span&gt;
+&lt;span class="mf"&gt;4.&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;clone&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="mf"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;scripting&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;utils&lt;/span&gt;
+&lt;span class="mf"&gt;5.&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Change&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="mf"&gt;.&lt;/span&gt;&lt;span class="n"&gt;json&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hints&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="mf"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;scripting&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;feedToMasto&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;blob&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="kr"&gt;READ&lt;/span&gt;&lt;span class="n"&gt;ME&lt;/span&gt;&lt;span class="mf"&gt;.&lt;/span&gt;&lt;span class="n"&gt;md&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="mf"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;scripting&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;feedToMasto&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;issues&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mf"&gt;1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Step 5 requires you to &lt;strong&gt;log into your own Mastodon Instance [2]&lt;/strong&gt; (see below)
+and replace all of Dave's names with your own, in file -&amp;gt; config.json.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Backup config.json before editing&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Using the info from your Mastodon Instance [2], change:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;urlMastodonServer
+clientKey
+clientSecret
+accessToken
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Replace the json &lt;code&gt;feed&lt;/code&gt; array with your own.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This is where I put my github.io pages atom.xml feed url.
+&lt;a href="https://dfcsoftware.github.io/linux-in-house/feeds/writing.atom.xml"&gt;https://dfcsoftware.github.io/linux-in-house/feeds/writing.atom.xml&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;By default no existing posts will be processed&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Set &lt;em&gt;flOnlyPostNewItems to false&lt;/em&gt; to see all your existing posts on the first run!&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;delete bluesky and wordpress if you don't want that.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;By default they are disabled, so you can leave them.&lt;/p&gt;
+&lt;h3 id="run-it"&gt;Run it:&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;node&lt;span class="w"&gt; &lt;/span&gt;feedToMasto.js
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;It will echo your config.json, and if file stats.json does not exits, create it.
+Then it polls your &lt;code&gt;feed&lt;/code&gt; array urls for new posts... &lt;/p&gt;
+&lt;p&gt;When I post a new item to &lt;em&gt;my site&lt;/em&gt;, Pelican [1] updates the atom feed, and feedToMasto.js posts a link to the new article on Mastodon or bluesky, or wordpress, if enabled.&lt;/p&gt;
+&lt;p&gt;Just put &lt;code&gt;node feedToMasto.js&lt;/code&gt; in an /etc/init.d/rc.x or systemd daemon runner and voila' 
+&lt;em&gt;abandoned science fiction robot&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Thanks Dave!&lt;br&gt;
+-- Don Cohoon&lt;/p&gt;
+&lt;p&gt;Reference: &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://getpelican.com/"&gt;https://getpelican.com/&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Get Mastodon info&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id="on-your-mastodon-account"&gt;On your Mastodon account&lt;/h1&gt;
+&lt;p&gt;Click on Preferences, in the right margin.&lt;/p&gt;
+&lt;p&gt;Click on Development in the left margin.&lt;/p&gt;
+&lt;p&gt;Click on the New application button in the upper right corner.&lt;/p&gt;
+&lt;p&gt;You should see a form that looks like this. &lt;/p&gt;
+&lt;p&gt;&lt;img alt="feedToMastodon-newApplicationScreen.png" src="/linux-in-house/images/feedToMastodon-newApplicationScreen.png"&gt;&lt;/p&gt;
+&lt;p&gt;We're going to fill in the form.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Application name -- anything you like, perhaps feedToMasto.
+
+Application website -- anything you like.
+
+Redirect URI -- leave it as-is.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;In the Scopes section do the following.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Uncheck read.
+
+Check read:accounts.
+
+Uncheck write.
+
+Check write:statuses.
+
+Uncheck follow.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;When you're done the Scopes section should look like this.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="feedToMastodon-checkboxesScreen.png" src="/linux-in-house/images/feedToMastodon-checkboxesScreen.png"&gt;&lt;/p&gt;
+&lt;p&gt;Finally click the Submit button at the bottom of the page.&lt;/p&gt;
+&lt;p&gt;You should then see a list of your applications, with this new app on the list.&lt;/p&gt;
+&lt;p&gt;Click on the name of the new app to bring up a screen with various numeric strings you'll add to config.json.&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>Aphorism</title><link href="https://dfcsoftware.github.io/linux-in-house/aphorism.html" rel="alternate"></link><published>2025-07-15T10:20:00-04:00</published><updated>2025-07-15T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-07-15:/linux-in-house/aphorism.html</id><summary type="html">&lt;p&gt;From The Devil's Dictionary (1881-1906) [devil]:&lt;/p&gt;
 &lt;p&gt;APHORISM, n.  Predigested wisdom.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;  The flabby wine-skin of his brain
   Yields to some pathologic strain,
