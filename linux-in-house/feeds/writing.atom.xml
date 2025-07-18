@@ -1,5 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux Home Administration - writing</title><link href="https://dfcsoftware.github.io/linux-in-house/" rel="alternate"></link><link href="https://dfcsoftware.github.io/linux-in-house/feeds/writing.atom.xml" rel="self"></link><id>https://dfcsoftware.github.io/linux-in-house/</id><updated>2025-07-16T10:20:00-04:00</updated><entry><title>Feed Me</title><link href="https://dfcsoftware.github.io/linux-in-house/feed-me.html" rel="alternate"></link><published>2025-07-16T10:20:00-04:00</published><updated>2025-07-16T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-07-16:/linux-in-house/feed-me.html</id><summary type="html">&lt;h1 id="how-to-post-to-mastodon-using-your-personal-web-blogs-built-in-rss-feed"&gt;How to post to Mastodon using your personal web blog's built-in RSS feed&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux Home Administration - writing</title><link href="https://dfcsoftware.github.io/linux-in-house/" rel="alternate"></link><link href="https://dfcsoftware.github.io/linux-in-house/feeds/writing.atom.xml" rel="self"></link><id>https://dfcsoftware.github.io/linux-in-house/</id><updated>2025-07-17T10:20:00-04:00</updated><entry><title>Emotional Residue</title><link href="https://dfcsoftware.github.io/linux-in-house/emotional-residue.html" rel="alternate"></link><published>2025-07-17T10:20:00-04:00</published><updated>2025-07-17T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-07-17:/linux-in-house/emotional-residue.html</id><summary type="html">&lt;p&gt;Summer is cooking&lt;br&gt;
+a winter in my soul.&lt;br&gt;
+Thawing a&lt;br&gt;
+frosted heart.&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;An equation&lt;br&gt;
+worth visualizing&lt;br&gt;
+with my dolphin&lt;br&gt;
+that I may never&lt;br&gt;
+understand.&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;But that's ok.&lt;br&gt;
+As they say.&lt;br&gt;
+When you're &lt;br&gt;
+underwater.&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;Is it ok to forget&lt;br&gt;
+or remember?&lt;br&gt;
+Be it insouciant youth,&lt;br&gt;
+blocking the pain,&lt;br&gt;
+or natural decay …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Summer is cooking&lt;br&gt;
+a winter in my soul.&lt;br&gt;
+Thawing a&lt;br&gt;
+frosted heart.&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;An equation&lt;br&gt;
+worth visualizing&lt;br&gt;
+with my dolphin&lt;br&gt;
+that I may never&lt;br&gt;
+understand.&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;But that's ok.&lt;br&gt;
+As they say.&lt;br&gt;
+When you're &lt;br&gt;
+underwater.&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;Is it ok to forget&lt;br&gt;
+or remember?&lt;br&gt;
+Be it insouciant youth,&lt;br&gt;
+blocking the pain,&lt;br&gt;
+or natural decay;&lt;br&gt;
+memory often throbs&lt;br&gt;
+like a phantom limb.&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;Welcome to the&lt;br&gt;
+emotional residue.&lt;/p&gt;
+&lt;p&gt;-- Don Cohoon&lt;/p&gt;
+&lt;p&gt;Reference: &lt;a href="https://www.theatlantic.com/books/archive/2025/07/girl-1983-linn-ullmann-novel-review/683521/"&gt;https://www.theatlantic.com/books/archive/2025/07/girl-1983-linn-ullmann-novel-review/683521/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>Feed Me</title><link href="https://dfcsoftware.github.io/linux-in-house/feed-me.html" rel="alternate"></link><published>2025-07-16T10:20:00-04:00</published><updated>2025-07-16T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-07-16:/linux-in-house/feed-me.html</id><summary type="html">&lt;h1 id="how-to-post-to-mastodon-using-your-personal-web-blogs-built-in-rss-feed"&gt;How to post to Mastodon using your personal web blog's built-in RSS feed&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;From Dave:&lt;/li&gt;
 &lt;/ul&gt;

@@ -34,10 +34,10 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="https://dfcsoftware.github.io/linux-in-house/feed-me.html">Feed Me</a></h1>
+                    <h1 class="entry-title"><a href="https://dfcsoftware.github.io/linux-in-house/emotional-residue.html">Emotional Residue</a></h1>
 <footer class="post-info">
-        <abbr class="published" title="2025-07-16T10:20:00-04:00">
-                Published: Wed 16 July 2025
+        <abbr class="published" title="2025-07-17T10:20:00-04:00">
+                Published: Thu 17 July 2025
         </abbr>
 
         <address class="vcard author">
@@ -45,115 +45,30 @@
         </address>
 <p>In <a href="https://dfcsoftware.github.io/linux-in-house/category/writing.html">writing</a>.</p>
 
-</footer><!-- /.post-info --><h1 id="how-to-post-to-mastodon-using-your-personal-web-blogs-built-in-rss-feed">How to post to Mastodon using your personal web blog's built-in RSS feed</h1>
-<ul>
-<li>From Dave:</li>
-</ul>
-<blockquote>
-<p>I have an app running on this server called FeedToMasto, which apparently is watching that feed. It's been chugging away like an abandoned science fiction robot, seeing if I posted anything to my linkblog, and forwarding it to Mastodon if I have. Hello my robot friend, you were forgotten but still appreciated. It's open source, of course, and appears to be well-documented. If you're looking for example code that reads feeds and pushed the result to interesting places, this is for you.</p>
-</blockquote>
-<p>Dave to the rescue!</p>
-<p>Reference: <a href="http://scripting.com/2025/07/15.html#a115347">http://scripting.com/2025/07/15.html#a115347</a></p>
-<h1 id="this-worked">This worked:</h1>
-<p>I use the Pelican [1] static web site generator for this website, and it has an automatic RSS (atom) feed generator for all articles. The following method lets me <em>create</em> posts on my Pelican site, with very little readers, and automatically post a link to new articles on fostodon.org, which has a larger audience.</p>
-<h3 id="install-node-and-npm-via-the-node-version-manager-nvm">Install node and npm via the Node Version Manager (nvm):</h3>
-<p>(I removed the apt version of node and npm first)</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>-o-<span class="w"> </span>https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh<span class="w"> </span>&gt;<span class="w"> </span>nvm-install.sh
-$<span class="w"> </span>bash<span class="w"> </span>-x<span class="w"> </span>./nvm-install.sh
-$<span class="w"> </span>nvm<span class="w"> </span>install<span class="w"> </span>node
-$<span class="w"> </span>nvm<span class="w"> </span>install<span class="w"> </span>npm
-$<span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </span>request
-$<span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </span>websocket
-</code></pre></div>
-
-<h3 id="install-feedtomasto">Install feedToMasto:</h3>
-<div class="highlight"><pre><span></span><code><span class="mf">1.</span><span class="w"> </span><span class="err">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">clone</span><span class="w"> </span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="mf">.</span><span class="n">com</span><span class="o">/</span><span class="n">scripting</span><span class="o">/</span><span class="n">feedToMasto</span>
-<span class="mf">2.</span><span class="w"> </span><span class="err">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">feedToMasto</span><span class="w"> </span>
-<span class="mf">3.</span><span class="w"> </span><span class="err">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">clone</span><span class="w"> </span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="mf">.</span><span class="n">com</span><span class="o">/</span><span class="n">scripting</span><span class="o">/</span><span class="n">reallysimple</span>
-<span class="mf">4.</span><span class="w"> </span><span class="err">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">clone</span><span class="w"> </span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="mf">.</span><span class="n">com</span><span class="o">/</span><span class="n">scripting</span><span class="o">/</span><span class="n">utils</span>
-<span class="mf">5.</span><span class="w"> </span><span class="n">Change</span><span class="w"> </span><span class="n">config</span><span class="mf">.</span><span class="n">json</span><span class="w"> </span><span class="p">(</span><span class="n">hints</span><span class="p">)</span>
-<span class="w">   </span><span class="o">&lt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="mf">.</span><span class="n">com</span><span class="o">/</span><span class="n">scripting</span><span class="o">/</span><span class="n">feedToMasto</span><span class="o">/</span><span class="n">blob</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="kr">READ</span><span class="n">ME</span><span class="mf">.</span><span class="n">md</span><span class="o">&gt;</span>
-<span class="w">   </span><span class="o">&lt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="mf">.</span><span class="n">com</span><span class="o">/</span><span class="n">scripting</span><span class="o">/</span><span class="n">feedToMasto</span><span class="o">/</span><span class="n">issues</span><span class="o">/</span><span class="mf">1</span><span class="o">&gt;</span>
-</code></pre></div>
-
-<p>Step 5 requires you to <strong>log into your own Mastodon Instance [2]</strong> (see below)
-and replace all of Dave's names with your own, in file -&gt; config.json.</p>
-<blockquote>
-<p>Backup config.json before editing</p>
-</blockquote>
-<ul>
-<li>Using the info from your Mastodon Instance [2], change:</li>
-</ul>
-<div class="highlight"><pre><span></span><code>urlMastodonServer
-clientKey
-clientSecret
-accessToken
-</code></pre></div>
-
-<ul>
-<li>Replace the json <code>feed</code> array with your own.</li>
-</ul>
-<p>This is where I put my github.io pages atom.xml feed url.
-<a href="https://dfcsoftware.github.io/linux-in-house/feeds/writing.atom.xml">https://dfcsoftware.github.io/linux-in-house/feeds/writing.atom.xml</a></p>
-<ul>
-<li>By default no existing posts will be processed</li>
-</ul>
-<p>Set <em>flOnlyPostNewItems to false</em> to see all your existing posts on the first run!</p>
-<ul>
-<li>delete bluesky and wordpress if you don't want that.</li>
-</ul>
-<p>By default they are disabled, so you can leave them.</p>
-<h3 id="run-it">Run it:</h3>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>node<span class="w"> </span>feedToMasto.js
-</code></pre></div>
-
-<p>It will echo your config.json, and if file stats.json does not exits, create it.
-Then it polls your <code>feed</code> array urls for new posts... </p>
-<p>When I post a new item to <em>my site</em>, Pelican [1] updates the atom feed, and feedToMasto.js posts a link to the new article on Mastodon or bluesky, or wordpress, if enabled.</p>
-<p>Just put <code>node feedToMasto.js</code> in an /etc/init.d/rc.x or systemd daemon runner and voila' 
-<em>abandoned science fiction robot</em></p>
-<p>Thanks Dave!<br>
--- Don Cohoon</p>
-<p>Reference: </p>
-<ol>
-<li>
-<p><a href="https://getpelican.com/">https://getpelican.com/</a></p>
-</li>
-<li>
-<p>Get Mastodon info</p>
-</li>
-</ol>
-<h1 id="on-your-mastodon-account">On your Mastodon account</h1>
-<p>Click on Preferences, in the right margin.</p>
-<p>Click on Development in the left margin.</p>
-<p>Click on the New application button in the upper right corner.</p>
-<p>You should see a form that looks like this. </p>
-<p><img alt="feedToMastodon-newApplicationScreen.png" src="/linux-in-house/images/feedToMastodon-newApplicationScreen.png"></p>
-<p>We're going to fill in the form.</p>
-<div class="highlight"><pre><span></span><code>Application name -- anything you like, perhaps feedToMasto.
-
-Application website -- anything you like.
-
-Redirect URI -- leave it as-is.
-</code></pre></div>
-
-<p>In the Scopes section do the following.</p>
-<div class="highlight"><pre><span></span><code>Uncheck read.
-
-Check read:accounts.
-
-Uncheck write.
-
-Check write:statuses.
-
-Uncheck follow.
-</code></pre></div>
-
-<p>When you're done the Scopes section should look like this.</p>
-<p><img alt="feedToMastodon-checkboxesScreen.png" src="/linux-in-house/images/feedToMastodon-checkboxesScreen.png"></p>
-<p>Finally click the Submit button at the bottom of the page.</p>
-<p>You should then see a list of your applications, with this new app on the list.</p>
-<p>Click on the name of the new app to bring up a screen with various numeric strings you'll add to config.json.</p>
+</footer><!-- /.post-info --><p>Summer is cooking<br>
+a winter in my soul.<br>
+Thawing a<br>
+frosted heart.<br></p>
+<p>An equation<br>
+worth visualizing<br>
+with my dolphin<br>
+that I may never<br>
+understand.<br></p>
+<p>But that's ok.<br>
+As they say.<br>
+When you're <br>
+underwater.<br></p>
+<p>Is it ok to forget<br>
+or remember?<br>
+Be it insouciant youth,<br>
+blocking the pain,<br>
+or natural decay;<br>
+memory often throbs<br>
+like a phantom limb.<br></p>
+<p>Welcome to the<br>
+emotional residue.</p>
+<p>-- Don Cohoon</p>
+<p>Reference: <a href="https://www.theatlantic.com/books/archive/2025/07/girl-1983-linn-ullmann-novel-review/683521/">https://www.theatlantic.com/books/archive/2025/07/girl-1983-linn-ullmann-novel-review/683521/</a></p>
 <p>--</p>
 <div class="highlight"><pre><span></span><code>____          
 |  _ \  ___  _ __  
@@ -168,6 +83,33 @@ Uncheck follow.
                     <h1>Other articles</h1>
                     <hr />
                     <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://dfcsoftware.github.io/linux-in-house/feed-me.html" rel="bookmark"
+                           title="Permalink to Feed Me">Feed Me</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2025-07-16T10:20:00-04:00">
+                Published: Wed 16 July 2025
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://dfcsoftware.github.io/linux-in-house/author/don-cohoon.html">Don Cohoon</a>
+        </address>
+<p>In <a href="https://dfcsoftware.github.io/linux-in-house/category/writing.html">writing</a>.</p>
+
+</footer><!-- /.post-info -->                <h1 id="how-to-post-to-mastodon-using-your-personal-web-blogs-built-in-rss-feed">How to post to Mastodon using your personal web blog's built-in RSS feed</h1>
+<ul>
+<li>From Dave:</li>
+</ul>
+<blockquote>
+<p>I have an app running on this server called FeedToMasto, which apparently is watching that feed. It's been chugging away like an abandoned science fiction robot, seeing if I posted anything to my linkblog, and …</p></blockquote>
+                <a class="readmore" href="https://dfcsoftware.github.io/linux-in-house/feed-me.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -433,30 +375,6 @@ with the same thinking that created them<br>
                 <a class="readmore" href="https://dfcsoftware.github.io/linux-in-house/solve.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="https://dfcsoftware.github.io/linux-in-house/decision.html" rel="bookmark"
-                           title="Permalink to Decision">Decision</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2025-07-07T10:20:00-04:00">
-                Published: Mon 07 July 2025
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="https://dfcsoftware.github.io/linux-in-house/author/don-cohoon.html">Don Cohoon</a>
-        </address>
-<p>In <a href="https://dfcsoftware.github.io/linux-in-house/category/writing.html">writing</a>.</p>
-
-</footer><!-- /.post-info -->                <h3 id="your-final-decision">Your Final Decision</h3>
-<p><a href="https://funerals.org/get-help/making-decisions/">https://funerals.org/get-help/making-decisions/</a></p>
-<p>Once you’ve decided what you want, talk to your likely survivors about your wishes and what you’ve learned. If plans go awry, or death occurs far from home, they’ll need the skills and knowledge you’ve developed to negotiate …</p>
-                <a class="readmore" href="https://dfcsoftware.github.io/linux-in-house/decision.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
                 </ol><!-- /#posts-list -->
 <nav>
   <ul>
@@ -497,7 +415,7 @@ with the same thinking that created them<br>
                 </p><!-- /#about -->
 
                 <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-                <p> Version:  3.224 </p>
+                <p> Version:  3.226 </p>
         </footer><!-- /#contentinfo -->
 
 </body>
