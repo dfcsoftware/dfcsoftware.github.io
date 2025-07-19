@@ -36,14 +36,66 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="https://dfcsoftware.github.io/linux-in-house/networkmanagement.html" rel="bookmark"
+                           title="Permalink to NetworkManagement">NetworkManagement</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2023-04-19T00:00:00-04:00">
+                Published: Wed 19 April 2023
+        </abbr>
+		<br />
+        <abbr class="modified" title="2024-04-19T09:30:00-04:00">
+                Updated: Fri 19 April 2024
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://dfcsoftware.github.io/linux-in-house/author/don-cohoon.html">Don Cohoon</a>
+        </address>
+<p>In <a href="https://dfcsoftware.github.io/linux-in-house/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://dfcsoftware.github.io/linux-in-house/tag/network.html">network</a> </p>
+</footer><!-- /.post-info -->                <h1 id="network-management">Network Management</h1>
+<p>The command line offers a wealth of network management commands. Here are some of my favorites.</p>
+<p><br/></p>
+<hr>
+<div class="toc"><span class="toctitle">Table of Contents</span><ul>
+<li><a href="#network-management">Network Management</a><ul>
+<li><a href="#nmcli">nmcli</a></li>
+<li><a href="#ip">ip</a></li>
+<li><a href="#ss">ss</a></li>
+<li><a href="#connmanctl">connmanctl</a></li>
+<li><a href="#firewalld">firewalld</a></li>
+<li><a href="#networkd">networkd</a></li>
+<li><a href="#tcpdump">tcpdump</a></li>
+<li><a href="#arp-scan">arp-scan</a></li>
+<li><a href="#vnstat">vnstat</a></li>
+<li><a href="#nethogs">nethogs</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<hr>
+<h2 id="nmcli">nmcli</h2>
+<p>NetworkManager has a command line interface (CLI).</p>
+<p>Get status:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>nmcli<span class="w"> </span>general<span class="w"> </span>status
+STATE<span class="w">      </span>CONNECTIVITY<span class="w">  </span>WIFI-HW …</code></pre></div>
+                <a class="readmore" href="https://dfcsoftware.github.io/linux-in-house/networkmanagement.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="https://dfcsoftware.github.io/linux-in-house/encryptingfiles.html" rel="bookmark"
                            title="Permalink to EncryptingFiles">EncryptingFiles</a></h1>
                 </header>
 
                 <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2023-03-18T00:00:00-04:00">
-                Published: Sat 18 March 2023
+        <abbr class="published" title="2023-03-19T00:00:00-04:00">
+                Published: Sun 19 March 2023
         </abbr>
 		<br />
         <abbr class="modified" title="2024-04-19T09:30:00-04:00">
@@ -75,8 +127,8 @@
 
                 <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2023-02-18T10:20:00-05:00">
-                Published: Sat 18 February 2023
+        <abbr class="published" title="2023-02-19T10:20:00-05:00">
+                Published: Sun 19 February 2023
         </abbr>
 		<br />
         <abbr class="modified" title="2024-04-19T09:30:00-04:00">
@@ -326,42 +378,6 @@
                 <a class="readmore" href="https://dfcsoftware.github.io/linux-in-house/e-mailrelay.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="https://dfcsoftware.github.io/linux-in-house/homeassistant.html" rel="bookmark"
-                           title="Permalink to HomeAssistant">HomeAssistant</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2023-01-25T10:20:00-05:00">
-                Published: Wed 25 January 2023
-        </abbr>
-		<br />
-        <abbr class="modified" title="2024-04-19T09:30:00-04:00">
-                Updated: Fri 19 April 2024
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="https://dfcsoftware.github.io/linux-in-house/author/don-cohoon.html">Don Cohoon</a>
-        </address>
-<p>In <a href="https://dfcsoftware.github.io/linux-in-house/category/linux.html">linux</a>.</p>
-<p>tags: <a href="https://dfcsoftware.github.io/linux-in-house/tag/systems.html">systems</a> </p>
-</footer><!-- /.post-info -->                <h1 id="home-assistant">Home Assistant</h1>
-<p>This is a web based interface for automating things around the home. It can monitor doors, windows, motion detection and turn electrical things on and off.</p>
-<p><br/></p>
-<hr>
-<div class="toc"><span class="toctitle">Table of Contents</span><ul>
-<li><a href="#home-assistant">Home Assistant</a><ul>
-<li><a href="#plug-in-zooz-s2-stick-700">Plug in Zooz S2 stick 700</a></li>
-<li><a href="#install-software">Install Software</a><ul>
-<li><a href="#option-1-truenas-app">Option (1): TrueNAS App</a><ul>
-<li><a href="#1-app-for-home-assistant">(1) App for Home-Assistant</a></li>
-<li><a href="#1-daemon-to-run-zwave-js-ui">(1 …</a></li></ul></li></ul></li></ul></li></ul></div>
-                <a class="readmore" href="https://dfcsoftware.github.io/linux-in-house/homeassistant.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
                 </ol><!-- /#posts-list -->
 <nav>
   <ul>
@@ -404,7 +420,7 @@
                 </p><!-- /#about -->
 
                 <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-                <p> Version:  3.226 </p>
+                <p> Version:  3.234 </p>
         </footer><!-- /#contentinfo -->
 
 </body>
