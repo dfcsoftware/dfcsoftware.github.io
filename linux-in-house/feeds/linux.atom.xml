@@ -102,7 +102,7 @@
 &lt;p&gt;Lock your computer's doors and windows,
 but remember:
 A house is not a home without visitors&lt;/p&gt;
-&lt;/blockquote&gt;</content><category term="linux"></category><category term="think"></category></entry><entry><title>git</title><link href="https://dfcsoftware.github.io/linux-in-house/git.html" rel="alternate"></link><published>2023-10-26T00:00:00-04:00</published><updated>2023-10-26T00:00:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-10-26:/linux-in-house/git.html</id><summary type="html">&lt;h1 id="git-clone"&gt;git clone&lt;/h1&gt;
+&lt;/blockquote&gt;</content><category term="linux"></category><category term="think"></category></entry><entry><title>git</title><link href="https://dfcsoftware.github.io/linux-in-house/git.html" rel="alternate"></link><published>2023-10-29T00:00:00-04:00</published><updated>2023-10-29T00:00:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-10-29:/linux-in-house/git.html</id><summary type="html">&lt;h1 id="git-clone"&gt;git clone&lt;/h1&gt;
 &lt;p&gt;Clones a repository into a newly created directory, creates remote-tracking branches for each branch in the cloned repository (visible using git branch --remotes), and creates and checks out an initial branch that is forked from the cloned repository’s currently active branch.&lt;/p&gt;
 &lt;hr&gt;
 &lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
@@ -326,7 +326,7 @@ fbff5bc..72bbc59&lt;span class="w"&gt; &lt;/span&gt;master&lt;span class="w"&gt;
 &lt;p&gt;Reference:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://git-scm.com/book/en/v2"&gt;https://git-scm.com/book/en/v2&lt;/a&gt; : pp131 - Private Small Team&lt;/li&gt;
-&lt;/ul&gt;</content><category term="linux"></category></entry><entry><title>Watch</title><link href="https://dfcsoftware.github.io/linux-in-house/watch.html" rel="alternate"></link><published>2023-08-26T00:00:00-04:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-08-26:/linux-in-house/watch.html</id><summary type="html">&lt;h1 id="watch-notification-system-v-2023095"&gt;Watch Notification System - v 2023.09.5&lt;/h1&gt;
+&lt;/ul&gt;</content><category term="linux"></category></entry><entry><title>Watch</title><link href="https://dfcsoftware.github.io/linux-in-house/watch.html" rel="alternate"></link><published>2023-08-29T00:00:00-04:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-08-29:/linux-in-house/watch.html</id><summary type="html">&lt;h1 id="watch-notification-system-v-2023095"&gt;Watch Notification System - v 2023.09.5&lt;/h1&gt;
 &lt;p&gt;Finally got my alerts working, so when a host goes haywire I get an alert on the Phone and Cloud, with E-Mail as backup.&lt;/p&gt;
 &lt;hr&gt;
 &lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
@@ -680,7 +680,7 @@ It needs to be scheduled in cron.&lt;/p&gt;
 &lt;span class="nv"&gt;Aug&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;08&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;11&lt;/span&gt;:&lt;span class="mi"&gt;07&lt;/span&gt;:&lt;span class="mi"&gt;43&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;bob&lt;/span&gt;.&lt;span class="nv"&gt;example&lt;/span&gt;.&lt;span class="nv"&gt;com&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;pmlogger&lt;/span&gt;[&lt;span class="mi"&gt;913&lt;/span&gt;]:&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="nv"&gt;To&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;enable&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;pmlogger&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;run&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;following&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;as&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;root&lt;/span&gt;:
 &lt;span class="nv"&gt;Aug&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;08&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;11&lt;/span&gt;:&lt;span class="mi"&gt;07&lt;/span&gt;:&lt;span class="mi"&gt;44&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;bob&lt;/span&gt;.&lt;span class="nv"&gt;example&lt;/span&gt;.&lt;span class="nv"&gt;com&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;pmlogger&lt;/span&gt;[&lt;span class="mi"&gt;913&lt;/span&gt;]:&lt;span class="w"&gt;          &lt;/span&gt;&lt;span class="nv"&gt;update&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;rc&lt;/span&gt;.&lt;span class="nv"&gt;d&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;f&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;pmlogger&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;remove&lt;/span&gt;
 &lt;span class="nv"&gt;Aug&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;08&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;11&lt;/span&gt;:&lt;span class="mi"&gt;07&lt;/span&gt;:&lt;span class="mi"&gt;44&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;bob&lt;/span&gt;.&lt;span class="nv"&gt;example&lt;/span&gt;.&lt;span class="nv"&gt;com&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;pmlogger&lt;/span&gt;[&lt;span class="mi"&gt;913&lt;/span&gt;]:&lt;span class="w"&gt;          &lt;/span&gt;&lt;span class="nv"&gt;update&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;rc&lt;/span&gt;.&lt;span class="nv"&gt;d&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;pmlogger&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;defaults&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;94&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;06&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="systems"></category></entry><entry><title>VirtualMachines</title><link href="https://dfcsoftware.github.io/linux-in-house/virtualmachines.html" rel="alternate"></link><published>2023-06-26T00:00:00-04:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-06-26:/linux-in-house/virtualmachines.html</id><summary type="html">&lt;h1 id="virtual-machines-vm"&gt;Virtual Machines (VM)&lt;/h1&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="systems"></category></entry><entry><title>VirtualMachines</title><link href="https://dfcsoftware.github.io/linux-in-house/virtualmachines.html" rel="alternate"></link><published>2023-06-29T00:00:00-04:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-06-29:/linux-in-house/virtualmachines.html</id><summary type="html">&lt;h1 id="virtual-machines-vm"&gt;Virtual Machines (VM)&lt;/h1&gt;
 &lt;p&gt;A Virtual Machine (VM) is a way to create a whole operating system, with many applications, that is able to be moved from one physical machine to another physical machine. This has advantages in case of hardware, location or network problems to quickly and correctly restore service …&lt;/p&gt;</summary><content type="html">&lt;h1 id="virtual-machines-vm"&gt;Virtual Machines (VM)&lt;/h1&gt;
 &lt;p&gt;A Virtual Machine (VM) is a way to create a whole operating system, with many applications, that is able to be moved from one physical machine to another physical machine. This has advantages in case of hardware, location or network problems to quickly and correctly restore service.&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
@@ -1491,7 +1491,7 @@ $ ssh &amp;lt;remote IP&amp;gt; grep -n &amp;lt;remote IP&amp;gt; ~/.ssh/known_h
 &lt;span class="n"&gt;└── virtlogd.conf&lt;/span&gt;
 
 &lt;span class="n"&gt;9 directories, 45 files&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="systems"></category></entry><entry><title>NetworkManagement</title><link href="https://dfcsoftware.github.io/linux-in-house/networkmanagement.html" rel="alternate"></link><published>2023-04-26T00:00:00-04:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-04-26:/linux-in-house/networkmanagement.html</id><summary type="html">&lt;h1 id="network-management"&gt;Network Management&lt;/h1&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="systems"></category></entry><entry><title>NetworkManagement</title><link href="https://dfcsoftware.github.io/linux-in-house/networkmanagement.html" rel="alternate"></link><published>2023-04-29T00:00:00-04:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-04-29:/linux-in-house/networkmanagement.html</id><summary type="html">&lt;h1 id="network-management"&gt;Network Management&lt;/h1&gt;
 &lt;p&gt;The command line offers a wealth of network management commands. Here are some of my favorites.&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;hr&gt;
@@ -1939,7 +1939,7 @@ responded
 &lt;h2 id="conclusion"&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;This was a short list, hoping to provide an introduction to managing your network from the command line.&lt;/p&gt;
 &lt;p&gt;Hope this helps,&lt;br&gt;
--- Don&lt;/p&gt;</content><category term="linux"></category><category term="network"></category></entry><entry><title>EncryptingFiles</title><link href="https://dfcsoftware.github.io/linux-in-house/encryptingfiles.html" rel="alternate"></link><published>2023-03-26T00:00:00-04:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-03-26:/linux-in-house/encryptingfiles.html</id><summary type="html">&lt;h1 id="encrypting-files"&gt;Encrypting Files&lt;/h1&gt;
+-- Don&lt;/p&gt;</content><category term="linux"></category><category term="network"></category></entry><entry><title>EncryptingFiles</title><link href="https://dfcsoftware.github.io/linux-in-house/encryptingfiles.html" rel="alternate"></link><published>2023-03-29T00:00:00-04:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-03-29:/linux-in-house/encryptingfiles.html</id><summary type="html">&lt;h1 id="encrypting-files"&gt;Encrypting Files&lt;/h1&gt;
 &lt;p&gt;You should protect your carefully built system and it's files from abuse, tampering, or just plain spying. It's easy to do, what are you waiting for? Encrypt your data directory &lt;strong&gt;now&lt;/strong&gt;.&lt;/p&gt;
 &lt;hr&gt;
 &lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
@@ -2282,7 +2282,7 @@ $&lt;span class="w"&gt; &lt;/span&gt;cp&lt;span class="w"&gt; &lt;/span&gt;revok
 
 &lt;blockquote&gt;
 &lt;p&gt;This is more secure if you do not share your public key on a public server. You just have to find a secure way to share it, like your own cloud server.&lt;/p&gt;
-&lt;/blockquote&gt;</content><category term="linux"></category><category term="security"></category></entry><entry><title>VirtualIP</title><link href="https://dfcsoftware.github.io/linux-in-house/virtualip.html" rel="alternate"></link><published>2023-02-26T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-02-26:/linux-in-house/virtualip.html</id><summary type="html">&lt;h1 id="virtual-ip-ethernet-interface"&gt;Virtual IP Ethernet Interface&lt;/h1&gt;
+&lt;/blockquote&gt;</content><category term="linux"></category><category term="security"></category></entry><entry><title>VirtualIP</title><link href="https://dfcsoftware.github.io/linux-in-house/virtualip.html" rel="alternate"></link><published>2023-02-28T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-02-28:/linux-in-house/virtualip.html</id><summary type="html">&lt;h1 id="virtual-ip-ethernet-interface"&gt;Virtual IP Ethernet Interface&lt;/h1&gt;
 &lt;p&gt;Virtual IP Interface behaves like a normal interface. All traffic routed to it will go through the master interface (for example, eth0) but with a VLAN tag. Only VLAN-aware devices can accept them if configured correctly, else the traffic is dropped. &lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;hr&gt;
@@ -4935,211 +4935,7 @@ echo $(who am i) &amp;#39; just logged on &amp;#39; $(hostname) &amp;#39; &amp;#
 &lt;p&gt;Proceeding in the order presented, some things are depending on prior setups.&lt;/p&gt;
 &lt;object type="image/svg+xml" data="/images/Linux-in-the-House2.svg" style="width:5%; height:10%; text-align: right"&gt;
   Linux-in-the-House.svg&lt;!-- fallback image in CSS --&gt;
-&lt;/object&gt;</content><category term="linux"></category><category term="setup"></category></entry><entry><title>Docker</title><link href="https://dfcsoftware.github.io/linux-in-house/docker.html" rel="alternate"></link><published>2023-01-26T00:00:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-26:/linux-in-house/docker.html</id><summary type="html">&lt;h1 id="docker"&gt;Docker&lt;/h1&gt;
-&lt;p&gt;Docker is a way to manage containers, which are like namespaces or jails. Here are some useful common commands to check out the status of these containers.&lt;/p&gt;
-&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href="#docker"&gt;Docker&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href="#prune-unused-containers-images-and-cache"&gt;Prune unused containers, images and cache&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#check-a-containers-logs"&gt;Check a container's logs&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#inspect-a-container"&gt;Inspect a container&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#check-for-container-filesystem-changes-since-start"&gt;Check for container filesystem changes …&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;</summary><content type="html">&lt;h1 id="docker"&gt;Docker&lt;/h1&gt;
-&lt;p&gt;Docker is a way to manage containers, which are like namespaces or jails. Here are some useful common commands to check out the status of these containers.&lt;/p&gt;
-&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href="#docker"&gt;Docker&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href="#prune-unused-containers-images-and-cache"&gt;Prune unused containers, images and cache&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#check-a-containers-logs"&gt;Check a container's logs&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#inspect-a-container"&gt;Inspect a container&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#check-for-container-filesystem-changes-since-start"&gt;Check for container filesystem changes since start&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#check-container-running-processes"&gt;Check container running processes&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#check-container-statistics"&gt;Check container statistics&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#check-docker-networks"&gt;Check docker networks&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#move-data-files"&gt;Move data files&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#upgrade-a-container"&gt;Upgrade a container&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;hr&gt;
-&lt;h2 id="prune-unused-containers-images-and-cache"&gt;Prune unused containers, images and cache&lt;/h2&gt;
-&lt;p&gt;This can free up disk space.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;docker&lt;span class="w"&gt; &lt;/span&gt;system&lt;span class="w"&gt; &lt;/span&gt;prune
-WARNING!&lt;span class="w"&gt; &lt;/span&gt;This&lt;span class="w"&gt; &lt;/span&gt;will&lt;span class="w"&gt; &lt;/span&gt;remove:
-&lt;span class="w"&gt;  &lt;/span&gt;-&lt;span class="w"&gt; &lt;/span&gt;all&lt;span class="w"&gt; &lt;/span&gt;stopped&lt;span class="w"&gt; &lt;/span&gt;containers
-&lt;span class="w"&gt;  &lt;/span&gt;-&lt;span class="w"&gt; &lt;/span&gt;all&lt;span class="w"&gt; &lt;/span&gt;networks&lt;span class="w"&gt; &lt;/span&gt;not&lt;span class="w"&gt; &lt;/span&gt;used&lt;span class="w"&gt; &lt;/span&gt;by&lt;span class="w"&gt; &lt;/span&gt;at&lt;span class="w"&gt; &lt;/span&gt;least&lt;span class="w"&gt; &lt;/span&gt;one&lt;span class="w"&gt; &lt;/span&gt;container
-&lt;span class="w"&gt;  &lt;/span&gt;-&lt;span class="w"&gt; &lt;/span&gt;all&lt;span class="w"&gt; &lt;/span&gt;dangling&lt;span class="w"&gt; &lt;/span&gt;images
-&lt;span class="w"&gt;  &lt;/span&gt;-&lt;span class="w"&gt; &lt;/span&gt;all&lt;span class="w"&gt; &lt;/span&gt;dangling&lt;span class="w"&gt; &lt;/span&gt;build&lt;span class="w"&gt; &lt;/span&gt;cache
-
-Are&lt;span class="w"&gt; &lt;/span&gt;you&lt;span class="w"&gt; &lt;/span&gt;sure&lt;span class="w"&gt; &lt;/span&gt;you&lt;span class="w"&gt; &lt;/span&gt;want&lt;span class="w"&gt; &lt;/span&gt;to&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;continue&lt;/span&gt;?&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;y/N&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;y
-Deleted&lt;span class="w"&gt; &lt;/span&gt;Containers:
-e91363806fd869a4f9349fc2de4faf26cc6b4b26a7fdbf16c5535c13ef46f995
-
-Deleted&lt;span class="w"&gt; &lt;/span&gt;Images:
-untagged:&lt;span class="w"&gt; &lt;/span&gt;homeassistant/home-assistant@sha256:1b4a62627444841ad222aaf3795b90581c2f8b712762c8d7d6b6cf9a42045ea8
-deleted:&lt;span class="w"&gt; &lt;/span&gt;sha256:8a975b58aacfc196fbe3eeb34810b9068e8a50d953ff88b67504d1c2351940d7
-deleted:&lt;span class="w"&gt; &lt;/span&gt;sha256:8df0a83f8a5a8360e6deef1187b2dbf6c27b7fe57584bca0b657671363a20729
-deleted:&lt;span class="w"&gt; &lt;/span&gt;sha256:abdac85af7ebbecf80442d554fa655133eb4ee2dbf4d96136caf1615e7f82992
-deleted:&lt;span class="w"&gt; &lt;/span&gt;sha256:b992bfbe5047c28682b5cc7ce976e418b5402113ee404143a4de208214f322f7
-deleted:&lt;span class="w"&gt; &lt;/span&gt;sha256:84e4d6e3db7ee758f3089b2f28ed3b1d248e31c72604004fdfdd34970c1a47
-...
-Total&lt;span class="w"&gt; &lt;/span&gt;reclaimed&lt;span class="w"&gt; &lt;/span&gt;space:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;.556GB
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Reference: &lt;a href="https://docs.docker.com/engine/reference/commandline/system_prune/"&gt;https://docs.docker.com/engine/reference/commandline/system_prune/&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id="check-a-containers-logs"&gt;Check a container's logs&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;docker&lt;span class="w"&gt; &lt;/span&gt;logs&lt;span class="w"&gt; &lt;/span&gt;-f&lt;span class="w"&gt; &lt;/span&gt;homeassistant
-...
-Traceback&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;most&lt;span class="w"&gt; &lt;/span&gt;recent&lt;span class="w"&gt; &lt;/span&gt;call&lt;span class="w"&gt; &lt;/span&gt;last&lt;span class="o"&gt;)&lt;/span&gt;:
-&lt;span class="w"&gt;  &lt;/span&gt;File&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/usr/local/lib/python3.10/site-packages/pyatv/protocols/airplay/__init__.py&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;line&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;258&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;_connect_rc
-&lt;span class="w"&gt;    &lt;/span&gt;await&lt;span class="w"&gt; &lt;/span&gt;control.start&lt;span class="o"&gt;(&lt;/span&gt;str&lt;span class="o"&gt;(&lt;/span&gt;core.config.address&lt;span class="o"&gt;)&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;control_port,&lt;span class="w"&gt; &lt;/span&gt;credentials&lt;span class="o"&gt;)&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;File&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/usr/local/lib/python3.10/site-packages/pyatv/protocols/airplay/remote_control.py&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;line&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;60&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;start
-&lt;span class="w"&gt;    &lt;/span&gt;await&lt;span class="w"&gt; &lt;/span&gt;self._setup_event_channel&lt;span class="o"&gt;(&lt;/span&gt;self.connection.remote_ip&lt;span class="o"&gt;)&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;File&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/usr/local/lib/python3.10/site-packages/pyatv/protocols/airplay/remote_control.py&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;line&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;102&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;_setup_event_channel
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nv"&gt;resp&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;await&lt;span class="w"&gt; &lt;/span&gt;self._setup&lt;span class="o"&gt;(&lt;/span&gt;
-...
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h2 id="inspect-a-container"&gt;Inspect a container&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;docker&lt;span class="w"&gt; &lt;/span&gt;container&lt;span class="w"&gt; &lt;/span&gt;inspect&lt;span class="w"&gt;  &lt;/span&gt;homeassistant
-&lt;span class="o"&gt;[&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="o"&gt;{&lt;/span&gt;
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Id&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;0baa0742e18858ebea97a93ee5a97f0fb09f369d504d3f6d1252c8c35234ac91&amp;quot;&lt;/span&gt;,
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Created&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;2023-04-16T23:45:06.042429674Z&amp;quot;&lt;/span&gt;,
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Path&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/init&amp;quot;&lt;/span&gt;,
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Args&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[]&lt;/span&gt;,
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;State&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;{&lt;/span&gt;
-&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Status&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;running&amp;quot;&lt;/span&gt;,
-&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Running&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;true,
-&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Paused&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;false,
-&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Restarting&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;false,
-&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;OOMKilled&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;false,
-&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Dead&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;false,
-&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Pid&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2378698&lt;/span&gt;,
-&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;ExitCode&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;,
-&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Error&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;,
-&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;StartedAt&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;2023-04-16T23:45:06.981493189Z&amp;quot;&lt;/span&gt;,
-&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;FinishedAt&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;0001-01-01T00:00:00Z&amp;quot;&lt;/span&gt;
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;,
-...
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h2 id="check-for-container-filesystem-changes-since-start"&gt;Check for container filesystem changes since start&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;docker&lt;span class="w"&gt; &lt;/span&gt;diff&lt;span class="w"&gt; &lt;/span&gt;&amp;lt;container&lt;span class="w"&gt; &lt;/span&gt;name&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h2 id="check-container-running-processes"&gt;Check container running processes&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;docker&lt;span class="w"&gt; &lt;/span&gt;top&lt;span class="w"&gt; &lt;/span&gt;homeassistant
-UID&lt;span class="w"&gt;                 &lt;/span&gt;PID&lt;span class="w"&gt;                 &lt;/span&gt;PPID&lt;span class="w"&gt;                &lt;/span&gt;C&lt;span class="w"&gt;                   &lt;/span&gt;STIME&lt;span class="w"&gt;               &lt;/span&gt;TTY&lt;span class="w"&gt;                 &lt;/span&gt;TIME&lt;span class="w"&gt;                &lt;/span&gt;CMD
-root&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="m"&gt;2378698&lt;/span&gt;&lt;span class="w"&gt;             &lt;/span&gt;&lt;span class="m"&gt;2378670&lt;/span&gt;&lt;span class="w"&gt;             &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="m"&gt;19&lt;/span&gt;:45&lt;span class="w"&gt;               &lt;/span&gt;?&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="m"&gt;00&lt;/span&gt;:00:00&lt;span class="w"&gt;            &lt;/span&gt;/package/admin/s6/command/s6-svscan&lt;span class="w"&gt; &lt;/span&gt;-d4&lt;span class="w"&gt; &lt;/span&gt;--&lt;span class="w"&gt; &lt;/span&gt;/run/service
-root&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="m"&gt;2378732&lt;/span&gt;&lt;span class="w"&gt;             &lt;/span&gt;&lt;span class="m"&gt;2378698&lt;/span&gt;&lt;span class="w"&gt;             &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="m"&gt;19&lt;/span&gt;:45&lt;span class="w"&gt;               &lt;/span&gt;?&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="m"&gt;00&lt;/span&gt;:00:00&lt;span class="w"&gt;            &lt;/span&gt;s6-supervise&lt;span class="w"&gt; &lt;/span&gt;s6-linux-init-shutdownd
-root&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="m"&gt;2378733&lt;/span&gt;&lt;span class="w"&gt;             &lt;/span&gt;&lt;span class="m"&gt;2378732&lt;/span&gt;&lt;span class="w"&gt;             &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="m"&gt;19&lt;/span&gt;:45&lt;span class="w"&gt;               &lt;/span&gt;?&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="m"&gt;00&lt;/span&gt;:00:00&lt;span class="w"&gt;            &lt;/span&gt;/package/admin/s6-linux-init/command/s6-linux-init-shutdownd&lt;span class="w"&gt; &lt;/span&gt;-c&lt;span class="w"&gt; &lt;/span&gt;/run/s6/basedir&lt;span class="w"&gt; &lt;/span&gt;-g&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;3000&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;-C&lt;span class="w"&gt; &lt;/span&gt;-B
-root&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="m"&gt;2378742&lt;/span&gt;&lt;span class="w"&gt;             &lt;/span&gt;&lt;span class="m"&gt;2378698&lt;/span&gt;&lt;span class="w"&gt;             &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="m"&gt;19&lt;/span&gt;:45&lt;span class="w"&gt;               &lt;/span&gt;?&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="m"&gt;00&lt;/span&gt;:00:00&lt;span class="w"&gt;            &lt;/span&gt;s6-supervise&lt;span class="w"&gt; &lt;/span&gt;s6rc-fdholder
-root&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="m"&gt;2378743&lt;/span&gt;&lt;span class="w"&gt;             &lt;/span&gt;&lt;span class="m"&gt;2378698&lt;/span&gt;&lt;span class="w"&gt;             &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="m"&gt;19&lt;/span&gt;:45&lt;span class="w"&gt;               &lt;/span&gt;?&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="m"&gt;00&lt;/span&gt;:00:00&lt;span class="w"&gt;            &lt;/span&gt;s6-supervise&lt;span class="w"&gt; &lt;/span&gt;s6rc-oneshot-runner
-root&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="m"&gt;2378751&lt;/span&gt;&lt;span class="w"&gt;             &lt;/span&gt;&lt;span class="m"&gt;2378743&lt;/span&gt;&lt;span class="w"&gt;             &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="m"&gt;19&lt;/span&gt;:45&lt;span class="w"&gt;               &lt;/span&gt;?&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="m"&gt;00&lt;/span&gt;:00:00&lt;span class="w"&gt;            &lt;/span&gt;/package/admin/s6/command/s6-ipcserverd&lt;span class="w"&gt; &lt;/span&gt;-1&lt;span class="w"&gt; &lt;/span&gt;--&lt;span class="w"&gt; &lt;/span&gt;/package/admin/s6/command/s6-ipcserver-access&lt;span class="w"&gt; &lt;/span&gt;-v0&lt;span class="w"&gt; &lt;/span&gt;-E&lt;span class="w"&gt; &lt;/span&gt;-l0&lt;span class="w"&gt; &lt;/span&gt;-i&lt;span class="w"&gt; &lt;/span&gt;data/rules&lt;span class="w"&gt; &lt;/span&gt;--&lt;span class="w"&gt; &lt;/span&gt;/package/admin/s6/command/s6-sudod&lt;span class="w"&gt; &lt;/span&gt;-t&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;30000&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;--&lt;span class="w"&gt; &lt;/span&gt;/package/admin/s6-rc/command/s6-rc-oneshot-run&lt;span class="w"&gt; &lt;/span&gt;-l&lt;span class="w"&gt; &lt;/span&gt;../..&lt;span class="w"&gt; &lt;/span&gt;--
-root&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="m"&gt;2378782&lt;/span&gt;&lt;span class="w"&gt;             &lt;/span&gt;&lt;span class="m"&gt;2378698&lt;/span&gt;&lt;span class="w"&gt;             &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="m"&gt;19&lt;/span&gt;:45&lt;span class="w"&gt;               &lt;/span&gt;?&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="m"&gt;00&lt;/span&gt;:00:00&lt;span class="w"&gt;            &lt;/span&gt;s6-supervise&lt;span class="w"&gt; &lt;/span&gt;home-assistant
-root&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="m"&gt;2378784&lt;/span&gt;&lt;span class="w"&gt;             &lt;/span&gt;&lt;span class="m"&gt;2378782&lt;/span&gt;&lt;span class="w"&gt;             &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="m"&gt;19&lt;/span&gt;:45&lt;span class="w"&gt;               &lt;/span&gt;?&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="m"&gt;00&lt;/span&gt;:00:15&lt;span class="w"&gt;            &lt;/span&gt;python3&lt;span class="w"&gt; &lt;/span&gt;-m&lt;span class="w"&gt; &lt;/span&gt;homeassistant&lt;span class="w"&gt; &lt;/span&gt;--config&lt;span class="w"&gt; &lt;/span&gt;/config
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h2 id="check-container-statistics"&gt;Check container statistics&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;docker&lt;span class="w"&gt; &lt;/span&gt;stats&lt;span class="w"&gt; &lt;/span&gt;homeassistant
-
-CONTAINER&lt;span class="w"&gt; &lt;/span&gt;ID&lt;span class="w"&gt;   &lt;/span&gt;NAME&lt;span class="w"&gt;            &lt;/span&gt;CPU&lt;span class="w"&gt; &lt;/span&gt;%&lt;span class="w"&gt;     &lt;/span&gt;MEM&lt;span class="w"&gt; &lt;/span&gt;USAGE&lt;span class="w"&gt; &lt;/span&gt;/&lt;span class="w"&gt; &lt;/span&gt;LIMIT&lt;span class="w"&gt;     &lt;/span&gt;MEM&lt;span class="w"&gt; &lt;/span&gt;%&lt;span class="w"&gt;     &lt;/span&gt;NET&lt;span class="w"&gt; &lt;/span&gt;I/O&lt;span class="w"&gt;   &lt;/span&gt;BLOCK&lt;span class="w"&gt; &lt;/span&gt;I/O&lt;span class="w"&gt;        &lt;/span&gt;PIDS
-0baa0742e188&lt;span class="w"&gt;   &lt;/span&gt;homeassistant&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;.23%&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="m"&gt;217&lt;/span&gt;.6MiB&lt;span class="w"&gt; &lt;/span&gt;/&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;15&lt;/span&gt;.52GiB&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;.37%&lt;span class="w"&gt;     &lt;/span&gt;0B&lt;span class="w"&gt; &lt;/span&gt;/&lt;span class="w"&gt; &lt;/span&gt;0B&lt;span class="w"&gt;   &lt;/span&gt;102MB&lt;span class="w"&gt; &lt;/span&gt;/&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;10&lt;/span&gt;.5MB&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="m"&gt;21&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h2 id="check-docker-networks"&gt;Check docker networks&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;docker&lt;span class="w"&gt; &lt;/span&gt;network&lt;span class="w"&gt; &lt;/span&gt;ls
-NETWORK&lt;span class="w"&gt; &lt;/span&gt;ID&lt;span class="w"&gt;     &lt;/span&gt;NAME&lt;span class="w"&gt;      &lt;/span&gt;DRIVER&lt;span class="w"&gt;    &lt;/span&gt;SCOPE
-b67081eb628c&lt;span class="w"&gt;   &lt;/span&gt;bridge&lt;span class="w"&gt;    &lt;/span&gt;bridge&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nb"&gt;local&lt;/span&gt;
-0921bc6a0760&lt;span class="w"&gt;   &lt;/span&gt;host&lt;span class="w"&gt;      &lt;/span&gt;host&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="nb"&gt;local&lt;/span&gt;
-c8363d03e4cd&lt;span class="w"&gt;   &lt;/span&gt;none&lt;span class="w"&gt;      &lt;/span&gt;null&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="nb"&gt;local&lt;/span&gt;
-
-$&lt;span class="w"&gt; &lt;/span&gt;docker&lt;span class="w"&gt; &lt;/span&gt;network&lt;span class="w"&gt; &lt;/span&gt;inspect&lt;span class="w"&gt;  &lt;/span&gt;bridge
-&lt;span class="o"&gt;[&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="o"&gt;{&lt;/span&gt;
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Name&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;bridge&amp;quot;&lt;/span&gt;,
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Id&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;b67081eb628c51d90d2f234df1c97580bc0d83fa52c300f2fbf4764556a14ba6&amp;quot;&lt;/span&gt;,
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Created&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;2023-04-15T06:02:48.923361812-04:00&amp;quot;&lt;/span&gt;,
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Scope&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;local&amp;quot;&lt;/span&gt;,
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Driver&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;bridge&amp;quot;&lt;/span&gt;,
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;EnableIPv6&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;false,
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;IPAM&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;{&lt;/span&gt;
-&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Driver&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;default&amp;quot;&lt;/span&gt;,
-&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Options&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;null,
-&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Config&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;
-&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="o"&gt;{&lt;/span&gt;
-&lt;span class="w"&gt;                    &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Subnet&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;172.17.0.0/16&amp;quot;&lt;/span&gt;,
-&lt;span class="w"&gt;                    &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Gateway&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;172.17.0.1&amp;quot;&lt;/span&gt;
-&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
-&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;,
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Internal&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;false,
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Attachable&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;false,
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Ingress&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;false,
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;ConfigFrom&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;{&lt;/span&gt;
-&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Network&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;,
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;ConfigOnly&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;false,
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Containers&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;{&lt;/span&gt;
-&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;3357239a67204620012173ae3cd724a2508d9456d2aaabee7b1be3d7b351e6f7&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;{&lt;/span&gt;
-&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Name&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;zwave-js&amp;quot;&lt;/span&gt;,
-&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;EndpointID&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;7d50227167937e8ce5886abeb87411f66902eae494b4b3860ec133b77a39ecbd&amp;quot;&lt;/span&gt;,
-&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;MacAddress&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;02:42:ac:11:00:02&amp;quot;&lt;/span&gt;,
-&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;IPv4Address&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;172.17.0.2/16&amp;quot;&lt;/span&gt;,
-&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;IPv6Address&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;
-&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;,
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Options&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;{&lt;/span&gt;
-&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;com.docker.network.bridge.default_bridge&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;true&amp;quot;&lt;/span&gt;,
-&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;com.docker.network.bridge.enable_icc&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;true&amp;quot;&lt;/span&gt;,
-&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;com.docker.network.bridge.enable_ip_masquerade&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;true&amp;quot;&lt;/span&gt;,
-&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;com.docker.network.bridge.host_binding_ipv4&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;0.0.0.0&amp;quot;&lt;/span&gt;,
-&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;com.docker.network.bridge.name&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;docker0&amp;quot;&lt;/span&gt;,
-&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;com.docker.network.driver.mtu&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;1500&amp;quot;&lt;/span&gt;
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;,
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Labels&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;{}&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
-&lt;span class="o"&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h2 id="move-data-files"&gt;Move data files&lt;/h2&gt;
-&lt;p&gt;Default docker installs will put the large containers into /var/lib/docker which may be a directory off root. It is better to put them on a seperate filesystem in case they grow unexpectedly.&lt;/p&gt;
-&lt;p&gt;1 - Stop the docker daemon&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo service docker stop
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;2 - Add a configuration file to tell the docker daemon what is the location of the data directory&lt;/p&gt;
-&lt;p&gt;Change the data-root location:&lt;/p&gt;
-&lt;p&gt;File: /etc/docker/daemon.json&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;{ 
-   &amp;quot;data-root&amp;quot;: &amp;quot;/path/to/your/docker&amp;quot; 
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;3 - Copy the current data directory to the new one&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;sudo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;rsync&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;aP&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lib&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;docker&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;your&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;docker&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;4 - Rename the old docker directory&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;sudo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;mv&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lib&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;docker&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lib&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;docker&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;old&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;This is just a sanity check to see that everything is ok and docker daemon will effectively use the new location for its data.&lt;/p&gt;
-&lt;p&gt;5 - Restart the docker daemon&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo service docker start
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;6 - Test&lt;/p&gt;
-&lt;p&gt;If everything is ok you should see no differences in using your docker containers. When you are sure that the new directory is being used correctly by docker daemon you can delete the old data directory.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;sudo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;rm&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;rf&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lib&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;docker&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;old&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h2 id="upgrade-a-container"&gt;Upgrade a container&lt;/h2&gt;
-&lt;p&gt;Here is my documentation on upgrading the homeassistant docker container:&lt;/p&gt;
-&lt;p&gt;&lt;a href="/linux-in-house/homeassistant.html#upgrade"&gt;Upgrade HomeAssistant&lt;/a&gt;&lt;/p&gt;</content><category term="linux"></category><category term="systems"></category></entry><entry><title>BeagleBone</title><link href="https://dfcsoftware.github.io/linux-in-house/beaglebone.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/linux-in-house/beaglebone.html</id><summary type="html">&lt;h1 id="beaglebone-single-board-computer-sbc"&gt;BeagleBone Single Board Computer (SBC)&lt;/h1&gt;
+&lt;/object&gt;</content><category term="linux"></category><category term="setup"></category></entry><entry><title>BeagleBone</title><link href="https://dfcsoftware.github.io/linux-in-house/beaglebone.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/linux-in-house/beaglebone.html</id><summary type="html">&lt;h1 id="beaglebone-single-board-computer-sbc"&gt;BeagleBone Single Board Computer (SBC)&lt;/h1&gt;
 &lt;p&gt;The BeagleBone (BB) [1] line supports the Linux kernel and GPIO hardware connections to devices via device trees [2]. It is simular to the Rasberry-PI line, only BB is &lt;strong&gt;open source hardware&lt;/strong&gt;.&lt;/p&gt;
 &lt;hr&gt;
 &lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
@@ -16773,4 +16569,208 @@ postgres&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="m"&gt;752078&lt;/sp
 &lt;h2 id="continue"&gt;Continue&lt;/h2&gt;
 &lt;p&gt;Now that you have upgraded to the happy new cluster, consider moving data files to a better database protection disk.&lt;/p&gt;
 &lt;p&gt;Same time, same channel, on the next episode of Linux in the Home.&lt;/p&gt;
-&lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;</content><category term="linux"></category><category term="systems"></category><category term="db"></category></entry><entry><title>My Second Review</title><link href="https://dfcsoftware.github.io/linux-in-house/my-second-review.html" rel="alternate"></link><published>2010-12-03T10:20:00-05:00</published><updated>2010-03-12T10:20:00-05:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2010-12-03:/linux-in-house/my-second-review.html</id><content type="html">&lt;p&gt;Following is a review of my favorite mechanical mouse.&lt;/p&gt;</content><category term="linux"></category></entry></feed>
+&lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;</content><category term="linux"></category><category term="systems"></category><category term="db"></category></entry><entry><title>Docker</title><link href="https://dfcsoftware.github.io/linux-in-house/docker.html" rel="alternate"></link><published>2023-01-01T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-01:/linux-in-house/docker.html</id><summary type="html">&lt;h1 id="docker"&gt;Docker&lt;/h1&gt;
+&lt;p&gt;Docker is a way to manage containers, which are like namespaces or jails. Here are some useful common commands to check out the status of these containers.&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#docker"&gt;Docker&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#prune-unused-containers-images-and-cache"&gt;Prune unused containers, images and cache&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#check-a-containers-logs"&gt;Check a container's logs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#inspect-a-container"&gt;Inspect a container&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#check-for-container-filesystem-changes-since-start"&gt;Check for container filesystem changes …&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;</summary><content type="html">&lt;h1 id="docker"&gt;Docker&lt;/h1&gt;
+&lt;p&gt;Docker is a way to manage containers, which are like namespaces or jails. Here are some useful common commands to check out the status of these containers.&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#docker"&gt;Docker&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#prune-unused-containers-images-and-cache"&gt;Prune unused containers, images and cache&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#check-a-containers-logs"&gt;Check a container's logs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#inspect-a-container"&gt;Inspect a container&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#check-for-container-filesystem-changes-since-start"&gt;Check for container filesystem changes since start&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#check-container-running-processes"&gt;Check container running processes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#check-container-statistics"&gt;Check container statistics&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#check-docker-networks"&gt;Check docker networks&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#move-data-files"&gt;Move data files&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#upgrade-a-container"&gt;Upgrade a container&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;h2 id="prune-unused-containers-images-and-cache"&gt;Prune unused containers, images and cache&lt;/h2&gt;
+&lt;p&gt;This can free up disk space.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;docker&lt;span class="w"&gt; &lt;/span&gt;system&lt;span class="w"&gt; &lt;/span&gt;prune
+WARNING!&lt;span class="w"&gt; &lt;/span&gt;This&lt;span class="w"&gt; &lt;/span&gt;will&lt;span class="w"&gt; &lt;/span&gt;remove:
+&lt;span class="w"&gt;  &lt;/span&gt;-&lt;span class="w"&gt; &lt;/span&gt;all&lt;span class="w"&gt; &lt;/span&gt;stopped&lt;span class="w"&gt; &lt;/span&gt;containers
+&lt;span class="w"&gt;  &lt;/span&gt;-&lt;span class="w"&gt; &lt;/span&gt;all&lt;span class="w"&gt; &lt;/span&gt;networks&lt;span class="w"&gt; &lt;/span&gt;not&lt;span class="w"&gt; &lt;/span&gt;used&lt;span class="w"&gt; &lt;/span&gt;by&lt;span class="w"&gt; &lt;/span&gt;at&lt;span class="w"&gt; &lt;/span&gt;least&lt;span class="w"&gt; &lt;/span&gt;one&lt;span class="w"&gt; &lt;/span&gt;container
+&lt;span class="w"&gt;  &lt;/span&gt;-&lt;span class="w"&gt; &lt;/span&gt;all&lt;span class="w"&gt; &lt;/span&gt;dangling&lt;span class="w"&gt; &lt;/span&gt;images
+&lt;span class="w"&gt;  &lt;/span&gt;-&lt;span class="w"&gt; &lt;/span&gt;all&lt;span class="w"&gt; &lt;/span&gt;dangling&lt;span class="w"&gt; &lt;/span&gt;build&lt;span class="w"&gt; &lt;/span&gt;cache
+
+Are&lt;span class="w"&gt; &lt;/span&gt;you&lt;span class="w"&gt; &lt;/span&gt;sure&lt;span class="w"&gt; &lt;/span&gt;you&lt;span class="w"&gt; &lt;/span&gt;want&lt;span class="w"&gt; &lt;/span&gt;to&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;continue&lt;/span&gt;?&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;y/N&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;y
+Deleted&lt;span class="w"&gt; &lt;/span&gt;Containers:
+e91363806fd869a4f9349fc2de4faf26cc6b4b26a7fdbf16c5535c13ef46f995
+
+Deleted&lt;span class="w"&gt; &lt;/span&gt;Images:
+untagged:&lt;span class="w"&gt; &lt;/span&gt;homeassistant/home-assistant@sha256:1b4a62627444841ad222aaf3795b90581c2f8b712762c8d7d6b6cf9a42045ea8
+deleted:&lt;span class="w"&gt; &lt;/span&gt;sha256:8a975b58aacfc196fbe3eeb34810b9068e8a50d953ff88b67504d1c2351940d7
+deleted:&lt;span class="w"&gt; &lt;/span&gt;sha256:8df0a83f8a5a8360e6deef1187b2dbf6c27b7fe57584bca0b657671363a20729
+deleted:&lt;span class="w"&gt; &lt;/span&gt;sha256:abdac85af7ebbecf80442d554fa655133eb4ee2dbf4d96136caf1615e7f82992
+deleted:&lt;span class="w"&gt; &lt;/span&gt;sha256:b992bfbe5047c28682b5cc7ce976e418b5402113ee404143a4de208214f322f7
+deleted:&lt;span class="w"&gt; &lt;/span&gt;sha256:84e4d6e3db7ee758f3089b2f28ed3b1d248e31c72604004fdfdd34970c1a47
+...
+Total&lt;span class="w"&gt; &lt;/span&gt;reclaimed&lt;span class="w"&gt; &lt;/span&gt;space:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;.556GB
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Reference: &lt;a href="https://docs.docker.com/engine/reference/commandline/system_prune/"&gt;https://docs.docker.com/engine/reference/commandline/system_prune/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="check-a-containers-logs"&gt;Check a container's logs&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;docker&lt;span class="w"&gt; &lt;/span&gt;logs&lt;span class="w"&gt; &lt;/span&gt;-f&lt;span class="w"&gt; &lt;/span&gt;homeassistant
+...
+Traceback&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;most&lt;span class="w"&gt; &lt;/span&gt;recent&lt;span class="w"&gt; &lt;/span&gt;call&lt;span class="w"&gt; &lt;/span&gt;last&lt;span class="o"&gt;)&lt;/span&gt;:
+&lt;span class="w"&gt;  &lt;/span&gt;File&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/usr/local/lib/python3.10/site-packages/pyatv/protocols/airplay/__init__.py&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;line&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;258&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;_connect_rc
+&lt;span class="w"&gt;    &lt;/span&gt;await&lt;span class="w"&gt; &lt;/span&gt;control.start&lt;span class="o"&gt;(&lt;/span&gt;str&lt;span class="o"&gt;(&lt;/span&gt;core.config.address&lt;span class="o"&gt;)&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;control_port,&lt;span class="w"&gt; &lt;/span&gt;credentials&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;File&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/usr/local/lib/python3.10/site-packages/pyatv/protocols/airplay/remote_control.py&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;line&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;60&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;start
+&lt;span class="w"&gt;    &lt;/span&gt;await&lt;span class="w"&gt; &lt;/span&gt;self._setup_event_channel&lt;span class="o"&gt;(&lt;/span&gt;self.connection.remote_ip&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;File&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/usr/local/lib/python3.10/site-packages/pyatv/protocols/airplay/remote_control.py&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;line&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;102&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;_setup_event_channel
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nv"&gt;resp&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;await&lt;span class="w"&gt; &lt;/span&gt;self._setup&lt;span class="o"&gt;(&lt;/span&gt;
+...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id="inspect-a-container"&gt;Inspect a container&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;docker&lt;span class="w"&gt; &lt;/span&gt;container&lt;span class="w"&gt; &lt;/span&gt;inspect&lt;span class="w"&gt;  &lt;/span&gt;homeassistant
+&lt;span class="o"&gt;[&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="o"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Id&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;0baa0742e18858ebea97a93ee5a97f0fb09f369d504d3f6d1252c8c35234ac91&amp;quot;&lt;/span&gt;,
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Created&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;2023-04-16T23:45:06.042429674Z&amp;quot;&lt;/span&gt;,
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Path&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/init&amp;quot;&lt;/span&gt;,
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Args&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[]&lt;/span&gt;,
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;State&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Status&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;running&amp;quot;&lt;/span&gt;,
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Running&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;true,
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Paused&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;false,
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Restarting&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;false,
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;OOMKilled&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;false,
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Dead&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;false,
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Pid&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2378698&lt;/span&gt;,
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;ExitCode&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;,
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Error&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;,
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;StartedAt&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;2023-04-16T23:45:06.981493189Z&amp;quot;&lt;/span&gt;,
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;FinishedAt&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;0001-01-01T00:00:00Z&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;,
+...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id="check-for-container-filesystem-changes-since-start"&gt;Check for container filesystem changes since start&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;docker&lt;span class="w"&gt; &lt;/span&gt;diff&lt;span class="w"&gt; &lt;/span&gt;&amp;lt;container&lt;span class="w"&gt; &lt;/span&gt;name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id="check-container-running-processes"&gt;Check container running processes&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;docker&lt;span class="w"&gt; &lt;/span&gt;top&lt;span class="w"&gt; &lt;/span&gt;homeassistant
+UID&lt;span class="w"&gt;                 &lt;/span&gt;PID&lt;span class="w"&gt;                 &lt;/span&gt;PPID&lt;span class="w"&gt;                &lt;/span&gt;C&lt;span class="w"&gt;                   &lt;/span&gt;STIME&lt;span class="w"&gt;               &lt;/span&gt;TTY&lt;span class="w"&gt;                 &lt;/span&gt;TIME&lt;span class="w"&gt;                &lt;/span&gt;CMD
+root&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="m"&gt;2378698&lt;/span&gt;&lt;span class="w"&gt;             &lt;/span&gt;&lt;span class="m"&gt;2378670&lt;/span&gt;&lt;span class="w"&gt;             &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="m"&gt;19&lt;/span&gt;:45&lt;span class="w"&gt;               &lt;/span&gt;?&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="m"&gt;00&lt;/span&gt;:00:00&lt;span class="w"&gt;            &lt;/span&gt;/package/admin/s6/command/s6-svscan&lt;span class="w"&gt; &lt;/span&gt;-d4&lt;span class="w"&gt; &lt;/span&gt;--&lt;span class="w"&gt; &lt;/span&gt;/run/service
+root&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="m"&gt;2378732&lt;/span&gt;&lt;span class="w"&gt;             &lt;/span&gt;&lt;span class="m"&gt;2378698&lt;/span&gt;&lt;span class="w"&gt;             &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="m"&gt;19&lt;/span&gt;:45&lt;span class="w"&gt;               &lt;/span&gt;?&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="m"&gt;00&lt;/span&gt;:00:00&lt;span class="w"&gt;            &lt;/span&gt;s6-supervise&lt;span class="w"&gt; &lt;/span&gt;s6-linux-init-shutdownd
+root&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="m"&gt;2378733&lt;/span&gt;&lt;span class="w"&gt;             &lt;/span&gt;&lt;span class="m"&gt;2378732&lt;/span&gt;&lt;span class="w"&gt;             &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="m"&gt;19&lt;/span&gt;:45&lt;span class="w"&gt;               &lt;/span&gt;?&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="m"&gt;00&lt;/span&gt;:00:00&lt;span class="w"&gt;            &lt;/span&gt;/package/admin/s6-linux-init/command/s6-linux-init-shutdownd&lt;span class="w"&gt; &lt;/span&gt;-c&lt;span class="w"&gt; &lt;/span&gt;/run/s6/basedir&lt;span class="w"&gt; &lt;/span&gt;-g&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;3000&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;-C&lt;span class="w"&gt; &lt;/span&gt;-B
+root&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="m"&gt;2378742&lt;/span&gt;&lt;span class="w"&gt;             &lt;/span&gt;&lt;span class="m"&gt;2378698&lt;/span&gt;&lt;span class="w"&gt;             &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="m"&gt;19&lt;/span&gt;:45&lt;span class="w"&gt;               &lt;/span&gt;?&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="m"&gt;00&lt;/span&gt;:00:00&lt;span class="w"&gt;            &lt;/span&gt;s6-supervise&lt;span class="w"&gt; &lt;/span&gt;s6rc-fdholder
+root&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="m"&gt;2378743&lt;/span&gt;&lt;span class="w"&gt;             &lt;/span&gt;&lt;span class="m"&gt;2378698&lt;/span&gt;&lt;span class="w"&gt;             &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="m"&gt;19&lt;/span&gt;:45&lt;span class="w"&gt;               &lt;/span&gt;?&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="m"&gt;00&lt;/span&gt;:00:00&lt;span class="w"&gt;            &lt;/span&gt;s6-supervise&lt;span class="w"&gt; &lt;/span&gt;s6rc-oneshot-runner
+root&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="m"&gt;2378751&lt;/span&gt;&lt;span class="w"&gt;             &lt;/span&gt;&lt;span class="m"&gt;2378743&lt;/span&gt;&lt;span class="w"&gt;             &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="m"&gt;19&lt;/span&gt;:45&lt;span class="w"&gt;               &lt;/span&gt;?&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="m"&gt;00&lt;/span&gt;:00:00&lt;span class="w"&gt;            &lt;/span&gt;/package/admin/s6/command/s6-ipcserverd&lt;span class="w"&gt; &lt;/span&gt;-1&lt;span class="w"&gt; &lt;/span&gt;--&lt;span class="w"&gt; &lt;/span&gt;/package/admin/s6/command/s6-ipcserver-access&lt;span class="w"&gt; &lt;/span&gt;-v0&lt;span class="w"&gt; &lt;/span&gt;-E&lt;span class="w"&gt; &lt;/span&gt;-l0&lt;span class="w"&gt; &lt;/span&gt;-i&lt;span class="w"&gt; &lt;/span&gt;data/rules&lt;span class="w"&gt; &lt;/span&gt;--&lt;span class="w"&gt; &lt;/span&gt;/package/admin/s6/command/s6-sudod&lt;span class="w"&gt; &lt;/span&gt;-t&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;30000&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;--&lt;span class="w"&gt; &lt;/span&gt;/package/admin/s6-rc/command/s6-rc-oneshot-run&lt;span class="w"&gt; &lt;/span&gt;-l&lt;span class="w"&gt; &lt;/span&gt;../..&lt;span class="w"&gt; &lt;/span&gt;--
+root&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="m"&gt;2378782&lt;/span&gt;&lt;span class="w"&gt;             &lt;/span&gt;&lt;span class="m"&gt;2378698&lt;/span&gt;&lt;span class="w"&gt;             &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="m"&gt;19&lt;/span&gt;:45&lt;span class="w"&gt;               &lt;/span&gt;?&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="m"&gt;00&lt;/span&gt;:00:00&lt;span class="w"&gt;            &lt;/span&gt;s6-supervise&lt;span class="w"&gt; &lt;/span&gt;home-assistant
+root&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="m"&gt;2378784&lt;/span&gt;&lt;span class="w"&gt;             &lt;/span&gt;&lt;span class="m"&gt;2378782&lt;/span&gt;&lt;span class="w"&gt;             &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="m"&gt;19&lt;/span&gt;:45&lt;span class="w"&gt;               &lt;/span&gt;?&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="m"&gt;00&lt;/span&gt;:00:15&lt;span class="w"&gt;            &lt;/span&gt;python3&lt;span class="w"&gt; &lt;/span&gt;-m&lt;span class="w"&gt; &lt;/span&gt;homeassistant&lt;span class="w"&gt; &lt;/span&gt;--config&lt;span class="w"&gt; &lt;/span&gt;/config
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id="check-container-statistics"&gt;Check container statistics&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;docker&lt;span class="w"&gt; &lt;/span&gt;stats&lt;span class="w"&gt; &lt;/span&gt;homeassistant
+
+CONTAINER&lt;span class="w"&gt; &lt;/span&gt;ID&lt;span class="w"&gt;   &lt;/span&gt;NAME&lt;span class="w"&gt;            &lt;/span&gt;CPU&lt;span class="w"&gt; &lt;/span&gt;%&lt;span class="w"&gt;     &lt;/span&gt;MEM&lt;span class="w"&gt; &lt;/span&gt;USAGE&lt;span class="w"&gt; &lt;/span&gt;/&lt;span class="w"&gt; &lt;/span&gt;LIMIT&lt;span class="w"&gt;     &lt;/span&gt;MEM&lt;span class="w"&gt; &lt;/span&gt;%&lt;span class="w"&gt;     &lt;/span&gt;NET&lt;span class="w"&gt; &lt;/span&gt;I/O&lt;span class="w"&gt;   &lt;/span&gt;BLOCK&lt;span class="w"&gt; &lt;/span&gt;I/O&lt;span class="w"&gt;        &lt;/span&gt;PIDS
+0baa0742e188&lt;span class="w"&gt;   &lt;/span&gt;homeassistant&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;.23%&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="m"&gt;217&lt;/span&gt;.6MiB&lt;span class="w"&gt; &lt;/span&gt;/&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;15&lt;/span&gt;.52GiB&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;.37%&lt;span class="w"&gt;     &lt;/span&gt;0B&lt;span class="w"&gt; &lt;/span&gt;/&lt;span class="w"&gt; &lt;/span&gt;0B&lt;span class="w"&gt;   &lt;/span&gt;102MB&lt;span class="w"&gt; &lt;/span&gt;/&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;10&lt;/span&gt;.5MB&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="m"&gt;21&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id="check-docker-networks"&gt;Check docker networks&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;docker&lt;span class="w"&gt; &lt;/span&gt;network&lt;span class="w"&gt; &lt;/span&gt;ls
+NETWORK&lt;span class="w"&gt; &lt;/span&gt;ID&lt;span class="w"&gt;     &lt;/span&gt;NAME&lt;span class="w"&gt;      &lt;/span&gt;DRIVER&lt;span class="w"&gt;    &lt;/span&gt;SCOPE
+b67081eb628c&lt;span class="w"&gt;   &lt;/span&gt;bridge&lt;span class="w"&gt;    &lt;/span&gt;bridge&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nb"&gt;local&lt;/span&gt;
+0921bc6a0760&lt;span class="w"&gt;   &lt;/span&gt;host&lt;span class="w"&gt;      &lt;/span&gt;host&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="nb"&gt;local&lt;/span&gt;
+c8363d03e4cd&lt;span class="w"&gt;   &lt;/span&gt;none&lt;span class="w"&gt;      &lt;/span&gt;null&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="nb"&gt;local&lt;/span&gt;
+
+$&lt;span class="w"&gt; &lt;/span&gt;docker&lt;span class="w"&gt; &lt;/span&gt;network&lt;span class="w"&gt; &lt;/span&gt;inspect&lt;span class="w"&gt;  &lt;/span&gt;bridge
+&lt;span class="o"&gt;[&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="o"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Name&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;bridge&amp;quot;&lt;/span&gt;,
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Id&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;b67081eb628c51d90d2f234df1c97580bc0d83fa52c300f2fbf4764556a14ba6&amp;quot;&lt;/span&gt;,
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Created&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;2023-04-15T06:02:48.923361812-04:00&amp;quot;&lt;/span&gt;,
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Scope&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;local&amp;quot;&lt;/span&gt;,
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Driver&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;bridge&amp;quot;&lt;/span&gt;,
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;EnableIPv6&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;false,
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;IPAM&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Driver&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;default&amp;quot;&lt;/span&gt;,
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Options&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;null,
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Config&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="o"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;                    &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Subnet&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;172.17.0.0/16&amp;quot;&lt;/span&gt;,
+&lt;span class="w"&gt;                    &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Gateway&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;172.17.0.1&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;,
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Internal&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;false,
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Attachable&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;false,
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Ingress&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;false,
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;ConfigFrom&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Network&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;,
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;ConfigOnly&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;false,
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Containers&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;3357239a67204620012173ae3cd724a2508d9456d2aaabee7b1be3d7b351e6f7&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Name&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;zwave-js&amp;quot;&lt;/span&gt;,
+&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;EndpointID&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;7d50227167937e8ce5886abeb87411f66902eae494b4b3860ec133b77a39ecbd&amp;quot;&lt;/span&gt;,
+&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;MacAddress&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;02:42:ac:11:00:02&amp;quot;&lt;/span&gt;,
+&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;IPv4Address&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;172.17.0.2/16&amp;quot;&lt;/span&gt;,
+&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;IPv6Address&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;,
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Options&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;com.docker.network.bridge.default_bridge&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;true&amp;quot;&lt;/span&gt;,
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;com.docker.network.bridge.enable_icc&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;true&amp;quot;&lt;/span&gt;,
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;com.docker.network.bridge.enable_ip_masquerade&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;true&amp;quot;&lt;/span&gt;,
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;com.docker.network.bridge.host_binding_ipv4&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;0.0.0.0&amp;quot;&lt;/span&gt;,
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;com.docker.network.bridge.name&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;docker0&amp;quot;&lt;/span&gt;,
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;com.docker.network.driver.mtu&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;1500&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;,
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Labels&amp;quot;&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;{}&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id="move-data-files"&gt;Move data files&lt;/h2&gt;
+&lt;p&gt;Default docker installs will put the large containers into /var/lib/docker which may be a directory off root. It is better to put them on a seperate filesystem in case they grow unexpectedly.&lt;/p&gt;
+&lt;p&gt;1 - Stop the docker daemon&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo service docker stop
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;2 - Add a configuration file to tell the docker daemon what is the location of the data directory&lt;/p&gt;
+&lt;p&gt;Change the data-root location:&lt;/p&gt;
+&lt;p&gt;File: /etc/docker/daemon.json&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;{ 
+   &amp;quot;data-root&amp;quot;: &amp;quot;/path/to/your/docker&amp;quot; 
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;3 - Copy the current data directory to the new one&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;sudo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;rsync&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;aP&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lib&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;docker&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;your&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;docker&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;4 - Rename the old docker directory&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;sudo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;mv&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lib&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;docker&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lib&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;docker&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;old&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This is just a sanity check to see that everything is ok and docker daemon will effectively use the new location for its data.&lt;/p&gt;
+&lt;p&gt;5 - Restart the docker daemon&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo service docker start
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;6 - Test&lt;/p&gt;
+&lt;p&gt;If everything is ok you should see no differences in using your docker containers. When you are sure that the new directory is being used correctly by docker daemon you can delete the old data directory.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;sudo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;rm&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;rf&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lib&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;docker&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;old&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id="upgrade-a-container"&gt;Upgrade a container&lt;/h2&gt;
+&lt;p&gt;Here is my documentation on upgrading the homeassistant docker container:&lt;/p&gt;
+&lt;p&gt;&lt;a href="/linux-in-house/homeassistant.html#upgrade"&gt;Upgrade HomeAssistant&lt;/a&gt;&lt;/p&gt;</content><category term="linux"></category><category term="systems"></category></entry><entry><title>My Second Review</title><link href="https://dfcsoftware.github.io/linux-in-house/my-second-review.html" rel="alternate"></link><published>2010-12-03T10:20:00-05:00</published><updated>2010-03-12T10:20:00-05:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2010-12-03:/linux-in-house/my-second-review.html</id><content type="html">&lt;p&gt;Following is a review of my favorite mechanical mouse.&lt;/p&gt;</content><category term="linux"></category></entry></feed>
