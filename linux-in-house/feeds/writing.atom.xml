@@ -1,5 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux Home Administration - writing</title><link href="https://dfcsoftware.github.io/linux-in-house/" rel="alternate"></link><link href="https://dfcsoftware.github.io/linux-in-house/feeds/writing.atom.xml" rel="self"></link><id>https://dfcsoftware.github.io/linux-in-house/</id><updated>2025-07-26T10:20:00-04:00</updated><entry><title>Money</title><link href="https://dfcsoftware.github.io/linux-in-house/money.html" rel="alternate"></link><published>2025-07-26T10:20:00-04:00</published><updated>2025-07-26T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-07-26:/linux-in-house/money.html</id><summary type="html">&lt;h1 id="money-for-workers"&gt;Money for Workers&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux Home Administration - writing</title><link href="https://dfcsoftware.github.io/linux-in-house/" rel="alternate"></link><link href="https://dfcsoftware.github.io/linux-in-house/feeds/writing.atom.xml" rel="self"></link><id>https://dfcsoftware.github.io/linux-in-house/</id><updated>2025-07-28T10:20:00-04:00</updated><entry><title>Building Puzzle Pieces</title><link href="https://dfcsoftware.github.io/linux-in-house/building-puzzle-pieces.html" rel="alternate"></link><published>2025-07-28T10:20:00-04:00</published><updated>2025-07-28T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-07-28:/linux-in-house/building-puzzle-pieces.html</id><summary type="html">&lt;p&gt;I like to put it all together, and admire the transformation from nothing to something.&lt;/p&gt;
+&lt;p&gt;This is the way I have built software products. Daring to dream big, then breaking it down, and finally small enough pieces that a plan naturally forms.&lt;/p&gt;
+&lt;p&gt;Recurrent division through each design piece is done …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I like to put it all together, and admire the transformation from nothing to something.&lt;/p&gt;
+&lt;p&gt;This is the way I have built software products. Daring to dream big, then breaking it down, and finally small enough pieces that a plan naturally forms.&lt;/p&gt;
+&lt;p&gt;Recurrent division through each design piece is done until actually build-able code is envisioned via pseudo-code. Now the language, platform selection and finally code can begin. As discoveries are found along the way, the master pieces are adjusted until an actual usable product forms.&lt;/p&gt;
+&lt;p&gt;Something like this testing/feedback loop:&lt;/p&gt;
+&lt;p&gt;Like this:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;test feature&lt;/li&gt;
+&lt;li&gt;design feedback and change&lt;/li&gt;
+&lt;li&gt;document (exit for release)&lt;/li&gt;
+&lt;li&gt;code&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Finally I ensure technical documentation is complete, accurate and easy to use. Nothing worse than stepping into someone else's pile of code without any clue to &lt;strong&gt;"Why?"&lt;/strong&gt; I have found that it's easier and better in the long term to place as much documentation for the "Why's" very close and sometimes inside the actual source code so it is easy to find and maintain.&lt;/p&gt;
+&lt;p&gt;Very much like Unix/Linux/BSD files; README, INSTALL, etc...&lt;/p&gt;
+&lt;p&gt;Dream big, solve small.&lt;/p&gt;
+&lt;p&gt;-- Don Cohoon&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>Money</title><link href="https://dfcsoftware.github.io/linux-in-house/money.html" rel="alternate"></link><published>2025-07-26T10:20:00-04:00</published><updated>2025-07-26T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-07-26:/linux-in-house/money.html</id><summary type="html">&lt;h1 id="money-for-workers"&gt;Money for Workers&lt;/h1&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    In need of someone to help
     grow and maintain the business.
     Willing to come in every day,
