@@ -102,7 +102,23 @@
 &lt;p&gt;Lock your computer's doors and windows,
 but remember:
 A house is not a home without visitors&lt;/p&gt;
-&lt;/blockquote&gt;</content><category term="linux"></category><category term="think"></category></entry><entry><title>Building Puzzle Pieces</title><link href="https://dfcsoftware.github.io/linux-in-house/building-puzzle-pieces.html" rel="alternate"></link><published>2025-07-28T10:20:00-04:00</published><updated>2025-07-28T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-07-28:/linux-in-house/building-puzzle-pieces.html</id><summary type="html">&lt;p&gt;I like to put it all together, and admire the transformation from nothing to something.&lt;/p&gt;
+&lt;/blockquote&gt;</content><category term="linux"></category><category term="think"></category></entry><entry><title>Ratio</title><link href="https://dfcsoftware.github.io/linux-in-house/ratio.html" rel="alternate"></link><published>2025-08-09T10:20:00-04:00</published><updated>2025-08-09T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-08-09:/linux-in-house/ratio.html</id><content type="html">&lt;p&gt;People -----------------------------------------------------|
+                                                activist ---|
+                                        mad -------------|
+ happy -------------------------------------|&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Which one gets the attention in a news needy world?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;-- Don Cohoon&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>Building Puzzle Pieces</title><link href="https://dfcsoftware.github.io/linux-in-house/building-puzzle-pieces.html" rel="alternate"></link><published>2025-07-28T10:20:00-04:00</published><updated>2025-07-28T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-07-28:/linux-in-house/building-puzzle-pieces.html</id><summary type="html">&lt;p&gt;I like to put it all together, and admire the transformation from nothing to something.&lt;/p&gt;
 &lt;p&gt;This is the way I have built software products. Daring to dream big, then breaking it down, and finally small enough pieces that a plan naturally forms.&lt;/p&gt;
 &lt;p&gt;Recurrent division through each design piece is done …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I like to put it all together, and admire the transformation from nothing to something.&lt;/p&gt;
 &lt;p&gt;This is the way I have built software products. Daring to dream big, then breaking it down, and finally small enough pieces that a plan naturally forms.&lt;/p&gt;
@@ -2565,7 +2581,7 @@ by default.&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>Welcome to the Zines</title><link href="https://dfcsoftware.github.io/linux-in-house/welcome-to-the-zines.html" rel="alternate"></link><published>2025-01-24T12:20:00-05:00</published><updated>2025-01-24T12:38:00-05:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-01-24:/linux-in-house/welcome-to-the-zines.html</id><summary type="html">&lt;p&gt;Read some Linux zines!&lt;/p&gt;</summary><content type="html">&lt;h1 id="linux-in-house"&gt;Linux in House&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="/linux-in-house/images/linux-in-house_v1.0.pdf"&gt;Introduction - January 2025.v1.0&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><category term="zines"></category><category term="zines"></category><category term="welcome"></category></entry><entry><title>git</title><link href="https://dfcsoftware.github.io/linux-in-house/git.html" rel="alternate"></link><published>2023-10-31T00:00:00-04:00</published><updated>2023-10-31T00:00:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-10-31:/linux-in-house/git.html</id><summary type="html">&lt;h1 id="git-clone"&gt;git clone&lt;/h1&gt;
+&lt;/ul&gt;</content><category term="zines"></category><category term="zines"></category><category term="welcome"></category></entry><entry><title>git</title><link href="https://dfcsoftware.github.io/linux-in-house/git.html" rel="alternate"></link><published>2023-10-09T00:00:00-04:00</published><updated>2023-10-09T00:00:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-10-09:/linux-in-house/git.html</id><summary type="html">&lt;h1 id="git-clone"&gt;git clone&lt;/h1&gt;
 &lt;p&gt;Clones a repository into a newly created directory, creates remote-tracking branches for each branch in the cloned repository (visible using git branch --remotes), and creates and checks out an initial branch that is forked from the cloned repository’s currently active branch.&lt;/p&gt;
 &lt;hr&gt;
 &lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
@@ -2789,7 +2805,7 @@ fbff5bc..72bbc59&lt;span class="w"&gt; &lt;/span&gt;master&lt;span class="w"&gt;
 &lt;p&gt;Reference:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://git-scm.com/book/en/v2"&gt;https://git-scm.com/book/en/v2&lt;/a&gt; : pp131 - Private Small Team&lt;/li&gt;
-&lt;/ul&gt;</content><category term="linux"></category></entry><entry><title>Watch</title><link href="https://dfcsoftware.github.io/linux-in-house/watch.html" rel="alternate"></link><published>2023-08-31T00:00:00-04:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-08-31:/linux-in-house/watch.html</id><summary type="html">&lt;h1 id="watch-notification-system-v-2023095"&gt;Watch Notification System - v 2023.09.5&lt;/h1&gt;
+&lt;/ul&gt;</content><category term="linux"></category></entry><entry><title>Watch</title><link href="https://dfcsoftware.github.io/linux-in-house/watch.html" rel="alternate"></link><published>2023-08-09T00:00:00-04:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-08-09:/linux-in-house/watch.html</id><summary type="html">&lt;h1 id="watch-notification-system-v-2023095"&gt;Watch Notification System - v 2023.09.5&lt;/h1&gt;
 &lt;p&gt;Finally got my alerts working, so when a host goes haywire I get an alert on the Phone and Cloud, with E-Mail as backup.&lt;/p&gt;
 &lt;hr&gt;
 &lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
@@ -3143,7 +3159,7 @@ It needs to be scheduled in cron.&lt;/p&gt;
 &lt;span class="nv"&gt;Aug&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;08&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;11&lt;/span&gt;:&lt;span class="mi"&gt;07&lt;/span&gt;:&lt;span class="mi"&gt;43&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;bob&lt;/span&gt;.&lt;span class="nv"&gt;example&lt;/span&gt;.&lt;span class="nv"&gt;com&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;pmlogger&lt;/span&gt;[&lt;span class="mi"&gt;913&lt;/span&gt;]:&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="nv"&gt;To&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;enable&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;pmlogger&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;run&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;following&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;as&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;root&lt;/span&gt;:
 &lt;span class="nv"&gt;Aug&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;08&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;11&lt;/span&gt;:&lt;span class="mi"&gt;07&lt;/span&gt;:&lt;span class="mi"&gt;44&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;bob&lt;/span&gt;.&lt;span class="nv"&gt;example&lt;/span&gt;.&lt;span class="nv"&gt;com&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;pmlogger&lt;/span&gt;[&lt;span class="mi"&gt;913&lt;/span&gt;]:&lt;span class="w"&gt;          &lt;/span&gt;&lt;span class="nv"&gt;update&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;rc&lt;/span&gt;.&lt;span class="nv"&gt;d&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;f&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;pmlogger&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;remove&lt;/span&gt;
 &lt;span class="nv"&gt;Aug&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;08&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;11&lt;/span&gt;:&lt;span class="mi"&gt;07&lt;/span&gt;:&lt;span class="mi"&gt;44&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;bob&lt;/span&gt;.&lt;span class="nv"&gt;example&lt;/span&gt;.&lt;span class="nv"&gt;com&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;pmlogger&lt;/span&gt;[&lt;span class="mi"&gt;913&lt;/span&gt;]:&lt;span class="w"&gt;          &lt;/span&gt;&lt;span class="nv"&gt;update&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;rc&lt;/span&gt;.&lt;span class="nv"&gt;d&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;pmlogger&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;defaults&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;94&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;06&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="systems"></category></entry><entry><title>VirtualMachines</title><link href="https://dfcsoftware.github.io/linux-in-house/virtualmachines.html" rel="alternate"></link><published>2023-06-30T00:00:00-04:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-06-30:/linux-in-house/virtualmachines.html</id><summary type="html">&lt;h1 id="virtual-machines-vm"&gt;Virtual Machines (VM)&lt;/h1&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="systems"></category></entry><entry><title>VirtualMachines</title><link href="https://dfcsoftware.github.io/linux-in-house/virtualmachines.html" rel="alternate"></link><published>2023-06-09T00:00:00-04:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-06-09:/linux-in-house/virtualmachines.html</id><summary type="html">&lt;h1 id="virtual-machines-vm"&gt;Virtual Machines (VM)&lt;/h1&gt;
 &lt;p&gt;A Virtual Machine (VM) is a way to create a whole operating system, with many applications, that is able to be moved from one physical machine to another physical machine. This has advantages in case of hardware, location or network problems to quickly and correctly restore service …&lt;/p&gt;</summary><content type="html">&lt;h1 id="virtual-machines-vm"&gt;Virtual Machines (VM)&lt;/h1&gt;
 &lt;p&gt;A Virtual Machine (VM) is a way to create a whole operating system, with many applications, that is able to be moved from one physical machine to another physical machine. This has advantages in case of hardware, location or network problems to quickly and correctly restore service.&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
@@ -3954,7 +3970,7 @@ $ ssh &amp;lt;remote IP&amp;gt; grep -n &amp;lt;remote IP&amp;gt; ~/.ssh/known_h
 &lt;span class="n"&gt;└── virtlogd.conf&lt;/span&gt;
 
 &lt;span class="n"&gt;9 directories, 45 files&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="systems"></category></entry><entry><title>NetworkManagement</title><link href="https://dfcsoftware.github.io/linux-in-house/networkmanagement.html" rel="alternate"></link><published>2023-04-30T00:00:00-04:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-04-30:/linux-in-house/networkmanagement.html</id><summary type="html">&lt;h1 id="network-management"&gt;Network Management&lt;/h1&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="systems"></category></entry><entry><title>NetworkManagement</title><link href="https://dfcsoftware.github.io/linux-in-house/networkmanagement.html" rel="alternate"></link><published>2023-04-09T00:00:00-04:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-04-09:/linux-in-house/networkmanagement.html</id><summary type="html">&lt;h1 id="network-management"&gt;Network Management&lt;/h1&gt;
 &lt;p&gt;The command line offers a wealth of network management commands. Here are some of my favorites.&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;hr&gt;
@@ -4402,7 +4418,7 @@ responded
 &lt;h2 id="conclusion"&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;This was a short list, hoping to provide an introduction to managing your network from the command line.&lt;/p&gt;
 &lt;p&gt;Hope this helps,&lt;br&gt;
--- Don&lt;/p&gt;</content><category term="linux"></category><category term="network"></category></entry><entry><title>EncryptingFiles</title><link href="https://dfcsoftware.github.io/linux-in-house/encryptingfiles.html" rel="alternate"></link><published>2023-03-31T00:00:00-04:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-03-31:/linux-in-house/encryptingfiles.html</id><summary type="html">&lt;h1 id="encrypting-files"&gt;Encrypting Files&lt;/h1&gt;
+-- Don&lt;/p&gt;</content><category term="linux"></category><category term="network"></category></entry><entry><title>EncryptingFiles</title><link href="https://dfcsoftware.github.io/linux-in-house/encryptingfiles.html" rel="alternate"></link><published>2023-03-09T00:00:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-03-09:/linux-in-house/encryptingfiles.html</id><summary type="html">&lt;h1 id="encrypting-files"&gt;Encrypting Files&lt;/h1&gt;
 &lt;p&gt;You should protect your carefully built system and it's files from abuse, tampering, or just plain spying. It's easy to do, what are you waiting for? Encrypt your data directory &lt;strong&gt;now&lt;/strong&gt;.&lt;/p&gt;
 &lt;hr&gt;
 &lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
@@ -4745,7 +4761,7 @@ $&lt;span class="w"&gt; &lt;/span&gt;cp&lt;span class="w"&gt; &lt;/span&gt;revok
 
 &lt;blockquote&gt;
 &lt;p&gt;This is more secure if you do not share your public key on a public server. You just have to find a secure way to share it, like your own cloud server.&lt;/p&gt;
-&lt;/blockquote&gt;</content><category term="linux"></category><category term="security"></category></entry><entry><title>VirtualIP</title><link href="https://dfcsoftware.github.io/linux-in-house/virtualip.html" rel="alternate"></link><published>2023-02-28T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-02-28:/linux-in-house/virtualip.html</id><summary type="html">&lt;h1 id="virtual-ip-ethernet-interface"&gt;Virtual IP Ethernet Interface&lt;/h1&gt;
+&lt;/blockquote&gt;</content><category term="linux"></category><category term="security"></category></entry><entry><title>VirtualIP</title><link href="https://dfcsoftware.github.io/linux-in-house/virtualip.html" rel="alternate"></link><published>2023-02-09T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-02-09:/linux-in-house/virtualip.html</id><summary type="html">&lt;h1 id="virtual-ip-ethernet-interface"&gt;Virtual IP Ethernet Interface&lt;/h1&gt;
 &lt;p&gt;Virtual IP Interface behaves like a normal interface. All traffic routed to it will go through the master interface (for example, eth0) but with a VLAN tag. Only VLAN-aware devices can accept them if configured correctly, else the traffic is dropped. &lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;hr&gt;
@@ -8799,265 +8815,4 @@ log&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Starting
 &lt;p&gt;Code for book: &lt;a href="https://github.com/derekmolloy/exploringBB"&gt;https://github.com/derekmolloy/exploringBB&lt;/a&gt;&lt;/p&gt;
 &lt;h1 id="continue"&gt;Continue&lt;/h1&gt;
 &lt;p&gt;Now that you have experimented with BeagleBone SBC, next our travels take us far away to Media Land. The sights and sounds of Video and Audio controlled and maintained by your computer.&lt;/p&gt;
-&lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;</content><category term="linux"></category><category term="hardware"></category></entry><entry><title>Certificate</title><link href="https://dfcsoftware.github.io/linux-in-house/certificate.html" rel="alternate"></link><published>2023-01-25T10:20:00-05:00</published><updated>2024-04-19T09:30:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2023-01-25:/linux-in-house/certificate.html</id><summary type="html">&lt;h1 id="web-certificate"&gt;Web Certificate&lt;/h1&gt;
-&lt;p&gt;Web certificates encrypt different messages over the public internet so nobody can see what these messages contain.&lt;/p&gt;
-&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href="#web-certificate"&gt;Web Certificate&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href="#lets-encrypt-certificate-authority-ca"&gt;Let's Encrypt - Certificate Authority (CA)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#certbot-certificate-robot"&gt;Certbot - Certificate Robot&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href="#install"&gt;Install&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#configure"&gt;Configure&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#schedule"&gt;Schedule&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#renewal-is-done-on-web-host"&gt;Renewal is done on web host&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href="#apache-web-server-for-nextcloud"&gt;Apache - Web Server for Nextcloud&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#dovecot-server-for-e-mail-clients"&gt;Dovecot - Server for E-Mail …&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;</summary><content type="html">&lt;h1 id="web-certificate"&gt;Web Certificate&lt;/h1&gt;
-&lt;p&gt;Web certificates encrypt different messages over the public internet so nobody can see what these messages contain.&lt;/p&gt;
-&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Table of Contents&lt;/span&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href="#web-certificate"&gt;Web Certificate&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href="#lets-encrypt-certificate-authority-ca"&gt;Let's Encrypt - Certificate Authority (CA)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#certbot-certificate-robot"&gt;Certbot - Certificate Robot&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href="#install"&gt;Install&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#configure"&gt;Configure&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#schedule"&gt;Schedule&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#renewal-is-done-on-web-host"&gt;Renewal is done on web host&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href="#apache-web-server-for-nextcloud"&gt;Apache - Web Server for Nextcloud&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#dovecot-server-for-e-mail-clients"&gt;Dovecot - Server for E-Mail Clients&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#matrix-messaging-server"&gt;Matrix - Messaging Server&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#verify-certificate"&gt;Verify Certificate&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#continue"&gt;Continue&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;hr&gt;
-&lt;p&gt;Web certificates encrypt different messages over the public internet so nobody can see what these messages contain.&lt;/p&gt;
-&lt;h2 id="lets-encrypt-certificate-authority-ca"&gt;Let's Encrypt - Certificate Authority (CA)&lt;/h2&gt;
-&lt;p&gt;Let's Encrypt offers free 90 day SSL/TLS internet certificates, so you can run https:// to encrypt web page bodies, instead of http:// plain text over the internet. Certbot is used to obtain and renew certificates from the Let's Encrypt CA.&lt;/p&gt;
-&lt;p&gt;Reference: &lt;a href="https://letsencrypt.org/"&gt;https://letsencrypt.org/&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id="certbot-certificate-robot"&gt;Certbot - Certificate Robot&lt;/h2&gt;
-&lt;p&gt;This is a systemd service and software that will watch for expired certificates and notify you via E-Mail. Other pieces will let you perform a dry-run update of your certificate, and actually perform the certificate update and any configuration changes in your Apache or Nginx web server.&lt;/p&gt;
-&lt;p&gt;Reference: &lt;a href="https://certbot.eff.org/"&gt;https://certbot.eff.org/&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id="install"&gt;Install&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo apt-get install certbot
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h3 id="configure"&gt;Configure&lt;/h3&gt;
-&lt;p&gt;Get a certificate and update the apache configuration.&lt;/p&gt;
-&lt;p&gt;Just follow the prompts, entering your host + domain name.&lt;/p&gt;
-&lt;p&gt;Instructions: &lt;a href="https://certbot.eff.org/instructions"&gt;https://certbot.eff.org/instructions&lt;/a&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo certbot --apache
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h3 id="schedule"&gt;Schedule&lt;/h3&gt;
-&lt;p&gt;The install creates a systemd timer to check for expiration and hopefully e-mail you a warning 30 days in advance of your 90 day certificate expiring.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;systemctl&lt;span class="w"&gt; &lt;/span&gt;list-timers&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;grep&lt;span class="w"&gt; &lt;/span&gt;certbot
-Mon&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2022&lt;/span&gt;-08-29&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;15&lt;/span&gt;:46:31&lt;span class="w"&gt; &lt;/span&gt;EDT&lt;span class="w"&gt; &lt;/span&gt;4h&lt;span class="w"&gt; &lt;/span&gt;16min&lt;span class="w"&gt; &lt;/span&gt;left&lt;span class="w"&gt; &lt;/span&gt;Mon&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2022&lt;/span&gt;-08-29&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;06&lt;/span&gt;:38:15&lt;span class="w"&gt; &lt;/span&gt;EDT&lt;span class="w"&gt; &lt;/span&gt;4h&lt;span class="w"&gt; &lt;/span&gt;52min&lt;span class="w"&gt; &lt;/span&gt;ago&lt;span class="w"&gt;  &lt;/span&gt;certbot.timer&lt;span class="w"&gt;                &lt;/span&gt;certbot.service&lt;span class="w"&gt; &lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h3 id="renewal-is-done-on-web-host"&gt;Renewal is done on web host&lt;/h3&gt;
-&lt;p&gt;I wrapped the certbot updater into a script to remind me of the various steps and places the certificate is used. I do not open port 80 and block malicious hosts, so I disable those for a few minutes while the update occurs.&lt;/p&gt;
-&lt;p&gt;File: \~/linux/certbot.sh&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
-&lt;span class="c1"&gt;#---------------------------------------------&lt;/span&gt;
-&lt;span class="c1"&gt;# Change port forwarding on router&lt;/span&gt;
-&lt;span class="c1"&gt;#---------------------------------------------&lt;/span&gt;
-&lt;span class="c1"&gt;#&lt;/span&gt;
-&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;REMINDER: Open port 80 on ROUTER first!&amp;quot;&lt;/span&gt;
-&lt;span class="nb"&gt;read&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;ans
-&lt;span class="c1"&gt;#&lt;/span&gt;
-&lt;span class="c1"&gt;#---------------------------------------------&lt;/span&gt;
-&lt;span class="c1"&gt;# Disable firewall&lt;/span&gt;
-&lt;span class="c1"&gt;#---------------------------------------------&lt;/span&gt;
-&lt;span class="c1"&gt;#&lt;/span&gt;
-&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Disabling firewall&amp;quot;&lt;/span&gt;
-sudo&lt;span class="w"&gt; &lt;/span&gt;ufw&lt;span class="w"&gt; &lt;/span&gt;disable
-&lt;span class="c1"&gt;#&lt;/span&gt;
-&lt;span class="c1"&gt;#---------------------------------------------&lt;/span&gt;
-&lt;span class="c1"&gt;# Automatic renewal&lt;/span&gt;
-&lt;span class="c1"&gt;#---------------------------------------------&lt;/span&gt;
-&lt;span class="c1"&gt;#&lt;/span&gt;
-&lt;span class="nb"&gt;read&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;-p&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Dry-run [y]: &amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;reply
-&lt;span class="nv"&gt;reply&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;reply&lt;/span&gt;&lt;span class="k"&gt;:-&lt;/span&gt;&lt;span class="nv"&gt;y&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$reply&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[[&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$reply&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;y&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;then&lt;/span&gt;
-&lt;span class="w"&gt;   &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;certbot&lt;span class="w"&gt; &lt;/span&gt;renew&lt;span class="w"&gt; &lt;/span&gt;--expand&lt;span class="w"&gt; &lt;/span&gt;--dry-run
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;else&lt;/span&gt;
-&lt;span class="w"&gt;   &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;certbot&lt;span class="w"&gt; &lt;/span&gt;renew&lt;span class="w"&gt; &lt;/span&gt;--expand
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;fi&lt;/span&gt;
-&lt;span class="c1"&gt;#&lt;/span&gt;
-&lt;span class="c1"&gt;#---------------------------------------------&lt;/span&gt;
-&lt;span class="c1"&gt;# Check certbot service timer is running&lt;/span&gt;
-&lt;span class="c1"&gt;#---------------------------------------------&lt;/span&gt;
-&lt;span class="c1"&gt;#&lt;/span&gt;
-sudo&lt;span class="w"&gt; &lt;/span&gt;systemctl&lt;span class="w"&gt; &lt;/span&gt;list-timers&lt;span class="p"&gt;|&lt;/span&gt;grep&lt;span class="w"&gt; &lt;/span&gt;certbot
-&lt;span class="c1"&gt;##NEXT                         LEFT           LAST                         PASSED       UNIT                   &lt;/span&gt;
-&lt;span class="c1"&gt;##Sat 2019-12-28 13:31:07 EST  7h left        Sat 2019-12-28 01:26:25 EST  4h 37min ago certbot.timer          &lt;/span&gt;
-&lt;span class="c1"&gt;#&lt;/span&gt;
-&lt;span class="c1"&gt;#---------------------------------------------&lt;/span&gt;
-&lt;span class="c1"&gt;# Enable firewall&lt;/span&gt;
-&lt;span class="c1"&gt;#---------------------------------------------&lt;/span&gt;
-&lt;span class="c1"&gt;#&lt;/span&gt;
-&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Enabling firewall&amp;quot;&lt;/span&gt;
-sudo&lt;span class="w"&gt; &lt;/span&gt;ufw&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;enable&lt;/span&gt;
-&lt;span class="c1"&gt;#&lt;/span&gt;
-&lt;span class="c1"&gt;#---------------------------------------------&lt;/span&gt;
-&lt;span class="c1"&gt;# Copy to mail for it&amp;#39;s devecot (e-mail) service&lt;/span&gt;
-&lt;span class="c1"&gt;#---------------------------------------------&lt;/span&gt;
-&lt;span class="c1"&gt;#&lt;/span&gt;
-&lt;span class="nb"&gt;read&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;-p&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;copy to mail [y]: &amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;reply
-&lt;span class="nv"&gt;reply&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;reply&lt;/span&gt;&lt;span class="k"&gt;:-&lt;/span&gt;&lt;span class="nv"&gt;y&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$reply&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[[&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$reply&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;y&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;then&lt;/span&gt;
-&lt;span class="w"&gt;   &lt;/span&gt;./copy-cert-to-mail.sh
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;fi&lt;/span&gt;
-&lt;span class="c1"&gt;#&lt;/span&gt;
-&lt;span class="c1"&gt;#---------------------------------------------&lt;/span&gt;
-&lt;span class="c1"&gt;# Change port forwarding on router&lt;/span&gt;
-&lt;span class="c1"&gt;#---------------------------------------------&lt;/span&gt;
-&lt;span class="c1"&gt;#&lt;/span&gt;
-&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;REMINDER: Close port 80 on ROUTER now!&amp;quot;&lt;/span&gt;
-&lt;span class="nb"&gt;read&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;ans
-&lt;span class="c1"&gt;#&lt;/span&gt;
-&lt;span class="c1"&gt;#---------------------------------------------&lt;/span&gt;
-&lt;span class="c1"&gt;# Restart matrix-synapse to pick up new certs&lt;/span&gt;
-&lt;span class="c1"&gt;#---------------------------------------------&lt;/span&gt;
-&lt;span class="c1"&gt;#&lt;/span&gt;
-&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;NOTE: Restarting matrix-synapse service&amp;quot;&lt;/span&gt;
-sudo&lt;span class="w"&gt; &lt;/span&gt;systemctl&lt;span class="w"&gt; &lt;/span&gt;restart&lt;span class="w"&gt; &lt;/span&gt;matrix-synapse
-&lt;span class="c1"&gt;#&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h2 id="apache-web-server-for-nextcloud"&gt;Apache - Web Server for Nextcloud&lt;/h2&gt;
-&lt;p&gt;Certbot will probably add the SSLCertificate[FIle|KeyFile] lines to the apache Virtual host entry. &lt;/p&gt;
-&lt;p&gt;Check that Strict-Transport-Security is set to force http to https conversions. The max-age[1], 31536000 seconds, is 365 days and will expire shared cache after that. Adjust if desired.&lt;/p&gt;
-&lt;p&gt;File: /etc/apache2/sites-enabled/nextcloud.conf&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;~&lt;/span&gt;
-#&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;Don&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;begin&lt;/span&gt;
-#&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;Use&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;HTTP&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;Strict&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;Transport&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;Security&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;force&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;client&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;use&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;secure&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;connections&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;only&lt;/span&gt;&lt;span class="w"&gt;      &lt;/span&gt;
-&lt;span class="nv"&gt;Header&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;always&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;set&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;Strict&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;Transport&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;Security&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;max-age=31536000; includeSubDomains;&amp;quot;&lt;/span&gt;
-&lt;span class="nv"&gt;SSLEngine&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;on&lt;/span&gt;
-
-#&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;Don&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;certbot&lt;/span&gt;
-&lt;span class="nv"&gt;SSLCertificateFile&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;letsencrypt&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;live&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;example&lt;/span&gt;.&lt;span class="nv"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;fullchain&lt;/span&gt;.&lt;span class="nv"&gt;pem&lt;/span&gt;
-&lt;span class="nv"&gt;SSLCertificateKeyFile&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;letsencrypt&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;live&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;example&lt;/span&gt;.&lt;span class="nv"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;privkey&lt;/span&gt;.&lt;span class="nv"&gt;pem&lt;/span&gt;
-&lt;span class="k"&gt;Include&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;letsencrypt&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;options&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;ssl&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;apache&lt;/span&gt;.&lt;span class="nv"&gt;conf&lt;/span&gt;
-&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nv"&gt;VirtualHost&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-&lt;span class="o"&gt;~&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control"&gt;https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id="dovecot-server-for-e-mail-clients"&gt;Dovecot - Server for E-Mail Clients&lt;/h2&gt;
-&lt;p&gt;If you have E-Mail User Agent Dovecot installed this allows IMAPS, which is Internet Message Access Protocol Secure. Basically SSL for E-Mail to encrypt E-Mails over the network.&lt;/p&gt;
-&lt;p&gt;File: /etc/dovecot/conf.d/10-ssl.conf&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;~
-&lt;span class="gh"&gt;#&lt;/span&gt; SSL/TLS support: yes, no, required. &amp;lt;doc/wiki/SSL.txt&amp;gt;
-ssl = yes
-
-&lt;span class="gh"&gt;#&lt;/span&gt; PEM encoded X.509 SSL/TLS certificate and private key. They&amp;#39;re opened before
-&lt;span class="gh"&gt;#&lt;/span&gt; dropping root privileges, so keep the key file unreadable by anyone but
-&lt;span class="gh"&gt;#&lt;/span&gt; root. Included doc/mkcert.sh can be used to easily generate self-signed
-&lt;span class="gh"&gt;#&lt;/span&gt; certificate, just make sure to update the domains in dovecot-openssl.cnf
-&lt;span class="gh"&gt;#&lt;/span&gt; Don - begin
-&lt;span class="gh"&gt;#&lt;/span&gt;ssl_cert = &amp;lt;/etc/dovecot/private/dovecot.pem
-&lt;span class="gh"&gt;#&lt;/span&gt;ssl_key = &amp;lt;/etc/dovecot/private/dovecot.key
-ssl_cert = &amp;lt;/etc/letsencrypt/live/example.com/fullchain.pem                                        
-ssl_key = &amp;lt;/etc/letsencrypt/live/example.com/privkey.pem  
-&lt;span class="gh"&gt;#&lt;/span&gt; Don - end
-
-~
-
-&lt;span class="gh"&gt;#&lt;/span&gt; Directory and/or file for trusted SSL CA certificates. These are used only
-&lt;span class="gh"&gt;#&lt;/span&gt; when Dovecot needs to act as an SSL client (e.g. imapc backend or
-&lt;span class="gh"&gt;#&lt;/span&gt; submission service). The directory is usually /etc/ssl/certs in
-&lt;span class="gh"&gt;#&lt;/span&gt; Debian-based systems and the file is /etc/pki/tls/cert.pem in
-&lt;span class="gh"&gt;#&lt;/span&gt; RedHat-based systems.
-ssl_client_ca_dir = /etc/ssl/certs
-
-~
-
-&lt;span class="gh"&gt;#&lt;/span&gt; SSL DH parameters
-&lt;span class="gh"&gt;#&lt;/span&gt; Generate new params with `openssl dhparam -out /etc/dovecot/dh.pem 4096`
-&lt;span class="gh"&gt;#&lt;/span&gt; Or migrate from old ssl-parameters.dat file with the command dovecot
-&lt;span class="gh"&gt;#&lt;/span&gt; gives on startup when ssl_dh is unset.
-ssl_dh = &amp;lt;/usr/share/dovecot/dh.pem
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h2 id="matrix-messaging-server"&gt;Matrix - Messaging Server&lt;/h2&gt;
-&lt;p&gt;If you have the Matrix messaging server installed, this allows secure communication to clients.&lt;/p&gt;
-&lt;p&gt;File: /etc/matrix-synapse/homeserver.yaml&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;grep letsencrypt /etc/matrix-synapse/homeserver.yaml
-tls_certificate_path: &amp;quot;/etc/letsencrypt/live/example.com/fullchain.pem&amp;quot;
-tls_private_key_path: &amp;quot;/etc/letsencrypt/live/example.com/privkey.pem&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h2 id="verify-certificate"&gt;Verify Certificate&lt;/h2&gt;
-&lt;p&gt;This script is good to run before and after the certbot update to view the begin/end valid dates of your certificate. It ensures everything went well and the certs are in a valid location.&lt;/p&gt;
-&lt;p&gt;File: \~/linux/cert_expire.sh&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
-&lt;span class="c1"&gt;# ----------------------------------------------------------------------&lt;/span&gt;
-&lt;span class="c1"&gt;#&lt;/span&gt;
-&lt;span class="c1"&gt;# File: cert_expire.sh&lt;/span&gt;
-&lt;span class="c1"&gt;#&lt;/span&gt;
-&lt;span class="c1"&gt;# Purpose: See what the expiration date is for Let&amp;#39;s Encrypt Certificate&lt;/span&gt;
-&lt;span class="c1"&gt;#&lt;/span&gt;
-&lt;span class="c1"&gt;#&lt;/span&gt;
-&lt;span class="c1"&gt;#  s_client : The s_client command implements a generic SSL/TLS client&lt;/span&gt;
-&lt;span class="c1"&gt;#              which connects to a remote host using SSL/TLS.&lt;/span&gt;
-&lt;span class="c1"&gt;#  -servername $DOM : Set the TLS SNI (Server Name Indication) extension&lt;/span&gt;
-&lt;span class="c1"&gt;#                      in the ClientHello message to the given value.&lt;/span&gt;
-&lt;span class="c1"&gt;#  -connect $DOM:$PORT : This specifies the host ($DOM) and optional&lt;/span&gt;
-&lt;span class="c1"&gt;#                         port ($PORT) to connect to.&lt;/span&gt;
-&lt;span class="c1"&gt;#  x509 : Run certificate display and signing utility.&lt;/span&gt;
-&lt;span class="c1"&gt;#  -noout : Prevents output of the encoded version of the certificate.&lt;/span&gt;
-&lt;span class="c1"&gt;#  -dates : Prints out the start and expiry dates of a TLS or SSL certificate.&lt;/span&gt;
-&lt;span class="c1"&gt;#&lt;/span&gt;
-&lt;span class="c1"&gt;# Don Cohoon - Jan 2023&lt;/span&gt;
-&lt;span class="c1"&gt;# ----------------------------------------------------------------------&lt;/span&gt;
-&lt;span class="c1"&gt;#&lt;/span&gt;
-&lt;span class="c1"&gt;#&lt;/span&gt;
-&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$#&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;-gt&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;then&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nv"&gt;A&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;1&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;
-&lt;span class="k"&gt;else&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;1) E-Mail&amp;quot;&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;2) File&amp;quot;&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;3) Web&amp;quot;&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;4) Local&amp;quot;&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nb"&gt;read&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;A
-&lt;span class="k"&gt;fi&lt;/span&gt;
-&lt;span class="k"&gt;case&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;A&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;
-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;in&lt;/span&gt;
-&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;REMINDER: Restart dovecot to enable new certs&amp;quot;&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;=&amp;gt; E-Mail Certificate: CTRL-C to exit&amp;quot;&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;openssl&lt;span class="w"&gt; &lt;/span&gt;s_client&lt;span class="w"&gt; &lt;/span&gt;-connect&lt;span class="w"&gt; &lt;/span&gt;mail.example.com:25&lt;span class="w"&gt; &lt;/span&gt;-starttls&lt;span class="w"&gt; &lt;/span&gt;smtp&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&amp;gt;/dev/null&lt;span class="p"&gt;|&lt;/span&gt;openssl&lt;span class="w"&gt; &lt;/span&gt;x509&lt;span class="w"&gt; &lt;/span&gt;-noout&lt;span class="w"&gt; &lt;/span&gt;-dates
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;;;&lt;/span&gt;
-&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;=&amp;gt; File Certificate&amp;quot;&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;openssl&lt;span class="w"&gt; &lt;/span&gt;x509&lt;span class="w"&gt; &lt;/span&gt;-enddate&lt;span class="w"&gt; &lt;/span&gt;-noout&lt;span class="w"&gt; &lt;/span&gt;-in&lt;span class="w"&gt; &lt;/span&gt;/etc/letsencrypt/live/example.com/fullchain.pem
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;;;&lt;/span&gt;
-&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;REMINDER: Restart apache2 and nginx to enable new certs&amp;quot;&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;=&amp;gt; www.example.com Certificate: CTRL-C to exit&amp;quot;&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;openssl&lt;span class="w"&gt; &lt;/span&gt;s_client&lt;span class="w"&gt; &lt;/span&gt;-servername&lt;span class="w"&gt; &lt;/span&gt;example.com&lt;span class="w"&gt; &lt;/span&gt;-connect&lt;span class="w"&gt; &lt;/span&gt;www.example.com:443&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&amp;gt;/dev/null&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;openssl&lt;span class="w"&gt; &lt;/span&gt;x509&lt;span class="w"&gt; &lt;/span&gt;-noout&lt;span class="w"&gt; &lt;/span&gt;-dates
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;;;&lt;/span&gt;
-&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="m"&gt;4&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;REMINDER: Restart apache2 and nginx to enable new certs&amp;quot;&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;=&amp;gt; Local Web Certificate: CTRL-C to exit&amp;quot;&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;openssl&lt;span class="w"&gt; &lt;/span&gt;s_client&lt;span class="w"&gt; &lt;/span&gt;-connect&lt;span class="w"&gt; &lt;/span&gt;localhost:443&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;openssl&lt;span class="w"&gt; &lt;/span&gt;x509&lt;span class="w"&gt; &lt;/span&gt;-noout&lt;span class="w"&gt; &lt;/span&gt;-dates
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;;;&lt;/span&gt;
-&lt;span class="k"&gt;esac&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h2 id="continue"&gt;Continue&lt;/h2&gt;
-&lt;p&gt;Now that you have set up a certificate for your new server, consider installing some Network Attached Storage.&lt;/p&gt;
-&lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;</content><category term="linux"></category><category term="security"></category><category term="web"></category></entry></feed>
+&lt;p&gt;Proceed in the order presented, some things are depending on prior setups.&lt;/p&gt;</content><category term="linux"></category><category term="hardware"></category></entry></feed>

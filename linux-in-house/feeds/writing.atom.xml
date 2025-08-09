@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux Home Administration - writing</title><link href="https://dfcsoftware.github.io/linux-in-house/" rel="alternate"></link><link href="https://dfcsoftware.github.io/linux-in-house/feeds/writing.atom.xml" rel="self"></link><id>https://dfcsoftware.github.io/linux-in-house/</id><updated>2025-07-28T10:20:00-04:00</updated><entry><title>Building Puzzle Pieces</title><link href="https://dfcsoftware.github.io/linux-in-house/building-puzzle-pieces.html" rel="alternate"></link><published>2025-07-28T10:20:00-04:00</published><updated>2025-07-28T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-07-28:/linux-in-house/building-puzzle-pieces.html</id><summary type="html">&lt;p&gt;I like to put it all together, and admire the transformation from nothing to something.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux Home Administration - writing</title><link href="https://dfcsoftware.github.io/linux-in-house/" rel="alternate"></link><link href="https://dfcsoftware.github.io/linux-in-house/feeds/writing.atom.xml" rel="self"></link><id>https://dfcsoftware.github.io/linux-in-house/</id><updated>2025-08-09T10:20:00-04:00</updated><entry><title>Ratio</title><link href="https://dfcsoftware.github.io/linux-in-house/ratio.html" rel="alternate"></link><published>2025-08-09T10:20:00-04:00</published><updated>2025-08-09T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-08-09:/linux-in-house/ratio.html</id><content type="html">&lt;p&gt;People -----------------------------------------------------|
+                                                activist ---|
+                                        mad -------------|
+ happy -------------------------------------|&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Which one gets the attention in a news needy world?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;-- Don Cohoon&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>Building Puzzle Pieces</title><link href="https://dfcsoftware.github.io/linux-in-house/building-puzzle-pieces.html" rel="alternate"></link><published>2025-07-28T10:20:00-04:00</published><updated>2025-07-28T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-07-28:/linux-in-house/building-puzzle-pieces.html</id><summary type="html">&lt;p&gt;I like to put it all together, and admire the transformation from nothing to something.&lt;/p&gt;
 &lt;p&gt;This is the way I have built software products. Daring to dream big, then breaking it down, and finally small enough pieces that a plan naturally forms.&lt;/p&gt;
 &lt;p&gt;Recurrent division through each design piece is done …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I like to put it all together, and admire the transformation from nothing to something.&lt;/p&gt;
 &lt;p&gt;This is the way I have built software products. Daring to dream big, then breaking it down, and finally small enough pieces that a plan naturally forms.&lt;/p&gt;
