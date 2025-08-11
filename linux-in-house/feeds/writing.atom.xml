@@ -1,5 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux Home Administration - writing</title><link href="https://dfcsoftware.github.io/linux-in-house/" rel="alternate"></link><link href="https://dfcsoftware.github.io/linux-in-house/feeds/writing.atom.xml" rel="self"></link><id>https://dfcsoftware.github.io/linux-in-house/</id><updated>2025-08-10T10:20:00-04:00</updated><entry><title>The Day Mom Died</title><link href="https://dfcsoftware.github.io/linux-in-house/the-day-mom-died.html" rel="alternate"></link><published>2025-08-10T10:20:00-04:00</published><updated>2025-08-10T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-08-10:/linux-in-house/the-day-mom-died.html</id><summary type="html">&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;I still can&amp;#39;t remember the date.
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux Home Administration - writing</title><link href="https://dfcsoftware.github.io/linux-in-house/" rel="alternate"></link><link href="https://dfcsoftware.github.io/linux-in-house/feeds/writing.atom.xml" rel="self"></link><id>https://dfcsoftware.github.io/linux-in-house/</id><updated>2025-08-11T10:20:00-04:00</updated><entry><title>Files</title><link href="https://dfcsoftware.github.io/linux-in-house/files.html" rel="alternate"></link><published>2025-08-11T10:20:00-04:00</published><updated>2025-08-11T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-08-11:/linux-in-house/files.html</id><summary type="html">&lt;p&gt;With file formats HTML, MarkDown, Maildir, and JSON; your data is yours only. It does not belong to any one app, is human readable, and portable without relying on export/import.&lt;/p&gt;
+&lt;p&gt;That is the way I build my stuff. Probably another reason I use mainly bash (sh, ksh, zsh ...). On …&lt;/p&gt;</summary><content type="html">&lt;p&gt;With file formats HTML, MarkDown, Maildir, and JSON; your data is yours only. It does not belong to any one app, is human readable, and portable without relying on export/import.&lt;/p&gt;
+&lt;p&gt;That is the way I build my stuff. Probably another reason I use mainly bash (sh, ksh, zsh ...). On Unix, Linux, BSD, Mac-OS and even Windows (cygwin); these scripts still basically work and are easy to adopt.&lt;/p&gt;
+&lt;p&gt;Over the last decades I still have &lt;em&gt;files&lt;/em&gt; I can read that were created by me (vi) or some software, moved around, and changed with other software. Even my database (mysql) backups are plain ASCII files that were massaged and imported into another database software (postgresql). Also binary formats JPG [1], MP3 [2] and KDB [3] are readable 20 years later, thanks to open source publications.&lt;/p&gt;
+&lt;p&gt;Like a box of old letters in Grandma's attic, simply opening the source, one day someone just might find them and experience a life lived long ago. And one day they may disintegrate into the dust they came from.&lt;/p&gt;
+&lt;p&gt;-- Don Cohoon&lt;/p&gt;
+&lt;p&gt;Another like-minded individual: &lt;a href="https://stephango.com/self-guarantee"&gt;https://stephango.com/self-guarantee&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Reference:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;JPG format: &lt;a href="https://en.wikipedia.org/wiki/JPEG"&gt;https://en.wikipedia.org/wiki/JPEG&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;MP3 format: &lt;a href="https://en.wikipedia.org/wiki/MP3"&gt;https://en.wikipedia.org/wiki/MP3&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;KDB format: &lt;a href="https://keepass.info/help/kb/kdbx.html"&gt;https://keepass.info/help/kb/kdbx.html&lt;/a&gt;
+               &lt;a href="https://gist.github.com/lgg/e6ccc6e212d18dd2ecd8a8c116fb1e45"&gt;https://gist.github.com/lgg/e6ccc6e212d18dd2ecd8a8c116fb1e45&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>The Day Mom Died</title><link href="https://dfcsoftware.github.io/linux-in-house/the-day-mom-died.html" rel="alternate"></link><published>2025-08-10T10:20:00-04:00</published><updated>2025-08-10T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-08-10:/linux-in-house/the-day-mom-died.html</id><summary type="html">&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;I still can&amp;#39;t remember the date.
 I still get chills thinking about it.
 I still remember Dad&amp;#39;s call.
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;

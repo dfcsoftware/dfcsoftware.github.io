@@ -36,8 +36,8 @@
                 <article>
                     <h1 class="entry-title"><a href="https://dfcsoftware.github.io/linux-in-house/watch.html">Watch</a></h1>
 <footer class="post-info">
-        <abbr class="published" title="2023-08-09T00:00:00-04:00">
-                Published: Wed 09 August 2023
+        <abbr class="published" title="2023-08-11T00:00:00-04:00">
+                Published: Fri 11 August 2023
         </abbr>
 		<br />
         <abbr class="modified" title="2024-04-19T09:30:00-04:00">
@@ -92,56 +92,56 @@ and send alerts if watch thresholds are exceeded.</p>
 <ul>
 <li>Here is the file structure:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">bob</span><span class="o">/</span><span class="n">watch</span>
-<span class="o">.</span>
-<span class="err">├──</span><span class="w"> </span><span class="n">alert</span>
-<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">vm5</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="mf">20230822112005.</span><span class="n">uploaded</span>
-<span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="n">vm7</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="mf">20230822130010.</span><span class="n">uploaded</span>
-<span class="err">├──</span><span class="w"> </span><span class="n">alert</span><span class="o">.</span><span class="n">sh</span>
-<span class="err">├──</span><span class="w"> </span><span class="n">db</span>
-<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">db</span><span class="o">-</span><span class="mf">18.1</span><span class="o">.</span><span class="mi">40</span>
-<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">oracle_berkely_DB</span><span class="o">-</span><span class="n">V997917</span><span class="o">-</span><span class="mf">01.</span><span class="n">zip</span>
-<span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="n">readme</span>
-<span class="err">├──</span><span class="w"> </span><span class="n">deploy</span><span class="o">.</span><span class="n">sh</span>
-<span class="err">├──</span><span class="w"> </span><span class="n">df</span><span class="o">.</span><span class="n">sh</span>
-<span class="err">├──</span><span class="w"> </span><span class="n">geturl</span><span class="o">.</span><span class="n">pl</span>
-<span class="err">├──</span><span class="w"> </span><span class="nb">log</span>
-<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">cloud</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="mi">0</span>
-<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">cloud</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="mf">1.</span><span class="n">gz</span>
-<span class="err">├──</span><span class="w"> </span><span class="nb">log</span><span class="o">.</span><span class="n">sh</span>
-<span class="err">├──</span><span class="w"> </span><span class="n">mail</span><span class="o">.</span><span class="n">sh</span>
-<span class="err">├──</span><span class="w"> </span><span class="n">nbs</span>
-<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">db</span><span class="o">.</span><span class="n">c</span>
-<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">db</span><span class="o">.</span><span class="n">o</span>
-<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">INSTALL</span>
-<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">Makefile</span>
-<span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="o">...</span>
-<span class="err">├──</span><span class="w"> </span><span class="n">nbs</span><span class="o">.</span><span class="n">tar</span>
-<span class="err">├──</span><span class="w"> </span><span class="n">readme</span>
-<span class="err">├──</span><span class="w"> </span><span class="n">retail</span>
-<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">Makefile</span>
-<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">retail</span>
-<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">retail</span><span class="o">.</span><span class="n">c</span>
-<span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="o">...</span>
-<span class="err">├──</span><span class="w"> </span><span class="n">retail</span><span class="o">.</span><span class="n">tar</span>
-<span class="err">├──</span><span class="w"> </span><span class="n">savelog</span><span class="o">.</span><span class="n">sh</span>
-<span class="err">├──</span><span class="w"> </span><span class="n">status</span>
-<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">apache</span><span class="o">-</span><span class="n">error</span>
-<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">apache</span><span class="o">-</span><span class="n">error</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">cnt</span>
-<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">apache</span><span class="o">-</span><span class="n">error</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">idx</span>
-<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">apache</span><span class="o">-</span><span class="n">error</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">rec</span>
-<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">apache</span><span class="o">-</span><span class="n">error</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">upd</span>
-<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">apache</span><span class="o">-</span><span class="n">error_new</span><span class="o">.</span><span class="n">txt</span>
-<span class="err">├──</span><span class="w"> </span><span class="n">sync</span><span class="o">.</span><span class="n">sh</span>
-<span class="err">├──</span><span class="w"> </span><span class="n">util</span><span class="o">.</span><span class="n">sh</span>
-<span class="err">└──</span><span class="w"> </span><span class="n">watch</span><span class="o">.</span><span class="n">sh</span>
+<div class="highlight"><pre><span></span><code>/home/bob/watch
+.
+├── alert
+│   ├── vm5.util.20230822112005.uploaded
+│   └── vm7.util.20230822130010.uploaded
+├── alert.sh
+├── db
+│   ├── db-18.1.40
+│   ├── oracle_berkely_DB-V997917-01.zip
+│   └── readme
+├── deploy.sh
+├── df.sh
+├── geturl.pl
+├── log
+│   ├── cloud.log.0
+│   ├── cloud.log.1.gz
+├── log.sh
+├── mail.sh
+├── nbs
+│   ├── db.c
+│   ├── db.o
+│   ├── INSTALL
+│   ├── Makefile
+│   └── ...
+├── nbs.tar
+├── readme
+├── retail
+│   ├── Makefile
+│   ├── retail
+│   ├── retail.c
+│   └── ...
+├── retail.tar
+├── savelog.sh
+├── status
+│   ├── apache-error
+│   ├── apache-error.db.cnt
+│   ├── apache-error.db.idx
+│   ├── apache-error.db.rec
+│   ├── apache-error.db.upd
+│   ├── apache-error_new.txt
+├── sync.sh
+├── util.sh
+└── watch.sh
 
 
-<span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">bob</span><span class="o">/.</span><span class="n">config</span>
-<span class="err">├──</span><span class="w"> </span><span class="n">watch</span>
-<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">hosts</span><span class="o">.</span><span class="n">txt</span>
-<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">config</span><span class="o">.</span><span class="n">txt</span>
-<span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="n">df</span><span class="o">.</span><span class="n">vm7</span>
+/home/bob/.config
+├── watch
+│   ├── hosts.txt
+│   ├── config.txt
+│   └── df.vm7
 </code></pre></div>
 
 <h2 id="installation">Installation</h2>
@@ -156,9 +156,9 @@ just change this documents' references of
 <em>your</em> directory.</p>
 <p>Delete any lines in files /etc/issue and /etc/issue.net as they will interfere with function monitors doing ssh into a host causing alerts every time.</p>
 <p>Files: /etc/issue, /etc/issue.net</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>-i
-$<span class="w"> </span>&gt;<span class="w"> </span>/etc/issue
-$<span class="w"> </span>&gt;<span class="w"> </span>/etc/issue.net
+<div class="highlight"><pre><span></span><code>$ sudo -i
+$ &gt; /etc/issue
+$ &gt; /etc/issue.net
 </code></pre></div>
 
 <h2 id="configuration">Configuration</h2>
@@ -207,11 +207,11 @@ vm2      224    1        /home/data/bob
 <h2 id="schedule-alertsh-in-cron">Schedule alert.sh in cron</h2>
 <p>i.e.: every 20 minutes</p>
 <p>File: /etc/cron.d/alert </p>
-<div class="highlight"><pre><span></span><code><span class="err">#</span><span class="w"> </span><span class="n">Run</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">alert</span><span class="w"> </span><span class="n">analysis</span>
-<span class="n">SHELL</span><span class="o">=/</span><span class="n">bin</span><span class="o">/</span><span class="n">bash</span>
-<span class="k">PATH</span><span class="o">=/</span><span class="nl">sbin</span><span class="p">:</span><span class="o">/</span><span class="nl">bin</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nl">sbin</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span>
-<span class="n">MAILTO</span><span class="o">=</span><span class="ss">&quot;bob@bob.com&quot;</span>
-<span class="o">*/</span><span class="mi">20</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">bob</span><span class="o">/</span><span class="n">watch</span><span class="o">/</span><span class="n">alert</span><span class="p">.</span><span class="n">sh</span>
+<div class="highlight"><pre><span></span><code># Run the alert analysis
+SHELL=/bin/bash
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+MAILTO=&quot;bob@bob.com&quot;
+*/20 * * * * root /home/bob/watch/alert.sh
 </code></pre></div>
 
 <h2 id="copy-ssh-keys-to-remote">Copy ssh keys to remote</h2>
@@ -349,11 +349,11 @@ It needs to be scheduled in cron.</p>
 <li>cron runs log.sh</li>
 </ol>
 <p>File: /etc/cron.d/logwatcher</p>
-<div class="highlight"><pre><span></span><code><span class="err">#</span><span class="w"> </span><span class="nf">Log</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Watcher</span>
-<span class="k">PATH</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="nl">sysstat</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nl">sbin</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nl">sbin</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nl">bin</span><span class="p">:</span><span class="o">/</span><span class="nl">sbin</span><span class="p">:</span><span class="o">/</span><span class="n">bin</span>
-<span class="n">MAILTO</span><span class="o">=</span><span class="ss">&quot;bob@bob.com&quot;</span>
-<span class="err">#</span><span class="w"> </span><span class="n">Run</span><span class="w"> </span><span class="nf">Log</span><span class="w"> </span><span class="n">watcher</span>
-<span class="o">*/</span><span class="mi">20</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">bob</span><span class="w">  </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">bob</span><span class="o">/</span><span class="n">watch</span><span class="o">/</span><span class="nf">log</span><span class="p">.</span><span class="n">sh</span><span class="w"> </span>
+<div class="highlight"><pre><span></span><code># Log - Watcher
+PATH=/usr/lib/sysstat:/usr/sbin:/usr/sbin:/usr/bin:/sbin:/bin
+MAILTO=&quot;bob@bob.com&quot;
+# Run Log watcher
+*/20 * * * * bob  /home/bob/watch/log.sh 
 </code></pre></div>
 
 <ol>
@@ -410,8 +410,8 @@ It needs to be scheduled in cron.</p>
 
                 <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2023-06-09T00:00:00-04:00">
-                Published: Fri 09 June 2023
+        <abbr class="published" title="2023-06-11T00:00:00-04:00">
+                Published: Sun 11 June 2023
         </abbr>
 		<br />
         <abbr class="modified" title="2024-04-19T09:30:00-04:00">
@@ -760,7 +760,7 @@ performance and extendable.</p>
                 </p><!-- /#about -->
 
                 <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-                <p> Version:  3.264 </p>
+                <p> Version:  3.271 </p>
         </footer><!-- /#contentinfo -->
 
 </body>
