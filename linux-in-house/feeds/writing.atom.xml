@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux Home Administration - writing</title><link href="https://dfcsoftware.github.io/linux-in-house/" rel="alternate"></link><link href="https://dfcsoftware.github.io/linux-in-house/feeds/writing.atom.xml" rel="self"></link><id>https://dfcsoftware.github.io/linux-in-house/</id><updated>2025-08-11T10:20:00-04:00</updated><entry><title>Files</title><link href="https://dfcsoftware.github.io/linux-in-house/files.html" rel="alternate"></link><published>2025-08-11T10:20:00-04:00</published><updated>2025-08-11T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-08-11:/linux-in-house/files.html</id><summary type="html">&lt;p&gt;With file formats HTML, MarkDown, Maildir, and JSON; your data is yours only. It does not belong to any one app, is human readable, and portable without relying on export/import.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux Home Administration - writing</title><link href="https://dfcsoftware.github.io/linux-in-house/" rel="alternate"></link><link href="https://dfcsoftware.github.io/linux-in-house/feeds/writing.atom.xml" rel="self"></link><id>https://dfcsoftware.github.io/linux-in-house/</id><updated>2025-08-12T10:20:00-04:00</updated><entry><title>Lead or Explore</title><link href="https://dfcsoftware.github.io/linux-in-house/lead-or-explore.html" rel="alternate"></link><published>2025-08-12T10:20:00-04:00</published><updated>2025-08-12T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-08-12:/linux-in-house/lead-or-explore.html</id><summary type="html">&lt;p&gt;It happens when you least expect it. That golden ring of opportunity. Do you grab it, or let it slide.&lt;/p&gt;
+&lt;p&gt;Look around, explore and be of good use. That's what I did. Although several chances arose to become a leader. I suppose it happens to everyone at some time or …&lt;/p&gt;</summary><content type="html">&lt;p&gt;It happens when you least expect it. That golden ring of opportunity. Do you grab it, or let it slide.&lt;/p&gt;
+&lt;p&gt;Look around, explore and be of good use. That's what I did. Although several chances arose to become a leader. I suppose it happens to everyone at some time or another.&lt;/p&gt;
+&lt;p&gt;People I have met exude that &lt;em&gt;leader&lt;/em&gt; vibe. The sort of "Let me tell you what..." kind of vibe. Only sometimes they are so full of themselves to the point of becoming ignorable.&lt;/p&gt;
+&lt;p&gt;Excellent leaders are always checking in, probing, suggesting, listening. You can immediately tell when they focus on your eyes, pause, then talk.&lt;/p&gt;
+&lt;p&gt;I think we all have our talents and need to remind ourselves where we shine, and remember to try new things. We are not the same minds as last year, or the years before. &lt;/p&gt;
+&lt;p&gt;-- Don Cohoon&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>Files</title><link href="https://dfcsoftware.github.io/linux-in-house/files.html" rel="alternate"></link><published>2025-08-11T10:20:00-04:00</published><updated>2025-08-11T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-08-11:/linux-in-house/files.html</id><summary type="html">&lt;p&gt;With file formats HTML, MarkDown, Maildir, and JSON; your data is yours only. It does not belong to any one app, is human readable, and portable without relying on export/import.&lt;/p&gt;
 &lt;p&gt;That is the way I build my stuff. Probably another reason I use mainly bash (sh, ksh, zsh ...). On …&lt;/p&gt;</summary><content type="html">&lt;p&gt;With file formats HTML, MarkDown, Maildir, and JSON; your data is yours only. It does not belong to any one app, is human readable, and portable without relying on export/import.&lt;/p&gt;
 &lt;p&gt;That is the way I build my stuff. Probably another reason I use mainly bash (sh, ksh, zsh ...). On Unix, Linux, BSD, Mac-OS and even Windows (cygwin); these scripts still basically work and are easy to adopt.&lt;/p&gt;
 &lt;p&gt;Over the last decades I still have &lt;em&gt;files&lt;/em&gt; I can read that were created by me (vi) or some software, moved around, and changed with other software. Even my database (mysql) backups are plain ASCII files that were massaged and imported into another database software (postgresql). Also binary formats JPG [1], MP3 [2] and KDB [3] are readable 20 years later, thanks to open source publications.&lt;/p&gt;
@@ -446,15 +461,9 @@ worth visualizing&lt;br&gt;
 with my dolphin&lt;br&gt;
 that I may never&lt;br&gt;
 understand.&lt;br&gt;&lt;/p&gt;
-&lt;p&gt;But that's ok.&lt;br&gt;
-As they say.&lt;br&gt;
-When you're &lt;br&gt;
-underwater.&lt;br&gt;&lt;/p&gt;
-&lt;p&gt;Is it ok to forget&lt;br&gt;
-or remember?&lt;br&gt;
-Be it insouciant youth,&lt;br&gt;
-blocking the pain,&lt;br&gt;
-or natural decay …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Summer is cooking&lt;br&gt;
+&lt;p&gt;&lt;img alt="dolphin" src="/linux-in-house/images/Dolphin_at_Dalkey_Island.jpg"&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A photo by John Fahy of Dalkey Photos showing a bottlenose dolphin playing with a paddle boarder at Killiney Bay in front of Dalkey Island : &lt;em&gt;Wikimedia …&lt;/em&gt;&lt;/p&gt;&lt;/blockquote&gt;</summary><content type="html">&lt;p&gt;Summer is cooking&lt;br&gt;
 a winter in my soul.&lt;br&gt;
 Thawing a&lt;br&gt;
 frosted heart.&lt;br&gt;&lt;/p&gt;
@@ -463,6 +472,10 @@ worth visualizing&lt;br&gt;
 with my dolphin&lt;br&gt;
 that I may never&lt;br&gt;
 understand.&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="dolphin" src="/linux-in-house/images/Dolphin_at_Dalkey_Island.jpg"&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A photo by John Fahy of Dalkey Photos showing a bottlenose dolphin playing with a paddle boarder at Killiney Bay in front of Dalkey Island : &lt;em&gt;Wikimedia&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;But that's ok.&lt;br&gt;
 As they say.&lt;br&gt;
 When you're &lt;br&gt;
