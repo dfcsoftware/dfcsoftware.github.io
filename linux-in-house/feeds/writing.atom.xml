@@ -1,5 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux Home Administration - writing</title><link href="https://dfcsoftware.github.io/linux-in-house/" rel="alternate"></link><link href="https://dfcsoftware.github.io/linux-in-house/feeds/writing.atom.xml" rel="self"></link><id>https://dfcsoftware.github.io/linux-in-house/</id><updated>2025-08-17T10:20:00-04:00</updated><entry><title>Lawnmower</title><link href="https://dfcsoftware.github.io/linux-in-house/lawnmower.html" rel="alternate"></link><published>2025-08-17T10:20:00-04:00</published><updated>2025-08-17T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-08-17:/linux-in-house/lawnmower.html</id><summary type="html">&lt;p&gt;The Electric Lawnmower using a battery is a great invention. With battery technologies improved so much over the last 10 years, I can easily cover my whole lawn in about one hour with power to spare in the lithium cells and expect batteries to last 10 years.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Linux Home Administration - writing</title><link href="https://dfcsoftware.github.io/linux-in-house/" rel="alternate"></link><link href="https://dfcsoftware.github.io/linux-in-house/feeds/writing.atom.xml" rel="self"></link><id>https://dfcsoftware.github.io/linux-in-house/</id><updated>2025-08-28T10:20:00-04:00</updated><entry><title>Teach</title><link href="https://dfcsoftware.github.io/linux-in-house/teach.html" rel="alternate"></link><published>2025-08-28T10:20:00-04:00</published><updated>2025-08-28T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-08-28:/linux-in-house/teach.html</id><summary type="html">&lt;h1 id="simple-steps-and-useful-examples"&gt;Simple steps and useful examples.&lt;/h1&gt;
+&lt;p&gt;This is the method of teaching I like for learning. &lt;/p&gt;
+&lt;p&gt;It's also why I have been so excited to see each day a new post by Dr. Axel Rauschmayer; “Learning web development"&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href="https://2ality.com/2025/08/learning-web-dev-toc.html"&gt;https://2ality.com/2025/08/learning-web-dev-toc.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Thank you Dr. Axel!&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="my-reasons"&gt;My Reasons …&lt;/h2&gt;</summary><content type="html">&lt;h1 id="simple-steps-and-useful-examples"&gt;Simple steps and useful examples.&lt;/h1&gt;
+&lt;p&gt;This is the method of teaching I like for learning. &lt;/p&gt;
+&lt;p&gt;It's also why I have been so excited to see each day a new post by Dr. Axel Rauschmayer; “Learning web development"&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href="https://2ality.com/2025/08/learning-web-dev-toc.html"&gt;https://2ality.com/2025/08/learning-web-dev-toc.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Thank you Dr. Axel!&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="my-reasons"&gt;My Reasons&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;I like the writing style&lt;/li&gt;
+&lt;li&gt;Working examples&lt;/li&gt;
+&lt;li&gt;A topic I did a lot of work in, and still some&lt;/li&gt;
+&lt;li&gt;Shows me what I lost years ago, learning all those fancy web frameworks&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Particularly #4 brings me back to what I have been wanting lately, a simple, easy to use and maintain web enabled system using the native tools we have: html, css and javascript built-ins.&lt;/p&gt;
+&lt;p&gt;I used to write simple web pages, linking them together to make up a story, and using all those funny icons from the 1990's in the 1990's. Picture albums and books with audio links for reading to children. Even GIF's of hand drawn icons. :{0&lt;/p&gt;
+&lt;p&gt;Dynamic database driven web sites were some of the things I did at work, and it also creeped into my home projects. Of course I could not pay for the fancy tools like work had, but capable open source alternatives rolled out at an impressive pace. &lt;/p&gt;
+&lt;p&gt;When JQuery [1] came out it was great, then Angularjs [2], and finally porting to Angular [3]; I felt the web to database scenario was getting way too complex and it &lt;em&gt;burned me out of webdev&lt;/em&gt;.  I kept thinking "There must be a better way."&lt;/p&gt;
+&lt;h2 id="better-way"&gt;Better Way&lt;/h2&gt;
+&lt;p&gt;Then I tried static site builders such as Hugo [4] and Pelican [5]. &lt;/p&gt;
+&lt;h3 id="pros"&gt;Pros&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Simple text files (markdown)&lt;/li&gt;
+&lt;li&gt;Automatic menu structure&lt;/li&gt;
+&lt;li&gt;Search&lt;/li&gt;
+&lt;li&gt;RSS [6] sharing&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="cons"&gt;Cons&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Hate the build process (waiting...)&lt;/li&gt;
+&lt;li&gt;Separate Search build process (more waiting...)&lt;/li&gt;
+&lt;li&gt;Complex&lt;/li&gt;
+&lt;li&gt;Rely on &lt;em&gt;projects&lt;/em&gt; not &lt;strong&gt;standards&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Suddenly the urge is with me to update my decades old project in a &lt;code&gt;simpler&lt;/code&gt; &lt;strong&gt;very open source&lt;/strong&gt; design and implementation. This may or may not happen, but it should be fun to explore once again with a fresh mind, and newer standards and few, if any, projects. &lt;/p&gt;
+&lt;h2 id="what-i-want-to-build"&gt;What I Want to Build&lt;/h2&gt;
+&lt;p&gt;Web based system for&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;text&lt;/li&gt;
+&lt;li&gt;menu&lt;/li&gt;
+&lt;li&gt;search &lt;/li&gt;
+&lt;li&gt;RSS [6] sharing&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;contained in simple, 100% source code. &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Less code is better.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id="reference"&gt;Reference&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://jquery.com/"&gt;https://jquery.com/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://angularjs.org/"&gt;https://angularjs.org/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://angular.io/start"&gt;https://angular.io/start&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://gohugo.io/"&gt;https://gohugo.io/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://getpelican.com/"&gt;https://getpelican.com/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.rssboard.org/rss-specification"&gt;https://www.rssboard.org/rss-specification&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;-- Don Cohoon&lt;/p&gt;
+&lt;p&gt;PS: If this sounds like the web's oldest app (e-mail), you are right!&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>Lawnmower</title><link href="https://dfcsoftware.github.io/linux-in-house/lawnmower.html" rel="alternate"></link><published>2025-08-17T10:20:00-04:00</published><updated>2025-08-17T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-08-17:/linux-in-house/lawnmower.html</id><summary type="html">&lt;p&gt;The Electric Lawnmower using a battery is a great invention. With battery technologies improved so much over the last 10 years, I can easily cover my whole lawn in about one hour with power to spare in the lithium cells and expect batteries to last 10 years.&lt;/p&gt;
 &lt;p&gt;Having used several …&lt;/p&gt;</summary><content type="html">&lt;p&gt;The Electric Lawnmower using a battery is a great invention. With battery technologies improved so much over the last 10 years, I can easily cover my whole lawn in about one hour with power to spare in the lithium cells and expect batteries to last 10 years.&lt;/p&gt;
 &lt;p&gt;Having used several I would say "buy a good one", which set me back about $500. At half that price the power is less and the battery depletes in about 30 minutes. Larger models are self-propelled, capable of slogging through that high grass and spongy turf for over an hour.&lt;/p&gt;
 &lt;table&gt;
@@ -34,7 +107,17 @@
 &lt;/blockquote&gt;
 &lt;p&gt;So I have found both low and high end models work well if you match them for the job at hand. A small model in tall wet grass will have to be cleaned underneath with a hose often or it will stall. However a small one is good for going in and out of ditches or hills. A larger one will clear tall grass out the chute better, and provide extra torque required to keep the blade spinning up to speed.&lt;/p&gt;
 &lt;p&gt;Also my 4 Amp-hour (4Ah) battery lasts longer than a standard 2Ah. Lately I have even seen 6Ah batteries (40-volt) in the stores.&lt;/p&gt;
-&lt;p&gt;Finally, the best part of an electric cordless lawnmower is maintenance; no gas, oil, filter, spark plug or carburetor. And it starts first time, every time without taking that little red jug to the gas station or &lt;em&gt;pulling on a rope&lt;/em&gt;. Just plug a charger into the wall and top off your battery after each mow.&lt;/p&gt;</content><category term="writing"></category></entry><entry><title>Lead or Explore</title><link href="https://dfcsoftware.github.io/linux-in-house/lead-or-explore.html" rel="alternate"></link><published>2025-08-12T10:20:00-04:00</published><updated>2025-08-12T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-08-12:/linux-in-house/lead-or-explore.html</id><summary type="html">&lt;p&gt;It happens when you least expect it. That golden ring of opportunity. Do you grab it, or let it slide.&lt;/p&gt;
+&lt;p&gt;Finally, the best part of an electric cordless lawnmower is maintenance; no gas, oil, filter, spark plug or carburetor. And it starts first time, every time without taking that little red jug to the gas station or &lt;em&gt;pulling on a rope&lt;/em&gt;. Just plug a charger into the wall and top off your battery after each mow.&lt;/p&gt;
+&lt;p&gt;-- Don Cohoon&lt;/p&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;____          
+|  _ \  ___  _ __  
+| | | |/ &lt;span class="ge"&gt;_ \| &amp;#39;_&lt;/span&gt; \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+¯\_(ツ)_/¯
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="writing"></category></entry><entry><title>Lead or Explore</title><link href="https://dfcsoftware.github.io/linux-in-house/lead-or-explore.html" rel="alternate"></link><published>2025-08-12T10:20:00-04:00</published><updated>2025-08-12T10:20:00-04:00</updated><author><name>Don Cohoon</name></author><id>tag:dfcsoftware.github.io,2025-08-12:/linux-in-house/lead-or-explore.html</id><summary type="html">&lt;p&gt;It happens when you least expect it. That golden ring of opportunity. Do you grab it, or let it slide.&lt;/p&gt;
 &lt;p&gt;Look around, explore and be of good use. That's what I did. Although several chances arose to become a leader. I suppose it happens to everyone at some time or …&lt;/p&gt;</summary><content type="html">&lt;p&gt;It happens when you least expect it. That golden ring of opportunity. Do you grab it, or let it slide.&lt;/p&gt;
 &lt;p&gt;Look around, explore and be of good use. That's what I did. Although several chances arose to become a leader. I suppose it happens to everyone at some time or another.&lt;/p&gt;
 &lt;p&gt;People I have met exude that &lt;em&gt;leader&lt;/em&gt; vibe. The sort of "Let me tell you what..." kind of vibe. Only sometimes they are so full of themselves to the point of becoming ignorable.&lt;/p&gt;
