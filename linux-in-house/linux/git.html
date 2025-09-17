@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>git</title>
+	<meta name="date" content="2023-10-01 10:20"/>
+	<meta name="author" content="Don Cohoon"/>
+	<meta name="summary" content="GIT is like a generic information tracker, letting you go back in time to see what changed."/>
+	<meta name="license" content="'[CC-BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)'"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"> <link rel="stylesheet" href="/linux-in-house/common.css" type="text/css" />
+</head>
+<body>
+
+<p><a href="/linux-in-house/"><h1>Linux in House</h1></a></p>
+
+<link href="/linux-in-house/pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/linux-in-house/pagefind/pagefind-ui.js"></script>
+
+<div id="search"></div>
+<script>
+window.addEventListener('DOMContentLoaded', (event) => {
+      new PagefindUI({ element: "#search", showSubResults: true });
+});
+</script>
+
+<blockquote>
+<p><a href="/linux-in-house/linux/welcome.html">Welcome Back My Friends</a></p>
+</blockquote>
+
+<h1 id="git">git</h1>
+
+<p>GIT is like a generic information tracker, letting you go back in time to see what changed.</p>
+
+<hr />
+
+<div class="TOC">
+
+<ul>
+<li><a href="#git">git</a></li>
+<li><a href="#gitclone">git clone</a></li>
+<li><a href="#gitgui">git gui</a>
+<ul>
+<li><a href="#downstreamvs.upstream">Downstream vs. Upstream</a></li>
+<li><a href="#gitremoterepositoryaccess">Git remote repository access</a>
+<ul>
+<li><a href="#createabarereponoworkingfiles">Create a bare repo, no working files</a></li>
+</ul>
+</li>
+<li><a href="#multipleremotegitrepositories">Multiple remote git repositories</a>
+<ul>
+<li><a href="#madeforhumansbyahuman">Made for Humans, by a Human</a></li>
+<li><a href="#links">Links</a></li>
+<li><a href="#social">Social</a>
+<ul>
+<li><a href="#builtwithmultimarkdownhttps:github.comfletchermultimarkdown-6andw3schoolshttps:www.w3schools.comw3cssw3css_pro.asp">Built with <a href="https://github.com/fletcher/MultiMarkdown-6">MultiMarkdown</a> and <a href="https://www.w3schools.com/w3css/w3css_pro.asp">W3 Schools</a></a></li>
+<li><a href="#license:ahrefhttp:creativecommons.orglicensesby-nc-sa4.0cc-by-nc-sa4.0a">License: <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0</a></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+<hr />
+
+<h1 id="gitclone">git clone</h1>
+
+<p>Clones a repository into a newly created directory, creates remote-tracking branches for each branch in the cloned repository (visible using git branch &#8211;remotes), and creates and checks out an initial branch that is forked from the cloned repository’s currently active branch.</p>
+
+<h1 id="gitgui">git gui</h1>
+
+<p>Git GUI is started by running gitk, then selecting File&gt;Start git gui.</p>
+
+<figure>
+<img src="/linux-in-house/images/gitk-git_gui.png" alt="git GUI" />
+<figcaption>git GUI</figcaption>
+</figure>
+
+<p>After the clone, a plain git fetch without arguments will update all the remote-tracking branches, and a git pull without arguments will in addition merge the remote master branch into the current master branch, if any (this is untrue when &#8220;&#8211;single-branch&#8221; is given; see below).</p>
+
+<blockquote>
+<p>master changed to main in 2020</p>
+</blockquote>
+
+<blockquote>
+<p>origin” is not special
+Just like the branch name “master” does not have any special meaning in Git, neither does “origin”. While “master” is the default name for a starting branch when you run git init which is the only reason it’s widely used, “origin” is the <strong>default name for a remote when you run git clone</strong>. If you run git clone -o booyah instead, then you will have booyah/master as your default remote branch.</p>
+</blockquote>
+
+<p>Remote-tracking branch names take the form <code>&lt;remote&gt;/&lt;branch&gt;</code></p>
+
+<p>For instance, if you wanted to see what the master branch on your origin remote looked like as of the last time you communicated with it, you would check the origin/master branch. If you were working on an issue with a partner and they pushed up an iss53 branch, you might have your own local iss53 branch, but the branch on the server would be represented by the remote-tracking branch origin/iss53.</p>
+
+<h2 id="downstreamvs.upstream">Downstream vs. Upstream</h2>
+
+<pre><code>|--------------------------- time -----------------------------&gt; 
+|--- master ---- downstream -------&gt; ------- upstream ---------&gt;
+|            |                                              ^
+|            +--&gt; remote _clone_     from master _pull_ --&gt; +
+|                 [maybe need to]    from remote _push_ --&gt; +
+|                 [_fetch/merge_]
+|                 [other people's]
+|                 [commits] 
+
+</code></pre>
+
+<h2 id="gitremoterepositoryaccess">Git remote repository access</h2>
+
+<h3 id="createabarereponoworkingfiles">Create a bare repo, no working files</h3>
+
+<p>There are two types of repos, one is &#8216;bare&#8217; in that it contains no files that you can work with, only git indexed objects. It is suitable for <strong>sharing</strong> between other &#8216;working files&#8217; repos.</p>
+
+<ul>
+<li>Create a sharing git repository on a system with raid disks and network access.</li>
+</ul>
+
+<pre><code>$ mkdir backups/forest.git
+$ cd    backups/forest.git
+$ git init --bare
+</code></pre>
+
+<ul>
+<li>On working hosts where you want to track files, create a working repo, populate it with files, ane push it to the sharing repo.</li>
+</ul>
+
+<pre><code>$ mkdir ~/forest
+$ cd    ~/forest
+$ git init 
+#
+$ [copy your files into the new directory]
+# Then add them to your local git repo
+$ git add .
+$ git commit
+# Push them to the sharing repo, with the ```--set-upstream``` option
+$ git push --set-upstream git+ssh://nas.example.com:/mnt/vol002/nfs2_share/backups/forest.git master
+
+Enumerating objects: 12507, done.
+Counting objects: 100% (12507/12507), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (6304/6304), done.
+Writing objects: 100% (12507/12507), 95.18 MiB | 12.71 MiB/s, done.
+Total 12507 (delta 6643), reused 9514 (delta 5966), pack-reused 0
+remote: Resolving deltas: 100% (6643/6643), done.
+To git+ssh://nas.example.com:/mnt/vol002/nfs2_share/backups/forest.git
+ * [new branch]      master -&gt; master
+Branch 'master' set up to track remote branch 'master' from 'git+ssh://nas.example.com:/mnt/vol/backups/forest.git’.
+
+</code></pre>
+
+<p>You can see the sharing repo definition here:</p>
+
+<p>File: .git/config</p>
+
+<pre><code>[branch &quot;master&quot;]
+	remote = git+ssh://nas.example.com:/mnt/vol/backups/forest.git
+	merge = refs/heads/master
+
+</code></pre>
+
+<ul>
+<li>Pushing commits to a remote repository</li>
+</ul>
+
+<p>Run <code>git push origin main</code> to push your local changes to your online repository. (push <source> <destination>)</p>
+
+<ul>
+<li>Pulling commits from a remote repository</li>
+</ul>
+
+<p>Run <code>git pull origin</code> to pull other committed changes to your local repository. (pull <source>)</p>
+
+<ul>
+<li>Getting everything from a remote repository</li>
+</ul>
+
+<p>For new hosts you can grab all the files by using <code>git clone *remotename*</code>. This will create a &#8216;working directory&#8217; on your local machine.</p>
+
+<ul>
+<li>Summary</li>
+</ul>
+
+<pre><code>$ git remote add progit https://github.com/progit/progit2.git # [1]
+$ git fetch progit                                            # [2]
+$ git branch --set-upstream-to=progit/master master           # [3]
+$ git config --local remote.pushDefault origin                # [4]
+</code></pre>
+
+<ol>
+<li>Add the source repository and give it a name. Here, I have chosen to call it progit.</li>
+<li>Get a reference on progit’s branches, in particular master.</li>
+<li>Set your master branch to fetch from the progit remote.</li>
+<li>Define the default push repository to origin.</li>
+</ol>
+
+<p>Once this is done, the workflow becomes much simpler:</p>
+
+<pre><code>$ git checkout master # [1]
+$ git pull            # [2]
+$ git push            # [3]
+</code></pre>
+
+<ol>
+<li>If you were on another branch, return to master.</li>
+<li>Fetch changes from progit and merge changes into master.</li>
+<li>Push your master branch to origin.</li>
+</ol>
+
+<p>Reference:</p>
+
+<ul>
+<li><a href="https://git-scm.com/book/en/v2">https://git-scm.com/book/en/v2</a> : pp190 - Keep your GitHub public repository up-to-date</li>
+</ul>
+
+<h2 id="multipleremotegitrepositories">Multiple remote git repositories</h2>
+
+<ol>
+<li>John and Jessica both clone into their remotes</li>
+</ol>
+
+<pre><code>$ git clone john@githost:simplegit.git
+...
+$ git commit -am 'Remove invalid default value'
+  [master 738ee87] Remove invalid default value
+......
+$ git clone jessica@githost:simplegit.git
+...
+ $ git commit -am 'Add reset task'
+  [master fbff5bc] Add reset task
+   1 files changed, 1 insertions(+), 0 deletions(-)
+</code></pre>
+
+<ol>
+<li>Jessica makes changes, commits into her remote, the pushes to the server</li>
+</ol>
+
+<pre><code>$ git commit -am 'Add reset task'
+[master fbff5bc] Add reset task
+
+$ git push origin master
+...
+To jessica@githost:simplegit.git
+1edee6b..fbff5bc master -&gt; master
+
+</code></pre>
+
+<ol>
+<li>John makes changes, commits into his remote, then tries to push them to the same server</li>
+</ol>
+
+<pre><code>$ git commit -am 'Remove invalid default value'
+  [master 738ee87] Remove invalid default value
+   1 files changed, 1 insertions(+), 1 deletions(-)
+...
+$ git push origin master
+...
+! [rejected] master -&gt; master (non-fast forward)
+error: failed to push some refs to 'john@githost:simplegit.git
+
+</code></pre>
+
+<p>John must first fetch Jessica’s upstream changes and merge them into his local repository before he will be allowed to push.</p>
+
+<ol>
+<li>As a first step, John fetches Jessica’s work [fbff5] (this only fetches Jessica’s upstream work, it does not yet
+merge it into John’s work):</li>
+</ol>
+
+<pre><code>$ git fetch origin
+...
+From john@githost:simplegit
++ 049d078...fbff5bc master -&gt; origin/master
+</code></pre>
+
+<pre><code>John's
+Master
+commit
+  |
+[738ee] -&gt; [1edee] -&gt; [4b078]
+              ^
+[fbff5] ------+
+  |
+Origin Master
+
+</code></pre>
+
+<ol>
+<li>Now John&#8217;s work [738ee] can merge with Jessica’s work [fbff5] that he fetched into his own local work:</li>
+</ol>
+
+<pre><code>$ git merge origin/master
+</code></pre>
+
+<pre><code>Origin
+ Master
+   |        John
+[72bbc] -&gt; [738ee] -&gt; [1edee] -&gt; [4b078]
+   |                     ^
+   |       Jessica       |              
+   +-----&gt; [fbff5] ------+              
+              |                         
+          Origin Master  
+
+</code></pre>
+
+<ol>
+<li>At this point, John might want to test this new code to make sure none of Jessica’s work affects any
+of his and, as long as everything seems fine, he can finally push the new merged work up to the
+server:</li>
+</ol>
+
+<pre><code>$ git push origin master
+...
+To john@githost:simplegit.git
+fbff5bc..72bbc59 master -&gt; master
+
+</code></pre>
+
+<p>Reference:</p>
+
+<ul>
+<li><a href="https://git-scm.com/book/en/v2">https://git-scm.com/book/en/v2</a> : pp131 - Private Small Team</li>
+</ul>
+
+<hr>
+
+<h4 id="madeforhumansbyahuman">Made for Humans, by a Human</h4>
+
+<h4 id="links">Links</h4>
+
+<ul>
+<li><a href="https://lwn.net/">Linux Weekly News</a></li>
+<li><a href="https://fullcirclemagazine.org/">Full Circle Magazine</a></li>
+<li><a href="https://www.linuxjournal.com/">Linux Journal</a></li>
+<li><a href="https://www.linux-magazine.com/">Linux Magazine</a></li>
+<li><a href="https://www.thefarside.com/">The Far Side</a></li>
+</ul>
+
+<h4 id="social">Social</h4>
+
+<ul>
+<li><a href="https://fosstodon.org/@Cohoon">Feedback</a></li>
+<li><a href="/linux-in-house/feed-Linux.rss">Linux RSS Feed</a></li>
+<li><a href="/linux-in-house/feed-Writing.rss">Writing RSS Feed</a></li>
+<li><a href="https://linux-in-the-house.pages.dev/">Book</a></li>
+</ul>
+
+<h5 id="builtwithmultimarkdownhttps:github.comfletchermultimarkdown-6andw3schoolshttps:www.w3schools.comw3cssw3css_pro.asp">Built with <a href="https://github.com/fletcher/MultiMarkdown-6">MultiMarkdown</a> and <a href="https://www.w3schools.com/w3css/w3css_pro.asp">W3 Schools</a></h5>
+
+<h5 id="license:ahrefhttp:creativecommons.orglicensesby-nc-sa4.0cc-by-nc-sa4.0a">License: <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0</a></h5>
+
+</body>
+</html>
+

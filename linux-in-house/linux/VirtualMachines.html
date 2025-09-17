@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>VirtualMachines</title>
+	<meta name="date" content="2023-06-01 10:20"/>
+	<meta name="modified" content="2024-04-19 9:30"/>
+	<meta name="tags" content="systems"/>
+	<meta name="author" content="Don Cohoon"/>
+	<meta name="summary" content="A Virtual Machine (VM) is a way to create a whole operating system, with many applications, that is able to be moved from one physical machine to another physical machine. This has advantages in case of hardware, location or network problems to quickly and correctly restore service."/>
+	<meta name="license" content="'[CC-BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)'"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"> <link rel="stylesheet" href="/linux-in-house/common.css" type="text/css" />
+</head>
+<body>
+
+<p><a href="/linux-in-house/"><h1>Linux in House</h1></a></p>
+
+<link href="/linux-in-house/pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/linux-in-house/pagefind/pagefind-ui.js"></script>
+
+<div id="search"></div>
+<script>
+window.addEventListener('DOMContentLoaded', (event) => {
+      new PagefindUI({ element: "#search", showSubResults: true });
+});
+</script>
+
+<blockquote>
+<p><a href="/linux-in-house/linux/welcome.html">Welcome Back My Friends</a></p>
+</blockquote>
+
+<h1 id="virtualmachinesvm">Virtual Machines (VM)</h1>
+
+<p>A Virtual Machine (VM) is a way to create a whole operating system, with many applications, that is able to be moved from one physical machine to another physical machine. This has advantages in case of hardware, location or network problems to quickly and correctly restore service.</p>
+
+<br/>
+
+<hr />
+
+<div class="TOC">
+
+<ul>
+<li><a href="#virtualmachinesvm">Virtual Machines (VM)</a>
+<ul>
+<li><a href="#installprerequisites">Install Prerequisites</a></li>
+<li><a href="#installcockpit">Install Cockpit</a></li>
+<li><a href="#virtualmachinesincockpit">Virtual machines in Cockpit</a>
+<ul>
+<li><a href="#createstoragepoolswithcockpit">Create storage pools with Cockpit</a></li>
+<li><a href="#createanewvirtualmachine">Create a new virtual machine</a></li>
+<li><a href="#examineavirtualmachine">Examine a virtual machine</a></li>
+<li><a href="#networkonavirtualmachine">Network on a virtual machine</a>
+<ul>
+<li><a href="#natvmnetworkvmnetworkdefault">NAT VM Network (VM network <em>default</em>)</a></li>
+<li><a href="#bridgedvmnetworkphysicalhostbridge">Bridged VM Network (Physical Host <em>bridge</em>)</a></li>
+<li><a href="#1">RedHat Way</a></li>
+<li><a href="#debianway">Debian Way</a></li>
+</ul>
+</li>
+<li><a href="#sharingfileswithphysicalandvirtualhosts">Sharing files with physical and virtual hosts</a></li>
+</ul>
+</li>
+<li><a href="#virtualstoragepoolsonnfs">Virtual Storage Pools on NFS</a></li>
+<li><a href="#clonevirtualmachine">Clone Virtual Machine</a>
+<ul>
+<li><a href="#copydatafiles">Copy Data Files</a></li>
+</ul>
+</li>
+<li><a href="#iftheipaddresschangedinthevm">If the IP Address changed in the VM</a></li>
+<li><a href="#configurationfiles">Configuration Files</a>
+<ul>
+<li><a href="#madeforhumansbyahuman">Made for Humans, by a Human</a></li>
+<li><a href="#links">Links</a></li>
+<li><a href="#social">Social</a>
+<ul>
+<li><a href="#builtwithmultimarkdownhttps:github.comfletchermultimarkdown-6andw3schoolshttps:www.w3schools.comw3cssw3css_pro.asp">Built with <a href="https://github.com/fletcher/MultiMarkdown-6">MultiMarkdown</a> and <a href="https://www.w3schools.com/w3css/w3css_pro.asp">W3 Schools</a></a></li>
+<li><a href="#license:ahrefhttp:creativecommons.orglicensesby-nc-sa4.0cc-by-nc-sa4.0a">License: <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0</a></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+<hr />
+
+<p>The following descriptions follow a VM on Redhat/AlmaLinux/RockyLinux/CENTOS 9 using qemu virtualizer and the Cockpit management web console. We also set the VM network up for external access and share files with the physical host&#8217;s NFS mount. <a href="#1">1</a></p>
+
+<ol>
+<li><a href="/linux-in-house/nas.html#connect-to-nfs-server-from-linux-client">NFS client</a></li>
+</ol>
+
+<p>Reference:</p>
+
+<ul>
+<li> <a href="https://www.qemu.org/">https://www.qemu.org/</a></li>
+<li> <a href="https://libvirt.org/">https://libvirt.org/</a></li>
+<li> <a href="https://www.linux-kvm.org/page/Main_Page">https://www.linux-kvm.org/page/Main_Page</a></li>
+</ul>
+
+<h2 id="installprerequisites">Install Prerequisites</h2>
+
+<p>Install the virtualization hypervisor packages.</p>
+
+<ul>
+<li>Redhat:</li>
+</ul>
+
+<pre><code>$ sudo dnf install qemu-kvm libvirt virt-install virt-viewer
+</code></pre>
+
+<ul>
+<li>Start the virtualization services:</li>
+</ul>
+
+<pre><code>$ sudo for drv in qemu network nodedev nwfilter secret storage interface; do systemctl start virt${drv}d{,-ro,-admin}.socket; done
+</code></pre>
+
+<p>Reference: <a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_and_managing_virtualization/assembly_enabling-virtualization-in-rhel-9_configuring-and-managing-virtualization#proc_enabling-virtualization-in-rhel-9_assembly_enabling-virtualization-in-rhel-9">https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_and_managing_virtualization/assembly_enabling-virtualization-in-rhel-9_configuring-and-managing-virtualization#proc_enabling-virtualization-in-rhel-9_assembly_enabling-virtualization-in-rhel-9</a></p>
+
+<ul>
+<li>Debian:</li>
+</ul>
+
+<pre><code>$ sudo apt install qemu-kvm libvirt-daemon  bridge-utils virtinst libvirt-daemon-system
+</code></pre>
+
+<p>Load the network module into the running kernel</p>
+
+<pre><code>$ sudo modprobe vhost_net
+$ lsmod |grep vhost
+vhost_net              36864  0
+tun                    61440  1 vhost_net
+vhost                  57344  1 vhost_net
+vhost_iotlb            16384  1 vhost
+tap                    28672  1 vhost_net
+</code></pre>
+
+<p>Make it load at boot time by adding this line</p>
+
+<p>File: /etc/modules</p>
+
+<pre><code>vhost_net
+</code></pre>
+
+<p>Optional Tools:</p>
+
+<ul>
+<li>libguestfs is a set of tools for accessing and modifying virtual machine (VM) disk images. You can use this for viewing and editing files inside guests, scripting changes to VMs, monitoring disk used/free statistics, creating guests, P2V, V2V, performing backups, cloning VMs, building VMs, formatting disks, resizing disks, and much more.</li>
+</ul>
+
+<pre><code>$ sudo apt install  libguestfs-tools
+</code></pre>
+
+<ul>
+<li>The libosinfo project comprises three parts</li>
+</ul>
+
+<p>A database of metadata about operating systems, hypervisors, virtual hardware and more
+A GObject based library API for querying information from the database
+Command line tools for querying &amp; extracting information from the database</p>
+
+<pre><code>$ sudo apt install libosinfo-bin
+</code></pre>
+
+<ul>
+<li>qemu-system and virt-manager allow command line and graphical starting, stopping, configuring qemu-kvm systems</li>
+</ul>
+
+<pre><code>$ sudo apt install  libguestfs-tools libosinfo-bin  qemu-system virt-manager
+</code></pre>
+
+<ul>
+<li> Bridge definitions</li>
+</ul>
+
+<p>Install bridge-utils</p>
+
+<pre><code>$ sudo apt install bridge-utils
+</code></pre>
+
+<p>Add the iface br0 inet dhcp, and assign bridge_ports to an ethernet interface (probably USB)</p>
+
+<p>File: /etc/network/interfaces</p>
+
+<pre><code># This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# USB Ethernet
+auto enxc87f54384756
+iface enxc87f54384756 inet manual
+
+# Bridge setup
+auto br0
+iface br0 inet dhcp
+    bridge_ports enxc87f54384756
+...
+$ ip a
+~
+3: enxc87f54384756: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc fq_codel master br0 state UP group default qlen 1000
+    link/ether c8:7f:54:93:56:44 brd ff:ff:ff:ff:ff:ff
+~
+6: br0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UP group default qlen 1000
+    link/ether 86:32:53:56:4a:fa brd ff:ff:ff:ff:ff:ff
+    inet 192.168.1.2/24 brd 192.168.1.1 scope global dynamic br0
+       valid_lft 86082sec preferred_lft 86082sec
+    inet6 fe80::8432:53ff:fe56:4edf/64 scope link 
+       valid_lft forever preferred_lft forever
+</code></pre>
+
+<ul>
+<li>Debian - Single ethernet device bridge</li>
+</ul>
+
+<pre><code>apt install bridge-utils
+
+# add bridge
+brctl addbr br0
+
+# add interface
+ip addr show
+brctl addif br0 eth0 
+
+https://wiki.debian.org/BridgeNetworkConnections
+sudo ifup br0
+
+# -&gt; Permanent Configuration &lt;-
+#
+# File: /etc/network/interfaces
+#
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# USB Ethernet
+auto enxc87f54935633
+iface enxc87f54935633 inet manual
+
+# Bridge setup
+auto br0
+iface br0 inet dhcp
+    bridge_ports enxc87f54935633
+</code></pre>
+
+<p>Reference:</p>
+
+<ul>
+<li> <a href="https://wiki.debian.org/BridgeNetworkConnections">https://wiki.debian.org/BridgeNetworkConnections</a></li>
+</ul>
+
+<p>Reference:</p>
+
+<ul>
+<li> <a href="https://wiki.debian.org/BridgeNetworkConnections">https://wiki.debian.org/BridgeNetworkConnections</a></li>
+<li> <a href="https://wiki.libvirt.org/Networking.html#debian-ubuntu-bridging">https://wiki.libvirt.org/Networking.html#debian-ubuntu-bridging</a></li>
+</ul>
+
+<blockquote>
+<p>??? Apparmor and Selinux may require more permission. , maybe using /home, trying /local</p>
+</blockquote>
+
+<p>/etc/apparmor.d/local/abstractions/libvirt-qemu</p>
+
+<ul>
+<li>Set user and group
+File: /etc/libvirt/qemu.conf</li>
+</ul>
+
+<pre><code>~
+user = &quot;libvirt-qemu&quot;
+group = &quot;libvirt-qemu&quot;
+~
+</code></pre>
+
+<p>Then reboot.</p>
+
+<h2 id="installcockpit">Install Cockpit</h2>
+
+<p>Cockpit is a web based system allowing full management of systems, including virtual qemu systems.</p>
+
+<p>Install packages cockpit and cockpit-machine.</p>
+
+<blockquote>
+<p>Install postfix first on Debian, or else exim4 mail server will be installed with cockpit</p>
+</blockquote>
+
+<pre><code>$ sudo dnf install cockpit cockpit-machines
+</code></pre>
+
+<p>Start Cockpit and libvirtd:</p>
+
+<pre><code>$ sudo systemctl enable --now libvirtd
+$ sudo systemctl start libvirtd
+$ sudo systemctl enable --now cockpit.socket
+</code></pre>
+
+<p>To log in to Cockpit, open your web browser to localhost:9090 and enter your Linux username and password.</p>
+
+<p>Reference: <a href="https://www.redhat.com/sysadmin/intro-cockpit">https://www.redhat.com/sysadmin/intro-cockpit</a></p>
+
+<h2 id="virtualmachinesincockpit">Virtual machines in Cockpit</h2>
+
+<p>Click on Virtual machines to open the virtual machine panel.</p>
+
+<p>If you have existing virtual machines with libvirt, Cockpit detects them. Should Cockpit fail to detect existing virtual machines, you can import them by clicking the Import VM button.</p>
+
+<p>Cockpit knows the virtual machine&#8217;s state and can start or stop it. In the pop-up menu on the right, you can clone, rename, and delete the virtual machine.</p>
+
+<h3 id="createstoragepoolswithcockpit">Create storage pools with Cockpit</h3>
+
+<p>A storage pool is space that you designate as being available to store virtual machine images. You can set a network location, an iSCSI target, or a filesystem.</p>
+
+<p>In Cockpit, to create a storage pool, click the Storage pool button at the top of the virtual machine panel.</p>
+
+<p>View storage pools</p>
+
+<pre><code>$ sudo virsh pool-list --all --details
+ Name   State     Autostart   Persistent   Capacity   Allocation   Available
+------------------------------------------------------------------------------
+ data   running   yes         yes          1.27 TiB   15.45 GiB    1.25 TiB
+</code></pre>
+
+<p>If no storage space is created, the default /var/lib/machines will be used.</p>
+
+<p>Reference: <a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_and_managing_virtualization/managing-storage-for-virtual-machines_configuring-and-managing-virtualization#assembly_managing-virtual-machine-storage-pools-using-the-cli_managing-storage-for-virtual-machines">https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_and_managing_virtualization/managing-storage-for-virtual-machines_configuring-and-managing-virtualization#assembly_managing-virtual-machine-storage-pools-using-the-cli_managing-storage-for-virtual-machines</a></p>
+
+<h3 id="createanewvirtualmachine">Create a new virtual machine</h3>
+
+<p>To create a new Virtual Machine, click the Create VM button on the right side of the virtual machine panel.</p>
+
+<p>You can download a recent operating system version from a drop-down list, or you can choose an ISO image on your local drive, or you can have the virtual machine boot from a Preboot Execution Environment (PXE) server.</p>
+
+<p>Reference: <a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_and_managing_virtualization/assembly_creating-virtual-machines_configuring-and-managing-virtualization">https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_and_managing_virtualization/assembly_creating-virtual-machines_configuring-and-managing-virtualization</a></p>
+
+<p>Start it:</p>
+
+<pre><code>virsh --connect qemu:///system start almalinux9-2023-10-6
+</code></pre>
+
+<p>Restart install:</p>
+
+<pre><code>$ sudo virt-install --connect qemu:///system --quiet --os-variant almalinux9 --reinstall almalinux9-2023-10-6 --wait -1 --noautoconsole --install os=almalinux9 
+</code></pre>
+
+<h3 id="examineavirtualmachine">Examine a virtual machine</h3>
+
+<p>Display the info about your virtual machines</p>
+
+<pre><code>$ virt-host-validate
+
+QEMU: Checking for hardware virtualization                                 : PASS
+QEMU: Checking if device /dev/kvm exists                                   : PASS
+QEMU: Checking if device /dev/kvm is accessible                            : PASS
+QEMU: Checking if device /dev/vhost-net exists                             : PASS
+QEMU: Checking if device /dev/net/tun exists                               : PASS
+QEMU: Checking for cgroup 'cpu' controller support                         : PASS
+QEMU: Checking for cgroup 'cpuacct' controller support                     : PASS
+QEMU: Checking for cgroup 'cpuset' controller support                      : PASS
+QEMU: Checking for cgroup 'memory' controller support                      : PASS
+QEMU: Checking for cgroup 'devices' controller support                     : WARN (Enable 'devices' in kernel Kconfig file or mount/enable cgroup controller in your system)
+QEMU: Checking for cgroup 'blkio' controller support                       : PASS
+QEMU: Checking for device assignment IOMMU support                         : PASS
+QEMU: Checking if IOMMU is enabled by kernel                               : WARN (IOMMU appears to be disabled in kernel. Add intel_iommu=on to kernel cmdline arguments)
+QEMU: Checking for secure guest support                                    : WARN (Unknown if this platform has Secure Guest support)
+
+</code></pre>
+
+<p>Start a VM</p>
+
+<pre><code>$ sudo virsh start demo-guest1
+</code></pre>
+
+<p>Stop a VM</p>
+
+<pre><code>$ sudo virsh shutdown demo-guest1
+</code></pre>
+
+<p>VM Diagnostics: <a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_and_managing_virtualization/diagnosing-virtual-machine-problems_configuring-and-managing-virtualization">https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_and_managing_virtualization/diagnosing-virtual-machine-problems_configuring-and-managing-virtualization</a></p>
+
+<h3 id="networkonavirtualmachine">Network on a virtual machine</h3>
+
+<h4 id="natvmnetworkvmnetworkdefault">NAT VM Network (VM network <em>default</em>)</h4>
+
+<p>By <em>default</em>, a newly created VM connects to a NAT-type network that uses virbr0, the default virtual bridge on the host. This ensures that the VM can use the host’s network interface controller (NIC) for connecting to outside networks, but the VM is <em>not reachable from external systems</em>.</p>
+
+<blockquote>
+<p>See file /etc/libvirt/network/default.xml</p>
+</blockquote>
+
+<figure>
+<img src="/linux-in-house/images/graph-virtual-machine.svg" alt="Virtual Machine NAT" />
+<figcaption>Virtual Machine NAT</figcaption>
+</figure>
+
+<h4 id="bridgedvmnetworkphysicalhostbridge">Bridged VM Network (Physical Host <em>bridge</em>)</h4>
+
+<p>If you require a VM to appear on the same <em>external</em> network as the hypervisor, you must use bridged mode instead. To do so, attach the VM to a bridge device connected to the hypervisor’s physical network device.</p>
+
+<blockquote>
+<p>See file /etc/nmstate/50-create-bridge.yml below</p>
+</blockquote>
+
+<figure>
+<img src="/linux-in-house/images/graph-virtual-machine2.svg" alt="Virtual Machine Bridge" />
+<figcaption>Virtual Machine Bridge</figcaption>
+</figure>
+
+<h4 id="1">RedHat Way</h4>
+
+<ul>
+<li>Create a nmstate configuration file on the physical host.</li>
+</ul>
+
+<p>Install nmstate, is not already done</p>
+
+<pre><code>$ sudo dnf install nmstate
+</code></pre>
+
+<p>In this example the host IP address will be fixed at 192.168.1.12, and the guest (VM) will pick up a DHCP address from the local DHCP server. Of course you should change the router address (192.168.1.1) and maybe the DNS resolvers (1.1.1.1 and 1.0.0.1). The port (eno1) is the machine&#8217;s onboard ethernet port. Port eno1 will no longer have an IP address, rather bridge interface owns the IP address.</p>
+
+<blockquote>
+<p>Bridge should be created <strong>before</strong> any vlan to allow routing for bridge. Otherwise the vlan will become the first route, blocking outside access.</p>
+</blockquote>
+
+<p>File: /etc/nmstate/50-create-bridge.yml</p>
+
+<pre><code># https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html-single/configuring_and_managing_networking/index#proc_configuring-a-network-bridge-by-using-nmstatectl_configuring-a-network-bridge
+# ---
+interfaces:
+- name: virbr0
+  type: linux-bridge
+  ipv4:
+    enabled: true
+    address:
+    - ip: 192.168.1.12
+      prefix-length: 24
+    dhcp: false
+  ipv6:
+    enabled: false
+  bridge:
+    options:
+      stp:
+        enabled: true
+      vlan-protocol: 802.1q
+    port:
+    - name: eno1
+</code></pre>
+
+<blockquote>
+<p>It is important to <em>disable</em> the <strong>default</strong> virbr0 network interface within Cockpit/virsh.</p>
+</blockquote>
+
+<pre><code>$ sudo virsh net-destroy default
+Network default stopped
+$ sudo virsh net-autostart --disable default
+Network default unmarked as autostarted
+
+$ sudo virsh net-list --all
+ Name      State      Autostart   Persistent
+----------------------------------------------
+ default   inactive   no          yes
+</code></pre>
+
+<p>Hint: net-destroy only stops the running process ;-)</p>
+
+<p>Apply the bridge network config, fix any errors.</p>
+
+<pre><code>$ sudo nmstatectl apply /etc/nmstate/50-create-bridge.yml
+</code></pre>
+
+<p>IP address check on physical machine</p>
+
+<pre><code>$ ip a show virbr0
+5: virbr0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UP group default qlen 1000
+    link/ether 25:54:01:f3:2a:2e brd ff:ff:ff:ff:ff:ff
+    inet 192.168.1.12/24 brd 192.168.1.255 scope global noprefixroute virbr0
+       valid_lft forever preferred_lft forever
+$ ip a show eno1
+2: eno1: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc fq_codel master virbr0 state UP group default qlen 1000
+    link/ether 3c:49:7a:b9:e7:6f brd ff:ff:ff:ff:ff:ff
+    altname enp0s31f6
+</code></pre>
+
+<p>Notice virbr0 is the master of eno1.</p>
+
+<p>Make the changes permanent</p>
+
+<pre><code>$ sudo systemctl restart nmstate
+</code></pre>
+
+<blockquote>
+<p>This will rename file 50-create-bridge.yml to 50-create-bridge.applied. To re-apply if changes are needed, rename the file to 50-create-bridge.yml before restarting the service nmstate.</p>
+</blockquote>
+
+<ul>
+<li>The <strong>VM</strong> should use virbr0 as it&#8217;s network interface. Using Cockpit add a Bridged network to the <strong>VM</strong>.</li>
+</ul>
+
+<p>image libvirt-bridge.png
+<img src="/linux-in-house/images/libvirt-bridge.png" alt="libvirt-bridge.png" /></p>
+
+<p>-&gt; OR &lt;- define it using virsh:</p>
+
+<pre><code>$ sudo virsh edit vm_machine
+&lt;domain type='kvm'&gt;
+~
+  &lt;devices&gt;
+~
+    &lt;interface type='bridge'&gt;
+      &lt;mac address='52:54:00:0b:4b:a8'/&gt;
+      &lt;source bridge='virbr0'/&gt;
+      &lt;model type='virtio'/&gt;
+    &lt;/interface&gt;
+~
+</code></pre>
+
+<p>Reference:</p>
+
+<ul>
+<li> <a href="https://libvirt.org/formatnetwork.html#using-an-existing-host-bridge">https://libvirt.org/formatnetwork.html#using-an-existing-host-bridge</a></li>
+<li> <a href="https://libvirt.org/manpages/virsh.html">https://libvirt.org/manpages/virsh.html</a></li>
+<li> Virtual Machine XML file location: /etc/libvirt/qemu/</li>
+</ul>
+
+<p>Afterwords it will look like this:</p>
+
+<pre><code>$ sudo virsh domiflist vm_machine
+ Interface   Type     Source   Model    MAC
+-----------------------------------------------------------
+ vnet5       bridge   virbr0   virtio   22:53:06:f9:d2:e1
+</code></pre>
+
+<p>vnet5 is automatically created, with virbr0 as it&#8217;s master. Typically, a vnet will be added to a bridge interface which means plugging the VM into a switch.</p>
+
+<pre><code>25: vnet5: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue master virbr0 state UNKNOWN group default qlen 1000
+    link/ether fe:54:00:f7:d2:40 brd ff:ff:ff:ff:ff:ff
+    inet6 fe80::fc54:ff:fef7:d240/64 scope link 
+       valid_lft forever preferred_lft forever
+</code></pre>
+
+<p>Physical network interface (eno1) -&gt; bridge (virbr0) &lt;- Virtual network interface (vnet5)</p>
+
+<pre><code>$ bridge link show virbr0
+2: eno1: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 master virbr0 state forwarding priority 32 cost 100 
+25: vnet5: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 master virbr0 state forwarding priority 32 cost 100 
+$ ip link show master virbr0
+2: eno1: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc fq_codel master virbr0 state UP mode DEFAULT group default qlen 1000
+    link/ether 1c:69:7a:09:e7:61 brd ff:ff:ff:ff:ff:ff
+    altname enp0s31f6
+25: vnet5: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue master virbr0 state UNKNOWN mode DEFAULT group default qlen 1000
+    link/ether fe:54:00:f7:d2:40 brd ff:ff:ff:ff:ff:ff
+</code></pre>
+
+<h4 id="debianway">Debian Way</h4>
+
+<p>In this host, we have a USB-A to Ethernet dongle. Plugging it in created a network device called enxc87f54935633.</p>
+
+<blockquote>
+<p>This is important if you need to preserve your existing ethernet connection while configuring a new bridge.</p>
+</blockquote>
+
+<p>In this example the host IP address will be fixed at 192.168.1.10, and the guest (VM) will pick up a DHCP address from the local DHCP server. Of course you should change the router address (192.168.1.1) and maybe the DNS resolvers (1.1.1.1 and 1.0.0.1). The ethernets (enxc87f54935633) is a USB-A ethernet port. Ethernet enxc87f54935633 will no longer have an IP address, rather bridge interface owns the IP address.</p>
+
+<p>File: /etc/netplan/60-bridge-init.yaml</p>
+
+<pre><code># sudo apt install bridge-utils -y
+# USB-A -&gt; Ethernet: enxc87f54935633
+network:
+  version: 2
+  renderer: networkd
+
+  ethernets:
+    enxc87f54935633:
+      dhcp4: false 
+      dhcp6: false 
+
+  bridges:
+    virbr0:
+      interfaces: [enxc87f54935633]
+      addresses: [192.168.1.10/24]
+      routes:
+      - to: default
+        via: 192.168.1.1
+        metric: 100
+        on-link: true
+      mtu: 1500
+      nameservers:
+        addresses: [1.1.1.1]
+      parameters:
+        stp: true
+        forward-delay: 4
+      dhcp4: no
+      dhcp6: no
+</code></pre>
+
+<blockquote>
+<p>It is important to <em>disable</em> the <strong>default</strong> virbr0 network interface within Cockpit/virsh.</p>
+</blockquote>
+
+<pre><code>$ sudo virsh net-destroy default
+Network default stopped
+$ sudo virsh net-autostart --disable default
+Network default unmarked as autostarted
+
+$ sudo virsh net-list --all
+ Name      State      Autostart   Persistent
+----------------------------------------------
+ default   inactive   no          yes
+</code></pre>
+
+<p>Hint: net-destroy only stops the running process ;-)</p>
+
+<p>Apply the bridge network config, fix any errors.</p>
+
+<pre><code>$ sudo netplan apply /etc/netplan/60-bridge-init.yaml
+...
+</code></pre>
+
+<p>Check the interface</p>
+
+<pre><code>$ ip a show virbr0
+28: virbr0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UP group default qlen 1000
+    link/ether ee:a7:6e:d0:3b:53 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.50.63/24 brd 192.168.50.255 scope global virbr0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::eca7:6eff:fed0:3b53/64 scope link 
+       valid_lft forever preferred_lft forever
+$ ip a show enxc87f54935633
+27: enxc87f54935633: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc fq_codel master virbr0 state UP group default qlen 1000
+    link/ether c8:7f:54:93:56:33 brd ff:ff:ff:ff:ff:ff
+</code></pre>
+
+<p>Notice virbr0 is the master of enxc87f54935633.</p>
+
+<ul>
+<li>The <strong>VM</strong> should use virbr0 as it&#8217;s network interface. Using Cockpit add a Bridged network to the <strong>VM</strong>.</li>
+</ul>
+
+<p>image libvirt-bridge.png
+<img src="/linux-in-house/images/libvirt-bridge.png" alt="libvirt-bridge.png" /></p>
+
+<p>-&gt; OR &lt;- define it using virsh:</p>
+
+<pre><code>$ sudo virsh edit vm_machine
+&lt;domain type='kvm'&gt;
+~
+  &lt;devices&gt;
+~
+    &lt;interface type='bridge'&gt;
+      &lt;mac address='52:54:00:0b:4b:a8'/&gt;
+      &lt;source bridge='virbr0'/&gt;
+      &lt;model type='virtio'/&gt;
+    &lt;/interface&gt;
+~
+</code></pre>
+
+<p>Reference:</p>
+
+<ul>
+<li> <a href="https://libvirt.org/formatnetwork.html#using-an-existing-host-bridge">https://libvirt.org/formatnetwork.html#using-an-existing-host-bridge</a></li>
+<li> <a href="https://libvirt.org/manpages/virsh.html">https://libvirt.org/manpages/virsh.html</a></li>
+<li> Virtual Machine XML file location: /etc/libvirt/qemu/</li>
+</ul>
+
+<p>Afterwords it will look like this:</p>
+
+<pre><code>$ sudo virsh domiflist vm-machine
+ Interface   Type     Source   Model    MAC
+-----------------------------------------------------------
+ vnet13      bridge   virbr0   virtio   51:34:07:0b:4a:a1
+</code></pre>
+
+<p>vnet13 is automatically created, with virbr0 as it&#8217;s master.</p>
+
+<pre><code>$ ip a show vnet13
+30: vnet13: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue master virbr0 state UNKNOWN group default qlen 1000
+    link/ether fe:54:00:0b:4b:a8 brd ff:ff:ff:ff:ff:ff
+    inet6 fe80::fc54:ff:fe0b:4ba8/64 scope link 
+       valid_lft forever preferred_lft forever
+</code></pre>
+
+<p>Physical network interface (enxc87f54935633) -&gt; bridge (virbr0) &lt;- Virtual network interface (vnet13)</p>
+
+<pre><code>$ sudo brctl show virbr0
+bridge name	bridge id		STP enabled	interfaces
+virbr0		8000.eea76ed03b53	yes		enxc87f54935633
+                                                        vnet13
+$ bridge link show virbr0
+27: enxc87f54935633: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 master virbr0 state forwarding priority 32 cost 4 
+30: vnet13: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 master virbr0 state forwarding priority 32 cost 100 
+$ ip link show master virbr0
+27: enxc87f54935633: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc fq_codel master virbr0 state UP mode DEFAULT group default qlen 1000
+    link/ether c8:7f:54:93:56:33 brd ff:ff:ff:ff:ff:ff
+30: vnet13: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue master virbr0 state UNKNOWN mode DEFAULT group default qlen 1000
+    link/ether fe:54:00:0b:4b:a8 brd ff:ff:ff:ff:ff:ff
+</code></pre>
+
+<p>Reference:</p>
+
+<ol>
+<li> <a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_and_managing_networking/configuring-a-network-bridge_configuring-and-managing-networking#proc_configuring-a-network-bridge-by-using-nmstatectl_configuring-a-network-bridge">https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_and_managing_networking/configuring-a-network-bridge_configuring-and-managing-networking#proc_configuring-a-network-bridge-by-using-nmstatectl_configuring-a-network-bridge</a></li>
+</ol>
+
+<h3 id="sharingfileswithphysicalandvirtualhosts">Sharing files with physical and virtual hosts</h3>
+
+<ul>
+<li>Make a directory on the VM</li>
+</ul>
+
+<pre><code>$ sudo mkdir /data
+</code></pre>
+
+<ul>
+<li>In Cockpit on the physical host &gt; Shared directories, add this directory to the Source path, and create a mount tag; i.e.: data</li>
+</ul>
+
+<pre><code>Source path    Mount tag	
+-------------- ---------
+/data/         data
+</code></pre>
+
+<ul>
+<li>In the VM update fstab</li>
+</ul>
+
+<p>File: /etc/fstab</p>
+
+<pre><code>~
+# virt share :
+# mount_tag /mnt/mount/path virtiofs rw,noatime,_netdev 0 0
+data /data virtiofs rw,noatime,_netdev 0 0
+~
+</code></pre>
+
+<p>Mount it</p>
+
+<pre><code>$ sudo mount /data
+</code></pre>
+
+<p>Now the shared filesystem will be mounted upon every VM start.</p>
+
+<p>Alternative: Manual mount</p>
+
+<pre><code>#mount -t virtiofs [mount tag] [mount point]
+sudo mount -t virtiofs data /data
+</code></pre>
+
+<p>Reference: <a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_and_managing_virtualization/sharing-files-between-the-host-and-its-virtual-machines_configuring-and-managing-virtualization#proc_using-the-web-console-to-share-files-between-the-host-and-its-virtual-machines-using-virtiofs_sharing-files-between-the-host-and-its-virtual-machines-using-virtio-fs">https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_and_managing_virtualization/sharing-files-between-the-host-and-its-virtual-machines_configuring-and-managing-virtualization#proc_using-the-web-console-to-share-files-between-the-host-and-its-virtual-machines-using-virtiofs_sharing-files-between-the-host-and-its-virtual-machines-using-virtio-fs</a></p>
+
+<h2 id="virtualstoragepoolsonnfs">Virtual Storage Pools on NFS</h2>
+
+<p>The advantages of virtual machine storage pools on NFS are:</p>
+
+<ul>
+<li> Raid protection on NFS</li>
+<li> Ability to move VM from one host to another without copying data files</li>
+<li> Hardware upgrades, failures and network outages are easier to recover from</li>
+</ul>
+
+<p>To support multiple hosts, the definition files need to be copied and updated on each host in advance:</p>
+
+<ol>
+<li> The VM definition file, located in /etc/libvirt/qemu/&lt;VM Name&gt;.xml</li>
+<li> The storage pool definition file, located in /etc/libvirt/storage/&lt;storage pool name&gt;.xml</li>
+<li> A virtual bridge definition file, located in /etc/netplan for Ubuntu or /etc/nmstate for RedHat</li>
+</ol>
+
+<p>Define a storage pool at the host level and it will mount the NFS volume when libvirtd systemd process starts.</p>
+
+<p>The Source is your NFS client mount as exposed by the NFS server.</p>
+
+<p>The Target is your local NFS client directory to mount it on.</p>
+
+<p>The Name is what you use with virsh/Cockpit to add Storage Volumes (logical disks) to the VM.</p>
+
+<p>File: /etc/libvirt/storage/my_vm01.xml</p>
+
+<pre><code>&lt;!--
+WARNING: THIS IS AN AUTO-GENERATED FILE. CHANGES TO IT ARE LIKELY TO BE
+OVERWRITTEN AND LOST. Changes to this xml configuration should be made using:
+  virsh pool-edit my_vm_pool
+or other application using the libvirt API.
+--&gt;
+
+&lt;pool type='netfs'&gt;
+  &lt;name&gt;my_vm_pool&lt;/name&gt;
+  &lt;uuid&gt;7c847772-0565-4d26-a3bc-46e4634fb84f&lt;/uuid&gt;
+  &lt;capacity unit='bytes'&gt;0&lt;/capacity&gt;
+  &lt;allocation unit='bytes'&gt;0&lt;/allocation&gt;
+  &lt;available unit='bytes'&gt;0&lt;/available&gt;
+  &lt;source&gt;
+    &lt;host name='192.168.1.65'/&gt;
+    &lt;dir path='/mnt/vol032/vm_data/'/&gt;
+    &lt;format type='auto'/&gt;
+  &lt;/source&gt;
+  &lt;target&gt;
+    &lt;path&gt;/vm_data/&lt;/path&gt;
+  &lt;/target&gt;
+&lt;/pool&gt;
+</code></pre>
+
+<p>Copy or create your Storage Volumes to the <code>dir path</code> on the NFS server, then add them via virsh/Cockpit.</p>
+
+<pre><code># Create Volume
+#
+sudo virsh vol-create-as my_vm_pool test_vol2.qcow2 2G
+#    my_vm_pool: Is the pool name.
+#    test_vol2: This is the name of the volume.
+#    2G: This is the storage capacity of the volume.
+#
+# List volumes
+#
+$ sudo virsh vol-list --pool my_vm_pool --details
+ Name               Path                        Type   Capacity    Allocation
+-----------------------------------------------------------------------------
+ test_vol02.qcow2   /vm_data/test_vol02.qcow2   file   2.00 GiB    0.65 GiB
+</code></pre>
+
+<p>Reference:</p>
+
+<ul>
+<li> /etc/libvirt/storage/&lt;pool name&gt;.xml</li>
+<li> <a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_and_managing_virtualization/managing-storage-for-virtual-machines_configuring-and-managing-virtualization#proc_creating-nfs-based-storage-pools-using-the-web-console_assembly_managing-virtual-machine-storage-pools-using-the-web-console">https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_and_managing_virtualization/managing-storage-for-virtual-machines_configuring-and-managing-virtualization#proc_creating-nfs-based-storage-pools-using-the-web-console_assembly_managing-virtual-machine-storage-pools-using-the-web-console</a>*</li>
+</ul>
+
+<h2 id="clonevirtualmachine">Clone Virtual Machine</h2>
+
+<p>1st clone:</p>
+
+<ul>
+<li>Create vlan on 1st ethernet adapter (ensure network switch support vlans) <a href="#1">1</a></li>
+<li>Add NFS mount, if not already there [2]</li>
+<li>Create nmstate bridge virbr0 on 2nd ethernet adapter (can use USB/Ethernet adapter) [3]</li>
+<li>Re-create 1st adapter as fixed address in nmstate [4]</li>
+<li>Create storage pool as type NFS, using Cockpit [5]</li>
+<li>Import VM, using storage pool data as nfs, using Cockpit</li>
+<li>Delete <em>default</em> VM network using Cockpit</li>
+<li>Create VM network <em>bridge</em> on VM (use host&#8217;s virbr0), using Cockpit</li>
+<li>Change /etc/nmstate/*.applied to *.yml, reboot to get route working</li>
+<li>Change owner of Storage Volume to <em>libvirtd-qemu</em> for Debian or <em>qemu</em> for RedHat on NAS</li>
+</ul>
+
+<blockquote>
+<p>It really helps to use a secondary network adapter, because the routing will be lost to the main IP and you have to use the console to get it back. Also one adapter can handle the NFS traffic while the other handles the VM traffic.</p>
+</blockquote>
+
+<ol>
+<li><p><a href="/linux-in-house/virtualip.html">vlan</a></p></li>
+<li><p><a href="/linux-in-house/nas.html#connect-to-nfs-server-from-linux-client">nfs</a></p></li>
+<li><p><a href="/linux-in-house/virtualmachines.html#network-on-a-virtual-machine">Network on a virtual machine</a></p></li>
+<li><p>Fixed IP address; servers should have this</p></li>
+</ol>
+
+<p>File: /etc/nmstate/40-create-eno1.yml</p>
+
+<pre><code>---
+interfaces:
+- name: eno1
+  type: ethernet
+  state: up
+  ipv4:
+    enabled: true
+    address:
+    - ip: 192.168.1.12
+      prefix-length: 24
+    dhcp: false
+  ipv6:
+    enabled: false
+
+routes:
+  config:
+  - destination: 0.0.0.0/0
+    next-hop-interface: eno1
+    next-hop-address: 192.168.1.1
+
+dns-resolver:
+  config:
+    search:
+    - example.com
+    server:
+    - 1.1.1.1
+    - 8.8.8.8
+</code></pre>
+
+<p>Apply change:</p>
+
+<pre><code>$ sudo nmstatectl apply /etc/nmstate/40-create-eno1.yml
+</code></pre>
+
+<ol>
+<li><a href="/linux-in-house/virtualmachines.html#virtual-storage-pools-on-nfs">VM NFS Storage Pool</a></li>
+</ol>
+
+<h3 id="copydatafiles">Copy Data Files</h3>
+
+<p>Now the easy part.</p>
+
+<ol>
+<li>Stop the VM on the old host, using Cockpit. <strong>Remember to disable autostart!</strong></li>
+<li>Copy the Storage Pool data file(s) to your NFS mount, if not already done.</li>
+<li>Start your VM on the new host, and enjoy!</li>
+</ol>
+
+<p>In the future you can just stop the VM on the old host, then start the new VM on the new host, assuming they are both on NFS..</p>
+
+<blockquote>
+<p><strong>Remember to disable autostart on the Storage Pool and VM on the old host!</strong> If &#8216;Failed to get &#8220;write&#8221; lock, Is another process using the image [/data_vm/data01]?&#8217;, make sure other host has stopped VM and storage pool.</p>
+</blockquote>
+
+<pre><code>$ sudo virsh pool-autostart --disable my_vm01
+Pool my_vm01 unmarked as autostarted
+</code></pre>
+
+<h2 id="iftheipaddresschangedinthevm">If the IP Address changed in the VM</h2>
+
+<ul>
+<li> Copy new SSH keys with new IP address (delete old on remote)</li>
+</ul>
+
+<pre><code># SSH Copy
+$ ssh-copy-id &lt;remote IP&gt;
+
+# SSH Delete
+$ ssh &lt;remote IP&gt; grep -n &lt;remote IP&gt; ~/.ssh/known_hosts
+2:192.168.1.4 ssh-rsa 
+</code></pre>
+
+<blockquote>
+<p>Delete line number 2 in file ~/.ssh/known_hosts on host &lt;remote IP&gt;</p>
+</blockquote>
+
+<ul>
+<li><p> Edit apache configuration to reflect new IP address (File: /etc/httpd/conf/httpd.conf)</p></li>
+<li><p> Edit Nextcloud configuration, to add IP address to list of trusted hosts (File: /var/www/nextcloud/config/config.php)</p></li>
+</ul>
+
+<blockquote>
+<p>Restart apache to pick up changes <code>sudo systemctl restart httpd</code></p>
+</blockquote>
+
+<h2 id="configurationfiles">Configuration Files</h2>
+
+<pre><code>/etc/libvirt
+├── hooks
+├── libvirt-admin.conf
+├── libvirt.conf
+├── libvirtd.conf
+├── libxl.conf
+├── libxl-lockd.conf
+├── libxl-sanlock.conf
+├── lxc.conf
+├── nwfilter
+│   ├── allow-arp.xml
+│   ├── allow-dhcp-server.xml
+│   ├── allow-dhcpv6-server.xml
+│   ├── allow-dhcpv6.xml
+│   ├── allow-dhcp.xml
+│   ├── allow-incoming-ipv4.xml
+│   ├── allow-incoming-ipv6.xml
+│   ├── allow-ipv4.xml
+│   ├── allow-ipv6.xml
+│   ├── clean-traffic-gateway.xml
+│   ├── clean-traffic.xml
+│   ├── no-arp-ip-spoofing.xml
+│   ├── no-arp-mac-spoofing.xml
+│   ├── no-arp-spoofing.xml
+│   ├── no-ip-multicast.xml
+│   ├── no-ip-spoofing.xml
+│   ├── no-ipv6-multicast.xml
+│   ├── no-ipv6-spoofing.xml
+│   ├── no-mac-broadcast.xml
+│   ├── no-mac-spoofing.xml
+│   ├── no-other-l2-traffic.xml
+│   ├── no-other-rarp-traffic.xml
+│   ├── qemu-announce-self-rarp.xml
+│   └── qemu-announce-self.xml
+├── qemu
+│   ├── autostart
+│   │   └── my_vm01.xml -&gt; /etc/libvirt/qemu/my_vm01.xml
+│   ├── my_vm01.xml
+│   ├── my_vm02.xml
+│   ├── networks
+│   │   ├── autostart
+│   │   └── default.xml
+│   └── test_vm42.xml
+├── qemu.conf
+├── qemu-lockd.conf
+├── qemu-sanlock.conf
+├── secrets
+├── storage
+│   ├── autostart
+│   │   └── my_vm01.xml -&gt; /etc/libvirt/storage/my_vm01.xml
+│   ├── my_vm01.xml
+│   └── my_vm02.xml
+├── virtlockd.conf
+└── virtlogd.conf
+
+9 directories, 45 files
+</code></pre>
+
+<hr>
+
+<h4 id="madeforhumansbyahuman">Made for Humans, by a Human</h4>
+
+<h4 id="links">Links</h4>
+
+<ul>
+<li><a href="https://lwn.net/">Linux Weekly News</a></li>
+<li><a href="https://fullcirclemagazine.org/">Full Circle Magazine</a></li>
+<li><a href="https://www.linuxjournal.com/">Linux Journal</a></li>
+<li><a href="https://www.linux-magazine.com/">Linux Magazine</a></li>
+<li><a href="https://www.thefarside.com/">The Far Side</a></li>
+</ul>
+
+<h4 id="social">Social</h4>
+
+<ul>
+<li><a href="https://fosstodon.org/@Cohoon">Feedback</a></li>
+<li><a href="/linux-in-house/feed-Linux.rss">Linux RSS Feed</a></li>
+<li><a href="/linux-in-house/feed-Writing.rss">Writing RSS Feed</a></li>
+<li><a href="https://linux-in-the-house.pages.dev/">Book</a></li>
+</ul>
+
+<h5 id="builtwithmultimarkdownhttps:github.comfletchermultimarkdown-6andw3schoolshttps:www.w3schools.comw3cssw3css_pro.asp">Built with <a href="https://github.com/fletcher/MultiMarkdown-6">MultiMarkdown</a> and <a href="https://www.w3schools.com/w3css/w3css_pro.asp">W3 Schools</a></h5>
+
+<h5 id="license:ahrefhttp:creativecommons.orglicensesby-nc-sa4.0cc-by-nc-sa4.0a">License: <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0</a></h5>
+
+</body>
+</html>
+

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>Certificate</title>
+	<meta name="date" content="2023-01-25 10:28"/>
+	<meta name="modified" content="2024-04-19 9:30"/>
+	<meta name="tags" content="security, web"/>
+	<meta name="author" content="Don Cohoon"/>
+	<meta name="summary" content="Web certificates encrypt different messages over the public internet so nobody can see what these messages contain."/>
+	<meta name="license" content="'[CC-BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)'"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"> <link rel="stylesheet" href="/linux-in-house/common.css" type="text/css" />
+</head>
+<body>
+
+<p><a href="/linux-in-house/"><h1>Linux in House</h1></a></p>
+
+<link href="/linux-in-house/pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/linux-in-house/pagefind/pagefind-ui.js"></script>
+
+<div id="search"></div>
+<script>
+window.addEventListener('DOMContentLoaded', (event) => {
+      new PagefindUI({ element: "#search", showSubResults: true });
+});
+</script>
+
+<blockquote>
+<p><a href="/linux-in-house/linux/welcome.html">Welcome Back My Friends</a></p>
+</blockquote>
+
+<h1 id="webcertificate">Web Certificate</h1>
+
+<p>Web certificates encrypt different messages over the public internet so nobody can see what these messages contain.</p>
+
+<br/>
+
+<hr />
+
+<div class="TOC">
+
+<ul>
+<li><a href="#webcertificate">Web Certificate</a>
+<ul>
+<li><a href="#letsencrypt-certificateauthorityca">Let&#8217;s Encrypt - Certificate Authority (CA)</a></li>
+<li><a href="#certbot-certificaterobot">Certbot - Certificate Robot</a>
+<ul>
+<li><a href="#install">Install</a></li>
+<li><a href="#configure">Configure</a></li>
+<li><a href="#schedule">Schedule</a></li>
+<li><a href="#renewalisdoneonwebhost">Renewal is done on web host</a></li>
+</ul>
+</li>
+<li><a href="#apache-webserverfornextcloud">Apache - Web Server for Nextcloud</a></li>
+<li><a href="#dovecot-serverfore-mailclients">Dovecot - Server for E-Mail Clients</a></li>
+<li><a href="#matrix-messagingserver">Matrix - Messaging Server</a></li>
+<li><a href="#verifycertificate">Verify Certificate</a></li>
+<li><a href="#continue">Continue</a>
+<ul>
+<li><a href="#madeforhumansbyahuman">Made for Humans, by a Human</a></li>
+<li><a href="#links">Links</a></li>
+<li><a href="#social">Social</a>
+<ul>
+<li><a href="#builtwithmultimarkdownhttps:github.comfletchermultimarkdown-6andw3schoolshttps:www.w3schools.comw3cssw3css_pro.asp">Built with <a href="https://github.com/fletcher/MultiMarkdown-6">MultiMarkdown</a> and <a href="https://www.w3schools.com/w3css/w3css_pro.asp">W3 Schools</a></a></li>
+<li><a href="#license:ahrefhttp:creativecommons.orglicensesby-nc-sa4.0cc-by-nc-sa4.0a">License: <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0</a></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+<hr />
+
+<p>Web certificates encrypt different messages over the public internet so nobody can see what these messages contain.</p>
+
+<h2 id="letsencrypt-certificateauthorityca">Let&#8217;s Encrypt - Certificate Authority (CA)</h2>
+
+<p>Let&#8217;s Encrypt offers free 90 day SSL/TLS internet certificates, so you can run https:// to encrypt web page bodies, instead of http:// plain text over the internet. Certbot is used to obtain and renew certificates from the Let&#8217;s Encrypt CA.</p>
+
+<p>Reference: <a href="https://letsencrypt.org/">https://letsencrypt.org/</a></p>
+
+<h2 id="certbot-certificaterobot">Certbot - Certificate Robot</h2>
+
+<p>This is a systemd service and software that will watch for expired certificates and notify you via E-Mail. Other pieces will let you perform a dry-run update of your certificate, and actually perform the certificate update and any configuration changes in your Apache or Nginx web server.</p>
+
+<p>Reference: <a href="https://certbot.eff.org/">https://certbot.eff.org/</a></p>
+
+<h3 id="install">Install</h3>
+
+<pre><code>sudo apt-get install certbot
+</code></pre>
+
+<h3 id="configure">Configure</h3>
+
+<p>Get a certificate and update the apache configuration.</p>
+
+<p>Just follow the prompts, entering your host + domain name.</p>
+
+<p>Instructions: <a href="https://certbot.eff.org/instructions">https://certbot.eff.org/instructions</a></p>
+
+<pre><code>sudo certbot --apache
+</code></pre>
+
+<h3 id="schedule">Schedule</h3>
+
+<p>The install creates a systemd timer to check for expiration and hopefully e-mail you a warning 30 days in advance of your 90 day certificate expiring.</p>
+
+<pre><code>$ sudo systemctl list-timers | grep certbot
+Mon 2022-08-29 15:46:31 EDT 4h 16min left Mon 2022-08-29 06:38:15 EDT 4h 52min ago  certbot.timer                certbot.service 
+</code></pre>
+
+<h3 id="renewalisdoneonwebhost">Renewal is done on web host</h3>
+
+<p>I wrapped the certbot updater into a script to remind me of the various steps and places the certificate is used. I do not open port 80 and block malicious hosts, so I disable those for a few minutes while the update occurs.</p>
+
+<p>File: ~/linux/certbot.sh</p>
+
+<pre><code>#!/bin/bash
+#---------------------------------------------
+# Change port forwarding on router
+#---------------------------------------------
+#
+echo &quot;REMINDER: Open port 80 on ROUTER first!&quot;
+read ans
+#
+#---------------------------------------------
+# Disable firewall
+#---------------------------------------------
+#
+echo &quot;Disabling firewall&quot;
+sudo ufw disable
+#
+#---------------------------------------------
+# Automatic renewal
+#---------------------------------------------
+#
+read -p &quot;Dry-run [y]: &quot; reply
+reply=${reply:-y}
+ echo $reply
+ if [[ $reply == &quot;y&quot; ]]; then
+   sudo certbot renew --expand --dry-run
+ else
+   sudo certbot renew --expand
+ fi
+#
+#---------------------------------------------
+# Check certbot service timer is running
+#---------------------------------------------
+#
+sudo systemctl list-timers|grep certbot
+##NEXT                         LEFT           LAST                         PASSED       UNIT                   
+##Sat 2019-12-28 13:31:07 EST  7h left        Sat 2019-12-28 01:26:25 EST  4h 37min ago certbot.timer          
+#
+#---------------------------------------------
+# Enable firewall
+#---------------------------------------------
+#
+echo &quot;Enabling firewall&quot;
+sudo ufw enable
+#
+#---------------------------------------------
+# Copy to mail for it's devecot (e-mail) service
+#---------------------------------------------
+#
+read -p &quot;copy to mail [y]: &quot; reply
+reply=${reply:-y}
+ echo $reply
+ if [[ $reply == &quot;y&quot; ]]; then
+   ./copy-cert-to-mail.sh
+ fi
+#
+#---------------------------------------------
+# Change port forwarding on router
+#---------------------------------------------
+#
+echo &quot;REMINDER: Close port 80 on ROUTER now!&quot;
+read ans
+#
+#---------------------------------------------
+# Restart matrix-synapse to pick up new certs
+#---------------------------------------------
+#
+echo &quot;NOTE: Restarting matrix-synapse service&quot;
+sudo systemctl restart matrix-synapse
+#
+</code></pre>
+
+<h2 id="apache-webserverfornextcloud">Apache - Web Server for Nextcloud</h2>
+
+<p>Certbot will probably add the SSLCertificate[FIle|KeyFile] lines to the apache Virtual host entry.</p>
+
+<p>Check that Strict-Transport-Security is set to force http to https conversions. The max-age[1], 31536000 seconds, is 365 days and will expire shared cache after that. Adjust if desired.</p>
+
+<p>File: /etc/apache2/sites-enabled/nextcloud.conf</p>
+
+<pre><code>~
+# Don - begin
+# Use HTTP Strict Transport Security to force client to use secure connections only      
+Header always set Strict-Transport-Security &quot;max-age=31536000; includeSubDomains;&quot;
+SSLEngine on
+
+# Don certbot
+SSLCertificateFile /etc/letsencrypt/live/example.com/fullchain.pem
+SSLCertificateKeyFile /etc/letsencrypt/live/example.com/privkey.pem
+Include /etc/letsencrypt/options-ssl-apache.conf
+&lt;/VirtualHost&gt;
+~
+</code></pre>
+
+<ol>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control">https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</a></li>
+</ol>
+
+<h2 id="dovecot-serverfore-mailclients">Dovecot - Server for E-Mail Clients</h2>
+
+<p>If you have E-Mail User Agent Dovecot installed this allows IMAPS, which is Internet Message Access Protocol Secure. Basically SSL for E-Mail to encrypt E-Mails over the network.</p>
+
+<p>File: /etc/dovecot/conf.d/10-ssl.conf</p>
+
+<pre><code>~
+# SSL/TLS support: yes, no, required. &lt;doc/wiki/SSL.txt&gt;
+ssl = yes
+
+# PEM encoded X.509 SSL/TLS certificate and private key. They're opened before
+# dropping root privileges, so keep the key file unreadable by anyone but
+# root. Included doc/mkcert.sh can be used to easily generate self-signed
+# certificate, just make sure to update the domains in dovecot-openssl.cnf
+# Don - begin
+#ssl_cert = &lt;/etc/dovecot/private/dovecot.pem
+#ssl_key = &lt;/etc/dovecot/private/dovecot.key
+ssl_cert = &lt;/etc/letsencrypt/live/example.com/fullchain.pem                                        
+ssl_key = &lt;/etc/letsencrypt/live/example.com/privkey.pem  
+# Don - end
+
+~
+
+# Directory and/or file for trusted SSL CA certificates. These are used only
+# when Dovecot needs to act as an SSL client (e.g. imapc backend or
+# submission service). The directory is usually /etc/ssl/certs in
+# Debian-based systems and the file is /etc/pki/tls/cert.pem in
+# RedHat-based systems.
+ssl_client_ca_dir = /etc/ssl/certs
+
+~
+
+# SSL DH parameters
+# Generate new params with `openssl dhparam -out /etc/dovecot/dh.pem 4096`
+# Or migrate from old ssl-parameters.dat file with the command dovecot
+# gives on startup when ssl_dh is unset.
+ssl_dh = &lt;/usr/share/dovecot/dh.pem
+</code></pre>
+
+<h2 id="matrix-messagingserver">Matrix - Messaging Server</h2>
+
+<p>If you have the Matrix messaging server installed, this allows secure communication to clients.</p>
+
+<p>File: /etc/matrix-synapse/homeserver.yaml</p>
+
+<pre><code>grep letsencrypt /etc/matrix-synapse/homeserver.yaml
+tls_certificate_path: &quot;/etc/letsencrypt/live/example.com/fullchain.pem&quot;
+tls_private_key_path: &quot;/etc/letsencrypt/live/example.com/privkey.pem&quot;
+</code></pre>
+
+<h2 id="verifycertificate">Verify Certificate</h2>
+
+<p>This script is good to run before and after the certbot update to view the begin/end valid dates of your certificate. It ensures everything went well and the certs are in a valid location.</p>
+
+<p>File: ~/linux/cert_expire.sh</p>
+
+<pre><code>#!/bin/bash
+# ----------------------------------------------------------------------
+#
+# File: cert_expire.sh
+#
+# Purpose: See what the expiration date is for Let's Encrypt Certificate
+#
+#
+#  s_client : The s_client command implements a generic SSL/TLS client
+#              which connects to a remote host using SSL/TLS.
+#  -servername $DOM : Set the TLS SNI (Server Name Indication) extension
+#                      in the ClientHello message to the given value.
+#  -connect $DOM:$PORT : This specifies the host ($DOM) and optional
+#                         port ($PORT) to connect to.
+#  x509 : Run certificate display and signing utility.
+#  -noout : Prevents output of the encoded version of the certificate.
+#  -dates : Prints out the start and expiry dates of a TLS or SSL certificate.
+#
+# Don Cohoon - Jan 2023
+# ----------------------------------------------------------------------
+#
+#
+if [ $# -gt 0 ]; then
+  A=${1}
+else
+  echo &quot;1) E-Mail&quot;
+  echo &quot;2) File&quot;
+  echo &quot;3) Web&quot;
+  echo &quot;4) Local&quot;
+  read A
+fi
+case ${A}
+ in
+   1)
+	echo &quot;REMINDER: Restart dovecot to enable new certs&quot;
+	echo &quot;=&gt; E-Mail Certificate: CTRL-C to exit&quot;
+	openssl s_client -connect mail.example.com:25 -starttls smtp 2&gt;/dev/null|openssl x509 -noout -dates
+	;;
+   2)
+	echo &quot;=&gt; File Certificate&quot;
+	sudo openssl x509 -enddate -noout -in /etc/letsencrypt/live/example.com/fullchain.pem
+	;;
+   3)
+	echo &quot;REMINDER: Restart apache2 and nginx to enable new certs&quot;
+	echo &quot;=&gt; www.example.com Certificate: CTRL-C to exit&quot;
+	openssl s_client -servername example.com -connect www.example.com:443 2&gt;/dev/null | openssl x509 -noout -dates
+	;;
+   4)
+	echo &quot;REMINDER: Restart apache2 and nginx to enable new certs&quot;
+	echo &quot;=&gt; Local Web Certificate: CTRL-C to exit&quot;
+	openssl s_client -connect localhost:443 | openssl x509 -noout -dates
+	;;
+esac
+</code></pre>
+
+<h2 id="continue">Continue</h2>
+
+<p>Now that you have set up a certificate for your new server, consider installing some Network Attached Storage.</p>
+
+<p>Proceed in the order presented, some things are depending on prior setups.</p>
+
+<hr>
+
+<h4 id="madeforhumansbyahuman">Made for Humans, by a Human</h4>
+
+<h4 id="links">Links</h4>
+
+<ul>
+<li><a href="https://lwn.net/">Linux Weekly News</a></li>
+<li><a href="https://fullcirclemagazine.org/">Full Circle Magazine</a></li>
+<li><a href="https://www.linuxjournal.com/">Linux Journal</a></li>
+<li><a href="https://www.linux-magazine.com/">Linux Magazine</a></li>
+<li><a href="https://www.thefarside.com/">The Far Side</a></li>
+</ul>
+
+<h4 id="social">Social</h4>
+
+<ul>
+<li><a href="https://fosstodon.org/@Cohoon">Feedback</a></li>
+<li><a href="/linux-in-house/feed-Linux.rss">Linux RSS Feed</a></li>
+<li><a href="/linux-in-house/feed-Writing.rss">Writing RSS Feed</a></li>
+<li><a href="https://linux-in-the-house.pages.dev/">Book</a></li>
+</ul>
+
+<h5 id="builtwithmultimarkdownhttps:github.comfletchermultimarkdown-6andw3schoolshttps:www.w3schools.comw3cssw3css_pro.asp">Built with <a href="https://github.com/fletcher/MultiMarkdown-6">MultiMarkdown</a> and <a href="https://www.w3schools.com/w3css/w3css_pro.asp">W3 Schools</a></h5>
+
+<h5 id="license:ahrefhttp:creativecommons.orglicensesby-nc-sa4.0cc-by-nc-sa4.0a">License: <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0</a></h5>
+
+</body>
+</html>
+

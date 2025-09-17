@@ -1,0 +1,1609 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>Cloud</title>
+	<meta name="date" content="2023-01-25 10:24"/>
+	<meta name="modified" content="2024-04-19 9:30"/>
+	<meta name="tags" content="systems, web"/>
+	<meta name="author" content="Don Cohoon"/>
+	<meta name="summary" content="A cloud used to be floating in the sky, then it was a bubbly thing on a network diagram where weird things happen. Now a cloud just means &quot;Somebody else's computer.&quot;. Of course you get to it over a network and can share things, like files (pictures, music, documents), contacts, calendars and chat, among other things."/>
+	<meta name="license" content="'[CC-BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)'"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"> <link rel="stylesheet" href="/linux-in-house/common.css" type="text/css" />
+</head>
+<body>
+
+<p><a href="/linux-in-house/"><h1>Linux in House</h1></a></p>
+
+<link href="/linux-in-house/pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/linux-in-house/pagefind/pagefind-ui.js"></script>
+
+<div id="search"></div>
+<script>
+window.addEventListener('DOMContentLoaded', (event) => {
+      new PagefindUI({ element: "#search", showSubResults: true });
+});
+</script>
+
+<blockquote>
+<p><a href="/linux-in-house/linux/welcome.html">Welcome Back My Friends</a></p>
+</blockquote>
+
+<h1 id="cloudsystems">Cloud Systems</h1>
+
+<p>A cloud used to be floating in the sky, then it was a bubbly thing on a network diagram where weird things happen. Now a cloud just means &#8220;Somebody else&#8217;s computer.&#8221;. Of course you get to it over a network and can share things, like files (pictures, music, documents), contacts, calendars and chat, among other things.</p>
+
+<br/>
+
+<hr />
+
+<div class="TOC">
+
+<ul>
+<li><a href="#cloudsystems">Cloud Systems</a></li>
+<li><a href="#syncthing">SyncThing</a></li>
+<li><a href="#warpinator">Warpinator</a></li>
+<li><a href="#cryptomater">Cryptomater</a></li>
+<li><a href="#nextcloud">NextCloud</a>
+<ul>
+<li><a href="#services">Services</a>
+<ul>
+<li><a href="#iosapp-nextcloudtalk">IOS App - NextCloud Talk</a></li>
+</ul>
+</li>
+<li><a href="#installdocumentation">Install Documentation</a></li>
+<li><a href="#installsteps">Install Steps</a>
+<ul>
+<li><a href="#nextcloudphpinstall">Nextcloud PHP Install</a></li>
+<li><a href="#packagedependencyinstall">Package Dependency Install</a></li>
+<li><a href="#createemptypostgresqldatabase">Create Empty PostgreSQL Database</a></li>
+<li><a href="#postgresqldatabaseauthentication">PostgreSQL Database Authentication</a>
+<ul>
+<li><a href="#nodatabasepassword">No Database Password</a></li>
+<li><a href="#databasepassword">Database Password</a></li>
+</ul>
+</li>
+<li><a href="#postgresqldatabasepopulatenextcloudmetadata">PostgreSQL Database Populate NextCloud Metadata</a></li>
+<li><a href="#apachewebservernextcloudconfiguration">Apache Web Server NextCloud Configuration</a></li>
+<li><a href="#apachewebserverlocalesettings">Apache Web Server Locale Settings</a></li>
+<li><a href="#nextcloudtrusteddomainsande-mailserverconnection">NextCloud Trusted Domains and E-Mail Server Connection</a></li>
+<li><a href="#nextcloudphpconfiguration">NextCloud PHP Configuration</a></li>
+<li><a href="#nextcloudrediscachingconfiguration">NextCloud Redis Caching Configuration</a></li>
+</ul>
+</li>
+<li><a href="#movethesharedfilesinnextcloudtonas">Move the shared files in NextCloud to NAS</a></li>
+<li><a href="#nextcloudcommandlineclient">Nextcloud Command Line Client</a>
+<ul>
+<li><a href="#install">Install</a></li>
+<li><a href="#usage">Usage</a></li>
+</ul>
+</li>
+<li><a href="#debug">Debug</a></li>
+<li><a href="#talkfromcommandline">Talk from Command Line</a>
+<ul>
+<li><a href="#talkmattermostshellscript">Talk Mattermost Shell Script</a></li>
+<li><a href="#talkmattermostphpscript">Talk Mattermost PHP Script</a></li>
+</ul>
+</li>
+<li><a href="#federatedsharingbetweennextcloudservers">Federated Sharing Between Nextcloud Servers</a>
+<ul>
+<li><a href="#inbothnextcloudhosts">In both Nextcloud hosts</a></li>
+<li><a href="#insendingnextcloud">In Sending Nextcloud</a></li>
+<li><a href="#inreceivingnextcloud">In Receiving Nextcloud</a></li>
+</ul>
+</li>
+<li><a href="#offlinecopyofcontactsandcalendar">Offline Copy of Contacts and Calendar</a>
+<ul>
+<li><a href="#installvdirsyncerpackage">Install vdirsyncer package</a></li>
+<li><a href="#configurevdirsyncer">Configure vdirsyncer</a></li>
+<li><a href="#schedulevdirsyncer">Schedule vdirsyncer</a></li>
+</ul>
+</li>
+<li><a href="#contactsfromthecommandline">Contacts from the Command Line</a>
+<ul>
+<li><a href="#install">Install</a></li>
+<li><a href="#configure">Configure</a></li>
+<li><a href="#runit">Run it</a></li>
+</ul>
+</li>
+<li><a href="#calendarsfromthecommandline">Calendars from the Command Line</a>
+<ul>
+<li><a href="#install">Install</a></li>
+<li><a href="#configure">Configure</a></li>
+<li><a href="#runit">Run it</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#apache-blockmalicioushosts">Apache - Block Malicious Hosts</a>
+<ul>
+<li><a href="#script">Script</a></li>
+<li><a href="#usage">Usage</a></li>
+</ul>
+</li>
+<li><a href="#upgradenextcloud">Upgrade Nextcloud</a>
+<ul>
+<li><a href="#upgrademanually">Upgrade manually</a></li>
+</ul>
+</li>
+<li><a href="#continue">Continue</a>
+<ul>
+<li><a href="#madeforhumansbyahuman">Made for Humans, by a Human</a></li>
+<li><a href="#links">Links</a></li>
+<li><a href="#social">Social</a>
+<ul>
+<li><a href="#builtwithmultimarkdownhttps:github.comfletchermultimarkdown-6andw3schoolshttps:www.w3schools.comw3cssw3css_pro.asp">Built with <a href="https://github.com/fletcher/MultiMarkdown-6">MultiMarkdown</a> and <a href="https://www.w3schools.com/w3css/w3css_pro.asp">W3 Schools</a></a></li>
+<li><a href="#license:ahrefhttp:creativecommons.orglicensesby-nc-sa4.0cc-by-nc-sa4.0a">License: <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0</a></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+<hr />
+
+<p>For me it means I can get to my stuff no matter where I am; <em>and</em> my stuff is private unless I share it. So I keep it in my home, under lock and key. To share I have a few open ports, encrypted network traffic, and some protected disk arrays with timely backups.</p>
+
+<p>If this sounds interesting so far, here are some contenders for the job:</p>
+
+<ul>
+<li>SyncThing [1]</li>
+<li>Warpinator [2]</li>
+<li>Cryptomater [3]</li>
+<li>NextCloud [4]</li>
+</ul>
+
+<ol>
+<li><a href="https://syncthing.net/">https://syncthing.net/</a></li>
+<li><a href="https://github.com/linuxmint/warpinator">https://github.com/linuxmint/warpinator</a></li>
+<li><a href="https://cryptomator.org/">https://cryptomator.org/</a></li>
+<li><a href="https://nextcloud.com/">https://nextcloud.com/</a></li>
+</ol>
+
+<h1 id="syncthing">SyncThing</h1>
+
+<p>Syncthing is a continuous file synchronization program. It synchronizes files between two or more computers in real time.</p>
+
+<p>It is a simple install supporting many operating systems [1]. Debian Ubuntu has a package [2].</p>
+
+<p>The getting started [3] page has very nice instructions.</p>
+
+<p>My experience was very easy to install and syncing was quick and reliable. However I limited my exposure to internal network machine syncs, so no messing with my firewall or port forwarding [4]. If you just want to sync files for a project, picture albums or music collection to a backup host in your home, it should work very well. I had no problems.</p>
+
+<p>They web page states that &#8220;All communication is secured using TLS.&#8221; and commercial support is available [5].</p>
+
+<ol>
+<li><a href="https://syncthing.net/downloads/">https://syncthing.net/downloads/</a></li>
+<li><a href="https://apt.syncthing.net/">https://apt.syncthing.net/</a></li>
+<li><a href="https://docs.syncthing.net/intro/getting-started.html">https://docs.syncthing.net/intro/getting-started.html</a></li>
+<li><a href="https://docs.syncthing.net/users/firewall.html#firewall-setup">https://docs.syncthing.net/users/firewall.html#firewall-setup</a></li>
+<li><a href="https://www.kastelo.net/stes/">https://www.kastelo.net/stes/</a></li>
+</ol>
+
+<h1 id="warpinator">Warpinator</h1>
+
+<p>Warpinator is built to share files across the LAN. I have heard several people and magazines praise how good it works. It is built with Python and available on Github, supporting several operating systems. On Linux Mint it is a simple apt install, probably because it is published on the github linuxmint repository.</p>
+
+<p>The project supplies firewall instructions so it should be able to run remotely if desired. It uses a <em>shared code</em> to secure comminucation. It is un-clear to me if it uses SSL/TLS encryption, and the support would be through Github.</p>
+
+<p>I have not tried it, but it sounds very reasonable for syncing things on a local network since SSL/TLS is not mentioned.</p>
+
+<p>Other platforms include:</p>
+
+<ul>
+<li> Android: <a href="https://github.com/slowscript/warpinator-android">https://github.com/slowscript/warpinator-android</a></li>
+<li> iOS: <a href="https://github.com/williamMillington/warpinator-iOS">https://github.com/williamMillington/warpinator-iOS</a> (beta)</li>
+<li> Windows: <a href="https://winpinator.swisz.cz">https://winpinator.swisz.cz</a></li>
+<li> Windows: <a href="https://github.com/slowscript/warpinator-windows">https://github.com/slowscript/warpinator-windows</a></li>
+</ul>
+
+<h1 id="cryptomater">Cryptomater</h1>
+
+<p>Cryptomator encrypts your data quickly and easily. Afterwards you upload them protected to your favorite cloud service.</p>
+
+<p>The work flow here is to take files from one directory and copy them to another, then encrypting the new directory in preperation of uploading to a cloud service on someone elses computer.</p>
+
+<p>My experience was quite good with it for saving a copy of my development project off-site to DropBox. I would prepare my files into a DropBox directory with DropBox turned off, then turn DropBox on, watch it sync, then turn DropBox off. I was assured that no one outside my network could read my <em>secret</em> project files. Very nice, cheap and easy.</p>
+
+<p>Github reports it is 93% Java, so be aware of that. My usage was all MacOS, so I didn&#8217;t even realize the Java dependency, but the Linux dependency lists Oracle JDK 16 [3].</p>
+
+<p>They offer enterprise support [1] and also Github [2] bug reporting.</p>
+
+<ol>
+<li><a href="https://cryptomator.org/enterprise/">https://cryptomator.org/enterprise/</a></li>
+<li><a href="https://github.com/cryptomator">https://github.com/cryptomator</a></li>
+<li><a href="https://www.oracle.com/java/technologies/javase/products-doc-jdk16certconfig.html">https://www.oracle.com/java/technologies/javase/products-doc-jdk16certconfig.html</a></li>
+</ol>
+
+<h1 id="nextcloud">NextCloud</h1>
+
+<p>NextCloud allows file storage on another computer, in my house, so that I can easily access these files from almost any other computer/phone/tablet that has authority. It also supports a shared list of Contacts and Calendar. There is a chat function (Talk) to type messages, or voice, or video between two or more other computers.</p>
+
+<p>The app store reports many other apps available as well.</p>
+
+<p>My experience started with OwnCloud, which NextCloud was forked from, and used to have many problems with every new release especially supporting a PostgreSQL database. After OwnCloud went with a entire new infastructure with no more PHP, I decided to try NextCloud, and have been happy ever since. NextCloud is very stable, new releases are smooth, and the many apps seem to work just fine.</p>
+
+<p>Being based on PHP, NextCloud runs better on Apache in my opinion, since nginx does not default with PHP support. The PostgreSQL database support has not had any problems, and the whole stack runs on a small BeagleBone AI (32-bit) or AI-64 (64-bit) SBC, so the Rasberry PI line should also work.</p>
+
+<p>One note, after changing from Debian to RedHat, the php support for Apache (httpd on RedHat), uses php-frm, the PHP FastCGI Process Manager. It seems to work quite well, but be aware there is a systemctl service called php-fpm.</p>
+
+<pre><code>sudo systemctl status php-fpm
+● php-fpm.service - The PHP FastCGI Process Manager
+     Loaded: loaded (/usr/lib/systemd/system/php-fpm.service; enabled; preset: disabled)
+     Active: active (running) since Tue 2023-07-25 22:57:34 EDT; 1 day 9h ago
+   Main PID: 940 (php-fpm)
+     Status: &quot;Processes active: 0, idle: 13, Requests: 47239, slow: 0, Traffic: 0.2req/sec&quot;
+      Tasks: 14 (limit: 48814)
+     Memory: 431.1M
+        CPU: 43min 15.096s
+     CGroup: /system.slice/php-fpm.service
+             ├─   940 &quot;php-fpm: master process (/etc/php-fpm.conf)&quot;
+             ├─  2642 &quot;php-fpm: pool www&quot;
+             ├─  2643 &quot;php-fpm: pool www&quot;
+             ├─  2644 &quot;php-fpm: pool www&quot;
+             ├─  2645 &quot;php-fpm: pool www&quot;
+             ├─  2646 &quot;php-fpm: pool www&quot;
+             ├─  2765 &quot;php-fpm: pool www&quot;
+             ├─  2767 &quot;php-fpm: pool www&quot;
+             ├─  3834 &quot;php-fpm: pool www&quot;
+             ├─ 23767 &quot;php-fpm: pool www&quot;
+             ├─ 60012 &quot;php-fpm: pool www&quot;
+             ├─ 61859 &quot;php-fpm: pool www&quot;
+             ├─ 67881 &quot;php-fpm: pool www&quot;
+             └─120219 &quot;php-fpm: pool www&quot;
+
+</code></pre>
+
+<h2 id="services">Services</h2>
+
+<p>These are services I have/had used without problem:</p>
+
+<ul>
+<li>Audio Player for playing music collection, streaming, and playlists</li>
+<li>Pictures for organizing photographs by year, then topic</li>
+<li>Contacts for syncing e-mail Thunderbird and iOS</li>
+<li>Calendar for syncing appointments Thunderbird and iOS</li>
+<li>Files using NextCloud Clients for Mac, iOS</li>
+<li>Talk can Send Messages to a phone from Command Line, used for HomeAssistant alerts and run via File: ~/matrix/sendmatrix.sh. Used for monitoring door and window alarms.</li>
+</ul>
+
+<h5 id="iosapp-nextcloudtalk">IOS App - NextCloud Talk</h5>
+
+<figure>
+<img src="/linux-in-house/images/IMG_84D17B7CC129-1.jpeg" alt="IMG_84D17B7CC129-1 (2).jpeg" />
+<figcaption>IMG_84D17B7CC129&#8211;1 (2).jpeg</figcaption>
+</figure>
+
+<p>NextCloud Talk uses the <a href="matrix.md">Matrix service</a> to detect changes to be sent.</p>
+
+<h2 id="installdocumentation">Install Documentation</h2>
+
+<p>First install the database;</p>
+
+<p><a href="https://www.postgresql.org/download/">https://www.postgresql.org/download/</a></p>
+
+<p>Then apache2;</p>
+
+<p><a href="https://httpd.apache.org/docs/current/install.html">https://httpd.apache.org/docs/current/install.html</a></p>
+
+<p>Then nextcloud;</p>
+
+<p><a href="https://nextcloud.com/install/#instructions-server">https://nextcloud.com/install/#instructions-server</a></p>
+
+<p>Then nextcloud apps;</p>
+
+<ul>
+<li>contacts</li>
+<li>calendar</li>
+<li>talk</li>
+<li>mattermost</li>
+</ul>
+
+<blockquote>
+<p>After Nextcloud 27, Talk Mattermost app does not work, and is not needed to send messages through the command line.</p>
+</blockquote>
+
+<h2 id="installsteps">Install Steps</h2>
+
+<p>What follows are my steps to install NextCloud the way I want it, manually mostly.</p>
+
+<p>It may not be necessary, but it does provide details that might otherwise be missed about how NextCloud functions under the covers. This can also be usefull if a problem arises, to debug the issue or at least know where to start.</p>
+
+<h3 id="nextcloudphpinstall">Nextcloud PHP Install</h3>
+
+<p>Download and unzip the NextCloud release. Change the release number you find.</p>
+
+<p>Change :</p>
+
+<ul>
+<li> VER : NextCloud version</li>
+</ul>
+
+<p>File: ~/nextcloud-install.sh</p>
+
+<pre><code>## https://docs.nextcloud.com/server/latest/admin_manual/installation/command_line_installation.html
+##
+VER=nextcloud-24.0.7
+##---------------------------------------------------
+## Download
+curl https://download.nextcloud.com/server/releases/${VER}.zip -o ${VER}.zip
+##
+##---------------------------------------------------
+## Extract
+DIR=$(pwd)
+sudo mkdir -p /var/www/nextcloud
+cd /var/www
+sudo unzip ${DIR}/${VER}.zip
+sudo chown -R www-data:www-data /var/www/nextcloud/
+</code></pre>
+
+<h3 id="packagedependencyinstall">Package Dependency Install</h3>
+
+<p>Now install the Debian/Ubuntu packages.</p>
+
+<pre><code>$ sudo apt-get install zip libapache2-mod-php php-gd php-json php-pgsql php-curl php-mbstring php-intl php-imagick php-xml php-zip php-bcmath php-gmp zip php-apcu
+</code></pre>
+
+<h3 id="createemptypostgresqldatabase">Create Empty PostgreSQL Database</h3>
+
+<p>Here we create an empty database for NextCloud.</p>
+
+<p>Reference: <a href="https://docs.nextcloud.com/server/20/admin_manual/configuration_database/linux_database_configuration.html">https://docs.nextcloud.com/server/20/admin_manual/configuration_database/linux_database_configuration.html</a></p>
+
+<p>PostgreSQL PHP configuration</p>
+
+<p>File: /etc/php7/conf.d/pgsql.ini</p>
+
+<pre><code># configuration for PHP PostgreSQL module
+extension=pdo_pgsql.so
+extension=pgsql.so
+
+[PostgresSQL]
+pgsql.allow_persistent = On
+pgsql.auto_reset_persistent = Off
+pgsql.max_persistent = -1
+pgsql.max_links = -1
+pgsql.ignore_notice = 0
+pgsql.log_notice = 0
+~
+:wq
+</code></pre>
+
+<p>Create nextcloud database</p>
+
+<p>Change :</p>
+
+<ul>
+<li> nextclouddb : Your PostgreSQL database owner</li>
+</ul>
+
+<pre><code>$ sudo -u postgres psql -d template1
+template1=# 
+CREATE USER nextclouddb CREATEDB;
+CREATE DATABASE nextcloud OWNER nextclouddb;
+\q
+</code></pre>
+
+<h3 id="postgresqldatabaseauthentication">PostgreSQL Database Authentication</h3>
+
+<p>Recommend using a Database Password, that&#8217;s what I do.
+Change :</p>
+
+<ul>
+<li> nextclouddb : PostgreSQL database owner</li>
+<li> ItsABigPaswordToo : password for the database owner</li>
+</ul>
+
+<h4 id="nodatabasepassword">No Database Password</h4>
+
+<p>A Nextcloud instance configured with PostgreSQL would contain the path to the socket on which the database
+is running as the hostname, the system username the PHP process is using, and an empty password to access it,
+and the name of the database. The config/config.php as created by the Installation wizard would therefore contain entries like this:</p>
+
+<p>File: /var/www/nextcloud/config/config.php</p>
+
+<pre><code>~
+  &quot;dbtype&quot;        =&gt; &quot;pgsql&quot;,
+  &quot;dbname&quot;        =&gt; &quot;nextcloud&quot;,
+  &quot;dbuser&quot;        =&gt; &quot;nextclouddb&quot;,
+  &quot;dbpassword&quot;    =&gt; &quot;&quot;,
+  &quot;dbhost&quot;        =&gt; &quot;/var/run/postgresql&quot;,
+  &quot;dbtableprefix&quot; =&gt; &quot;oc_&quot;,
+~
+:wq
+</code></pre>
+
+<blockquote>
+<p>Note:
+The host actually points to the socket that is used to connect to the database. Using localhost here
+will not work if postgreSQL is configured to use peer authentication. Also note that no password is specified,
+because this authentication method doesn’t use a password.</p>
+</blockquote>
+
+<h4 id="databasepassword">Database Password</h4>
+
+<p>If you use another authentication method (not peer), you’ll need to use the following steps to get the database setup:
+Now you need to create a database user and the database itself by using the PostgreSQL command line interface.
+The database tables will be created by Nextcloud when you login for the first time.</p>
+
+<pre><code>$ sudo -u postgres psql -d postgres
+postgres=#
+ALTER USER nextclouddb WITH PASSWORD 'ItsABigPaswordToo';
+drop database nextcloud;
+CREATE DATABASE nextcloud TEMPLATE template0 ENCODING 'UNICODE';
+ALTER DATABASE nextcloud OWNER TO nextclouddb;
+GRANT ALL PRIVILEGES ON DATABASE nextcloud TO nextclouddb;
+
+SHOW hba_file;
+              hba_file               
+-------------------------------------
+ /etc/postgresql/12/main/pg_hba.conf
+(1 row)
+
+\q
+</code></pre>
+
+<p>Set the PostgreSQL Host Based Authentication (hba) for a database user <code>nextclouddb</code> on database <code>nextcloud</code></p>
+
+<p>File: /etc/postgresql/12/main/pg_hba.conf</p>
+
+<pre><code>~
+# nextcloud
+host    nextcloud     nextclouddb    192.168.0.2/32    md5  # or `scram-sha-256` instead of `md5` if you use that
+hostssl nextcloud     nextclouddb    192.168.0.2/32    md5  # or `scram-sha-256` instead of `md5` if you use that
+~
+:wq
+</code></pre>
+
+<p>A Nextcloud instance configured with PostgreSQL would contain the hostname on which the database is running,
+a valid username and password to access it, and the name of the database. The config/config.php as created by
+the Installation wizard would therefore contain entries like this:</p>
+
+<p>File: /var/www/nextcloud/config/config.php</p>
+
+<pre><code>~
+  &quot;dbtype&quot;        =&gt; &quot;pgsql&quot;,
+  &quot;dbname&quot;        =&gt; &quot;nextcloud&quot;,
+  &quot;dbuser&quot;        =&gt; &quot;nextclouddb&quot;,
+  &quot;dbpassword&quot;    =&gt; &quot;ItsABigPaswordToo&quot;,
+  &quot;dbhost&quot;        =&gt; &quot;localhost&quot;,
+  &quot;dbtableprefix&quot; =&gt; &quot;oc_&quot;,
+~
+:wq
+</code></pre>
+
+<h3 id="postgresqldatabasepopulatenextcloudmetadata">PostgreSQL Database Populate NextCloud Metadata</h3>
+
+<p>Next we populate the empty database with NextCloud metadata.</p>
+
+<p>File: ~/nextcloud-db-populate.sh</p>
+
+<pre><code>#!/bin/bash
+#####################################################################################
+cd /var/www/nextcloud
+PASS=&quot;ItsABigPaswordToo&quot;
+sudo -u www-data php ./occ  maintenance:install --database \
+ &quot;pgsql&quot; --database-name &quot;nextcloud&quot;  --database-user &quot;nextclouddb&quot; --database-pass \
+ &quot;${PASS}&quot; --admin-user &quot;bigcloud&quot; --admin-pass &quot;${PASS}&quot;
+</code></pre>
+
+<h3 id="apachewebservernextcloudconfiguration">Apache Web Server NextCloud Configuration</h3>
+
+<p>You can change the alias /nextcloud to a more interesting name if you like.</p>
+
+<p>File: /etc/apache2/sites-available/nextcloud.conf</p>
+
+<pre><code>Alias /nextcloud &quot;/var/www/nextcloud/&quot;
+
+&lt;VirtualHost *:80&gt;
+  DocumentRoot /var/www/html/
+  ServerName  www.example.com
+&lt;/VirtualHost&gt;
+
+&lt;VirtualHost _default_:443&gt;
+  DocumentRoot /var/www/html/
+  ServerName  www.example.com
+
+  &lt;Directory /var/www/nextcloud/&gt;
+    Require all granted
+    AllowOverride All
+    Options FollowSymLinks MultiViews
+
+    &lt;IfModule mod_dav.c&gt;
+      Dav off
+    &lt;/IfModule&gt;
+  &lt;/Directory&gt;
+
+# Use HTTP Strict Transport Security to force client to use secure connections only      
+Header always set Strict-Transport-Security &quot;max-age=31536000; includeSubDomains;&quot;
+SSLEngine on
+
+# certbot
+SSLCertificateFile /etc/letsencrypt/live/example.com/fullchain.pem
+SSLCertificateKeyFile /etc/letsencrypt/live/example.com/privkey.pem
+Include /etc/letsencrypt/options-ssl-apache.conf
+&lt;/VirtualHost&gt;
+</code></pre>
+
+<p>Enable nextcloud.conf</p>
+
+<pre><code>$ sudo a2ensite nextcloud
+</code></pre>
+
+<h3 id="apachewebserverlocalesettings">Apache Web Server Locale Settings</h3>
+
+<p>Some installs of Apache2 do not enable the locale properly, you can set it like this:</p>
+
+<p>File: /etc/apache2/envvars</p>
+
+<pre><code>~
+## Uncomment the following line to use the system default locale instead:
+. /etc/default/locale
+~
+</code></pre>
+
+<p>Restart apache to pick up changes</p>
+
+<pre><code>$ sudo systemctl restart apache2
+</code></pre>
+
+<h3 id="nextcloudtrusteddomainsande-mailserverconnection">NextCloud Trusted Domains and E-Mail Server Connection</h3>
+
+<p>Make sure you have <em>trusted_domains</em> set to the NextCloud host, and also the E-Mail host and settings.</p>
+
+<p>File: /var/www/nextcloud/config/config.php</p>
+
+<pre><code>#  edit the &quot;trusted_domains&quot; setting in /var/www/nextcloud/config/config.php
+# ...
+  array (
+    0 =&gt; 'localhost',
+    1 =&gt; '192.168.0.5',
+    2 =&gt; 'www.example.com&quot;,
+  ),
+~
+  'default_phone_region' =&gt; 'US',
+  'mail_from_address' =&gt; 'nextcloud',
+  'mail_smtpmode' =&gt; 'smtp',
+  'mail_sendmailmode' =&gt; 'smtp',
+  'mail_domain' =&gt; 'mail.example.com',
+  'mail_smtphost' =&gt; '192.168.0.25',
+  'mail_smtpport' =&gt; '25',
+~
+:wq
+</code></pre>
+
+<h3 id="nextcloudphpconfiguration">NextCloud PHP Configuration</h3>
+
+<p>Enable PHP large memory.</p>
+
+<p>File: /etc/php/7.4/apache2/php.ini</p>
+
+<pre><code>~
+;memory_limit = 128M
+memory_limit = 512M
+~
+:wq
+</code></pre>
+
+<h3 id="nextcloudrediscachingconfiguration">NextCloud Redis Caching Configuration</h3>
+
+<p>Enable Redis caching.</p>
+
+<p>Reference: <a href="https://docs.nextcloud.com/server/22/admin_manual/configuration_server/caching_configuration.html">https://docs.nextcloud.com/server/22/admin_manual/configuration_server/caching_configuration.html</a></p>
+
+<p>Install Redis</p>
+
+<pre><code>$ sudo apt-get install redis-server php-redis
+</code></pre>
+
+<p>Uncomment the Unix socket <code>server.sock</code> in the redis.conf file</p>
+
+<p>File: /etc/redis/redis.conf</p>
+
+<pre><code>~
+unixsocket /var/run/redis/redis-server.sock
+~
+:wq
+</code></pre>
+
+<p>Allow www-data access to the socket</p>
+
+<pre><code>$ sudo usermod -a -G redis www-data
+</code></pre>
+
+<p>Add memcache entries in NextCloud config</p>
+
+<p>File: /var/www/nextcloud/config/config.php</p>
+
+<pre><code>~
+  'memcache.locking' =&gt; '\OC\Memcache\Redis',
+  'memcache.local' =&gt; '\OC\Memcache\APCu',
+  'memcache.distributed' =&gt; '\OC\Memcache\Redis',
+  'redis' =&gt; [
+     'host'     =&gt; '/run/redis/redis-server.sock',
+     'port'     =&gt; 0,
+     'timeout'  =&gt; 1.5,
+  ],
+~
+:wq
+</code></pre>
+
+<p>Set Redis session handling for Nextcloud</p>
+
+<p>File: /etc/php/7.4/apache2/php.ini</p>
+
+<pre><code>~
+redis.session.locking_enabled=1
+redis.session.lock_retries=-1
+redis.session.lock_wait_time=10000
+~
+:wq
+</code></pre>
+
+<h2 id="movethesharedfilesinnextcloudtonas">Move the shared files in NextCloud to NAS</h2>
+
+<p>These are the files that sync from your machine to NextCloud, like pictures, documents, music, etc. You we be able to see the files in a normal filesystem, just refrain from making any changes.</p>
+
+<p>Log into PostgreSQL and connect to the nextcloud database.</p>
+
+<pre><code>$ sudo -u postgres psql -d nextcloud
+
+nextcloud=# select * from oc_storages;
+ numeric_id |               id                | available | last_checked 
+------------+---------------------------------+-----------+--------------
+          1 | home::bigcloud                  |         1 |             
+          2 | local::/var/www/nextcloud/data/ |         1 |             
+(3 rows)
+</code></pre>
+
+<p>The local::/var/www/nextcloud/data id is the default location for sync data files.</p>
+
+<p>1) Stop apache and redis</p>
+
+<pre><code>$ sudo systemctl stop apache2
+$ sudo systemctl stop redis
+</code></pre>
+
+<p>2) Make directory on nas. Log into the nas as root because you need to change permissions of the file directory. Assuming the nas mount point is <code>/mnt/vol01/nfs_share</code></p>
+
+<pre><code>$ sudo mkdir -p /mnt/vol01/nfs_share/nextcloud
+$ sudo chown -R www-data:www-data /mnt/vol01/nfs_share/nextcloud
+</code></pre>
+
+<p>3) Copy the data on the NextCloud server to the nfs mount. This assumes the nfs mount point is <code>/data</code>.</p>
+
+<pre><code>$ sudo -u www-data rsync -rav /var/www/nextcloud/data/ /data/nextcloud/
+</code></pre>
+
+<p>4) Ensure it is owned by www-data:www-data</p>
+
+<pre><code>$ sudo -u www-data ls -lrt /data/nextcloud/
+total 51
+-rw-rw-r--  1 www-data www-data      0 Sep 22 12:16 index.html
+drwxr-xr-x  4 www-data www-data      4 Sep 22 12:36 bigcloud
+drwxr-xr-x  3 www-data www-data      3 Sep 22 16:59 __groupfolders
+drwxr-xr-x 11 www-data www-data     11 Sep 22 18:16 appdata_oc3hnmjliksp
+-rw-r-----  1 www-data www-data 290001 Sep 23 12:26 nextcloud.log
+</code></pre>
+
+<p>5) Rename old data</p>
+
+<pre><code>$ sudo mv /var/www/nextcloud/data /var/www/nextcloud/data.old
+</code></pre>
+
+<p>6) Update NextCloud config for the new directory</p>
+
+<p>File: /var/www/nextcloud/config/config.php</p>
+
+<pre><code>~
+##     from
+##     'datadirectory' =&gt; '/var/www/nextcloud/data',
+##     to
+      'datadirectory' =&gt; '/data/nextcloud',
+~
+</code></pre>
+
+<p>7) Update database:</p>
+
+<pre><code>$ sudo -u postgres -d nextcloud
+ 
+nextcloud=# select * from oc_storages;
+ numeric_id |               id                | available | last_checked 
+------------+---------------------------------+-----------+--------------
+          1 | home::bigcloud                |         1 |             
+          2 | local::/var/www/nextcloud/data/ |         1 |             
+(3 rows)
+
+nextcloud=# update oc_storages set id='local::/data/nextcloud/' where id='local::/var/www/nextcloud/data/';
+UPDATE 1
+nextcloud=# select * from oc_storages;
+ numeric_id |           id            | available | last_checked 
+------------+-------------------------+-----------+--------------
+          1 | home::bigcloud        |         1 |             
+          2 | local::/data/nextcloud/ |         1 |             
+(3 rows)
+</code></pre>
+
+<p>8) Start redis and apache</p>
+
+<pre><code>$ sudo systemctl start redis
+$ sudo systemctl start apache2
+</code></pre>
+
+<h2 id="nextcloudcommandlineclient">Nextcloud Command Line Client</h2>
+
+<p>This CLI tool allows syncing files from the local machine to NextCloud.</p>
+
+<h3 id="install">Install</h3>
+
+<pre><code>$ sudo apt-get install nextcloud-desktop-cmd
+</code></pre>
+
+<h3 id="usage">Usage</h3>
+
+<pre><code> nextcloudcmd --help
+nextcloudcmd - command line Nextcloud client tool
+
+Usage: nextcloudcmd [OPTION] &lt;source_dir&gt; &lt;server_url&gt;
+
+A proxy can either be set manually using --httpproxy.
+Otherwise, the setting from a configured sync client will be used.
+
+Options:
+  --silent, -s           Don't be so verbose
+  --httpproxy [proxy]    Specify a http proxy to use.
+                         Proxy is http://server:port
+  --trust                Trust the SSL certification.
+  --exclude [file]       Exclude list file
+  --unsyncedfolders [file]    File containing the list of unsynced remote folders (selective sync)
+  --user, -u [name]      Use [name] as the login name
+  --password, -p [pass]  Use [pass] as password
+  -n                     Use netrc (5) for login
+  --non-interactive      Do not block execution with interaction
+  --nonshib              Use Non Shibboleth WebDAV authentication
+  --davpath [path]       Custom themed dav path, overrides --nonshib
+  --max-sync-retries [n] Retries maximum n times (default to 3)
+  --uplimit [n]          Limit the upload speed of files to n KB/s
+  --downlimit [n]        Limit the download speed of files to n KB/s
+  -h                     Sync hidden files, do not ignore them
+  --version, -v          Display version and exit
+  --logdebug             More verbose logging
+</code></pre>
+
+<p>To synchronize the Nextcloud directory Music to the local directory media/music,
+through a proxy listening on port 8080, and on a gateway machine using IP address 192.168.178.1,
+the command line would be:</p>
+
+<pre><code>$ nextcloudcmd --httpproxy http://192.168.178.1:8080 \
+              $HOME/media/music \
+              https://server/nextcloud/remote.php/webdav/Music
+</code></pre>
+
+<p>nextcloudcmd will prompt for the user name and password, unless they have been specified on the command line or -n has been passed.</p>
+
+<blockquote>
+<p>NOTE: &#8211;exclude option does not work! (Oct-2022)
+Need to create/edit a file named .sync-exclude.lst in the
+top level directory of the client side.
+Example:</p>
+
+<pre><code>$ cat cloud/.sync-exclude.lst 
+/Pictures/*
+Pictures/*
+</code></pre>
+</blockquote>
+
+<h2 id="debug">Debug</h2>
+
+<ul>
+<li><p><em>Problem:</em> Command line occ does not work.</p></li>
+<li><p><em>Solution:</em> Put <code>apc.enable_cli=1</code> in <code>/etc/php/{{ php_version }}/mods-available/apcu.ini</code> and it worked. ({{ php_version }} == 7.4/8.0)</p></li>
+</ul>
+
+<p><a href="https://help.nextcloud.com/t/occ-wont-run-with-memcache-apcu/119724/6">https://help.nextcloud.com/t/occ-wont-run-with-memcache-apcu/119724/6</a></p>
+
+<p>File: /etc/php/7.4/mods-available/apcu.ini</p>
+
+<pre><code class="```">  ~
+  apc.enable_cli=1
+  ~
+
+</code></pre>
+
+<hr />
+
+<ul>
+<li><p><em>Problem:</em> External storage option for SMB/CIFS.</p></li>
+<li><p><em>Solution:</em> Enable APP 'External Storage&quot; and install package</p></li>
+</ul>
+
+<pre><code class="```">  $ sudo apt-get install smbclient
+
+</code></pre>
+
+<hr />
+
+<ul>
+<li><p><em>Problem:</em> Backup calendar and contacts</p></li>
+<li><p><em>Solution:</em> Use vdirsync (see below) Offline Copy of Contacts and Calendar</p></li>
+</ul>
+
+<hr />
+
+<ul>
+<li><p><em>Problem:</em> Contacts and Calendar access from iOS</p></li>
+<li><p><em>Solution:</em> Create or modify htaccess file in web root directory to perform http redirect (301)</p></li>
+</ul>
+
+<p>File: /var/www/html/.htaccess</p>
+
+<pre><code class="```">  &lt;IfModule mod_rewrite.c&gt;
+    RewriteEngine on
+    RewriteRule ^\.well-known/carddav   /remote.php/dav [R=301,L]
+    RewriteRule ^\.well-known/caldav    /remote.php/dav [R=301,L]
+    RewriteRule ^\.well-known/webfinger /index.php/.well-known/webfinger [R=301,L]
+    RewriteRule ^\.well-known/nodeinfo  /index.php/.well-known/nodeinfo [R=301,L]
+  &lt;/IfModule&gt;
+
+</code></pre>
+
+<h2 id="talkfromcommandline">Talk from Command Line</h2>
+
+<p>This is a way to send messages to the phone from Linux command line. Requires the &#8216;NextCloud Talk&#8217; iOS app from the Apple App store and &#8216;Mattermost&#8217; app from the NextCloud App store.</p>
+
+<h4 id="talkmattermostshellscript">Talk Mattermost Shell Script</h4>
+
+<blockquote>
+<p>After Nextcloud 27, Talk Mattermost app does not work, and is not needed to send messages through the command line.</p>
+</blockquote>
+
+<p>File: ~/talk_mattermost.sh</p>
+
+<pre><code>#!/bin/bash
+#----------------------------------------------------
+# File: talk_mattermost.sh
+#
+# Usage: talk_mattermost.sh &lt;msg&gt;
+#
+# Purpose: Send message to nextcloud talk client
+#
+# Dependencies: 
+# Version Nextcloud 26 or below:
+#  1) In NextCloud apps, search for Mattermost
+# 
+#  2) Click install it
+# 
+#  3) In Settings, enable it
+#
+# All Versions: 
+# 4) Create a dedicated user in Nextcloud; i.e.: robot
+#     with password under “User/Security”.
+#     (a new account specifically for the bot) first.
+#     It will not relay messages from yourself if you use your account
+# 
+# 5) Create a Nextloud Talk channel
+#     - new conversasion (e.g.: robotic) while logged in as new user 'robot'
+#     - under ... [options] enable MatterMost -&gt; Nextcloud Talk)
+#       with the user for the automatic service
+#     - add users to whom the push messages should be sent.
+#       (you will see automatic user 'bridge-bot' as a participant)
+# 
+# 6) Open the channel and *copy the channel id* from the URL
+#     (https://&lt;address_to_nextcloud_service&gt;/index.php/call/&lt;channel_id&gt;).
+# 
+# 7) And now follows the magic PHP-code part, which has to be copied somewhere on the server.
+# 
+# &lt;?php
+# 	function NextcloudTalk_SendMessage($channel_id, $message) {
+# 		$SERVER = &quot;https://&lt;address_to_nextcloud_service&gt;&quot;;
+# 		$USER = &quot;&lt;nextcloud_robotic_user&gt;&quot;;
+# 		$PASS = &quot;&lt;application_password&gt;&quot;;
+# 
+# 		// notify hack
+# 		$data = array(
+# 			&quot;token&quot; =&gt; $channel_id,
+# 			&quot;message&quot; =&gt; $message,
+# 			&quot;actorDisplayName&quot; =&gt; &quot;PYTHON-NOTIFICATION&quot;,
+# 			&quot;actorType&quot; =&gt; &quot;&quot;,
+# 			&quot;actorId&quot; =&gt; &quot;&quot;,
+# 			&quot;timestamp&quot; =&gt; 0,
+# 			&quot;messageParameters&quot; =&gt; array()
+# 		);
+# 
+# 		$payload = json_encode($data);
+# 
+# 		$ch = curl_init($SERVER . '/ocs/v2.php/apps/spreed/api/v1/chat/' . $channel_id);
+# 
+# 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+# 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+# 		curl_setopt($ch, CURLINFO_HEADER_OUT, true);
+# 		curl_setopt($ch, CURLOPT_POST, true);
+# 		curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
+# 		curl_setopt($ch, CURLOPT_USERPWD, &quot;$USER:$PASS&quot;);
+# 		curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+# 
+# 		// Set HTTP Header
+# 		curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+# 			'Content-Type: application/json',
+# 			'Content-Length: ' . strlen($payload),
+# 			'Accept: application/json',
+# 			'OCS-APIRequest: true')
+# 		);
+# 
+# 		$result = curl_exec($ch);
+# 		curl_close($ch);
+# 
+# 	}
+# 
+# 	$token = $argv[1];
+# 	$message = $argv[2];
+# 
+# 	NextcloudTalk_SendMessage($token, $message);
+# ?&gt;
+# 
+# 8) Test service from command line
+# php &lt;path_to_file&gt;/nextcloudmessage.php &lt;channel_id&gt; &lt;message&gt;
+# 
+# Reference: https://www.developercookies.net/push-notification-service-with-nextcloud-talk/
+#            https://github.com/42wim/matterbridge#configuration
+#
+# Date     Author     Description
+# ----     ------     -----------
+# Dec-2021 Don Cohoon Created
+# Jun-2023 Don Cohoon Talk Mattermost app not available/needed on Nextcloud v27
+#----------------------------------------------------
+CHANNEL_ID=***********
+/usr/bin/php /data/talk_mattermost.php ${CHANNEL_ID} &quot;${@}&quot;
+</code></pre>
+
+<h4 id="talkmattermostphpscript">Talk Mattermost PHP Script</h4>
+
+<pre><code>&lt;?php
+	function NextcloudTalk_SendMessage($channel_id, $message) {
+		$SERVER = &quot;https://www.example.com/&quot;;
+		$USER = &quot;robot&quot;;
+		$PASS = &quot;*************&quot;;
+
+		// notify hack
+		$data = array(
+			&quot;token&quot; =&gt; $channel_id,
+			&quot;message&quot; =&gt; $message,
+			&quot;actorDisplayName&quot; =&gt; &quot;PYTHON-NOTIFICATION&quot;,
+			&quot;actorType&quot; =&gt; &quot;&quot;,
+			&quot;actorId&quot; =&gt; &quot;&quot;,
+			&quot;timestamp&quot; =&gt; 0,
+			&quot;messageParameters&quot; =&gt; array()
+		);
+
+		$payload = json_encode($data);
+
+		$ch = curl_init($SERVER . '/ocs/v2.php/apps/spreed/api/v1/chat/' . $channel_id);
+
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLINFO_HEADER_OUT, true);
+		curl_setopt($ch, CURLOPT_POST, true);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
+		curl_setopt($ch, CURLOPT_USERPWD, &quot;$USER:$PASS&quot;);
+		curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+
+		// Set HTTP Header
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+			'Content-Type: application/json',
+			'Content-Length: ' . strlen($payload),
+			'Accept: application/json',
+			'OCS-APIRequest: true')
+		);
+
+		$result = curl_exec($ch);
+		curl_close($ch);
+
+	}
+
+	$token = $argv[1];
+	$message = $argv[2];
+
+	NextcloudTalk_SendMessage($token, $message);
+?&gt;
+</code></pre>
+
+<h2 id="federatedsharingbetweennextcloudservers">Federated Sharing Between Nextcloud Servers</h2>
+
+<p>If you have a friend using NextCloud and want to share data between you and them, or you have an organization with several instances of NextCloud, it is possible to let them sync between each other. This is called Federation.</p>
+
+<p>The main requirement is that both hosts must have https (SSL/TLS) enabled on their web servers with valid certificates.</p>
+
+<h3 id="inbothnextcloudhosts">In both Nextcloud hosts</h3>
+
+<ol>
+<li><p>Enable the Federation App in NextCloud app admin screen.</p></li>
+<li><p>Update NextCloud configs, <em>trusted_domains</em> and add the <em>allow_local_remote_servers</em> if both hosts are on the same domain.</p></li>
+</ol>
+
+<p>File: /var/www/nextcloud/config.php:</p>
+
+<pre><code>'trusted_domains' =&gt;  
+  array (  
+    0 =&gt; '[localhost](http://localhost)',  
+    1 =&gt; '192.168.0.5',  
+    2 =&gt; '[one.example.com](http://one.example.com)',  
+    3 =&gt; '[two.example.com](http://two.example.com)',  
+    4 =&gt; '[www.example.com](http://www.example.com)',  
+    5 =&gt; '[example.com](http://example.com)',  
+  ),  
+\~
+
+'allow_local_remote_servers'=&gt;true,
+
+\~
+</code></pre>
+
+<ol>
+<li>In NextCloud setting screen: Set global sharing checkboxes to send and receive remote shares</li>
+</ol>
+
+<h3 id="insendingnextcloud">In Sending Nextcloud</h3>
+
+<p>In NextCloud file screen: Share file/folder using</p>
+
+<pre><code>&lt;login&gt;@&lt;server&gt;/&lt;URI&gt;
+</code></pre>
+
+<p>For example, from <em>host www</em> to share with <em>host one</em> <em>user cloud</em> enter this as the <em>shared with</em> name on the File screen:</p>
+
+<p><code>cloud@one.example.com</code></p>
+
+<h3 id="inreceivingnextcloud">In Receiving Nextcloud</h3>
+
+<p>Check NextCloud on receiving host, should see <strong>share alert</strong> pop up, then you <em>NEED</em> to press the <em>ACCEPT</em> button .</p>
+
+<p>Reference:</p>
+
+<ul>
+<li> <a href="https://nextcloud.com/federation/">https://nextcloud.com/federation/</a></li>
+<li> <a href="https://docs.nextcloud.com/server/latest/user_manual/en/files/federated_cloud_sharing.html">https://docs.nextcloud.com/server/latest/user_manual/en/files/federated_cloud_sharing.html</a></li>
+<li> <a href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/federated_cloud_sharing_configuration.html">https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/federated_cloud_sharing_configuration.html</a></li>
+</ul>
+
+<h2 id="offlinecopyofcontactsandcalendar">Offline Copy of Contacts and Calendar</h2>
+
+<p>This is a solution for backing up Contacts and Calendars from the NextCloud database to a flat file. The file can then be used for restore back to the database or transfer to another NextCloud instance. Additionally it can be used to access Contacts and Calendars from Linux command line.</p>
+
+<h4 id="installvdirsyncerpackage">Install vdirsyncer package</h4>
+
+<pre><code>$ sudo apt-get install vdirsyncer
+</code></pre>
+
+<h4 id="configurevdirsyncer">Configure vdirsyncer</h4>
+
+<p>File: /data/vcard/vdirsyncer-nextcloud.conf</p>
+
+<pre><code>[general]
+status_path = &quot;~/.vdirsyncer/status/&quot;
+
+[pair contacts_nextcloud_to_local]
+a = &quot;my_contacts_local&quot;
+b = &quot;my_contacts_nextcloud&quot;
+collections = [&quot;from a&quot;, &quot;from b&quot;]
+
+[storage my_contacts_local]
+type = &quot;filesystem&quot;
+path = &quot;~/.contacts/&quot;
+fileext = &quot;.vcf&quot;
+
+[storage my_contacts_nextcloud]
+type = &quot;carddav&quot;
+
+url = &quot;https://www.example.com/&quot;
+username = &quot;cloud&quot;
+password = &quot;*************&quot;
+
+[pair cal_nextcloud_to_local]
+a = &quot;my_cal_local&quot;
+b = &quot;my_cal_nextcloud&quot;
+collections = [&quot;from a&quot;, &quot;from b&quot;]
+
+[storage my_cal_local]
+type = &quot;filesystem&quot;
+path = &quot;~/.calendars/&quot;
+fileext = &quot;.ics&quot;
+
+[storage my_cal_nextcloud]
+type = &quot;caldav&quot;
+
+url = &quot;https://www.example.com/&quot;
+username = &quot;cloud&quot;
+password = &quot;**********&quot;
+</code></pre>
+
+<p>Run discovery to populate the sync directories and configuration in your $HOME directory</p>
+
+<pre><code>$ vdirsyncer -c /data/vcard/vdirsyncer-nextcloud.conf discover
+</code></pre>
+
+<p>Create a script to run it. Make sure you created the .htaccess file above.</p>
+
+<p>File:/data/vcard/vdirsyncer.sh</p>
+
+<pre><code>#!/bin/bash
+# sudo apt-get install vdirsyncer
+#
+# One-time only
+#vdirsyncer -c vdirsyncer-nextcloud.conf discover
+#
+# NOTE: Need to add .htaccess to /var/www/html
+#  Ref: https://docs.nextcloud.com/server/23/admin_manual/issues/general_troubleshooting.html#service-discovery
+#
+DIR=/data/vcard
+vdirsyncer -c ${DIR}/vdirsyncer-nextcloud.conf sync 2&gt;&amp;1 | mail -s vdirsync mail@example.com
+</code></pre>
+
+<h4 id="schedulevdirsyncer">Schedule vdirsyncer</h4>
+
+<p>Ensure it is executable:</p>
+
+<pre><code>$ chmod 755 /data/vcard/vdirsyncer.sh
+</code></pre>
+
+<p>Schedule vdirsync via /etc/cron.daily to backup contacts and calendars.</p>
+
+<p>File: /etc/cron.daily/vdirsyncer</p>
+
+<pre><code>#!/bin/bash
+sudo -u bob /data/vcard/vdirsyncer.sh
+</code></pre>
+
+<h2 id="contactsfromthecommandline">Contacts from the Command Line</h2>
+
+<p>khard command line will search and display your NextCloud contacts using vdirsync files locally.</p>
+
+<p>Reference: <a href="https://khard.readthedocs.io/en/latest/">https://khard.readthedocs.io/en/latest/</a></p>
+
+<h4 id="install">Install</h4>
+
+<pre><code>$ sudo apt-get install khard
+</code></pre>
+
+<h4 id="configure">Configure</h4>
+
+<p>First create a configuration file.</p>
+
+<p>File: /data/vcard/khard.conf</p>
+
+<pre><code>
+# example configuration file for khard version &gt; 0.14.0
+# place it under ~/.config/khard/khard.conf
+# This file is parsed by the configobj library.  The syntax is described at
+# https://configobj.readthedocs.io/en/latest/configobj.html#the-config-file-format
+
+[addressbooks]
+[[family]]
+path = ~/.contacts/family/
+[[friends]]
+path = ~/.contacts/friends/
+
+[general]
+debug = no
+default_action = list
+# These are either strings or comma seperated lists
+editor = vim, -i, NONE
+merge_editor = vimdiff
+
+[contact table]
+# display names by first or last name: first_name / last_name / formatted_name
+display = first_name
+# group by address book: yes / no
+group_by_addressbook = no
+# reverse table ordering: yes / no
+reverse = no
+# append nicknames to name column: yes / no
+show_nicknames = no
+# show uid table column: yes / no
+show_uids = yes
+# sort by first or last name: first_name / last_name / formatted_name
+sort = last_name
+# localize dates: yes / no
+localize_dates = yes
+# set a comma separated list of preferred phone number types in descending priority
+# or nothing for non-filtered alphabetical order
+preferred_phone_number_type = pref, cell, home
+# set a comma separated list of preferred email address types in descending priority
+# or nothing for non-filtered alphabetical order
+preferred_email_address_type = pref, work, home
+
+[vcard]
+# extend contacts with your own private objects
+# these objects are stored with a leading &quot;X-&quot; before the object name in the vcard files
+# every object label may only contain letters, digits and the - character
+# example:
+#   private_objects = Jabber, Skype, Twitter
+# default: ,  (the empty list)
+private_objects = Jabber, Skype, Twitter
+# preferred vcard version: 3.0 / 4.0
+preferred_version = 3.0
+# Look into source vcf files to speed up search queries: yes / no
+search_in_source_files = no
+# skip unparsable vcard files: yes / no
+skip_unparsable = no
+</code></pre>
+
+<p>Next create a script to run it, pointing to the configuration file and the &#8216;show&#8217; verb.</p>
+
+<p>File: ~/khard.sh</p>
+
+<pre><code>#!/bin/bash
+# sudo apt-get install khard
+#
+# Copy khard.conf to ~/.config/khard/khard.conf 
+#
+# show : allows selection for details
+# list : just shows listing then exit
+#
+khard -c khard.conf show ${1}
+
+echo &quot;&quot;
+
+# Detailed
+#khard -c khard.conf show ${1} --format yaml
+
+# dump and exit
+#khard -c khard.conf list ${1}
+
+# use contact.yaml as template
+#khard -c khard.conf new -i contact.yaml
+#khard -c khard.conf edit -i contact.yaml
+</code></pre>
+
+<h4 id="runit">Run it</h4>
+
+<p>Now see it in action.</p>
+
+<p>Sample run, searching for string match</p>
+
+<pre><code>$ ./khard.sh picard
+Select contact for Show action
+Address book: All
+Index    Name                     Phone                                E-Mail    UID   
+1        Dr. Picard, Jeffery    HOME,VOICE: 999-555-1212                       57    
+2        Picard                 WORK, VOICE, pref: (999) 555-1212              7A    
+Enter Index (q to quit): q
+Canceled
+</code></pre>
+
+<h2 id="calendarsfromthecommandline">Calendars from the Command Line</h2>
+
+<p>khal is a command line display of NextCloud calendar entries using vdirsync files locally.</p>
+
+<p>Reference: <a href="https://khal.readthedocs.io/en/latest/">https://khal.readthedocs.io/en/latest/</a></p>
+
+<h4 id="install">Install</h4>
+
+<pre><code>$ sudo apt-get install khal
+</code></pre>
+
+<h4 id="configure">Configure</h4>
+
+<p>First crete a configuration file that matches your NextCloud calendar names. This example has 2 calendars, personal and bills.</p>
+
+<p>File: /data/vcard/khal.conf</p>
+
+<pre><code>[calendars]
+
+  [[home]]
+    path = ~/.calendars/personal/
+    color = dark cyan
+    priority = 20
+
+  [[bills]]
+    path = ~/.calendars/bills/
+    color = dark red
+    readonly = True
+
+[locale]
+local_timezone = America/New_York
+default_timezone = America/New_York
+
+# If you use certain characters (e.g. commas) in these formats you may need to
+# enclose them in &quot;&quot; to ensure that they are loaded as strings.
+timeformat = %H:%M
+dateformat = %d-%b-
+longdateformat = %d-%b-%Y
+datetimeformat =  %d-%b- %H:%M
+longdatetimeformat = %d-%b-%Y %H:%M
+
+firstweekday = 0
+#monthdisplay = firstday
+
+[default]
+default_calendar = home
+timedelta = 7d # the default timedelta that list uses
+highlight_event_days = True  # the default is False
+</code></pre>
+
+<p>Next create a script to run it, pointing to the configuration file.</p>
+
+<p>File: ~/khal.sh</p>
+
+<pre><code>#!/bin/bash
+khal -c /data/vcard/khal.conf calendar
+</code></pre>
+
+<h4 id="runit">Run it</h4>
+
+<p>Now run the command line calendar. It will use the latest vsyndir files locally.</p>
+
+<pre><code>$ ./khal.sh 
+    Mo Tu We Th Fr Sa Su     Today, 03-Jan-2023
+Jan 26 27 28 29 30 31  1     21:00-22:00 Gas Bill ⟳
+     2  3  4  5  6  7  8     Monday, 09-Jan-2023
+     9 10 11 12 13 14 15     18:30-19:30 Trash pickup tomorrow  ⟳
+    16 17 18 19 20 21 22     
+    23 24 25 26 27 28 29     
+Feb 30 31  1  2  3  4  5     
+     6  7  8  9 10 11 12     
+    13 14 15 16 17 18 19     
+    20 21 22 23 24 25 26     
+Mar 27 28  1  2  3  4  5     
+     6  7  8  9 10 11 12     
+    13 14 15 16 17 18 19     
+    20 21 22 23 24 25 26     
+Apr 27 28 29 30 31  1  2   
+</code></pre>
+
+<h1 id="apache-blockmalicioushosts">Apache - Block Malicious Hosts</h1>
+
+<p>With NextCloud comes Apache web server, and with that comes strangers knocking on your door. I welcome my friends, family, neighbors and people who just want to look at your front garden. I also limit who has access to my back garden and especially indoors.</p>
+
+<p>With that, here is a way to post a bouncer at your gate. Obtain the IP addresses from your logwatch and logcheck scripts as well as the /var/log/apache2/errors.log. They usually show up as some kind of mal-formed URL request with strange directory patterns.</p>
+
+<p>Examples of mal-formed URLs:</p>
+
+<pre><code>/.DS_Store
+/.env
+/debug/default/view?panel=config
+/ecp/Current/exporttool/microsoft.exchange.ediscovery.exporttool.application
+/telescope/requests
+/s/633323e2431313e2535323e26393/_/;/META-INF/maven/com.atlassian.jira/jira-webapp-dist/pom.properties
+/?rest_route=/wp/v2/users/
+/server-status
+/.git/config
+/.vscode/sftp.json
+/info.php
+/login.action
+/config.json
+/v2/_catalog
+/api/search?folderIds=0
+/about
+</code></pre>
+
+<h2 id="script">Script</h2>
+
+<p>The script from nitefood at github provides Autonomous System Numbers (ASN) which is a better indicator of all an organizations IP number ranges then the standard <code>whois &lt;ip&gt;</code>, so the firewall.sh script will utilize them as CIDR range blocks to UFW.</p>
+
+<p>In order to use the IPQualityScore API for <em>in-depth threat reporting</em>, it&#8217;s necessary to sign up for their service (it&#8217;s free) and get an API token (it will be emailed to you on sign-up), which will entitle you to 5000 free lookups per month.</p>
+
+<p>Reference:</p>
+
+<ul>
+<li> <a href="https://github.com/nitefood/asn">https://github.com/nitefood/asn</a></li>
+<li> <a href="https://www.arin.net/resources/guide/asn/">https://www.arin.net/resources/guide/asn/</a></li>
+</ul>
+
+<p>This script will block the IP address range of an organization. Typically when one IP is hacking into systems, others within that domains range will be at it too.</p>
+
+<p>File: ~/linux/firewall.sh</p>
+
+<pre><code class="text">#!/bin/bash
+####################################################################
+#
+# File: firewall.sh
+#
+# Purpose: get CIDR of IP and block using ufw
+#
+# Dependencies:
+#  sudo apt-get install curl whois bind9-host mtr-tiny jq ipcalc grepcidr nmap ncat aha 
+#
+#  git clone https://github.com/nitefood/asn 
+#
+#  Be sure to get an ~/.asn/iqs_token
+#  from https://github.com/nitefood/asn#ip-reputation-api-token
+#
+####################################################################
+DIR=/root
+LOG=${DIR}/firewall.log
+WHO=/tmp/whois.txt
+CIDR=/tmp/whois.cidr
+IP=&quot;${1}&quot;
+#
+function run_asn() {
+  ${DIR}/asn/asn -n ${IP} &gt; ${WHO}
+  /usr/bin/cat ${WHO}
+  RANGE=$(/usr/bin/cat ${WHO} | /usr/bin/grep 'NET' | /usr/bin/grep '/' | /usr/bin/awk -Fm '{print $6}' | /usr/bin/cut -d&quot; &quot; -f1)
+  echo &quot;CDR: ${RANGE}&quot;
+  echo &quot;${RANGE}&quot; &gt; ${CIDR}
+}
+#
+if [ ${1} ]; then
+  run_asn
+else
+  echo &quot;Usage: ${0} &lt;IP Address&gt;&quot;
+  exit 1
+fi
+#
+/usr/bin/grep -v deaggregate ${CIDR} &gt; ${CIDR}.block
+while read -r IP
+  do
+    echo &quot;Blocking: ${IP}&quot; | tee -a ${LOG}
+    sudo /usr/sbin/ufw prepend deny from ${IP} to any 2&gt;&amp;1 |tee -a $LOG
+  done &lt; ${CIDR}.block
+
+</code></pre>
+
+<p>Make it executable</p>
+
+<pre><code>$ chmod 755 ~/linux/firewall.sh
+</code></pre>
+
+<h2 id="usage">Usage</h2>
+
+<pre><code>$ ~/linux/firewall.sh 43.129.97.125
+                                                                                                                                                           
+╭──────────────────────────────╮
+│ ASN lookup for 43.129.97.125 │
+╰──────────────────────────────╯
+
+ 43.129.97.125 ┌PTR -
+               ├ASN 132203 (TENCENT-NET-AP-CN Tencent Building, Kejizhongyi Avenue, CN)
+               ├ORG 6 COLLYER QUAY
+               ├NET 43.129.64.0/18 (ACEVILLEPTELTD-SG)
+               ├ABU -
+               ├ROA ✓ UNKNOWN (no ROAs found)
+               ├TYP  Hosting/DC 
+               ├GEO Hong Kong, Central and Western District (HK)
+               └REP ✓ NONE  SEEN SCANNING 
+
+
+CDR: 43.129.64.0/18
+Rule inserted
+43.129.64.0/18 Blocked
+</code></pre>
+
+<h1 id="upgradenextcloud">Upgrade Nextcloud</h1>
+
+<p>Download the latest nextcloud community server software.</p>
+
+<pre><code>$ curl https://download.nextcloud.com/server/releases/latest.zip -o nextcloud.zip
+</code></pre>
+
+<h2 id="upgrademanually">Upgrade manually</h2>
+
+<p>If you upgrade from a previous major version please see critical changes first.</p>
+
+<p>Reference: <a href="https://docs.nextcloud.com/server/stable/admin_manual/release_notes/index.html#critical-changes">https://docs.nextcloud.com/server/stable/admin_manual/release_notes/index.html#critical-changes</a></p>
+
+<p>Always start by making a fresh backup and disabling all 3rd party apps.</p>
+
+<ul>
+<li><p>Back up your existing Nextcloud Server database, data directory, and config.php file. (See Backup, for restore information see Restoring backup)</p></li>
+<li><p>Download and unpack the latest Nextcloud Server release (Archive file) from nextcloud.com/install/ into an empty directory outside of your current installation.</p></li>
+</ul>
+
+<pre><code>$ unzip nextcloud-[version].zip 
+# -or- 
+$ tar -xjf nextcloud-[version].tar.bz2
+</code></pre>
+
+<ul>
+<li><p>Stop your Web server.</p></li>
+<li><p>In case you are running a cron-job for nextcloud’s house-keeping disable it by commenting the entry in the crontab file</p></li>
+</ul>
+
+<pre><code># Debian
+$ sudo crontab -u www-data -e
+# RedHat
+$ sudo crontab -u apache -e
+</code></pre>
+
+<p>(Put a # at the beginning of the corresponding line.)</p>
+
+<ul>
+<li><p>Rename your current Nextcloud directory, for example nextcloud-old.</p></li>
+<li><p>Unpacking the new archive creates a new nextcloud directory populated with your new server files. Move this directory and its contents to the original location of your old server. For example /var/www/, so that once again you have /var/www/nextcloud.</p></li>
+<li><p>Copy the config/config.php file from your old Nextcloud directory to your new Nextcloud directory.</p></li>
+</ul>
+
+<p>If you keep your data/ directory in your nextcloud/ directory, copy it from your old version of Nextcloud to your new nextcloud/. If you keep it outside of nextcloud/ then you don’t have to do anything with it, because its location is configured in your original config.php, and none of the upgrade steps touch it.</p>
+
+<p>If you are using 3rd party application, it may not always be available in your upgraded/new Nextcloud instance. To check this, compare a list of the apps in the new nextcloud/apps/ folder to a list of the of the apps in your backed-up/old nextcloud/apps/ folder. If you find 3rd party apps in the old folder that needs to be in the new/upgraded instance, simply copy them over and ensure the permissions are set up as shown below.</p>
+
+<p>If you have additional apps folders like for example nextcloud/apps-extras or nextcloud/apps-external, make sure to also transfer/keep these in the upgraded folder.</p>
+
+<p>If you are using 3rd party theme make sure to copy it from your themes/ directory to your new one. It is possible you will have to make some modifications to it after the upgrade.</p>
+
+<ul>
+<li>Adjust file ownership and permissions:</li>
+</ul>
+
+<pre><code>$ cd /var/www
+# Debian
+$ sudo chown -R www-data:www-data nextcloud
+# RedHat
+$ sudo chown -R apache:apache nextcloud
+# Both
+$ sudo find nextcloud/ -type d -exec chmod 750 {} \;
+$ sudo find nextcloud/ -type f -exec chmod 640 {} \;
+</code></pre>
+
+<ul>
+<li><p>Restart your Web server.</p></li>
+<li><p>Now launch the upgrade from the command line using occ:</p></li>
+</ul>
+
+<pre><code>$ cd  /var/www/nextcloud/
+# Debian
+$ sudo -u www-data php /var/www/nextcloud/occ upgrade
+# RedHat
+$ sudo -u apache php /var/www/nextcloud/occ upgrade
+</code></pre>
+
+<blockquote>
+<p>This MUST be executed from within your nextcloud installation directory</p>
+</blockquote>
+
+<p>The upgrade operation takes a few minutes to a few hours, depending on the size of your installation. When it is finished you will see a success message, or an error message that will tell where it went wrong.</p>
+
+<ul>
+<li>Re-enable the nextcloud cron-job. (See step 4 above.)</li>
+</ul>
+
+<pre><code># Debian
+$ sudo crontab -u www-data -e
+# RedHat
+$ sudo crontab -u apache -e
+</code></pre>
+
+<p>(Delete the # at the beginning of the corresponding line in the crontab file.)</p>
+
+<ul>
+<li>Login and take a look at the bottom of your Admin page to verify the version number. Check your other settings to make sure they’re correct. Go to the Apps page and review the core apps to make sure the right ones are enabled. Re-enable your third-party apps.</li>
+</ul>
+
+<p>Reference: <a href="https://docs.nextcloud.com/server/stable/admin_manual/maintenance/manual_upgrade.html">https://docs.nextcloud.com/server/stable/admin_manual/maintenance/manual_upgrade.html</a></p>
+
+<h1 id="continue">Continue</h1>
+
+<p>Now that you have Cloud, consider some Home Automation, like door and window security, lights and more.</p>
+
+<p>Proceed in the order presented, some things are depending on prior setups.</p>
+
+<hr>
+
+<h4 id="madeforhumansbyahuman">Made for Humans, by a Human</h4>
+
+<h4 id="links">Links</h4>
+
+<ul>
+<li><a href="https://lwn.net/">Linux Weekly News</a></li>
+<li><a href="https://fullcirclemagazine.org/">Full Circle Magazine</a></li>
+<li><a href="https://www.linuxjournal.com/">Linux Journal</a></li>
+<li><a href="https://www.linux-magazine.com/">Linux Magazine</a></li>
+<li><a href="https://www.thefarside.com/">The Far Side</a></li>
+</ul>
+
+<h4 id="social">Social</h4>
+
+<ul>
+<li><a href="https://fosstodon.org/@Cohoon">Feedback</a></li>
+<li><a href="/linux-in-house/feed-Linux.rss">Linux RSS Feed</a></li>
+<li><a href="/linux-in-house/feed-Writing.rss">Writing RSS Feed</a></li>
+<li><a href="https://linux-in-the-house.pages.dev/">Book</a></li>
+</ul>
+
+<h5 id="builtwithmultimarkdownhttps:github.comfletchermultimarkdown-6andw3schoolshttps:www.w3schools.comw3cssw3css_pro.asp">Built with <a href="https://github.com/fletcher/MultiMarkdown-6">MultiMarkdown</a> and <a href="https://www.w3schools.com/w3css/w3css_pro.asp">W3 Schools</a></h5>
+
+<h5 id="license:ahrefhttp:creativecommons.orglicensesby-nc-sa4.0cc-by-nc-sa4.0a">License: <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0</a></h5>
+
+</body>
+</html>
+

@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>E-Mail</title>
+	<meta name="date" content="2023-01-25 10:14"/>
+	<meta name="modified" content="2024-04-19 9:30"/>
+	<meta name="tags" content="email"/>
+	<meta name="author" content="Don Cohoon"/>
+	<meta name="summary" content="Electronic Mail (E-Mail) is a way to type letters onto a computer and send them to other people. These other people's computers will then use E-Mail to read your letters. It is an electronic version of the Post Office."/>
+	<meta name="license" content="'[CC-BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)'"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"> <link rel="stylesheet" href="/linux-in-house/common.css" type="text/css" />
+</head>
+<body>
+
+<p><a href="/linux-in-house/"><h1>Linux in House</h1></a></p>
+
+<link href="/linux-in-house/pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/linux-in-house/pagefind/pagefind-ui.js"></script>
+
+<div id="search"></div>
+<script>
+window.addEventListener('DOMContentLoaded', (event) => {
+      new PagefindUI({ element: "#search", showSubResults: true });
+});
+</script>
+
+<blockquote>
+<p><a href="/linux-in-house/linux/welcome.html">Welcome Back My Friends</a></p>
+</blockquote>
+
+<h1 id="e-mail">E-Mail</h1>
+
+<p>Electronic Mail (E-Mail) is a way to type letters onto a computer and send them to other people. These other people&#8217;s computers will then use E-Mail to read your letters. It is an electronic version of the Post Office.</p>
+
+<hr />
+
+<div class="TOC">
+
+<ul>
+<li><a href="#e-mail">E-Mail</a>
+<ul>
+<li><a href="#dovecot-presentse-mailstoclients">Dovecot - Presents E-Mails to Clients</a>
+<ul>
+<li><a href="#installation">Installation</a>
+<ul>
+<li><a href="#debian">Debian</a></li>
+<li><a href="#redhat">RedHat</a></li>
+</ul>
+</li>
+<li><a href="#usersettings">User Settings</a></li>
+<li><a href="#non-defaultsettings">Non-Default Settings</a></li>
+<li><a href="#updatesystemdstartupservice">Update systemd startup service</a></li>
+<li><a href="#sieve-filtersmailtocertainboxes">Sieve - filters mail to certain boxes</a></li>
+</ul>
+</li>
+<li><a href="#postfix-sendsandrecievese-mailoverthenetwork">Postfix - sends and recieves e-mail over the network</a>
+<ul>
+<li><a href="#configuration-main">Configuration - main</a></li>
+<li><a href="#configuration-login">Configuration - Login</a></li>
+<li><a href="#configuration-master">Configuration - Master</a></li>
+</ul>
+</li>
+<li><a href="#spamassasin-putsspamintoaspamfolderautomatically">Spamassasin - Puts SPAM into a SPAM folder automatically</a>
+<ul>
+<li><a href="#configure">Configure</a></li>
+<li><a href="#startspamassassinandrestartpostfix">Start spamassassin and restart postfix</a></li>
+<li><a href="#dailyupdateinetccron.daily">Daily update in /etc/cron.daily</a></li>
+<li><a href="#putspamhamlearningintoascript">Put spam/ham learning into a script</a></li>
+</ul>
+</li>
+<li><a href="#mailreaders">Mail Readers</a>
+<ul>
+<li><a href="#mutt">Mutt</a>
+<ul>
+<li><a href="#install">Install</a></li>
+<li><a href="#configure">Configure</a></li>
+</ul>
+</li>
+<li><a href="#evolution">Evolution</a>
+<ul>
+<li><a href="#install">Install</a></li>
+<li><a href="#configure">Configure</a></li>
+</ul>
+</li>
+<li><a href="#thunderbird">Thunderbird</a>
+<ul>
+<li><a href="#install">Install</a></li>
+<li><a href="#configure">Configure</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#offlineimap-makesabackupcopyofallemail">Offlineimap - Makes a backup copy of all email</a>
+<ul>
+<li><a href="#install">Install</a></li>
+<li><a href="#configure">Configure</a></li>
+<li><a href="#schedule">Schedule</a></li>
+</ul>
+</li>
+<li><a href="#postfixlogsummary">Postfix Log Summary</a>
+<ul>
+<li><a href="#install">Install</a></li>
+<li><a href="#schedule">Schedule</a></li>
+</ul>
+</li>
+<li><a href="#alternatives">Alternatives</a>
+<ul>
+<li><a href="#exim4">exim4</a>
+<ul>
+<li><a href="#whatitdoes">What it does</a></li>
+</ul>
+</li>
+<li><a href="#iredmail">iRedMail</a></li>
+<li><a href="#mail-in-a-box">Mail-in-a-Box</a></li>
+<li><a href="#citadel">Citadel</a></li>
+</ul>
+</li>
+<li><a href="#continue">Continue</a>
+<ul>
+<li><a href="#madeforhumansbyahuman">Made for Humans, by a Human</a></li>
+<li><a href="#links">Links</a></li>
+<li><a href="#social">Social</a>
+<ul>
+<li><a href="#builtwithmultimarkdownhttps:github.comfletchermultimarkdown-6andw3schoolshttps:www.w3schools.comw3cssw3css_pro.asp">Built with <a href="https://github.com/fletcher/MultiMarkdown-6">MultiMarkdown</a> and <a href="https://www.w3schools.com/w3css/w3css_pro.asp">W3 Schools</a></a></li>
+<li><a href="#license:ahrefhttp:creativecommons.orglicensesby-nc-sa4.0cc-by-nc-sa4.0a">License: <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0</a></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+<hr />
+
+<h2 id="dovecot-presentse-mailstoclients">Dovecot - Presents E-Mails to Clients</h2>
+
+<p>Dovecot [1] provides a way for Mail User Agents (MUA) to <em>manage</em> their E-Mail. Typical MUAs are Thunderbird [2], Evolution [3], and Mutt [4].</p>
+
+<p>Dovecot supports Internet Message Access Protocol (IMAP, port 993) [5] as a server over the network to multiple clients at the same time. It is commonly referred to as a Mail Delivery Agent (MDA) delivering mail from a file repository on some server to the MUA.</p>
+
+<p>The Maildir database sets each E-Mail as a seperate file on the server, arranged into folders as dictated by the MUA. Indexing is automatic.</p>
+
+<p>Postfix [6] is a Mail Transfer Agent (MTA) that <em>receives</em> E-Mail over the Internet using Simple Mail Transfer Protocol (SMTP, port 25 [7]) and delivers it locally to Dovecot. MUA <em>sending</em> is also done by postfix using Submission (ports 587 [8], and 465 for SSL [9]). Message relay from one mail server to another is done by postfix using SMTP too.</p>
+
+<figure>
+<img src="/linux-in-house/images/graph-email.svg" alt="E-Mail" />
+<figcaption>E-Mail</figcaption>
+</figure>
+
+<ol>
+<li><a href="https://www.dovecot.org/">https://www.dovecot.org/</a></li>
+<li><a href="https://www.thunderbird.net/en-US/">https://www.thunderbird.net/en-US/</a></li>
+<li><a href="https://help.gnome.org/users/evolution/stable/">https://help.gnome.org/users/evolution/stable/</a></li>
+<li><a href="http://www.mutt.org/">http://www.mutt.org/</a></li>
+<li><a href="https://www.rfc-editor.org/rfc/rfc9051">https://www.rfc-editor.org/rfc/rfc9051</a></li>
+<li><a href="http://www.postfix.org/">http://www.postfix.org/</a></li>
+<li><a href="https://www.rfc-editor.org/rfc/rfc5321.html">https://www.rfc-editor.org/rfc/rfc5321.html</a></li>
+<li><a href="https://datatracker.ietf.org/doc/html/rfc4409">https://datatracker.ietf.org/doc/html/rfc4409</a></li>
+<li><a href="https://datatracker.ietf.org/doc/html/rfc8314">https://datatracker.ietf.org/doc/html/rfc8314</a></li>
+</ol>
+
+<h3 id="installation">Installation</h3>
+
+<p>Install the four main packages:</p>
+
+<ul>
+<li>core - core files</li>
+<li>imapd - IMAP daemon</li>
+<li>managesieved - ManageSieve server</li>
+<li>sieve - Sieve filters support</li>
+</ul>
+
+<h4 id="debian">Debian</h4>
+
+<pre><code>$ sudo apt-get install dovecot-core dovecot-imapd dovecot-managesieved dovecot-sieve 
+</code></pre>
+
+<h4 id="redhat">RedHat</h4>
+
+<pre><code>$ sudo dnf install dovecot dovecot-pigeonhole
+</code></pre>
+
+<blockquote>
+<p>Pigeonhole is the name of the project that adds support for the Sieve language (RFC 5228) and the ManageSieve protocol (RFC 5804) to the Dovecot Secure IMAP Server. In the literal sense, a pigeonhole is a hole or recess inside a dovecot for pigeons to nest in. It is, however, also the name for one of a series of small, open compartments in a cabinet used for filing or sorting mail. As a verb, it describes the act of putting an item into one of those pigeonholes. The name `Pigeonhole' therefore well describes an important part of the functionality that this project adds to Dovecot: sorting and filing e-mail messages.</p>
+</blockquote>
+
+<h3 id="usersettings">User Settings</h3>
+
+<p>Create a symbolic link for the mail location (~/Maildir) to an NFS mount that you created in the NAS page, such as <code>/home/&lt;user&gt;/Maildir</code>. This will provide the extra protection of ZFS for your E-Mail database, should a disk fail.</p>
+
+<p>For instance, for NFS Mount at <code>/media/share</code> and Linux <code>&lt;user&gt;@&lt;domain&gt;.com</code>:</p>
+
+<ul>
+<li>Create Linux user for E-Mail bob@example.com, and directory:</li>
+</ul>
+
+<pre><code>$ sudo useradd bob@example.com
+$ sudo mkdir /home/bob@example.com
+$ sudo chown bob@example.com  /home/bob@example.com
+$ sudo mkdir -p /media/share/bob/Maildir
+$ sudo chown -R bob@example.com  /media/share/bob
+$ ln -s /media/share/bob/Maildir /home/bob@example.com 
+</code></pre>
+
+<p>Dovecot MUA logins are Linux logins. Multiple MUAs will log into Dovecot using <em>different</em> logins so ~/Maildir will also be different. Data will be stored on the /media/share NFS mount.</p>
+
+<table>
+<colgroup>
+<col />
+<col />
+</colgroup>
+
+<thead>
+<tr>
+	<th> User </th>
+	<th> Maildir </th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td> bob </td>
+	<td> /media/share/bob/Maildir -&gt; /home/bob@example.com/Maildir </td>
+</tr>
+<tr>
+	<td> ted </td>
+	<td> /media/share/ted/Maildir -&gt; /home/ted@example.com/Maildir </td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="non-defaultsettings">Non-Default Settings</h3>
+
+<p>Create a configuration file that will override the default setting you want to change. Default settings are in directory: <code>/etc/dovecot/conf.d/</code></p>
+
+<p>File: /etc/dovecot/local.conf</p>
+
+<pre><code># Hostname: mail
+# Version: 21-Jan-2023
+mail_fsync = always
+mail_location = maildir:~/Maildir
+mail_privileged_group = mail
+managesieve_notify_capability = mailto
+managesieve_sieve_capability = fileinto reject envelope encoded-character vacation subaddress comparator-i;ascii-numeric relational regex imap4flags copy include variables body enotify environment mailbox date index ihave duplicate mime foreverypart extracttext
+mmap_disable = yes
+namespace inbox {
+  inbox = yes
+  location = 
+  mailbox Drafts {
+    special_use = \Drafts
+  }
+  mailbox Junk {
+    special_use = \Junk
+  }
+  mailbox Sent {
+    special_use = \Sent
+  }
+  mailbox &quot;Sent Messages&quot; {
+    special_use = \Sent
+  }
+  mailbox Trash {
+    special_use = \Trash
+  }
+  prefix = 
+}
+passdb {
+  driver = pam
+}
+plugin {
+  sieve = file:~/sieve;active=~/.dovecot.sieve
+  sieve_default = /var/lib/dovecot/sieve/default.sieve
+}
+protocols = &quot; imap sieve&quot;
+service auth {
+  unix_listener /var/spool/postfix/private/auth {
+    group = postfix
+    mode = 0660
+    user = postfix
+  }
+}
+service imap-login {
+  inet_listener imap {
+    port = 143
+  }
+  inet_listener imaps {
+    port = 993
+    ssl = yes
+  }
+}
+service imap {
+  process_limit = 1024
+}
+ssl_cert = &lt;/etc/letsencrypt/live/example.com/fullchain.pem
+ssl_client_ca_dir = /etc/ssl/certs
+ssl_dh = &lt;/etc/dovecot/dh.pem
+ssl_key = &lt;/etc/letsencrypt/live/example.com/privkey.pem
+userdb {
+  driver = passwd
+}
+protocol lda {
+  mail_plugins = &quot; sieve&quot;
+}
+protocol imap {
+  mail_max_userip_connections = 1024
+}
+</code></pre>
+
+<h3 id="updatesystemdstartupservice">Update systemd startup service</h3>
+
+<p>Change systemd startup <em>After</em> dependencies to wait for the network to be online and NFS filesystem to be mounted.</p>
+
+<pre><code>$ sudo systemctl edit dovecot.service
+</code></pre>
+
+<p>Add these lines</p>
+
+<pre><code>#After=local-fs.target network-online.target
+# Add fs-remote... Don - Jan 2023
+[Unit]
+After=syslog.target network-online.target local-fs.target remote-fs.target nss-lookup.target
+</code></pre>
+
+<blockquote>
+<p>This creates a new file to override the system defaults: /etc/systemd/system/dovecot.service.d/override.conf</p>
+</blockquote>
+
+<p>Generate a file with Diffie-Hellman parameters</p>
+
+<pre><code>$ sudo openssl dhparam -dsaparam -out /etc/dovecot/dh.pem 2048
+</code></pre>
+
+<p>Depending on the hardware and entropy on the server, generating Diffie-Hellman parameters with 4096 bits can take several minutes.</p>
+
+<p>Restart systemd and Dovecot to pick up changes:</p>
+
+<pre><code>$ sudo systemctl daemon-reload
+$ sudo systemctl restart dovecot
+</code></pre>
+
+<h3 id="sieve-filtersmailtocertainboxes">Sieve - filters mail to certain boxes</h3>
+
+<p>Edit your rules.</p>
+
+<p>File: /var/lib/dovecot/sieve/default.sieve</p>
+
+<pre><code>$ cat /var/lib/dovecot/sieve/default.sieve
+require [&quot;fileinto&quot;, &quot;envelope&quot;];
+#if header  :contains &quot;X-Spam-Flag&quot; &quot;YES&quot;  {
+if header :comparator &quot;i;ascii-casemap&quot; :contains &quot;X-Spam-Flag&quot; &quot;YES&quot;  {
+    fileinto &quot;INBOX.Spam&quot;;
+    stop;
+} elsif address :is &quot;to&quot; &quot;bob@example.com&quot; {
+ fileinto &quot;INBOX.Bob&quot;;
+} elsif address :is &quot;from&quot; &quot;logcheck@example.com&quot; {
+ fileinto &quot;INBOX.Bob.logcheck&quot;;
+} elsif header :contains &quot;subject&quot; [&quot;Change to Camera&quot;] {
+ fileinto &quot;INBOX.Camera&quot;;
+} else {
+ # The rest goes into INBOX
+ # default is &quot;implicit keep&quot;, we do it explicitly here
+ keep;
+}
+</code></pre>
+
+<p>Compile when done, then restart dovecot to pick up new changes</p>
+
+<pre><code>$ sudo sievec /var/lib/dovecot/sieve/default.sieve
+$ sudo systemctl restart dovecot
+</code></pre>
+
+<p>Reference: <a href="https://doc.dovecot.org/configuration_manual/sieve/usage/">https://doc.dovecot.org/configuration_manual/sieve/usage/</a></p>
+
+<h2 id="postfix-sendsandrecievese-mailoverthenetwork">Postfix - sends and recieves e-mail over the network</h2>
+
+<h3 id="configuration-main">Configuration - main</h3>
+
+<p>Create aliases to enable mail to go through from several standard unix accounts</p>
+
+<blockquote>
+<p>seperate words with the TAB character, not spaces.</p>
+</blockquote>
+
+<p>File: /etc/aliases</p>
+
+<pre><code># See man 5 aliases for format
+postmaster:    root
+mail:	root
+nobody:	root
+monit:  root
+clamav: root
+logcheck: root
+</code></pre>
+
+<p>Update the aliases so postfix can read them</p>
+
+<pre><code>$ sudo newaliases
+</code></pre>
+
+<p>Unix account uses home_mailbox of <em>~/Maildir</em>.</p>
+
+<p>Reference: <a href="http://www.postfix.org/BASIC_CONFIGURATION_README.html">http://www.postfix.org/BASIC_CONFIGURATION_README.html</a></p>
+
+<p>File: /etc/postfix/main.cf</p>
+
+<pre><code># See /usr/share/postfix/main.cf.dist for a commented, more complete version
+# Debian specific:  Specifying a file name will cause the first
+# line of that file to be used as the name.  The Debian default
+# is /etc/mailname.
+#myorigin = /etc/mailname
+
+# misc
+# only hostname
+smtpd_banner = $myhostname ESMTP e-mail (Linux)
+biff = no
+# appending .domain is the MUA's job.
+append_dot_mydomain = no
+# Uncomment the next line to generate &quot;delayed mail&quot; warnings
+#delay_warning_time = 4h
+readme_directory = no
+
+# alias
+alias_maps = hash:/etc/aliases
+alias_database = hash:/etc/aliases
+
+# hosts
+myhostname = www.example.com
+myorigin = /etc/mailname
+mydestination = example.com, example, localhost.localdomain, localhost
+mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128 192.168.0.0/16
+
+# mail box
+home_mailbox = Maildir/
+mailbox_size_limit = 0
+message_size_limit = 52428800
+header_size_limit = 4096000
+recipient_delimiter = +
+inet_interfaces = all
+mailbox_command = /usr/lib/dovecot/deliver -c /etc/dovecot/dovecot.conf -m &quot;${EXTENSION}&quot;
+
+# transport
+virtual_transport = dovecot
+dovecot_destination_recipient_limit = 1
+compatibility_level = 2
+inet_protocols = ipv4
+
+# TLS parameters
+smtpd_use_tls = yes
+smtpd_tls_cert_file = /etc/letsencrypt/live/example.com/fullchain.pem
+smtpd_tls_key_file  = /etc/letsencrypt/live/example.com/privkey.pem
+smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
+smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
+
+# No-IP - begin
+# http://www.noip.com/support/knowledgebase/configure-postfix-work-alternate-port-smtp/
+#debug_peer_list = 192.168.1.1
+#
+# sasl
+smtp_sasl_auth_enable = yes
+smtp_sasl_security_options = noanonymous
+smtp_sasl_password_maps = hash:/etc/postfix/sasl/sasl_passwd
+#
+# relay
+relayhost = [smtp-auth.no-ip.com]:465
+relay_destination_concurrency_limit = 20	
+relay_domains = $mydestination
+#
+# tls
+smtp_tls_wrappermode = yes
+smtp_tls_security_level = encrypt
+# No-IP - end
+
+# sasl authentication
+smtpd_sasl_type = dovecot
+smtpd_sasl_path = private/auth
+smtpd_sasl_authenticated_header = yes
+smtpd_sasl_local_domain = example.com
+
+# Block spammers
+smtpd_sender_restrictions = permit_mynetworks, permit_sasl_authenticated, reject_unknown_reverse_client_hostname, reject_unknown_client_hostname,
+#
+smtpd_client_restrictions = 
+  check_client_access hash:/etc/postfix/blacklist
+smtpd_relay_restrictions = permit_mynetworks, permit_sasl_authenticated, reject_unauth_destination
+# block spammers...end
+
+# TLS
+smtpd_tls_received_header = yes
+smtpd_tls_mandatory_protocols = SSLv3, TLSv1
+smtpd_tls_mandatory_ciphers = medium
+smtpd_tls_auth_only = yes
+
+# CA
+smtp_tls_CAfile = /etc/postfix/cacert.pem
+tls_random_source = dev:/dev/urandom
+
+# extra spam protection, 6-April-2019 : begin
+smtpd_helo_required = yes
+smtpd_helo_restrictions =
+    permit_mynetworks
+    permit_sasl_authenticated
+# extra spam protection, 6-April-2019 : end
+
+# address max connection rate  9-May-2019
+smtpd_error_sleep_time = 1s
+smtpd_soft_error_limit = 10
+smtpd_hard_error_limit = 20
+</code></pre>
+
+<h3 id="configuration-login">Configuration - Login</h3>
+
+<p>Change *&#8217;s to real passwords</p>
+
+<p>File: /etc/postfix/sasl/sasl_passwd</p>
+
+<pre><code>[smtp-auth.no-ip.com]:465 example.com@noip-smtp:***************
+</code></pre>
+
+<blockquote>
+<p>Use the <code>postmap</code> command whenever you change the <code>/etc/postfix/sasl/sasl_passwd</code> file.</p>
+</blockquote>
+
+<p>Reference: <a href="http://www.postfix.com/SASL_README.html">http://www.postfix.com/SASL_README.html</a></p>
+
+<p>Create sasl_passwd database for postfix relay to nop-ip</p>
+
+<pre><code>$ sudo postmap /etc/postfix/sasl_passwd
+
+# Protect the source file
+$ sudo chown root:root /etc/postfix/sasl /etc/postfix/sasl/sasl_passwd
+$ sudo chmod 0600      /etc/postfix/sasl /etc/postfix/sasl/sasl_passwd
+
+# Protect the database file
+$ sudo chown root:root /etc/postfix/sasl /etc/postfix/sasl/sasl_passwd.db
+$ sudo chmod 0600      /etc/postfix/sasl /etc/postfix/sasl/sasl_passwd.db
+</code></pre>
+
+<h3 id="configuration-master">Configuration - Master</h3>
+
+<p>Reference: <a href="http://www.postfix.org/master.5.html">http://www.postfix.org/master.5.html</a></p>
+
+<p>Add smtp, smtps and submission internet services (smtpd) and spamassassin, dovecot local services (pipe) to the default master.cf file.</p>
+
+<p>The <code>-o</code> lines override options in the main.cf file.</p>
+
+<p>File: /etc/postfix/master.cf</p>
+
+<pre><code># ==========================================================================
+# service type  private unpriv  chroot  wakeup  maxproc command + args
+#               (yes)   (yes)   (yes)   (never) (100)
+# ==========================================================================
+#............................................................................
+# P O S T F I X
+smtp       inet  n       -       y       -       -       smtpd -o content_filter=spamassassin
+submission inet  n       -       y       -       -       smtpd
+    -o smtpd_tls_security_level=encrypt
+    -o smtpd_sasl_auth_enable=yes
+    -o smtpd_sasl_type=dovecot
+    -o smtpd_sasl_path=private/auth
+    -o smtpd_sasl_security_options=noanonymous
+    -o smtpd_sasl_local_domain=$myhostname
+    -o smtpd_sender_login_maps=hash:/etc/postfix/virtual
+smtps      inet  n       -       y       -       -       smtpd
+    -o smtpd_tls_wrappermode=yes
+    -o smtpd_sasl_auth_enable=yes
+    -o milter_macro_daemon_name=ORIGINATING
+#............................................................................
+# S P A M A S S A S S I N
+spamassassin unix -     n       n       -       -       pipe
+  user=debian-spamd argv=/usr/bin/spamc -f -e  /usr/sbin/sendmail -oi -f ${sender} ${recipient}
+#............................................................................
+# D O V E C O T
+dovecot   unix  -       n       n       -       -       pipe
+ flags=DRhu user=mail:mail argv=/usr/libexec/dovecot/deliver -f ${sender} -d ${recipient} -a ${original_recipient}
+#............................................................................
+# M I S C
+pickup     fifo  n       -       y       60      1       pickup
+cleanup    unix  n       -       y       -       0       cleanup
+qmgr      fifo  n       -       n       300     1       qmgr
+#qmgr     fifo  n       -       -       300     1       oqmgr
+tlsmgr     unix  -       -       y       1000?   1       tlsmgr
+rewrite    unix  -       -       y       -       -       trivial-rewrite
+bounce     unix  -       -       y       -       0       bounce
+defer      unix  -       -       y       -       0       bounce
+trace      unix  -       -       y       -       0       bounce
+verify     unix  -       -       y       -       1       verify
+flush      unix  n       -       y       1000?   0       flush
+proxymap  unix  -       -       n       -       -       proxymap
+proxywrite unix -       -       n       -       1       proxymap
+relay      unix  -       -       y       -       -       smtp
+    -o smtp_fallback_relay=
+showq      unix  n       -       y       -       -       showq
+error      unix  -       -       y       -       -       error
+retry      unix  -       -       y       -       -       error
+discard    unix  -       -       y       -       -       discard
+local     unix  -       n       n       -       -       local
+virtual   unix  -       n       n       -       -       virtual
+lmtp       unix  -       -       y       -       -       lmtp
+anvil      unix  -       -       y       -       1       anvil
+#
+scache     unix  -       -       y       -       1       scache
+maildrop  unix  -       n       n       -       -       pipe
+  flags=DRhu user=vmail argv=/usr/bin/maildrop -d ${recipient}
+
+</code></pre>
+
+<h2 id="spamassasin-putsspamintoaspamfolderautomatically">Spamassasin - Puts SPAM into a SPAM folder automatically</h2>
+
+<h3 id="configure">Configure</h3>
+
+<p>Install</p>
+
+<ul>
+<li>RedHat</li>
+</ul>
+
+<pre><code>dnf install spamassassin
+</code></pre>
+
+<ul>
+<li>Debian</li>
+</ul>
+
+<pre><code>apt-get install spamassassin spamc
+</code></pre>
+
+<p>Create a spam user, unless Debian/Ubuntu did this for you.</p>
+
+<p>Check for spam user:</p>
+
+<pre><code>$ grep spam /etc/passwd
+debian-spamd:x:135:140::/var/lib/spamassassin:/bin/sh
+</code></pre>
+
+<p>If no user exists yet, create one</p>
+
+<pre><code>$ adduser spamd --disabled-login
+</code></pre>
+
+<p>Config file</p>
+
+<p>Be sure to set CRON=1 and allow IPv6.</p>
+
+<ul>
+<li>Debian
+File: /etc/default/spamassassin</li>
+</ul>
+
+<pre><code># /etc/default/spamassassin
+# Duncan Findlay
+
+# WARNING: please read README.spamd before using.
+# There may be security risks.
+
+# Prior to version 3.4.2-1, spamd could be enabled by setting
+# ENABLED=1 in this file. This is no longer supported. Instead, please
+# use the update-rc.d command, invoked for example as &quot;update-rc.d
+# spamassassin enable&quot;, to enable the spamd service.
+
+# Options
+# See man spamd for possible options. The -d option is automatically added.
+
+# SpamAssassin uses a preforking model, so be careful! You need to
+# make sure --max-children is not set to anything higher than 5,
+# unless you know what you're doing.
+
+#OPTIONS=&quot;--create-prefs --max-children 5 --helper-home-dir&quot;
+# Don 17-Jan-2022 - fix connection refused on ipv6
+OPTIONS=&quot;-A 127.0.0.1 -A ::1 --create-prefs --max-children 5 --helper-home-dir&quot;
+
+# Pid file
+# Where should spamd write its PID to file? If you use the -u or
+# --username option above, this needs to be writable by that user.
+# Otherwise, the init script will not be able to shut spamd down.
+PIDFILE=&quot;/var/run/spamd.pid&quot;
+
+# Set nice level of spamd
+#NICE=&quot;--nicelevel 15&quot;
+
+# Cronjob
+# Set to anything but 0 to enable the cron job to automatically update
+# spamassassin's rules on a nightly basis
+CRON=1
+</code></pre>
+
+<p>All local customization happen in the next file.</p>
+
+<p>I like to change the header to add the SPAM_SCORE, modify the original E-Mail with the new header information, and lower the threshold to mark as spam from 5 to 3.</p>
+
+<ul>
+<li><p>RedHat
+File: /etc/mail/spamassassin/local.cf</p></li>
+<li><p>Debian
+File: /etc/spamassassin/local.cf</p></li>
+</ul>
+
+<pre><code># This is the right place to customize your installation of SpamAssassin.
+#
+# See 'perldoc Mail::SpamAssassin::Conf' for details of what can be
+# tweaked.
+#
+# Only a small subset of options are listed below
+#
+###########################################################################
+
+#   Add *****SPAM***** to the Subject header of spam e-mails
+#
+# rewrite_header Subject *****SPAM*****
+# Don - b
+rewrite_header Subject ***** SPAM _SCORE_ ***** 
+# Don - e
+
+
+#   Save spam messages as a message/rfc822 MIME attachment instead of
+#   modifying the original message (0: off, 2: use text/plain instead)
+#
+# report_safe 1
+# Don - b
+report_safe 0
+# Don - e
+
+
+#   Set which networks or hosts are considered 'trusted' by your mail
+#   server (i.e. not spammers)
+#
+# trusted_networks 212.17.35.
+
+
+#   Set file-locking method (flock is not safe over NFS, but is faster)
+#
+# lock_method flock
+
+
+#   Set the threshold at which a message is considered spam (default: 5.0)
+#
+# required_score 5.0
+# Don -b
+required_score 3.0
+# Don -e
+
+
+#   Use Bayesian classifier (default: 1)
+#
+# use_bayes 1
+# Don -b
+use_bayes 1
+# Don -e
+
+
+#   Bayesian classifier auto-learning (default: 1)
+#
+# bayes_auto_learn 1
+# Don -b
+bayes_auto_learn 1
+# Don -e
+
+
+#   Set headers which may provide inappropriate cues to the Bayesian
+#   classifier
+#
+# bayes_ignore_header X-Bogosity
+# bayes_ignore_header X-Spam-Flag
+# bayes_ignore_header X-Spam-Status
+
+
+#   Whether to decode non- UTF-8 and non-ASCII textual parts and recode
+#   them to UTF-8 before the text is given over to rules processing.
+#
+# normalize_charset 1
+
+#   Textual body scan limit    (default: 50000)
+#
+#   Amount of data per email text/* mimepart, that will be run through body
+#   rules.  This enables safer and faster scanning of large messages,
+#   perhaps having very large textual attachments.  There should be no need
+#   to change this well tested default.
+#
+# body_part_scan_size 50000
+
+#   Textual rawbody data scan limit    (default: 500000)
+#
+#   Amount of data per email text/* mimepart, that will be run through
+#   rawbody rules.
+#
+# rawbody_part_scan_size 500000
+
+#   Some shortcircuiting, if the plugin is enabled
+# 
+ifplugin Mail::SpamAssassin::Plugin::Shortcircuit
+#
+#   default: strongly-whitelisted mails are *really* whitelisted now, if the
+#   shortcircuiting plugin is active, causing early exit to save CPU load.
+#   Uncomment to turn this on
+#
+#   SpamAssassin tries hard not to launch DNS queries before priority -100. 
+#   If you want to shortcircuit without launching unneeded queries, make
+#   sure such rule priority is below -100. These examples are already:
+#
+# shortcircuit USER_IN_WHITELIST       on
+# shortcircuit USER_IN_DEF_WHITELIST   on
+# shortcircuit USER_IN_ALL_SPAM_TO     on
+# shortcircuit SUBJECT_IN_WHITELIST    on
+
+#   the opposite; blacklisted mails can also save CPU
+#
+# shortcircuit USER_IN_BLACKLIST       on
+# shortcircuit USER_IN_BLACKLIST_TO    on
+# shortcircuit SUBJECT_IN_BLACKLIST    on
+
+#   if you have taken the time to correctly specify your &quot;trusted_networks&quot;,
+#   this is another good way to save CPU
+#
+# shortcircuit ALL_TRUSTED             on
+
+#   and a well-trained bayes DB can save running rules, too
+#
+# shortcircuit BAYES_99                spam
+# shortcircuit BAYES_00                ham
+
+endif # Mail::SpamAssassin::Plugin::Shortcircuit
+</code></pre>
+
+<blockquote>
+<p>These next SPAM settings to the <code>/etc/postfix/master.cf</code> were also shown above, so just repeating here for clarity.</p>
+</blockquote>
+
+<p>File: /etc/postfix/master.cf</p>
+
+<pre><code>=&gt; Then we need to find the following line and add the spamassassin filter:
+~
+smtp      inet  n       -       -       -       -       smtpd
+-o content_filter=spamassassin
+~
+
+=&gt; Finally we need to append the following parameters:
+~
+spamassassin unix -     n       n       -       -       pipe
+user=spamd argv=/usr/bin/spamc -f -e
+/usr/sbin/sendmail -oi -f ${sender} ${recipient}
+~
+</code></pre>
+
+<h3 id="startspamassassinandrestartpostfix">Start spamassassin and restart postfix</h3>
+
+<p><strong>IMPORTANT</strong>: Spamassassin must connect to the network to complete initialization, but during reboot the network is not fully up and DNS resolvable, so we need to force a wait in the systemd service script for spamassassin.</p>
+
+<p><em>Replace &#8216;ExecStartPre&#8217; with the bash line below.</em> - and - <em>Replace &#8216;After&#8217; to add dependency on network and nslookup working</em></p>
+
+<p>File: /lib/systemd/system/spamassassin.service</p>
+
+<pre><code>~
+[Unit]
+# Depend on: online, remote, nss...
+After=syslog.target network-online.target remote-fs.target nss-lookup.target
+~
+[Service]
+# Wait for dns resolver
+ExecStartPre=/bin/bash -c 'until host google.com; do sleep 1; done'
+~
+</code></pre>
+
+<p>Now restart systemd, spamassassin and postfix to pick up new configuration changes.</p>
+
+<pre><code>$ sudo systemctl daemon-reload
+$ sudo systemctl restart spamassassin
+$ sudo systemctl restart postfix
+</code></pre>
+
+<h3 id="dailyupdateinetccron.daily">Daily update in /etc/cron.daily</h3>
+
+<p>This is to update the spam databases from the internet</p>
+
+<p>FYI: Check the file in /etc/cron.daily for the scheduled entry</p>
+
+<pre><code>$ cat /etc/cron.daily/spamassassin
+#!/bin/bash
+# -v verbose
+# -D debug
+/bin/sa-update -v -D
+</code></pre>
+
+<h3 id="putspamhamlearningintoascript">Put spam/ham learning into a script</h3>
+
+<p>If you find spam in your inbox, move it to the SPAM folder and the sa-learn command will update the local learning. Conversely, if you find good E-Mail in the SPAM folder, move it your your INBOX and the next learning cycle will mark it as good E-Mail (ham).</p>
+
+<p>In the next script, <em>change to your Maildir directory</em>, and <em>add/delete E-Mail folders</em> as required for spam and ham actions.</p>
+
+<p>Reference: <a href="https://spamassassin.apache.org/doc.html">https://spamassassin.apache.org/doc.html</a></p>
+
+<p>File: /home/bob/spam</p>
+
+<pre><code>$ cat spam
+HOME=/home/bob
+# https://spamassassin.apache.org/full/3.1.x/doc/sa-learn.html
+sa-learn -u debian-spamd --backup &gt;/tmp/spam.bkup
+sa-learn -u debian-spamd --no-sync --spam $HOME/Maildir/.Junk/{cur,new}
+sa-learn -u debian-spamd --no-sync --spam $HOME/Maildir/.Junk\ E-mail/{cur,new}
+sa-learn -u debian-spamd --no-sync --ham  $HOME/Maildir/.INBOX.Bob/{cur,new}
+sa-learn -u debian-spamd --sync
+sa-learn -u debian-spamd --dump magic
+</code></pre>
+
+<p>Now schedule the spam local learning. Create this script and put in in ```/etc/cron.daily`` so it will run once a day.</p>
+
+<p>File: /etc/cron.daily/spam</p>
+
+<pre><code>#!/bin/bash
+DIR=/tmp
+RESULT=${DIR}/spam.txt
+/home/bob/spam &gt;${RESULT}
+if [ ! -s &quot;${RESULT}&quot; ]; then
+  rm ${RESULT}
+else
+  cat ${RESULT} | mail -s &quot;Spam refresh&quot; bob@example.com 2&gt;/dev/null
+fi
+</code></pre>
+
+<h2 id="mailreaders">Mail Readers</h2>
+
+<h3 id="mutt">Mutt</h3>
+
+<p>Mutt [1] is a text only e-mail reader, capable of running over an ssh connection.</p>
+
+<figure>
+<img src="/linux-in-house/images/mutt_index.gif" alt="mutt_index.gif" />
+<figcaption>mutt_index.gif</figcaption>
+</figure>
+
+<h4 id="install">Install</h4>
+
+<pre><code>$ sudo apt-get install mutt
+</code></pre>
+
+<h4 id="configure">Configure</h4>
+
+<p>Global options are in file /etc/Muttrc. User options are in file: ~/.muttrc</p>
+
+<p>Assuming your <strong>local</strong> maildir is in /backup/Maildir&#8230;</p>
+
+<pre><code>source ~/.mutt/mailboxes
+folder-hook Home set from=&quot;bob@example.com&quot;
+#folder-hook Work set from=&quot;youremail@work.com&quot;
+set mbox_type=Maildir
+set folder=&quot;/backup/Maildir/Home&quot;
+set mask=&quot;!^\\.[^.]&quot;
+set mbox=&quot;/backup/Maildir/Home&quot;
+set record=&quot;+.Sent&quot;
+set postponed=&quot;+.Drafts&quot;
+set spoolfile=&quot;/backup/Maildir/Home/.INBOX&quot;
+</code></pre>
+
+<p>If your mail server is over a <strong>network</strong>, use this configuration</p>
+
+<pre><code>#    Tell mutt to use your IMAP INBOX as your $spoolfile: set spoolfile=imap://hostname/INBOX
+#    Set your $folder to your IMAP root: set folder=imap://hostname/
+# activate TLS if available on the server
+set ssl_starttls=yes
+# always use SSL when connecting to a server
+set ssl_force_tls=yes
+
+set spoolfile   = imaps://example.org:993/INBOX
+set folder      = imaps://example.org:993/
+set imap_user   = bob@example.org
+set imap_pass   = abcdIfYouSeeMe1234
+set spoolfile   = +INBOX
+mailboxes       = +INBOX
+set smtp_url    = smtps://bob:abcdIfYouSeeMe1234@example.org:25
+
+# Refresh new messages
+set mail_check = 3
+
+# Store message headers locally to speed things up.
+# If hcache is a folder, Mutt will create sub cache folders for each account which may speeds things
+set header_cache = ~/.cache/mutt
+
+# Store messages locally to speed things up, like searching message bodies.
+# Can be the same folder as header_cache.
+# This will cost important disk usage according to your e-mail amount.
+set message_cachedir = &quot;~/.cache/mutt&quot;
+
+# Specify where to save and/or look for postponed messages.
+set postponed = +Drafts
+
+# Allow Mutt to open a new IMAP connection automatically.
+unset imap_passive
+
+# Keep the IMAP connection alive by polling intermittently (time in seconds).
+set imap_keepalive = 300
+
+# How often to check for new mail (time in seconds).
+set mail_check = 120
+</code></pre>
+
+<ol>
+<li><a href="http://www.mutt.org/">http://www.mutt.org/</a></li>
+</ol>
+
+<h3 id="evolution">Evolution</h3>
+
+<p>Evolution [1] is a Graphical User Interface (GUI) mail reader, the best one for Linux desktop.</p>
+
+<p><img src="/linux-in-house/images/evolution_window-overview-layers.png" alt="evolution_window-overview-layers.png" /><br />
+<img src="/linux-in-house/images/evolution_legend.png" alt="evolution_legend.png" /></p>
+
+<h4 id="install">Install</h4>
+
+<pre><code>$ sudo apt-get install evolution
+</code></pre>
+
+<h4 id="configure">Configure</h4>
+
+<p>Launch the application and configure the receiving (IMAPS), sending server(SMTP) and options like timezone.</p>
+
+<ol>
+<li><a href="https://help.gnome.org/users/evolution/stable/">https://help.gnome.org/users/evolution/stable/</a></li>
+</ol>
+
+<h3 id="thunderbird">Thunderbird</h3>
+
+<p>Thunderbird [1] is a GUI mail reader, the best one for MacOS or Windows.</p>
+
+<figure>
+<img src="/linux-in-house/images/Thunderbird-email.png" alt="Thunderbird-email.png" />
+<figcaption>Thunderbird-email.png</figcaption>
+</figure>
+
+<h4 id="install">Install</h4>
+
+<pre><code>$ sudo apt-get install thunderbird
+</code></pre>
+
+<h4 id="configure">Configure</h4>
+
+<p>Launch the application and configure the receiving (IMAPS), sending server(SMTP) and options like timezone.</p>
+
+<ol>
+<li><a href="https://www.thunderbird.net/en-US/">https://www.thunderbird.net/en-US/</a></li>
+</ol>
+
+<h2 id="offlineimap-makesabackupcopyofallemail">Offlineimap - Makes a backup copy of all email</h2>
+
+<p>OfflineIMAP [1] will save a workable entire E-Mail clone in case of total loss on the E-Mail server. You can even run Evolution/Thunderbird/mutt on the new remote server.</p>
+
+<h3 id="install">Install</h3>
+
+<pre><code>$ sudo apt-get install offlineimap
+</code></pre>
+
+<h3 id="configure">Configure</h3>
+
+<p>If you run IMAPS, get your cert_fingerprint using the following on the E-Mail server:</p>
+
+<pre><code>$ grep -v ^- /etc/letsencrypt/live/example.com/cert.pem | base64 -d | sha1sum
+</code></pre>
+
+<p>Create the <code>.offlineimaprc</code> file in your $HOME directory (~) on the <em>remote</em> host, and change things like <code>localfolders</code>, <code>remotehost</code>, <code>remoteuser</code>, <code>remotepass</code>, and <code>cert_fingerprint</code>.</p>
+
+<p>File: ~/.offlineimaprc</p>
+
+<pre><code># Sample minimal config file.  Copy this to ~/.offlineimaprc and edit to
+# get started fast.
+# sha1 fingerprint:
+# grep -v ^- cert.pem  | base64 -d | sha1sum
+
+[general]
+accounts = Home
+
+[Account Home]
+localrepository = LocalHome
+remoterepository = RemoteHome
+
+[Repository LocalHome]
+type = Maildir
+localfolders = /backup/Maildir/Home
+
+# Translate your maildir folder names to the format the remote server expects
+# So this reverses the change we make with the remote nametrans setting
+nametrans = lambda name: re.sub('^\.', '', name)
+
+
+[Repository RemoteHome]
+type = IMAP
+remotehost = example.com
+remoteuser = mail
+remotepass = *************
+# openssl_sha1
+cert_fingerprint = *************************************
+# Need to exclude '' otherwise it complains about infinite naming loop?
+folderfilter = lambda foldername: foldername not in ['']
+# For Dovecot to see the folders right I want them starting with a dot,
+# and dovecot set to look for .INBOX as the toplevel Maildir
+nametrans = lambda name: '.' + name
+
+[mbnames]
+enabled = yes
+filename = ~/.mutt/mailboxes
+header = &quot;mailboxes &quot;
+peritem = &quot;+%(accountname)s/%(foldername)s&quot;
+sep = &quot; &quot;
+footer = &quot;\n&quot;
+</code></pre>
+
+<p>Reference: <a href="https://blog.wikichoon.com/2017/05/configuring-offlineimap-dovecot.html">https://blog.wikichoon.com/2017/05/configuring-offlineimap-dovecot.html</a></p>
+
+<p>Create a script to run it on remote host</p>
+
+<p>File: ~/offlineimap.sh</p>
+
+<pre><code>#!/bin/bash
+export HOME=/home/bob
+LOGFILE=/var/log/offlineimap.log
+if [ -d ~/Maildir ]; then
+  /usr/bin/date &gt; $LOGFILE
+  /usr/bin/offlineimap &gt;&gt; $LOGFILE 2&gt;&amp;1
+  /usr/bin/date &gt;&gt; $LOGFILE
+fi
+</code></pre>
+
+<h3 id="schedule">Schedule</h3>
+
+<p>Schedule the script to run on the remote host</p>
+
+<p>File: /etc/cron.d/offlineimap</p>
+
+<pre><code># This is a cron file for offlineimap
+# 
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+MAILTO=&quot;bob@example.com&quot;
+# m h  dom mon dow user  command
+33  *  *   *   *   bob   /home/bob/offlineimap.sh
+</code></pre>
+
+<ol>
+<li><a href="http://www.offlineimap.org/">http://www.offlineimap.org/</a></li>
+</ol>
+
+<h2 id="postfixlogsummary">Postfix Log Summary</h2>
+
+<p>Pflogsumm is a log analyzer/summarizer for the Postfix MTA. It is designed to provide an over-view of Postfix activity. Pflogsumm generates summaries and, in some cases, detailed reports of mail server traffic volumes, rejected and bounced email, and server warnings, errors and panics.</p>
+
+<h3 id="install">Install</h3>
+
+<ul>
+<li> Debian</li>
+</ul>
+
+<pre><code>$ sudo apt-get install pflogsumm
+</code></pre>
+
+<ul>
+<li> RedHat</li>
+</ul>
+
+<pre><code>$ sudo dnf install postfix-perl-scripts
+</code></pre>
+
+<h3 id="schedule">Schedule</h3>
+
+<p>Create a script in /etc/cron.daily to run it, like this:</p>
+
+<ul>
+<li> Debian</li>
+</ul>
+
+<pre><code>/usr/sbin/pflogsumm -d yesterday /var/log/mail.log --problems-first --rej-add-from --verbose-msg-detail | /usr/bin/mail -s &quot;`uname -n` daily mail stats&quot; me@example.com
+</code></pre>
+
+<ul>
+<li> RedHat</li>
+</ul>
+
+<pre><code>/usr/sbin/pflogsumm -d yesterday /var/log/maillog --problems-first --rej-add-from --verbose-msg-detail | /usr/bin/mail -s &quot;`uname -n` daily mail stats&quot; me@example.com
+</code></pre>
+
+<h2 id="alternatives">Alternatives</h2>
+
+<h3 id="exim4">exim4</h3>
+
+<p>Exim (Experimental Internet Mailer) [1] receives and sends mail, referred to as an MTA like postfix. It does not provide POP or IMAP interfaces to read mail. It is available on most Linux distributions as a package install, but was removed from RedHat due to low populatity.</p>
+
+<h4 id="whatitdoes">What it does</h4>
+
+<ul>
+<li><p>RFC 2821 SMTP and RFC 2033 LMTP email message transport.</p></li>
+<li><p>Incoming (as SMTP server):</p>
+
+<ul>
+<li>SMTP over TCP/IP (Exim daemon or inetd);</li>
+<li>SMTP over the standard input and output (the -bs option);</li>
+<li>Batched SMTP on the standard input (the -bS option).</li>
+</ul></li>
+<li><p>Exim also supports RFC 5068 Message Submission, as an SMTP server with (for example, encrypted and authenticated connections on port 587).</p></li>
+<li><p>Outgoing email (as SMTP or LMTP client):</p>
+
+<ul>
+<li>SMTP over TCP/IP (the smtp transport);</li>
+<li>LMTP [2] over TCP/IP (the smtp transport with the protocol option set to “lmtp”);</li>
+<li>LMTP over a pipe to a process running in the local host (the lmtp transport);</li>
+<li>Batched SMTP to a file or pipe (the appendfile and pipetransports with the use_bsmtp option set).</li>
+</ul></li>
+<li><p>Configuration</p>
+
+<ul>
+<li>Access Control Lists - flexible policy controls.</li>
+<li>Content scanning, including easy integration with and other spam and virus scanners like SpamAssassin and ClamAV.</li>
+<li>Encrypted SMTP connections using TLS/SSL.</li>
+<li>Authentication with a variety of front end and back end methods, including PLAIN, LOGIN, sasl, dovecot, spa, cram_md5.</li>
+<li>Rewrite - rewrite envelope and/or header addresses using regular expressions.</li>
+<li>Routing controls - use routers to redirect, quarantine, or deliver messages.</li>
+<li>Transports - use transports to deliver messages by smtp, lmtp, or to files, directories, or other programs.</li>
+<li>Flexible retry rules for temporary delivery problems.</li>
+</ul></li>
+</ul>
+
+<p>I usually install it on non-email Debian servers because it is very light weight and works great sending monitoring messages from servers to the main E-Mail server [3].</p>
+
+<p>Pros:</p>
+
+<ul>
+<li> Small footprint is able to run on SBC like Rasberry PI</li>
+<li> Simple configuration on Debian only</li>
+<li> Extendable</li>
+</ul>
+
+<p>Cons:</p>
+
+<ul>
+<li> Only MTA, does not support mailboxes without an MDA like Dovecot</li>
+<li> Not as well known as postfix, probably not as many people or businesses supporting it</li>
+<li> Not available on RedHat mainstream, Postfix and Sendmail are the only alternative</li>
+</ul>
+
+<ol>
+<li><a href="https://www.exim.org/docs.html">https://www.exim.org/docs.html</a></li>
+<li>Local Mail Transfer Protocol</li>
+<li><a href="Setup_Server.md">Setup_Server</a></li>
+</ol>
+
+<h3 id="iredmail">iRedMail</h3>
+
+<p>With iRedMail [1], you can deploy an OPEN SOURCE, FULLY FLEDGED, FULL-FEATURED mail server in several minutes, for free.</p>
+
+<p>It supports all major Linux distributions, has calendar/contact sync,antispam/anitvirus protection, TLS security and webmail locally on your server. This would replace the Dovecot/postfix combination described above.</p>
+
+<p>Read the documentation [2] and decide for yourself. This takes over a host, installing many different products, like database (mySQL/PostgreSQL,LDAP), DKIM, Spam filter, fail2ban, netdata, postfix, Dovecot, webmail, etc. You will need about 4GB of memory and a couple CPUs along with 20GB disk.</p>
+
+<p>Pros:</p>
+
+<ul>
+<li> multiple E-Mail domains</li>
+<li> multiple E-Mail accounts</li>
+<li> Nice GUI for managing the E-Mail accounts</li>
+<li> Includes massive system monitor, netdata [3]</li>
+<li> You can buy support</li>
+</ul>
+
+<p>Cons:</p>
+
+<ul>
+<li> Need a bigger, dedicated machine to host it</li>
+<li> Puts much of the configuration inside a database</li>
+<li> Not well suited for small setup at home, due to the complexity</li>
+</ul>
+
+<ol>
+<li><a href="https://www.iredmail.org/">https://www.iredmail.org/</a></li>
+<li><a href="https://docs.iredmail.org/index.html">https://docs.iredmail.org/index.html</a></li>
+<li><a href="https://www.netdata.cloud/">https://www.netdata.cloud/</a></li>
+</ol>
+
+<h3 id="mail-in-a-box">Mail-in-a-Box</h3>
+
+<p>Technically, Mail-in-a-Box [1] turns a fresh cloud computer into a working mail server. But you don’t need to be a technology expert to set it up.</p>
+
+<p>Each Mail-in-a-Box provides webmail and an IMAP/SMTP server for use with mobile devices and desktop mail software. It also includes contacts and calendar synchronization.</p>
+
+<p>This project provides a simple, turn-key solution. There are basically no configuration options and you can’t tweak the machine’s configuration files after installation.</p>
+
+<p>My observation is that this is good for a dedicated mail server machine, and that&#8217;s all that machine should do. Perhaps it would work well on a Rasberry PI SBC.</p>
+
+<p>Pros:</p>
+
+<ul>
+<li> Do not need to know all the technical details of E-Mail to setup and use</li>
+<li> Small system requirements, runable on a SBC</li>
+</ul>
+
+<p>Cons:</p>
+
+<ul>
+<li> Requires dedicated machine, as it takes over</li>
+<li> Not sure how well support will be, especially for critital systems</li>
+</ul>
+
+<ol>
+<li><a href="https://mailinabox.email/">https://mailinabox.email/</a></li>
+</ol>
+
+<h3 id="citadel">Citadel</h3>
+
+<p>This open source project provides &#8220;Email, collaboration, groupware, and content management - up and running in minutes, on your own hardware or in the cloud.&#8221;</p>
+
+<p>Citadel is groupware with BBS roots, and still offers a traditional text-based BBS front end and chat. If you like old school, this is for you.</p>
+
+<p>To find out more, just read the FAQS [2]. Looks interesting to me, at least one person posted about running it on a Rasberry PI [3].</p>
+
+<p>Pros:</p>
+
+<ul>
+<li> Do not need to know all the technical details of E-Mail to setup and use</li>
+<li> Small system requirements, runable on a SBC</li>
+</ul>
+
+<p>Cons:</p>
+
+<ul>
+<li> Does more than E-Mail, you may not need all the features installed</li>
+<li> Not sure how well support will be, especially for critital systems</li>
+</ul>
+
+<ol>
+<li><a href="https://www.citadel.org/">https://www.citadel.org/</a></li>
+<li><a href="https://www.citadel.org/faq.html">https://www.citadel.org/faq.html</a></li>
+<li><a href="https://www.ionos.com/digitalguide/server/configuration/set-up-your-own-raspberry-pi-mail-server/">https://www.ionos.com/digitalguide/server/configuration/set-up-your-own-raspberry-pi-mail-server/</a></li>
+</ol>
+
+<h2 id="continue">Continue</h2>
+
+<p>Now that you have set up E-Mail on your server, you will need a Database for many more things, so now is a good time to install the versatile PostgreSQL database.</p>
+
+<p>Proceed in the order presented, some things are depending on prior setups.</p>
+
+<hr>
+
+<h4 id="madeforhumansbyahuman">Made for Humans, by a Human</h4>
+
+<h4 id="links">Links</h4>
+
+<ul>
+<li><a href="https://lwn.net/">Linux Weekly News</a></li>
+<li><a href="https://fullcirclemagazine.org/">Full Circle Magazine</a></li>
+<li><a href="https://www.linuxjournal.com/">Linux Journal</a></li>
+<li><a href="https://www.linux-magazine.com/">Linux Magazine</a></li>
+<li><a href="https://www.thefarside.com/">The Far Side</a></li>
+</ul>
+
+<h4 id="social">Social</h4>
+
+<ul>
+<li><a href="https://fosstodon.org/@Cohoon">Feedback</a></li>
+<li><a href="/linux-in-house/feed-Linux.rss">Linux RSS Feed</a></li>
+<li><a href="/linux-in-house/feed-Writing.rss">Writing RSS Feed</a></li>
+<li><a href="https://linux-in-the-house.pages.dev/">Book</a></li>
+</ul>
+
+<h5 id="builtwithmultimarkdownhttps:github.comfletchermultimarkdown-6andw3schoolshttps:www.w3schools.comw3cssw3css_pro.asp">Built with <a href="https://github.com/fletcher/MultiMarkdown-6">MultiMarkdown</a> and <a href="https://www.w3schools.com/w3css/w3css_pro.asp">W3 Schools</a></h5>
+
+<h5 id="license:ahrefhttp:creativecommons.orglicensesby-nc-sa4.0cc-by-nc-sa4.0a">License: <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0</a></h5>
+
+</body>
+</html>
+

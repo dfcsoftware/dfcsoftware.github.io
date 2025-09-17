@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>Feed Me</title>
+	<meta name="date" content="2025-07-16 10:20"/>
+	<meta name="author" content="Don Cohoon"/>
+	<meta name="summary" content="How to post to Mastodon using your personal web blog's built-in RSS feed"/>
+	<meta name="license" content="'[CC-BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)'"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"> <link rel="stylesheet" href="/linux-in-house/common.css" type="text/css" />
+</head>
+<body>
+
+<p><a href="/linux-in-house/"><h1>Linux in House</h1></a></p>
+
+<link href="/linux-in-house/pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/linux-in-house/pagefind/pagefind-ui.js"></script>
+
+<div id="search"></div>
+<script>
+window.addEventListener('DOMContentLoaded', (event) => {
+      new PagefindUI({ element: "#search", showSubResults: true });
+});
+</script>
+
+<blockquote>
+<p><a href="/linux-in-house/linux/welcome.html">Welcome Back My Friends</a></p>
+</blockquote>
+
+<h1 id="title">Feed Me</h1>
+
+<p>Published: 2025-07-16 10:20 <br />
+Author: Don Cohoon</p>
+
+<h1 id="howtoposttomastodonusingyourpersonalwebblogsbuilt-inrssfeed">How to post to Mastodon using your personal web blog&#8217;s built-in RSS feed</h1>
+
+<ul>
+<li>From Dave:</li>
+</ul>
+
+<blockquote>
+<p>I have an app running on this server called FeedToMasto, which apparently is watching that feed. It&#8217;s been chugging away like an abandoned science fiction robot, seeing if I posted anything to my linkblog, and forwarding it to Mastodon if I have. Hello my robot friend, you were forgotten but still appreciated. It&#8217;s open source, of course, and appears to be well-documented. If you&#8217;re looking for example code that reads feeds and pushed the result to interesting places, this is for you.</p>
+</blockquote>
+
+<p>Dave to the rescue!</p>
+
+<p>Reference: <a href="http://scripting.com/2025/07/15.html#a115347">http://scripting.com/2025/07/15.html#a115347</a></p>
+
+<h1 id="thisworked:">This worked:</h1>
+
+<p>I use the Pelican [1] static web site generator for this website, and it has an automatic RSS (atom) feed generator for all articles. The following method lets me <em>create</em> posts on my Pelican site, with very little readers, and automatically post a link to new articles on fostodon.org, which has a larger audience.</p>
+
+<h3 id="installnodeandnpmviathenodeversionmanagernvm:">Install node and npm via the Node Version Manager (nvm):</h3>
+
+<p>(I removed the apt version of node and npm first)</p>
+
+<pre><code>$ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh &gt; nvm-install.sh
+$ bash -x ./nvm-install.sh
+$ nvm install node
+$ nvm install npm
+$ npm install request
+$ npm install websocket
+</code></pre>
+
+<h3 id="installfeedtomasto:">Install feedToMasto:</h3>
+
+<pre><code>1. $ git clone https://github.com/scripting/feedToMasto
+2. $ cd feedToMasto 
+3. $ git clone https://github.com/scripting/reallysimple
+4. $ git clone https://github.com/scripting/utils
+5. Change config.json (hints)
+   &lt;https://github.com/scripting/feedToMasto/blob/main/README.md&gt;
+   &lt;https://github.com/scripting/feedToMasto/issues/1&gt;
+</code></pre>
+
+<p>Step 5 requires you to <strong>log into your own Mastodon Instance [2]</strong> (see below)
+and replace all of Dave&#8217;s names with your own, in file -&gt; config.json.</p>
+
+<blockquote>
+<p>Backup config.json before editing</p>
+</blockquote>
+
+<ul>
+<li>Using the info from your Mastodon Instance [2], change:</li>
+</ul>
+
+<pre><code>urlMastodonServer
+clientKey
+clientSecret
+accessToken
+</code></pre>
+
+<ul>
+<li>Replace the json <code>feed</code> array with your own.</li>
+</ul>
+
+<p>This is where I put my github.io pages atom.xml feed url.
+<a href="https://dfcsoftware.github.io/linux-in-house/feeds/writing.atom.xml">https://dfcsoftware.github.io/linux-in-house/feeds/writing.atom.xml</a></p>
+
+<ul>
+<li>By default no existing posts will be processed</li>
+</ul>
+
+<p>Set <em>flOnlyPostNewItems to false</em> to see all your existing posts on the first run!</p>
+
+<ul>
+<li>delete bluesky and wordpress if you don&#8217;t want that.</li>
+</ul>
+
+<p>By default they are disabled, so you can leave them.</p>
+
+<h3 id="runit:">Run it:</h3>
+
+<pre><code>$ node feedToMasto.js
+</code></pre>
+
+<p>It will echo your config.json, and if file stats.json does not exits, create it.
+Then it polls your <code>feed</code> array urls for new posts&#8230;</p>
+
+<p>When I post a new item to <em>my site</em>, Pelican [1] updates the atom feed, and feedToMasto.js posts a link to the new article on Mastodon or bluesky, or wordpress, if enabled.</p>
+
+<p>Just put <code>node feedToMasto.js</code> in an /etc/init.d/rc.x or systemd daemon runner and voila'
+<em>abandoned science fiction robot</em></p>
+
+<p>Thanks Dave!<br>
+&#8211; Don Cohoon</p>
+
+<p>Reference:</p>
+
+<ol>
+<li><p><a href="https://getpelican.com/">https://getpelican.com/</a></p></li>
+<li><p>Get Mastodon info</p></li>
+</ol>
+
+<h1 id="onyourmastodonaccount">On your Mastodon account</h1>
+
+<p>Click on Preferences, in the right margin.</p>
+
+<p>Click on Development in the left margin.</p>
+
+<p>Click on the New application button in the upper right corner.</p>
+
+<p>You should see a form that looks like this.</p>
+
+<figure>
+<img src="/linux-in-house/images/feedToMastodon-newApplicationScreen.png" alt="feedToMastodon-newApplicationScreen.png" />
+<figcaption>feedToMastodon-newApplicationScreen.png</figcaption>
+</figure>
+
+<p>We&#8217;re going to fill in the form.</p>
+
+<pre><code>Application name -- anything you like, perhaps feedToMasto.
+
+Application website -- anything you like.
+
+Redirect URI -- leave it as-is.
+</code></pre>
+
+<p>In the Scopes section do the following.</p>
+
+<pre><code>Uncheck read.
+
+Check read:accounts.
+
+Uncheck write.
+
+Check write:statuses.
+
+Uncheck follow.
+</code></pre>
+
+<p>When you&#8217;re done the Scopes section should look like this.</p>
+
+<figure>
+<img src="/linux-in-house/images/feedToMastodon-checkboxesScreen.png" alt="feedToMastodon-checkboxesScreen.png" />
+<figcaption>feedToMastodon-checkboxesScreen.png</figcaption>
+</figure>
+
+<p>Finally click the Submit button at the bottom of the page.</p>
+
+<p>You should then see a list of your applications, with this new app on the list.</p>
+
+<p>Click on the name of the new app to bring up a screen with various numeric strings you&#8217;ll add to config.json.</p>
+
+<hr />
+
+<pre><code>____          
+|  _ \  ___  _ __  
+| | | |/ _ \| '_ \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+¯\_(ツ)_/¯
+</code></pre>
+
+<hr>
+
+<h4 id="madeforhumansbyahuman">Made for Humans, by a Human</h4>
+
+<h4 id="links">Links</h4>
+
+<ul>
+<li><a href="https://lwn.net/">Linux Weekly News</a></li>
+<li><a href="https://fullcirclemagazine.org/">Full Circle Magazine</a></li>
+<li><a href="https://www.linuxjournal.com/">Linux Journal</a></li>
+<li><a href="https://www.linux-magazine.com/">Linux Magazine</a></li>
+<li><a href="https://www.thefarside.com/">The Far Side</a></li>
+</ul>
+
+<h4 id="social">Social</h4>
+
+<ul>
+<li><a href="https://fosstodon.org/@Cohoon">Feedback</a></li>
+<li><a href="/linux-in-house/feed-Linux.rss">Linux RSS Feed</a></li>
+<li><a href="/linux-in-house/feed-Writing.rss">Writing RSS Feed</a></li>
+<li><a href="https://linux-in-the-house.pages.dev/">Book</a></li>
+</ul>
+
+<h5 id="builtwithmultimarkdownhttps:github.comfletchermultimarkdown-6andw3schoolshttps:www.w3schools.comw3cssw3css_pro.asp">Built with <a href="https://github.com/fletcher/MultiMarkdown-6">MultiMarkdown</a> and <a href="https://www.w3schools.com/w3css/w3css_pro.asp">W3 Schools</a></h5>
+
+<h5 id="license:ahrefhttp:creativecommons.orglicensesby-nc-sa4.0cc-by-nc-sa4.0a">License: <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0</a></h5>
+
+</body>
+</html>
+

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>Docker</title>
+	<meta name="date" content="2023-01-30 10:40"/>
+	<meta name="modified" content="2024-04-19 9:30"/>
+	<meta name="tags" content="systems"/>
+	<meta name="author" content="Don Cohoon"/>
+	<meta name="summary" content="Docker is a way to manage containers, which are like namespaces or jails. Here are some useful common commands to check out the status of these containers."/>
+	<meta name="license" content="'[CC-BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)'"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"> <link rel="stylesheet" href="/linux-in-house/common.css" type="text/css" />
+</head>
+<body>
+
+<p><a href="/linux-in-house/"><h1>Linux in House</h1></a></p>
+
+<link href="/linux-in-house/pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/linux-in-house/pagefind/pagefind-ui.js"></script>
+
+<div id="search"></div>
+<script>
+window.addEventListener('DOMContentLoaded', (event) => {
+      new PagefindUI({ element: "#search", showSubResults: true });
+});
+</script>
+
+<blockquote>
+<p><a href="/linux-in-house/linux/welcome.html">Welcome Back My Friends</a></p>
+</blockquote>
+
+<h1 id="docker">Docker</h1>
+
+<p>Docker is a way to manage containers, which are like namespaces or jails. Here are some useful common commands to check out the status of these containers.</p>
+
+<br/>
+
+<hr />
+
+<div class="TOC">
+
+<ul>
+<li><a href="#docker">Docker</a>
+<ul>
+<li><a href="#pruneunusedcontainersimagesandcache">Prune unused containers, images and cache</a></li>
+<li><a href="#checkacontainerslogs">Check a container&#8217;s logs</a></li>
+<li><a href="#inspectacontainer">Inspect a container</a></li>
+<li><a href="#checkforcontainerfilesystemchangessincestart">Check for container filesystem changes since start</a></li>
+<li><a href="#checkcontainerrunningprocesses">Check container running processes</a></li>
+<li><a href="#checkcontainerstatistics">Check container statistics</a></li>
+<li><a href="#checkdockernetworks">Check docker networks</a></li>
+<li><a href="#movedatafiles">Move data files</a></li>
+<li><a href="#upgradeacontainer">Upgrade a container</a>
+<ul>
+<li><a href="#madeforhumansbyahuman">Made for Humans, by a Human</a></li>
+<li><a href="#links">Links</a></li>
+<li><a href="#social">Social</a>
+<ul>
+<li><a href="#builtwithmultimarkdownhttps:github.comfletchermultimarkdown-6andw3schoolshttps:www.w3schools.comw3cssw3css_pro.asp">Built with <a href="https://github.com/fletcher/MultiMarkdown-6">MultiMarkdown</a> and <a href="https://www.w3schools.com/w3css/w3css_pro.asp">W3 Schools</a></a></li>
+<li><a href="#license:ahrefhttp:creativecommons.orglicensesby-nc-sa4.0cc-by-nc-sa4.0a">License: <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0</a></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+<hr />
+
+<h2 id="pruneunusedcontainersimagesandcache">Prune unused containers, images and cache</h2>
+
+<p>This can free up disk space.</p>
+
+<pre><code>$ docker system prune
+WARNING! This will remove:
+  - all stopped containers
+  - all networks not used by at least one container
+  - all dangling images
+  - all dangling build cache
+
+Are you sure you want to continue? [y/N] y
+Deleted Containers:
+e91363806fd869a4f9349fc2de4faf26cc6b4b26a7fdbf16c5535c13ef46f995
+
+Deleted Images:
+untagged: homeassistant/home-assistant@sha256:1b4a62627444841ad222aaf3795b90581c2f8b712762c8d7d6b6cf9a42045ea8
+deleted: sha256:8a975b58aacfc196fbe3eeb34810b9068e8a50d953ff88b67504d1c2351940d7
+deleted: sha256:8df0a83f8a5a8360e6deef1187b2dbf6c27b7fe57584bca0b657671363a20729
+deleted: sha256:abdac85af7ebbecf80442d554fa655133eb4ee2dbf4d96136caf1615e7f82992
+deleted: sha256:b992bfbe5047c28682b5cc7ce976e418b5402113ee404143a4de208214f322f7
+deleted: sha256:84e4d6e3db7ee758f3089b2f28ed3b1d248e31c72604004fdfdd34970c1a47
+...
+Total reclaimed space: 3.556GB
+</code></pre>
+
+<p>Reference: <a href="https://docs.docker.com/engine/reference/commandline/system_prune/">https://docs.docker.com/engine/reference/commandline/system_prune/</a></p>
+
+<h2 id="checkacontainerslogs">Check a container&#8217;s logs</h2>
+
+<pre><code>$ docker logs -f homeassistant
+...
+Traceback (most recent call last):
+  File &quot;/usr/local/lib/python3.10/site-packages/pyatv/protocols/airplay/__init__.py&quot;, line 258, in _connect_rc
+    await control.start(str(core.config.address), control_port, credentials)
+  File &quot;/usr/local/lib/python3.10/site-packages/pyatv/protocols/airplay/remote_control.py&quot;, line 60, in start
+    await self._setup_event_channel(self.connection.remote_ip)
+  File &quot;/usr/local/lib/python3.10/site-packages/pyatv/protocols/airplay/remote_control.py&quot;, line 102, in _setup_event_channel
+    resp = await self._setup(
+...
+</code></pre>
+
+<h2 id="inspectacontainer">Inspect a container</h2>
+
+<pre><code>$ docker container inspect  homeassistant
+[
+    {
+        &quot;Id&quot;: &quot;0baa0742e18858ebea97a93ee5a97f0fb09f369d504d3f6d1252c8c35234ac91&quot;,
+        &quot;Created&quot;: &quot;2023-04-16T23:45:06.042429674Z&quot;,
+        &quot;Path&quot;: &quot;/init&quot;,
+        &quot;Args&quot;: [],
+        &quot;State&quot;: {
+            &quot;Status&quot;: &quot;running&quot;,
+            &quot;Running&quot;: true,
+            &quot;Paused&quot;: false,
+            &quot;Restarting&quot;: false,
+            &quot;OOMKilled&quot;: false,
+            &quot;Dead&quot;: false,
+            &quot;Pid&quot;: 2378698,
+            &quot;ExitCode&quot;: 0,
+            &quot;Error&quot;: &quot;&quot;,
+            &quot;StartedAt&quot;: &quot;2023-04-16T23:45:06.981493189Z&quot;,
+            &quot;FinishedAt&quot;: &quot;0001-01-01T00:00:00Z&quot;
+        },
+...
+</code></pre>
+
+<h2 id="checkforcontainerfilesystemchangessincestart">Check for container filesystem changes since start</h2>
+
+<pre><code>$ docker diff &lt;container name&gt;
+</code></pre>
+
+<h2 id="checkcontainerrunningprocesses">Check container running processes</h2>
+
+<pre><code>$ docker top homeassistant
+UID                 PID                 PPID                C                   STIME               TTY                 TIME                CMD
+root                2378698             2378670             0                   19:45               ?                   00:00:00            /package/admin/s6/command/s6-svscan -d4 -- /run/service
+root                2378732             2378698             0                   19:45               ?                   00:00:00            s6-supervise s6-linux-init-shutdownd
+root                2378733             2378732             0                   19:45               ?                   00:00:00            /package/admin/s6-linux-init/command/s6-linux-init-shutdownd -c /run/s6/basedir -g 3000 -C -B
+root                2378742             2378698             0                   19:45               ?                   00:00:00            s6-supervise s6rc-fdholder
+root                2378743             2378698             0                   19:45               ?                   00:00:00            s6-supervise s6rc-oneshot-runner
+root                2378751             2378743             0                   19:45               ?                   00:00:00            /package/admin/s6/command/s6-ipcserverd -1 -- /package/admin/s6/command/s6-ipcserver-access -v0 -E -l0 -i data/rules -- /package/admin/s6/command/s6-sudod -t 30000 -- /package/admin/s6-rc/command/s6-rc-oneshot-run -l ../.. --
+root                2378782             2378698             0                   19:45               ?                   00:00:00            s6-supervise home-assistant
+root                2378784             2378782             1                   19:45               ?                   00:00:15            python3 -m homeassistant --config /config
+</code></pre>
+
+<h2 id="checkcontainerstatistics">Check container statistics</h2>
+
+<pre><code>$ docker stats homeassistant
+
+CONTAINER ID   NAME            CPU %     MEM USAGE / LIMIT     MEM %     NET I/O   BLOCK I/O        PIDS
+0baa0742e188   homeassistant   0.23%     217.6MiB / 15.52GiB   1.37%     0B / 0B   102MB / 10.5MB   21
+</code></pre>
+
+<h2 id="checkdockernetworks">Check docker networks</h2>
+
+<pre><code>$ docker network ls
+NETWORK ID     NAME      DRIVER    SCOPE
+b67081eb628c   bridge    bridge    local
+0921bc6a0760   host      host      local
+c8363d03e4cd   none      null      local
+
+$ docker network inspect  bridge
+[
+    {
+        &quot;Name&quot;: &quot;bridge&quot;,
+        &quot;Id&quot;: &quot;b67081eb628c51d90d2f234df1c97580bc0d83fa52c300f2fbf4764556a14ba6&quot;,
+        &quot;Created&quot;: &quot;2023-04-15T06:02:48.923361812-04:00&quot;,
+        &quot;Scope&quot;: &quot;local&quot;,
+        &quot;Driver&quot;: &quot;bridge&quot;,
+        &quot;EnableIPv6&quot;: false,
+        &quot;IPAM&quot;: {
+            &quot;Driver&quot;: &quot;default&quot;,
+            &quot;Options&quot;: null,
+            &quot;Config&quot;: [
+                {
+                    &quot;Subnet&quot;: &quot;172.17.0.0/16&quot;,
+                    &quot;Gateway&quot;: &quot;172.17.0.1&quot;
+                }
+            ]
+        },
+        &quot;Internal&quot;: false,
+        &quot;Attachable&quot;: false,
+        &quot;Ingress&quot;: false,
+        &quot;ConfigFrom&quot;: {
+            &quot;Network&quot;: &quot;&quot;
+        },
+        &quot;ConfigOnly&quot;: false,
+        &quot;Containers&quot;: {
+            &quot;3357239a67204620012173ae3cd724a2508d9456d2aaabee7b1be3d7b351e6f7&quot;: {
+                &quot;Name&quot;: &quot;zwave-js&quot;,
+                &quot;EndpointID&quot;: &quot;7d50227167937e8ce5886abeb87411f66902eae494b4b3860ec133b77a39ecbd&quot;,
+                &quot;MacAddress&quot;: &quot;02:42:ac:11:00:02&quot;,
+                &quot;IPv4Address&quot;: &quot;172.17.0.2/16&quot;,
+                &quot;IPv6Address&quot;: &quot;&quot;
+            }
+        },
+        &quot;Options&quot;: {
+            &quot;com.docker.network.bridge.default_bridge&quot;: &quot;true&quot;,
+            &quot;com.docker.network.bridge.enable_icc&quot;: &quot;true&quot;,
+            &quot;com.docker.network.bridge.enable_ip_masquerade&quot;: &quot;true&quot;,
+            &quot;com.docker.network.bridge.host_binding_ipv4&quot;: &quot;0.0.0.0&quot;,
+            &quot;com.docker.network.bridge.name&quot;: &quot;docker0&quot;,
+            &quot;com.docker.network.driver.mtu&quot;: &quot;1500&quot;
+        },
+        &quot;Labels&quot;: {}
+    }
+]
+</code></pre>
+
+<h2 id="movedatafiles">Move data files</h2>
+
+<p>Default docker installs will put the large containers into /var/lib/docker which may be a directory off root. It is better to put them on a seperate filesystem in case they grow unexpectedly.</p>
+
+<p>1 - Stop the docker daemon</p>
+
+<pre><code>sudo service docker stop
+</code></pre>
+
+<p>2 - Add a configuration file to tell the docker daemon what is the location of the data directory</p>
+
+<p>Change the data-root location:</p>
+
+<p>File: /etc/docker/daemon.json</p>
+
+<pre><code>{ 
+   &quot;data-root&quot;: &quot;/path/to/your/docker&quot; 
+}
+</code></pre>
+
+<p>3 - Copy the current data directory to the new one</p>
+
+<pre><code>sudo rsync -aP /var/lib/docker/ /path/to/your/docker
+</code></pre>
+
+<p>4 - Rename the old docker directory</p>
+
+<pre><code>sudo mv /var/lib/docker /var/lib/docker.old
+</code></pre>
+
+<p>This is just a sanity check to see that everything is ok and docker daemon will effectively use the new location for its data.</p>
+
+<p>5 - Restart the docker daemon</p>
+
+<pre><code>sudo service docker start
+</code></pre>
+
+<p>6 - Test</p>
+
+<p>If everything is ok you should see no differences in using your docker containers. When you are sure that the new directory is being used correctly by docker daemon you can delete the old data directory.</p>
+
+<pre><code>sudo rm -rf /var/lib/docker.old
+</code></pre>
+
+<h2 id="upgradeacontainer">Upgrade a container</h2>
+
+<p>Here is my documentation on upgrading the homeassistant docker container:</p>
+
+<p><a href="/linux-in-house/homeassistant.html#upgrade">Upgrade HomeAssistant</a></p>
+
+<hr>
+
+<h4 id="madeforhumansbyahuman">Made for Humans, by a Human</h4>
+
+<h4 id="links">Links</h4>
+
+<ul>
+<li><a href="https://lwn.net/">Linux Weekly News</a></li>
+<li><a href="https://fullcirclemagazine.org/">Full Circle Magazine</a></li>
+<li><a href="https://www.linuxjournal.com/">Linux Journal</a></li>
+<li><a href="https://www.linux-magazine.com/">Linux Magazine</a></li>
+<li><a href="https://www.thefarside.com/">The Far Side</a></li>
+</ul>
+
+<h4 id="social">Social</h4>
+
+<ul>
+<li><a href="https://fosstodon.org/@Cohoon">Feedback</a></li>
+<li><a href="/linux-in-house/feed-Linux.rss">Linux RSS Feed</a></li>
+<li><a href="/linux-in-house/feed-Writing.rss">Writing RSS Feed</a></li>
+<li><a href="https://linux-in-the-house.pages.dev/">Book</a></li>
+</ul>
+
+<h5 id="builtwithmultimarkdownhttps:github.comfletchermultimarkdown-6andw3schoolshttps:www.w3schools.comw3cssw3css_pro.asp">Built with <a href="https://github.com/fletcher/MultiMarkdown-6">MultiMarkdown</a> and <a href="https://www.w3schools.com/w3css/w3css_pro.asp">W3 Schools</a></h5>
+
+<h5 id="license:ahrefhttp:creativecommons.orglicensesby-nc-sa4.0cc-by-nc-sa4.0a">License: <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0</a></h5>
+
+</body>
+</html>
+

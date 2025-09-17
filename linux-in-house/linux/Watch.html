@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>Watch</title>
+	<meta name="date" content="2023-08-01 10:20"/>
+	<meta name="modified" content="2024-04-19 9:30"/>
+	<meta name="tags" content="systems"/>
+	<meta name="author" content="Don Cohoon"/>
+	<meta name="summary" content="Finally got my alerts working, so when a host goes haywire I get an alert on the Phone and Cloud, with E-Mail as backup."/>
+	<meta name="license" content="'[CC-BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)'"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"> <link rel="stylesheet" href="/linux-in-house/common.css" type="text/css" />
+</head>
+<body>
+
+<p><a href="/linux-in-house/"><h1>Linux in House</h1></a></p>
+
+<link href="/linux-in-house/pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/linux-in-house/pagefind/pagefind-ui.js"></script>
+
+<div id="search"></div>
+<script>
+window.addEventListener('DOMContentLoaded', (event) => {
+      new PagefindUI({ element: "#search", showSubResults: true });
+});
+</script>
+
+<blockquote>
+<p><a href="/linux-in-house/linux/welcome.html">Welcome Back My Friends</a></p>
+</blockquote>
+
+<h1 id="watchnotificationsystem-v2023.09.5">Watch Notification System - v 2023.09.5</h1>
+
+<p>Finally got my alerts working, so when a host goes haywire I get an alert on the Phone and Cloud, with E-Mail as backup.</p>
+
+<hr />
+
+<div class="TOC">
+
+<ul>
+<li><a href="#watchnotificationsystem-v2023.09.5">Watch Notification System - v 2023.09.5</a>
+<ul>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#configuration">Configuration</a></li>
+<li><a href="#schedulealert.shincron">Schedule alert.sh in cron</a></li>
+<li><a href="#copysshkeystoremote">Copy ssh keys to remote</a></li>
+<li><a href="#alertfunctions">Alert Functions</a>
+<ul>
+<li><a href="#defaultistosendane-mailiflimitsareexceeded">Default is to send an e-mail if limits are exceeded</a></li>
+</ul>
+</li>
+<li><a href="#nextcloudflownotifications">NextCloud Flow Notifications</a></li>
+<li><a href="#savelog.sh">savelog.sh</a></li>
+<li><a href="#log.sh-logwatcher">log.sh - Log Watcher</a></li>
+<li><a href="#troubleresolution">Trouble Resolution</a>
+<ul>
+<li><a href="#armv7ldebian10">armv7l Debian 10</a></li>
+<li><a href="#madeforhumansbyahuman">Made for Humans, by a Human</a></li>
+<li><a href="#links">Links</a></li>
+<li><a href="#social">Social</a>
+<ul>
+<li><a href="#builtwithmultimarkdownhttps:github.comfletchermultimarkdown-6andw3schoolshttps:www.w3schools.comw3cssw3css_pro.asp">Built with <a href="https://github.com/fletcher/MultiMarkdown-6">MultiMarkdown</a> and <a href="https://www.w3schools.com/w3css/w3css_pro.asp">W3 Schools</a></a></li>
+<li><a href="#license:ahrefhttp:creativecommons.orglicensesby-nc-sa4.0cc-by-nc-sa4.0a">License: <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0</a></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+<hr />
+
+<p>alert.sh and log.sh are meant to run a few times per hour
+and send alerts if watch thresholds are exceeded.</p>
+
+<ul>
+<li> alert.sh - Usually runs on one host and monitors other hosts, using a normal user ssh tunnel.</li>
+<li> log.sh - Usually runs on each host as root.</li>
+</ul>
+
+<p>When any new file is uploaded into the
+<em>new alert user</em> space, an entry will be written
+to the Conversation <name> with the name and link
+to that file.</p>
+
+<p>On your Phone you can install NextCloud Talk, log in
+as the new alert user and recieve notifications.
+Bonus: Your watch will alert you too!</p>
+
+<p>On your Phone you can install NextCloud Sync, log in
+as the new alert user and read notification files.</p>
+
+<ul>
+<li>Here is the file structure:</li>
+</ul>
+
+<pre><code class="text">/home/bob/watch
+.
+├── alert
+│   ├── vm5.util.20230822112005.uploaded
+│   └── vm7.util.20230822130010.uploaded
+├── alert.sh
+├── db
+│   ├── db-18.1.40
+│   ├── oracle_berkely_DB-V997917-01.zip
+│   └── readme
+├── deploy.sh
+├── df.sh
+├── geturl.pl
+├── log
+│   ├── cloud.log.0
+│   ├── cloud.log.1.gz
+├── log.sh
+├── mail.sh
+├── nbs
+│   ├── db.c
+│   ├── db.o
+│   ├── INSTALL
+│   ├── Makefile
+│   └── ...
+├── nbs.tar
+├── readme
+├── retail
+│   ├── Makefile
+│   ├── retail
+│   ├── retail.c
+│   └── ...
+├── retail.tar
+├── savelog.sh
+├── status
+│   ├── apache-error
+│   ├── apache-error.db.cnt
+│   ├── apache-error.db.idx
+│   ├── apache-error.db.rec
+│   ├── apache-error.db.upd
+│   ├── apache-error_new.txt
+├── sync.sh
+├── util.sh
+└── watch.sh
+
+
+/home/bob/.config
+├── watch
+│   ├── hosts.txt
+│   ├── config.txt
+│   └── df.vm7
+</code></pre>
+
+<h2 id="installation">Installation</h2>
+
+<ul>
+<li> Download</li>
+</ul>
+
+<p><a href="https://github.com/dfcsoftware/watch">https://github.com/dfcsoftware/watch</a></p>
+
+<p>Copy all files to ~/watch, or whatever directory you like,
+just change this documents' references of
+/home/bob
+to
+<em>your</em> directory.</p>
+
+<p>Delete any lines in files /etc/issue and /etc/issue.net as they will interfere with function monitors doing ssh into a host causing alerts every time.</p>
+
+<p>Files: /etc/issue, /etc/issue.net</p>
+
+<pre><code class="text">$ sudo -i
+$ &gt; /etc/issue
+$ &gt; /etc/issue.net
+</code></pre>
+
+<h2 id="configuration">Configuration</h2>
+
+<p>Create config directory structure:</p>
+
+<pre><code>$ mkdir -p ~/.config/watch
+</code></pre>
+
+<p>Create config file:</p>
+
+<p>File: ~/.config/watch/config.txt</p>
+
+<pre><code>export CLOUD_USER=&lt;nextcloud user&gt;
+export CLOUD_PASS=&quot;&lt;nextcloud password&gt;
+export CLOUD_DIR=alert
+export CLOUD_SERVER=&quot;https://www.example.com/nextcloud&quot;
+export CLOUD_LOG=/home/bob/watch/log/cloud.log
+export LOCAL_DIR=/home/bob/watch
+export SSH_USER=bob
+export LD_LIBRARY_PATH=/usr/local/BerkeleyDB.18.1/lib:$LD_LIBRARY_PATH
+</code></pre>
+
+<ul>
+<li>Make sure the LOCAL_DIR/alert exists</li>
+</ul>
+
+<pre><code>$ mkdir -p ${LOCAL_DIR}/alert
+</code></pre>
+
+<ul>
+<li>Make sure CLOUD_LOG is writeable</li>
+</ul>
+
+<pre><code>$ touch ${CLOUD_LOG}
+</code></pre>
+
+<ul>
+<li>Create an hosts.txt list of hosts to monitor</li>
+</ul>
+
+<p>File: ~/.config/watch/hosts.txt</p>
+
+<pre><code># Host   ssh    Remote   Remote
+#        Port   Script   Home
+# ------ ------ -------- -----------------------
+vm1      223    0        /home/bob
+vm2      224    1        /home/data/bob
+#
+# Remote Script: 1=run moniter script that is on remote machine 
+#                0=run monitor script on local, through ssh tunnel
+</code></pre>
+
+<h2 id="schedulealert.shincron">Schedule alert.sh in cron</h2>
+
+<p>i.e.: every 20 minutes</p>
+
+<p>File: /etc/cron.d/alert</p>
+
+<pre><code class="text"># Run the alert analysis
+SHELL=/bin/bash
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+MAILTO=&quot;bob@bob.com&quot;
+*/20 * * * * root /home/bob/watch/alert.sh
+</code></pre>
+
+<h2 id="copysshkeystoremote">Copy ssh keys to remote</h2>
+
+<p>If remote monitoring is desired;</p>
+
+<ul>
+<li> Generate and copy the <em>linux</em> ssh keys.</li>
+</ul>
+
+<pre><code>$ ssh-key-gen
+$ ssh-copy-id &lt;remote hosts&gt;
+</code></pre>
+
+<h2 id="alertfunctions">Alert Functions</h2>
+
+<p>This is a seperate file for each functional alert, and sometimes host.</p>
+
+<blockquote>
+<p>Remote Hosts need their <em>own</em> config file(s)</p>
+</blockquote>
+
+<ul>
+<li> On the Remote Host(s):</li>
+</ul>
+
+<pre><code>$ mkdir -p ~/.config/watch
+</code></pre>
+
+<p>Example of <strong>df</strong> functional monitor. Each script will describe it&#8217;s own.</p>
+
+<p>File: ~/.config/monitor/df.<hostname></p>
+
+<pre><code>Usage-Percent-Limit   File-System        Mount-Point
+</code></pre>
+
+<pre><code>34                       &quot;/dev/mmcblk1p2&quot;   &quot;/&quot;
+38                       &quot;/dev/mmcblk1p1&quot;   &quot;/boot/firmware&quot; 
+16                       &quot;/dev/md0&quot;         &quot;/mnt/raid1&quot;
+</code></pre>
+
+<p>Dependencies:</p>
+
+<ul>
+<li> Performance Co-Pilot - <a href="https://pcp.io/">https://pcp.io/</a></li>
+</ul>
+
+<blockquote>
+<p>dnf=RedHat; apt=Debian</p>
+</blockquote>
+
+<pre><code>$ sudo dnf install pcp cockpit-pcp python3-pcp # default from cockpit web install
+$ sudo apt install pcp cockpit-pcp python3-pcp # default from cockpit web install
+#   - Systemd Services:
+#     pmcd.service
+#     pmlogger.service
+#     pmie.service
+#     pmproxy.service
+#
+$ sudo dnf install pcp-export-pcp2json         # pcp2json
+$ sudo apt install pcp-export-pcp2json         # pcp2json
+#     Debian 11 may need to add;
+#      File: /etc/apt/sources.list.d/unstable.list
+#       deb http://deb.debian.org/debian/ unstable main
+#     Also may need to run: pip install requests
+$ sudo dnf install pcp-system-tools            # pmrep
+#
+$ sudo dnf install jq                          # json parser
+$ sudo apt install jq                          # json parser
+#
+$ sudo dnf install jc                          # json commands
+$ sudo apt install jc                          # json commands
+#
+$ sudo dnf install ncdu                        # Text-based disk usage viewer
+$ sudo apt install ncdu                        # Text-based disk usage viewer
+#
+$ sudo dnf install nmon                        # Text-based system utilization viewer
+$ sudo apt install nmon                        # Text-based system utilization viewer
+</code></pre>
+
+<h3 id="defaultistosendane-mailiflimitsareexceeded">Default is to send an e-mail if limits are exceeded</h3>
+
+<p>To stop E-Mail, add a SEND_MAIL export to the config.txt file.</p>
+
+<ul>
+<li> 0 = NO</li>
+<li> 1 = YES</li>
+</ul>
+
+<p>File: ~/.config/watch/config.txt</p>
+
+<pre><code>~
+export SEND_MAIL=0
+~
+</code></pre>
+
+<h2 id="nextcloudflownotifications">NextCloud Flow Notifications</h2>
+
+<ul>
+<li><p> Create <em>new alert user</em> in NextCloud</p></li>
+<li><p> Add the NextCloud server as SERVER in ~/.config/watch/config.txt</p></li>
+<li><p> Add the NextCloud user as CLOUD_USER in ~/.config/watch/config.txt</p></li>
+<li><p> Add the NextCloud user&#8217;s password as CLOUD_PASS in ~/.config/watch/config.txt</p></li>
+<li><p> As the <em>new alert user</em> in NextCloud;</p></li>
+<li><p> Go to Talk</p>
+
+<ul>
+<li> Create a new group Conversation <name></li>
+</ul></li>
+<li><p> Go to Files and create a new alert directory</p>
+
+<ul>
+<li> Add it as the CLOUD_DIR to ~/.config/watch/config.txt</li>
+</ul></li>
+<li><p> Go to Personal Settings &gt; Flow</p>
+
+<ul>
+<li> Add a new flow <em>Write to conversasion</em> (blue)</li>
+<li> When: File created</li>
+<li> and: File size (upload) is greater than 0 MB</li>
+<li> -&gt; Write to conversasion using the
+
+<ul>
+<li>Conversation <name> created above</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p>Reference:</p>
+
+<ul>
+<li> <a href="https://github.com/nextcloud/flow_notifications">https://github.com/nextcloud/flow_notifications</a></li>
+<li> <a href="https://github.com/dfcsoftware/watch#configuration">Example config.txt</a></li>
+</ul>
+
+<h2 id="savelog.sh">savelog.sh</h2>
+
+<p>This is used to save off several copies of the last sync.sh process sending alerts to the NextCloud server.</p>
+
+<blockquote>
+<p>The logs are better viewed using the <em>lnav</em> Linu package. <code>lnav ~/watch/log/</code></p>
+</blockquote>
+
+<p>This is released on many OS packages, but not all,
+so it is included here. Thanks very much to the original authors!</p>
+
+<p>Reference:</p>
+
+<ul>
+<li> <a href="https://launchpad.net/ubuntu/xenial/+package/debianutils">https://launchpad.net/ubuntu/xenial/+package/debianutils</a></li>
+<li> <a href="https://manpages.ubuntu.com/manpages/xenial/en/man8/savelog.8.html">https://manpages.ubuntu.com/manpages/xenial/en/man8/savelog.8.html</a></li>
+<li> <a href="https://opensource.apple.com/source/uucp/uucp-10/uucp/contrib/savelog.sh.auto.html">https://opensource.apple.com/source/uucp/uucp-10/uucp/contrib/savelog.sh.auto.html</a></li>
+<li> <a href="https://rhel.pkgs.org/8/lux/uucp-1.07-65.el8.lux.x86_64.rpm.html">https://rhel.pkgs.org/8/lux/uucp-1.07-65.el8.lux.x86_64.rpm.html</a></li>
+</ul>
+
+<h2 id="log.sh-logwatcher">log.sh - Log Watcher</h2>
+
+<p>This script runs as root on each node to search for Never Before Seen (NBS) entries in a log file.
+It needs to be scheduled in cron.</p>
+
+<p>The flow is:</p>
+
+<ol>
+<li>cron runs log.sh</li>
+</ol>
+
+<p>File: /etc/cron.d/logwatcher</p>
+
+<pre><code class="text"># Log - Watcher
+PATH=/usr/lib/sysstat:/usr/sbin:/usr/sbin:/usr/bin:/sbin:/bin
+MAILTO=&quot;bob@bob.com&quot;
+# Run Log watcher
+*/20 * * * * bob  /home/bob/watch/log.sh 
+</code></pre>
+
+<ol>
+<li>log.sh reads config file ~/.config/watch/logwatch.&lt;hostname&gt;</li>
+</ol>
+
+<p>File: logwatch.vm7</p>
+
+<pre><code># File: logwatch.vm7
+#           DB                      File                               Alert  Email          Filter 
+# ------------------------- ----------------------------------------- ------ ------ -----------------------------------#
+apache-access                /var/log/apache2/access.log               N      Y     geturl.pl skip_local_ips.sh
+apache-error                 /var/log/apache2/error.log                Y      Y     geturl.pl
+apache-other_vhosts_access   /var/log/apache2/other_vhosts_access.log  Y      Y     geturl.pl
+</code></pre>
+
+<ol>
+<li>New lines in File are read by retail, filtered by any and all Filters supplied.</li>
+<li>DB is checked if this has been seen before and can be ignored.</li>
+<li>Any remainging lines are sent to the alert directory and an Email sent, if Y in config.txt.</li>
+<li>A sync for new alert files is done, sending new files to the cloud (NextCloud).</li>
+<li>NextCloud will send a Talk alert to the CLOUD_USER for new files. These are viewable on a Phone or Watch, if running the Talk app.</li>
+</ol>
+
+<p>The following software packages have to be installed and compiled locally:</p>
+
+<ul>
+<li> Berkerly DB - <a href="https://www.oracle.com/database/technologies/related/berkeleydb-downloads.html#">https://www.oracle.com/database/technologies/related/berkeleydb-downloads.html#</a></li>
+<li> Never Before Seen (NBS) - <a href="http://ranum.com/security/computer_security/code/nbs.tar">http://ranum.com/security/computer_security/code/nbs.tar</a></li>
+<li> Retail - <a href="https://github.com/mbucc/retail">https://github.com/mbucc/retail</a></li>
+</ul>
+
+<p>Refer to the log.sh script for instructions.</p>
+
+<p>Reference:</p>
+
+<ul>
+<li> Marcus Ranum <a href="http://ranum.com/security/computer_security/code/index.html">http://ranum.com/security/computer_security/code/index.html</a></li>
+<li> <a href="/linux-in-house/e-mailrelay.html#logwatcher">Logwatcher.sh</a></li>
+</ul>
+
+<h2 id="troubleresolution">Trouble Resolution</h2>
+
+<h4 id="armv7ldebian10">armv7l Debian 10</h4>
+
+<p>The pmlogger systemd daemon had issues being installed, and the following log instructions solved it.</p>
+
+<pre><code>Aug 08 11:07:39 bob.example.com systemd[1]: Starting LSB: Control pmlogger (the performance metrics logger for PCP)...
+Aug 08 11:07:43 bob.example.com pmlogger[913]: /etc/init.d/pmlogger: Warning: Performance Co-Pilot archive logger(s) not permanently enabled.
+Aug 08 11:07:43 bob.example.com pmlogger[913]:     To enable pmlogger, run the following as root:
+Aug 08 11:07:44 bob.example.com pmlogger[913]:          update-rc.d -f pmlogger remove
+Aug 08 11:07:44 bob.example.com pmlogger[913]:          update-rc.d pmlogger defaults 94 06
+</code></pre>
+
+<hr>
+
+<h4 id="madeforhumansbyahuman">Made for Humans, by a Human</h4>
+
+<h4 id="links">Links</h4>
+
+<ul>
+<li><a href="https://lwn.net/">Linux Weekly News</a></li>
+<li><a href="https://fullcirclemagazine.org/">Full Circle Magazine</a></li>
+<li><a href="https://www.linuxjournal.com/">Linux Journal</a></li>
+<li><a href="https://www.linux-magazine.com/">Linux Magazine</a></li>
+<li><a href="https://www.thefarside.com/">The Far Side</a></li>
+</ul>
+
+<h4 id="social">Social</h4>
+
+<ul>
+<li><a href="https://fosstodon.org/@Cohoon">Feedback</a></li>
+<li><a href="/linux-in-house/feed-Linux.rss">Linux RSS Feed</a></li>
+<li><a href="/linux-in-house/feed-Writing.rss">Writing RSS Feed</a></li>
+<li><a href="https://linux-in-the-house.pages.dev/">Book</a></li>
+</ul>
+
+<h5 id="builtwithmultimarkdownhttps:github.comfletchermultimarkdown-6andw3schoolshttps:www.w3schools.comw3cssw3css_pro.asp">Built with <a href="https://github.com/fletcher/MultiMarkdown-6">MultiMarkdown</a> and <a href="https://www.w3schools.com/w3css/w3css_pro.asp">W3 Schools</a></h5>
+
+<h5 id="license:ahrefhttp:creativecommons.orglicensesby-nc-sa4.0cc-by-nc-sa4.0a">License: <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0</a></h5>
+
+</body>
+</html>
+

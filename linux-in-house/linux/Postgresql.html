@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>Postgresql</title>
+	<meta name="date" content="2023-01-25 10:16"/>
+	<meta name="modified" content="2024-04-19 9:30"/>
+	<meta name="tags" content="systems, db"/>
+	<meta name="author" content="Don Cohoon"/>
+	<meta name="summary" content="Postgresql relational SQL database for systems. This is a great database with high reliability, performance and extendable."/>
+	<meta name="license" content="'[CC-BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)'"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"> <link rel="stylesheet" href="/linux-in-house/common.css" type="text/css" />
+</head>
+<body>
+
+<p><a href="/linux-in-house/"><h1>Linux in House</h1></a></p>
+
+<link href="/linux-in-house/pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/linux-in-house/pagefind/pagefind-ui.js"></script>
+
+<div id="search"></div>
+<script>
+window.addEventListener('DOMContentLoaded', (event) => {
+      new PagefindUI({ element: "#search", showSubResults: true });
+});
+</script>
+
+<blockquote>
+<p><a href="/linux-in-house/linux/welcome.html">Welcome Back My Friends</a></p>
+</blockquote>
+
+<h2 id="postgresqldatabase">Postgresql Database</h2>
+
+<p>Postgresql relational SQL database for systems. This is a great database with high reliability, performance and extendable.</p>
+
+<br/>
+
+<hr />
+
+<div class="TOC">
+
+<ul>
+<li><a href="#postgresqldatabase">Postgresql Database</a>
+<ul>
+<li><a href="#installationversion13">Installation (version 13)</a>
+<ul>
+<li><a href="#install">Install</a></li>
+<li><a href="#enableautostartup">Enable auto startup</a></li>
+<li><a href="#checkoutalltheseoptions">Check out all these Options</a></li>
+<li><a href="#clusters">Clusters</a></li>
+<li><a href="#logfile">Log File</a></li>
+<li><a href="#configurationfile">Configuration File</a></li>
+<li><a href="#hostbasedauthenticationhbafile">Host Based Authentication (HBA) File</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#psqlpager-pspg">psql pager - pspg</a>
+<ul>
+<li><a href="#install">Install</a></li>
+<li><a href="#helperscript">Helper Script</a></li>
+<li><a href="#example">Example</a></li>
+</ul>
+</li>
+<li><a href="#continue">Continue</a>
+<ul>
+<li><a href="#madeforhumansbyahuman">Made for Humans, by a Human</a></li>
+<li><a href="#links">Links</a></li>
+<li><a href="#social">Social</a>
+<ul>
+<li><a href="#builtwithmultimarkdownhttps:github.comfletchermultimarkdown-6andw3schoolshttps:www.w3schools.comw3cssw3css_pro.asp">Built with <a href="https://github.com/fletcher/MultiMarkdown-6">MultiMarkdown</a> and <a href="https://www.w3schools.com/w3css/w3css_pro.asp">W3 Schools</a></a></li>
+<li><a href="#license:ahrefhttp:creativecommons.orglicensesby-nc-sa4.0cc-by-nc-sa4.0a">License: <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0</a></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+<hr />
+
+<p>The main features are:</p>
+
+<ul>
+<li>User Roles</li>
+<li>Stored Procedures</li>
+<li>JSON native support</li>
+<li>Filesystem access</li>
+<li>Federation with other databases</li>
+<li>Physical and logical replication</li>
+<li>Partitioning</li>
+<li>Small system requirements</li>
+</ul>
+
+<p>Reference: <a href="https://www.postgresql.org/">https://www.postgresql.org/</a></p>
+
+<h3 id="installationversion13">Installation (version 13)</h3>
+
+<p>The current version is 15, and Ubuntu 22.04 installs 14.</p>
+
+<h4 id="install">Install</h4>
+
+<p>This example is version 13, but it has not changed the package install command.</p>
+
+<pre><code>$ sudo apt-get install postgresql postgresql-server
+</code></pre>
+
+<h4 id="enableautostartup">Enable auto startup</h4>
+
+<p>Yea, still example on version 13, but should be the same on 14 and 15.</p>
+
+<pre><code>$ sudo systemctl start postgresql@13-main
+$ sudo systemctl status postgresql@13-main
+</code></pre>
+
+<ul>
+<li> RedHat</li>
+</ul>
+
+<p>All files will be stuffed into a single directory by default (/var/lib/pgsql/data); data, config, log, etc&#8230;</p>
+
+<p>If you want to have multiple versions, or upgrade versions, read the file /usr/share/doc/postgresql/README.rpm-dist [1]. RedHat gives you more control over the placemant and layout of the postgres database(s).</p>
+
+<p>See pg_lscluster.sh [2] below for more info on versions.</p>
+
+<pre><code>$ sudo -u postgres /usr/bin/postgresql-setup --initdb
+ * Initializing database in '/var/lib/pgsql/data'
+ * Initialized, logs are in /var/lib/pgsql/initdb_postgresql.log
+$ sudo systemctl enable --now postgresql
+$ sudo systemctl status postgresql
+</code></pre>
+
+<ol>
+<li> <a href="https://fedoraproject.org/wiki/PostgreSQL/README.rpm-dist">https://fedoraproject.org/wiki/PostgreSQL/README.rpm-dist</a></li>
+<li> <a href="/linux-in-house/postgresql.html#clusters">Clusters</a></li>
+</ol>
+
+<h4 id="checkoutalltheseoptions">Check out all these Options</h4>
+
+<p>Check the databases installed, main (postgres) and two templates
+and list out available command line directives
+ (they start with the backslash (\) character)</p>
+
+<pre><code>$ sudo -u postgres psql
+postgres-# \l
+                              List of databases
+   Name    |  Owner   | Encoding | Collate |  Ctype  |   Access privileges   
+-----------+----------+----------+---------+---------+-----------------------
+ postgres  | postgres | UTF8     | C.UTF-8 | C.UTF-8 | 
+ template0 | postgres | UTF8     | C.UTF-8 | C.UTF-8 | =c/postgres          +
+           |          |          |         |         | postgres=CTc/postgres
+ template1 | postgres | UTF8     | C.UTF-8 | C.UTF-8 | =c/postgres          +
+           |          |          |         |         | postgres=CTc/postgres
+(3 rows)
+
+# \?
+General
+  \copyright             show PostgreSQL usage and distribution terms
+  \crosstabview [COLUMNS] execute query and display results in crosstab
+  \errverbose            show most recent error message at maximum verbosity
+  \g [(OPTIONS)] [FILE]  execute query (and send results to file or |pipe);
+                         \g with no arguments is equivalent to a semicolon
+  \gdesc                 describe result of query, without executing it
+  \gexec                 execute query, then execute each value in its result
+  \gset [PREFIX]         execute query and store results in psql variables
+  \gx [(OPTIONS)] [FILE] as \g, but forces expanded output mode
+  \q                     quit psql
+  \watch [SEC]           execute query every SEC seconds
+
+Help
+  \? [commands]          show help on backslash commands
+  \? options             show help on psql command-line options
+  \? variables           show help on special variables
+  \h [NAME]              help on syntax of SQL commands, * for all commands
+
+Query Buffer
+  \e [FILE] [LINE]       edit the query buffer (or file) with external editor
+  \ef [FUNCNAME [LINE]]  edit function definition with external editor
+  \ev [VIEWNAME [LINE]]  edit view definition with external editor
+  \p                     show the contents of the query buffer
+  \r                     reset (clear) the query buffer
+  \s [FILE]              display history or save it to file
+  \w FILE                write query buffer to file
+
+Input/Output
+  \copy ...              perform SQL COPY with data stream to the client host
+  \echo [-n] [STRING]    write string to standard output (-n for no newline)
+  \i FILE                execute commands from file
+  \ir FILE               as \i, but relative to location of current script
+  \o [FILE]              send all query results to file or |pipe
+  \qecho [-n] [STRING]   write string to \o output stream (-n for no newline)
+  \warn [-n] [STRING]    write string to standard error (-n for no newline)
+
+Conditional
+  \if EXPR               begin conditional block
+  \elif EXPR             alternative within current conditional block
+  \else                  final alternative within current conditional block
+  \endif                 end conditional block
+
+Informational
+  (options: S = show system objects, + = additional detail)
+  \d[S+]                 list tables, views, and sequences
+  \d[S+]  NAME           describe table, view, sequence, or index
+  \da[S]  [PATTERN]      list aggregates
+  \dA[+]  [PATTERN]      list access methods
+  \dAc[+] [AMPTRN [TYPEPTRN]]  list operator classes
+  \dAf[+] [AMPTRN [TYPEPTRN]]  list operator families
+  \dAo[+] [AMPTRN [OPFPTRN]]   list operators of operator families
+  \dAp[+] [AMPTRN [OPFPTRN]]   list support functions of operator families
+  \db[+]  [PATTERN]      list tablespaces
+  \dc[S+] [PATTERN]      list conversions
+  \dC[+]  [PATTERN]      list casts
+  \dd[S]  [PATTERN]      show object descriptions not displayed elsewhere
+  \dD[S+] [PATTERN]      list domains
+  \ddp    [PATTERN]      list default privileges
+  \dE[S+] [PATTERN]      list foreign tables
+  \des[+] [PATTERN]      list foreign servers
+  \det[+] [PATTERN]      list foreign tables
+  \deu[+] [PATTERN]      list user mappings
+  \dew[+] [PATTERN]      list foreign-data wrappers
+  \df[anptw][S+] [FUNCPTRN [TYPEPTRN ...]]
+                         list [only agg/normal/procedure/trigger/window] functions
+  \dF[+]  [PATTERN]      list text search configurations
+  \dFd[+] [PATTERN]      list text search dictionaries
+  \dFp[+] [PATTERN]      list text search parsers
+  \dFt[+] [PATTERN]      list text search templates
+  \dg[S+] [PATTERN]      list roles
+  \di[S+] [PATTERN]      list indexes
+  \dl                    list large objects, same as \lo_list
+  \dL[S+] [PATTERN]      list procedural languages
+  \dm[S+] [PATTERN]      list materialized views
+  \dn[S+] [PATTERN]      list schemas
+  \do[S+] [OPPTRN [TYPEPTRN [TYPEPTRN]]]
+                         list operators
+  \dO[S+] [PATTERN]      list collations
+  \dp     [PATTERN]      list table, view, and sequence access privileges
+  \dP[itn+] [PATTERN]    list [only index/table] partitioned relations [n=nested]
+  \drds [ROLEPTRN [DBPTRN]] list per-database role settings
+  \dRp[+] [PATTERN]      list replication publications
+  \dRs[+] [PATTERN]      list replication subscriptions
+  \ds[S+] [PATTERN]      list sequences
+  \dt[S+] [PATTERN]      list tables
+  \dT[S+] [PATTERN]      list data types
+  \du[S+] [PATTERN]      list roles
+  \dv[S+] [PATTERN]      list views
+  \dx[+]  [PATTERN]      list extensions
+  \dX     [PATTERN]      list extended statistics
+  \dy[+]  [PATTERN]      list event triggers
+  \l[+]   [PATTERN]      list databases
+  \sf[+]  FUNCNAME       show a function's definition
+  \sv[+]  VIEWNAME       show a view's definition
+  \z      [PATTERN]      same as \dp
+
+Formatting
+  \a                     toggle between unaligned and aligned output mode
+  \C [STRING]            set table title, or unset if none
+  \f [STRING]            show or set field separator for unaligned query output
+  \H                     toggle HTML output mode (currently off)
+  \pset [NAME [VALUE]]   set table output option
+                         (border|columns|csv_fieldsep|expanded|fieldsep|
+                         fieldsep_zero|footer|format|linestyle|null|
+                         numericlocale|pager|pager_min_lines|recordsep|
+                         recordsep_zero|tableattr|title|tuples_only|
+                         unicode_border_linestyle|unicode_column_linestyle|
+                         unicode_header_linestyle)
+  \t [on|off]            show only rows (currently off)
+  \T [STRING]            set HTML &lt;table&gt; tag attributes, or unset if none
+  \x [on|off|auto]       toggle expanded output (currently off)
+
+Connection
+  \c[onnect] {[DBNAME|- USER|- HOST|- PORT|-] | conninfo}
+                         connect to new database (currently &quot;postgres&quot;)
+  \conninfo              display information about current connection
+  \encoding [ENCODING]   show or set client encoding
+  \password [USERNAME]   securely change the password for a user
+
+Operating System
+  \cd [DIR]              change the current working directory
+  \setenv NAME [VALUE]   set or unset environment variable
+  \timing [on|off]       toggle timing of commands (currently off)
+  \! [COMMAND]           execute command in shell or start interactive shell
+
+Variables
+  \prompt [TEXT] NAME    prompt user to set internal variable
+  \set [NAME [VALUE]]    set internal variable, or list all if no parameters
+  \unset NAME            unset (delete) internal variable
+
+Large Objects
+  \lo_export LOBOID FILE
+  \lo_import FILE [COMMENT]
+  \lo_list
+  \lo_unlink LOBOID      large object operations
+(END)
+
+#\q
+</code></pre>
+
+<h4 id="clusters">Clusters</h4>
+
+<p>Before you can do anything, you must initialize a database storage area on disk. This is called a database cluster. A database cluster is a collection of databases that are managed by a single instance of a running database server.</p>
+
+<blockquote>
+<p>RedHat does not install pg_ctlcluster as it is an extension for Ubuntu package postgresql-common</p>
+</blockquote>
+
+<p>Clusters are the best way to run several versions of PostgreSQL on the same host,</p>
+
+<p>Reference: <a href="https://www.postgresql.org/docs/current/creating-cluster.html">https://www.postgresql.org/docs/current/creating-cluster.html</a></p>
+
+<pre><code>$ pg_ctlcluster
+Usage: /usr/bin/pg_ctlcluster &lt;version&gt; &lt;cluster&gt; &lt;action&gt;
+
+$ pg_lsclusters
+Ver Cluster Port Status Owner    Data directory              Log file
+13  main    5432 down   postgres /var/lib/postgresql/13/main /var/log/postgresql/postgresql-13-main.log
+
+$ pg_ctlcluster 13 main start
+
+$ pg_lsclusters
+Ver Cluster Port Status Owner    Data directory              Log file
+13  main    5432 online postgres /var/lib/postgresql/13/main /var/log/postgresql/postgresql-13-main.log
+
+</code></pre>
+
+<ul>
+<li>RedHat Version</li>
+</ul>
+
+<p>The location of files is determined by the initdb program, which was run earlier.</p>
+
+<p>File: ~/pg_lscluster.sh</p>
+
+<pre><code>#!/bin/bash
+##############################################################
+# 
+# File: pg_lscluster
+#
+# Purpose: List information on postgresql installed clusters
+#
+# Reason: pg_lscluster only exists for the postgresql-common
+#          package on Ubuntu. This script was created for
+#          non-Ubuntu Linux distributions.
+#
+# Versions: To do that simply 
+#  1) Place the postgresql.conf files in versions:
+#     i.e.: /etc/postgres/&lt;version&gt;/main/postgresql.conf
+#  2) Create services with versions:
+#     i.e.: postgresql@&lt;version&gt;-main.service
+#  Of course data_directory and log_directory must also have
+#   versions, and port numbers must be different,
+#   but this script does not care. ;-)
+#
+# History
+# When        Who         Description
+# ----------- ----------- -----------------------------------------
+# 12-Jun-2023 Don Cohoon  Created
+##############################################################
+TMP=$(mktemp)
+#-----------
+function details() {
+  SERVICE=${1}
+  PORT=${2}
+  #
+  sudo systemctl status ${SERVICE} &gt; ${TMP}
+  grep -e active -e PID ${TMP}
+  # Main PID: 904 (postmaster)
+  PROCESS=$(grep PID ${TMP}| cut -d'(' -f2| cut -d')' -f1)
+  # Grab the '-D &lt;directory&gt;' run-time parameter
+  DIR=$(grep /bin/${PROCESS} ${TMP} | awk '{print $4}')
+  #
+  echo
+  #
+  sudo -u postgres ls ${DIR}/log &gt;${TMP} 2&gt;/dev/null
+  if [[ -s ${TMP} ]]; then
+    echo &quot;   Log directory: ${DIR}/log&quot;
+  elif [[ -d /var/log/postgresql ]]; then
+    echo &quot;   Log directory: /var/log/postgresql&quot;
+  fi
+  #
+  echo
+  #
+  sudo -u postgres psql -tq -p ${PORT} &lt;&lt;EOF 2&gt;/dev/null
+--  SELECT '    Current Logfile: ' || pg_current_logfile();
+  SELECT '  Port: ' || setting
+    FROM pg_settings
+   WHERE name = 'port';
+  SELECT '  Data directory: ' || setting
+    FROM pg_settings
+   WHERE name = 'data_directory';
+  SELECT '  Config File: ' || setting
+    FROM pg_settings
+   WHERE name = 'config_file';
+  SELECT '  Host Based Access File: ' || setting
+    FROM pg_settings
+   WHERE name = 'hba_file';
+EOF
+  rm ${TMP}
+} # details
+#-----------
+echo
+#
+if [[ -f /usr/bin/pg_config ]];then
+  V=$(/usr/bin/pg_config | tail -1 | awk '{print $4}')
+else
+  V=$(/usr/bin/postgres -V | awk '{print $NF}')
+fi
+echo &quot;   Default Version:  ${V}&quot;
+echo
+#
+if [[ -d /etc/postgresql/ ]]; then
+ for VER in $(ls /etc/postgresql/) # return installed versions 
+  do
+   echo &quot;= = = = =&gt; Version: $VER&quot;
+   PORT=$(grep '^port' /etc/postgresql/${VER}/main/postgresql.conf 2&gt;/dev/null | awk '{print $3}')
+   details postgresql@${VER}-main.service ${PORT}
+  done
+else # only one default version
+  details postgresql 5432
+fi
+#
+</code></pre>
+
+<ul>
+<li> Ubuntu</li>
+</ul>
+
+<pre><code># ~/pg_lscluster.sh 
+
+   Default Version:  14.8
+
+= = = = =&gt; Version: 10
+     Active: inactive (dead)
+
+   Log directory: /var/log/postgresql
+
+= = = = =&gt; Version: 12
+     Active: active (running) since Sat 2023-06-10 16:10:47 EDT; 2 days ago
+   Main PID: 1485 (postgres)
+
+   Log directory: /var/log/postgresql
+
+   Port: 5432
+
+   Data directory: /var/lib/postgresql/12/main
+
+   Config File: /etc/postgresql/12/main/postgresql.conf
+
+   Host Based Access File: /etc/postgresql/12/main/pg_hba.conf
+
+= = = = =&gt; Version: 14
+     Active: active (running) since Sat 2023-06-10 16:10:47 EDT; 2 days ago
+   Main PID: 1462 (postgres)
+
+   Log directory: /var/log/postgresql
+
+   Port: 5433
+
+   Data directory: /var/lib/postgresql/14/main
+
+   Config File: /etc/postgresql/14/main/postgresql.conf
+
+   Host Based Access File: /etc/postgresql/14/main/pg_hba.conf
+</code></pre>
+
+<ul>
+<li> RedHat</li>
+</ul>
+
+<pre><code># ~/pg_lscluster.sh 
+
+   Default Version:  13.10
+
+     Active: active (running) since Tue 2023-06-13 06:04:30 EDT; 2h 13min ago
+   Main PID: 904 (postmaster)
+
+   Log directory: /var/lib/pgsql/data/log
+
+   Port: 5432
+
+   Data directory: /var/lib/pgsql/data
+
+   Config File: /var/lib/pgsql/data/postgresql.conf
+
+   Host Based Access File: /var/lib/pgsql/data/pg_hba.conf
+</code></pre>
+
+<h4 id="logfile">Log File</h4>
+
+<pre><code>$ tail -40  /var/log/postgresql/postgresql-13-main.log
+2018-11-16 06:04:16.889 EST [1019] LOG:  received fast shutdown request
+2018-11-16 06:04:16.892 EST [1019] LOG:  aborting any active transactions
+2018-11-16 06:04:16.897 EST [1019] LOG:  worker process: logical replication launcher (PID 1034) exited with exit code 1
+2018-11-16 06:04:16.901 EST [1029] LOG:  shutting down
+2018-11-16 06:04:16.942 EST [1019] LOG:  database system is shut down
+</code></pre>
+
+<h4 id="configurationfile">Configuration File</h4>
+
+<p>There are many configuration parameters that affect the behavior of the database system.</p>
+
+<p>Reference: <a href="https://www.postgresql.org/docs/current/runtime-config.html">https://www.postgresql.org/docs/current/runtime-config.html</a></p>
+
+<p>Debian</p>
+
+<pre><code>postgres=# show config_file;
+               config_file               
+-----------------------------------------
+ /etc/postgresql/12/main/postgresql.conf
+(1 row)
+
+</code></pre>
+
+<p>RedHat</p>
+
+<pre><code># show config_file;
+             config_file             
+-------------------------------------
+ /var/lib/pgsql/data/postgresql.conf
+(1 row)
+</code></pre>
+
+<h4 id="hostbasedauthenticationhbafile">Host Based Authentication (HBA) File</h4>
+
+<p>Client authentication is controlled by a configuration file, which traditionally is named pg_hba.conf and is stored in the database cluster&#8217;s data directory. (HBA stands for host-based authentication.)</p>
+
+<p>Reference: <a href="https://www.postgresql.org/docs/current/auth-pg-hba-conf.html">https://www.postgresql.org/docs/current/auth-pg-hba-conf.html</a></p>
+
+<p>Debian</p>
+
+<pre><code># show hba_file;
+              hba_file               
+-------------------------------------
+ /etc/postgresql/12/main/pg_hba.conf
+(1 row)
+</code></pre>
+
+<p>RedHat</p>
+
+<pre><code># show hba_file;
+            hba_file             
+---------------------------------
+ /var/lib/pgsql/data/pg_hba.conf
+(1 row)
+</code></pre>
+
+<h2 id="psqlpager-pspg">psql pager - pspg</h2>
+
+<p>The command line paging defaults to <code>less</code> but you can install a much better one.</p>
+
+<p>Pspg supports searching, selecting rows, columns, or block and export selected area to clipboard.
+Check out the screenshots, installation options and animation on the website. Super useful productivity tool!</p>
+
+<p>Reference: <a href="https://github.com/okbob/pspg">https://github.com/okbob/pspg</a></p>
+
+<h4 id="install">Install</h4>
+
+<pre><code>$ sudo apt-get install pspg
+</code></pre>
+
+<h4 id="helperscript">Helper Script</h4>
+
+<p>Create a helper script to run it. Add /usr/local/bin to your PATH if not already.</p>
+
+<blockquote>
+<p>I defaulted it to a database named <code>mydb</code>. Change it to your favorite database, or just remove the <code>-d mydb</code> part of the <code>sudo</code> line.</p>
+</blockquote>
+
+<p>File: /usr/local/bin/psql.sh</p>
+
+<pre><code>#!/bin/bash
+# https://github.com/okbob/pspg
+echo &quot;-&gt; Fancy pager (pspg) [-s 1,2,3,4,...20] &lt;- themes&quot;
+echo &quot;\set xx '\\\\setenv PAGER \'pspg -bX --no-mouse -s 5\''&quot;
+echo &quot;:xx&quot;
+echo &quot;-&gt; Default pager (less)&quot;
+echo &quot;\set x '\\\\setenv PAGER less'&quot;
+echo &quot;:x&quot;
+sudo -u postgres psql -d mydb $@
+</code></pre>
+
+<h4 id="example">Example</h4>
+
+<p>pspg allows paging forward, backward, as well as scrolling right and left with arrow keys.</p>
+
+<p>Execute a file from the script parameter name</p>
+
+<pre><code>$ cat now.sql 
+select * from now();
+
+$ psql.sh -f now.sql
+-&gt; Fancy pager (pspg) [-s 1,2,3,4,...20] &lt;- themes
+\set xx '\\setenv PAGER \'pspg -bX --no-mouse -s 5\''
+:xx
+-&gt; Default pager (less)
+\set x '\\setenv PAGER less'
+:x
+              now              
+-------------------------------
+ 2023-01-28 19:42:07.897614-05
+(1 row)
+</code></pre>
+
+<p>Example using the pager.</p>
+
+<p>Copy &amp; Paste <code>\set xx '\\setenv PAGER \'pspg -bX --no-mouse -s 5\''</code> into the prompt, hit Enter.
+Remember to enter <code>:xx</code> to run the pspg pager.</p>
+
+<pre><code>$ psql.sh 
+-&gt; Fancy pager (pspg) [-s 1,2,3,4,...20] &lt;- themes
+\set xx '\\setenv PAGER \'pspg -bX --no-mouse -s 5\''
+:xx
+-&gt; Default pager (less)
+\set x '\\setenv PAGER less'
+:x
+psql (14.5 (Ubuntu 14.5-0ubuntu0.22.04.1), server 12.12 (Ubuntu 12.12-0ubuntu0.20.04.1))
+Type &quot;help&quot; for help.
+
+mydb=# \set xx '\\setenv PAGER \'pspg -bX --no-mouse -s 5\''
+mydb=# :xx
+mydb-# select * from mydb.log_file ;
+</code></pre>
+
+<figure>
+<img src="/linux-in-house/images/pspg.png" alt="pspg.png" />
+<figcaption>pspg.png</figcaption>
+</figure>
+
+<h2 id="continue">Continue</h2>
+
+<p>Now that you have installed a shiny new database, consider how upgrades work.</p>
+
+<p>In our next episode of Linux in the Home.</p>
+
+<p>Proceed in the order presented, some things are depending on prior setups.</p>
+
+<hr>
+
+<h4 id="madeforhumansbyahuman">Made for Humans, by a Human</h4>
+
+<h4 id="links">Links</h4>
+
+<ul>
+<li><a href="https://lwn.net/">Linux Weekly News</a></li>
+<li><a href="https://fullcirclemagazine.org/">Full Circle Magazine</a></li>
+<li><a href="https://www.linuxjournal.com/">Linux Journal</a></li>
+<li><a href="https://www.linux-magazine.com/">Linux Magazine</a></li>
+<li><a href="https://www.thefarside.com/">The Far Side</a></li>
+</ul>
+
+<h4 id="social">Social</h4>
+
+<ul>
+<li><a href="https://fosstodon.org/@Cohoon">Feedback</a></li>
+<li><a href="/linux-in-house/feed-Linux.rss">Linux RSS Feed</a></li>
+<li><a href="/linux-in-house/feed-Writing.rss">Writing RSS Feed</a></li>
+<li><a href="https://linux-in-the-house.pages.dev/">Book</a></li>
+</ul>
+
+<h5 id="builtwithmultimarkdownhttps:github.comfletchermultimarkdown-6andw3schoolshttps:www.w3schools.comw3cssw3css_pro.asp">Built with <a href="https://github.com/fletcher/MultiMarkdown-6">MultiMarkdown</a> and <a href="https://www.w3schools.com/w3css/w3css_pro.asp">W3 Schools</a></h5>
+
+<h5 id="license:ahrefhttp:creativecommons.orglicensesby-nc-sa4.0cc-by-nc-sa4.0a">License: <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0</a></h5>
+
+</body>
+</html>
+

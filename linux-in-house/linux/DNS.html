@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>DNS</title>
+	<meta name="date" content="2023-01-25 10:24"/>
+	<meta name="modified" content="2024-04-19 9:30"/>
+	<meta name="tags" content="web"/>
+	<meta name="author" content="Don Cohoon"/>
+	<meta name="summary" content="A Domain Name Service (DNS) allows your E-Mail and Web Server to use a name instead of an IP Address, so other people can find you by name. Some Internet Service Providers (ISP) will change your IP address every few months in a residential environment."/>
+	<meta name="license" content="'[CC-BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)'"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"> <link rel="stylesheet" href="/linux-in-house/common.css" type="text/css" />
+</head>
+<body>
+
+<p><a href="/linux-in-house/"><h1>Linux in House</h1></a></p>
+
+<link href="/linux-in-house/pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/linux-in-house/pagefind/pagefind-ui.js"></script>
+
+<div id="search"></div>
+<script>
+window.addEventListener('DOMContentLoaded', (event) => {
+      new PagefindUI({ element: "#search", showSubResults: true });
+});
+</script>
+
+<blockquote>
+<p><a href="/linux-in-house/linux/welcome.html">Welcome Back My Friends</a></p>
+</blockquote>
+
+<h1 id="domainnameservicedns">Domain Name Service (DNS)</h1>
+
+<p>A Domain Name Service (DNS) allows your E-Mail and Web Server to use a name instead of an IP Address, so other people can find you by name. Some Internet Service Providers (ISP) will change your IP address every few months in a residential environment.</p>
+
+<hr />
+
+<div class="TOC">
+
+<ul>
+<li><a href="#domainnameservicedns">Domain Name Service (DNS)</a></li>
+<li><a href="#dynamicdnsprovidersddns">Dynamic DNS Providers (DDNS)</a>
+<ul>
+<li><a href="#dynamicipaddressande-mail">Dynamic IP Address and E-Mail</a>
+<ul>
+<li><a href="#smtp2go">SMTP2GO</a></li>
+<li><a href="#no-ip">No-IP</a></li>
+<li><a href="#puttingitalltogether">Putting It All Together</a>
+<ul>
+<li><a href="#e-mailsendovernon-25portusingsmtp2go-or-no-ipalternativesmtpaddress.">E-Mail Send over non-25 port using SMTP2GO -or- NO-IP Alternative SMTP Address.</a></li>
+<li><a href="#e-mailreceiveovernon-25portusingno-ipmailreflector.">E-Mail Receive over non-25 port using No-IP Mail Reflector.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#no-ip">No-IP</a>
+<ul>
+<li><a href="#dynamicupdateclient">Dynamic Update Client</a></li>
+</ul>
+</li>
+<li><a href="#cloudflare">cloudflare</a></li>
+<li><a href="#easydns">easyDNS</a></li>
+<li><a href="#dynudns">Dynu DNS</a></li>
+<li><a href="#namecheap">NameCheap</a></li>
+</ul>
+</li>
+<li><a href="#virtualprivateservervps">Virtual Private Server (VPS)</a>
+<ul>
+<li><a href="#inmotion">InMotion</a></li>
+<li><a href="#hostwinds">Hostwinds</a></li>
+<li><a href="#kamatera">Kamatera</a></li>
+</ul>
+</li>
+<li><a href="#installawebserver">Install a Web Server</a>
+<ul>
+<li><a href="#apache">Apache</a>
+<ul>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#configuration">Configuration</a></li>
+<li><a href="#firstpage">First Page</a></li>
+<li><a href="#networkdirection">Network Direction</a></li>
+<li><a href="#thebigtest">The Big Test</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#continue">Continue</a>
+<ul>
+<li><a href="#madeforhumansbyahuman">Made for Humans, by a Human</a></li>
+<li><a href="#links">Links</a></li>
+<li><a href="#social">Social</a>
+<ul>
+<li><a href="#builtwithmultimarkdownhttps:github.comfletchermultimarkdown-6andw3schoolshttps:www.w3schools.comw3cssw3css_pro.asp">Built with <a href="https://github.com/fletcher/MultiMarkdown-6">MultiMarkdown</a> and <a href="https://www.w3schools.com/w3css/w3css_pro.asp">W3 Schools</a></a></li>
+<li><a href="#license:ahrefhttp:creativecommons.orglicensesby-nc-sa4.0cc-by-nc-sa4.0a">License: <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0</a></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+<hr />
+
+<p>You pay a company to register [1] your unique name and assign it to an IP address. In turn they look up your IP address for anyone trying to connect to your name [2]. Kind of like the old telephone white/yellow pages where telephones were assigned to a fixed location (wire).</p>
+
+<ol>
+<li>Registration</li>
+<li>DNS</li>
+</ol>
+
+<h1 id="dynamicdnsprovidersddns">Dynamic DNS Providers (DDNS)</h1>
+
+<p>The primary reason to use a DDNS is to keep your IP address updated when it changes. They should supply a software/programming interface, or web page to change it.</p>
+
+<h2 id="dynamicipaddressande-mail">Dynamic IP Address and E-Mail</h2>
+
+<p>Another requirement fulfilled by DDNS is support for E-Mail sending and receiving over SImple Mail Transport Protocol (SMTP). Some residential IP providers will block port 25 required by SMTP receiving and some providers will block E-Mails sending from a residential IP address.</p>
+
+<p>This is where DDNS providers step in and accept port 25 on your behalf and redirect to another port at your server. They also provide outgoing SMTP services using their fixed IP business address to pass through other E-Mail handler&#8217;s block lists.</p>
+
+<h4 id="smtp2go">SMTP2GO</h4>
+
+<p>SMTP2GO [1] is an example of a service that sends your E-Mail with a good reputation and is accepted by most all E-Mail handlers. They offer a free plan with a limit of sending 1000 per month. This is a good option if you can not send E-Mails on port 25.</p>
+
+<ol>
+<li><a href="https://www.smtp2go.com/">https://www.smtp2go.com/</a></li>
+</ol>
+
+<h4 id="no-ip">No-IP</h4>
+
+<p>No-IP [1] sells a Mail Reflector to receive your E-Mails at their IP address if you have your domain registered with them. They will also hold your mail for up to seven days if your E-Mail server is down. Just like SMTP2GO they sell an SMTP Alternative Port service to send mail on another port from your host.</p>
+
+<ol>
+<li><a href="https://www.noip.com">https://www.noip.com</a></li>
+</ol>
+
+<h4 id="puttingitalltogether">Putting It All Together</h4>
+
+<p>If your ISP blocks port 25, here is a workflow you can use to send and receive E-Mails over the Internet to and from a Recipent using SMTP2GO service and NO-IP extra service.</p>
+
+<h5 id="e-mailsendovernon-25portusingsmtp2go-or-no-ipalternativesmtpaddress.">E-Mail Send over non-25 port using SMTP2GO -or- NO-IP Alternative SMTP Address.</h5>
+
+<figure>
+<img src="/linux-in-house/images/graph-smtp2go.svg" alt="SMTP2GO" />
+<figcaption>SMTP2GO</figcaption>
+</figure>
+
+<figure>
+<img src="/linux-in-house/images/graph-noip.svg" alt="NO-IP" />
+<figcaption>NO-IP</figcaption>
+</figure>
+
+<h5 id="e-mailreceiveovernon-25portusingno-ipmailreflector.">E-Mail Receive over non-25 port using No-IP Mail Reflector.</h5>
+
+<figure>
+<img src="/linux-in-house/images/graph-noip2.svg" alt="NO-IP" />
+<figcaption>NO-IP</figcaption>
+</figure>
+
+<h2 id="no-ip">No-IP</h2>
+
+<p>No-IP [1] handles IP Address to Domain Name Services (DNS) and registration of domains.</p>
+
+<p>They offers DNS services, DDNS, E-Mail, network monitoring and SSL certificates. E-Mail services include IMAP, POP3, SMTP, E-Mail backup services, E-Mail reflection and filtering.</p>
+
+<p>A basic free account requires you to log in periodically. You can create up to three free hostnames, using several No-IP domains, or register your own domain. Some routers also support No-IP.</p>
+
+<ol>
+<li><a href="https://www.noip.com">https://www.noip.com</a></li>
+</ol>
+
+<h4 id="dynamicupdateclient">Dynamic Update Client</h4>
+
+<p>With a purchased dynamic domain you can run a Dynamic Update Client. This runs on several servers to check the IP address from your Internet Service Provider (ISP) for changes and updates my DNS resolution at noip if it happens to change.</p>
+
+<p>It is started upon every boot by these lines in file /etc/rc.local:</p>
+
+<pre><code># no-ip dynamix DNS
+/usr/local/bin/noip2
+</code></pre>
+
+<p>Download here: <a href="https://www.noip.com/download">https://www.noip.com/download</a></p>
+
+<h2 id="cloudflare">cloudflare</h2>
+
+<p>Cloudflare primarily acts as a reverse proxy between a website&#8217;s visitor and the Cloudflare customer&#8217;s hosting provider. They do name registration and also supply free personal DNS services complete with SSL certificate and Distributed Denial-of-Service protection, DNS Security (DNSSEC), and other services [1]. With twice as many Points of Presence (POP) than No-IP.</p>
+
+<p>If security concerns top your priority list you can&#8217;t go wrong with cloudflare. Their public DNS server addresses, 1.1.1.1 and 9.9.9.9 are super fast.</p>
+
+<p>The cloudflare free tier supports uploading your web pages, integration with github&#8217;s git workflow and several other methods for hosting a web site, except there is no ssh into a cloud server. These free web pages will be hosted on the domain pages.dev.</p>
+
+<p>If you register your domain with then you can enable E-Mail forwarding [2] of the new domain to an existing E-Mail address. Their domain registration is very well priced compared to other reputable resistrars and comes with privacy protection of your whois records, something others charge for. They even have DDNS client update automation [3].</p>
+
+<ol>
+<li><a href="https://www.cloudflare.com/plans/application-services/">https://www.cloudflare.com/plans/application-services/</a></li>
+<li><a href="https://developers.cloudflare.com/email-routing/">https://developers.cloudflare.com/email-routing/</a></li>
+<li><a href="https://developers.cloudflare.com/dns/manage-dns-records/how-to/managing-dynamic-ip-addresses/">https://developers.cloudflare.com/dns/manage-dns-records/how-to/managing-dynamic-ip-addresses/</a></li>
+</ol>
+
+<h2 id="easydns">easyDNS</h2>
+
+<p>easyDNS [1] is one of the oldest domain registrar, DNS, web hosting and email provider. Their services are very similar to no-ip with a free entry level DNS [2] and easyMAIL services. However, just like no-ip you will want to buy domain privacy to protect your home address from web searches, $7.50yr in this case.</p>
+
+<ol>
+<li><a href="https://easydns.com/">https://easydns.com/</a></li>
+<li><a href="https://easydns.com/dns/">https://easydns.com/dns/</a></li>
+</ol>
+
+<h2 id="dynudns">Dynu DNS</h2>
+
+<p>Dynu DNS [1] is a single site DNS, DDNS, E-Mail, Certificates and VPS provider from Arizona USA. Their prices are much lower than No-IP for Email Forward and Outbound SMTP Relay, around $10 year. They also offer full service E-Mail and full access to your DNS records.</p>
+
+<p>If I still used No-IP I would probably switch to them. If nothing else, check out the nice array of Network Tools [2], like SPF generator and DKIM Wizard.</p>
+
+<ol>
+<li><a href="https://www.dynu.com/en-US/">https://www.dynu.com/en-US/</a></li>
+<li><a href="https://www.dynu.com/en-US/NetworkTools">https://www.dynu.com/en-US/NetworkTools</a></li>
+</ol>
+
+<h2 id="namecheap">NameCheap</h2>
+
+<p>Well now, doesn&#8217;t that name say it all? Surprising to me, it actually works quite well and is half the price of the Big Boys.</p>
+
+<p>Registering a new domain name and setting up DNS records is easy and painless. The wait for DNS world propogation is reasonable, and you don&#8217;t have to be a DNS expert as they help you some of the trickier parts.</p>
+
+<p>Best of all, no charge for Privacy protection of your registration address and phone number! Very nice.</p>
+
+<ol>
+<li><a href="https://www.namecheap.com/">https://www.namecheap.com/</a></li>
+</ol>
+
+<h1 id="virtualprivateservervps">Virtual Private Server (VPS)</h1>
+
+<p>A VPS is located in someone else&#8217;s building and only accessible over the network, like a cloud. These plans vary a lot from click only menus to complete root access. Of course they range from $3.00 per month to $30, with contracts into a one to three year time frame.</p>
+
+<p>The advantage here is that <strong>they</strong> keep up the <em>hardware</em>, <em>DNS</em> and install the <em>operating system</em>. VPS setups offer <em>fixed IP addresses</em>, great for E-Mail hosting as <em>no DDNS is required and port 25 is open</em>, also they have a Graphical Control Panel (cpanel) for administration, and lastly they are a gauntlet against the Internet attacking your home residential network directly.</p>
+
+<p>The disadvantages include Linux updates may be handled by the vendor, backups have to occur over the Internet, and their administrators will have full access to your host. So you should not put any financial or personal data on a VPS host. Also the extra cost could be an issue.</p>
+
+<p>You need to invent your list of requirements. Something like:</p>
+
+<ul>
+<li>OS: Linux</li>
+<li>Database: PostgreSQL</li>
+<li>Login: root shell</li>
+<li>Network Bandwidth: 1TB per month</li>
+<li>Memory: 2GB</li>
+<li>Disk: 100GB</li>
+<li>CPU: 2 cores</li>
+</ul>
+
+<p>Here are just a couple of contenders in the market recently:</p>
+
+<h3 id="inmotion">InMotion</h3>
+
+<p>Reference: <a href="https://www.inmotionhosting.com/cloud-vps">https://www.inmotionhosting.com/cloud-vps</a></p>
+
+<ul>
+<li>Linux versions available: CentOS, Ubuntu or Debian</li>
+<li>Starting at $6.00 month</li>
+</ul>
+
+<p>Configuring Your VPS or Dedicated Server as a Mail Server: <a href="https://www.inmotionhosting.com/support/email/configuring-your-vps-dedicated-server-as-a-mail-server/">https://www.inmotionhosting.com/support/email/configuring-your-vps-dedicated-server-as-a-mail-server/</a></p>
+
+<h3 id="hostwinds">Hostwinds</h3>
+
+<p>Reference: <a href="https://www.hostwinds.com/vps/unmanaged-linux">https://www.hostwinds.com/vps/unmanaged-linux</a></p>
+
+<ul>
+<li>Choice of Debian, Ubuntu, Fedora, and CentOS</li>
+<li>Hourly or monthly billing, starting at $4.99 mo</li>
+</ul>
+
+<p>How to Install iRedMail on a VPS (CentOS 7): <a href="https://www.hostwinds.com/tutorials/how-to-install-iredmail-on-a-vps-centos-7">https://www.hostwinds.com/tutorials/how-to-install-iredmail-on-a-vps-centos-7</a></p>
+
+<h3 id="kamatera">Kamatera</h3>
+
+<p>Reference: <a href="https://www.kamatera.com/Products/201/Cloud_Servers">https://www.kamatera.com/Products/201/Cloud_Servers</a></p>
+
+<ul>
+<li>40+ Linux distros, from FreeBSD to CloudLinux</li>
+<li>30 day free trial, starting at $4.00 mo</li>
+</ul>
+
+<p>How to Create a Linux VPS Server on Kamatera: <a href="https://www.linuxbabe.com/linux-server/how-to-create-a-linux-vps-server-on-kamatera">https://www.linuxbabe.com/linux-server/how-to-create-a-linux-vps-server-on-kamatera</a></p>
+
+<h1 id="installawebserver">Install a Web Server</h1>
+
+<p>Now check that you have:</p>
+
+<ul>
+<li>Registered your name with a registrar [1].</li>
+<li> Example registration check using google:</li>
+</ul>
+
+<pre><code>$ whois google.com|grep 'Domain Name'
+   Domain Name: GOOGLE.COM
+Domain Name: google.com
+
+</code></pre>
+
+<ul>
+<li>Assigned an Internet IP address to that name using a DNS [2] provider.</li>
+<li> Example DNS lookup check using google:</li>
+</ul>
+
+<pre><code>$ nslookup google.com|head -6
+Server:		1.1.1.1
+Address:	1.1.1.1#53
+
+Non-authoritative answer:
+Name:	google.com
+Address: 172.253.62.102
+</code></pre>
+
+<ol>
+<li><a href="https://www.icann.org/en/accredited-registrars">https://www.icann.org/en/accredited-registrars</a></li>
+<li><a href="https://www.rfc-editor.org/rfc/rfc1034.html">https://www.rfc-editor.org/rfc/rfc1034.html</a></li>
+</ol>
+
+<p>If the above tests using your new name respond like google.com does, <strong>congradulations</strong>, you are ready to test a web site using that name.</p>
+
+<h2 id="apache">Apache</h2>
+
+<p>Apache web server is the oldest web server still popular today with good support.</p>
+
+<h3 id="installation">Installation</h3>
+
+<p>It&#8217;s easy to install.</p>
+
+<ul>
+<li>Debian:</li>
+</ul>
+
+<pre><code>$ sudo apt-get install apache2
+</code></pre>
+
+<ul>
+<li>Redhat:</li>
+</ul>
+
+<pre><code>$ sudo dnf install httpd
+</code></pre>
+
+<h3 id="configuration">Configuration</h3>
+
+<p>Edit a new configuration file for a site called <em>me</em>..</p>
+
+<ul>
+<li><p>Debian:
+File: /etc/apache2/sites-available/me.conf</p></li>
+<li><p>RedHat:
+File: /etc/httpd/sites-available/me.conf</p></li>
+</ul>
+
+<pre><code>&lt;VirtualHost *:80&gt;
+    ServerAdmin mail@www.example.com
+    DocumentRoot /var/www/html
+    ServerName www.example.com
+	ErrorLog ${APACHE_LOG_DIR}/error.log
+	# Possible values include: debug, info, notice, warn, error, crit,
+	# alert, emerg.
+	LogLevel warn
+	#LogLevel debug
+	CustomLog ${APACHE_LOG_DIR}/access.log combined
+&lt;/VirtualHost&gt;
+</code></pre>
+
+<p>Then enable that configuration.</p>
+
+<ul>
+<li>Debian:</li>
+</ul>
+
+<pre><code>$ sudo ln -s /etc/apache2/sites-available/me.conf /etc/apache2/sites-enabled
+$ sudo systemctl reload apache2
+</code></pre>
+
+<ul>
+<li>RedHat:</li>
+</ul>
+
+<pre><code>$ sudo ln -s /etc/httpd/sites-available/me.conf /etc/httpd/sites-enabled
+$ sudo systemctl reload httpd
+</code></pre>
+
+<p>Check the link is enabled:</p>
+
+<pre><code>$ ls -l /etc/*/sites-enabled/
+total 0
+lrwxrwxrwx 1 root root 36 Oct 13  2018 me.conf -&gt; ../sites-available/me.conf
+</code></pre>
+
+<p>To disable a site, simply remove the link file in /etc/*/sites-enabled/me.conf</p>
+
+<h3 id="firstpage">First Page</h3>
+
+<p>Now create a landing page for your web site. They are normally placed in an index.html file.</p>
+
+<p>File: /var/www/html/index.html</p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;ERROR 404 - Nothing to See&lt;/title&gt;
+      
+        &lt;style type=&quot;text/css&quot;&gt;
+            html,
+            body {
+                height: 100%;
+                background-color: #666;
+                font-family: Helvetica, sans-serif
+            }
+
+            body {
+                color: #fff;
+                text-align: center;
+                text-shadow: 0 1px 3px rgba(0,0,0,.5);
+            }
+
+            h1 {
+                font-size: 58px;
+                margin-top: 20px;
+                margin-bottom: 10px;
+                font-family: inherit;
+                font-weight: 500;
+                line-height: 1.1;
+                color: inherit;
+            }
+            
+            .site-wrapper {
+                display: table;
+                width: 100%;
+                height: 100%;
+                min-height: 100%;
+            }
+
+            .site-wrapper-inner {
+                display: table-cell;
+                vertical-align: top;
+            }
+
+            .cover-container {
+                margin-right: auto;
+                margin-left: auto;
+            }
+
+            .site-wrapper-inner {
+                vertical-align: middle;
+            }
+            .cover-container {
+                width: 100%;
+            }     
+          .button {
+    background-color: ##fff;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+        &lt;/style&gt;    
+    &lt;/head&gt;    
+    &lt;body&gt;
+        &lt;div class=&quot;site-wrapper&quot;&gt;
+          &lt;div class=&quot;site-wrapper-inner&quot;&gt;
+            &lt;div class=&quot;cover-container&quot;&gt;
+                &lt;h1 class=&quot;cover-heading&quot;&gt;ERROR 404 - Move along, nothing to see here&lt;/h1&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>Check your file permissions, index.html should be owned by www-data and read for others:</p>
+
+<pre><code>$ chown www-data:www-data /var/www/html/index.html
+
+$ chmod 644 /var/www/html/index.html
+
+$ ls -l /var/www/html/index.html
+-rw-r--r-- 1 www-data www-data 1894 Nov  8 19:47 index.html
+</code></pre>
+
+<h3 id="networkdirection">Network Direction</h3>
+
+<p>Next you need to do <strong>Port Forwarding</strong> on your router. If your server IP address is 192.168.1.5, then in your router redirect port 80 to 192.168.1.5.</p>
+
+<p>Don&#8217;t forget to open port 80 on your firewall:</p>
+
+<ul>
+<li>Debian</li>
+</ul>
+
+<pre><code>$ sudo ufw allow 80/tcp
+</code></pre>
+
+<ul>
+<li>RedHat</li>
+</ul>
+
+<pre><code>$ sudo firewall-cmd --permanent --add-port=80/tcp
+$ sudo firewall-cmd --reload
+</code></pre>
+
+<h3 id="thebigtest">The Big Test</h3>
+
+<p>Start the service:</p>
+
+<ul>
+<li>Debian</li>
+</ul>
+
+<pre><code>$ sudo systemctl enable --now apache2
+</code></pre>
+
+<ul>
+<li>RedHat</li>
+</ul>
+
+<pre><code>$ sudo systemctl enable --now httpd
+</code></pre>
+
+<p>Now try your website by name:</p>
+
+<p><code>http://example.com</code></p>
+
+<p>If all went well, you should see this:</p>
+
+<figure>
+<img src="/linux-in-house/images/404.png" alt="404.png" />
+<figcaption>404.png</figcaption>
+</figure>
+
+<h1 id="continue">Continue</h1>
+
+<p>Now that you have set up an Internet name for your new server, consider giving it an internet certificate with Let&#8217;s Encrypt.</p>
+
+<p>Proceed in the order presented, some things are depending on prior setups.</p>
+
+<hr>
+
+<h4 id="madeforhumansbyahuman">Made for Humans, by a Human</h4>
+
+<h4 id="links">Links</h4>
+
+<ul>
+<li><a href="https://lwn.net/">Linux Weekly News</a></li>
+<li><a href="https://fullcirclemagazine.org/">Full Circle Magazine</a></li>
+<li><a href="https://www.linuxjournal.com/">Linux Journal</a></li>
+<li><a href="https://www.linux-magazine.com/">Linux Magazine</a></li>
+<li><a href="https://www.thefarside.com/">The Far Side</a></li>
+</ul>
+
+<h4 id="social">Social</h4>
+
+<ul>
+<li><a href="https://fosstodon.org/@Cohoon">Feedback</a></li>
+<li><a href="/linux-in-house/feed-Linux.rss">Linux RSS Feed</a></li>
+<li><a href="/linux-in-house/feed-Writing.rss">Writing RSS Feed</a></li>
+<li><a href="https://linux-in-the-house.pages.dev/">Book</a></li>
+</ul>
+
+<h5 id="builtwithmultimarkdownhttps:github.comfletchermultimarkdown-6andw3schoolshttps:www.w3schools.comw3cssw3css_pro.asp">Built with <a href="https://github.com/fletcher/MultiMarkdown-6">MultiMarkdown</a> and <a href="https://www.w3schools.com/w3css/w3css_pro.asp">W3 Schools</a></h5>
+
+<h5 id="license:ahrefhttp:creativecommons.orglicensesby-nc-sa4.0cc-by-nc-sa4.0a">License: <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0</a></h5>
+
+</body>
+</html>
+

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>PostgreSqlMove</title>
+	<meta name="date" content="2023-01-25 10:22"/>
+	<meta name="modified" content="2024-04-19 9:30"/>
+	<meta name="tags" content="systems, db"/>
+	<meta name="author" content="Don Cohoon"/>
+	<meta name="summary" content="Mainly used this on SBC (BeagleBone) computer to move a database from SD card (/var/lib...) to SSD disk (/data/lib...). A database will burn up an SD card quickly 😟"/>
+	<meta name="license" content="'[CC-BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)'"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"> <link rel="stylesheet" href="/linux-in-house/common.css" type="text/css" />
+</head>
+<body>
+
+<p><a href="/linux-in-house/"><h1>Linux in House</h1></a></p>
+
+<link href="/linux-in-house/pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/linux-in-house/pagefind/pagefind-ui.js"></script>
+
+<div id="search"></div>
+<script>
+window.addEventListener('DOMContentLoaded', (event) => {
+      new PagefindUI({ element: "#search", showSubResults: true });
+});
+</script>
+
+<blockquote>
+<p><a href="/linux-in-house/linux/welcome.html">Welcome Back My Friends</a></p>
+</blockquote>
+
+<h1 id="postgresqlmovedatabasetoanotherfilesystem">Postgresql Move Database to Another Filesystem</h1>
+
+<p>Mainly used this on SBC (BeagleBone) computer to move a database from SD card (/var/lib&#8230;) to SSD disk (/data/lib&#8230;). A database will burn up an SD card quickly 😟</p>
+
+<br/>
+
+<hr />
+
+<div class="TOC">
+
+<ul>
+<li><a href="#postgresqlmovedatabasetoanotherfilesystem">Postgresql Move Database to Another Filesystem</a>
+<ul>
+<li><a href="#listclustersonhost">List clusters on host</a></li>
+<li><a href="#showdata_dictionary">Show Data_Dictionary</a></li>
+<li><a href="#stopcluster">Stop Cluster</a></li>
+<li><a href="#movedatabasefiles">Move Database Files</a></li>
+<li><a href="#saveolddatabasedirectory">Save Old Database Directory</a></li>
+<li><a href="#editconfigurationtopointtonewdirectory">Edit Configuration to Point to New Directory</a></li>
+<li><a href="#doublechecknewdirectory">Double Check New Directory</a></li>
+<li><a href="#startdatabaseclusterusingnewdirectory">Start Database Cluster Using New Directory</a></li>
+<li><a href="#verifydatabase">Verify Database</a></li>
+<li><a href="#cleanupolddatabasefiles">Cleanup Old Database Files</a></li>
+</ul>
+</li>
+<li><a href="#re-createcluster">Re-Create Cluster</a></li>
+<li><a href="#continue">Continue</a>
+<ul>
+<li><a href="#madeforhumansbyahuman">Made for Humans, by a Human</a></li>
+<li><a href="#links">Links</a></li>
+<li><a href="#social">Social</a>
+<ul>
+<li><a href="#builtwithmultimarkdownhttps:github.comfletchermultimarkdown-6andw3schoolshttps:www.w3schools.comw3cssw3css_pro.asp">Built with <a href="https://github.com/fletcher/MultiMarkdown-6">MultiMarkdown</a> and <a href="https://www.w3schools.com/w3css/w3css_pro.asp">W3 Schools</a></a></li>
+<li><a href="#license:ahrefhttp:creativecommons.orglicensesby-nc-sa4.0cc-by-nc-sa4.0a">License: <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0</a></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+<hr />
+
+<h2 id="listclustersonhost">List clusters on host</h2>
+
+<pre><code>$ pg_lsclusters
+Ver Cluster Port Status Owner    Data directory              Log file
+11  main    5432 online postgres /var/lib/postgresql/11/main /var/log/postgresql/postgresql-11-main.log
+</code></pre>
+
+<h2 id="showdata_dictionary">Show Data_Dictionary</h2>
+
+<pre><code>$ sudo -u postgres psql
+psql (11.7 (Debian 11.7-0+deb10u1))
+Type &quot;help&quot; for help.
+
+postgres=# SHOW data_directory;
+       data_directory       
+-----------------------------
+ /var/lib/postgresql/11/main
+(1 row)
+postgres=# \q
+</code></pre>
+
+<h2 id="stopcluster">Stop Cluster</h2>
+
+<blockquote>
+<p>If you have multiple versions you may have to use the version specific name, example: <code>postgresql@11-main</code>.</p>
+</blockquote>
+
+<pre><code>$ sudo systemctl stop postgresql
+$ sudo systemctl status postgresql
+● postgresql.service - PostgreSQL RDBMS
+   Loaded: loaded (/lib/systemd/system/postgresql.service; enabled; vendor preset: enabled)
+   Active: inactive (dead) since Sat 2020-08-22 13:14:11 EDT; 9s ago
+  Process: 23216 ExecStart=/bin/true (code=exited, status=0/SUCCESS)
+ Main PID: 23216 (code=exited, status=0/SUCCESS)
+
+Aug 22 10:29:07 app2 systemd[1]: Starting PostgreSQL RDBMS...
+Aug 22 10:29:07 app2 systemd[1]: Started PostgreSQL RDBMS.
+Aug 22 13:14:11 app2 systemd[1]: postgresql.service: Succeeded.
+Aug 22 13:14:11 app2 systemd[1]: Stopped PostgreSQL RDBMS.
+</code></pre>
+
+<h2 id="movedatabasefiles">Move Database Files</h2>
+
+<pre><code>$ sudo mkdir -p /data/lib/postgresql/11/main/
+$ sudo chown postgres:postgres /data/lib/postgresql/11/main/
+$ sudo rsync -av /var/lib/postgresql /data/lib
+sending incremental file list
+postgresql/
+postgresql/.bash_history
+...
+
+postgresql/11/main/pg_wal/000000010000000000000005
+postgresql/11/main/pg_wal/000000010000000000000006
+postgresql/11/main/pg_wal/archive_status/
+postgresql/11/main/pg_xact/
+postgresql/11/main/pg_xact/0000
+
+sent 74,675,872 bytes  received 25,503 bytes  8,788,397.06 bytes/sec
+total size is 74,581,282  speedup is 1.00
+</code></pre>
+
+<h2 id="saveolddatabasedirectory">Save Old Database Directory</h2>
+
+<pre><code>$ sudo mv /var/lib/postgresql/11/main /var/lib/postgresql/11/main.bak
+</code></pre>
+
+<h2 id="editconfigurationtopointtonewdirectory">Edit Configuration to Point to New Directory</h2>
+
+<p>Configurations are in <code>/etc/postgresql/&lt;version&gt;/main/</code> directory.</p>
+
+<pre><code>$ sudo vi /etc/postgresql/11/main/postgresql.conf
+
+~
+
+data_directory = '/data/lib/postgresql/11/main'        # use data in another directory
+
+~
+</code></pre>
+
+<h2 id="doublechecknewdirectory">Double Check New Directory</h2>
+
+<pre><code>$ sudo ls /data/lib/postgresql/11/main
+base    pg_commit_ts  pg_logical    pg_notify     pg_serial     pg_stat        pg_subtrans  pg_twophase  pg_wal   postgresql.auto.conf
+global    pg_dynshmem   pg_multixact  pg_replslot  pg_snapshots  pg_stat_tmp  pg_tblspc     PG_VERSION   pg_xact  postmaster.opts
+</code></pre>
+
+<h2 id="startdatabaseclusterusingnewdirectory">Start Database Cluster Using New Directory</h2>
+
+<pre><code>$ sudo systemctl start postgresql
+$ sudo systemctl status postgresql
+● postgresql.service - PostgreSQL RDBMS
+   Loaded: loaded (/lib/systemd/system/postgresql.service; enabled; vendor preset: enabled)
+   Active: active (exited) since Sat 2020-08-22 13:25:15 EDT; 4s ago
+  Process: 24284 ExecStart=/bin/true (code=exited, status=0/SUCCESS)
+ Main PID: 24284 (code=exited, status=0/SUCCESS)
+
+Aug 22 13:25:15 app2 systemd[1]: Starting PostgreSQL RDBMS...
+Aug 22 13:25:15 app2 systemd[1]: Started PostgreSQL RDBMS.
+</code></pre>
+
+<h2 id="verifydatabase">Verify Database</h2>
+
+<p>Should show &#8216;/data/&#8230;&#8217;</p>
+
+<pre><code>$ sudo -u postgres psql
+psql (11.7 (Debian 11.7-0+deb10u1))
+Type &quot;help&quot; for help.
+
+postgres=# SHOW data_directory;
+       data_directory       
+-----------------------------
+ /data/lib/postgresql/11/main
+(1 row)
+postgres=# \q
+</code></pre>
+
+<h2 id="cleanupolddatabasefiles">Cleanup Old Database Files</h2>
+
+<p>Make sure to test things first, and don&#8217;t forget to free up some disk space for the new database.</p>
+
+<pre><code>$ sudo rm -Rf /var/lib/postgresql/11/main.bak
+$ sudo systemctl restart postgresql
+$ sudo systemctl status postgresql
+● postgresql.service - PostgreSQL RDBMS
+   Loaded: loaded (/lib/systemd/system/postgresql.service; enabled; vendor preset: enabled)
+   Active: active (exited) since Sat 2020-08-22 13:28:14 EDT; 7s ago
+  Process: 24349 ExecStart=/bin/true (code=exited, status=0/SUCCESS)
+ Main PID: 24349 (code=exited, status=0/SUCCESS)
+
+Aug 22 13:28:14 app2 systemd[1]: Starting PostgreSQL RDBMS...
+Aug 22 13:28:14 app2 systemd[1]: Started PostgreSQL RDBMS.
+</code></pre>
+
+<h1 id="re-createcluster">Re-Create Cluster</h1>
+
+<p>If you make a mistake the cluster can be deleted, then re-created. No Problem.</p>
+
+<pre><code>$ sudo rm -rf /mnt/raid1/postgresql/13
+$ sudo -u postgres pg_createcluster -d /mnt/raid1/postgresql 13 main
+
+$ pg_lsclusters 
+Ver Cluster Port Status Owner    Data directory        Log file
+13  main    5432 down   postgres /mnt/raid1/postgresql /var/log/postgresql/postgresql-13-main.log
+
+$ sudo pg_ctlcluster  13 main start
+
+$ pg_lsclusters 
+Ver Cluster Port Status Owner    Data directory        Log file
+13  main    5432 online postgres /mnt/raid1/postgresql /var/log/postgresql/postgresql-13-main.log
+</code></pre>
+
+<h1 id="continue">Continue</h1>
+
+<p>Now that you have moved that busy data to a suitable disk, consider setting up a cloud server to use that speedy database.</p>
+
+<p>Join again soon on the next episode of Linux in the Home.</p>
+
+<p>Proceed in the order presented, some things are depending on prior setups.</p>
+
+<hr>
+
+<h4 id="madeforhumansbyahuman">Made for Humans, by a Human</h4>
+
+<h4 id="links">Links</h4>
+
+<ul>
+<li><a href="https://lwn.net/">Linux Weekly News</a></li>
+<li><a href="https://fullcirclemagazine.org/">Full Circle Magazine</a></li>
+<li><a href="https://www.linuxjournal.com/">Linux Journal</a></li>
+<li><a href="https://www.linux-magazine.com/">Linux Magazine</a></li>
+<li><a href="https://www.thefarside.com/">The Far Side</a></li>
+</ul>
+
+<h4 id="social">Social</h4>
+
+<ul>
+<li><a href="https://fosstodon.org/@Cohoon">Feedback</a></li>
+<li><a href="/linux-in-house/feed-Linux.rss">Linux RSS Feed</a></li>
+<li><a href="/linux-in-house/feed-Writing.rss">Writing RSS Feed</a></li>
+<li><a href="https://linux-in-the-house.pages.dev/">Book</a></li>
+</ul>
+
+<h5 id="builtwithmultimarkdownhttps:github.comfletchermultimarkdown-6andw3schoolshttps:www.w3schools.comw3cssw3css_pro.asp">Built with <a href="https://github.com/fletcher/MultiMarkdown-6">MultiMarkdown</a> and <a href="https://www.w3schools.com/w3css/w3css_pro.asp">W3 Schools</a></h5>
+
+<h5 id="license:ahrefhttp:creativecommons.orglicensesby-nc-sa4.0cc-by-nc-sa4.0a">License: <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0</a></h5>
+
+</body>
+</html>
+

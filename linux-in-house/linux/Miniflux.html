@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>Miniflux</title>
+	<meta name="date" content="2023-01-25 10:30"/>
+	<meta name="modified" content="2024-04-19 9:30"/>
+	<meta name="tags" content="systems"/>
+	<meta name="author" content="Don Cohoon"/>
+	<meta name="summary" content="Miniflux is an RSS (Really Simple Syndication) server that will fetch and display RSS feeds from other websites. Also known as a _news reader_."/>
+	<meta name="license" content="'[CC-BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)'"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"> <link rel="stylesheet" href="/linux-in-house/common.css" type="text/css" />
+</head>
+<body>
+
+<p><a href="/linux-in-house/"><h1>Linux in House</h1></a></p>
+
+<link href="/linux-in-house/pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/linux-in-house/pagefind/pagefind-ui.js"></script>
+
+<div id="search"></div>
+<script>
+window.addEventListener('DOMContentLoaded', (event) => {
+      new PagefindUI({ element: "#search", showSubResults: true });
+});
+</script>
+
+<blockquote>
+<p><a href="/linux-in-house/linux/welcome.html">Welcome Back My Friends</a></p>
+</blockquote>
+
+<h1 id="minifluxnewsreader">Miniflux News Reader</h1>
+
+<p>Miniflux is an RSS (Really Simple Syndication) server that will fetch and display RSS feeds from other websites. Also known as a <em>news reader</em>.</p>
+
+<br/>
+
+<hr />
+
+<div class="TOC">
+
+<ul>
+<li><a href="#minifluxnewsreader">Miniflux News Reader</a>
+<ul>
+<li><a href="#databaseconfiguration">Database Configuration</a>
+<ul>
+<li><a href="#creatingthedatabase"><strong>Creating the Database</strong></a></li>
+<li><a href="#enablinghstoreextensionforpostgresql"><strong>Enabling HSTORE extension for Postgresql</strong></a></li>
+</ul>
+</li>
+<li><a href="#debianubunturaspbianpackageinstallation">Debian/Ubuntu/Raspbian Package Installation</a></li>
+<li><a href="#exportimportviastandard.opmlfiles">Export/Import via standard .opml files</a></li>
+<li><a href="#samplerssfeeds">Sample RSS feeds</a></li>
+</ul>
+</li>
+<li><a href="#newsreaderoverssh">News Reader over ssh</a></li>
+<li><a href="#continue">Continue</a>
+<ul>
+<li><a href="#madeforhumansbyahuman">Made for Humans, by a Human</a></li>
+<li><a href="#links">Links</a></li>
+<li><a href="#social">Social</a>
+<ul>
+<li><a href="#builtwithmultimarkdownhttps:github.comfletchermultimarkdown-6andw3schoolshttps:www.w3schools.comw3cssw3css_pro.asp">Built with <a href="https://github.com/fletcher/MultiMarkdown-6">MultiMarkdown</a> and <a href="https://www.w3schools.com/w3css/w3css_pro.asp">W3 Schools</a></a></li>
+<li><a href="#license:ahrefhttp:creativecommons.orglicensesby-nc-sa4.0cc-by-nc-sa4.0a">License: <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0</a></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+<hr />
+
+<p>Reference: <a href="https://miniflux.app/docs/installation.html#debian">https://miniflux.app/docs/installation.html#debian</a></p>
+
+<p>You can view these feeds from your web browser. They look like this:</p>
+
+<figure>
+<img src="/linux-in-house/images/miniflux.png" alt="miniflux.png" />
+<figcaption>miniflux.png</figcaption>
+</figure>
+
+<h2 id="databaseconfiguration">Database Configuration</h2>
+
+<h3 id="creatingthedatabase"><strong>Creating the Database</strong></h3>
+
+<p>Here an example from the command line:</p>
+
+<pre><code># Switch to the postgres user
+$ sudo -u postgres bash
+
+# Create a database user for Miniflux
+$ createuser -P miniflux
+Enter password for new role: ******
+Enter it again: ******
+
+# Create a database for miniflux that belongs to our user
+$ createdb -O miniflux miniflux
+
+# Create the extension hstore as superuser
+$ psql miniflux -c 'create extension hstore'
+CREATE EXTENSION
+</code></pre>
+
+<h3 id="enablinghstoreextensionforpostgresql"><strong>Enabling HSTORE extension for Postgresql</strong></h3>
+
+<p>Creating Postgresql extensions requires the <code>SUPERUSER</code> privilege. Several solutions are available:</p>
+
+<ol>
+<li>Give <code>SUPERUSER</code> privileges to the miniflux user only during the schema migration:</li>
+</ol>
+
+<pre><code>ALTER USER miniflux WITH SUPERUSER;
+-- Run the migrations (miniflux -migrate)
+ALTER USER miniflux WITH NOSUPERUSER;
+</code></pre>
+
+<ol>
+<li>You could <a href="https://www.postgresql.org/docs/current/static/sql-createextension.html%3E">create the hstore extension</a> with another user that have the <code>SUPERUSER</code> privileges before running the migrations.</li>
+</ol>
+
+<pre><code>sudo -u postgres psql $MINIFLUX_DATABASE
+> CREATE EXTENSION hstore;
+</code></pre>
+
+<h2 id="debianubunturaspbianpackageinstallation">Debian/Ubuntu/Raspbian Package Installation</h2>
+
+<p>You must have Debian &gt;= 8 or Ubuntu &gt;= 16.04. When using the Debian package, the Miniflux daemon is supervised by systemd.</p>
+
+<ul>
+<li>Install the Debian package: <code>dpkg -i miniflux_2.0.13_amd64.deb</code></li>
+</ul>
+
+<pre><code>$ curl -L https://github.com/miniflux/v2/releases/download/2.0.39/miniflux_2.0.39_arm64.deb -o miniflux_2.0.39_arm64.deb
+
+$ sudo dpkg -i miniflux_2.0.39_arm64.deb 
+Selecting previously unselected package miniflux.
+(Reading database ... 118954 files and directories currently installed.)
+Preparing to unpack miniflux_2.0.39_arm64.deb ...
+Unpacking miniflux (2.0.39) ...
+Setting up miniflux (2.0.39) ...
+Created symlink /etc/systemd/system/multi-user.target.wants/miniflux.service → /lib/systemd/system/miniflux.service.
+Job for miniflux.service failed because the control process exited with error code.
+See &quot;systemctl status miniflux.service&quot; and &quot;journalctl -xe&quot; for details.
+Processing triggers for man-db (2.9.4-2) ...
+</code></pre>
+
+<ul>
+<li>Define the environment variable <code>DATABASE_URL</code> if necessary</li>
+</ul>
+
+<pre><code>$ cat /etc/miniflux.conf 
+# See https://miniflux.app/docs/configuration.html
+
+RUN_MIGRATIONS=1
+DATABASE_URL = user=miniflux password=********** dbname=miniflux sslmode=disable
+</code></pre>
+
+<ul>
+<li>Run the SQL migrations:</li>
+</ul>
+
+<pre><code>$ sudo -u postgres miniflux -c /etc/miniflux.conf -migrate
+-&gt; Current schema version: 60
+-&gt; Latest schema version: 60
+</code></pre>
+
+<ul>
+<li>Create an admin user:</li>
+</ul>
+
+<pre><code>$ sudo -u postgres miniflux -c /etc/miniflux.conf -create-admin
+Enter Username: nosey
+Enter Password: 
+</code></pre>
+
+<ul>
+<li>Customize your configuration file <code>/etc/miniflux.conf</code> if necessary</li>
+</ul>
+
+<blockquote>
+<p>Config entries followed by a colon (:) are defaults, to change them use an equals (=) sign.</p>
+</blockquote>
+
+<pre><code>DATABASE_URL = user=miniflux password=************ dbname=miniflux sslmode=disable
+LOG_DATE_TIME= true
+DEBUG= false
+HTTP_SERVICE: true
+SCHEDULER_SERVICE: true
+HTTPS= true
+HSTS: true
+BASE_URL= https://rss.example.com
+ROOT_URL= https://rss.example.com
+BASE_PATH: 
+LISTEN_ADDR = 0.0.0.0:8080
+DATABASE_MAX_CONNS: 20
+DATABASE_MIN_CONNS: 1
+RUN_MIGRATIONS= 1
+CERT_FILE = /etc/letsencrypt/live/example.com/fullchain.pem
+KEY_FILE = /etc/letsencrypt/live/example.com/privkey.pem
+CERT_DOMAIN: rss.example.com
+CERT_CACHE: /tmp/cert_cache
+CLEANUP_FREQUENCY_HOURS: 24
+CLEANUP_ARCHIVE_READ_DAYS: 60
+CLEANUP_REMOVE_SESSIONS_DAYS: 30
+WORKER_POOL_SIZE: 5
+POLLING_FREQUENCY: 60
+BATCH_SIZE: 10
+POLLING_SCHEDULER: round_robin
+SCHEDULER_ENTRY_FREQUENCY_MAX_INTERVAL: 1440
+SCHEDULER_ENTRY_FREQUENCY_MIN_INTERVAL: 5
+PROXY_IMAGES: http-only
+CREATE_ADMIN: false
+ADMIN_USERNAME=nosey
+ADMIN_PASSWORD=**********
+POCKET_CONSUMER_KEY: 
+OAUTH2_USER_CREATION: false
+OAUTH2_CLIENT_ID: 
+OAUTH2_CLIENT_SECRET: 
+OAUTH2_REDIRECT_URL: 
+OAUTH2_OIDC_DISCOVERY_ENDPOINT: 
+OAUTH2_PROVIDER: 
+HTTP_CLIENT_TIMEOUT: 20
+HTTP_CLIENT_MAX_BODY_SIZE: 15728640
+AUTH_PROXY_HEADER: 
+AUTH_PROXY_USER_CREATION: false
+</code></pre>
+
+<ul>
+<li>Restart the process: sudo <code>systemctl restart miniflux</code></li>
+<li>Check the process status: sudo <code>systemctl status miniflux</code></li>
+<li>Enable firewall</li>
+</ul>
+
+<pre><code>$ sudo ufw allow 8080
+Rule added
+Rule added (v6)
+</code></pre>
+
+<p>Note that you could also use the <a href="https://miniflux.app/docs/howto.html#apt-repo">Miniflux APT repository</a> instead of downloading manually the Debian package.</p>
+
+<p>Since Miniflux v2.0.25, the Debian package is available for multiple architectures: <code>amd64</code>, <code>arm64</code>, and <code>armhf</code>. This way, it’s very easy to install Miniflux on a Raspberry Pi.</p>
+
+<p>If you don’t want to run the SQL migrations manually each time you upgrade Miniflux, set the environment variable: <code>RUN_MIGRATIONS=1</code> in <code>/etc/miniflux.conf</code>.</p>
+
+<p>Systemd reads the environment variables from the file <code>/etc/miniflux.conf</code>. You must restart the service to take the new values into consideration.</p>
+
+<h2 id="exportimportviastandard.opmlfiles">Export/Import via standard .opml files</h2>
+
+<p>Use the web interface, top menu <em>Feeds</em>, to Import/Export .opml files.</p>
+
+<h2 id="samplerssfeeds">Sample RSS feeds</h2>
+
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;opml version=&quot;2.0&quot;&gt;
+    &lt;head&gt;
+        &lt;title&gt;Miniflux&lt;/title&gt;
+        &lt;dateCreated&gt;Sun, 23 Oct 2022 14:55:57 EDT&lt;/dateCreated&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;outline text=&quot;All&quot;&gt;
+            &lt;outline title=&quot;Bartosz Ciechanowski&quot; text=&quot;Bartosz Ciechanowski&quot; xmlUrl=&quot;https://ciechanow.ski/atom.xml&quot; htmlUrl=&quot;https://ciechanow.ski/&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Hacking on Go350&quot; text=&quot;Hacking on Go350&quot; xmlUrl=&quot;https://www.go350.com/index.xml&quot; htmlUrl=&quot;https://www.go350.com/&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;2ality – JavaScript and more&quot; text=&quot;2ality – JavaScript and more&quot; xmlUrl=&quot;https://feeds.feedburner.com/2ality&quot; htmlUrl=&quot;https://2ality.com/&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;9Gag - Awesome - Hot&quot; text=&quot;9Gag - Awesome - Hot&quot; xmlUrl=&quot;https://9gag.vamourir.fr/feeds/awesome/hot.xml&quot; htmlUrl=&quot;https://9gag.vamourir.fr/feeds/awesome/hot.xml&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;aka Ken Smith&quot; text=&quot;aka Ken Smith&quot; xmlUrl=&quot;http://oldschool.scripting.com/KenSmith/rss.xml&quot; htmlUrl=&quot;http://oldschool.scripting.com/KenSmith/&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;A List Apart: The Full Feed&quot; text=&quot;A List Apart: The Full Feed&quot; xmlUrl=&quot;https://feeds.feedburner.com/alistapart/main&quot; htmlUrl=&quot;https://alistapart.com&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Al Jazeera – Breaking News, World News and Video from Al Jazeera&quot; text=&quot;Al Jazeera – Breaking News, World News and Video from Al Jazeera&quot; xmlUrl=&quot;https://www.aljazeera.com/xml/rss/all.xml&quot; htmlUrl=&quot;https://www.aljazeera.com&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Articles — brandur.org&quot; text=&quot;Articles — brandur.org&quot; xmlUrl=&quot;https://brandur.org/articles.atom&quot; htmlUrl=&quot;https://brandur.org&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;BBC News - Home&quot; text=&quot;BBC News - Home&quot; xmlUrl=&quot;https://feeds.bbci.co.uk/news/rss.xml&quot; htmlUrl=&quot;https://www.bbc.co.uk/news/&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;benjojo blog&quot; text=&quot;benjojo blog&quot; xmlUrl=&quot;https://blog.benjojo.co.uk/rss.xml&quot; htmlUrl=&quot;https://blog.benjojo.co.uk&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Boing Boing&quot; text=&quot;Boing Boing&quot; xmlUrl=&quot;https://boingboing.net/feed&quot; htmlUrl=&quot;https://boingboing.net&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Brain Pickings&quot; text=&quot;Brain Pickings&quot; xmlUrl=&quot;https://feeds.feedburner.com/brainpickings/rss&quot; htmlUrl=&quot;https://www.brainpickings.org&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;CogDogBlog&quot; text=&quot;CogDogBlog&quot; xmlUrl=&quot;https://cogdogblog.com/feed/&quot; htmlUrl=&quot;https://cogdogblog.com&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Colossal&quot; text=&quot;Colossal&quot; xmlUrl=&quot;https://www.thisiscolossal.com/feed/&quot; htmlUrl=&quot;https://www.thisiscolossal.com&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;CommitStrip&quot; text=&quot;CommitStrip&quot; xmlUrl=&quot;https://www.commitstrip.com/en/feed/?&quot; htmlUrl=&quot;https://www.commitstrip.com&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;computers are bad&quot; text=&quot;computers are bad&quot; xmlUrl=&quot;https://computer.rip/rss.xml&quot; htmlUrl=&quot;https://computer.rip&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Current Watches, Warnings and Advisories for Prince William (VAC153) Virginia Issued by the National Weather Service&quot; text=&quot;Current Watches, Warnings and Advisories for Prince William (VAC153) Virginia Issued by the National Weather Service&quot; xmlUrl=&quot;https://alerts.weather.gov/cap/wwaatmget.php?x=VAC153&amp;amp;y=0&quot; htmlUrl=&quot;https://alerts.weather.gov/cap/wwaatmget.php?x=VAC153&amp;amp;y=0&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Daemonic Dispatches&quot; text=&quot;Daemonic Dispatches&quot; xmlUrl=&quot;http://www.daemonology.net/blog/index.rss&quot; htmlUrl=&quot;https://www.daemonology.net/blog/&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Daring Fireball&quot; text=&quot;Daring Fireball&quot; xmlUrl=&quot;https://daringfireball.net/feeds/json&quot; htmlUrl=&quot;https://daringfireball.net/&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;death and gravity&quot; text=&quot;death and gravity&quot; xmlUrl=&quot;https://death.andgravity.com/_feed/index.xml&quot; htmlUrl=&quot;https://death.andgravity.com/&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Dr. Brian Robert Callahan&quot; text=&quot;Dr. Brian Robert Callahan&quot; xmlUrl=&quot;https://briancallahan.net/blog/feed.xml&quot; htmlUrl=&quot;https://briancallahan.net/blog&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Drew DeVault&amp;#39;s blog&quot; text=&quot;Drew DeVault&amp;#39;s blog&quot; xmlUrl=&quot;https://drewdevault.com/blog/index.xml&quot; htmlUrl=&quot;https://drewdevault.com&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Eli Bendersky&amp;#39;s website&quot; text=&quot;Eli Bendersky&amp;#39;s website&quot; xmlUrl=&quot;https://eli.thegreenplace.net/feeds/all.atom.xml&quot; htmlUrl=&quot;https://eli.thegreenplace.net/&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;English Wikinews Atom feed.&quot; text=&quot;English Wikinews Atom feed.&quot; xmlUrl=&quot;https://en.wikinews.org/w/index.php?title=Special:NewsFeed&amp;amp;feed=atom&amp;amp;categories=Published&amp;amp;notcategories=No%20publish%7CArchived%7CAutoArchived%7Cdisputed&amp;amp;namespace=0&amp;amp;count=30&amp;amp;hourcount=124&amp;amp;ordermethod=categoryadd&amp;amp;stablepages=only&quot; htmlUrl=&quot;https://en.wikinews.org/wiki/Main_Page&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;fabiensanglard.net&quot; text=&quot;fabiensanglard.net&quot; xmlUrl=&quot;https://fabiensanglard.net/rss.xml&quot; htmlUrl=&quot;https://fabiensanglard.net&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;fasterthanli.me&quot; text=&quot;fasterthanli.me&quot; xmlUrl=&quot;https://fasterthanli.me/index.xml&quot; htmlUrl=&quot;https://fasterthanli.me&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;flak&quot; text=&quot;flak&quot; xmlUrl=&quot;https://flak.tedunangst.com/rss&quot; htmlUrl=&quot;https://flak.tedunangst.com/&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Geek&amp;amp;Poke&quot; text=&quot;Geek&amp;amp;Poke&quot; xmlUrl=&quot;http://feeds.feedburner.com/GeekAndPoke&quot; htmlUrl=&quot;https://geek-and-poke.com/&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Hacker News&quot; text=&quot;Hacker News&quot; xmlUrl=&quot;https://news.ycombinator.com/rss&quot; htmlUrl=&quot;https://news.ycombinator.com/&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;https://danluu.com/atom/index.xml&quot; text=&quot;https://danluu.com/atom/index.xml&quot; xmlUrl=&quot;https://danluu.com/atom.xml&quot; htmlUrl=&quot;https://danluu.com/atom/index.xml&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;https://mikestone.me/&quot; text=&quot;https://mikestone.me/&quot; xmlUrl=&quot;https://mikestone.me/feed.xml&quot; htmlUrl=&quot;https://mikestone.me/&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Ivan on Containers, Kubernetes, and Server-Side&quot; text=&quot;Ivan on Containers, Kubernetes, and Server-Side&quot; xmlUrl=&quot;https://iximiuz.com/feed.rss&quot; htmlUrl=&quot;https://iximiuz.com/&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Jeff Geerling&amp;#39;s Blog&quot; text=&quot;Jeff Geerling&amp;#39;s Blog&quot; xmlUrl=&quot;https://www.jeffgeerling.com/blog.xml&quot; htmlUrl=&quot;http://www.jeffgeerling.com/&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Jhey Tompkins Posts&quot; text=&quot;Jhey Tompkins Posts&quot; xmlUrl=&quot;https://jhey.dev/posts.xml&quot; htmlUrl=&quot;https://jhey.dev/&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Josh Comeau&amp;#39;s blog&quot; text=&quot;Josh Comeau&amp;#39;s blog&quot; xmlUrl=&quot;https://www.joshwcomeau.com/rss.xml&quot; htmlUrl=&quot;https://www.joshwcomeau.com/&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Joy of Tech (RSS Feed)&quot; text=&quot;Joy of Tech (RSS Feed)&quot; xmlUrl=&quot;https://www.geekculture.com/joyoftech/jotblog/atom.xml&quot; htmlUrl=&quot;http://joyoftech.com/joyoftech/&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Julia Evans&quot; text=&quot;Julia Evans&quot; xmlUrl=&quot;https://jvns.ca/atom.xml&quot; htmlUrl=&quot;http://jvns.ca&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;kottke.org&quot; text=&quot;kottke.org&quot; xmlUrl=&quot;http://feeds.kottke.org/main&quot; htmlUrl=&quot;http://kottke.org/&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Laughing Squid&quot; text=&quot;Laughing Squid&quot; xmlUrl=&quot;https://laughingsquid.com/feed/&quot; htmlUrl=&quot;https://laughingsquid.com/&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;LibriVox&amp;#39;s New Releases&quot; text=&quot;LibriVox&amp;#39;s New Releases&quot; xmlUrl=&quot;https://librivox.org/rss/latest_releases&quot; htmlUrl=&quot;http://librivox.org&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Lifehacker&quot; text=&quot;Lifehacker&quot; xmlUrl=&quot;https://lifehacker.com/rss&quot; htmlUrl=&quot;https://lifehacker.com&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Logos By Nick&quot; text=&quot;Logos By Nick&quot; xmlUrl=&quot;https://logosbynick.com/feed/&quot; htmlUrl=&quot;https://logosbynick.com&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;LWN.net&quot; text=&quot;LWN.net&quot; xmlUrl=&quot;https://lwn.net/headlines/rss&quot; htmlUrl=&quot;https://lwn.net&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Manton Reece&quot; text=&quot;Manton Reece&quot; xmlUrl=&quot;https://www.manton.org/feed.xml&quot; htmlUrl=&quot;https://www.manton.org/&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Marco.org&quot; text=&quot;Marco.org&quot; xmlUrl=&quot;https://marco.org/rss&quot; htmlUrl=&quot;https://marco.org/&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Martin Fowler&quot; text=&quot;Martin Fowler&quot; xmlUrl=&quot;https://martinfowler.com/feed.atom&quot; htmlUrl=&quot;https://martinfowler.com&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;MaskRay&quot; text=&quot;MaskRay&quot; xmlUrl=&quot;https://maskray.me/blog/atom.xml&quot; htmlUrl=&quot;https://maskray.me/blog/&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;matklad&quot; text=&quot;matklad&quot; xmlUrl=&quot;https://matklad.github.io/feed.xml&quot; htmlUrl=&quot;https://matklad.github.io//&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Matthias Endler&quot; text=&quot;Matthias Endler&quot; xmlUrl=&quot;https://endler.dev/rss.xml&quot; htmlUrl=&quot;https://endler.dev&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Matt Might&amp;#39;s blog&quot; text=&quot;Matt Might&amp;#39;s blog&quot; xmlUrl=&quot;https://matt.might.net/articles/feed.rss&quot; htmlUrl=&quot;http://matt.might.net/&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Michael Tsai&quot; text=&quot;Michael Tsai&quot; xmlUrl=&quot;https://mjtsai.com/blog/feed/&quot; htmlUrl=&quot;https://mjtsai.com/blog&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Moments in Graphics&quot; text=&quot;Moments in Graphics&quot; xmlUrl=&quot;http://momentsingraphics.de/RSS.xml&quot; htmlUrl=&quot;http://momentsingraphics.de/&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;MonkeyUser&quot; text=&quot;MonkeyUser&quot; xmlUrl=&quot;https://www.monkeyuser.com/feed.xml&quot; htmlUrl=&quot;https://www.monkeyuser.com&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Mr. Money Mustache&quot; text=&quot;Mr. Money Mustache&quot; xmlUrl=&quot;https://feeds.feedburner.com/MrMoneyMustache&quot; htmlUrl=&quot;https://www.mrmoneymustache.com&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Nackblog&quot; text=&quot;Nackblog&quot; xmlUrl=&quot;http://jnack.com/blog/feed/&quot; htmlUrl=&quot;http://jnack.com/blog&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;News : NPR&quot; text=&quot;News : NPR&quot; xmlUrl=&quot;https://feeds.npr.org/1001/rss.xml&quot; htmlUrl=&quot;https://www.npr.org/templates/story/story.php?storyId=1001&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Nicky&amp;#39;s New Shtuff&quot; text=&quot;Nicky&amp;#39;s New Shtuff&quot; xmlUrl=&quot;https://ncase.me/feed.xml&quot; htmlUrl=&quot;https://ncase.me/&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;null program&quot; text=&quot;null program&quot; xmlUrl=&quot;https://nullprogram.com/feed/&quot; htmlUrl=&quot;https://nullprogram.com&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;One Foot Tsunami&quot; text=&quot;One Foot Tsunami&quot; xmlUrl=&quot;https://onefoottsunami.com/feed/json/&quot; htmlUrl=&quot;https://onefoottsunami.com/&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;OpenBSD Journal&quot; text=&quot;OpenBSD Journal&quot; xmlUrl=&quot;https://www.undeadly.org/cgi?action=rss&quot; htmlUrl=&quot;https://www.undeadly.org/&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;OpenBSD Webzine&quot; text=&quot;OpenBSD Webzine&quot; xmlUrl=&quot;https://webzine.puffy.cafe/atom.xml&quot; htmlUrl=&quot;https://webzine.puffy.cafe/&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Open Source Musings&quot; text=&quot;Open Source Musings&quot; xmlUrl=&quot;https://opensourcemusings.com/feed/&quot; htmlUrl=&quot;https://opensourcemusings.com/&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Open Source with Christopher Lydon&quot; text=&quot;Open Source with Christopher Lydon&quot; xmlUrl=&quot;https://radioopensource.org/feed/&quot; htmlUrl=&quot;https://radioopensource.org&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Paul E. McKenney&amp;#39;s Journal&quot; text=&quot;Paul E. McKenney&amp;#39;s Journal&quot; xmlUrl=&quot;https://paulmck.livejournal.com/data/rss&quot; htmlUrl=&quot;https://paulmck.livejournal.com/&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Phys.org - latest science and technology news stories&quot; text=&quot;Phys.org - latest science and technology news stories&quot; xmlUrl=&quot;https://phys.org/rss-feed/breaking/&quot; htmlUrl=&quot;https://phys.org/&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Schneier on Security&quot; text=&quot;Schneier on Security&quot; xmlUrl=&quot;https://www.schneier.com/feed/atom/&quot; htmlUrl=&quot;https://www.schneier.com/blog/&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Scott H Young&quot; text=&quot;Scott H Young&quot; xmlUrl=&quot;http://feeds.feedburner.com/scotthyoung/HAHx&quot; htmlUrl=&quot;https://www.scotthyoung.com/blog&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Scripting News&quot; text=&quot;Scripting News&quot; xmlUrl=&quot;http://scripting.com/rss.xml&quot; htmlUrl=&quot;http://scripting.com/&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Simon Willison&amp;#39;s Weblog&quot; text=&quot;Simon Willison&amp;#39;s Weblog&quot; xmlUrl=&quot;https://simonwillison.net/atom/everything/&quot; htmlUrl=&quot;http://simonwillison.net/&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Slashdot&quot; text=&quot;Slashdot&quot; xmlUrl=&quot;http://rss.slashdot.org/Slashdot/slashdot&quot; htmlUrl=&quot;https://slashdot.org/&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Stochastic Lifestyle&quot; text=&quot;Stochastic Lifestyle&quot; xmlUrl=&quot;https://www.stochasticlifestyle.com/feed/&quot; htmlUrl=&quot;https://www.stochasticlifestyle.com&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;swyx.io blog&quot; text=&quot;swyx.io blog&quot; xmlUrl=&quot;https://www.swyx.io/api/rss.xml&quot; htmlUrl=&quot;https://swyx.io&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Tania Rascia | RSS Feed&quot; text=&quot;Tania Rascia | RSS Feed&quot; xmlUrl=&quot;https://www.taniarascia.com/rss.xml&quot; htmlUrl=&quot;https://www.taniarascia.com&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;The Atlantic&quot; text=&quot;The Atlantic&quot; xmlUrl=&quot;https://feeds.feedburner.com/TheAtlantic&quot; htmlUrl=&quot;https://www.theatlantic.com/&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;The David Brownman Blog&quot; text=&quot;The David Brownman Blog&quot; xmlUrl=&quot;https://xavd.id/blog/feeds/rss.xml&quot; htmlUrl=&quot;https://xavd.id&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;The Next Web&quot; text=&quot;The Next Web&quot; xmlUrl=&quot;https://feeds2.feedburner.com/thenextweb&quot; htmlUrl=&quot;https://thenextweb.com&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;The Oatmeal - Comics, Quizzes, &amp;amp; Stories&quot; text=&quot;The Oatmeal - Comics, Quizzes, &amp;amp; Stories&quot; xmlUrl=&quot;https://feeds.feedburner.com/oatmealfeed&quot; htmlUrl=&quot;http://theoatmeal.com/&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;The ryg blog&quot; text=&quot;The ryg blog&quot; xmlUrl=&quot;https://fgiesen.wordpress.com/feed/&quot; htmlUrl=&quot;https://fgiesen.wordpress.com&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;The Sweet Setup&quot; text=&quot;The Sweet Setup&quot; xmlUrl=&quot;https://thesweetsetup.com/feed/&quot; htmlUrl=&quot;https://thesweetsetup.com&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Varun Vachhar&quot; text=&quot;Varun Vachhar&quot; xmlUrl=&quot;https://varun.ca/rss.xml&quot; htmlUrl=&quot;https://varun.ca&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;webcomic name&quot; text=&quot;webcomic name&quot; xmlUrl=&quot;https://webcomicname.com/rss&quot; htmlUrl=&quot;https://webcomicname.com/&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Whatever&quot; text=&quot;Whatever&quot; xmlUrl=&quot;https://whatever.scalzi.com/feed/&quot; htmlUrl=&quot;https://whatever.scalzi.com&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Wikipedia featured articles feed&quot; text=&quot;Wikipedia featured articles feed&quot; xmlUrl=&quot;https://en.wikipedia.org/w/api.php?action=featuredfeed&amp;amp;feed=featured&amp;amp;feedformat=atom&quot; htmlUrl=&quot;https://en.wikipedia.org/wiki/Main_Page&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Wikipedia picture of the day feed&quot; text=&quot;Wikipedia picture of the day feed&quot; xmlUrl=&quot;https://en.wikipedia.org/w/api.php?action=featuredfeed&amp;amp;feed=potd&amp;amp;feedformat=atom&quot; htmlUrl=&quot;https://en.wikipedia.org/wiki/Main_Page&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Writing - rachelbythebay&quot; text=&quot;Writing - rachelbythebay&quot; xmlUrl=&quot;https://rachelbythebay.com/w/atom.xml&quot; htmlUrl=&quot;https://rachelbythebay.com/w/&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;www.linusakesson.net&quot; text=&quot;www.linusakesson.net&quot; xmlUrl=&quot;http://www.linusakesson.net/rssfeed.php&quot; htmlUrl=&quot;http://www.linusakesson.net/&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;xkcd.com&quot; text=&quot;xkcd.com&quot; xmlUrl=&quot;https://xkcd.com/rss.xml&quot; htmlUrl=&quot;https://xkcd.com/&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Yahoo Tech&quot; text=&quot;Yahoo Tech&quot; xmlUrl=&quot;https://www.yahoo.com/tech/rss&quot; htmlUrl=&quot;https://finance.yahoo.com/tech&quot;&gt;&lt;/outline&gt;
+            &lt;outline title=&quot;Zhenghao&amp;#39;s blog&quot; text=&quot;Zhenghao&amp;#39;s blog&quot; xmlUrl=&quot;https://www.zhenghao.io/rss.xml&quot; htmlUrl=&quot;https://zhenghao.io&quot;&gt;&lt;/outline&gt;
+        &lt;/outline&gt;
+    &lt;/body&gt;
+&lt;/opml&gt;
+</code></pre>
+
+<h1 id="newsreaderoverssh">News Reader over ssh</h1>
+
+<p>Just an alternative news reader to miniflux, Newsboat is an RSS/Atom feed reader for the text console. It&#8217;s database of feeds is separate from miniflux and has no images.</p>
+
+<p>Reference:</p>
+
+<ul>
+<li><a href="https://newsboat.org/">https://newsboat.org/</a></li>
+<li><a href="https://github.com/newsboat/newsboat">https://github.com/newsboat/newsboat</a></li>
+</ul>
+
+<figure>
+<img src="/linux-in-house/images/2.25-screenshot_1x-33f26153.png" alt="2.25-screenshot_1x-33f26153.png" />
+<figcaption>2.25-screenshot_1x-33f26153.png</figcaption>
+</figure>
+
+<h1 id="continue">Continue</h1>
+
+<p>Now that a world of news feeds are at your fingertips, how about doing some electronics work? Read on my friend for an introduction to BeagleBone boards.</p>
+
+<p>Proceed in the order presented, some things are depending on prior setups.</p>
+
+<hr>
+
+<h4 id="madeforhumansbyahuman">Made for Humans, by a Human</h4>
+
+<h4 id="links">Links</h4>
+
+<ul>
+<li><a href="https://lwn.net/">Linux Weekly News</a></li>
+<li><a href="https://fullcirclemagazine.org/">Full Circle Magazine</a></li>
+<li><a href="https://www.linuxjournal.com/">Linux Journal</a></li>
+<li><a href="https://www.linux-magazine.com/">Linux Magazine</a></li>
+<li><a href="https://www.thefarside.com/">The Far Side</a></li>
+</ul>
+
+<h4 id="social">Social</h4>
+
+<ul>
+<li><a href="https://fosstodon.org/@Cohoon">Feedback</a></li>
+<li><a href="/linux-in-house/feed-Linux.rss">Linux RSS Feed</a></li>
+<li><a href="/linux-in-house/feed-Writing.rss">Writing RSS Feed</a></li>
+<li><a href="https://linux-in-the-house.pages.dev/">Book</a></li>
+</ul>
+
+<h5 id="builtwithmultimarkdownhttps:github.comfletchermultimarkdown-6andw3schoolshttps:www.w3schools.comw3cssw3css_pro.asp">Built with <a href="https://github.com/fletcher/MultiMarkdown-6">MultiMarkdown</a> and <a href="https://www.w3schools.com/w3css/w3css_pro.asp">W3 Schools</a></h5>
+
+<h5 id="license:ahrefhttp:creativecommons.orglicensesby-nc-sa4.0cc-by-nc-sa4.0a">License: <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0</a></h5>
+
+</body>
+</html>
+

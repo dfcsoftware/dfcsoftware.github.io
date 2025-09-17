@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>PostgreSQLUpgrade</title>
+	<meta name="date" content="2023-01-25 10:20"/>
+	<meta name="modified" content="2024-04-19 9:30"/>
+	<meta name="tags" content="systems, db"/>
+	<meta name="author" content="Don Cohoon"/>
+	<meta name="summary" content="Oh my, installing Ubuntu 22.04 installed PostgreSQL 14... wonder what version I am using..."/>
+	<meta name="license" content="'[CC-BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)'"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"> <link rel="stylesheet" href="/linux-in-house/common.css" type="text/css" />
+</head>
+<body>
+
+<p><a href="/linux-in-house/"><h1>Linux in House</h1></a></p>
+
+<link href="/linux-in-house/pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/linux-in-house/pagefind/pagefind-ui.js"></script>
+
+<div id="search"></div>
+<script>
+window.addEventListener('DOMContentLoaded', (event) => {
+      new PagefindUI({ element: "#search", showSubResults: true });
+});
+</script>
+
+<blockquote>
+<p><a href="/linux-in-house/linux/welcome.html">Welcome Back My Friends</a></p>
+</blockquote>
+
+<h1 id="postgresqlinstallandupgrade">PostgreSQL Install and Upgrade</h1>
+
+<p>Oh my, installing Ubuntu 22.04 installed PostgreSQL 14&#8230; wonder what version I am using&#8230;</p>
+
+<br/>
+
+<hr />
+
+<div class="TOC">
+
+<ul>
+<li><a href="#postgresqlinstallandupgrade">PostgreSQL Install and Upgrade</a>
+<ul>
+<li><a href="#establishbaseline">Establish Baseline</a>
+<ul>
+<li><a href="#whatisinstalled">What is installed?</a></li>
+<li><a href="#whichoneislive">Which one is live</a></li>
+</ul>
+</li>
+<li><a href="#exportandimportpg_dump">Export and Import (pg_dump)</a></li>
+<li><a href="#dotheupgradepg_upgrade">Do the Upgrade (pg_upgrade)</a></li>
+<li><a href="#removeoldpostgresqlinstall">Remove old postgresql install</a></li>
+<li><a href="#continue">Continue</a>
+<ul>
+<li><a href="#madeforhumansbyahuman">Made for Humans, by a Human</a></li>
+<li><a href="#links">Links</a></li>
+<li><a href="#social">Social</a>
+<ul>
+<li><a href="#builtwithmultimarkdownhttps:github.comfletchermultimarkdown-6andw3schoolshttps:www.w3schools.comw3cssw3css_pro.asp">Built with <a href="https://github.com/fletcher/MultiMarkdown-6">MultiMarkdown</a> and <a href="https://www.w3schools.com/w3css/w3css_pro.asp">W3 Schools</a></a></li>
+<li><a href="#license:ahrefhttp:creativecommons.orglicensesby-nc-sa4.0cc-by-nc-sa4.0a">License: <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0</a></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+<hr />
+
+<h2 id="establishbaseline">Establish Baseline</h2>
+
+<h4 id="whatisinstalled">What is installed?</h4>
+
+<pre><code>$ sudo -u postgres pg_lsclusters 
+Ver Cluster Port Status                Owner     Data directory               Log file
+9.3 main    5433 down,binaries_missing &lt;unknown&gt; /var/lib/postgresql/9.3/main /var/log/postgresql/postgresql-9.3-main.log
+9.5 main    5432 down,binaries_missing &lt;unknown&gt; /var/lib/postgresql/9.5/main /var/log/postgresql/postgresql-9.5-main.log
+10  main    5434 down                  postgres  /var/lib/postgresql/10/main  /var/log/postgresql/postgresql-10-main.log
+12  main    5432 online                postgres  /var/lib/postgresql/12/main  /var/log/postgresql/postgresql-12-main.log
+14  main    5435 online                postgres  /var/lib/postgresql/14/main  /var/log/postgresql/postgresql-14-main.log
+</code></pre>
+
+<p>Well now, that&#8217;s quite a mess. Let&#8217;s try to clean that up and get current.</p>
+
+<p><em>Binaries:</em></p>
+
+<pre><code>$ ls /var/lib/postgresql/
+10  12	14
+</code></pre>
+
+<p>So 10,12 and 14 are installed. That matches our pg_lsclusters perl script.</p>
+
+<p><em>Configurations:</em></p>
+
+<pre><code>$ ls /etc/postgresql/*
+/etc/postgresql/10:
+main
+
+/etc/postgresql/12:
+main
+
+/etc/postgresql/14:
+main
+
+/etc/postgresql/9.3:
+main
+
+/etc/postgresql/9.5:
+main
+</code></pre>
+
+<p>Configs are hanging around for 9.3, 9.5, 10, 12, 14</p>
+
+<p><em>Cleaning up:</em>
+List of config files</p>
+
+<pre><code>$ ls -l /etc/postgresql/9.3/main/
+total 48
+-rw-r--r-- 1 postgres postgres   315 Apr 18  2015 environment
+-rw-r--r-- 1 postgres postgres   143 Apr 18  2015 pg_ctl.conf
+-rw-r----- 1 postgres postgres  4970 Jun  4  2016 pg_hba.conf
+-rw-r----- 1 postgres postgres  1636 Apr 18  2015 pg_ident.conf
+-rw-r--r-- 1 postgres postgres 20816 Mar  9  2018 postgresql.conf
+-rw-r--r-- 1 postgres postgres   382 Mar  9  2018 start.conf
+</code></pre>
+
+<p>What was the data directory for v 9.3?</p>
+
+<pre><code>$ sudo -u postgres grep data_directory /etc/postgresql/9.3/main/postgresql.conf 
+data_directory = '/var/lib/postgresql/9.3/main'		# use data in another directory
+</code></pre>
+
+<p>Is it empty?</p>
+
+<pre><code>$ sudo -u postgres ls -l /var/lib/postgresql/9.3/main
+ls: cannot access '/var/lib/postgresql/9.3/main': No such file or directory
+</code></pre>
+
+<p>Then it is ok to remove~</p>
+
+<pre><code>$ dpkg -l|grep 'postgresql.*.9'
+</code></pre>
+
+<p>Packages are long gone, just remove left overs.</p>
+
+<pre><code>$ sudo -u postgres rm -rf /var/run/postgresql/9.3/
+$ sudo -u postgres rm -rf /var/lib/postgresql/9.3/
+$ sudo             rm -rf /usr/lib/postgresql/9.3/
+$ sudo -u postgres rm -rf /etc/postgresql/9.3/
+</code></pre>
+
+<p>(repeat for 9.5)</p>
+
+<p>Version 10 is installed, but down as per pg_lsclusters.
+Check v10:</p>
+
+<pre><code>$ sudo -u postgres grep data_directory /etc/postgresql/10/main/postgresql.conf 
+data_directory = '/var/lib/postgresql/10/main'		# use data in another directory
+
+$ sudo -u postgres ls -l /var/lib/postgresql/10/main
+total 80
+drwx------ 8 postgres postgres 4096 Jan  1  2020 base
+drwx------ 2 postgres postgres 4096 Aug 14  2020 global
+drwx------ 2 postgres postgres 4096 Dec 31  2019 pg_commit_ts
+drwx------ 2 postgres postgres 4096 Dec 31  2019 pg_dynshmem
+drwx------ 4 postgres postgres 4096 Aug 14  2020 pg_logical
+drwx------ 4 postgres postgres 4096 Dec 31  2019 pg_multixact
+drwx------ 2 postgres postgres 4096 Aug 14  2020 pg_notify
+drwx------ 2 postgres postgres 4096 Dec 31  2019 pg_replslot
+drwx------ 2 postgres postgres 4096 Dec 31  2019 pg_serial
+drwx------ 2 postgres postgres 4096 Dec 31  2019 pg_snapshots
+drwx------ 2 postgres postgres 4096 Aug 14  2020 pg_stat
+drwx------ 2 postgres postgres 4096 Dec 31  2019 pg_stat_tmp
+drwx------ 2 postgres postgres 4096 Dec 31  2019 pg_subtrans
+drwx------ 2 postgres postgres 4096 Dec 31  2019 pg_tblspc
+drwx------ 2 postgres postgres 4096 Dec 31  2019 pg_twophase
+-rw------- 1 postgres postgres    3 Dec 31  2019 PG_VERSION
+drwx------ 3 postgres postgres 4096 Jan  6  2020 pg_wal
+drwx------ 2 postgres postgres 4096 Dec 31  2019 pg_xact
+-rw------- 1 postgres postgres   88 Dec 31  2019 postgresql.auto.conf
+-rw------- 1 postgres postgres  170 Aug 14  2020 postmaster.opts
+</code></pre>
+
+<p>Yep, havn&#8217;t been touched in three+ years</p>
+
+<p>Which one <em>is</em> running?</p>
+
+<pre><code>$ ls /var/run/postgresql/
+12-main.pg_stat_tmp  12-main.pid  14-main.pg_stat_tmp  14-main.pid
+</code></pre>
+
+<p>Again, this matches pg_lsclusters.</p>
+
+<p>Any open ports?</p>
+
+<pre><code>$ sudo -u postgres grep port /etc/postgresql/10/main/postgresql.conf 
+port = 5434				# (change requires restart)
+					# supported by the operating system:
+					# supported by the operating system:
+					#   %r = remote host and port
+
+$ nmap localhost  -p 5434
+Starting Nmap 7.80 ( https://nmap.org ) at 2023-01-30 10:34 EST
+Nmap scan report for localhost (127.0.0.1)
+Host is up (0.000082s latency).
+
+PORT     STATE  SERVICE
+5434/tcp closed sgi-arrayd
+
+Nmap done: 1 IP address (1 host up) scanned in 0.03 seconds
+</code></pre>
+
+<p>Good, port is <em>closed</em> for version 10 of postgresql. No one could be possibly using it, and the database files have not been touched in over 3 years. (Call me parinoid, but I have been burned before.)</p>
+
+<p>Then it is ok to remove~</p>
+
+<pre><code>$ dpkg -l|grep 'postgresql.*.10'
+ii  postgresql-10                                 10.12-0ubuntu0.18.04.1                       amd64        object-relational SQL database, version 10 server
+ii  postgresql-client-10                          10.12-0ubuntu0.18.04.1                       amd64        front-end programs for PostgreSQL 10
+ii  postgresql-doc-10                             10.12-0ubuntu0.18.04.1                       all          documentation for the PostgreSQL database management system
+ii  postgresql-server-dev-10                      10.12-0ubuntu0.18.04.1                       amd64        development files for PostgreSQL 10 server-side programming
+</code></pre>
+
+<pre><code>$ sudo apt-get purge postgresql-10 postgresql-client-10 postgresql-doc-10 postgresql-server-dev-10
+$ sudo -u postgres rm -rf /var/run/postgresql/10/
+$ sudo -u postgres rm -rf /var/lib/postgresql/10/
+$ sudo             rm -rf /usr/lib/postgresql/10/
+$ sudo -u postgres rm -rf /etc/postgresql/10/
+</code></pre>
+
+<p>Checking the pg_lsclusters once more</p>
+
+<pre><code>$ sudo -u postgres pg_lsclusters 
+Ver Cluster Port Status Owner    Data directory              Log file
+12  main    5432 online postgres /var/lib/postgresql/12/main /var/log/postgresql/postgresql-12-main.log
+14  main    5435 online postgres /var/lib/postgresql/14/main /var/log/postgresql/postgresql-14-main.log
+</code></pre>
+
+<h3 id="whichoneislive">Which one is live</h3>
+
+<p>Ahhh yes, much better now. Let&#8217;s see where is the live database in use.</p>
+
+<pre><code>$ sudo -u postgres psql
+psql (14.6 (Ubuntu 14.6-0ubuntu0.22.04.1), server 12.12 (Ubuntu 12.12-0ubuntu0.20.04.1))
+Type &quot;help&quot; for help.
+
+postgres=# \q
+</code></pre>
+
+<p>The banner of psql tells us the executiable psql is version 14.6, while the server is 12.12.
+Also notice the <em>current</em> excutable path is postgresql version 14.</p>
+
+<p>Which database is actually running?</p>
+
+<pre><code>$ ps -jH -U postgres -u postgres u 
+USER         PID    PGID     SID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+postgres    1645    1645    1645  0.0  0.1 248112 19972 ?        Ss   Jan13   5:27 /usr/lib/postgresql/12/bin/postgres -D /var/lib/post
+postgres    1789    1789    1789  0.0  0.0 248216  4252 ?        Ss   Jan13   0:00   postgres: 12/main: checkpointer   
+postgres    1791    1791    1791  0.0  0.0 248112  3808 ?        Ss   Jan13   0:20   postgres: 12/main: background writer   
+postgres    1793    1793    1793  0.0  0.0 248112  4364 ?        Ss   Jan13   0:20   postgres: 12/main: walwriter   
+postgres    1795    1795    1795  0.0  0.0 248796  6748 ?        Ss   Jan13   0:37   postgres: 12/main: autovacuum launcher   
+postgres    1796    1796    1796  0.0  0.0 102752  4012 ?        Ss   Jan13   1:34   postgres: 12/main: stats collector   
+postgres    1798    1798    1798  0.0  0.0 248656  4684 ?        Ss   Jan13   0:00   postgres: 12/main: logical replication launcher   
+postgres    1564    1564    1564  0.0  0.1 218008 20920 ?        Ss   Jan13   0:20 /usr/lib/postgresql/14/bin/postgres -D /var/lib/post
+postgres    1762    1762    1762  0.0  0.0 218128  5964 ?        Ss   Jan13   0:00   postgres: 14/main: checkpointer 
+postgres    1763    1763    1763  0.0  0.0 218008  4080 ?        Ss   Jan13   0:10   postgres: 14/main: background writer 
+postgres    1764    1764    1764  0.0  0.0 218008  4664 ?        Ss   Jan13   0:10   postgres: 14/main: walwriter 
+postgres    1765    1765    1765  0.0  0.0 218548  6576 ?        Ss   Jan13   0:09   postgres: 14/main: autovacuum launcher 
+postgres    1766    1766    1766  0.0  0.0  72600  3668 ?        Ss   Jan13   0:10   postgres: 14/main: stats collector 
+postgres    1767    1767    1767  0.0  0.0 218444  4968 ?        Ss   Jan13   0:00   postgres: 14/main: logical replication launcher 
+</code></pre>
+
+<p>Both! &lt;slap face&gt;</p>
+
+<p>More information on the <em>current</em> database <em>software</em> can be found with <code>pg_config</code></p>
+
+<pre><code>$ pg_config | grep VERSION
+VERSION = PostgreSQL 14.6 (Ubuntu 14.6-0ubuntu0.22.04.1)
+</code></pre>
+
+<p>The executable winner is v14. What about our database?</p>
+
+<p>Remember the port number?</p>
+
+<pre><code>$ sudo -u postgres pg_lsclusters 
+Ver Cluster Port Status Owner    Data directory              Log file
+12  main    5432 online postgres /var/lib/postgresql/12/main /var/log/postgresql/postgresql-12-main.log
+14  main    5435 online postgres /var/lib/postgresql/14/main /var/log/postgresql/postgresql-14-main.log
+</code></pre>
+
+<p>The port number for v14 is 5435.
+Check v14 databases:</p>
+
+<pre><code>$ sudo -u postgres psql -p 5435
+psql (14.6 (Ubuntu 14.6-0ubuntu0.22.04.1))
+Type &quot;help&quot; for help.
+
+postgres=# \l
+                                  List of databases
+   Name    |  Owner   | Encoding |   Collate   |    Ctype    |   Access privileges   
+-----------+----------+----------+-------------+-------------+-----------------------
+ postgres  | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ template0 | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres          +
+           |          |          |             |             | postgres=CTc/postgres
+ template1 | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres          +
+           |          |          |             |             | postgres=CTc/postgres
+(3 rows)
+
+postgres=# \q
+</code></pre>
+
+<p>The port number for v12 is 5432:
+Check v12 databases:</p>
+
+<pre><code>$ sudo -u postgres psql -p 5432
+psql (14.6 (Ubuntu 14.6-0ubuntu0.22.04.1), server 12.12 (Ubuntu 12.12-0ubuntu0.20.04.1))
+Type &quot;help&quot; for help.
+
+postgres=# \l
+                                      List of databases
+        Name        |  Owner   | Encoding |   Collate   |    Ctype    |   Access privileges   
+--------------------+----------+----------+-------------+-------------+-----------------------
+ contrib_regression | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ owncloud           | mycloud  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ postgres           | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ roundcube          | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ template0          | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres          +
+                    |          |          |             |             | postgres=CTc/postgres
+ template1          | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres          +
+                    |          |          |             |             | postgres=CTc/postgres
+(6 rows)
+
+postgres=# \q
+
+</code></pre>
+
+<p>I see owncloud and roundcube databases on v12, but not v14. So I have to decide; I want to upgrade v12 to 14, and v14 has nothing I need.</p>
+
+<p>Two ways to go:</p>
+
+<ul>
+<li>pg_dump [1] v12 data, then load into v14</li>
+<li>pg_upgrade [2] cluster v12 to v14</li>
+</ul>
+
+<ol>
+<li><a href="https://www.postgresql.org/docs/current/app-pgdump.html">https://www.postgresql.org/docs/current/app-pgdump.html</a></li>
+<li><a href="https://www.postgresql.org/docs/current/pgupgrade.html">https://www.postgresql.org/docs/current/pgupgrade.html</a></li>
+</ol>
+
+<h2 id="exportandimportpg_dump">Export and Import (pg_dump)</h2>
+
+<p>Our first example will focus on the roundcube database.</p>
+
+<p>First take the application down</p>
+
+<pre><code>$ sudo systemctl disable apache2
+</code></pre>
+
+<ol>
+<li>pg_dump saves the data and schema (port 5432; v12)</li>
+</ol>
+
+<pre><code>$ sudo -u postgres pg_dump -p 5432 -d roundcube -f /tmp/roundcube_upgrade.sql
+</code></pre>
+
+<ol>
+<li>create a new database in the new version (port 5435; v14)</li>
+</ol>
+
+<pre><code>$ sudo -u postgres createdb -p 5435 roundcube
+</code></pre>
+
+<ol>
+<li>Check for alternate tablespace and create it in the new db as needed:</li>
+</ol>
+
+<pre><code>$ grep -i tablespace /etc/postgresql/12/main/postgresql.conf 
+#default_tablespace = ''		# a tablespace name, '' uses the default
+#temp_tablespaces = ''			# a list of tablespace names, '' uses
+					# only default tablespace
+
+$ grep -i tablespace /tmp/roundcube_upgrade.sql 
+SET default_tablespace = '';
+</code></pre>
+
+<p>Create <em>if needed</em> in the new v14 cluster</p>
+
+<pre><code>$ sudo -u postgres -p 5435
+postgres# create tablespace 'your_tablespace' location 'your_tablespace_location'
+postgres# \q
+</code></pre>
+
+<ol>
+<li>At last reload the dump file:</li>
+</ol>
+
+<pre><code>$ sudo -u postgres psql -p 5435 -d roundcube -f /tmp/roundcube_upgrade.sql &gt;/rmp/roundcube_upgrade.log
+</code></pre>
+
+<p>Ooops~ Role is missing~</p>
+
+<pre><code>$ grep -i error /tmp/roundcube_upgrade.log
+psql:/tmp/roundcube_upgrade.sql:35: ERROR:  role &quot;roundcube&quot; does not exist
+psql:/tmp/roundcube_upgrade.sql:50: ERROR:  role &quot;roundcube&quot; does not exist
+psql:/tmp/roundcube_upgrade.sql:66: ERROR:  role &quot;roundcube&quot; does not exist
+psql:/tmp/roundcube_upgrade.sql:79: ERROR:  role &quot;roundcube&quot; does not exist
+psql:/tmp/roundcube_upgrade.sql:93: ERROR:  role &quot;roundcube&quot; does not exist
+psql:/tmp/roundcube_upgrade.sql:106: ERROR:  role &quot;roundcube&quot; does not exist
+psql:/tmp/roundcube_upgrade.sql:121: ERROR:  role &quot;roundcube&quot; does not exist
+psql:/tmp/roundcube_upgrade.sql:135: ERROR:  role &quot;roundcube&quot; does not exist
+psql:/tmp/roundcube_upgrade.sql:155: ERROR:  role &quot;roundcube&quot; does not exist
+psql:/tmp/roundcube_upgrade.sql:169: ERROR:  role &quot;roundcube&quot; does not exist
+psql:/tmp/roundcube_upgrade.sql:182: ERROR:  role &quot;roundcube&quot; does not exist
+psql:/tmp/roundcube_upgrade.sql:198: ERROR:  role &quot;roundcube&quot; does not exist
+psql:/tmp/roundcube_upgrade.sql:212: ERROR:  role &quot;roundcube&quot; does not exist
+psql:/tmp/roundcube_upgrade.sql:234: ERROR:  role &quot;roundcube&quot; does not exist
+psql:/tmp/roundcube_upgrade.sql:248: ERROR:  role &quot;roundcube&quot; does not exist
+psql:/tmp/roundcube_upgrade.sql:263: ERROR:  role &quot;roundcube&quot; does not exist
+psql:/tmp/roundcube_upgrade.sql:277: ERROR:  role &quot;roundcube&quot; does not exist
+psql:/tmp/roundcube_upgrade.sql:291: ERROR:  role &quot;roundcube&quot; does not exist
+psql:/tmp/roundcube_upgrade.sql:303: ERROR:  role &quot;roundcube&quot; does not exist
+psql:/tmp/roundcube_upgrade.sql:322: ERROR:  role &quot;roundcube&quot; does not exist
+psql:/tmp/roundcube_upgrade.sql:336: ERROR:  role &quot;roundcube&quot; does not exist
+</code></pre>
+
+<p>Get attributes from the old database</p>
+
+<pre><code>$ sudo -u postgres psql -p 5432 -d roundcube
+psql (14.6 (Ubuntu 14.6-0ubuntu0.22.04.1), server 12.12 (Ubuntu 12.12-0ubuntu0.20.04.1))
+Type &quot;help&quot; for help.
+
+roundcube=# \du+ roundcube
+                  List of roles
+ Role name | Attributes | Member of | Description 
+-----------+------------+-----------+-------------
+ roundcube |            | {}        | 
+
+roundcube=# \q
+</code></pre>
+
+<blockquote>
+<p>User is just a fancy name for role.</p>
+</blockquote>
+
+<p>Add to new database.</p>
+
+<pre><code>$ sudo -u postgres psql -p 5435
+psql (14.6 (Ubuntu 14.6-0ubuntu0.22.04.1))
+Type &quot;help&quot; for help.
+
+postgres=# create user roundcube;
+CREATE ROLE
+</code></pre>
+
+<p>Re-apply grant statements from pg_dump sql. The commands are at the line numbers above, and we can grep for these commands:</p>
+
+<pre><code>$ grep -i ' OWNER TO roundcube'  /tmp/roundcube_upgrade.sql 
+ALTER TABLE public.cache OWNER TO roundcube;
+ALTER TABLE public.cache_index OWNER TO roundcube;
+ALTER TABLE public.cache_messages OWNER TO roundcube;
+ALTER TABLE public.cache_shared OWNER TO roundcube;
+ALTER TABLE public.cache_thread OWNER TO roundcube;
+ALTER TABLE public.contactgroupmembers OWNER TO roundcube;
+ALTER TABLE public.contactgroups OWNER TO roundcube;
+ALTER TABLE public.contactgroups_seq OWNER TO roundcube;
+ALTER TABLE public.contacts OWNER TO roundcube;
+ALTER TABLE public.contacts_seq OWNER TO roundcube;
+ALTER TABLE public.dictionary OWNER TO roundcube;
+ALTER TABLE public.filestore OWNER TO roundcube;
+ALTER TABLE public.filestore_seq OWNER TO roundcube;
+ALTER TABLE public.identities OWNER TO roundcube;
+ALTER TABLE public.identities_seq OWNER TO roundcube;
+ALTER TABLE public.searches OWNER TO roundcube;
+ALTER TABLE public.searches_seq OWNER TO roundcube;
+ALTER TABLE public.session OWNER TO roundcube;
+ALTER TABLE public.system OWNER TO roundcube;
+ALTER TABLE public.users OWNER TO roundcube;
+ALTER TABLE public.users_seq OWNER TO roundcube;
+</code></pre>
+
+<p>Then copy/paste them into v14 database:</p>
+
+<pre><code>$ sudo -u postgres psql -p 5435 -d roundcube
+psql (14.6 (Ubuntu 14.6-0ubuntu0.22.04.1))
+Type &quot;help&quot; for help.
+
+roundcube=# 
+ALTER TABLE public.cache OWNER TO roundcube;
+ALTER TABLE public.cache_index OWNER TO roundcube;
+ALTER TABLE public.cache_messages OWNER TO roundcube;
+ALTER TABLE public.cache_shared OWNER TO roundcube;
+ALTER TABLE public.cache_thread OWNER TO roundcube;
+ALTER TABLE public.contactgroupmembers OWNER TO roundcube;
+ALTER TABLE public.contactgroups OWNER TO roundcube;
+ALTER TABLE public.contactgroups_seq OWNER TO roundcube;
+ALTER TABLE public.contacts OWNER TO roundcube;
+ALTER TABLE public.contacts_seq OWNER TO roundcube;
+ALTER TABLE public.dictionary OWNER TO roundcube;
+ALTER TABLE public.filestore OWNER TO roundcube;
+ALTER TABLE public.filestore_seq OWNER TO roundcube;
+ALTER TABLE public.identities OWNER TO roundcube;
+ALTER TABLE public.identities_seq OWNER TO roundcube;
+ALTER TABLE public.searches OWNER TO roundcube;
+ALTER TABLE public.searches_seq OWNER TO roundcube;
+ALTER TABLE public.session OWNER TO roundcube;
+ALTER TABLE public.system OWNER TO roundcube;
+ALTER TABLE public.users OWNER TO roundcube;
+ALTER TABLE public.users_seq OWNER TO roundcube;
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+roundcube=# \q
+
+</code></pre>
+
+<p><em>Finished!</em></p>
+
+<p>Of course you need to test the app, but that&#8217;s another story.</p>
+
+<h2 id="dotheupgradepg_upgrade">Do the Upgrade (pg_upgrade)</h2>
+
+<p>This consists of upgrading the whole <em>cluster</em>. That takes every database in v12 to v14.</p>
+
+<blockquote>
+<p>The new cluster must <em>not</em> contain user databases with the same name. If you are following along, drop the <em>new</em> roundcube database on v14.</p>
+</blockquote>
+
+<blockquote>
+<p>Check for required libraries, or else it will fail with this error:</p>
+
+<p>Your installation references loadable libraries that are missing from the
+new installation. You can add these libraries to the new installation,
+or remove the functions using them from the old installation. A list of
+problem libraries is in the file:
+ loadable_libraries.txt</p>
+
+<p>Failure, exiting</p>
+
+<pre><code>$ cat loadable_libraries.txt
+could not load library &quot;$libdir/plv8-2.3.13&quot;: ERROR:  could not access file &quot;$libdir/plv8-2.3.13&quot;: No such file or directory
+In database: postgres
+</code></pre>
+
+<p>Fix:</p>
+
+<pre><code>postgres=# drop extension plv8 cascade;;
+NOTICE:  drop cascades to function plv8_test(text[],text[])
+DROP EXTENSION
+</code></pre>
+</blockquote>
+
+<p>First gather some information.</p>
+
+<p>Executable directories:</p>
+
+<pre><code>$ pg_config | grep BINDIR
+BINDIR = /usr/lib/postgresql/14/bin
+
+$ ls -ld /usr/lib/postgresql/*/bin
+drwxr-xr-x 2 root root 4096 Aug 19 06:01 /usr/lib/postgresql/12/bin
+drwxr-xr-x 2 root root 4096 Jan 11 18:12 /usr/lib/postgresql/14/bin
+</code></pre>
+
+<p>Config directories:</p>
+
+<pre><code>$ pg_config|grep SYSCONFDIR
+SYSCONFDIR = /etc/postgresql-common
+
+$ ls -ld /etc/postgresql/*/main/
+drwxr-xr-x 3 postgres postgres 4096 Jan 30 15:55 /etc/postgresql/12/main/
+drwxr-xr-x 3 postgres postgres 4096 Sep 29 15:32 /etc/postgresql/14/main/
+</code></pre>
+
+<ol>
+<li>First take the application and <em>both</em> database clusters down down:</li>
+</ol>
+
+<pre><code class="```">   $ sudo systemctl disable apache2
+   
+   $ sudo systemctl stop postgresql@12-main
+   
+   $ sudo systemctl stop postgresql@14-main
+   
+   $ sudo -u postgres pg_lsclusters 
+   Ver Cluster Port Status Owner    Data directory              Log file
+   12  main    5432 down   postgres /var/lib/postgresql/12/main /var/log/postgresql/postgresql-12-main.log
+   14  main    5435 down   postgres /var/lib/postgresql/14/main /var/log/postgresql/postgresql-14-main.log
+   
+   $ ps -jH -U postgres -u postgres u 
+   USER         PID    PGID     SID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+
+</code></pre>
+
+<ol>
+<li>pg_upgrade is the animal of choice. Log into a shell of the postgres user and change to a writeable directory, it will create a log file (pg_upgrade_internal.log) there.</li>
+</ol>
+
+<pre><code class="```">   $ sudo -u postgres bash
+   $ cd ~
+   $ pwd
+   /var/lib/postgresql
+
+   $ id
+   uid=136(postgres) gid=143(postgres) groups=143(postgres)
+
+</code></pre>
+
+<blockquote>
+<p>-link will not copy the data files, just make a hard filesystem link [1] from the existing directory to the new <code>data_directory</code> specified in the <code>/etc/postgresql/*/main/postgresql.conf</code> file. This is useful for very large databases.</p>
+</blockquote>
+
+<pre><code>* -b : old PostgreSQL executable directory
+* -B : new PostgreSQL executable directory
+* -d : old database cluster configuration directory
+* -D : new database cluster configuration directory
+</code></pre>
+
+<pre><code class="```">   $ /usr/lib/postgresql/14/bin/pg_upgrade \
+          -b /usr/lib/postgresql/12/bin/  -B /usr/lib/postgresql/14/bin/ \
+          -d /etc/postgresql/12/main/     -D /etc/postgresql/14/main/    \
+          --link
+
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code class="```">   $ /usr/lib/postgresql/14/bin/pg_upgrade           -b /usr/lib/postgresql/12/bin/  -B /usr/lib/postgresql/14/bin/           -d /etc/postgresql/12/main/     -D /etc/postgresql/14/main/              --link
+   Finding the real data directory for the source cluster      ok
+   Finding the real data directory for the target cluster      ok
+   Performing Consistency Checks
+   -----------------------------
+   Checking cluster versions                                   ok
+   Checking database user is the install user                  ok
+   Checking database connection settings                       ok
+   Checking for prepared transactions                          ok
+   Checking for system-defined composite types in user tables  ok
+   Checking for reg* data types in user tables                 ok
+   Checking for contrib/isn with bigint-passing mismatch       ok
+   Checking for user-defined encoding conversions              ok
+   Checking for user-defined postfix operators                 ok
+   Checking for incompatible polymorphic functions             ok
+   Creating dump of global objects                             ok
+   Creating dump of database schemas
+                                                               ok
+   Checking for presence of required libraries                 ok
+   Checking database user is the install user                  ok
+   Checking for prepared transactions                          ok
+   Checking for new cluster tablespace directories             ok
+   
+   If pg_upgrade fails after this point, you must re-initdb the
+   new cluster before continuing.
+   
+   Performing Upgrade
+   ------------------
+   Analyzing all rows in the new cluster                       ok
+   Freezing all rows in the new cluster                        ok
+   Deleting files from new pg_xact                             ok
+   Copying old pg_xact to new server                           ok
+   Setting oldest XID for new cluster                          ok
+   Setting next transaction ID and epoch for new cluster       ok
+   Deleting files from new pg_multixact/offsets                ok
+   Copying old pg_multixact/offsets to new server              ok
+   Deleting files from new pg_multixact/members                ok
+   Copying old pg_multixact/members to new server              ok
+   Setting next multixact ID and offset for new cluster        ok
+   Resetting WAL archives                                      ok
+   Setting frozenxid and minmxid counters in new cluster       ok
+   Restoring global objects in the new cluster                 ok
+   Restoring database schemas in the new cluster
+                                                               ok
+   Adding &quot;.old&quot; suffix to old global/pg_control               ok
+   
+   If you want to start the old cluster, you will need to remove
+   the &quot;.old&quot; suffix from /var/lib/postgresql/12/main/global/pg_control.old.
+   Because &quot;link&quot; mode was used, the old cluster cannot be safely
+   started once the new cluster has been started.
+   
+   Linking user relation files
+                                                               ok
+   Setting next OID for new cluster                            ok
+   Sync data directory to disk                                 ok
+   Creating script to delete old cluster                       ok
+   Checking for extension updates                              ok
+   
+   Upgrade Complete
+   ----------------
+   Optimizer statistics are not transferred by pg_upgrade.
+   Once you start the new server, consider running:
+       /usr/lib/postgresql/14/bin/vacuumdb --all --analyze-in-stages
+   
+   Running this script will delete the old cluster's data files:
+       ./delete_old_cluster.sh
+
+</code></pre>
+
+<ol>
+<li>Now bring up the PostgreSQL 14 service:</li>
+</ol>
+
+<pre><code class="```">   $ sudo systemctl start postgresql@14-main
+   $ psql -p 5435
+   psql (14.6 (Ubuntu 14.6-0ubuntu0.22.04.1))
+   Type &quot;help&quot; for help.
+   
+   postgres=# \l
+                                         List of databases
+           Name        |  Owner   | Encoding |   Collate   |    Ctype    |   Access privileges   
+   --------------------+----------+----------+-------------+-------------+-----------------------
+    contrib_regression | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+    owncloud           | mycloud  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+    postgres           | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+    roundcube          | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+    template0          | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres          +
+                       |          |          |             |             | postgres=CTc/postgres
+    template1          | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | postgres=CTc/postgres+
+                       |          |          |             |             | =c/postgres
+   (6 rows)
+
+   postgres=# \c roundcube
+   You are now connected to database &quot;roundcube&quot; as user &quot;postgres&quot;.
+
+   roundcube=# select * from system;
+          name        |   value    
+   -------------------+------------
+    roundcube-version | 2019092900
+   (1 row)
+
+
+</code></pre>
+
+<p>Here we see our happy little owncloud, roundcube and contrib_regression databases, migrated from v12 to v14.</p>
+
+<p><em>Enjoy!</em></p>
+
+<ol>
+<li>&gt; If you use link mode, the upgrade will be much faster (no file copying) and use less disk space, but you will not be able to access your old cluster once you start the new cluster after the upgrade. Link mode also requires that the old and new cluster data directories be in the same file system. (Tablespaces and pg_wal can be on different file systems.) Clone mode provides the same speed and disk space advantages but does not cause the old cluster to be unusable once the new cluster is started. Clone mode also requires that the old and new data directories be in the same file system. This mode is only available on certain operating systems and file systems.</li>
+</ol>
+
+<h2 id="removeoldpostgresqlinstall">Remove old postgresql install</h2>
+
+<p>Once the new databases have been tested and run for a while, don&#8217;t forget to clean up.</p>
+
+<p>Follow the pg_upgrade advice:</p>
+
+<blockquote>
+<p>Once you start the new server, consider running:</p>
+
+<p><code>/usr/lib/postgresql/14/bin/vacuumdb --all --analyze-in-stages</code></p>
+
+<p>Running this script will delete the old cluster&#8217;s data files:</p>
+
+<p><code>./delete_old_cluster.sh</code></p>
+
+<pre><code>$ cat delete_old_cluster.sh 
+#!/bin/sh
+ 
+rm -rf '/var/lib/postgresql/12/main'
+</code></pre>
+</blockquote>
+
+<p>Then do the physical left over sweeping.</p>
+
+<pre><code>$ sudo apt-get purge postgresql-12 postgresql-client-12 postgresql-doc-12 postgresql-server-dev-12
+$ sudo -u postgres rm -rf /var/run/postgresql/12/
+$ sudo -u postgres rm -rf /var/lib/postgresql/12/
+$ sudo             rm -rf /usr/lib/postgresql/12/
+$ sudo -u postgres rm -rf /etc/postgresql/12/
+</code></pre>
+
+<p>Finally, check the clusters:</p>
+
+<pre><code>$ pg_lsclusters 
+Ver Cluster Port Status Owner    Data directory              Log file
+14  main    5435 online postgres /var/lib/postgresql/14/main /var/log/postgresql/postgresql-14-main.log
+
+$ ps -jH -U postgres -u postgres u
+USER         PID    PGID     SID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+postgres  718566  718566  718565  0.0  0.0   9612  5128 pts/2    S+   15:20   0:00 bash
+postgres  752071  752071  752071  0.0  0.1 218008 29184 ?        Ss   16:25   0:00 /usr/lib/postgresql/14/bin/postgres -D /var/lib/postgresql/14/main -c config_file=
+postgres  752073  752073  752073  0.0  0.0 218144 12600 ?        Ss   16:25   0:00   postgres: 14/main: checkpointer 
+postgres  752074  752074  752074  0.0  0.0 218008  7004 ?        Ss   16:25   0:00   postgres: 14/main: background writer 
+postgres  752075  752075  752075  0.0  0.0 218008 11484 ?        Ss   16:25   0:00   postgres: 14/main: walwriter 
+postgres  752076  752076  752076  0.0  0.0 218680  9416 ?        Ss   16:25   0:00   postgres: 14/main: autovacuum launcher 
+postgres  752077  752077  752077  0.0  0.0  73024  6960 ?        Ss   16:25   0:00   postgres: 14/main: stats collector 
+postgres  752078  752078  752078  0.0  0.0 218444  7588 ?        Ss   16:25   0:00   postgres: 14/main: logical replication launcher 
+</code></pre>
+
+<h2 id="continue">Continue</h2>
+
+<p>Now that you have upgraded to the happy new cluster, consider moving data files to a better database protection disk.</p>
+
+<p>Same time, same channel, on the next episode of Linux in the Home.</p>
+
+<p>Proceed in the order presented, some things are depending on prior setups.</p>
+
+<hr>
+
+<h4 id="madeforhumansbyahuman">Made for Humans, by a Human</h4>
+
+<h4 id="links">Links</h4>
+
+<ul>
+<li><a href="https://lwn.net/">Linux Weekly News</a></li>
+<li><a href="https://fullcirclemagazine.org/">Full Circle Magazine</a></li>
+<li><a href="https://www.linuxjournal.com/">Linux Journal</a></li>
+<li><a href="https://www.linux-magazine.com/">Linux Magazine</a></li>
+<li><a href="https://www.thefarside.com/">The Far Side</a></li>
+</ul>
+
+<h4 id="social">Social</h4>
+
+<ul>
+<li><a href="https://fosstodon.org/@Cohoon">Feedback</a></li>
+<li><a href="/linux-in-house/feed-Linux.rss">Linux RSS Feed</a></li>
+<li><a href="/linux-in-house/feed-Writing.rss">Writing RSS Feed</a></li>
+<li><a href="https://linux-in-the-house.pages.dev/">Book</a></li>
+</ul>
+
+<h5 id="builtwithmultimarkdownhttps:github.comfletchermultimarkdown-6andw3schoolshttps:www.w3schools.comw3cssw3css_pro.asp">Built with <a href="https://github.com/fletcher/MultiMarkdown-6">MultiMarkdown</a> and <a href="https://www.w3schools.com/w3css/w3css_pro.asp">W3 Schools</a></h5>
+
+<h5 id="license:ahrefhttp:creativecommons.orglicensesby-nc-sa4.0cc-by-nc-sa4.0a">License: <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0</a></h5>
+
+</body>
+</html>
+

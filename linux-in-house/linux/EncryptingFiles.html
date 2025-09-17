@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>EncryptingFiles</title>
+	<meta name="date" content="2023-03-01 10:42"/>
+	<meta name="modified" content="2024-04-19 9:30"/>
+	<meta name="tags" content="security"/>
+	<meta name="author" content="Don Cohoon"/>
+	<meta name="summary" content="You should protect your carefully built system and it's files from abuse, tampering, or just plain spying. It's easy to do, what are you waiting for? Encrypt your data directory now."/>
+	<meta name="license" content="'[CC-BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)'"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"> <link rel="stylesheet" href="/linux-in-house/common.css" type="text/css" />
+</head>
+<body>
+
+<p><a href="/linux-in-house/"><h1>Linux in House</h1></a></p>
+
+<link href="/linux-in-house/pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/linux-in-house/pagefind/pagefind-ui.js"></script>
+
+<div id="search"></div>
+<script>
+window.addEventListener('DOMContentLoaded', (event) => {
+      new PagefindUI({ element: "#search", showSubResults: true });
+});
+</script>
+
+<blockquote>
+<p><a href="/linux-in-house/linux/welcome.html">Welcome Back My Friends</a></p>
+</blockquote>
+
+<h1 id="encryptingfiles">Encrypting Files</h1>
+
+<p>You should protect your carefully built system and it&#8217;s files from abuse, tampering, or just plain spying. It&#8217;s easy to do, what are you waiting for? Encrypt your data directory <strong>now</strong>.</p>
+
+<hr />
+
+<div class="TOC">
+
+<ul>
+<li><a href="#encryptingfiles">Encrypting Files</a>
+<ul>
+<li><a href="#encryptdiskpartitionusingluksformat">Encrypt disk partition using LUKS Format</a></li>
+<li><a href="#encryptafile">Encrypt a file</a></li>
+<li><a href="#gpgkeyfiles">GPG key files</a>
+<ul>
+<li><a href="#createagpgkeypair">Create a GPG keypair</a></li>
+<li><a href="#edityourgpgkey">Edit your GPG key</a></li>
+<li><a href="#listgpgkeys">List GPG keys</a></li>
+<li><a href="#exportpublicgpgkey">Export Public GPG key</a>
+<ul>
+<li><a href="#sharingpublickeys">Sharing public keys</a></li>
+<li><a href="#fingerprints">Fingerprints</a></li>
+</ul>
+</li>
+<li><a href="#protonmail">Protonmail</a></li>
+<li><a href="#copykeystoe-mailclienthost">Copy keys to e-mail client host</a></li>
+<li><a href="#revokecertificate">Revoke Certificate</a></li>
+<li><a href="#encryptdecryptafilewithakey">Encrypt/decrypt a file with a key</a>
+<ul>
+<li><a href="#madeforhumansbyahuman">Made for Humans, by a Human</a></li>
+<li><a href="#links">Links</a></li>
+<li><a href="#social">Social</a>
+<ul>
+<li><a href="#builtwithmultimarkdownhttps:github.comfletchermultimarkdown-6andw3schoolshttps:www.w3schools.comw3cssw3css_pro.asp">Built with <a href="https://github.com/fletcher/MultiMarkdown-6">MultiMarkdown</a> and <a href="https://www.w3schools.com/w3css/w3css_pro.asp">W3 Schools</a></a></li>
+<li><a href="#license:ahrefhttp:creativecommons.orglicensesby-nc-sa4.0cc-by-nc-sa4.0a">License: <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0</a></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+<hr />
+
+<p>Also E-Mailing files is <strong>not</strong> secure, but you can encrypt that file before sending it and the other party can decrypt it with just a simple pass phrase.</p>
+
+<h2 id="encryptdiskpartitionusingluksformat">Encrypt disk partition using LUKS Format</h2>
+
+<p>1 - Create cryptographic device mapper device in LUKS encryption mode:</p>
+
+<pre><code>sudo cryptsetup --verbose --cipher aes-xts-plain64 --key-size 512 --hash sha512 --iter-time 5000 --use-random luksFormat /dev/sdd1
+</code></pre>
+
+<p>2 - Unlock the partition, here &#8220;backup&#8221; is device mapper name, think of it as label.</p>
+
+<pre><code>sudo cryptsetup open --type luks /dev/sdd1 backup
+</code></pre>
+
+<p>3 - We have to create filesystem in order to write encrypted data that would be accessible through the device mapper name (label).</p>
+
+<pre><code>sudo mkfs.ext4 /dev/mapper/backup
+</code></pre>
+
+<p>4 - Mount the device and transfer all of your data:</p>
+
+<pre><code>sudo mount -t ext4 /dev/mapper/backup /backups
+</code></pre>
+
+<p>5 - Unmount and close the device once you are done:</p>
+
+<pre><code>sudo umount /backup
+#
+sudo cryptsetup close backup
+#
+#Last but not least, clear the copy and cache buffers:
+#
+sudo sysctl --write vm.drop_caches=3
+</code></pre>
+
+<p>Reference:</p>
+
+<ul>
+<li> <a href="https://www.man7.org/linux/man-pages/man8/cryptsetup.8.html">https://www.man7.org/linux/man-pages/man8/cryptsetup.8.html</a></li>
+<li> <a href="https://www.kernel.org/doc/html/latest/admin-guide/sysctl/vm.html?highlight=drop_caches#drop-caches">https://www.kernel.org/doc/html/latest/admin-guide/sysctl/vm.html?highlight=drop_caches#drop-caches</a></li>
+</ul>
+
+<h2 id="encryptafile">Encrypt a file</h2>
+
+<p>Create a file to encrypt:</p>
+
+<pre><code>$ echo &quot;Cold!&quot; &gt; mittens
+</code></pre>
+
+<p>Encrypt it:</p>
+
+<blockquote>
+<p>You will be prompted for a pass phrase</p>
+</blockquote>
+
+<pre><code>$ gpg -c mittens
+</code></pre>
+
+<p>Check the output:</p>
+
+<blockquote>
+<p>&lt;file name &gt;.gpg is the encrypted version, the original file is left intact</p>
+</blockquote>
+
+<pre><code>$ ls mittens*
+mittens
+mittens.gpg
+
+$ strings mittens*
+Cold!
+O2#a3
+</code></pre>
+
+<p>You can now distribute the encrypted file. <strong>You must also <em>securely</em> share the passphrase.</strong></p>
+
+<p>Decrypt it</p>
+
+<blockquote>
+<p>This example uses the public keyring stored on this computer user&#8217;s home directory <code>~/.gnupg</code></p>
+</blockquote>
+
+<pre><code>$ gpg -d mittens.gpg 
+gpg: AES256.CFB encrypted data
+gpg: encrypted with 1 passphrase
+Cold!
+</code></pre>
+
+<p>Files created the first time you run gpg:</p>
+
+<pre><code>$ ls ~/.gnupg/
+private-keys-v1.d  pubring.kbx	random_seed
+</code></pre>
+
+<p>Reference: <a href="https://www.redhat.com/sysadmin/getting-started-gpg">https://www.redhat.com/sysadmin/getting-started-gpg</a></p>
+
+<h2 id="gpgkeyfiles">GPG key files</h2>
+
+<p>GPG supports private and public key files so passphrases are not required in normal use for encrypting, decrypting and signing files and e-mails.</p>
+
+<p>Here is how that works.</p>
+
+<h3 id="createagpgkeypair">Create a GPG keypair</h3>
+
+<blockquote>
+<p>Use the default (1)</p>
+</blockquote>
+
+<pre><code>$ gpg --full-generate-key
+Please select what kind of key you want:
+   (1) RSA and RSA (default)
+...
+</code></pre>
+
+<blockquote>
+<p>Use the default 3072</p>
+</blockquote>
+
+<pre><code>RSA keys may be between 1024 and 4096 bits long.
+What keysize do you want? (3072)
+</code></pre>
+
+<blockquote>
+<p>Enter 2 years</p>
+</blockquote>
+
+<pre><code>Please specify how long the key should be valid.
+         0 = key does not expire
+      &lt;n&gt;  = key expires in n days
+      &lt;n&gt;w = key expires in n weeks
+      &lt;n&gt;m = key expires in n months
+      &lt;n&gt;y = key expires in n years
+Key is valid for? (0) 2y
+</code></pre>
+
+<ul>
+<li>Fill out your name, email, etc.</li>
+</ul>
+
+<pre><code>GnuPG needs to construct a user ID to identify your key.
+
+Real name: Best User
+Email address: bestuser@example.com
+Comment: Best Company
+You selected this USER-ID:
+    &quot;Best User (Best Company) &lt;bestuser@example.com&gt;&quot;
+
+Change (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit?
+</code></pre>
+
+<blockquote>
+<p>Enter a passphrase in the popup</p>
+</blockquote>
+
+<ul>
+<li>Verify your information, then a keystore will be created in your home directory:</li>
+</ul>
+
+<pre><code>...
+We need to generate a lot of random bytes. It is a good idea to perform
+some other action (type on the keyboard, move the mouse, utilize the
+disks) during the prime generation; this gives the random number
+generator a better chance to gain enough entropy.
+gpg: key B...5 marked as ultimately trusted
+gpg: directory '/home/bob/.gnupg/openpgp-revocs.d' created
+gpg: revocation certificate stored as '/home/bob/.gnupg/openpgp-revocs.d/A...3.rev'
+public and secret key created and signed.
+
+pub   rsa3072 2023-04-20 [SC] [expires: 2025-04-19]
+      A...3
+uid                      Bob &lt;bob@bob.com&gt;
+sub   rsa3072 2023-04-20 [E] [expires: 2025-04-19]
+</code></pre>
+
+<ul>
+<li>Store your host, username, and passphrase in your password manager.</li>
+</ul>
+
+<p>Files created:</p>
+
+<pre><code>$ tree ~/.gnupg/
+/home/bob/.gnupg/
+├── openpgp-revocs.d
+│   └── B...5.rev
+├── private-keys-v1.d
+│   ├── C...2.key
+│   └── A...3.key
+├── pubring.kbx
+├── pubring.kbx~
+├── random_seed
+└── trustdb.gpg
+
+</code></pre>
+
+<h3 id="edityourgpgkey">Edit your GPG key</h3>
+
+<pre><code>$ gpg --edit-key bestuser@example.com
+gpg&gt;
+</code></pre>
+
+<p>At the subprompt, help or a ? lists the available edit commands.</p>
+
+<h3 id="listgpgkeys">List GPG keys</h3>
+
+<pre><code>$ gpg --list-keys
+gpg: checking the trustdb
+gpg: marginals needed: 3  completes needed: 1  trust model: pgp
+gpg: depth: 0  valid:   1  signed:   0  trust: 0-, 0q, 0n, 0m, 0f, 1u
+gpg: next trustdb check due at 2025-04-19
+/home/bob/.gnupg/pubring.kbx
+----------------------------
+pub   rsa3072 2023-04-20 [SC] [expires: 2025-04-19]
+      A...3
+uid           [ultimate] Bob &lt;bob@bob.com&gt;
+sub   rsa3072 2023-04-20 [E] [expires: 2025-04-19]
+</code></pre>
+
+<h3 id="exportpublicgpgkey">Export Public GPG key</h3>
+
+<pre><code>$ gpg --export --armor --output bob-gpg.pub
+$ more bob-gpg.pub 
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+...
+</code></pre>
+
+<p>The -a or &#8211;armor option encodes the output to plain text.
+The -o or &#8211;output option saves the output to a specified file instead of displaying it to standard out on the screen.</p>
+
+<h4 id="sharingpublickeys">Sharing public keys</h4>
+
+<blockquote>
+<p>You can share your <strong>public key</strong> to the OpenPGP Key server [1]. This way <em>other people</em> can read your e-mails, they just need to import your key from the keyserver using your email address.</p>
+</blockquote>
+
+<ul>
+<li> Pros:</li>
+</ul>
+
+<ol>
+<li> Public key servers allow other people to easily read your encrypted e-mails.</li>
+<li> Signing verifies the email came from you.</li>
+<li> It also guarantees the message was not altered.</li>
+</ol>
+
+<ul>
+<li> Cons:</li>
+</ul>
+
+<ol>
+<li><p> It does <em>not</em> assure privacy, because if a third party gets ahold of your encrypted email they can still decrypt it using your public key on a public server.</p></li>
+<li><p> After your certificate expires or is revoked, encrypted messages become unreadable. Renewed certificates allow old messages to be read.</p></li>
+<li><p> <a href="https://keys.openpgp.org/upload">https://keys.openpgp.org/upload</a></p></li>
+</ol>
+
+<h4 id="fingerprints">Fingerprints</h4>
+
+<p>To allow other people a method of verifying the public key, also share the fingerprint of the public key in email signatures and even on business cards. The more places it appears, the more likely others will have a copy of the correct fingerprint to use for verification.</p>
+
+<pre><code>$ gpg --fingerprint
+/home/bob/.gnupg/pubring.kbx
+----------------------------
+pub   rsa3072 2023-04-20 [SC] [expires: 2025-04-19]
+      A... 3... 5... 7... D...  9... A... E... 1... 4...
+uid           [ultimate] Bob &lt;bob@bob.com&gt;
+sub   rsa3072 2023-04-20 [E] [expires: 2025-04-19]
+</code></pre>
+
+<p>Reference: <a href="https://www.redhat.com/sysadmin/creating-gpg-keypairs">https://www.redhat.com/sysadmin/creating-gpg-keypairs</a></p>
+
+<h3 id="protonmail">Protonmail</h3>
+
+<p>To obtain a correspondent&#8217;s protonmail public key, use curl. Change user@protonmail.com to the real email.</p>
+
+<pre><code>$ curl https://api.protonmail.ch/pks/lookup?op=get\&amp;search=user@protonmail.com -o user-pubkey.asc
+</code></pre>
+
+<p>Then import it into gpg</p>
+
+<pre><code>$ gpg --import user-public.asc
+</code></pre>
+
+<blockquote>
+<p>Now you can decrypt their files and they can import your public pgp key from <a href="https://keys.openpgp.org">https://keys.openpgp.org</a> using your email address.</p>
+</blockquote>
+
+<p>Reference: <a href="https://proton.me/mail">https://proton.me/mail</a></p>
+
+<h3 id="copykeystoe-mailclienthost">Copy keys to e-mail client host</h3>
+
+<p>Maybe you have a laptop for e-mail, while the gpg keys were created on a server. Here is how to copy the key(s).</p>
+
+<p>Export public and secret key files</p>
+
+<pre><code>ID=bob@bob.com
+ gpg --export ${ID} &gt; public.key
+ gpg --export-secret-key ${ID} &gt; private.key
+</code></pre>
+
+<p>Copy to new host</p>
+
+<pre><code> scp bob@server:'/home/bob/gpg/bob.com/*.key' .
+</code></pre>
+
+<p>Import into gpg on new host</p>
+
+<pre><code> gpg --import public.key
+ gpg --import private.key
+</code></pre>
+
+<p>Be sure to clean up the keys!</p>
+
+<pre><code> rm public.key
+ rm private.key
+</code></pre>
+
+<blockquote>
+<p>You will need to verify the signature in your GUI E-Mail client, change it to &#8216;verified&#8217; or &#8216;accepted&#8217; to get full functionality.</p>
+</blockquote>
+
+<p>Now you can send/receive encrypted e-mail on the new host</p>
+
+<p>Reference:</p>
+
+<ul>
+<li> <a href="https://support.mozilla.org/en-US/kb/openpgp-thunderbird-howto-and-faq">https://support.mozilla.org/en-US/kb/openpgp-thunderbird-howto-and-faq</a></li>
+<li> <a href="https://www.openpgp.org/software/">https://www.openpgp.org/software/</a></li>
+</ul>
+
+<h3 id="revokecertificate">Revoke Certificate</h3>
+
+<p>If you forget your password or your private key is compromised, revoke the current certificate.</p>
+
+<pre><code>$ gpg --output revoke.asc --gen-revoke user@example.com
+$ cp revoke.asc  ~/.gnupg/openpgp-revocs.d/revoke.rev
+</code></pre>
+
+<blockquote>
+<p>Be sure to update the public key server and your fingerprints.</p>
+</blockquote>
+
+<h3 id="encryptdecryptafilewithakey">Encrypt/decrypt a file with a key</h3>
+
+<ul>
+<li>Create a file to be mailed:</li>
+</ul>
+
+<p>File: junk</p>
+
+<pre><code>To Whom it May Concern,
+
+This is addressed to the party that I have contacted.
+
+Regards,
+-- Me
+</code></pre>
+
+<ul>
+<li>Encrypt your email file</li>
+</ul>
+
+<pre><code>$ gpg --sign --armor --recipient bob@bob.com --encrypt junk
+</code></pre>
+
+<ul>
+<li>Mail it</li>
+</ul>
+
+<pre><code>cat junk.asc | mail -s &quot;Hello Bro&quot; bob@bob.com
+</code></pre>
+
+<ul>
+<li>The other person can decrypt it (if they imported your public key)</li>
+</ul>
+
+<pre><code>$ gpg --output junk-doc --decrypt junk.asc
+</code></pre>
+
+<blockquote>
+<p>This is more secure if you do not share your public key on a public server. You just have to find a secure way to share it, like your own cloud server.</p>
+</blockquote>
+
+<hr>
+
+<h4 id="madeforhumansbyahuman">Made for Humans, by a Human</h4>
+
+<h4 id="links">Links</h4>
+
+<ul>
+<li><a href="https://lwn.net/">Linux Weekly News</a></li>
+<li><a href="https://fullcirclemagazine.org/">Full Circle Magazine</a></li>
+<li><a href="https://www.linuxjournal.com/">Linux Journal</a></li>
+<li><a href="https://www.linux-magazine.com/">Linux Magazine</a></li>
+<li><a href="https://www.thefarside.com/">The Far Side</a></li>
+</ul>
+
+<h4 id="social">Social</h4>
+
+<ul>
+<li><a href="https://fosstodon.org/@Cohoon">Feedback</a></li>
+<li><a href="/linux-in-house/feed-Linux.rss">Linux RSS Feed</a></li>
+<li><a href="/linux-in-house/feed-Writing.rss">Writing RSS Feed</a></li>
+<li><a href="https://linux-in-the-house.pages.dev/">Book</a></li>
+</ul>
+
+<h5 id="builtwithmultimarkdownhttps:github.comfletchermultimarkdown-6andw3schoolshttps:www.w3schools.comw3cssw3css_pro.asp">Built with <a href="https://github.com/fletcher/MultiMarkdown-6">MultiMarkdown</a> and <a href="https://www.w3schools.com/w3css/w3css_pro.asp">W3 Schools</a></h5>
+
+<h5 id="license:ahrefhttp:creativecommons.orglicensesby-nc-sa4.0cc-by-nc-sa4.0a">License: <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0</a></h5>
+
+</body>
+</html>
+

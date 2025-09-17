@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>NetworkManagement</title>
+	<meta name="date" content="2023-04-01 10:44"/>
+	<meta name="modified" content="2024-04-19 9:30"/>
+	<meta name="tags" content="network"/>
+	<meta name="author" content="Don Cohoon"/>
+	<meta name="summary" content="The command line offers a wealth of network management commands. Here are some of my favorites."/>
+	<meta name="license" content="'[CC-BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)'"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"> <link rel="stylesheet" href="/linux-in-house/common.css" type="text/css" />
+</head>
+<body>
+
+<p><a href="/linux-in-house/"><h1>Linux in House</h1></a></p>
+
+<link href="/linux-in-house/pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/linux-in-house/pagefind/pagefind-ui.js"></script>
+
+<div id="search"></div>
+<script>
+window.addEventListener('DOMContentLoaded', (event) => {
+      new PagefindUI({ element: "#search", showSubResults: true });
+});
+</script>
+
+<blockquote>
+<p><a href="/linux-in-house/linux/welcome.html">Welcome Back My Friends</a></p>
+</blockquote>
+
+<h1 id="networkmanagement">Network Management</h1>
+
+<p>The command line offers a wealth of network management commands. Here are some of my favorites.</p>
+
+<br/>
+
+<hr />
+
+<div class="TOC">
+
+<ul>
+<li><a href="#networkmanagement">Network Management</a>
+<ul>
+<li><a href="#nmcli">nmcli</a></li>
+<li><a href="#ip">ip</a></li>
+<li><a href="#ss">ss</a></li>
+<li><a href="#connmanctl">connmanctl</a></li>
+<li><a href="#firewalld">firewalld</a></li>
+<li><a href="#networkd">networkd</a></li>
+<li><a href="#tcpdump">tcpdump</a></li>
+<li><a href="#arp-scan">arp-scan</a></li>
+<li><a href="#vnstat">vnstat</a></li>
+<li><a href="#nethogs">nethogs</a></li>
+<li><a href="#conclusion">Conclusion</a>
+<ul>
+<li><a href="#madeforhumansbyahuman">Made for Humans, by a Human</a></li>
+<li><a href="#links">Links</a></li>
+<li><a href="#social">Social</a>
+<ul>
+<li><a href="#builtwithmultimarkdownhttps:github.comfletchermultimarkdown-6andw3schoolshttps:www.w3schools.comw3cssw3css_pro.asp">Built with <a href="https://github.com/fletcher/MultiMarkdown-6">MultiMarkdown</a> and <a href="https://www.w3schools.com/w3css/w3css_pro.asp">W3 Schools</a></a></li>
+<li><a href="#license:ahrefhttp:creativecommons.orglicensesby-nc-sa4.0cc-by-nc-sa4.0a">License: <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0</a></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+<hr />
+
+<h2 id="nmcli">nmcli</h2>
+
+<p>NetworkManager has a command line interface (CLI).</p>
+
+<p>Get status:</p>
+
+<pre><code>$ nmcli general status
+STATE      CONNECTIVITY  WIFI-HW  WIFI     WWAN-HW  WWAN    
+connected  full          enabled  enabled  enabled  enabled 
+</code></pre>
+
+<p>Get connections:</p>
+
+<pre><code>$ nmcli connection show
+NAME                UUID                                  TYPE      DEVICE 
+Wired connection 1  39738cc4-2a3b-3990-8c49-b4d0355116c3  ethernet  eth0   
+</code></pre>
+
+<p>Get devices:</p>
+
+<pre><code>$ nmcli device
+DEVICE  TYPE      STATE      CONNECTION         
+eth0    ethernet  connected  Wired connection 1 
+usb0    ethernet  unmanaged  --                 
+usb1    ethernet  unmanaged  --                 
+lo      loopback  unmanaged  --                 
+</code></pre>
+
+<p>Get configuration file names (notice they are in /etc and /run):</p>
+
+<pre><code>$ nmcli -f TYPE,FILENAME,NAME conn
+TYPE      FILENAME                                                                NAME               
+ethernet  /etc/NetworkManager/system-connections/eno1.nmconnection                eno1               
+loopback  /run/NetworkManager/system-connections/lo.nmconnection                  lo                 
+bridge    /etc/NetworkManager/system-connections/virbr0.nmconnection              virbr0             
+vlan      /etc/NetworkManager/system-connections/vlan1.nmconnection               vlan1              
+tun       /run/NetworkManager/system-connections/vnet3.nmconnection               vnet3              
+ethernet  /etc/NetworkManager/system-connections/Wired connection 2.nmconnection  Wired connection 2
+</code></pre>
+
+<p>Show device details</p>
+
+<pre><code>$ nmcli device show eth0
+GENERAL.DEVICE:                         eth0
+GENERAL.TYPE:                           ethernet
+GENERAL.HWADDR:                         53:21:B9:C6:B6:FE
+GENERAL.MTU:                            1500
+GENERAL.STATE:                          100 (connected)
+GENERAL.CONNECTION:                     Wired connection 1
+GENERAL.CON-PATH:                       /org/freedesktop/NetworkManager/ActiveConnection/4
+WIRED-PROPERTIES.CARRIER:               on
+IP4.ADDRESS[1]:                         192.168.1.9/24
+IP4.GATEWAY:                            192.168.1.1
+IP4.ROUTE[1]:                           dst = 0.0.0.0/0, nh = 192.168.1.1, mt = 100
+IP4.ROUTE[2]:                           dst = 192.168.10.0/24, nh = 0.0.0.0, mt = 100
+IP4.DNS[1]:                             192.168.10.1
+IP6.ADDRESS[1]:                         fe80::cc1a:6ba2:c43:1b58/64
+IP6.GATEWAY:                            --
+IP6.ROUTE[1]:                           dst = fe80::/64, nh = ::, mt = 100
+IP6.ROUTE[2]:                           dst = ff00::/8, nh = ::, mt = 256, table=255
+</code></pre>
+
+<p>Check the radio:</p>
+
+<pre><code>$ nmcli radio
+WIFI-HW  WIFI     WWAN-HW  WWAN    
+enabled  enabled  enabled  enabled 
+</code></pre>
+
+<p>Show available WiFi SSID signals:</p>
+
+<pre><code>$ nmcli device wifi list
+  SSID                           MODE  CHAN    RATE    SIGNAL     BARS  SECURITY  
+   MY_WIRELESS_NET               Infra  11    54 Mbit/s  100     ▂▄▆█  WPA1 WPA2 
+   ANOTHER_WIRELLESS_NET         Infra  52    54 Mbit/s  100     ▂▄▆█  WPA1 WPA2 
+   YET_ANOTHER_WIR_NET           Infra  6     54 Mbit/s  55      ▂▄__   WPA2  
+</code></pre>
+
+<p>Even get the WiFi password~</p>
+
+<pre><code>$ nmcli device wifi show-password
+</code></pre>
+
+<p>Connect to WiFi:</p>
+
+<pre><code>$ nmcli device wifi connect MY_WIRELESS_NET password 8ehdxhre5kkhb6g6
+Device 'wlp5s0' successfully activated with 'a7c8fbf5-3e7d-456c-921b-d739de0e3c79'.
+</code></pre>
+
+<p>Reference: <a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/networking_guide/sec-configuring_ip_networking_with_nmcli">https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/networking_guide/sec-configuring_ip_networking_with_nmcli</a></p>
+
+<h2 id="ip">ip</h2>
+
+<p>ip will show / manipulate routing, network devices, interfaces and tunnels</p>
+
+<ul>
+<li>To show the IP addresses assigned to an interface on your server:</li>
+</ul>
+
+<pre><code># ip address show 
+</code></pre>
+
+<ul>
+<li>To assign an IP to an interface, for example, enps03:</li>
+</ul>
+
+<pre><code># ip address add 192.168.1.254/24 dev enps03
+</code></pre>
+
+<ul>
+<li>To delete an IP on an interface:</li>
+</ul>
+
+<pre><code># ip address del 192.168.1.254/24 dev enps03
+</code></pre>
+
+<ul>
+<li>Alter the status of the interface by bringing the interface eth0 online:</li>
+</ul>
+
+<pre><code># ip link set eth0 up
+</code></pre>
+
+<ul>
+<li>Alter the status of the interface by bringing the interface eth0 offline:</li>
+</ul>
+
+<pre><code># ip link set eth0 down
+</code></pre>
+
+<ul>
+<li>Alter the status of the interface by changing the MTU of eth0:</li>
+</ul>
+
+<pre><code># ip link set eth0 mtu 9000
+</code></pre>
+
+<ul>
+<li>Alter the status of the interface by enabling promiscuous mode for eth0:</li>
+</ul>
+
+<pre><code># ip link set eth0 promisc on
+</code></pre>
+
+<ul>
+<li>Add a default route (for all addresses) via the local gateway 192.168.1.254 that can be reached on device eth0:</li>
+</ul>
+
+<pre><code># ip route add default via 192.168.1.254 dev eth0
+</code></pre>
+
+<ul>
+<li>Add a route to 192.168.1.0/24 via the gateway at 192.168.1.254:</li>
+</ul>
+
+<pre><code># ip route add 192.168.1.0/24 via 192.168.1.254
+</code></pre>
+
+<ul>
+<li>Add a route to 192.168.1.0/24 that can be reached on device eth0:</li>
+</ul>
+
+<pre><code># ip route add 192.168.1.0/24 dev eth0
+</code></pre>
+
+<ul>
+<li>Delete the route for 192.168.1.0/24 via the gateway at 192.168.1.254:</li>
+</ul>
+
+<pre><code># ip route delete 192.168.1.0/24 via 192.168.1.254
+</code></pre>
+
+<ul>
+<li>Display the route taken for IP 10.10.1.4:</li>
+</ul>
+
+<pre><code># ip route get 10.10.1.4
+</code></pre>
+
+<p>Reference:</p>
+
+<ul>
+<li> <a href="https://www.redhat.com/sysadmin/7-great-network-commands">https://www.redhat.com/sysadmin/7-great-network-commands</a></li>
+<li> <a href="https://www.man7.org/linux/man-pages/man8/ip.8.html">https://www.man7.org/linux/man-pages/man8/ip.8.html</a></li>
+</ul>
+
+<h2 id="ss">ss</h2>
+
+<p>Show Socket program ss shows which ports are open, their status, and what programs are attached to them locally.</p>
+
+<p>Sockets:</p>
+
+<pre><code>$ sudo ss -ntrp
+State      Recv-Q      Send-Q                 Local Address:Port              Peer Address:Port       Process   
+...
+</code></pre>
+
+<p>Who is listening</p>
+
+<pre><code>$ sudo ss -lntup | less
+Netid State  Recv-Q Send-Q                     Local Address:Port  Peer Address:PortProcess 
+...
+</code></pre>
+
+<p>Reference: <a href="https://www.man7.org/linux/man-pages/man8/ss.8.html">https://www.man7.org/linux/man-pages/man8/ss.8.html</a></p>
+
+<h2 id="connmanctl">connmanctl</h2>
+
+<p>First found on the BeagleBoneBlack and PocketBeagle SBC devices, this was the way to manage WiFi, USB and Ethernet connections. It does not seem to be used on the BeagleBone AI [1].</p>
+
+<p>The configuration files live in /var/lib/connman/ and the control program for changing them is connmanctl.</p>
+
+<ul>
+<li> WiFi</li>
+</ul>
+
+<p>Here is an example run of connmanctl to set up a new WiFi connection [2] called MyWifi on an access point/router.</p>
+
+<pre><code>$ sudo connmanctl⏎
+connmanctl&gt; scan wifi⏎
+Scan completed for wifi
+connmanctl&gt; services⏎
+       MyWifi                  wifi_1234567890_1234567890123456_managed_psk
+connmanctl&gt; agent on⏎
+Agent registered
+connmanctl&gt; connect wifi_1234567890_1234567890123456_managed_psk⏎
+Agent RequestInput wifi_1234567890_1234567890123456_managed_psk
+       Passphrase = [ Type=psk, Requirement=mandatory, Alternates=[ WPS ] ]
+       WPS = [ Type=wpspin, Requirement=alternate ]
+Passphrase? MySecretPassphrase⏎
+Connected wifi_1234567890_1234567890123456_managed_psk
+connmanctl&gt; quit⏎
+$
+</code></pre>
+
+<ul>
+<li> Ethernet</li>
+</ul>
+
+<p>Configure fixed IP address on wired ethernet port</p>
+
+<p>Check settings before</p>
+
+<pre><code>$ sudo cat /var/lib/connman/ethernet_5051a9a6bafe_cable/settings
+[ethernet_5051a9a6bafe_cable]
+Name=Wired
+AutoConnect=true
+Modified=2023-03-13T22:49:38.241177Z
+IPv4.method=manual
+IPv4.DHCP.LastAddress=192.168.1.29
+IPv6.method=auto
+IPv6.privacy=disabled
+IPv4.netmask_prefixlen=16
+IPv4.local_address=192.168.1.99
+IPv4.gateway=192.168.1.1
+IPv6.DHCP.DUID=0001000126b5d99b5051a9a6bafe
+</code></pre>
+
+<p>Change fixed IP address from 99 to 9</p>
+
+<pre><code>#                                                                 ip address   mask        nameserver
+$ sudo connmanctl config ethernet_5051a9a6bafe_cable ipv4 manual  192.168.1.9  255.255.0.0 192.168.1.1;
+</code></pre>
+
+<p>Check settings after</p>
+
+<pre><code>$ sudo cat /var/lib/connman/ethernet_5051a9a6bafe_cable/settings
+[ethernet_5051a9a6bafe_cable]
+Name=Wired
+AutoConnect=true
+Modified=2023-03-13T22:55:28.241177Z
+IPv4.method=manual
+IPv4.DHCP.LastAddress=192.168.1.29
+IPv6.method=auto
+IPv6.privacy=disabled
+IPv4.netmask_prefixlen=16
+IPv4.local_address=192.168.1.9
+IPv4.gateway=192.168.1.1
+IPv6.DHCP.DUID=0001000126b5d99b5051a9a6bafe
+</code></pre>
+
+<p>You can see all the devices here, and turn on Tethering (incoming connections):</p>
+
+<pre><code>$ sudo cat /var/lib/connman/settings
+[global]
+OfflineMode=false
+
+[Wired]
+Enable=true
+Tethering=false
+
+[WiFi]
+Enable=true
+Tethering=false
+
+[Gadget]
+Enable=false
+Tethering=false
+
+[P2P]
+Enable=false
+Tethering=false
+
+[Bluetooth]
+Enable=true
+Tethering=false
+</code></pre>
+
+<p>For wifi configuration, BeagleBone-AI-64, BeagleBonePlay (or later) moved from connman -&gt; systemd-network, so wifi is now configured thru wpa_supplicant-wlan0.conf</p>
+
+<p>You can use</p>
+
+<pre><code>$  sudo wpa_cli -i wlan0
+</code></pre>
+
+<p>Reference:</p>
+
+<ol>
+<li> <a href="/linux-in-house/beaglebone.html#bb-bbai-tether-system">bbai-tether-system</a></li>
+<li> <a href="https://gist.github.com/kylemanna/6930087">https://gist.github.com/kylemanna/6930087</a></li>
+</ol>
+
+<h2 id="firewalld">firewalld</h2>
+
+<p>The <a href="/linux-in-house/setup-server.html#firewall">Server Setup</a> section of this book covers how to set up a firewall to protect your system network.</p>
+
+<h2 id="networkd">networkd</h2>
+
+<p>The <a href="/linux-in-house/virtualip.html">Virtual IP Article</a> covers networkd manipulation using netplan.</p>
+
+<h2 id="tcpdump">tcpdump</h2>
+
+<p>Here is a super useful program for tracing what is happening on your network.</p>
+
+<p>For instance, you can watch a certain port for activity. In this example we watch port 81 (which is a web server).</p>
+
+<pre><code>$ sudo tcpdump -i eth0 -a port 81
+tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
+listening on eth0, link-type EN10MB (Ethernet), snapshot length 262144 bytes
+16:04:37.901252 IP 192.168.1.4.65088 &gt; www.example.com.81: Flags [SEW], seq 1319586290, win 65535, options [mss 1460,nop,wscale 6,nop,nop,TS val 582966262 ecr 0,sackOK,eol], length 0
+16:04:37.901392 IP www.example.com.81 &gt; 192.168.1.4.65088: Flags [S.E], seq 2476571858, ack 1319586291, win 65160, options [mss 1460,sackOK,TS val 1494679242 ecr 582966262,nop,wscale 7], length 0
+16:04:37.901630 IP 192.168.1.4.65088 &gt; www.example.com.81: Flags [.], ack 1, win 2058, options [nop,nop,TS val 582966264 ecr 1494679242], length 0
+16:04:37.904531 IP 192.168.1.4.65088 &gt; www.example.com.81: Flags [P.], seq 1:638, ack 1, win 2058, options [nop,nop,TS val 582966267 ecr 1494679242], length 637
+16:04:37.904562 IP www.example.com.81 &gt; 192.168.1.4.65088: Flags [.], ack 638, win 505, options [nop,nop,TS val 1494679245 ecr 582966267], length 0
+16:04:37.905443 IP www.example.com.81 &gt; 192.168.1.4.65088: Flags [P.], seq 1:257, ack 638, win 505, options [nop,nop,TS val 1494679246 ecr 582966267], length 256
+16:04:37.905634 IP 192.168.1.4.65088 &gt; www.example.com.81: Flags [.], ack 257, win 2054, options [nop,nop,TS val 582966268 ecr 1494679246], length 0
+16:04:37.906243 IP 192.168.1.4.65088 &gt; www.example.com.81: Flags [P.], seq 638:718, ack 257, win 2054, options [nop,nop,TS val 582966268 ecr 1494679246], length 80
+16:04:37.906258 IP www.example.com.81 &gt; 192.168.1.4.65088: Flags [.], ack 718, win 505, options [nop,nop,TS val 1494679247 ecr 582966268], length 0
+16:04:37.906445 IP 192.168.1.4.65088 &gt; www.example.com.81: Flags [.], seq 718:2166, ack 257, win 2054, options [nop,nop,TS val 582966268 ecr 1494679246], length 1448
+16:04:37.906465 IP www.example.com.81 &gt; 192.168.1.4.65088: Flags [.], ack 2166, win 501, options [nop,nop,TS val 1494679247 ecr 582966268], length 0
+16:04:37.906508 IP 192.168.1.4.65088 &gt; www.example.com.81: Flags [P.], seq 2166:5653, ack 257, win 2054, options [nop,nop,TS val 582966268 ecr 1494679246], length 3487
+16:04:37.906532 IP www.example.com.81 &gt; 192.168.1.4.65088: Flags [.], ack 5653, win 480, options [nop,nop,TS val 1494679247 ecr 582966268], length 0
+16:04:37.906582 IP www.example.com.81 &gt; 192.168.1.4.65088: Flags [P.], seq 257:528, ack 5653, win 480, options [nop,nop,TS val 1494679247 ecr 582966268], length 271
+16:04:37.906701 IP 192.168.1.4.65088 &gt; www.example.com.81: Flags [.], ack 528, win 2050, options [nop,nop,TS val 582966269 ecr 1494679247], length 0
+16:04:37.906871 IP www.example.com.81 &gt; 192.168.1.4.65088: Flags [P.], seq 528:732, ack 5653, win 501, options [nop,nop,TS val 1494679248 ecr 582966269], length 204
+16:04:37.907007 IP 192.168.1.4.65088 &gt; www.example.com.81: Flags [.], ack 732, win 2047, options [nop,nop,TS val 582966269 ecr 1494679248], length 0
+^C
+17 packets captured
+17 packets received by filter
+0 packets dropped by kernel
+</code></pre>
+
+<h2 id="arp-scan">arp-scan</h2>
+
+<p>arp-scan is a local network scanner capable of displaying known hosts by their IP address, MAC address, and manufacturer ID.</p>
+
+<pre><code>$ arp-scan --interface=eth0 192.168.0.0/24
+Interface: eth0, datalink type: EN10MB (Ethernet)
+Starting arp-scan 1.4 with 256 hosts (http://www.nta-monitor.com/tools/arp-scan/)
+192.168.0.1     00:c0:9f:09:b8:db       QUANTA COMPUTER, INC.
+192.168.0.3     00:02:b3:bb:66:98       Intel Corporation
+192.168.0.5     00:02:a5:90:c3:e6       Compaq Computer Corporation
+192.168.0.6     00:c0:9f:0b:91:d1       QUANTA COMPUTER, INC.
+192.168.0.12    00:02:b3:46:0d:4c       Intel Corporation
+192.168.0.13    00:02:a5:de:c2:17       Compaq Computer Corporation
+192.168.0.87    00:0b:db:b2:fa:60       Dell ESG PCBA Test
+192.168.0.90    00:02:b3:06:d7:9b       Intel Corporation
+192.168.0.105   00:13:72:09:ad:76       Dell Inc.
+192.168.0.153   00:10:db:26:4d:52       Juniper Networks, Inc.
+192.168.0.191   00:01:e6:57:8b:68       Hewlett-Packard Company
+192.168.0.251   00:04:27:6a:5d:a1       Cisco Systems, Inc.
+192.168.0.196   00:30:c1:5e:58:7d       HEWLETT-PACKARD
+13 packets received by filter, 0 packets dropped by kernel
+Ending arp-scan: 256 hosts scanned in 3.386 seconds (75.61 hosts/sec).  13
+responded
+</code></pre>
+
+<p>Reference: <a href="https://linux.die.net/man/1/arp-scan">https://linux.die.net/man/1/arp-scan</a></p>
+
+<h2 id="vnstat">vnstat</h2>
+
+<p>To display the amount of network traffic for each day of the last week:</p>
+
+<pre><code>$ vnstat -d 7
+
+ eth01  /  daily
+
+          day        rx      |     tx      |    total    |   avg. rate
+     ------------------------+-------------+-------------+---------------
+     2023-04-16     9.66 GiB |    3.69 GiB |   13.35 GiB |    1.33 Mbit/s
+     2023-04-17    13.17 GiB |    6.03 GiB |   19.20 GiB |    1.91 Mbit/s
+     2023-04-18    11.38 GiB |    5.31 GiB |   16.68 GiB |    1.66 Mbit/s
+     2023-04-19    14.79 GiB |    5.15 GiB |   19.94 GiB |    1.98 Mbit/s
+     2023-04-20    12.26 GiB |    2.40 GiB |   14.65 GiB |    1.46 Mbit/s
+     2023-04-21    14.26 GiB |    3.42 GiB |   17.68 GiB |    1.76 Mbit/s
+     2023-04-22    12.08 GiB |    1.64 GiB |   13.72 GiB |    1.98 Mbit/s
+     ------------------------+-------------+-------------+---------------
+     estimated     17.57 GiB |    2.39 GiB |   19.96 GiB |
+</code></pre>
+
+<p>For the last two months:</p>
+
+<pre><code>$ vnstat
+
+                      rx      /      tx      /     total    /   estimated
+ eth01:
+       2023-03    334.51 GiB  /   94.16 GiB  /  428.67 GiB
+       2023-04    242.84 GiB  /   57.62 GiB  /  300.47 GiB  /  415.63 GiB
+     yesterday     14.26 GiB  /    3.42 GiB  /   17.68 GiB
+         today     12.08 GiB  /    1.64 GiB  /   13.72 GiB  /   19.96 GiB
+
+ tun01:
+       2023-03           0 B  /   48.57 KiB  /   48.57 KiB
+       2023-04           0 B  /   26.12 KiB  /   26.12 KiB  /     --     
+     yesterday           0 B  /    1.08 KiB  /    1.08 KiB
+         today           0 B  /       816 B  /       816 B  /     --     
+
+ vlan101:
+       2023-03    304.72 GiB  /   50.54 GiB  /  355.26 GiB
+       2023-04    220.68 GiB  /   25.76 GiB  /  246.44 GiB  /  340.90 GiB
+     yesterday     13.13 GiB  /    1.27 GiB  /   14.40 GiB
+         today     11.28 GiB  /  972.62 MiB  /   12.23 GiB  /   17.79 GiB
+
+ wlp0s31e4:
+       2023-03           0 B  /         0 B  /         0 B
+       2023-04           0 B  /         0 B  /         0 B  /     --     
+     yesterday           0 B  /         0 B  /         0 B
+         today           0 B  /         0 B  /         0 B  /     -- 
+</code></pre>
+
+<h2 id="nethogs">nethogs</h2>
+
+<p>To find out which program is demanding the most of your network right now, try nethogs.</p>
+
+<pre><code>NetHogs version 0.8.6-3
+
+    PID USER     PROGRAM                               DEV         SENT      RECEIVED      
+    828 monit    /usr/bin/monit                        eth01      10.038     215.140 KB/sec
+      ? root     192.168.1.3:40120-192.168.1.50:80                 0.396       8.211 KB/sec
+      ? root     192.168.1.3:40160-192.168.1.60:80                 0.358       8.167 KB/sec
+   2925 www-da.. nginx: worker process                 eth01       2.048       1.875 KB/sec
+1815892 root     /usr/bin/docker-proxy                 docker      0.284       1.661 KB/sec
+1815663 root     python3                               eth01       0.299       0.332 KB/sec
+   4287 bob      sshd: bob@pts/0                       eth01       0.506       0.116 KB/sec
+      ? root     192.168.1.4:40000-192.168.1.2:57392               0.000       0.000 KB/sec
+      ? root     192.168.1.4:45308-192.168.1.5:80                  0.000       0.000 KB/sec
+
+  TOTAL                                                           13.929     235.501 KB/sec
+</code></pre>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>This was a short list, hoping to provide an introduction to managing your network from the command line.</p>
+
+<p>Hope this helps,<br>
+&#8211; Don</p>
+
+<hr>
+
+<h4 id="madeforhumansbyahuman">Made for Humans, by a Human</h4>
+
+<h4 id="links">Links</h4>
+
+<ul>
+<li><a href="https://lwn.net/">Linux Weekly News</a></li>
+<li><a href="https://fullcirclemagazine.org/">Full Circle Magazine</a></li>
+<li><a href="https://www.linuxjournal.com/">Linux Journal</a></li>
+<li><a href="https://www.linux-magazine.com/">Linux Magazine</a></li>
+<li><a href="https://www.thefarside.com/">The Far Side</a></li>
+</ul>
+
+<h4 id="social">Social</h4>
+
+<ul>
+<li><a href="https://fosstodon.org/@Cohoon">Feedback</a></li>
+<li><a href="/linux-in-house/feed-Linux.rss">Linux RSS Feed</a></li>
+<li><a href="/linux-in-house/feed-Writing.rss">Writing RSS Feed</a></li>
+<li><a href="https://linux-in-the-house.pages.dev/">Book</a></li>
+</ul>
+
+<h5 id="builtwithmultimarkdownhttps:github.comfletchermultimarkdown-6andw3schoolshttps:www.w3schools.comw3cssw3css_pro.asp">Built with <a href="https://github.com/fletcher/MultiMarkdown-6">MultiMarkdown</a> and <a href="https://www.w3schools.com/w3css/w3css_pro.asp">W3 Schools</a></h5>
+
+<h5 id="license:ahrefhttp:creativecommons.orglicensesby-nc-sa4.0cc-by-nc-sa4.0a">License: <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0</a></h5>
+
+</body>
+</html>
+

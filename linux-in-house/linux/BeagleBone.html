@@ -1,0 +1,1686 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>BeagleBone</title>
+	<meta name="date" content="2023-01-25 10:32"/>
+	<meta name="modified" content="2024-04-19 9:30"/>
+	<meta name="tags" content="hardware"/>
+	<meta name="author" content="Don Cohoon"/>
+	<meta name="summary" content="The BeagleBone (BB) line supports the Linux kernel and GPIO hardware connections to devices via device trees. It is similar to the Rasberry-PI line, only BB is open source hardware."/>
+	<meta name="license" content="'[CC-BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)'"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"> <link rel="stylesheet" href="/linux-in-house/common.css" type="text/css" />
+</head>
+<body>
+
+<p><a href="/linux-in-house/"><h1>Linux in House</h1></a></p>
+
+<link href="/linux-in-house/pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/linux-in-house/pagefind/pagefind-ui.js"></script>
+
+<div id="search"></div>
+<script>
+window.addEventListener('DOMContentLoaded', (event) => {
+      new PagefindUI({ element: "#search", showSubResults: true });
+});
+</script>
+
+<blockquote>
+<p><a href="/linux-in-house/linux/welcome.html">Welcome Back My Friends</a></p>
+</blockquote>
+
+<h1 id="title">BeagleBone</h1>
+
+<p>Published: 2023-01-25 10:32 <br />
+Author: Don Cohoon</p>
+
+<h1 id="beaglebonesingleboardcomputersbc">BeagleBone Single Board Computer (SBC)</h1>
+
+<p>The BeagleBone (BB) [1] line supports the Linux kernel and GPIO hardware connections to devices via device trees [2]. It is similar to the Rasberry-PI line, only BB is <strong>open source hardware</strong>.</p>
+
+<hr />
+
+<div class="TOC">
+
+<ul>
+<li><a href="#title">BeagleBone</a></li>
+<li><a href="#beaglebonesingleboardcomputersbc">BeagleBone Single Board Computer (SBC)</a>
+<ul>
+<li><a href="#sbcsinglesmallboardcomputer">SBC (Single/Small Board Computer)</a></li>
+<li><a href="#serialdebugconnection">Serial Debug Connection</a>
+<ul>
+<li><a href="#bbai-64adapter">BBAI-64 Adapter</a></li>
+<li><a href="#screenonlinux">Screen on Linux</a></li>
+</ul>
+</li>
+<li><a href="#recoverfromlostrootpassword">Recover from lost root password</a></li>
+<li><a href="#flashnewoperatingsystem">Flash new Operating System</a>
+<ul>
+<li><a href="#bootorder">Boot Order</a>
+<ul>
+<li><a href="#bbai-32devmmcblk0p1micro-sddevmmcblk1p1on-boardmmc">BBAI-32 /dev/mmcblk0p1 = Micro-SD; /dev/mmcblk1p1 = On-board mmc</a></li>
+<li><a href="#bbai-64devmmcblk1p1micro-sddevmmcblk0p1on-boardmmc">BBAI-64 /dev/mmcblk1p1 = Micro-SD; /dev/mmcblk0p1 = On-board mmc</a>
+<ul>
+<li><a href="#bb-ai64-bitusesanewapproachextlinux.conf1thatwillprobablybethestandardgoingforward2.">BB-AI 64-bit uses a new approach, extlinux.conf [1], that will probably be the standard going forward [2].</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#enableflashing">Enable Flashing</a>
+<ul>
+<li><a href="#bbai-32:flash">BBAI-32: Flash</a></li>
+<li><a href="#bbai-64:flash">BBAI-64: Flash</a></li>
+</ul>
+</li>
+<li><a href="#flashingprocess">Flashing Process</a></li>
+<li><a href="#disableflashing">Disable Flashing</a>
+<ul>
+<li><a href="#bb-ai32-bit">BB-AI 32-Bit</a></li>
+<li><a href="#bb-ai64-bit">BB-AI 64-Bit</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#duplicatemicro-sdcard">Duplicate Micro-SD card</a></li>
+<li><a href="#updatesoftware">Update Software</a></li>
+<li><a href="#expandsdfilesystem">Expand SD filesystem</a></li>
+<li><a href="#disablecloud9developmentplatform">Disable cloud9 development platform</a></li>
+<li><a href="#bb-bbai-tethersystem">bb-bbai-tether system</a></li>
+<li><a href="#bbai-64switches">BBAI-64 Switches</a></li>
+<li><a href="#bbai-64hdmidisplayconnection">BBAI-64 HDMI Display Connection</a></li>
+<li><a href="#bbai-64defaultmemorydevicetree">BBAI-64 default memory device tree</a></li>
+<li><a href="#bbai-64fixbrokenboot">BBAI-64 Fix &#8216;broken boot&#8217;</a></li>
+<li><a href="#bbai-64userleds">BBAI-64 User LEDs</a></li>
+<li><a href="#bbaisurvivalguide">BBAI Survival Guide</a></li>
+<li><a href="#realtimeclockrtcsystemserviceandsetup">Real Time Clock (RTC) system service and setup</a>
+<ul>
+<li><a href="#servicefile">Service File</a></li>
+<li><a href="#sevensegmentdisplay">Seven Segment Display</a></li>
+<li><a href="#clockcode">Clock Code</a></li>
+</ul>
+</li>
+<li><a href="#musicplayerforthecar">Music Player for the Car</a>
+<ul>
+<li><a href="#installedthreebuttons">Installed three buttons</a></li>
+<li><a href="#wiringpins">Wiring Pins</a></li>
+<li><a href="#service">Service</a></li>
+<li><a href="#forward">Forward</a></li>
+<li><a href="#play">Play</a></li>
+<li><a href="#remote">Remote</a></li>
+<li><a href="#remotestop">Remote Stop</a></li>
+<li><a href="#reverse">Reverse</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#poweronoffanotherpc">Power on/off another PC</a></li>
+<li><a href="#reference">Reference</a></li>
+<li><a href="#continue">Continue</a>
+<ul>
+<li><a href="#madeforhumansbyahuman">Made for Humans, by a Human</a></li>
+<li><a href="#links">Links</a></li>
+<li><a href="#social">Social</a>
+<ul>
+<li><a href="#builtwithmultimarkdownhttps:github.comfletchermultimarkdown-6andw3schoolshttps:www.w3schools.comw3cssw3css_pro.asp">Built with <a href="https://github.com/fletcher/MultiMarkdown-6">MultiMarkdown</a> and <a href="https://www.w3schools.com/w3css/w3css_pro.asp">W3 Schools</a></a></li>
+<li><a href="#license:ahrefhttp:creativecommons.orglicensesby-nc-sa4.0cc-by-nc-sa4.0a">License: <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0</a></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+<hr />
+
+<h2 id="sbcsinglesmallboardcomputer">SBC (Single/Small Board Computer)</h2>
+
+<p>The BeagleBone (BB) [1] line supports the Linux kernel and GPIO hardware connections to devices via device trees [2]. It is simular to the Rasberry-PI line, only BB is <strong>open source hardware</strong>.</p>
+
+<p>They run a full featured Debian distribution, capable of running C, C++, Rust, Python and node-js, all the way up to a PostgreSQL database. It comes with a web-based IDE called Cloud-9 [3] that can also run node-js programs on the BB. The AI line also supplies image recognition packages.</p>
+
+<p>You can connect a display, keyboard and mouse, or run it headless.</p>
+
+<p>All have USB connectors to ssh into from a connected computer, most have wired Ethernet RJ-45 sockets, and some have Bluetooth and WiFi. Controlling relays, lights, I2C sensors, and open switches can be done in most any supported language, even bash.</p>
+
+<p>For robotics, they feature a Programmable real-time unit and industrial communications subsystem (PRU-ICSS) [4].</p>
+
+<p>The forum for questions is here: <a href="https://forum.beagleboard.org/">https://forum.beagleboard.org/</a></p>
+
+<p>For example:</p>
+
+<ul>
+<li>PocketBeagle <a href="https://www.beagleboard.org/boards/pocketbeagle-original">https://www.beagleboard.org/boards/pocketbeagle-original</a></li>
+<li><img src="/linux-in-house/images/pocketBeagle-hero-hand-400x222.png" alt="pocketBeagle-hero-hand-400x222.png" /></li>
+<li> This runs:
+
+<ul>
+<li>Rebuilt Garfield clock with seven-segment-display and alarm, keeping track of daylight saving time changes.</li>
+<li>Music box player.</li>
+</ul></li>
+</ul>
+
+<hr />
+
+<ul>
+<li>BBB (Black) <a href="https://www.beagleboard.org/boards/beaglebone-black">https://www.beagleboard.org/boards/beaglebone-black</a></li>
+<li><img src="/linux-in-house/images/beagle-black-wired-shadow_no5v-1-400x400.png" alt="beagle-black-wired-shadow_no5v-1-400x400.png" /></li>
+<li> This runs very capabily:
+
+<ul>
+<li>Music Player Daemon (MDP) [5]. You can control what is played on the command line or through a Phone App.</li>
+<li>Control lights and relays. You can use the Python based Flask [6] package to create nice looking web apps for this.</li>
+</ul></li>
+</ul>
+
+<hr />
+
+<ul>
+<li>BBAI (AI 32-bit, arm71) <a href="https://www.beagleboard.org/boards/beaglebone-ai">https://www.beagleboard.org/boards/beaglebone-ai</a></li>
+<li><img src="/linux-in-house/images/beagleboane-ai-heatsink-500x356.png" alt="beagleboane-ai-heatsink-500x356.png" /></li>
+<li> Applications I used with this include:
+
+<ul>
+<li>NextCloud server (little slow).</li>
+<li>Mini-Network Access Storage (NAS) with mirrored SSDs (mdadm).</li>
+<li>HomeAssistant home automation (without cameras).</li>
+</ul></li>
+</ul>
+
+<hr />
+
+<ul>
+<li>BBAI-64 (AI 64-bit; arm64) <a href="https://www.beagleboard.org/boards/beaglebone-ai-64">https://www.beagleboard.org/boards/beaglebone-ai-64</a></li>
+<li><img src="/linux-in-house/images/BeagleBone_AI_64-400x333.webp" alt="BeagleBone_AI_64-400x333.webp" /></li>
+<li> Very good at:
+
+<ul>
+<li>NextCloud server (runs good).</li>
+<li>News Reader (MiniFlux).</li>
+<li>Small web site.</li>
+</ul></li>
+</ul>
+
+<hr />
+
+<ul>
+<li>BeaglePlay is the latest offering (<a href="https://www.beagleboard.org/boards/beagleplay">https://www.beagleboard.org/boards/beagleplay</a>)</li>
+<li><img src="/linux-in-house/images/BeaglePlay.webp" alt="BeaglePlay-front-500x281.jpg" /></li>
+<li> Quad Arm® Cortex®-A53 microprocessor subsystem @ 1.4GHz</li>
+<li> Arm® Cortex®-M4F @ 400MHz</li>
+<li> Dual-core PRU subsystem @ 333MHz</li>
+<li> PowerVR® Rogue™ GPU</li>
+</ul>
+
+<p><strong>Features</strong></p>
+
+<ul>
+<li> Small 8cm x 8cm form-factor</li>
+<li> 2GB RAM and 16GB on-board eMMC flash with high-speed interface</li>
+<li> USB type-C for power and data and USB type-A host</li>
+<li> Gigabit Ethernet, Single-pair Ethernet with PoDL</li>
+<li> Integrated 2.4GHz and 5GHz WiFi</li>
+<li> 2.4GHz and Sub-GHz programmable wireless MCU, integrated IEEE802.15.4 drivers/firmware</li>
+<li> Full-size HDMI, OLDI, 4-lane CSI</li>
+<li> Expansion via mikroBUS, Grove, QWIIC</li>
+<li> Zero-download out-of-box software experience with Debian GNU/Linux</li>
+</ul>
+
+<hr />
+
+<ol>
+<li><a href="https://www.beagleboard.org/">https://www.beagleboard.org/</a></li>
+<li><a href="https://www.beagleboard.org/blog/2022-03-31-device-tree-supporting-similar-boards-the-beaglebone-example">https://www.beagleboard.org/blog/2022-03-31-device-tree-supporting-similar-boards-the-beaglebone-example</a></li>
+<li><a href="https://github.com/c9">https://github.com/c9</a></li>
+<li><a href="https://beagleboard.org/pru">https://beagleboard.org/pru</a></li>
+<li><a href="https://www.musicpd.org/">https://www.musicpd.org/</a></li>
+<li><a href="https://flask.palletsprojects.com/en/2.2.x/">https://flask.palletsprojects.com/en/2.2.x/</a></li>
+</ol>
+
+<h2 id="serialdebugconnection">Serial Debug Connection</h2>
+
+<p>You can get through severe boot errors where the network is not connecting or disk partition not mounted, using a USB to TTL-232 cable [1], also called FTDI. This will show all the boot messages and allow login, even recovery if the kernel will not boot.</p>
+
+<p><strong>Make sure it is 3.3 volt!</strong> Connect the black wire to pin 1, orange/green to pin 4, yellow/white to pin5 directly on the SBC board.</p>
+
+<figure>
+<img src="/linux-in-house/images/AU51n75Ls0JwfPeYMD6sIQ-547387362.png" alt="AU51n75Ls0JwfPeYMD6sIQ-547387362.png" />
+<figcaption>AU51n75Ls0JwfPeYMD6sIQ-547387362.png</figcaption>
+</figure>
+
+<ul>
+<li> USB to TTL cable</li>
+</ul>
+
+<ol>
+<li><a href="https://www.adafruit.com/product/4331">https://www.adafruit.com/product/4331</a>.</li>
+</ol>
+
+<figure>
+<img src="/linux-in-house/images/28W2088-40.webp" alt="28W2088-40.webp" />
+<figcaption>28W2088&#8211;40.webp</figcaption>
+</figure>
+
+<h4 id="bbai-64adapter">BBAI-64 Adapter</h4>
+
+<p>The BBAI-64 has a 3-pin connector so it needs an adapter; Micro JST MX 1.25 4Pins Connector Plug Socket 1.25mm Pitch Female Connector PCB Socket 150mm Cable. The red wire is not used. Plug the other three wires into the USB/TTL adapter above, matching colors.</p>
+
+<figure>
+<img src="/linux-in-house/images/Screen%20Shot%202022-10-22%20at%209.18.32%20AM.png" alt="Screen Shot 2022-10-22 at 9.18.32 AM.png" />
+<figcaption>Screen Shot 2022&#8211;10&#8211;22 at 9.18.32 AM.png</figcaption>
+</figure>
+
+<h4 id="screenonlinux">Screen on Linux</h4>
+
+<p>When you have connected USB-end of the serial cable to a Linux based system like Ubuntu, a new tty* device appears in the system. Note down its name. In my case, it was <em>/dev/ttyUSB0</em>. Open a term and issue below command</p>
+
+<pre><code>$ sudo screen /dev/ttyUSB0 115200
+</code></pre>
+
+<blockquote>
+<p>Do <strong>ls /dev/</strong> before and after connecting cable to find the new device name</p>
+</blockquote>
+
+<p>You may have to reboot the PC and BB after connection to clear garbled characters.</p>
+
+<h2 id="recoverfromlostrootpassword">Recover from lost root password</h2>
+
+<p>Flash a new mini-sd card and boot off of it, then:</p>
+
+<ol>
+<li>Mount the eMMC flash: mount /dev/mmcblk1p2 /media/card</li>
+<li>Change the root of the file system to be the partition on the eMMC flash which you just mounted: chroot /media/card</li>
+<li>Change the password of the root user to something you know: passwd root</li>
+<li>Exit out of the changed root: exit</li>
+<li>Shutdown the BeagleBone Black : shutdown -h now</li>
+<li>Disconnect the power from the board</li>
+<li>Eject the microSD card.</li>
+<li>Reconnect the power to the board</li>
+<li>Watch the board boot up, and log in as root. You should be able to log in with the password that you just set.</li>
+</ol>
+
+<h2 id="flashnewoperatingsystem">Flash new Operating System</h2>
+
+<p>Latest software: <a href="https://www.beagleboard.org/distros">https://www.beagleboard.org/distros</a></p>
+
+<p>Flashing refers to the process of transferring the Operating System image from a Micro-SD card to the on-board mmc memory disk.</p>
+
+<p>WARNING: It will <strong>overlay</strong> the contents of your BBB soldered in mmc memory.</p>
+
+<blockquote>
+<p>Be aware that the on-board mmc is only 15GB, so flashing an SD card with a <strong>partition</strong> larger than 15GB will fail with out of space.</p>
+</blockquote>
+
+<h3 id="bootorder">Boot Order</h3>
+
+<p>The BB-AI 32-bit has a different disk device naming convention than 64-bit ;-)</p>
+
+<h4 id="bbai-32devmmcblk0p1micro-sddevmmcblk1p1on-boardmmc">BBAI-32 /dev/mmcblk0p1 = Micro-SD; /dev/mmcblk1p1 = On-board mmc</h4>
+
+<pre><code>$ sudo inxi -D
+Drives:    Local Storage: total: 1005.80 GiB used: 338.77 GiB (33.7%) 
+           ID-1: /dev/mmcblk0 model: BC1S5 size: 59.69 GiB 
+           ID-2: /dev/mmcblk1 model: TB2916 size: 14.60 GiB 
+...
+</code></pre>
+
+<p>See how cleverly the number 0 uses the natural Linux boot ordering.</p>
+
+<h4 id="bbai-64devmmcblk1p1micro-sddevmmcblk0p1on-boardmmc">BBAI-64 /dev/mmcblk1p1 = Micro-SD; /dev/mmcblk0p1 = On-board mmc</h4>
+
+<pre><code>$ sudo inxi -D
+Drives:    Local Storage: total: raw: 1.92 TiB usable: 1.01 TiB used: 156.93 GiB (15.2%) 
+           ID-1: /dev/mmcblk0 vendor: Kingston model: TB2916 size: 14.6 GiB 
+           ID-2: /dev/mmcblk1 model: BC1S5 size: 59.69 GiB 
+...
+</code></pre>
+
+<h5 id="bb-ai64-bitusesanewapproachextlinux.conf1thatwillprobablybethestandardgoingforward2.">BB-AI 64-bit uses a new approach, extlinux.conf [1], that will probably be the standard going forward [2].</h5>
+
+<p>Here it is set to boot from mmcblk1p2.</p>
+
+<p>File: /boot/firmware/extlinux/extlinux.conf</p>
+
+<pre><code>label Linux microSD
+    kernel /Image
+    fdt /k3-j721e-beagleboneai64-no-shared-mem.dtb
+    append console=ttyS2,115200n8 earlycon=ns16550a,mmio32,0x02800000 root=/dev/mmcblk1p2 ro rootfstype=ext4 rootwait net.ifnames=0
+    fdtdir /
+    initrd /initrd.img
+</code></pre>
+
+<blockquote>
+<p>On the BBAI-64, by default we are using U-Boot’s now (finally) standard extlinux.conf, you’ll find it in the first fat partition of either the eMMC or microSD… (I have a long term goal to convert our custom “am335x/am57xx” uEnv.txt solution to extlinux.conf…) [2]</p>
+</blockquote>
+
+<p>Reference:</p>
+
+<ol>
+<li> <a href="https://wiki.syslinux.org/wiki/index.php?title=EXTLINUX">https://wiki.syslinux.org/wiki/index.php?title=EXTLINUX</a></li>
+<li> <a href="https://forum.beagleboard.org/t/bbai-64-boot-order/33129">https://forum.beagleboard.org/t/bbai-64-boot-order/33129</a></li>
+</ol>
+
+<h3 id="enableflashing">Enable Flashing</h3>
+
+<h4 id="bbai-32:flash">BBAI-32: Flash</h4>
+
+<ul>
+<li><p>For example, download and burn a Micro-SD card, BBAI (32-bit) flasher: <a href="https://www.beagleboard.org/distros">https://www.beagleboard.org/distros</a></p></li>
+<li><p> Burn the download file to a Micro-SD, normally using Etcher <a href="https://etcher.balena.io">https://etcher.balena.io</a></p></li>
+<li><p> Turn off the BBB, insert the SD card and apply power.</p></li>
+<li><p> This will copy the <strong>boot files</strong> on top of the mmc on-board disk,</p></li>
+</ul>
+
+<p>If you start with the non-flasher and verify that it will boot, THEN edit the</p>
+
+<pre><code>/boot/uEnv.txt 
+</code></pre>
+
+<p>file to activate (un-comment) the flasher script (last line in the file) and reboot the device to flash it.</p>
+
+<p>File: /boot/uEnv.txt</p>
+
+<pre><code>##enable Generic eMMC Flasher:
+cmdline=init=/usr/sbin/init-beagle-flasher
+</code></pre>
+
+<h4 id="bbai-64:flash">BBAI-64: Flash</h4>
+
+<pre><code>* To flash a microSD to eMMC:
+</code></pre>
+
+<p>Run:</p>
+
+<pre><code>sudo apt update ; sudo apt upgrade
+sudo beagle-flasher
+</code></pre>
+
+<p>Or to create a dedicated flasher:</p>
+
+<pre><code>sudo apt update ; sudo apt upgrade
+sudo enable-beagle-flasher
+sudo reboot
+</code></pre>
+
+<p>Reference: <a href="https://forum.beagleboard.org/t/ai-64-how-to-flash-emmc/32384/2">https://forum.beagleboard.org/t/ai-64-how-to-flash-emmc/32384/2</a></p>
+
+<h3 id="flashingprocess">Flashing Process</h3>
+
+<p>You will see the lights doing a bouncing flash; 1,2,3,4 - 4,3,2,1 - etc… for several minutes,
+eventually it will turn itself off. Then pop out the SD card and re-apply power to boot up the newly flashed on-board mmc.</p>
+
+<h3 id="disableflashing">Disable Flashing</h3>
+
+<p>After booting the newly flashed on-board mmc;</p>
+
+<h4 id="bb-ai32-bit">BB-AI 32-Bit</h4>
+
+<ol>
+<li>mount the SD card:</li>
+</ol>
+
+<pre><code>sudo mount /dev/mmcblk0p1 /media/card
+</code></pre>
+
+<ol>
+<li>Comment out the ‘flashing’ line in uEnv.txt like this:</li>
+</ol>
+
+<pre><code>$ tail /media/card/boot/uEnv.txt 
+...
+##enable Generic eMMC Flasher:
+#cmdline=init=/usr/sbin/init-beagle-flasher
+</code></pre>
+
+<ol>
+<li>It is now safe to boot off the SD card! Push it back in and it will be selected during the boot process, before the mmc.</li>
+</ol>
+
+<blockquote>
+<p>I usually boot onto the Micro-SD and run that way. If it fails you can always remove it and <strong>still</strong> have a bootable environment.</p>
+</blockquote>
+
+<h4 id="bb-ai64-bit">BB-AI 64-Bit</h4>
+
+<p>Disable a dedicated flasher, download the latest <strong>non-flasher</strong> and re-burn the Micro-SD card.</p>
+
+<p>To Check, mount it on a PC and look at directory :</p>
+
+<p>File: &lt;mount point&gt;/boot/firmware/extlinux/extlinux.conf</p>
+
+<pre><code>...
+    append console=ttyS2,115200n8 earlycon=ns16550a,mmio32,0x02800000 root=/dev/mmcblk1p2 ro rootfstype=ext4 rootwait net.ifnames=0
+...
+</code></pre>
+
+<p> Above shows a <strong>normal</strong> boot file. A flasher will point to a beagle-flasher image to boot onto.</p>
+
+<h2 id="duplicatemicro-sdcard">Duplicate Micro-SD card</h2>
+
+<p>It is a good idea to backup the active Micro0SD card after all your hard work. Re-imaging and installing all the packages is a pain!</p>
+
+<p>This process will copy <strong>everything</strong> on the SD card, even blank data. So a 64GB card will make a 64GB img file. Your destination card must be at least as big as the original.</p>
+
+<p>Insert the original SD card and check the name of the device (usually mmcblkX or sdcX):</p>
+
+<pre><code>$ sudo lsblkid -a
+...
+mmcblk0     179:0    0  59.7G  0 disk  
+├─mmcblk0p1 179:1    0   128M  0 part  /media/don/BOOT
+└─mmcblk0p2 179:2    0  59.6G  0 part  /media/don/rootfs
+</code></pre>
+
+<pre><code>$ sudo fdisk -l
+...
+Device         Boot   Start      End  Sectors  Size Id Type
+/dev/mmcblk0p1 *       2048  2099199  2097152    1G  c W95 FAT32 (LBA)
+/dev/mmcblk0p2      2099200 31116287 29017088 13.9G 83 Linux
+</code></pre>
+
+<p>In my case the SD card is /dev/mmcblk0 (the *p1 and *p2 are the partitions).</p>
+
+<p>You have to unmount the devices:</p>
+
+<pre><code>$ sudo umount /dev/mmcblk0p1
+$ sudo umount /dev/mmcblk0p2
+</code></pre>
+
+<p>To create an image of the device:</p>
+
+<pre><code>$ sudo dd if=/dev/mmcblk0 of=~/sd-card-copy.img bs=4M status=progress
+</code></pre>
+
+<p>This will take a while.</p>
+
+<p>Once it&#8217;s finished, insert the empty SD card. If the device is different (USB or other type of SD card reader) verify its name and be sure to unmount it:</p>
+
+<pre><code>$ sudo fdisk -l
+$ sudo umount /dev/mmcblk0p1
+$ sudo umount /dev/mmcblk0p2
+</code></pre>
+
+<p>Write the image to the device:</p>
+
+<pre><code>$ sudo dd if=~/sd-card-copy.img of=/dev/mmcblk0 bs=4M status=progress
+</code></pre>
+
+<p>The write operation is much slower than before.</p>
+
+<h2 id="updatesoftware">Update Software</h2>
+
+<p><strong>Update examples in the Cloud9 IDE workspace</strong></p>
+
+<p>cd /var/lib/cloud9<br />
+git pull<br />
+&#8230;<br />
+<strong>Update the boot-up scripts and Linux kernel</strong></p>
+
+<p>cd /opt/scripts<br />
+git pull</p>
+
+<p><strong>Update Kernel</strong></p>
+
+<p>cd /opt/scripts<br />
+sudo tools/update_kernel.sh</p>
+
+<h2 id="expandsdfilesystem">Expand SD filesystem</h2>
+
+<p>Sometimes when you burn an .iso image to the SD card and boot up the BB, the filesystem will be 4GB while your SD card could be 32GB.</p>
+
+<p>This script will expand the filesystem after your first boot up onto it.</p>
+
+<pre><code>$ sudo /opt/scripts/tools/grow_partition.sh
+</code></pre>
+
+<ul>
+<li> If the script is not available, use this:</li>
+</ul>
+
+<p>Examine the partitioning on your external SD card:</p>
+
+<pre><code>$ sudo fdisk /dev/mmcblk0
+</code></pre>
+
+<p>Then enter &#8216;p&#8217;, An important value to note is the start sector of the Linux partition, enter &#8216;d&#8217; to delete the Linux partition. (If you have two partitions it will ask which partition to delete, which should be 2.).</p>
+
+<p>Enter &#8216;n&#8217; to create a new partition. For the first two questions (partition type and number) just press enter. For the start sector, be absolutely sure to use the same number it had originally. For the last sector, you can use whatever you want in case you don&#8217;t want to use your whole micro SD, but you can just hit enter to use the default (the max size possible).</p>
+
+<p>If you are satisfied with your changes at this point you can enter &#8216;w&#8217; to commit to your changes.</p>
+
+<blockquote>
+<p>A warning above will appear if you&#8217;re repartitioning the disk you&#8217;ve booted from. In that case, reboot your system</p>
+</blockquote>
+
+<p>Lastly, after your BeagleBone Black reboots, you need to expand the file system. Before expanding you need to run fsck as root, otherwise next command will fail to run:</p>
+
+<pre><code>$ sudo fsck /dev/mmcblk0p1
+</code></pre>
+
+<p>Finally, run the following command (again as root):</p>
+
+<pre><code>$ sudo resize2fs /dev/mmcblk0p1
+</code></pre>
+
+<p>Once this command completes, you&#8217;re done!</p>
+
+<p>Reference:</p>
+
+<ul>
+<li><p> <a href="https://github.com/RobertCNelson/boot-scripts/blob/master/tools/grow_partition.sh">https://github.com/RobertCNelson/boot-scripts/blob/master/tools/grow_partition.sh</a></p></li>
+<li><p> <a href="https://elinux.org/Beagleboard:Expanding_File_System_Partition_On_A_microSD">https://elinux.org/Beagleboard:Expanding_File_System_Partition_On_A_microSD</a></p></li>
+</ul>
+
+<h2 id="disablecloud9developmentplatform">Disable cloud9 development platform</h2>
+
+<p>This allows over the web programming on the system, which is a security risk if not being used.</p>
+
+<p>Disable:</p>
+
+<pre><code>systemctl disable cloud9.service
+systemctl disable bonescript.service
+systemctl disable bonescript.socket
+systemctl disable bonescript-autorun.service
+</code></pre>
+
+<p>Example of service file</p>
+
+<pre><code>debian@pocketbeagle:~$ cat /lib/systemd/system/cloud9.service 
+[Unit] 
+Description=Cloud9 IDE 
+ConditionPathExists=|/var/lib/cloud9 
+
+[Service] 
+WorkingDirectory=/opt/cloud9/build/standalonebuild 
+EnvironmentFile=/etc/default/cloud9 
+ExecStartPre=/opt/cloud9/cloud9-symlink 
+ExecStart=/usr/bin/nodejs server.js --packed -w /var/lib/cloud9 SyslogIdentifier=cloud9ide 
+User=1000 
+</code></pre>
+
+<h2 id="bb-bbai-tethersystem">bb-bbai-tether system</h2>
+
+<p>This is used to connect your device/PC to =&gt; BB-AI and BBB over WiFi.</p>
+
+<blockquote>
+<p>BBAI-64 uses systemd-networkd [1] (files: /etc/systemd/network/*)</p>
+</blockquote>
+
+<p>Config file: /etc/default/bb-wl18xx</p>
+
+<pre><code class="text"># TETHER_ENABLED: Whether or not to run the /usr/bin/bb-wl18xx-tether daemon; set to no to disable.
+#TETHER_ENABLED=yes
+TETHER_ENABLED=no
+
+# USE_CONNMAN_TETHER: Whether or not to just use connman tether inteface; set to no to disable.
+USE_CONNMAN_TETHER=no
+
+# USE_WL18XX_IP_PREFIX: default IP block of SoftAP0 interface
+USE_WL18XX_IP_PREFIX=&quot;192.168.18&quot;
+
+# USE_INTERNAL_WL18XX_MAC_ADDRESS: use internal mac address; set to no to disable.
+USE_INTERNAL_WL18XX_MAC_ADDRESS=yes
+
+# USE_WL18XX_MAC_ADDRESS: use custom mac address, for when work wifi starts sending deauthentication packet spam.
+#USE_WL18XX_MAC_ADDRESS=&quot;AB:10:23:C:16:78&quot;
+
+# USE_WL18XX_POWER_MANAGMENT: (sudo iwconfig wlan0 power [on/off]). on = boot default, off is more reliable for accessing idle systems over time
+USE_WL18XX_POWER_MANAGMENT=off
+
+# USE_PERSONAL_SSID: set custom ssid
+#USE_PERSONAL_SSID=&quot;BeagleBone&quot;
+USE_PERSONAL_SSID=&quot;AB10&quot;
+
+# USE_PERSONAL_PASSWORD: set ssid password
+USE_PERSONAL_PASSWORD=&quot;BeagleBone&quot;
+
+# USE_GENERATED_DNSMASQ: use generated version of /etc/dnsmasq.d/SoftAp0; set to no so user can modify /etc/dnsmasq.d/SoftAp0
+USE_GENERATED_DNSMASQ=yes
+
+# USE_GENERATED_HOSTAPD: use generated version of /etc/hostapd.conf; set to no so user can modify /etc/hostapd.conf
+USE_GENERATED_HOSTAPD=yes
+
+# USE_APPENDED_SSID: appends mac address after SSID (aka -WXYZ, BeagleBone-WXYZ)
+USE_APPENDED_SSID=yes
+
+# USE_PERSONAL_COUNTRY: (default is US, but note enabled (#) with comment) 
+#USE_PERSONAL_COUNTRY=US
+</code></pre>
+
+<p>Service:</p>
+
+<pre><code class="text">$ sudo systemctl status bb-bbai-tether 
+● bb-bbai-tether.service - BBAI brcmfmac tether Service
+    Loaded: loaded (/lib/systemd/system/bb-bbai-tether.service; enabled; vendor preset: enabled)
+    Active: activating (start) since Sun 2022-09-04 12:19:48 EDT; 16s ago 
+Cntrl PID: 2585 (bb-bbai-tether)
+     Tasks: 2 (limit: 937)
+    Memory: 752.0K
+    CGroup: /system.slice/bb-bbai-tether.service
+            ├─2585 /bin/bash -e /usr/bin/bb-bbai-tether
+            └─2605 sleep 5 Sep 04 12:19:48 bbb.example.com systemd[1]: Starting BBAI brcmfmac tether Service... 
+Sep 04 12:19:53 bbb.example.com bb-bbai-tether[2585]: bbai:tether waiting for /sys/class/net/wlan0 
+Sep 04 12:19:58 bbb.example.com bb-bbai-tether[2585]: bbai:tether waiting for /sys/class/net/wlan0 
+Sep 04 12:20:03 bbb.example.com bb-bbai-tether[2585]: bbai:tether waiting for /sys/class/net/wlan0 
+don@app:~$ sudo systemctl stop bb-bbai-tether
+</code></pre>
+
+<ol>
+<li><a href="https://wiki.debian.org/SystemdNetworkd">https://wiki.debian.org/SystemdNetworkd</a></li>
+</ol>
+
+<h2 id="bbai-64switches">BBAI-64 Switches</h2>
+
+<p>Push-buttons used on the board.</p>
+
+<ol>
+<li>A switch is provided to allow switching between the modes.</li>
+</ol>
+
+<ul>
+<li><p> Holding the boot switch down during a removal and reapplication of power without a microSD card inserted will force the boot source to be the USB port and if nothing is detected on the USB client port, it will go to the serial port for download.</p></li>
+<li><p> Without holding the switch, the board will boot try to boot from the eMMC. If it is empty, then it will try booting from the microSD slot, followed by the serial port, and then the USB port.</p></li>
+<li><p> If you hold the boot switch down during the removal and reapplication of power to the board, and you have a microSD card inserted with a bootable image, the board will boot from the microSD card.</p>
+
+<p> <em>NOTE: Pressing the RESET button on the board will NOT result in a change of the boot mode. You MUST remove power and reapply power to change the boot mode. The boot pins are sampled during power on reset from the PMIC to the processor. The reset button on the board is a warm reset only and will not force a boot mode change.</em></p></li>
+</ul>
+
+<h2 id="bbai-64hdmidisplayconnection">BBAI-64 HDMI Display Connection</h2>
+
+<p>When connecting to an HDMI monitor, make sure your miniDP adapter is <em>active</em>. A <em>passive</em> adapter will not work. See <a href="https://docs.beagleboard.org/latest/boards/beaglebone/ai-64/ch03.html#display-adaptors-figure">Fig: Display adaptors</a>.</p>
+
+<h2 id="bbai-64defaultmemorydevicetree">BBAI-64 default memory device tree</h2>
+
+<p>Reference: <a href="https://forum.beagleboard.org/t/beaglebone-ai-64-memory-4gb-or-2gb-ram/32270%EF%BF%BC">https://forum.beagleboard.org/t/beaglebone-ai-64-memory-4gb-or-2gb-ram/32270</a></p>
+
+<p>the AI-64 has 4GB installed, the other 2GB is reserved in the default image thru remoteproc for the other companion cores (c6, c7x, and R5)…</p>
+
+<p>We have a custom device tree for you if you’d like to disable the other cores and use all 4GB with the A72’s…</p>
+
+<pre><code class="text">=&gt; No Shared Memory =&gt; k3-j721e-beagleboneai64-no-shared-mem.dtb
+
+debian@BeagleBone:~$ sudo find /boot/ -name extlinux.conf
+/boot/firmware/extlinux/extlinux.conf
+
+debian@BeagleBone:~$ sudo ls /boot/firmware
+extlinux  Image       k3-j721e-beagleboneai64.dtb         k3-j721e-common-proc-board.dtb    k3-j721e-sk.dtb  sysfw.itb     tispl.bin
+ID.txt      initrd.img  k3-j721e-beagleboneai64-no-shared-mem.dtb  k3-j721e-proc-board-tps65917.dtb  overlays        tiboot3.bin  u-boot.img
+
+..
+</code></pre>
+
+<p>so in /boot/firmware/extlinux/extlinux.conf just set:</p>
+
+<pre><code>fdt /k3-j721e-beagleboneai64-no-shared-mem.dtb
+</code></pre>
+
+<p>take it out to go back to sharing memory for PRU.</p>
+
+<pre><code class="text">$ cat /boot/firmware/extlinux/extlinux.conf 
+label Linux microSD
+    kernel /Image
+    fdt /k3-j721e-beagleboneai64-no-shared-mem.dtb
+    append console=ttyS2,115200n8 earlycon=ns16550a,mmio32,0x02800000 root=/dev/mmcblk1p2 ro rootfstype=ext4 rootwait net.ifnames=0
+    fdtdir /
+    initrd /initrd.img
+</code></pre>
+
+<h2 id="bbai-64fixbrokenboot">BBAI-64 Fix &#8216;broken boot&#8217;</h2>
+
+<p>Finger on both boot and reset:<br />
+Insert power<br />
+lift finger on reset<br />
+wait till led lights<br />
+lift finger on boot.</p>
+
+<p>Since you have the serial boot log, stop u-boot with the “space” key…</p>
+
+<pre><code># run emmc_erase_boot0
+</code></pre>
+
+<p>=&gt; Reboot with SD card inserted, newly burned image: bbai64-debian-11.3-xfce-arm64&#8211;2022&#8211;06&#8211;14&#8211;10gb.img.xz</p>
+
+<pre><code class="text">$ sudo apt update
+
+$ sudo apt upgrade
+
+debian@BeagleBone:~$ sudo /opt/u-boot/bb-u-boot-beagleboneai64/install-emmc.sh
+Changing ext_csd[BOOT_BUS_CONDITIONS] from 0x02 to 0x02
+H/W Reset is already permanently enabled on /dev/mmcblk0
+Clearing eMMC boot0
+dd if=/dev/zero of=/dev/mmcblk0boot0 count=32 bs=128k
+32+0 records in
+32+0 records out
+4194304 bytes (4.2 MB, 4.0 MiB) copied, 0.549462 s, 7.6 MB/s
+dd if=/opt/u-boot/bb-u-boot-beagleboneai64/tiboot3.bin of=/dev/mmcblk0boot0 bs=128k
+2+1 records in
+2+1 records out
+283940 bytes (284 kB, 277 KiB) copied, 1.13585 s, 250 kB/s
+debian@BeagleBone:~$ sudo /opt/u-boot/bb-u-boot-beagleboneai64/install-microsd.sh
+'/opt/u-boot/bb-k3-image-gen-j721e-evm/sysfw.itb' -&gt; '/boot/firmware/sysfw.itb'
+'/opt/u-boot/bb-u-boot-beagleboneai64/tiboot3.bin' -&gt; '/boot/firmware/tiboot3.bin'
+'/opt/u-boot/bb-u-boot-beagleboneai64/tispl.bin' -&gt; '/boot/firmware/tispl.bin'
+'/opt/u-boot/bb-u-boot-beagleboneai64/u-boot.img' -&gt; '/boot/firmware/u-boot.img'
+
+$ sudo reboot 
+</code></pre>
+
+<p>=&gt; Login</p>
+
+<pre><code class="text">$ uname -a
+
+Linux BeagleBone 5.10.120-ti-arm64-r50 #1bullseye SMP PREEMPT Tue Jun 28 20:37:27 UTC 2022 aarch64 GNU/Linux
+
+$ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+udev            1.8G     0  1.8G   0% /dev
+tmpfs           371M  2.0M  369M   1% /run
+/dev/mmcblk1p2   59G  9.7G   47G  18% /
+tmpfs           1.9G   16K  1.9G   1% /dev/shm
+tmpfs           5.0M  4.0K  5.0M   1% /run/lock
+/dev/mmcblk1p1  127M   47M   80M  38% /boot/firmware
+</code></pre>
+
+<h2 id="bbai-64userleds">BBAI-64 User LEDs</h2>
+
+<table>
+<colgroup>
+<col />
+<col />
+<col />
+</colgroup>
+
+<thead>
+<tr>
+	<th> LED </th>
+	<th> GPIO Signal </th>
+	<th> Default Function </th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td> D2 </td>
+	<td> GPIO3_17 </td>
+	<td> Heartbeat when Linux is running </td>
+</tr>
+<tr>
+	<td> D3 </td>
+	<td> GPIO5_5 </td>
+	<td> microSD Activity </td>
+</tr>
+<tr>
+	<td> D4 </td>
+	<td> GPIO3_15 </td>
+	<td> CPU Activity </td>
+</tr>
+<tr>
+	<td> D5 </td>
+	<td> GPIO3_14 </td>
+	<td> eMMC Activity </td>
+</tr>
+<tr>
+	<td> D8 </td>
+	<td> GPIO3_7 </td>
+	<td> WiFi/Bluetooth Activity </td>
+</tr>
+</tbody>
+</table>
+
+<figure>
+<img src="/linux-in-house/images/BB_AI_USERLEDS_800px.png" alt="BB_AI_USERLEDS_800px.png" />
+<figcaption>BB_AI_USERLEDS_800px.png</figcaption>
+</figure>
+
+<h2 id="bbaisurvivalguide">BBAI Survival Guide</h2>
+
+<p><a href="https://community.element14.com/challenges-projects/project14/visionthing/b/blog/posts/beaglebone-ai-survival-guide-v3-18-pwm-i2c-analog-digital-read-write-vision-ai-video-text-overlays-audio-hardware">https://community.element14.com/challenges-projects/project14/visionthing/b/blog/posts/beaglebone-ai-survival-guide-v3-18-pwm-i2c-analog-digital-read-write-vision-ai-video-text-overlays-audio-hardware</a></p>
+
+<h2 id="realtimeclockrtcsystemserviceandsetup">Real Time Clock (RTC) system service and setup</h2>
+
+<p>Any clock needs to keep it&#8217;s time when the power goes out. Since the PocketBeagle is not always connected to WiFi to sync with Network Time Services, we will install a Real Time Clock with a small battery [1].</p>
+
+<blockquote>
+<p>Real Time Clock setup using i2c, ExploringBB: pp350 [1]</p>
+</blockquote>
+
+<p>Here is the wiring diagram for a PocketBeagle:</p>
+
+<ul>
+<li> PocketBeagle &lt;-&gt; DS3231 RTC</li>
+<li> I2C1:
+
+<ul>
+<li>Pin 14  - VCC</li>
+<li>Pin 16  - GND</li>
+<li>Pin 9  - SCL</li>
+<li>Pin 11  - SDA</li>
+</ul></li>
+</ul>
+
+<ol>
+<li><a href="https://learn.adafruit.com/adafruit-ds3231-precision-rtc-breakout/overview">https://learn.adafruit.com/adafruit-ds3231-precision-rtc-breakout/overview</a></li>
+</ol>
+
+<p>Setup procedure:</p>
+
+<pre><code class="text">$ sudo apt install i2c-tools
+$ i2cdetect
+$ i2cdump -y 1 0x68 b
+$ hwclock -r -f /dev/rtc1 
+# (Note: rtc0 is active on-board)
+
+$ sudo modprobe rtc-ds1307
+$ sudo /bin/sh -c &quot;/bin/echo ds1307 0x68 &gt; /sys/class/i2c-adapter/i2c-1/new_device&quot;
+#  Now /dev/rtc1 should show up, echo delete_device to remove it.
+
+# hwclock -r (read)
+# hwclock -w (write)
+# hwclock -s (set RTC to system time)
+$ hwclock --set --date &quot;2019-01-01 00:00:00&quot; 
+# (set new time)
+
+$ sudo systemctl enable hwclock.service
+$ sudo systemctl status hwclock.service
+$ reboot
+</code></pre>
+
+<ol>
+<li><a href="http://derekmolloy.ie/exploring-beaglebone-tools-and-techniques-for-building-with-embedded-linux/">http://derekmolloy.ie/exploring-beaglebone-tools-and-techniques-for-building-with-embedded-linux/</a></li>
+</ol>
+
+<h3 id="servicefile">Service File</h3>
+
+<p>File: /etc/systemd/system/clock.service</p>
+
+<pre><code class="text">[Unit]
+
+Description=RTC Service
+Before=getty.target
+
+[Service]
+Type=oneshot
+ExecStartPre=/bin/sh -c &quot;/bin/echo ds1307 0x68 &gt; /sys/class/i2c-adapter/i2c-1/new_device&quot;
+ExecStart=/sbin/hwclock -s -f /dev/rtc1
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+
+<h3 id="sevensegmentdisplay">Seven Segment Display</h3>
+
+<p>Now we can install a Seven Segment Display [1] to show the time. I used an old Garfield clock with sentimental memories, and brought it back to life.</p>
+
+<p>NOTE: If running python3, substitute python for python3 below.</p>
+
+<ol>
+<li><a href="https://www.adafruit.com/product/1270">https://www.adafruit.com/product/1270</a></li>
+</ol>
+
+<pre><code class="text">$ sudo apt-get update
+$ sudo apt-get install build-essential python-pip python-dev python-smbus git
+
+$ git clone https://github.com/adafruit/Adafruit_Python_GPIO.git
+$ cd Adafruit_Python_GPIO
+$ sudo python setup.py install
+
+$ git clone https://github.com/adafruit/Adafruit_Python_LED_Backpack.git
+
+$ cd Adafruit_Python_LED_Backpack
+$ sudo python setup.py install
+
+$ git clone https://github.com/adafruit/Adafruit-GFX-Library.git
+
+$ cd Adafruit_GFX
+$ sudo python setup.py install
+Adafruit Python LED Backpack
+
+Python library for controlling LED backpack displays such as 8x8 matrices, bar graphs, and 7/14-segment displays on a Raspberry Pi or BeagleBone Black.
+
+Designed specifically to work with the Adafruit LED backpack displays ----&gt; https://learn.adafruit.com/adafruit-led-backpack/overview
+
+For all platforms (Raspberry Pi and Beaglebone Black) make sure your system is able to compile Python extensions. On Raspbian or Beaglebone Black's Debian/Ubuntu image you can ensure your system is ready by executing:
+
+$ sudo apt-get update
+$ sudo apt-get install build-essential python-dev
+
+You will also need to make sure the python-smbus and python-imaging library is installed by executing:
+
+$ sudo apt-get install python-smbus python-imaging
+
+Install the library by downloading with the download link on the right, unzipping the archive, navigating inside the library's directory and executing:
+
+$ sudo python setup.py install
+
+See example of usage in the examples folder.
+</code></pre>
+
+<p>Clock testing</p>
+
+<pre><code>$ sudo apt install python-pip
+$ pip install adafruit_gpio
+
+$ cd Adafruit_Python_LED_Backpack/examples
+
+$ python sevensegment_test.py
+</code></pre>
+
+<h3 id="clockcode">Clock Code</h3>
+
+<p>File: clock.py</p>
+
+<pre><code class="text">import time
+
+from Adafruit_LED_Backpack import SevenSegment
+
+
+# Create display instance on default I2C address (0x70) and bus number.
+display = SevenSegment.SevenSegment()
+
+# Alternatively, create a display with a specific I2C address and/or bus.
+# display = SevenSegment.SevenSegment(address=0x74, busnum=1)
+
+# On BeagleBone, try busnum=2 if IOError occurs with busnum=1
+# display = SevenSegment.SevenSegment(address=0x74, busnum=2)
+
+# Initialize the display. Must be called once before using the display.
+display.begin()
+
+# Keep track of the colon being turned on or off.
+colon = True
+
+import datetime
+now = datetime.datetime.now()
+print (&quot;Current date and time : &quot;)
+print (now.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;))
+#
+OLD_MIN = &quot;99&quot;
+while True:
+  MIN = now.strftime(&quot;%M&quot;)
+  if ( MIN != OLD_MIN ):
+         OLD_MIN = now.strftime(&quot;%M&quot;)
+         # Clear the display buffer.
+         display.clear()
+         # Print the time to the display.
+         display.print_number_str(now.strftime(&quot;%l%M&quot;))
+         # PM flag, lower right dot
+         display.set_decimal(3, 1)
+         # ... set a segment of a digit ...
+         #display.set_digit_raw(0, 1)
+         # Set the colon on or off (True/False).
+         display.set_colon(colon)
+         # Write the display buffer to the hardware.  This must be called to
+         # update the actual display LEDs.
+         display.write_display()
+         # Delay for a second.
+     time.sleep(1.0)
+     now = datetime.datetime.now()
+     # Flip colon on or off.
+     colon = not colon
+     display.set_colon(colon)
+     # Write the display buffer to the hardware.  This must be called to
+     # update the actual display LEDs.
+     display.write_display()
+</code></pre>
+
+<h2 id="musicplayerforthecar">Music Player for the Car</h2>
+
+<p>This is a BBB under the seat with a wired mint box running Music Player Daemon [1].</p>
+
+<h3 id="installedthreebuttons">Installed three buttons</h3>
+
+<ul>
+<li><p> Back - run <code>mpc prev</code></p></li>
+<li><p> Play/Stop - run <code>mpc pause/play</code></p></li>
+<li><p> Forward - run <code>mpc next</code></p></li>
+</ul>
+
+<h3 id="wiringpins">Wiring Pins</h3>
+
+<figure>
+<img src="/linux-in-house/images/BeagleBone-AI-2_1.png" alt="BeagleBone-AI-2_1.png" />
+<figcaption>BeagleBone-AI-2_1.png</figcaption>
+</figure>
+
+<figure>
+<img src="/linux-in-house/images/BeagleBone-AI-2_2.png" alt="BeagleBone-AI-2_2.png" />
+<figcaption>BeagleBone-AI-2_2.png</figcaption>
+</figure>
+
+<h3 id="service">Service</h3>
+
+<p>File: /etc/systemd/system/remote.service</p>
+
+<pre><code class="text">[Unit]
+Description=Remote Control Music Player
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=root
+ExecStop=/data/home/remote/remote_stop.sh
+ExecStart=/data/home/remote/remote.sh
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+
+<h3 id="forward">Forward</h3>
+
+<p>File: forward.js</p>
+
+<pre><code class="javascript">/**********************************************************************
+ File: forward.js
+ Usage: Wire 3.3v (P9_3) and GPIO (P8_8, P8_7, P8_9) to switches
+ Service: remote.service
+ Author: Don Cohoon
+ History
+ 16-Oct-2019   Created
+**********************************************************************/
+var b = require('bonescript');
+const { exec } = require('child_process');
+// GPIO inputs
+const FORWARD = 'P8_8';
+const PLAY    = 'P8_7'; // Also STOP
+const REVERSE = 'P8_9';
+// Is button pressed or released?
+const RELEASE = 0;
+const PRESS   = 1;
+//
+b.pinMode(FORWARD, b.INPUT);
+b.pinMode(PLAY,    b.INPUT);
+b.pinMode(REVERSE, b.INPUT);
+setInterval(check,1000);
+//
+// ---------------------------
+function check(){
+	b.digitalRead(FORWARD, checkForward);
+}
+
+// ---------------------------
+function checkForward(err, response){
+	if (response == 1){
+		console.log('Forward pushed');
+		exec('/usr/bin/mpc next', ( err, stdout, stderr) =&gt; {
+			if (err) {
+				console.log(stderr);
+				return;
+			}
+		});
+	} else {
+	null; //	console.log('Button NOT pushed');
+	}
+
+}
+</code></pre>
+
+<h3 id="play">Play</h3>
+
+<p>File: play.js</p>
+
+<pre><code class="javascript">/**********************************************************************
+ File: play.js
+ Usage: Wire 3.3v (P9_3) and GPIO (P8_8, P8_7, P8_9) to switches
+ Service: remote.service
+ Author: Don Cohoon
+ History
+ 16-Oct-2019   Created
+**********************************************************************/
+var b = require('bonescript');
+const { exec } = require('child_process');
+// GPIO inputs
+const FORWARD = 'P8_8';
+const PLAY    = 'P8_7'; // Also STOP
+const REVERSE = 'P8_9';
+// Is button pressed or released?
+const RELEASE = 0;
+const PRESS   = 1;
+//
+b.pinMode(FORWARD, b.INPUT);
+b.pinMode(PLAY,    b.INPUT);
+b.pinMode(REVERSE, b.INPUT);
+setInterval(check,1000);
+//
+// ---------------------------
+function check(){
+	b.digitalRead(PLAY, checkPlay);
+}
+
+// ---------------------------
+function checkPlay(err, response){
+	if (response == 1){
+		console.log('Play pushed');
+		exec('/usr/bin/mpc current', ( err, stdout, stderr) =&gt; {
+			if (err) {
+				console.log(stderr);
+				return;
+			}
+			if (stdout) {
+				console.log('Stop playing ',stdout);
+				exec('/usr/bin/mpc stop', ( err, stdout, stderr) =&gt; {
+					if (err) {
+						console.log(stderr);
+						return;
+					}
+				});
+				return;
+			} else {
+				console.log('Play resumed');
+				exec('/usr/bin/mpc play', ( err, stdout, stderr) =&gt; {
+					if (err) {
+						console.log(stderr);
+						return;
+					}
+				});
+				return;
+			}
+
+		}); // current
+	} else {
+	null; //	console.log('Button NOT pushed');
+	}
+
+}
+
+</code></pre>
+
+<h3 id="remote">Remote</h3>
+
+<p>File: remote.sh</p>
+
+<pre><code class="ash">#!/bin/bash
+export NODE_PATH=/usr/local/lib/node_modules/
+export NODE_MODULES_CONTEXT=1
+PIDFILE=/var/run/remote.pid
+# node -pe &quot;require('bonescript').getPlatform().bonescript&quot;
+#
+function log() {
+	echo &quot;`date` $@ &quot; &gt;&gt; /var/log/remote.log
+}
+#
+procs=(
+     '/data/home/remote/forward.js'
+     '/data/home/remote/play.js '
+     '/data/home/remote/reverse.js'
+    )
+n_procs=0
+while [ &quot;x${procs[n_procs]}&quot; != &quot;x&quot; ]
+do
+	   n_procs=$(( $n_procs + 1 ))
+done
+inx=1
+#
+echo $$ &gt; $PIDFILE
+cd /data/home/remote
+log &quot;Starting $$&quot;
+while true
+do
+	# run processes and store pids in array
+	for i in ${procs[@]}; do
+	  echo &quot;Starting /usr/bin/node ${i}&quot;
+	  /usr/bin/node ${i} &amp;
+	  pids[${inx}]=$!
+	  let &quot;inx = $inx + 1&quot;
+	done
+
+	# wait for all pids
+	echo ${pids[*]}
+	for pid in ${pids[*]}; do
+	      wait $pid
+	    done
+	sleep 30
+	log &quot;Restarting after error&quot;
+done
+</code></pre>
+
+<h3 id="remotestop">Remote Stop</h3>
+
+<p>File: remote_stop.sh</p>
+
+<pre><code class="bash">#!/bin/bash
+TPID=$( /bin/cat /var/run/remote.pid )
+/bin/kill -9 ${TPID}
+/usr/bin/killall -e /usr/bin/node
+</code></pre>
+
+<h3 id="reverse">Reverse</h3>
+
+<p>File: reverse.js</p>
+
+<pre><code class="javascript">/**********************************************************************
+ File: reverse.js
+ Usage: Wire 3.3v (P9_3) and GPIO (P8_8, P8_7, P8_9) to switches
+ Service: remote.service
+ Author: Don Cohoon
+ History
+ 16-Oct-2019   Created
+**********************************************************************/
+var b = require('bonescript');
+const { exec } = require('child_process');
+// GPIO inputs
+const FORWARD = 'P8_8';
+const PLAY    = 'P8_7'; // Also STOP
+const REVERSE = 'P8_9';
+// Is button pressed or released?
+const RELEASE = 0;
+const PRESS   = 1;
+//
+b.pinMode(FORWARD, b.INPUT);
+b.pinMode(PLAY,    b.INPUT);
+b.pinMode(REVERSE, b.INPUT);
+setInterval(check,1000);
+//
+// ---------------------------
+function check(){
+	b.digitalRead(REVERSE, checkReverse);
+}
+
+// ---------------------------
+function checkReverse(err, response){
+	if (response == 1){
+		console.log('Reverse pushed');
+		exec('/usr/bin/mpc prev', ( err, stdout, stderr) =&gt; {
+			if (err) {
+				console.log(stderr);
+				return;
+			}
+		});
+	} else {
+	null; //	console.log('Button NOT pushed');
+	}
+
+}
+</code></pre>
+
+<ol>
+<li><a href="https://www.musicpd.org/">https://www.musicpd.org/</a></li>
+</ol>
+
+<h1 id="poweronoffanotherpc">Power on/off another PC</h1>
+
+<p>This project uses a web application written in flask to power on or off two different PCs remotely, and also a PowerTail Switch.</p>
+
+<ul>
+<li><p> Server one:</p></li>
+<li><p> Wire pins P8_11 in parallel to power button</p></li>
+<li><p> Wire pins P8_12 in parallel to reset button</p></li>
+<li><p> Server two:</p></li>
+<li><p> Wire pins P8_13 in parallel to power button</p></li>
+<li><p> Wire pins P8_14 in parallel to reset button</p></li>
+<li><p> PowerTail Light [1]</p></li>
+<li><p> Wire pins P9_21 to the PowerTail input control screws</p></li>
+</ul>
+
+<ol>
+<li><a href="https://www.adafruit.com/product/2935">https://www.adafruit.com/product/2935</a></li>
+</ol>
+
+<p>File: boot.py</p>
+
+<pre><code class="python">import time, datetime
+from itertools import cycle                                                     
+import os
+from werkzeug.debug import DebuggedApplication
+
+from flask import Flask, render_template, request, Response, session, redirect, url_for
+from functools import wraps
+import subprocess
+import logging
+logging.basicConfig(filename='boot.log',level=logging.DEBUG,
+            format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+
+# Limit ddos
+from werkzeug.wrappers import BaseRequest , BaseResponse
+class Response ( BaseResponse):
+    # limit 1m for input request and form response
+    max_content_length = 1024 * 1024 * 1
+    max_form_memory_size = 1024 * 1024 * 1
+
+import Adafruit_BBIO.GPIO as GPIO
+GPIO.setup(&quot;P9_21&quot;, GPIO.OUT)
+GPIO.output(&quot;P9_21&quot;, GPIO.HIGH) # TimeLight off
+GPIO.setup(&quot;P8_11&quot;, GPIO.OUT)
+GPIO.output(&quot;P8_11&quot;, GPIO.HIGH)
+GPIO.setup(&quot;P8_12&quot;, GPIO.OUT)
+GPIO.output(&quot;P8_12&quot;, GPIO.HIGH)
+GPIO.setup(&quot;P8_13&quot;, GPIO.OUT)
+GPIO.output(&quot;P8_13&quot;, GPIO.HIGH)
+GPIO.setup(&quot;P8_14&quot;, GPIO.OUT)
+GPIO.output(&quot;P8_14&quot;, GPIO.HIGH)
+
+
+ASSETS_DIR = os.path.dirname(os.path.abspath(__file__))
+app = Flask(__name__)                                            
+
+#@app.before_request # to get your header token and check for its validity
+
+#---------------------------------
+# route for handling the login page logic
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    error = None
+    if request.method == 'POST':
+        if request.form['username'] != 'SecretUser' or request.form['password'] != 'SecretPassword':
+            error = 'Invalid Credentials. Please try again.'
+            session['logged_in'] = False
+        else:
+            session['logged_in'] = True
+            return redirect(url_for('secret_page'))
+
+    return render_template('login.html', error=error)
+
+#---------------------------------
+# default page
+@app.route(&quot;/&quot;)                                                                 
+@app.route(&quot;/index&quot;)                                                          
+def hello():                                                    
+
+    return render_template('index.html')
+
+#---------------------------------
+# control server boot actions
+@app.route('/secret-page', methods=['GET','POST'])
+def secret_page():
+    msg='';
+    if 'logged_in' in session:
+      start_time = session.get('session_time', None)
+      if start_time is None:
+        start_time = datetime.datetime.now()
+        session['session_time'] = start_time
+      end_time = start_time + datetime.timedelta(minutes=5)
+      if datetime.datetime.now() &gt; end_time: 
+        session.clear()
+        start_time = session.get('session_time', None)
+        return redirect(url_for('login', next=request.url))
+    else:
+      return redirect(url_for('login', next=request.url))
+
+    app.logger.warning('Agent: %s',request.headers.get('User-Agent'))
+    app.logger.warning('Host: %s',request.headers.get('Host'))
+    app.logger.warning('Auth: %s',request.headers.get('Authorization'))
+    proc = subprocess.Popen([&quot;uptime&quot;], stdout=subprocess.PIPE)
+    (out, err) = proc.communicate()
+    #print &quot;program output:&quot;, out
+    option = ''
+    if request.method == 'POST':
+      option = request.form.get('options', 'empty')
+      #option = request.form['options']
+      #print &quot;option:&quot;, option
+      if option == 'on':                                                           
+  	#app.logger.debug('A value for debugging')
+  	#app.logger.warning('A warning occurred (%d apples)', 42)
+  	#app.logger.error('An error occurred')
+  	app.logger.warning('Server was turned on')
+        GPIO.output(&quot;P8_11&quot;, GPIO.LOW)
+    	time.sleep(3)                                                          
+        GPIO.output(&quot;P8_11&quot;, GPIO.HIGH)
+  	app.logger.warning('Server was turned on (end)')
+  	msg = 'Server turned on.'
+      elif option == 'off':                                                          
+  	app.logger.warning('Server was turned off')
+        GPIO.output(&quot;P8_11&quot;, GPIO.LOW)
+  	time.sleep(6)
+        GPIO.output(&quot;P8_11&quot;, GPIO.HIGH)
+  	app.logger.warning('Server was turned off (end)')
+  	msg = 'Server turned off.'
+      elif option == 'reset':                                                          
+  	app.logger.warning('Server was reset')
+        GPIO.output(&quot;P8_12&quot;, GPIO.LOW)
+  	time.sleep(2)
+        GPIO.output(&quot;P8_12&quot;, GPIO.HIGH)
+  	app.logger.warning('Server was reset (end)')
+  	msg = 'Server reset.'
+      elif option == 'on2':                                                           
+  	#app.logger.debug('A value for debugging')
+  	#app.logger.warning('A warning occurred (%d apples)', 42)
+  	#app.logger.error('An error occurred')
+  	app.logger.warning('NAS was turned on')
+        GPIO.output(&quot;P8_14&quot;, GPIO.LOW)
+    	time.sleep(3)                                                          
+        GPIO.output(&quot;P8_14&quot;, GPIO.HIGH)
+  	app.logger.warning('NAS was turned on (end)')
+  	msg = 'NAS turned on.'
+      elif option == 'off2':                                                          
+  	app.logger.warning('NAS was turned off')
+        GPIO.output(&quot;P8_14&quot;, GPIO.LOW)
+  	time.sleep(6)
+        GPIO.output(&quot;P8_14&quot;, GPIO.HIGH)
+  	app.logger.warning('NAS was turned off (end)')
+  	msg = 'NAS turned off.'
+      elif option == 'reset2':                                                          
+  	app.logger.warning('Server was reset')
+        GPIO.output(&quot;P8_13&quot;, GPIO.LOW)
+  	time.sleep(2)
+        GPIO.output(&quot;P8_13&quot;, GPIO.HIGH)
+  	app.logger.warning('NAS was reset (end)')
+  	msg = 'NAS reset.'
+      elif option == 'on3':                                                           
+  	app.logger.warning('TimeLight was turned on')
+        GPIO.output(&quot;P9_21&quot;, GPIO.LOW)
+  	app.logger.warning('TimeLight was turned on (end)')
+  	msg = 'TimeLight turned on.'
+      elif option == 'off3':                                                          
+  	app.logger.warning('TimeLight was turned off')
+        GPIO.output(&quot;P9_21&quot;, GPIO.HIGH)
+  	app.logger.warning('TimeLight was turned off (end)')
+  	msg = 'TimeLight turned off.'
+      else:
+        msg = 'Pick one.'
+  	app.logger.warning('No option picked')
+    template_data = {                                                           
+        'title' : option,                                                        
+        'msg'   : msg,
+        'out'   : out,
+    }                                                                           
+    return render_template('secret_page.html', **template_data)
+
+@app.after_request
+def apply_caching(response):
+    response.headers[&quot;Server&quot;] = &quot;Waiter&quot;
+    return response
+
+if __name__ == &quot;__main__&quot;:                                                      
+    app.run('0.0.0.0', debug=True, port=12345)
+</code></pre>
+
+<p>File: secret_page.html</p>
+
+<pre><code class="html">&lt;!DOCTYPE html&gt;                                                                 
+   &lt;head&gt;                                                                       
+    &lt;title&gt;{{ title }}&lt;/title&gt; 
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot;
+      href=&quot;{{url_for('static',filename='bootstrap.css')}}&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; type= &quot;text/css&quot;
+      href=&quot;{{url_for('static',filename='bootstrap-theme.css')}}&quot;&gt;
+    &lt;script&gt;
+   function clickAndDisable(link) {
+     // disable subsequent clicks
+     link.onclick = function(event) {
+        event.preventDefault();
+        document.getElementById(&quot;sub&quot;).className = &quot;btn btn-default disabled&quot;;
+     }
+   }   
+    &lt;/script&gt;
+    &lt;/head&gt;                                                                     
+    &lt;body&gt;                                                                      
+      &lt;div class=&quot;container&quot;&gt;
+       &lt;div class=&quot;col-lg-1 col-centered&quot;&gt;
+          &lt;br&gt;&lt;p class=&quot;row&quot;&gt; {{ out }} &lt;/p&gt;
+         &lt;form name=&quot;boot&quot; class=&quot;form-check&quot; action=&quot;&quot; method=&quot;post&quot; onsubmit=&quot;&quot;&gt;
+           &lt;p&gt;
+             &lt;div class=&quot;form-check&quot;&gt;
+               &lt;label class=&quot;form-check-label&quot;&gt;
+                 &lt;input class=&quot;form-check-input&quot; type=&quot;radio&quot; name=&quot;options&quot; id=&quot;on&quot; value=&quot;on&quot;&gt;
+                 S-On
+               &lt;/label&gt;
+             &lt;/div&gt;
+             &lt;div class=&quot;form-check&quot;&gt;
+               &lt;label class=&quot;form-check-label&quot;&gt;
+                &lt;input class=&quot;form-check-input&quot; type=&quot;radio&quot; name=&quot;options&quot; id=&quot;off&quot; value=&quot;off&quot;&gt;
+                 S-Off
+               &lt;/label&gt;
+             &lt;/div&gt;
+             &lt;div class=&quot;form-check&quot;&gt;
+               &lt;label class=&quot;form-check-label&quot;&gt;
+                &lt;input class=&quot;form-check-input&quot; type=&quot;radio&quot; name=&quot;options&quot; id=&quot;reset&quot; value=&quot;reset&quot;&gt;
+                 S-Reset
+               &lt;/label&gt;
+             &lt;/div&gt;
+             &lt;div class=&quot;form-check&quot;&gt;
+               &lt;label class=&quot;form-check-label&quot;&gt;
+                 &lt;input class=&quot;form-check-input&quot; type=&quot;radio&quot; name=&quot;options&quot; id=&quot;on2&quot; value=&quot;on2&quot;&gt;
+                 N-On
+               &lt;/label&gt;
+             &lt;/div&gt;
+             &lt;div class=&quot;form-check&quot;&gt;
+               &lt;label class=&quot;form-check-label&quot;&gt;
+                &lt;input class=&quot;form-check-input&quot; type=&quot;radio&quot; name=&quot;options&quot; id=&quot;off2&quot; value=&quot;off2&quot;&gt;
+                 N-Off
+               &lt;/label&gt;
+             &lt;/div&gt;
+             &lt;div class=&quot;form-check&quot;&gt;
+               &lt;label class=&quot;form-check-label&quot;&gt;
+                &lt;input class=&quot;form-check-input&quot; type=&quot;radio&quot; name=&quot;options&quot; id=&quot;reset2&quot; value=&quot;reset2&quot;&gt;
+                 N-Reset
+               &lt;/label&gt;
+             &lt;/div&gt;
+             &lt;div class=&quot;form-check&quot;&gt;
+               &lt;label class=&quot;form-check-label&quot;&gt;
+                 &lt;input class=&quot;form-check-input&quot; type=&quot;radio&quot; name=&quot;options&quot; id=&quot;on3&quot; value=&quot;on3&quot;&gt;
+                 L-On
+               &lt;/label&gt;
+             &lt;/div&gt;
+             &lt;div class=&quot;form-check&quot;&gt;
+               &lt;label class=&quot;form-check-label&quot;&gt;
+                &lt;input class=&quot;form-check-input&quot; type=&quot;radio&quot; name=&quot;options&quot; id=&quot;off3&quot; value=&quot;off3&quot;&gt;
+                 L-Off
+               &lt;/label&gt;
+             &lt;/div&gt;
+           &lt;/p&gt;
+           &lt;p&gt; &lt;input type=submit value=Submit id=&quot;sub&quot;
+                  onclick=&quot;clickAndDisable(this);&quot;
+                  class=&quot;btn btn-default&quot;&gt;
+           &lt;/p&gt;
+         &lt;/form&gt; 
+           {{ msg }}
+       &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/body&gt;                                                                     
+&lt;/html&gt;
+</code></pre>
+
+<p>File: login.html</p>
+
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+  &lt;head&gt;
+    &lt;title&gt;login page&lt;/title&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot;
+      href=&quot;{{url_for('static',filename='bootstrap.css')}}&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; type= &quot;text/css&quot;
+      href=&quot;{{url_for('static',filename='bootstrap-theme.css')}}&quot;&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div class=&quot;container&quot;&gt;
+     &lt;div class=&quot;col-lg-1 col-centered&quot;&gt;
+      &lt;h1&gt;Please login&lt;/h1&gt;
+      &lt;br&gt;
+      &lt;form action=&quot;&quot; method=&quot;post&quot;&gt;
+       &lt;div class=&quot;form-group row&quot;&gt;
+        &lt;input type=&quot;text&quot; placeholder=&quot;Username&quot; name=&quot;username&quot; value=&quot;{{
+          request.form.username }}&quot;&gt;
+       &lt;/div&gt;
+       &lt;div class=&quot;form-group row&quot;&gt;
+         &lt;input type=&quot;password&quot; placeholder=&quot;Password&quot; name=&quot;password&quot; value=&quot;{{
+          request.form.password }}&quot;&gt;
+       &lt;/div&gt;
+       &lt;div class=&quot;form-group row&quot;&gt;
+        &lt;input class=&quot;btn btn-default&quot; type=&quot;submit&quot; value=&quot;Login&quot;&gt;
+       &lt;/div&gt;
+      &lt;/form&gt;
+      {% if error %}
+        &lt;p class=&quot;error&quot;&gt;&lt;strong&gt;Error:&lt;/strong&gt; {{ error }}
+      {% endif %}
+     &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>File: main.html</p>
+
+<pre><code class="html">&lt;!DOCTYPE html&gt;                                                                 
+   &lt;head&gt;                                                                       
+    &lt;title&gt;{{ title }}&lt;/title&gt;                                                                                   
+    &lt;/head&gt;                                                                     
+    &lt;body&gt;                                                                      
+	  &lt;h1&gt;
+			&lt;a href=&quot;/on&quot; id=&quot;on&quot; class=&quot;large_button&quot;&gt;ON&lt;/a&gt;
+	  &lt;/h1&gt;
+	  &lt;h1&gt;
+			&lt;a href=&quot;/off&quot; id=&quot;off&quot; class=&quot;large_button&quot;&gt;OFF&lt;/a&gt;
+	  &lt;/h1&gt;
+    &lt;/body&gt;                                                                     
+&lt;/html&gt;
+</code></pre>
+
+<blockquote>
+<p>Put the bootstrap css package in directory ./static.</p>
+</blockquote>
+
+<p>Reference: <a href="https://getbootstrap.com/">https://getbootstrap.com/</a></p>
+
+<h1 id="reference">Reference</h1>
+
+<pre><code class="text">@book{9781119533160,
+   Author = {Derek Molloy},
+   Title = {Exploring BeagleBone: Tools and Techniques for Building with Embedded Linux},
+   Publisher = {Wiley},
+   Edition = {Second},
+   Year = {2019},
+   ISBN = {9781119533160},
+   URL = {http://www.exploringbeaglebone.com/}
+}
+</code></pre>
+
+<p>Code for book: <a href="https://github.com/derekmolloy/exploringBB">https://github.com/derekmolloy/exploringBB</a></p>
+
+<h1 id="continue">Continue</h1>
+
+<p>Now that you have experimented with BeagleBone SBC, next our travels take us far away to Media Land. The sights and sounds of Video and Audio controlled and maintained by your computer.</p>
+
+<p>Proceed in the order presented, some things are depending on prior setups.</p>
+
+<hr>
+
+<h4 id="madeforhumansbyahuman">Made for Humans, by a Human</h4>
+
+<h4 id="links">Links</h4>
+
+<ul>
+<li><a href="https://lwn.net/">Linux Weekly News</a></li>
+<li><a href="https://fullcirclemagazine.org/">Full Circle Magazine</a></li>
+<li><a href="https://www.linuxjournal.com/">Linux Journal</a></li>
+<li><a href="https://www.linux-magazine.com/">Linux Magazine</a></li>
+<li><a href="https://www.thefarside.com/">The Far Side</a></li>
+</ul>
+
+<h4 id="social">Social</h4>
+
+<ul>
+<li><a href="https://fosstodon.org/@Cohoon">Feedback</a></li>
+<li><a href="/linux-in-house/feed-Linux.rss">Linux RSS Feed</a></li>
+<li><a href="/linux-in-house/feed-Writing.rss">Writing RSS Feed</a></li>
+<li><a href="https://linux-in-the-house.pages.dev/">Book</a></li>
+</ul>
+
+<h5 id="builtwithmultimarkdownhttps:github.comfletchermultimarkdown-6andw3schoolshttps:www.w3schools.comw3cssw3css_pro.asp">Built with <a href="https://github.com/fletcher/MultiMarkdown-6">MultiMarkdown</a> and <a href="https://www.w3schools.com/w3css/w3css_pro.asp">W3 Schools</a></h5>
+
+<h5 id="license:ahrefhttp:creativecommons.orglicensesby-nc-sa4.0cc-by-nc-sa4.0a">License: <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0</a></h5>
+
+</body>
+</html>
+

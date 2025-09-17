@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>MirrorDisks</title>
+	<meta name="date" content="2023-01-25 10:12"/>
+	<meta name="modified" content="2024-04-19 9:30"/>
+	<meta name="tags" content="systems, hardware"/>
+	<meta name="author" content="Don Cohoon"/>
+	<meta name="summary" content="Mirroring disks on Linux is simple and prudent to ensure your data survives hardware, software and human failures. All data from one disk is duplicated on another disk and if any **one** disk fails, you will never know it. So it is important after setting up to monitor the disk array."/>
+	<meta name="license" content="'[CC-BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)'"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"> <link rel="stylesheet" href="/linux-in-house/common.css" type="text/css" />
+</head>
+<body>
+
+<p><a href="/linux-in-house/"><h1>Linux in House</h1></a></p>
+
+<link href="/linux-in-house/pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/linux-in-house/pagefind/pagefind-ui.js"></script>
+
+<div id="search"></div>
+<script>
+window.addEventListener('DOMContentLoaded', (event) => {
+      new PagefindUI({ element: "#search", showSubResults: true });
+});
+</script>
+
+<blockquote>
+<p><a href="/linux-in-house/linux/welcome.html">Welcome Back My Friends</a></p>
+</blockquote>
+
+<h1 id="mirrordisks">Mirror Disks</h1>
+
+<p>Mirroring disks on Linux is simple and prudent to ensure your data survives hardware, software and human failures. All data from one disk is duplicated on another disk and if any <strong>one</strong> disk fails, you will never know it. So it is important after setting up to monitor the disk array.</p>
+
+<br/>
+
+<hr />
+
+<div class="TOC">
+
+<ul>
+<li><a href="#mirrordisks">Mirror Disks</a>
+<ul>
+<li><a href="#installmdadm">Install mdadm</a></li>
+<li><a href="#assemblingyourarrays">Assembling your arrays</a></li>
+<li><a href="#statusofarray">Status of array</a></li>
+<li><a href="#addingadrivetoamirror">Adding a drive to a mirror</a></li>
+<li><a href="#creatingamirrorraid">Creating a mirror raid</a></li>
+<li><a href="#configurationfile">Configuration File</a></li>
+<li><a href="#automountarray">Auto Mount Array</a></li>
+<li><a href="#monitorarray">Monitor Array</a>
+<ul>
+<li><a href="#madeforhumansbyahuman">Made for Humans, by a Human</a></li>
+<li><a href="#links">Links</a></li>
+<li><a href="#social">Social</a>
+<ul>
+<li><a href="#builtwithmultimarkdownhttps:github.comfletchermultimarkdown-6andw3schoolshttps:www.w3schools.comw3cssw3css_pro.asp">Built with <a href="https://github.com/fletcher/MultiMarkdown-6">MultiMarkdown</a> and <a href="https://www.w3schools.com/w3css/w3css_pro.asp">W3 Schools</a></a></li>
+<li><a href="#license:ahrefhttp:creativecommons.orglicensesby-nc-sa4.0cc-by-nc-sa4.0a">License: <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0</a></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+<hr />
+
+<h2 id="installmdadm">Install mdadm</h2>
+
+<pre><code>$ sudo apt-get install mdadm
+</code></pre>
+
+<h2 id="assemblingyourarrays">Assembling your arrays</h2>
+
+<p>If you had disks before but lost them due to a boot disk rebuild, you can bring them back by using the assemble command:</p>
+
+<pre><code>$ sudo mdadm --assemble --scan
+</code></pre>
+
+<p>This is the command that runs in the background at boot, and assembles and runs all your arrays (unless something goes wrong, when you usually end up with a partially assembled array. This can be a right pain if you don&#8217;t realise that&#8217;s what&#8217;s happened).</p>
+
+<h2 id="statusofarray">Status of array</h2>
+
+<p>Schedule this to run every day and send you the output, probably by e-mail. As you can see below, on disk is missing, so this array
+is <strong>degraded</strong>. If you find yourself in this position, add another disk back as soon as possible!</p>
+
+<pre><code> $ sudo mdadm -D /dev/md/0
+/dev/md/0:
+           Version : 1.2
+     Creation Time : Fri Nov 26 18:39:56 2021
+        Raid Level : raid1
+        Array Size : 976629440 (931.39 GiB 1000.07 GB)
+     Used Dev Size : 976629440 (931.39 GiB 1000.07 GB)
+      Raid Devices : 2
+     Total Devices : 1
+       Persistence : Superblock is persistent
+
+     Intent Bitmap : Internal
+
+       Update Time : Mon Sep  4 13:16:39 2023
+             State : clean, degraded 
+    Active Devices : 1
+   Working Devices : 1
+    Failed Devices : 0
+     Spare Devices : 0
+
+Consistency Policy : bitmap
+
+              Name : beaglebone:0
+              UUID : 5b7b53b5:778a2dbf:be80ae03:938abef
+            Events : 33884
+
+    Number   Major   Minor   RaidDevice State
+       -       0        0        0      removed
+       1       8        1        1      active sync   /dev/sda1
+
+</code></pre>
+
+<blockquote>
+<p><strong>removed</strong> is keyword for failed!</p>
+</blockquote>
+
+<h2 id="addingadrivetoamirror">Adding a drive to a mirror</h2>
+
+<p>This will add a new drive to your mirror. The &#8220;&#8211;grow and &#8211;raid-devices&#8221; are optional, if you increase the number of raid devices, the new drive will become an active part of the array and the existing drives will mirror across. If you don&#8217;t increase the number of raid devices, the new drive will be a spare, and will only become part of the active array if one of the other drives fails.</p>
+
+<pre><code>$ sudo  mdadm [--grow] /dev/md/mirror --add /dev/sdc1 [--raid-devices=3]
+$ sudo  mdadm /dev/md/0 --add /dev/sdb1
+</code></pre>
+
+<h2 id="creatingamirrorraid">Creating a mirror raid</h2>
+
+<p>The simplest example of creating an array, is creating a mirror.</p>
+
+<pre><code>$ sudo mdadm --create /dev/md/name /dev/sda1 /dev/sdb1 --level=1 --raid-devices=2
+</code></pre>
+
+<p>This will copy the contents of sda1 to sdb1 and give you a clean array. There is no reason why you can&#8217;t use the array while it is copying (resyncing). This can be suppressed with the &#8220;&#8211;assume-clean&#8221; option, but you should only do this if you know the partitions have been wiped to null beforehand. Otherwise, the dead space will not be a mirror, and any check command will moan blue murder.</p>
+
+<h2 id="configurationfile">Configuration File</h2>
+
+<blockquote>
+<p>Run update-initramfs -u after updating this file.</p>
+</blockquote>
+
+<p>File: /etc/mdadm/mdadm.conf</p>
+
+<pre><code># mdadm.conf
+#
+# !NB! Run update-initramfs -u after updating this file.
+# !NB! This will ensure that initramfs has an uptodate copy.
+#
+# Please refer to mdadm.conf(5) for information about this file.
+#
+
+# by default (built-in), scan all partitions (/proc/partitions) and all
+# containers for MD superblocks. alternatively, specify devices to scan, using
+# wildcards if desired.
+#DEVICE partitions containers
+
+# automatically tag new arrays as belonging to the local system
+HOMEHOST &lt;system&gt;
+
+# instruct the monitoring daemon where to send mail alerts
+MAILADDR root
+
+# definitions of existing MD arrays
+ARRAY /dev/md/0  metadata=1.2 UUID=5b7b53b5:778a2dbf:be80ae03:938abef name=beaglebone:0
+
+# This configuration was auto-generated on Mon, 04 Sep 2023 14:42:26 +0000 by mkconf
+</code></pre>
+
+<p>Hint: To re-create the ARRAY definition line above, use this:</p>
+
+<pre><code>$ sudo mdadm --detail --scan
+</code></pre>
+
+<p>Reference:</p>
+
+<ul>
+<li> <a href="https://raid.wiki.kernel.org/index.php/A_guide_to_mdadm">https://raid.wiki.kernel.org/index.php/A_guide_to_mdadm</a></li>
+</ul>
+
+<h2 id="automountarray">Auto Mount Array</h2>
+
+<p>I usually put the mount as a seperate command, running through /etc/rc.local, in case it does not build the array at boot for some reason. This way you can still log in, fix the error, and mount the array. Otherwise you have the run through boot recovery to fix it.</p>
+
+<blockquote>
+<p>Note the delay to allow time for mdadm to assemble the array</p>
+</blockquote>
+
+<p>File: /etc/rc.local</p>
+
+<pre><code>#!/bin/bash
+#
+# Mount mdadm array
+#
+sleep 60
+#
+mount /dev/md/0 /mnt/raid1
+#
+exit 0
+</code></pre>
+
+<p>Make /etc/rc.local executable, and start rc-local systemd process and it will run /etc/rc.local on every boot.</p>
+
+<pre><code>$ sudo chmod 755 /etc/rc.local
+$ sudo systemctl start rc-local
+</code></pre>
+
+<h2 id="monitorarray">Monitor Array</h2>
+
+<p>Minimal monitoring could be a status script in e-mail every morning.</p>
+
+<p>File: /mnt/raid9/raid.sh</p>
+
+<pre><code>#!/bin/bash
+TMP=$(mktemp)
+sudo /sbin/mdadm -D /dev/md0 &gt;$TMP
+/bin/cat $TMP | /usr/bin/mail -s &quot;Raid status&quot; bob@bob.com
+rm $TMP
+</code></pre>
+
+<p>Schedule in cron.</p>
+
+<p>File: /etc/cron.d/mdadm</p>
+
+<pre><code>#
+# cron.d/mdadm -- schedules periodic redundancy checks of MD devices
+#
+# Copyright © martin f. krafft &lt;madduck@madduck.net&gt;
+# distributed under the terms of the Artistic Licence 2.0
+#
+
+# By default, run at 00:57 on every Sunday, but do nothing unless the day of
+# the month is less than or equal to 7. Thus, only run on the first Sunday of
+# each month. crontab(5) sucks, unfortunately, in this regard; therefore this
+# hack (see #380425).
+57 0 * * 0 root if [ -x /usr/share/mdadm/checkarray ] &amp;&amp; [ $(date +\%d) -le 7 ]; then /usr/share/mdadm/checkarray --cron --all --idle --quiet; fi
+# Don - email status every morning
+11 7 * * * root /mnt/raid9/raid.sh
+</code></pre>
+
+<hr>
+
+<h4 id="madeforhumansbyahuman">Made for Humans, by a Human</h4>
+
+<h4 id="links">Links</h4>
+
+<ul>
+<li><a href="https://lwn.net/">Linux Weekly News</a></li>
+<li><a href="https://fullcirclemagazine.org/">Full Circle Magazine</a></li>
+<li><a href="https://www.linuxjournal.com/">Linux Journal</a></li>
+<li><a href="https://www.linux-magazine.com/">Linux Magazine</a></li>
+<li><a href="https://www.thefarside.com/">The Far Side</a></li>
+</ul>
+
+<h4 id="social">Social</h4>
+
+<ul>
+<li><a href="https://fosstodon.org/@Cohoon">Feedback</a></li>
+<li><a href="/linux-in-house/feed-Linux.rss">Linux RSS Feed</a></li>
+<li><a href="/linux-in-house/feed-Writing.rss">Writing RSS Feed</a></li>
+<li><a href="https://linux-in-the-house.pages.dev/">Book</a></li>
+</ul>
+
+<h5 id="builtwithmultimarkdownhttps:github.comfletchermultimarkdown-6andw3schoolshttps:www.w3schools.comw3cssw3css_pro.asp">Built with <a href="https://github.com/fletcher/MultiMarkdown-6">MultiMarkdown</a> and <a href="https://www.w3schools.com/w3css/w3css_pro.asp">W3 Schools</a></h5>
+
+<h5 id="license:ahrefhttp:creativecommons.orglicensesby-nc-sa4.0cc-by-nc-sa4.0a">License: <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0</a></h5>
+
+</body>
+</html>
+

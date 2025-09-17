@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>HomeAssistant</title>
+	<meta name="date" content="2023-01-25 10:26"/>
+	<meta name="modified" content="2024-04-19 9:30"/>
+	<meta name="tags" content="systems"/>
+	<meta name="author" content="Don Cohoon"/>
+	<meta name="summary" content="This is a web based interface for automating things around the home. It can monitor doors, windows, motion detection and turn electrical things on and off."/>
+	<meta name="license" content="'[CC-BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)'"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"> <link rel="stylesheet" href="/linux-in-house/common.css" type="text/css" />
+</head>
+<body>
+
+<p><a href="/linux-in-house/"><h1>Linux in House</h1></a></p>
+
+<link href="/linux-in-house/pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/linux-in-house/pagefind/pagefind-ui.js"></script>
+
+<div id="search"></div>
+<script>
+window.addEventListener('DOMContentLoaded', (event) => {
+      new PagefindUI({ element: "#search", showSubResults: true });
+});
+</script>
+
+<blockquote>
+<p><a href="/linux-in-house/linux/welcome.html">Welcome Back My Friends</a></p>
+</blockquote>
+
+<h1 id="homeassistant">Home Assistant</h1>
+
+<p>This is a web based interface for automating things around the home. It can monitor doors, windows, motion detection and turn electrical things on and off.</p>
+
+<br/>
+
+<hr />
+
+<div class="TOC">
+
+<ul>
+<li><a href="#homeassistant">Home Assistant</a>
+<ul>
+<li><a href="#pluginzoozs2stick700">Plug in Zooz S2 stick 700</a></li>
+<li><a href="#installsoftware">Install Software</a>
+<ul>
+<li><a href="#option1:truenasapp">Option (1): TrueNAS App</a>
+<ul>
+<li><a href="#1appforhome-assistant">(1) App for Home-Assistant</a></li>
+<li><a href="#1daemontorunzwave-js-ui">(1) Daemon to run ZWave-JS-UI</a></li>
+<li><a href="#1skipoption2andproceedtosection-configurationforotherzoozproductshomeassistantconfiguration-for-other-zooz-products">(1) Skip Option (2) and proceed to section -&gt; <a href="HomeAssistant#configuration-for-other-zooz-products">Configuration for other Zooz products</a></a></li>
+</ul>
+</li>
+<li><a href="#option2:dockerpackageinstall">Option (2): Docker Package Install</a>
+<ul>
+<li><a href="#2installdockerengineonubuntu">(2) Install Docker Engine on Ubuntu</a></li>
+<li><a href="#2rundockertoinstallhomeassistant">(2) Run Docker to Install homeassistant</a></li>
+<li><a href="#2runz-wavejsserver">(2) Run Z-Wave JS Server</a></li>
+<li><a href="#2checkdockerstatus">(2) Check Docker Status</a></li>
+<li><a href="#2movecontainerimagetossddata">(2) Move Container/Image to SSD (/data)</a></li>
+<li><a href="#2defaultroutewasgettingmessedupwithdocker">(2) Default Route was getting messed up with docker</a></li>
+<li><a href="#2restarting">(2) Restarting</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#homeassistant-supervised">Home Assistant - Supervised</a>
+<ul>
+<li><a href="#configurationforotherzoozproducts">Configuration for other Zooz products</a>
+<ul>
+<li><a href="#configurationscriptfromconfiguration.yaml">Configuration script from configuration.yaml</a></li>
+<li><a href="#sendmatrixscript">Sendmatrix script</a></li>
+<li><a href="#automation">Automation</a></li>
+</ul>
+</li>
+<li><a href="#upgrade">Upgrade</a>
+<ul>
+<li><a href="#option:truenas">Option: TrueNAS</a></li>
+<li><a href="#option:docker">Option: Docker</a></li>
+</ul>
+</li>
+<li><a href="#lightsforwall-e">Lights for WALL-E</a></li>
+<li><a href="#circuit">Circuit</a>
+<ul>
+<li><a href="#zen16relay">ZEN16 Relay</a></li>
+<li><a href="#alarmlightradio-diagram">Alarm Light Radio - Diagram</a></li>
+</ul>
+</li>
+<li><a href="#z-wavedevices">Z-Wave Devices</a></li>
+<li><a href="#purge">Purge</a></li>
+<li><a href="#continue">Continue</a>
+<ul>
+<li><a href="#madeforhumansbyahuman">Made for Humans, by a Human</a></li>
+<li><a href="#links">Links</a></li>
+<li><a href="#social">Social</a>
+<ul>
+<li><a href="#builtwithmultimarkdownhttps:github.comfletchermultimarkdown-6andw3schoolshttps:www.w3schools.comw3cssw3css_pro.asp">Built with <a href="https://github.com/fletcher/MultiMarkdown-6">MultiMarkdown</a> and <a href="https://www.w3schools.com/w3css/w3css_pro.asp">W3 Schools</a></a></li>
+<li><a href="#license:ahrefhttp:creativecommons.orglicensesby-nc-sa4.0cc-by-nc-sa4.0a">License: <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0</a></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+<hr />
+
+<p>The server software is in two pieces, Z-Wave JS and HASS. Z-Wave (nodejs) reads a USB stick and manages the connection and commands to various <a href="https://www.z-wave.com/">Z-WAVE compatible wireless devices</a>. HASS (python) displays and automates monitoring and reacting to the devices by communication to Z-Wave over the WebSocket service (ws://localhost:3000). I install and run the docker images of these packages.</p>
+
+<figure>
+<img src="/linux-in-house/images/graph-homeassistant.svg" alt="Home Assistant" />
+<figcaption>Home Assistant</figcaption>
+</figure>
+
+<ul>
+<li><p> ws: WebSocket</p></li>
+<li><p> ip: TCP/IP</p></li>
+<li><p> zw: Z-Wave
+con<br />
+Reference:</p></li>
+<li><p><a href="https://www.home-assistant.io/">https://www.home-assistant.io/</a></p></li>
+<li><p><a href="https://zwave-js.github.io/node-zwave-js/#/">https://zwave-js.github.io/node-zwave-js/#/</a></p></li>
+</ul>
+
+<figure>
+<img src="/linux-in-house/images/HomeAssistant.png" alt="HomeAssistant.png" />
+<figcaption>HomeAssistant.png</figcaption>
+</figure>
+
+<h2 id="pluginzoozs2stick700">Plug in Zooz S2 stick 700</h2>
+
+<p>This is a USB radio for wireless communication to the Z-Wave family of home automation devices.</p>
+
+<p>Like:</p>
+
+<ul>
+<li> light switch</li>
+<li> door alarm</li>
+<li> window alarm</li>
+<li> motion detector</li>
+<li> thermostat</li>
+</ul>
+
+<p>Model (US): ZST10&#8211;700; US Frequency Band: 908.42 MHz; Z-Wave Plus: USB-A [1]</p>
+
+<p>Find the name of the device for the USB Stick. Here it is &#8216;/dev/ttyUSB0&#8217;.</p>
+
+<pre><code># from dmesg
+[1464395.479270] usb 1-2: new full-speed USB device number 5 using xhci_hcd
+[1464395.630085] usb 1-2: New USB device found, idVendor=10c4, idProduct=ea60, bcdDevice= 1.00
+[1464395.630087] usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[1464395.630088] usb 1-2: Product: CP2102N USB to UART Bridge Controller
+[1464395.630090] usb 1-2: Manufacturer: Silicon Labs
+[1464395.630091] usb 1-2: SerialNumber: f85326c6843ee812862437bcf28b3e41
+[1464395.666277] usbcore: registered new interface driver usbserial_generic
+[1464395.666283] usbserial: USB Serial support registered for generic
+[1464395.667654] usbcore: registered new interface driver cp210x
+[1464395.667665] usbserial: USB Serial support registered for cp210x
+[1464395.667689] cp210x 1-2:1.0: cp210x converter detected
+[1464395.670018] usb 1-2: cp210x converter now attached to ttyUSB0
+</code></pre>
+
+<pre><code>$ lsusb
+Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 001 Device 004: ID 8087:0a2b Intel Corp. 
+Bus 001 Device 003: ID 046d:c016 Logitech, Inc. Optical Wheel Mouse
+Bus 001 Device 005: ID 10c4:ea60 Silicon Labs CP210x UART Bridge &lt;--- this is it
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+</code></pre>
+
+<pre><code>$ ls -l /dev/ttyUSB0 
+crw-rw---- 1 root dialout 188, 0 Aug 11 08:22 /dev/ttyUSB0
+</code></pre>
+
+<p>Reference:</p>
+
+<ol>
+<li> <a href="https://www.thesmartesthouse.com/products/zooz-usb-700-series-z-wave-plus-s2-stick-zst10-700">https://www.thesmartesthouse.com/products/zooz-usb-700-series-z-wave-plus-s2-stick-zst10-700</a></li>
+</ol>
+
+<h2 id="installsoftware">Install Software</h2>
+
+<h3 id="option1:truenasapp">Option (1): TrueNAS App</h3>
+
+<p>If you already have <a href="NAS">TrueNAS</a> installed this is a much easier option. I run HA on TrueNAS Scale (Linux Debian) now. If your TrueNAS never moves from the HA device location, this makes even more sense than, say, a laptop.</p>
+
+<h4 id="1appforhome-assistant">(1) App for Home-Assistant</h4>
+
+<p>Home-Assistant is software to show and control your devices, and perform automation.</p>
+
+<ul>
+<li><p>Using the TrueNAS web interface, select Apps.</p></li>
+<li><p>In the Tab, select Available Applilcations.</p></li>
+<li><p>Select the home-assistant app. Then select:</p></li>
+<li><p> timezone</p></li>
+<li><p> under Storage, check Host Path and navagate to a spot on your NAS filesystem where you want your configuration.yaml, the input field is called <em>Host Path for Home Assistant Configuration Storage Volume</em> EX: <code>/mnt/vol042/ha/hass</code></p></li>
+<li><p> it should pick an open <em>port</em> for you, larger than 9001</p></li>
+<li><p> save, and Navigate your browser to the Home-Assistant console : &lt;http://localhost:&lt;port&gt;/control-panel&gt; and create a new login.</p></li>
+</ul>
+
+<blockquote>
+<p>TrueNAS App puts event and statistics data in a postgresql database [1], instead of sqlite (the default).</p>
+</blockquote>
+
+<p>Access the database from the App menu (3 dots), then Shell.</p>
+
+<pre><code># psql  -U postgres -d homeassistance
+psql (13.1 (Debian 13.1-1.pgdg100+1))
+Type &quot;help&quot; for help.
+
+homeassistance=# \dt
+                 List of relations
+ Schema |         Name          | Type  |  Owner   
+--------+-----------------------+-------+----------
+ public | event_data            | table | postgres
+ public | event_types           | table | postgres
+ public | events                | table | postgres
+ public | recorder_runs         | table | postgres
+ public | schema_changes        | table | postgres
+ public | state_attributes      | table | postgres
+ public | states                | table | postgres
+ public | states_meta           | table | postgres
+ public | statistics            | table | postgres
+ public | statistics_meta       | table | postgres
+ public | statistics_runs       | table | postgres
+ public | statistics_short_term | table | postgres
+(12 rows)
+
+homeassistance=# select count(*) from events;
+ count 
+-------
+  4470
+(1 row)
+
+homeassistance=# \q
+# exit
+</code></pre>
+
+<p>Your Home-Assistant install will look for a configuration file in the docker /config directory. You can find it here [2]:</p>
+
+<pre><code>$ sudo docker ps --filter=&quot;name=home-assistant&quot;|head -2
+CONTAINER ID   IMAGE                          COMMAND                  CREATED        STATUS        PORTS     NAMES
+b87237af7a25   homeassistant/home-assistant   &quot;/init&quot;                  11 hours ago   Up 11 hours             k8s_home-assistant_home-assistant-d88b55479-rsgpb_ix-home-assistant_11a62bf0-b8e2-4108-a597-1a6c448dd01d_0
+
+# Use the NAMES and grep for config
+$ sudo docker container inspect   k8s_home-assistant_home-assistant-d88b55479-rsgpb_ix-home-assistant_11a62bf0-b8e2-4108-a597-1a6c448dd01d_0 |grep config
+                &quot;/mnt/vol042/ha/hass:/config&quot;,
+                &quot;Destination&quot;: &quot;/config&quot;,
+            &quot;WorkingDir&quot;: &quot;/config&quot;,
+</code></pre>
+
+<p>The port number is here</p>
+
+<pre><code>$ sudo docker container inspect   k8s_home-assistant_home-assistant-d88b55479-rsgpb_ix-home-assistant_11a62bf0-b8e2-4108-a597-1a6c448dd01d_0 |grep HOME_ASSISTANT_PORT=
+                &quot;HOME_ASSISTANT_PORT=tcp://172.17.216.154:22401&quot;,
+</code></pre>
+
+<p>Just ignore the 172&#8230; IP Address, it is only for internal docker. A bridge network makes it available to the Host&#8217;s public IP Address. This example port number is 22401, so I would put into my browser : http://localhost:22401/. You may need to substitute <em>localhost</em> with your public IP Address.</p>
+
+<p>Reference:</p>
+
+<ol>
+<li> <a href="https://www.home-assistant.io/integrations/recorder/">https://www.home-assistant.io/integrations/recorder/</a></li>
+<li> <a href="https://docs.docker.com/engine/reference/commandline/ps/">https://docs.docker.com/engine/reference/commandline/ps/</a></li>
+</ol>
+
+<h4 id="1daemontorunzwave-js-ui">(1) Daemon to run ZWave-JS-UI</h4>
+
+<p>ZWave-JS-UI is a node application to interface with the USB stick and Home Assistant.</p>
+
+<ul>
+<li>Move to one level below your <em>Host Path</em> designated above for Home-Assistant (EX: <code>/mnt/vol042/ha</code>), and install ZWave-JS-UI [1]</li>
+</ul>
+
+<blockquote>
+<p>Homeassistant supervisor (docker) uses : /usr/src/node_modules/.bin/zwave-server</p>
+</blockquote>
+
+<pre><code>$ mkdir zwave-js-ui
+$ cd zwave-js-ui
+# download latest version
+$ curl -s https://api.github.com/repos/zwave-js/zwave-js-ui/releases/latest  \
+| grep &quot;browser_download_url.*zip&quot; \
+| cut -d : -f 2,3 \
+| tr -d \&quot; \
+| wget -i -
+
+unzip zwave-js-ui-v*.zip
+</code></pre>
+
+<blockquote>
+<p>Put zwave-run.sh in TrueNAS &gt; System &gt; Advanced &gt; Init/Shutdown Scripts &#8230; with POSTINIT</p>
+</blockquote>
+
+<p>File: zwave-run.sh</p>
+
+<pre><code>#!/bin/bash
+DIR=/mnt/vol042/ha
+LOG=zwave-run.log
+#
+cd ${DIR}
+nohup sudo ${DIR}/zwave-js-ui-linux &gt;&gt; ${DIR}/${LOG} 2&gt;&amp;1 &amp;
+</code></pre>
+
+<p>Navigate your browser to Z_Wave-JS-UI console : <a href="http://localhost:8091/control-panel">http://localhost:8091/control-panel</a> and perform the Z_Wave-JS-UI setup [1]. You may need to substitute <em>localhost</em> with your public IP Address.</p>
+
+<blockquote>
+<p>I disabled MQTT to get rid of <code>Error: connect ECONNREFUSED</code> messages in the debug log window of ZWave-JS-UI, since the HA to ZWAV communication is done via WebSockets (ws://localhost:3000).</p>
+</blockquote>
+
+<p>Reference:</p>
+
+<ol>
+<li> <a href="https://zwave-js.github.io/zwave-js-ui/#/usage/setup">https://zwave-js.github.io/zwave-js-ui/#/usage/setup</a></li>
+</ol>
+
+<h4 id="1skipoption2andproceedtosection-configurationforotherzoozproductshomeassistantconfiguration-for-other-zooz-products">(1) Skip Option (2) and proceed to section -&gt; <a href="HomeAssistant#configuration-for-other-zooz-products">Configuration for other Zooz products</a></h4>
+
+<h3 id="option2:dockerpackageinstall">Option (2): Docker Package Install</h3>
+
+<p>This option installs and runs two docker images, one for Home-Assistant, and another for ZWave-JS-UI.</p>
+
+<pre><code>$ sudo apt-get update
+
+$ sudo apt-get install \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+</code></pre>
+
+<h4 id="2installdockerengineonubuntu">(2) Install Docker Engine on Ubuntu</h4>
+
+<p>Follow the latest guide here:</p>
+
+<p><a href="https://docs.docker.com/engine/install/ubuntu/">https://docs.docker.com/engine/install/ubuntu/</a></p>
+
+<blockquote>
+<p>Make sure you are about to install Comunity Edition (ce) from the
+Docker repo instead of the default Ubuntu repo by
+adding Docker’s official GPG key, before setting up the repository</p>
+</blockquote>
+
+<pre><code>$ sudo apt-get install docker-ce docker-ce-cli containerd.io
+
+$ sudo systemctl status docker
+</code></pre>
+
+<p>FYI: Docker download OS selection: <a href="https://download.docker.com/linux/">https://download.docker.com/linux/</a></p>
+
+<pre><code>centos/
+debian/
+fedora/
+raspbian/
+rhel/
+sles/
+static/
+ubuntu/
+</code></pre>
+
+<h4 id="2rundockertoinstallhomeassistant">(2) Run Docker to Install homeassistant</h4>
+
+<blockquote>
+<p>May need to run docker with the <code>--init</code> parameter first. Then stop and restart without init.</p>
+</blockquote>
+
+<pre><code>export HOME=$(pwd)
+$ sudo usermod -aG docker $USER
+$ docker run -d \
+  --name homeassistant \
+  --restart=always \
+  -v /etc/localtime:/etc/localtime:ro \
+  -v ${HOME}/hass:/config \
+  --device /dev/ttyUSB0:/dev/ttyUSB0 \
+  -e &quot;DISABLE_JEMALLOC=true&quot; \
+  --network=host \
+  -p 3000 \
+  homeassistant/home-assistant:stable
+#
+# To Remove and re-install:
+docker: Error response from daemon: Conflict. 
+The container name &quot;/homeassistant&quot; is already in use by container &quot;5113815f15cb79a0ea19f1888e6efdd39aa9108c60675fe10b515aa162c2e72b&quot;. 
+You have to remove (or rename) that container to be able to reuse that name.
+See 'docker run --help'.
+
+# docker stop 5113815f15cb79a0ea19f1888e6efdd39aa9108c60675fe10b515aa162c2e72b
+5113815f15cb79a0ea19f1888e6efdd39aa9108c60675fe10b515aa162c2e72b
+
+# docker rm 5113815f15cb79a0ea19f1888e6efdd39aa9108c60675fe10b515aa162c2e72b
+5113815f15cb79a0ea19f1888e6efdd39aa9108c60675fe10b515aa162c2e72b
+</code></pre>
+
+<h4 id="2runz-wavejsserver">(2) Run Z-Wave JS Server</h4>
+
+<p>Create a new directory for the zwave-js server configuration files</p>
+
+<pre><code>export HOME=$(pwd)
+$ sudo mkdir ${HOME}/zwavejs
+</code></pre>
+
+<p>Run the docker container (the first port listed is for the Z-Wave JS Web Interface, the second port is the Z-Wave JS WebSocket listener)</p>
+
+<blockquote>
+<p>May need to run docker with the <code>--init</code> parameter first. Then stop and restart without init.</p>
+</blockquote>
+
+<pre><code>$ sudo docker run -d --restart=always  -p 8091:8091 -p 3000:3000 --device=/dev/ttyUSB0 --name=&quot;zwave-js&quot; -e &quot;TZ=America/NewYork&quot; -v ${HOME}/zwavejs:/usr/src/app/store zwavejs/zwavejs2mqtt:latest
+</code></pre>
+
+<h4 id="2checkdockerstatus">(2) Check Docker Status</h4>
+
+<pre><code># docker ps
+CONTAINER ID   IMAGE                                 COMMAND                  CREATED          STATUS          PORTS                                                                                  NAMES
+d977c2674a80   homeassistant/home-assistant:stable   &quot;/init&quot;                  24 minutes ago   Up 24 minutes                                                                                          homeassistant
+99769272d748   zwavejs/zwavejs2mqtt:latest           &quot;docker-entrypoint.s…&quot;   42 minutes ago   Up 42 minutes   0.0.0.0:3000-&gt;3000/tcp, :::3000-&gt;3000/tcp, 0.0.0.0:8091-&gt;8091/tcp, :::8091-&gt;8091/tcp   zwave-js
+</code></pre>
+
+<h4 id="2movecontainerimagetossddata">(2) Move Container/Image to SSD (/data)</h4>
+
+<p>Put this file in /etc/docker/daemon.json:</p>
+
+<p>File: daemon.json</p>
+
+<pre><code>{ 
+   &quot;data-root&quot;: &quot;/data/docker&quot; 
+}
+</code></pre>
+
+<p>Stop docker</p>
+
+<pre><code>$ sudo service docker stop
+</code></pre>
+
+<p>Make dorectory, copy files into it, change the old name</p>
+
+<pre><code>$ mkdir /data/docker
+
+$ sudo rsync -aP /var/lib/docker/ /data/docker
+
+$ sudo mv /var/lib/docker /var/lib/docker.old
+</code></pre>
+
+<p>Ready to start on the new directory</p>
+
+<pre><code>$ sudo service docker start
+</code></pre>
+
+<blockquote>
+<p>test . test . test . test . test .</p>
+</blockquote>
+
+<p>Then:</p>
+
+<pre><code>$ sudo rm -rf /var/lib/docker.old
+</code></pre>
+
+<h4 id="2defaultroutewasgettingmessedupwithdocker">(2) Default Route was getting messed up with docker</h4>
+
+<p>So changed <code>NetworkInterfaceBlacklist</code> in <em>connman main.cf</em> file as follows:</p>
+
+<pre><code>[General]
+PreferredTechnologies=ethernet,wifi
+SingleConnectedTechnology=false
+AllowHostnameUpdates=false
+PersistentTetheringMode=true
+NetworkInterfaceBlacklist=SoftAp0,usb0,usb1,vmnet,vboxnet,virbr,ifb,veth-,vb-
+Used to be:
+NetworkInterfaceBlacklist=SoftAp0,usb0,usb1
+...
+Then restart connman:
+$ sudo systemctl restart connman
+</code></pre>
+
+<p>Reference: <a href="https://stackoverflow.com/questions/62176803/docker-is-overriding-my-default-route-configuration">https://stackoverflow.com/questions/62176803/docker-is-overriding-my-default-route-configuration</a></p>
+
+<h4 id="2restarting">(2) Restarting</h4>
+
+<pre><code>::::::::::::::
+homeassistant_restart.sh
+::::::::::::::
+#homeassistant_restart.sh 
+sudo docker restart homeassistant
+
+::::::::::::::
+homeassistant_shell.sh
+::::::::::::::
+docker exec -it homeassistant bash
+
+::::::::::::::
+docker_start.sh
+::::::::::::::
+#!/bin/bash
+TMP=$(mktemp)
+sudo systemctl start docker
+#
+./docker_status.sh
+#
+sudo docker ps -a | while read CONTAINER
+do
+ awk '$NF ~ /^zwave-js/ || $NF ~ /^homeassistant/' &gt;&gt; ${TMP}
+done  
+#
+while read LINE
+do
+ echo ${LINE} | awk '{print &quot;Container &quot; $1 &quot; is &quot; $NF}'
+ sudo docker container start $(echo ${LINE} | awk '{print $1}')
+done &lt;${TMP}
+#
+./docker_status.sh
+#
+rm ${TMP}
+
+::::::::::::::
+docker_status.sh
+::::::::::::::
+#!/bin/bash
+sudo docker ps
+
+::::::::::::::
+docker_stop.sh
+::::::::::::::
+#!/bin/bash
+#------------------------
+# File: docker_stop.sh
+#------------------------
+./docker_status.sh
+sudo docker container ls --quiet | while read CONTAINER
+do
+ echo &quot;Stopping container $CONTAINER&quot;
+ sudo docker container stop $CONTAINER
+done  
+sudo systemctl stop docker
+</code></pre>
+
+<h1 id="homeassistant-supervised">Home Assistant - Supervised</h1>
+
+<blockquote>
+<p>This is packaged as part of the BeagleBone HomeAssistant CD iso.</p>
+</blockquote>
+
+<pre><code>$ apt info homeassistant-supervised
+Package: homeassistant-supervised
+Version: 1.4.3
+Status: install ok installed
+Priority: optional
+Section: base
+Maintainer: Matheson Steplock &lt;https://mathesonsteplock.ca/&gt;
+Installed-Size: unknown
+Depends: curl, bash, docker-ce, dbus, network-manager, apparmor, jq, systemd, os-agent, systemd-journal-remote
+Homepage: https://www.home-assistant.io/
+Download-Size: unknown
+APT-Manual-Installed: yes
+APT-Sources: /var/lib/dpkg/status
+Description: Home Assistant Supervised
+ This installation method provides the full Home Assistant experience on a regular operating system.
+ This means, all components from the Home Assistant method are used, except for the Home Assistant Operating System.
+ This system will run the Home Assistant Supervisor. The Supervisor is not just an application, it is a full appliance that manages the whole system.
+ It will clean up, repair or reset settings to default if they no longer match expected values.
+</code></pre>
+
+<h2 id="configurationforotherzoozproducts">Configuration for other Zooz products</h2>
+
+<p>File: ${HOME}/hass/configuration.yaml</p>
+
+<pre><code># Sun
+homeassistant:
+  time_zone: America/New_York
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+shell_command:
+  sms_light_off:              /config/script.sh Outside light off
+  sms_light_on:               /config/script.sh Outside light on
+  sms_motion_on:              /config/script.sh Outside motion on
+  sms_garage_open:            /config/script.sh Garage door open
+  sms_garage_closed:          /config/script.sh Garage door closed
+  sms_basement_door_open:     /config/script.sh Basement door open
+  sms_basement_door_closed:   /config/script.sh Basement door closed
+  sms_basement_window_open:   /config/script.sh Basement window open
+  sms_basement_window_closed: /config/script.sh Basement window closed
+  sms_dining_window_open:     /config/script.sh Dining room window open
+  sms_dining_window_closed:   /config/script.sh Dining room window closed
+  sms_front_door_open:        /config/script.sh Front door open
+  sms_front_door_closed:      /config/script.sh Front door closed
+  sms_sliding_door_open:      /config/script.sh Sliding door open
+  sms_sliding_door_closed:    /config/script.sh Sliding door closed
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+
+# E-mail
+#notify:
+#  - name: &quot;NOTIFIER_NAME&quot;
+#    platform: smtp
+#    sender: &quot;YOUR_SENDER&quot;
+#    recipient: &quot;YOUR_RECIPIENT&quot;
+notify:
+  - name: &quot;my_email&quot;
+    platform: smtp
+    server: &quot;192.168.1.5&quot;
+    port: 25
+    timeout: 15
+    sender: &quot;me@example.com&quot;
+    encryption: starttls
+    username: &quot;me@example.com&quot;
+    recipient:
+      - &quot;me@example.com&quot;
+    sender_name: &quot;My Home Assistant&quot;
+  - name: &quot;my_page&quot;
+    platform: smtp
+    server: &quot;192.168.1.5&quot;
+    port: 25
+    timeout: 15
+    sender: &quot;me@example.com&quot;
+    encryption: starttls
+    username: &quot;me@example.com&quot;
+    recipient:
+      - &quot;5551212@phonecompany.net&quot;
+    sender_name: &quot;Home Assist&quot;
+
+#
+# Example configuration.yaml entry
+alert:
+  basement_door:
+    name: Basement door is open
+    done_message: Basement door is closed
+    entity_id: binary_sensor.basement_door_dwzwave25_access_control_window_door_is_open
+    state: &quot;on&quot;
+    repeat: 30
+    can_acknowledge: true
+    skip_first: false
+    notifiers:
+      - my_email
+  basement_window:
+    name: Basement window is open
+    done_message: Basement window is closed
+    entity_id: binary_sensor.basement_window_dwzwave25_access_control_window_door_is_open
+    state: &quot;on&quot;
+    repeat: 30
+    can_acknowledge: true
+    skip_first: false
+    notifiers:
+      - my_email
+#     - my_page
+  sliding_door:
+    name: Sliding door is open
+    done_message: Sliding door is closed
+    entity_id: binary_sensor.sliding_door_dwzwave25_access_control_window_door_is_open
+    state: &quot;on&quot;
+    repeat: 30
+    can_acknowledge: true
+    skip_first: false
+    notifiers:
+      - my_email
+#      - my_page
+  dining_window:
+    name: Dining window is open
+    done_message: Dining window is closed
+    entity_id: binary_sensor.dining_room_window_dwzwave25_access_control_window_door_is_open
+    state: &quot;on&quot;
+    repeat: 30
+    can_acknowledge: true
+    skip_first: false
+    notifiers:
+      - my_email
+#      - my_page
+  front_door:
+    name: Front Door is open
+    done_message: Front Door is closed
+    entity_id: binary_sensor.front_door_dwzwave25_access_control_window_door_is_open
+    state: &quot;on&quot;
+    repeat: 30
+    can_acknowledge: true
+    skip_first: false
+    notifiers:
+      - my_email
+#     - my_page
+  garage_door:
+    name: garage door is open
+    done_message: garage door is closed
+    entity_id: switch.garage_door_relay_zen16_2_2
+    state: &quot;off&quot;
+    repeat: 30
+    can_acknowledge: true
+    skip_first: false
+    notifiers:
+      - my_email
+#      - my_page
+
+# Switch Timer
+input_number:
+  light_timer_minutes:
+    name: &quot;Light Timer&quot;
+    min: 0
+    max: 30
+    step: 1
+input_boolean:
+  light_timer_enabled:
+    name: &quot;Light timer switch&quot;
+    initial: on
+    icon: mdi:timelapse
+</code></pre>
+
+<h3 id="configurationscriptfromconfiguration.yaml">Configuration script from configuration.yaml</h3>
+
+<p>Log file will be picked up by script ${HOME}/matrix/sendmatrix.sh.</p>
+
+<p>NOTE: &#8216;/config&#8217; in docker is actually ${HOME}/hass, see script comments inside <em>sendmatrix.sh</em></p>
+
+<pre><code>$ cat ${HOME}/hass/script.sh 
+#!/bin/bash
+echo &quot;${@} - $(date)&quot; &gt;&gt;  /config/sendsms.log
+</code></pre>
+
+<h3 id="sendmatrixscript">Sendmatrix script</h3>
+
+<p>File: ${HOME}/matrix/sendmatrix.sh</p>
+
+<pre><code class="text">#!/bin/bash
+#----------------------------------------------------
+# File: sendmatrix.sh
+#
+# Usage: sendmatrix.sh
+#
+# Purpose: Watch for new lines in a homeassistant (hass)
+#  file (${HOME}/hass/sendmatrix.log) and send an matrix 
+#  message with those new line(s)
+#
+# Dependencies: 
+#  - sudo apt-get install sendmatrix
+#  - sudo apt-get install inotifywait
+#  - retail : git clone https://github.com/mbucc/retail
+#  - NOTE: Docker configures / as /config for homeassistant
+#          and ${HOME}/hass is /
+#  - ${HOME}/hass/configuration.yaml
+#       ~
+#       shell_command:
+#         xmpp_light_off: /config/script.sh Outside light off
+#       ~
+#  - ${HOME}/hass/automations.yaml 
+#       ~
+#       - service: shell_command.xmpp_light_off
+#       ~
+#  - ${HOME}/hass/script.sh
+#       #!/bin/bash
+#       echo &quot;${@} - $(date)&quot; &gt;&gt;  /config/sendxmpp.log
+#
+# Date     Author     Description
+# ----     ------     -----------
+# Sep-2021 Don Cohoon Created
+#----------------------------------------------------
+HOME=${HOME}
+
+# configure hass interface
+DIR=${HOME}/wave
+OFFSET=${DIR}/sendmatrix.cnt
+RESULT=${DIR}/sendmatrix.txt
+MSGS=${DIR}/hass/sendsms.log
+LOG=${DIR}/sendmatrix.log
+
+#
+date &gt;&gt; ${LOG}
+# monitor mode, look for file ${MSGS} modification
+/usr/bin/inotifywait -m -e modify ${MSGS} 2&gt;&amp;1 | while read line
+do
+  echo &quot;$(date) - $line&quot;  &gt;&gt; ${LOG}
+  # grab any hass script.sh new lines since last time
+  /usr/local/bin/retail -T ${OFFSET} ${MSGS} &gt; ${RESULT}
+  if [ ! -s &quot;${RESULT}&quot; ]; then
+    rm ${RESULT}
+  else
+    # send text message to phone
+    /bin/cat ${RESULT} | /usr/local/bin/matrix-commander.py &gt;&gt;${LOG} 2&gt;&amp;1
+    # nextcloud talk integration 
+    MSG=$(/bin/cat ${RESULT})
+    ${HOME}/nextcloud/talk_mattermost.sh &quot;${MSG}&quot;
+    #
+    /bin/cat ${RESULT} &gt;&gt;${LOG} 2&gt;&amp;1
+    date &gt;&gt; ${LOG}
+  fi
+done
+</code></pre>
+
+<h3 id="automation">Automation</h3>
+
+<blockquote>
+<p>Most of this configuration is done through the web interface: https://localhost:8123</p>
+</blockquote>
+
+<p>File: ${HOME}/hass/automation.yaml</p>
+
+<pre><code>- id: 380e45ccb4934558ba07d3069830d3d2
+  alias: light timer
+  trigger:
+  - platform: state
+    entity_id: switch.light_switch_zen23
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: input_boolean.light_timer_enabled
+    state: 'on'
+  action:
+  - delay:
+      minutes: '{{ states(''input_number.light_timer_minutes'') | int }}'
+  - service: switch.turn_off
+    data: {}
+    target:
+      entity_id: switch.light_switch_zen23
+  - service: shell_command.sms_light_off
+  mode: single
+- id: '1625258268930'
+  alias: Motion Light On
+  description: Turn on outside light switch when motion is detected after sunset and
+    before sunrise
+  trigger:
+  - type: motion
+    platform: device
+    device_id: eeacc9737cf7b1b303418213aed42535
+    entity_id: binary_sensor.outside_motion_zse29_home_security_motion_detection
+    domain: binary_sensor
+  condition:
+  - type: is_illuminance
+    condition: device
+    device_id: eeacc9737cf7b1b303418213aed42535
+    entity_id: sensor.outside_motion_zse29_illuminance
+    domain: sensor
+    below: 150
+  action:
+  - type: turn_on
+    device_id: d2e00f0815ff683a320e28e41ee73ea5
+    entity_id: switch.light_switch_zen23
+    domain: switch
+  - service: shell_command.sms_motion_on
+  mode: single
+- id: '1628798611219'
+  alias: bedroom-alarm
+  description: Turn Bedroom Double Switch on at a certain time
+  trigger:
+  - platform: time
+    at: 06:00:00
+  condition: []
+  action:
+  - type: turn_on
+    device_id: 92a0858e5012690e2415f47ea4fb122c
+    entity_id: switch.double_plug_zen25_bedroom
+    domain: switch
+  mode: single
+- id: '1630351746501'
+  alias: Garage Door Open
+  description: Garage door open sms message
+  trigger:
+  - platform: device
+    type: turned_off
+    device_id: 074e290829b5399ed65b48c792f4f25b
+    entity_id: switch.garage_door_relay_zen16_2_2
+    domain: switch
+  condition: []
+  action:
+  - service: shell_command.sms_garage_open
+  mode: single
+- id: '1630351876006'
+  alias: Garage door closed
+  description: Garage door closed sms message
+  trigger:
+  - platform: device
+    type: turned_on
+    device_id: 074e290829b5399ed65b48c792f4f25b
+    entity_id: switch.garage_door_relay_zen16_2_2
+    domain: switch
+  condition: []
+  action:
+  - service: shell_command.sms_garage_closed
+  mode: single
+- id: '1631388354084'
+  alias: Basement Door Open
+  description: Basement Door Open sms message
+  trigger:
+  - type: opened
+    platform: device
+    device_id: f618398c8bdf0bce74b6c9a81b822da5
+    entity_id: binary_sensor.basement_door_dwzwave25_access_control_window_door_is_open
+    domain: binary_sensor
+  condition: []
+  action:
+  - service: shell_command.sms_basement_door_open
+  mode: single
+- id: '1631388422907'
+  alias: Basement Door Closed
+  description: Basement Door Closed sms message
+  trigger:
+  - type: not_opened
+    platform: device
+    device_id: f618398c8bdf0bce74b6c9a81b822da5
+    entity_id: binary_sensor.basement_door_dwzwave25_access_control_window_door_is_open
+    domain: binary_sensor
+  condition: []
+  action:
+  - service: shell_command.sms_basement_door_closed
+  mode: single
+- id: '1631389804064'
+  alias: Basement Window Open
+  description: Basement Window Open sms message
+  trigger:
+  - type: opened
+    platform: device
+    device_id: 563036dd16828af53955fa8eb0d4c4bf
+    entity_id: binary_sensor.basement_window_dwzwave25_access_control_window_door_is_open
+    domain: binary_sensor
+  condition: []
+  action:
+  - service: shell_command.sms_basement_window_open
+  mode: single
+- id: '1631389885679'
+  alias: Basement Window Closed
+  description: Basement Window Closed sms message
+  trigger:
+  - type: not_opened
+    platform: device
+    device_id: 563036dd16828af53955fa8eb0d4c4bf
+    entity_id: binary_sensor.basement_window_dwzwave25_access_control_window_door_is_open
+    domain: binary_sensor
+  condition: []
+  action:
+  - service: shell_command.sms_basement_window_closed
+  mode: single
+- id: '1631389952499'
+  alias: Dining Room Window Open
+  description: Dining Room Window Open sms message
+  trigger:
+  - type: opened
+    platform: device
+    device_id: 2b803cd86b266ee0d15b1b00c3160b57
+    entity_id: binary_sensor.dining_room_window_dwzwave25_access_control_window_door_is_open
+    domain: binary_sensor
+  condition: []
+  action:
+  - service: shell_command.sms_dining_window_open
+  mode: single
+- id: '1631390010729'
+  alias: Dining Room Window Closed
+  description: Dining Room Window Closed sms message
+  trigger:
+  - type: not_opened
+    platform: device
+    device_id: 2b803cd86b266ee0d15b1b00c3160b57
+    entity_id: binary_sensor.dining_room_window_dwzwave25_access_control_window_door_is_open
+    domain: binary_sensor
+  condition: []
+  action:
+  - service: shell_command.sms_dining_window_closed
+  mode: single
+- id: '1631390253290'
+  alias: Front Door Open
+  description: Front Door Open sms message
+  trigger:
+  - type: opened
+    platform: device
+    device_id: 8df9b7813be834e418cf5d35165114b1
+    entity_id: binary_sensor.front_door_dwzwave25_access_control_window_door_is_open
+    domain: binary_sensor
+  condition: []
+  action:
+  - service: shell_command.sms_front_door_open
+  mode: single
+- id: '1631390320024'
+  alias: Front Door Closed
+  description: Front Door Closed sms message
+  trigger:
+  - type: not_opened
+    platform: device
+    device_id: 8df9b7813be834e418cf5d35165114b1
+    entity_id: binary_sensor.front_door_dwzwave25_access_control_window_door_is_open
+    domain: binary_sensor
+  condition: []
+  action:
+  - service: shell_command.sms_front_door_closed
+  mode: single
+- id: '1631390388999'
+  alias: Sliding Door Open
+  description: Sliding Door Open sms message
+  trigger:
+  - type: opened
+    platform: device
+    device_id: 3c2bfde83e328e220ee10dbd3b2f3085
+    entity_id: binary_sensor.sliding_door_dwzwave25_access_control_window_door_is_open
+    domain: binary_sensor
+  condition: []
+  action:
+  - service: shell_command.sms_sliding_door_open
+  mode: single
+- id: '1631390452432'
+  alias: Sliding Door Closed
+  description: Sliding Door Closed sms  message
+  trigger:
+  - type: not_opened
+    platform: device
+    device_id: 3c2bfde83e328e220ee10dbd3b2f3085
+    entity_id: binary_sensor.sliding_door_dwzwave25_access_control_window_door_is_open
+    domain: binary_sensor
+  condition: []
+  action:
+  - service: shell_command.sms_sliding_door_closed
+  mode: single
+</code></pre>
+
+<h2 id="upgrade">Upgrade</h2>
+
+<h3 id="option:truenas">Option: TrueNAS</h3>
+
+<ul>
+<li>Homeassistant app can be updated using TrueNAS app screen, 3 dot menu in the home-assistant app.</li>
+<li>Z-Wave-JS-UI latest can re <a href="HomeAssistant#daemon-to-run-zwave-js-ui">downloaded</a>.</li>
+</ul>
+
+<h3 id="option:docker">Option: Docker</h3>
+
+<p>You can find the latest, stable, and development builds on docker hub here: <a href="https://hub.docker.com/u/homeassistant">https://hub.docker.com/u/homeassistant</a></p>
+
+<p>During the upgrade your devices will continue to work fine, but please note any automations or access to the application will not be available, so it’s recommended to do this during a time that you know no automations will be running.</p>
+
+<blockquote>
+<p>Validate your current version</p>
+</blockquote>
+
+<p>Navigate to the Developer Tools section of Home Assistant. Here you can validate the latest version you currently have deployed.</p>
+
+<p>File: docker_upgrade.sh</p>
+
+<pre><code>#!/bin/bash
+#####################################################################
+#
+# File: docker_upgrade.sh
+#
+# Usage: sudo ./docker_upgrade.sh
+#
+# Purpose: Keep HomeAssistant up to date
+#
+# Dependencies: homeassistant and zwave-js are installed via docker
+#  Z-Wave USB device may be different
+#  Time zone may be different
+#
+# Process:
+#   1. Stop the current container
+#   2. Delete it
+#   3. Pull the new container from the docker hub
+#   4. Run the container again
+#
+# The config directory is not in the container, so it remains untouched.
+#
+# NOTE: Do this every time a new version of HA is released.
+#
+# History:
+#
+#   Who    When    Why
+# -------- ------- --------------------------------------------------
+# Don Cohoon  Dec 2022  Created from many, many, notes and searches
+#                        wish I took better notes to give credit.
+#####################################################################
+HOME=$(pwd)
+#
+function homeassistant_upgrade() {
+ docker stop homeassistant
+ docker rm homeassistant
+ docker pull homeassistant/home-assistant
+ docker run -d \
+   --name homeassistant \
+   --restart=always \
+   -v /etc/localtime:/etc/localtime:ro \
+   -v ${HOME}/hass:/config \
+   --device /dev/ttyUSB0:/dev/ttyUSB0 \
+   -e &quot;DISABLE_JEMALLOC=true&quot; \
+   --network=host \
+   -p 3000 \
+   homeassistant/home-assistant:stable
+}
+#####################################################################
+function zwavejs_upgrade() {
+ docker stop zwave-js
+ docker rm zwave-js
+ docker pull zwavejs/zwavejs2mqtt
+ sudo docker run -d \
+  --restart=always  \
+  -p 8091:8091 \
+  -p 3000:3000 \
+  --device=/dev/ttyUSB0 \
+  --name=&quot;zwave-js&quot; \
+  -e &quot;TZ=America/NewYork&quot; \
+  -v ${HOME}/zwavejs:/usr/src/app/store zwavejs/zwavejs2mqtt:latest
+}
+#####################################################################
+ID=$(id -un)
+#
+if [ ${ID} != &quot;root&quot; ]; then
+  echo &quot;ERROR: Must be run as root&quot;
+  exit 1
+fi
+#
+# homeassistant upgrade
+#
+homeassistant_upgrade
+#
+# zwave-js upgrade
+#
+zwavejs_upgrade
+</code></pre>
+
+<blockquote>
+<p>Validate your new version number</p>
+</blockquote>
+
+<p>After a few minutes, navigate back to the Developers Tools page. Upon load, you should now be on the latest version of Home Assistant.</p>
+
+<blockquote>
+<p>More docker commands are in my <a href="/linux-in-house/docker.html">Docker</a> article.</p>
+</blockquote>
+
+<h2 id="lightsforwall-e">Lights for WALL-E</h2>
+
+<p>The relay module <a href="https://www.getzooz.com/zooz-zen16-multirelay/">ZEN16</a> is wired to a switch on the garage door. When it is open a red light is displayed on Wall-E, when the door is closed a green light is shown.</p>
+
+<figure>
+<img src="/linux-in-house/images/IMG_3813.jpg" alt="Wall-E" />
+<figcaption>Wall-E</figcaption>
+</figure>
+
+<p>A USB charger is used to supply 5 volts DC (BAT1) to the circuit. Circuit switch S1 is connected to the ZEN16 relay R2 connection. Q1 is a 2N2222 transistor. A closed circuit supplies voltage to LED2, open circuit supplies voltage to LED1.</p>
+
+<p>Here is the electrical diagram for that:</p>
+
+<figure>
+<img src="/linux-in-house/images/Lights_for_Wall-E.png" alt="Lights_for_Wall-E.png" />
+<figcaption>Lights_for_Wall-E.png</figcaption>
+</figure>
+
+<h2 id="circuit">Circuit</h2>
+
+<figure>
+<img src="/linux-in-house/images/opoohbbehgacecel.png" alt="opoohbbehgacecel.png" />
+<figcaption>opoohbbehgacecel.png</figcaption>
+</figure>
+
+<h3 id="zen16relay">ZEN16 Relay</h3>
+
+<p>ZEN16 will monitor its switch Sw2 below, if is closed, then turn on relay R2, closing the circuit switch S1 above. Home Assistant will detect the change in relay R2 and issue notifications using its automation.yaml definition &#8220;<em>alias: Garage Door Open</em>&#8221;.</p>
+
+<p>ZEN16 will respond to relay R1 on/off commands from Home Assistant. The automation.yaml definition is called &#8220;<em>alias: Bedroom Alarm</em>&#8221; and turns <strong>on</strong> relay R1 at 6:00am. A Home Assistant dashboard button is enabled to turn relay R1 <strong>off</strong>.</p>
+
+<p>Garage door connections:</p>
+
+<table>
+<colgroup>
+<col />
+<col />
+<col />
+</colgroup>
+
+<thead>
+<tr>
+	<th> <strong>Purpose</strong> </th>
+	<th> <strong>Connection</strong> </th>
+	<th> <strong>HomeAssistant Entity_ID</strong> </th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td> Garage Door Switch </td>
+	<td> Sw2 </td>
+	<td> N/A </td>
+</tr>
+<tr>
+	<td> Wall-E Light Circuit </td>
+	<td> R2 </td>
+	<td> switch.garage_door_relay_zen16_2_2 </td>
+</tr>
+<tr>
+	<td> Alarm Light Radio </td>
+	<td> R1 </td>
+	<td> switch.garage_door_relay_zen16_2 </td>
+</tr>
+</tbody>
+</table>
+
+<figure>
+<img src="/linux-in-house/images/IMG_4324.jpg" alt="ZEN16" />
+<figcaption>ZEN16</figcaption>
+</figure>
+
+<h3 id="alarmlightradio-diagram">Alarm Light Radio - Diagram</h3>
+
+<p>The Power-Tail-Switch is a 120v AC relay controlled by 5v DC. The ZEN16 acts as a switch to turn relay R1 on and off. This opens/closes the 5v DC voltage flow to enable/disable the 102v AC voltage through the PowerSwitchTail, that sends power to the power strip turning on/off the radio and light plugged into it.</p>
+
+<figure>
+<img src="/linux-in-house/images/AlarmClock-HomeAssistant.png" alt="AlarmClock-HomeAssistant.png" />
+<figcaption>AlarmClock-HomeAssistant.png</figcaption>
+</figure>
+
+<h2 id="z-wavedevices">Z-Wave Devices</h2>
+
+<table>
+<colgroup>
+<col />
+<col />
+<col />
+<col />
+<col />
+</colgroup>
+
+<thead>
+<tr>
+	<th> <strong>Manufacturer</strong> </th>
+	<th> <strong>Product</strong> </th>
+	<th> <strong>Product Code</strong> </th>
+	<th> <strong>Name</strong> </th>
+	<th> <strong>Location</strong> </th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td> Silicon Labs </td>
+	<td> 700 Series-based Controller </td>
+	<td> ZST10&#8211;700 </td>
+	<td> Controller ZST10&#8211;700 </td>
+	<td> Basement </td>
+</tr>
+<tr>
+	<td> Ecolink </td>
+	<td> Z-Wave Door/Window Sensor </td>
+	<td> DWZWAVE25 </td>
+	<td> Basement Door DWZWAVE25 </td>
+	<td> Basement </td>
+</tr>
+<tr>
+	<td> Zooz </td>
+	<td> 4-in-1 Sensor </td>
+	<td> ZSE40 </td>
+	<td> Basement Motion ZSE40 </td>
+	<td> Basement </td>
+</tr>
+<tr>
+	<td> Zooz </td>
+	<td> Outdoor Motion Sensor </td>
+	<td> ZSE29 </td>
+	<td> Outside Motion ZSE29 </td>
+	<td> Deck </td>
+</tr>
+<tr>
+	<td> Zooz </td>
+	<td> Multirelay </td>
+	<td> ZEN16 </td>
+	<td> Garage Door Relay ZEN16 </td>
+	<td> Basement </td>
+</tr>
+<tr>
+	<td> Zooz </td>
+	<td> Double Plug </td>
+	<td> ZEN25 </td>
+	<td> Double Plug ZEN25 </td>
+	<td> Basement </td>
+</tr>
+<tr>
+	<td> Zooz </td>
+	<td> Z-Wave Plus On/Off Toggle Switch v4 </td>
+	<td> ZEN23 </td>
+	<td> Light Switch ZEN23 </td>
+	<td> Basement </td>
+</tr>
+<tr>
+	<td> Ecolink </td>
+	<td> Z-Wave Door/Window Sensor </td>
+	<td> DWZWAVE25 </td>
+	<td> Basement Window DWZWAVE25 </td>
+	<td> Basement </td>
+</tr>
+<tr>
+	<td> Ecolink </td>
+	<td> Z-Wave Door/Window Sensor </td>
+	<td> DWZWAVE25 </td>
+	<td> Sliding Door DWZWAVE25 </td>
+	<td> Living Room </td>
+</tr>
+<tr>
+	<td> Ecolink </td>
+	<td> Z-Wave Door/Window Sensor </td>
+	<td> DWZWAVE25 </td>
+	<td> Dining Room Window DWZWAVE25 </td>
+	<td> Dining Room </td>
+</tr>
+<tr>
+	<td> Ecolink </td>
+	<td> Z-Wave Door/Window Sensor </td>
+	<td> DWZWAVE25 </td>
+	<td> Front Door DWZWAVE25 </td>
+	<td> Front Door </td>
+</tr>
+<tr>
+	<td> Zooz </td>
+	<td> Double Plug </td>
+	<td> ZEN25 </td>
+	<td> Double Plug ZEN25 Bedroom </td>
+	<td> Bedroom </td>
+</tr>
+<tr>
+	<td> Honeywell </td>
+	<td> T6 Pro Z-Wave Programmable Thermostat </td>
+	<td> TH6320ZW </td>
+	<td> Thermostat - T5 </td>
+	<td> Living Room </td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="purge">Purge</h2>
+
+<figure>
+<img src="/linux-in-house/images/HA-Purge.png" alt="HA-Purge.png" />
+<figcaption>HA-Purge.png</figcaption>
+</figure>
+
+<h2 id="continue">Continue</h2>
+
+<p>Now that you have set up Home Automation-Mail on your server, you will need Matrix for sending out alerts, so now is a good time to install the super fast and secure messaging system.</p>
+
+<p>Proceed in the order presented, some things are depending on prior setups.</p>
+
+<hr>
+
+<h4 id="madeforhumansbyahuman">Made for Humans, by a Human</h4>
+
+<h4 id="links">Links</h4>
+
+<ul>
+<li><a href="https://lwn.net/">Linux Weekly News</a></li>
+<li><a href="https://fullcirclemagazine.org/">Full Circle Magazine</a></li>
+<li><a href="https://www.linuxjournal.com/">Linux Journal</a></li>
+<li><a href="https://www.linux-magazine.com/">Linux Magazine</a></li>
+<li><a href="https://www.thefarside.com/">The Far Side</a></li>
+</ul>
+
+<h4 id="social">Social</h4>
+
+<ul>
+<li><a href="https://fosstodon.org/@Cohoon">Feedback</a></li>
+<li><a href="/linux-in-house/feed-Linux.rss">Linux RSS Feed</a></li>
+<li><a href="/linux-in-house/feed-Writing.rss">Writing RSS Feed</a></li>
+<li><a href="https://linux-in-the-house.pages.dev/">Book</a></li>
+</ul>
+
+<h5 id="builtwithmultimarkdownhttps:github.comfletchermultimarkdown-6andw3schoolshttps:www.w3schools.comw3cssw3css_pro.asp">Built with <a href="https://github.com/fletcher/MultiMarkdown-6">MultiMarkdown</a> and <a href="https://www.w3schools.com/w3css/w3css_pro.asp">W3 Schools</a></h5>
+
+<h5 id="license:ahrefhttp:creativecommons.orglicensesby-nc-sa4.0cc-by-nc-sa4.0a">License: <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0</a></h5>
+
+</body>
+</html>
+
