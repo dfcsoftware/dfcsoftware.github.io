@@ -4610,3 +4610,2691 @@
 </channel>
 
 </rss>
+ <item>
+  <title>Welcome</title>
+  <link>/linux-in-house/linux/welcome.html</link>
+  <guid>/linux-in-house/linux/welcome.html</guid>
+  <pubDate>Mon, 01 Jan 2525 10:20:00 -0500</pubDate>
+  <description>the show that never ends, Linux in House..</description>
+ </item>
+ <item>
+  <title>Setup-server</title>
+  <link>/linux-in-house/linux/setup-server.html</link>
+  <guid>/linux-in-house/linux/setup-server.html</guid>
+  <pubDate>Mon, 01 Jan 2525 10:00:00 -0500</pubDate>
+  <description>I use this as a guide to enable proper monitoring and maintenance of any new server on the network.</description>
+ </item>
+ <item>
+  <title>Git</title>
+  <link>/linux-in-house/linux/git.html</link>
+  <guid>/linux-in-house/linux/git.html</guid>
+  <pubDate>Sun, 01 Oct 2023 10:20:00 -0400</pubDate>
+  <description>GIT is like a generic information tracker, letting you go back in time to see what changed.</description>
+ </item>
+ <item>
+  <title>Watch</title>
+  <link>/linux-in-house/linux/Watch.html</link>
+  <guid>/linux-in-house/linux/Watch.html</guid>
+  <pubDate>Tue, 01 Aug 2023 10:20:00 -0400</pubDate>
+  <description>Finally got my alerts working, so when a host goes haywire I get an alert on the Phone and Cloud, with E-Mail as backup.</description>
+ </item>
+ <item>
+  <title>VirtualMachines</title>
+  <link>/linux-in-house/linux/VirtualMachines.html</link>
+  <guid>/linux-in-house/linux/VirtualMachines.html</guid>
+  <pubDate>Thu, 01 Jun 2023 10:20:00 -0400</pubDate>
+  <description>A Virtual Machine (VM) is a way to create a whole operating system, with many applications, that is able to be moved from one physical machine to another physical machine. This has advantages in case of hardware, location or network problems to quickly and correctly restore service.</description>
+ </item>
+ <item>
+  <title>NetworkManagement</title>
+  <link>/linux-in-house/linux/NetworkManagement.html</link>
+  <guid>/linux-in-house/linux/NetworkManagement.html</guid>
+  <pubDate>Sat, 01 Apr 2023 10:44:00 -0400</pubDate>
+  <description>The command line offers a wealth of network management commands. Here are some of my favorites.</description>
+ </item>
+ <item>
+  <title>EncryptingFiles</title>
+  <link>/linux-in-house/linux/EncryptingFiles.html</link>
+  <guid>/linux-in-house/linux/EncryptingFiles.html</guid>
+  <pubDate>Wed, 01 Mar 2023 10:42:00 -0500</pubDate>
+  <description>You should protect your carefully built system and it's files from abuse, tampering, or just plain spying. It's easy to do, what are you waiting for? Encrypt your data directory now.</description>
+ </item>
+ <item>
+  <title>VirtualIP</title>
+  <link>/linux-in-house/linux/VirtualIP.html</link>
+  <guid>/linux-in-house/linux/VirtualIP.html</guid>
+  <pubDate>Wed, 01 Feb 2023 10:20:00 -0500</pubDate>
+  <description>Virtual IP Interface behaves like a normal interface. All traffic routed to it will go through the master interface (for example, eth0).</description>
+ </item>
+ <item>
+  <title>Docker</title>
+  <link>/linux-in-house/linux/Docker.html</link>
+  <guid>/linux-in-house/linux/Docker.html</guid>
+  <pubDate>Mon, 30 Jan 2023 10:40:00 -0500</pubDate>
+  <description>Docker is a way to manage containers, which are like namespaces or jails. Here are some useful common commands to check out the status of these containers.</description>
+ </item>
+ <item>
+  <title>Ncmpcpp</title>
+  <link>/linux-in-house/linux/ncmpcpp.html</link>
+  <guid>/linux-in-house/linux/ncmpcpp.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:36:00 -0500</pubDate>
+  <description>Simply run this on your host running Music Player Daemon (MPD) over your ssh session</description>
+ </item>
+ <item>
+  <title>Media_Managment</title>
+  <link>/linux-in-house/linux/Media_Managment.html</link>
+  <guid>/linux-in-house/linux/Media_Managment.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:34:00 -0500</pubDate>
+  <description>This is where I manage Music and Television files.</description>
+ </item>
+ <item>
+  <title>BeagleBone</title>
+  <link>/linux-in-house/linux/BeagleBone.html</link>
+  <guid>/linux-in-house/linux/BeagleBone.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:32:00 -0500</pubDate>
+  <description>The BeagleBone (BB) line supports the Linux kernel and GPIO hardware connections to devices via device trees. It is similar to the Rasberry-PI line, only BB is open source hardware.</description>
+ </item>
+ <item>
+  <title>Miniflux</title>
+  <link>/linux-in-house/linux/Miniflux.html</link>
+  <guid>/linux-in-house/linux/Miniflux.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:30:00 -0500</pubDate>
+  <description>Miniflux is an RSS (Really Simple Syndication) server that will fetch and display RSS feeds from other websites. Also known as a _news reader_.</description>
+ </item>
+ <item>
+  <title>Matrix</title>
+  <link>/linux-in-house/linux/Matrix.html</link>
+  <guid>/linux-in-house/linux/Matrix.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:28:00 -0500</pubDate>
+  <description>Matrix is a messaging system you can on your server. It allows your to send messages to a phone/watch from command line on the server. It is useful with HomeAssistant for monitoring the house.</description>
+ </item>
+ <item>
+  <title>Certificate</title>
+  <link>/linux-in-house/linux/Certificate.html</link>
+  <guid>/linux-in-house/linux/Certificate.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:28:00 -0500</pubDate>
+  <description>Web certificates encrypt different messages over the public internet so nobody can see what these messages contain.</description>
+ </item>
+ <item>
+  <title>HomeAssistant</title>
+  <link>/linux-in-house/linux/HomeAssistant.html</link>
+  <guid>/linux-in-house/linux/HomeAssistant.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:26:00 -0500</pubDate>
+  <description>This is a web based interface for automating things around the home. It can monitor doors, windows, motion detection and turn electrical things on and off.</description>
+ </item>
+ <item>
+  <title>DNS</title>
+  <link>/linux-in-house/linux/DNS.html</link>
+  <guid>/linux-in-house/linux/DNS.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:24:00 -0500</pubDate>
+  <description>A Domain Name Service (DNS) allows your E-Mail and Web Server to use a name instead of an IP Address, so other people can find you by name. Some Internet Service Providers (ISP) will change your IP address every few months in a residential environment.</description>
+ </item>
+ <item>
+  <title>Cloud</title>
+  <link>/linux-in-house/linux/Cloud.html</link>
+  <guid>/linux-in-house/linux/Cloud.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:24:00 -0500</pubDate>
+  <description>A cloud used to be floating in the sky, then it was a bubbly thing on a network diagram where weird things happen. Now a cloud just means &quot;Somebody else's computer.&quot;. Of course you get to it over a network and can share things, like files (pictures, music, documents), contacts, calendars and chat, among other things.</description>
+ </item>
+ <item>
+  <title>PostgreSql_Move</title>
+  <link>/linux-in-house/linux/PostgreSql_Move.html</link>
+  <guid>/linux-in-house/linux/PostgreSql_Move.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:22:00 -0500</pubDate>
+  <description>Mainly used this on SBC (BeagleBone) computer to move a database from SD card (/var/lib...) to SSD disk (/data/lib...). A database will burn up an SD card quickly 😟</description>
+ </item>
+ <item>
+  <title>PostgreSql_Upgrade</title>
+  <link>/linux-in-house/linux/PostgreSql_Upgrade.html</link>
+  <guid>/linux-in-house/linux/PostgreSql_Upgrade.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:20:00 -0500</pubDate>
+  <description>Oh my, installing Ubuntu 22.04 installed PostgreSQL 14... wonder what version I am using...</description>
+ </item>
+ <item>
+  <title>Postgresql</title>
+  <link>/linux-in-house/linux/Postgresql.html</link>
+  <guid>/linux-in-house/linux/Postgresql.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:16:00 -0500</pubDate>
+  <description>Postgresql relational SQL database for systems. This is a great database with high reliability, performance and extendable.</description>
+ </item>
+ <item>
+  <title>E-Mail_Relay</title>
+  <link>/linux-in-house/linux/E-Mail_Relay.html</link>
+  <guid>/linux-in-house/linux/E-Mail_Relay.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:16:00 -0500</pubDate>
+  <description>The following diagrams are what this document will accomplish. The challenge is to obtain and keep a good reputation that other E-Mail handlers around the world will accept. Otherwise your messages will be dumped in the trash can (SPAM) or sent back to you (bounced).</description>
+ </item>
+ <item>
+  <title>E-Mail</title>
+  <link>/linux-in-house/linux/E-Mail.html</link>
+  <guid>/linux-in-house/linux/E-Mail.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:14:00 -0500</pubDate>
+  <description>Electronic Mail (E-Mail) is a way to type letters onto a computer and send them to other people. These other people's computers will then use E-Mail to read your letters. It is an electronic version of the Post Office.</description>
+ </item>
+ <item>
+  <title>Mirror_Disks</title>
+  <link>/linux-in-house/linux/Mirror_Disks.html</link>
+  <guid>/linux-in-house/linux/Mirror_Disks.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:12:00 -0500</pubDate>
+  <description>Mirroring disks on Linux is simple and prudent to ensure your data survives hardware, software and human failures. All data from one disk is duplicated on another disk and if any **one** disk fails, you will never know it. So it is important after setting up to monitor the disk array.</description>
+ </item>
+ <item>
+  <title>NAS</title>
+  <link>/linux-in-house/linux/NAS.html</link>
+  <guid>/linux-in-house/linux/NAS.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:10:00 -0500</pubDate>
+  <description>The NAS provides a safe place to store important data. Set this up before running E-Mail or a cloud service because it is the best place to put important files. If an E-Mail server crashes you still have all your E-Mail files on the NFS (see below) attached NAS server. That's what it's for.</description>
+ </item>
+ <item>
+  <title>Intro</title>
+  <link>/linux-in-house/linux/intro.html</link>
+  <guid>/linux-in-house/linux/intro.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:02:00 -0500</pubDate>
+  <description>The amazing things you can do with computer software in your home, ya GNU?</description>
+ </item>
+ <item>
+  <title>My-second-review</title>
+  <link>/linux-in-house/linux/my-second-review.html</link>
+  <guid>/linux-in-house/linux/my-second-review.html</guid>
+  <pubDate>Fri, 03 Dec 2010 10:20:00 -0500</pubDate>
+  <description>Following is a review of my favorite mechanical mouse.</description>
+ </item>
+</channel>
+
+</rss>
+ <item>
+  <title>Welcome</title>
+  <link>/linux-in-house/linux/welcome.html</link>
+  <guid>/linux-in-house/linux/welcome.html</guid>
+  <pubDate>Mon, 01 Jan 2525 10:20:00 -0500</pubDate>
+  <description>the show that never ends, Linux in House..</description>
+ </item>
+ <item>
+  <title>Setup-server</title>
+  <link>/linux-in-house/linux/setup-server.html</link>
+  <guid>/linux-in-house/linux/setup-server.html</guid>
+  <pubDate>Mon, 01 Jan 2525 10:00:00 -0500</pubDate>
+  <description>I use this as a guide to enable proper monitoring and maintenance of any new server on the network.</description>
+ </item>
+ <item>
+  <title>Git</title>
+  <link>/linux-in-house/linux/git.html</link>
+  <guid>/linux-in-house/linux/git.html</guid>
+  <pubDate>Sun, 01 Oct 2023 10:20:00 -0400</pubDate>
+  <description>GIT is like a generic information tracker, letting you go back in time to see what changed.</description>
+ </item>
+ <item>
+  <title>Watch</title>
+  <link>/linux-in-house/linux/Watch.html</link>
+  <guid>/linux-in-house/linux/Watch.html</guid>
+  <pubDate>Tue, 01 Aug 2023 10:20:00 -0400</pubDate>
+  <description>Finally got my alerts working, so when a host goes haywire I get an alert on the Phone and Cloud, with E-Mail as backup.</description>
+ </item>
+ <item>
+  <title>VirtualMachines</title>
+  <link>/linux-in-house/linux/VirtualMachines.html</link>
+  <guid>/linux-in-house/linux/VirtualMachines.html</guid>
+  <pubDate>Thu, 01 Jun 2023 10:20:00 -0400</pubDate>
+  <description>A Virtual Machine (VM) is a way to create a whole operating system, with many applications, that is able to be moved from one physical machine to another physical machine. This has advantages in case of hardware, location or network problems to quickly and correctly restore service.</description>
+ </item>
+ <item>
+  <title>NetworkManagement</title>
+  <link>/linux-in-house/linux/NetworkManagement.html</link>
+  <guid>/linux-in-house/linux/NetworkManagement.html</guid>
+  <pubDate>Sat, 01 Apr 2023 10:44:00 -0400</pubDate>
+  <description>The command line offers a wealth of network management commands. Here are some of my favorites.</description>
+ </item>
+ <item>
+  <title>EncryptingFiles</title>
+  <link>/linux-in-house/linux/EncryptingFiles.html</link>
+  <guid>/linux-in-house/linux/EncryptingFiles.html</guid>
+  <pubDate>Wed, 01 Mar 2023 10:42:00 -0500</pubDate>
+  <description>You should protect your carefully built system and it's files from abuse, tampering, or just plain spying. It's easy to do, what are you waiting for? Encrypt your data directory now.</description>
+ </item>
+ <item>
+  <title>VirtualIP</title>
+  <link>/linux-in-house/linux/VirtualIP.html</link>
+  <guid>/linux-in-house/linux/VirtualIP.html</guid>
+  <pubDate>Wed, 01 Feb 2023 10:20:00 -0500</pubDate>
+  <description>Virtual IP Interface behaves like a normal interface. All traffic routed to it will go through the master interface (for example, eth0).</description>
+ </item>
+ <item>
+  <title>Docker</title>
+  <link>/linux-in-house/linux/Docker.html</link>
+  <guid>/linux-in-house/linux/Docker.html</guid>
+  <pubDate>Mon, 30 Jan 2023 10:40:00 -0500</pubDate>
+  <description>Docker is a way to manage containers, which are like namespaces or jails. Here are some useful common commands to check out the status of these containers.</description>
+ </item>
+ <item>
+  <title>Ncmpcpp</title>
+  <link>/linux-in-house/linux/ncmpcpp.html</link>
+  <guid>/linux-in-house/linux/ncmpcpp.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:36:00 -0500</pubDate>
+  <description>Simply run this on your host running Music Player Daemon (MPD) over your ssh session</description>
+ </item>
+ <item>
+  <title>Media_Managment</title>
+  <link>/linux-in-house/linux/Media_Managment.html</link>
+  <guid>/linux-in-house/linux/Media_Managment.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:34:00 -0500</pubDate>
+  <description>This is where I manage Music and Television files.</description>
+ </item>
+ <item>
+  <title>BeagleBone</title>
+  <link>/linux-in-house/linux/BeagleBone.html</link>
+  <guid>/linux-in-house/linux/BeagleBone.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:32:00 -0500</pubDate>
+  <description>The BeagleBone (BB) line supports the Linux kernel and GPIO hardware connections to devices via device trees. It is similar to the Rasberry-PI line, only BB is open source hardware.</description>
+ </item>
+ <item>
+  <title>Miniflux</title>
+  <link>/linux-in-house/linux/Miniflux.html</link>
+  <guid>/linux-in-house/linux/Miniflux.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:30:00 -0500</pubDate>
+  <description>Miniflux is an RSS (Really Simple Syndication) server that will fetch and display RSS feeds from other websites. Also known as a _news reader_.</description>
+ </item>
+ <item>
+  <title>Matrix</title>
+  <link>/linux-in-house/linux/Matrix.html</link>
+  <guid>/linux-in-house/linux/Matrix.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:28:00 -0500</pubDate>
+  <description>Matrix is a messaging system you can on your server. It allows your to send messages to a phone/watch from command line on the server. It is useful with HomeAssistant for monitoring the house.</description>
+ </item>
+ <item>
+  <title>Certificate</title>
+  <link>/linux-in-house/linux/Certificate.html</link>
+  <guid>/linux-in-house/linux/Certificate.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:28:00 -0500</pubDate>
+  <description>Web certificates encrypt different messages over the public internet so nobody can see what these messages contain.</description>
+ </item>
+ <item>
+  <title>HomeAssistant</title>
+  <link>/linux-in-house/linux/HomeAssistant.html</link>
+  <guid>/linux-in-house/linux/HomeAssistant.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:26:00 -0500</pubDate>
+  <description>This is a web based interface for automating things around the home. It can monitor doors, windows, motion detection and turn electrical things on and off.</description>
+ </item>
+ <item>
+  <title>DNS</title>
+  <link>/linux-in-house/linux/DNS.html</link>
+  <guid>/linux-in-house/linux/DNS.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:24:00 -0500</pubDate>
+  <description>A Domain Name Service (DNS) allows your E-Mail and Web Server to use a name instead of an IP Address, so other people can find you by name. Some Internet Service Providers (ISP) will change your IP address every few months in a residential environment.</description>
+ </item>
+ <item>
+  <title>Cloud</title>
+  <link>/linux-in-house/linux/Cloud.html</link>
+  <guid>/linux-in-house/linux/Cloud.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:24:00 -0500</pubDate>
+  <description>A cloud used to be floating in the sky, then it was a bubbly thing on a network diagram where weird things happen. Now a cloud just means &quot;Somebody else's computer.&quot;. Of course you get to it over a network and can share things, like files (pictures, music, documents), contacts, calendars and chat, among other things.</description>
+ </item>
+ <item>
+  <title>PostgreSql_Move</title>
+  <link>/linux-in-house/linux/PostgreSql_Move.html</link>
+  <guid>/linux-in-house/linux/PostgreSql_Move.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:22:00 -0500</pubDate>
+  <description>Mainly used this on SBC (BeagleBone) computer to move a database from SD card (/var/lib...) to SSD disk (/data/lib...). A database will burn up an SD card quickly 😟</description>
+ </item>
+ <item>
+  <title>PostgreSql_Upgrade</title>
+  <link>/linux-in-house/linux/PostgreSql_Upgrade.html</link>
+  <guid>/linux-in-house/linux/PostgreSql_Upgrade.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:20:00 -0500</pubDate>
+  <description>Oh my, installing Ubuntu 22.04 installed PostgreSQL 14... wonder what version I am using...</description>
+ </item>
+ <item>
+  <title>Postgresql</title>
+  <link>/linux-in-house/linux/Postgresql.html</link>
+  <guid>/linux-in-house/linux/Postgresql.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:16:00 -0500</pubDate>
+  <description>Postgresql relational SQL database for systems. This is a great database with high reliability, performance and extendable.</description>
+ </item>
+ <item>
+  <title>E-Mail_Relay</title>
+  <link>/linux-in-house/linux/E-Mail_Relay.html</link>
+  <guid>/linux-in-house/linux/E-Mail_Relay.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:16:00 -0500</pubDate>
+  <description>The following diagrams are what this document will accomplish. The challenge is to obtain and keep a good reputation that other E-Mail handlers around the world will accept. Otherwise your messages will be dumped in the trash can (SPAM) or sent back to you (bounced).</description>
+ </item>
+ <item>
+  <title>E-Mail</title>
+  <link>/linux-in-house/linux/E-Mail.html</link>
+  <guid>/linux-in-house/linux/E-Mail.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:14:00 -0500</pubDate>
+  <description>Electronic Mail (E-Mail) is a way to type letters onto a computer and send them to other people. These other people's computers will then use E-Mail to read your letters. It is an electronic version of the Post Office.</description>
+ </item>
+ <item>
+  <title>Mirror_Disks</title>
+  <link>/linux-in-house/linux/Mirror_Disks.html</link>
+  <guid>/linux-in-house/linux/Mirror_Disks.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:12:00 -0500</pubDate>
+  <description>Mirroring disks on Linux is simple and prudent to ensure your data survives hardware, software and human failures. All data from one disk is duplicated on another disk and if any **one** disk fails, you will never know it. So it is important after setting up to monitor the disk array.</description>
+ </item>
+ <item>
+  <title>NAS</title>
+  <link>/linux-in-house/linux/NAS.html</link>
+  <guid>/linux-in-house/linux/NAS.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:10:00 -0500</pubDate>
+  <description>The NAS provides a safe place to store important data. Set this up before running E-Mail or a cloud service because it is the best place to put important files. If an E-Mail server crashes you still have all your E-Mail files on the NFS (see below) attached NAS server. That's what it's for.</description>
+ </item>
+ <item>
+  <title>Intro</title>
+  <link>/linux-in-house/linux/intro.html</link>
+  <guid>/linux-in-house/linux/intro.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:02:00 -0500</pubDate>
+  <description>The amazing things you can do with computer software in your home, ya GNU?</description>
+ </item>
+ <item>
+  <title>My-second-review</title>
+  <link>/linux-in-house/linux/my-second-review.html</link>
+  <guid>/linux-in-house/linux/my-second-review.html</guid>
+  <pubDate>Fri, 03 Dec 2010 10:20:00 -0500</pubDate>
+  <description>Following is a review of my favorite mechanical mouse.</description>
+ </item>
+</channel>
+
+</rss>
+ <item>
+  <title>Welcome</title>
+  <link>/linux-in-house/linux/welcome.html</link>
+  <guid>/linux-in-house/linux/welcome.html</guid>
+  <pubDate>Mon, 01 Jan 2525 10:20:00 -0500</pubDate>
+  <description>the show that never ends, Linux in House..</description>
+ </item>
+ <item>
+  <title>Setup-server</title>
+  <link>/linux-in-house/linux/setup-server.html</link>
+  <guid>/linux-in-house/linux/setup-server.html</guid>
+  <pubDate>Mon, 01 Jan 2525 10:00:00 -0500</pubDate>
+  <description>I use this as a guide to enable proper monitoring and maintenance of any new server on the network.</description>
+ </item>
+ <item>
+  <title>Git</title>
+  <link>/linux-in-house/linux/git.html</link>
+  <guid>/linux-in-house/linux/git.html</guid>
+  <pubDate>Sun, 01 Oct 2023 10:20:00 -0400</pubDate>
+  <description>GIT is like a generic information tracker, letting you go back in time to see what changed.</description>
+ </item>
+ <item>
+  <title>Watch</title>
+  <link>/linux-in-house/linux/Watch.html</link>
+  <guid>/linux-in-house/linux/Watch.html</guid>
+  <pubDate>Tue, 01 Aug 2023 10:20:00 -0400</pubDate>
+  <description>Finally got my alerts working, so when a host goes haywire I get an alert on the Phone and Cloud, with E-Mail as backup.</description>
+ </item>
+ <item>
+  <title>VirtualMachines</title>
+  <link>/linux-in-house/linux/VirtualMachines.html</link>
+  <guid>/linux-in-house/linux/VirtualMachines.html</guid>
+  <pubDate>Thu, 01 Jun 2023 10:20:00 -0400</pubDate>
+  <description>A Virtual Machine (VM) is a way to create a whole operating system, with many applications, that is able to be moved from one physical machine to another physical machine. This has advantages in case of hardware, location or network problems to quickly and correctly restore service.</description>
+ </item>
+ <item>
+  <title>NetworkManagement</title>
+  <link>/linux-in-house/linux/NetworkManagement.html</link>
+  <guid>/linux-in-house/linux/NetworkManagement.html</guid>
+  <pubDate>Sat, 01 Apr 2023 10:44:00 -0400</pubDate>
+  <description>The command line offers a wealth of network management commands. Here are some of my favorites.</description>
+ </item>
+ <item>
+  <title>EncryptingFiles</title>
+  <link>/linux-in-house/linux/EncryptingFiles.html</link>
+  <guid>/linux-in-house/linux/EncryptingFiles.html</guid>
+  <pubDate>Wed, 01 Mar 2023 10:42:00 -0500</pubDate>
+  <description>You should protect your carefully built system and it's files from abuse, tampering, or just plain spying. It's easy to do, what are you waiting for? Encrypt your data directory now.</description>
+ </item>
+ <item>
+  <title>VirtualIP</title>
+  <link>/linux-in-house/linux/VirtualIP.html</link>
+  <guid>/linux-in-house/linux/VirtualIP.html</guid>
+  <pubDate>Wed, 01 Feb 2023 10:20:00 -0500</pubDate>
+  <description>Virtual IP Interface behaves like a normal interface. All traffic routed to it will go through the master interface (for example, eth0).</description>
+ </item>
+ <item>
+  <title>Docker</title>
+  <link>/linux-in-house/linux/Docker.html</link>
+  <guid>/linux-in-house/linux/Docker.html</guid>
+  <pubDate>Mon, 30 Jan 2023 10:40:00 -0500</pubDate>
+  <description>Docker is a way to manage containers, which are like namespaces or jails. Here are some useful common commands to check out the status of these containers.</description>
+ </item>
+ <item>
+  <title>Ncmpcpp</title>
+  <link>/linux-in-house/linux/ncmpcpp.html</link>
+  <guid>/linux-in-house/linux/ncmpcpp.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:36:00 -0500</pubDate>
+  <description>Simply run this on your host running Music Player Daemon (MPD) over your ssh session</description>
+ </item>
+ <item>
+  <title>Media_Managment</title>
+  <link>/linux-in-house/linux/Media_Managment.html</link>
+  <guid>/linux-in-house/linux/Media_Managment.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:34:00 -0500</pubDate>
+  <description>This is where I manage Music and Television files.</description>
+ </item>
+ <item>
+  <title>BeagleBone</title>
+  <link>/linux-in-house/linux/BeagleBone.html</link>
+  <guid>/linux-in-house/linux/BeagleBone.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:32:00 -0500</pubDate>
+  <description>The BeagleBone (BB) line supports the Linux kernel and GPIO hardware connections to devices via device trees. It is similar to the Rasberry-PI line, only BB is open source hardware.</description>
+ </item>
+ <item>
+  <title>Miniflux</title>
+  <link>/linux-in-house/linux/Miniflux.html</link>
+  <guid>/linux-in-house/linux/Miniflux.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:30:00 -0500</pubDate>
+  <description>Miniflux is an RSS (Really Simple Syndication) server that will fetch and display RSS feeds from other websites. Also known as a _news reader_.</description>
+ </item>
+ <item>
+  <title>Matrix</title>
+  <link>/linux-in-house/linux/Matrix.html</link>
+  <guid>/linux-in-house/linux/Matrix.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:28:00 -0500</pubDate>
+  <description>Matrix is a messaging system you can on your server. It allows your to send messages to a phone/watch from command line on the server. It is useful with HomeAssistant for monitoring the house.</description>
+ </item>
+ <item>
+  <title>Certificate</title>
+  <link>/linux-in-house/linux/Certificate.html</link>
+  <guid>/linux-in-house/linux/Certificate.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:28:00 -0500</pubDate>
+  <description>Web certificates encrypt different messages over the public internet so nobody can see what these messages contain.</description>
+ </item>
+ <item>
+  <title>HomeAssistant</title>
+  <link>/linux-in-house/linux/HomeAssistant.html</link>
+  <guid>/linux-in-house/linux/HomeAssistant.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:26:00 -0500</pubDate>
+  <description>This is a web based interface for automating things around the home. It can monitor doors, windows, motion detection and turn electrical things on and off.</description>
+ </item>
+ <item>
+  <title>DNS</title>
+  <link>/linux-in-house/linux/DNS.html</link>
+  <guid>/linux-in-house/linux/DNS.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:24:00 -0500</pubDate>
+  <description>A Domain Name Service (DNS) allows your E-Mail and Web Server to use a name instead of an IP Address, so other people can find you by name. Some Internet Service Providers (ISP) will change your IP address every few months in a residential environment.</description>
+ </item>
+ <item>
+  <title>Cloud</title>
+  <link>/linux-in-house/linux/Cloud.html</link>
+  <guid>/linux-in-house/linux/Cloud.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:24:00 -0500</pubDate>
+  <description>A cloud used to be floating in the sky, then it was a bubbly thing on a network diagram where weird things happen. Now a cloud just means &quot;Somebody else's computer.&quot;. Of course you get to it over a network and can share things, like files (pictures, music, documents), contacts, calendars and chat, among other things.</description>
+ </item>
+ <item>
+  <title>PostgreSql_Move</title>
+  <link>/linux-in-house/linux/PostgreSql_Move.html</link>
+  <guid>/linux-in-house/linux/PostgreSql_Move.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:22:00 -0500</pubDate>
+  <description>Mainly used this on SBC (BeagleBone) computer to move a database from SD card (/var/lib...) to SSD disk (/data/lib...). A database will burn up an SD card quickly 😟</description>
+ </item>
+ <item>
+  <title>PostgreSql_Upgrade</title>
+  <link>/linux-in-house/linux/PostgreSql_Upgrade.html</link>
+  <guid>/linux-in-house/linux/PostgreSql_Upgrade.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:20:00 -0500</pubDate>
+  <description>Oh my, installing Ubuntu 22.04 installed PostgreSQL 14... wonder what version I am using...</description>
+ </item>
+ <item>
+  <title>Postgresql</title>
+  <link>/linux-in-house/linux/Postgresql.html</link>
+  <guid>/linux-in-house/linux/Postgresql.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:16:00 -0500</pubDate>
+  <description>Postgresql relational SQL database for systems. This is a great database with high reliability, performance and extendable.</description>
+ </item>
+ <item>
+  <title>E-Mail_Relay</title>
+  <link>/linux-in-house/linux/E-Mail_Relay.html</link>
+  <guid>/linux-in-house/linux/E-Mail_Relay.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:16:00 -0500</pubDate>
+  <description>The following diagrams are what this document will accomplish. The challenge is to obtain and keep a good reputation that other E-Mail handlers around the world will accept. Otherwise your messages will be dumped in the trash can (SPAM) or sent back to you (bounced).</description>
+ </item>
+ <item>
+  <title>E-Mail</title>
+  <link>/linux-in-house/linux/E-Mail.html</link>
+  <guid>/linux-in-house/linux/E-Mail.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:14:00 -0500</pubDate>
+  <description>Electronic Mail (E-Mail) is a way to type letters onto a computer and send them to other people. These other people's computers will then use E-Mail to read your letters. It is an electronic version of the Post Office.</description>
+ </item>
+ <item>
+  <title>Mirror_Disks</title>
+  <link>/linux-in-house/linux/Mirror_Disks.html</link>
+  <guid>/linux-in-house/linux/Mirror_Disks.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:12:00 -0500</pubDate>
+  <description>Mirroring disks on Linux is simple and prudent to ensure your data survives hardware, software and human failures. All data from one disk is duplicated on another disk and if any **one** disk fails, you will never know it. So it is important after setting up to monitor the disk array.</description>
+ </item>
+ <item>
+  <title>NAS</title>
+  <link>/linux-in-house/linux/NAS.html</link>
+  <guid>/linux-in-house/linux/NAS.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:10:00 -0500</pubDate>
+  <description>The NAS provides a safe place to store important data. Set this up before running E-Mail or a cloud service because it is the best place to put important files. If an E-Mail server crashes you still have all your E-Mail files on the NFS (see below) attached NAS server. That's what it's for.</description>
+ </item>
+ <item>
+  <title>Intro</title>
+  <link>/linux-in-house/linux/intro.html</link>
+  <guid>/linux-in-house/linux/intro.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:02:00 -0500</pubDate>
+  <description>The amazing things you can do with computer software in your home, ya GNU?</description>
+ </item>
+ <item>
+  <title>My-second-review</title>
+  <link>/linux-in-house/linux/my-second-review.html</link>
+  <guid>/linux-in-house/linux/my-second-review.html</guid>
+  <pubDate>Fri, 03 Dec 2010 10:20:00 -0500</pubDate>
+  <description>Following is a review of my favorite mechanical mouse.</description>
+ </item>
+</channel>
+
+</rss>
+ <item>
+  <title>Welcome</title>
+  <link>/linux-in-house/linux/welcome.html</link>
+  <guid>/linux-in-house/linux/welcome.html</guid>
+  <pubDate>Mon, 01 Jan 2525 10:20:00 -0500</pubDate>
+  <description>the show that never ends, Linux in House..</description>
+ </item>
+ <item>
+  <title>Setup-server</title>
+  <link>/linux-in-house/linux/setup-server.html</link>
+  <guid>/linux-in-house/linux/setup-server.html</guid>
+  <pubDate>Mon, 01 Jan 2525 10:00:00 -0500</pubDate>
+  <description>I use this as a guide to enable proper monitoring and maintenance of any new server on the network.</description>
+ </item>
+ <item>
+  <title>Git</title>
+  <link>/linux-in-house/linux/git.html</link>
+  <guid>/linux-in-house/linux/git.html</guid>
+  <pubDate>Sun, 01 Oct 2023 10:20:00 -0400</pubDate>
+  <description>GIT is like a generic information tracker, letting you go back in time to see what changed.</description>
+ </item>
+ <item>
+  <title>Watch</title>
+  <link>/linux-in-house/linux/Watch.html</link>
+  <guid>/linux-in-house/linux/Watch.html</guid>
+  <pubDate>Tue, 01 Aug 2023 10:20:00 -0400</pubDate>
+  <description>Finally got my alerts working, so when a host goes haywire I get an alert on the Phone and Cloud, with E-Mail as backup.</description>
+ </item>
+ <item>
+  <title>VirtualMachines</title>
+  <link>/linux-in-house/linux/VirtualMachines.html</link>
+  <guid>/linux-in-house/linux/VirtualMachines.html</guid>
+  <pubDate>Thu, 01 Jun 2023 10:20:00 -0400</pubDate>
+  <description>A Virtual Machine (VM) is a way to create a whole operating system, with many applications, that is able to be moved from one physical machine to another physical machine. This has advantages in case of hardware, location or network problems to quickly and correctly restore service.</description>
+ </item>
+ <item>
+  <title>NetworkManagement</title>
+  <link>/linux-in-house/linux/NetworkManagement.html</link>
+  <guid>/linux-in-house/linux/NetworkManagement.html</guid>
+  <pubDate>Sat, 01 Apr 2023 10:44:00 -0400</pubDate>
+  <description>The command line offers a wealth of network management commands. Here are some of my favorites.</description>
+ </item>
+ <item>
+  <title>EncryptingFiles</title>
+  <link>/linux-in-house/linux/EncryptingFiles.html</link>
+  <guid>/linux-in-house/linux/EncryptingFiles.html</guid>
+  <pubDate>Wed, 01 Mar 2023 10:42:00 -0500</pubDate>
+  <description>You should protect your carefully built system and it's files from abuse, tampering, or just plain spying. It's easy to do, what are you waiting for? Encrypt your data directory now.</description>
+ </item>
+ <item>
+  <title>VirtualIP</title>
+  <link>/linux-in-house/linux/VirtualIP.html</link>
+  <guid>/linux-in-house/linux/VirtualIP.html</guid>
+  <pubDate>Wed, 01 Feb 2023 10:20:00 -0500</pubDate>
+  <description>Virtual IP Interface behaves like a normal interface. All traffic routed to it will go through the master interface (for example, eth0).</description>
+ </item>
+ <item>
+  <title>Docker</title>
+  <link>/linux-in-house/linux/Docker.html</link>
+  <guid>/linux-in-house/linux/Docker.html</guid>
+  <pubDate>Mon, 30 Jan 2023 10:40:00 -0500</pubDate>
+  <description>Docker is a way to manage containers, which are like namespaces or jails. Here are some useful common commands to check out the status of these containers.</description>
+ </item>
+ <item>
+  <title>Ncmpcpp</title>
+  <link>/linux-in-house/linux/ncmpcpp.html</link>
+  <guid>/linux-in-house/linux/ncmpcpp.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:36:00 -0500</pubDate>
+  <description>Simply run this on your host running Music Player Daemon (MPD) over your ssh session</description>
+ </item>
+ <item>
+  <title>Media_Managment</title>
+  <link>/linux-in-house/linux/Media_Managment.html</link>
+  <guid>/linux-in-house/linux/Media_Managment.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:34:00 -0500</pubDate>
+  <description>This is where I manage Music and Television files.</description>
+ </item>
+ <item>
+  <title>BeagleBone</title>
+  <link>/linux-in-house/linux/BeagleBone.html</link>
+  <guid>/linux-in-house/linux/BeagleBone.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:32:00 -0500</pubDate>
+  <description>The BeagleBone (BB) line supports the Linux kernel and GPIO hardware connections to devices via device trees. It is similar to the Rasberry-PI line, only BB is open source hardware.</description>
+ </item>
+ <item>
+  <title>Miniflux</title>
+  <link>/linux-in-house/linux/Miniflux.html</link>
+  <guid>/linux-in-house/linux/Miniflux.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:30:00 -0500</pubDate>
+  <description>Miniflux is an RSS (Really Simple Syndication) server that will fetch and display RSS feeds from other websites. Also known as a _news reader_.</description>
+ </item>
+ <item>
+  <title>Matrix</title>
+  <link>/linux-in-house/linux/Matrix.html</link>
+  <guid>/linux-in-house/linux/Matrix.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:28:00 -0500</pubDate>
+  <description>Matrix is a messaging system you can on your server. It allows your to send messages to a phone/watch from command line on the server. It is useful with HomeAssistant for monitoring the house.</description>
+ </item>
+ <item>
+  <title>Certificate</title>
+  <link>/linux-in-house/linux/Certificate.html</link>
+  <guid>/linux-in-house/linux/Certificate.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:28:00 -0500</pubDate>
+  <description>Web certificates encrypt different messages over the public internet so nobody can see what these messages contain.</description>
+ </item>
+ <item>
+  <title>HomeAssistant</title>
+  <link>/linux-in-house/linux/HomeAssistant.html</link>
+  <guid>/linux-in-house/linux/HomeAssistant.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:26:00 -0500</pubDate>
+  <description>This is a web based interface for automating things around the home. It can monitor doors, windows, motion detection and turn electrical things on and off.</description>
+ </item>
+ <item>
+  <title>DNS</title>
+  <link>/linux-in-house/linux/DNS.html</link>
+  <guid>/linux-in-house/linux/DNS.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:24:00 -0500</pubDate>
+  <description>A Domain Name Service (DNS) allows your E-Mail and Web Server to use a name instead of an IP Address, so other people can find you by name. Some Internet Service Providers (ISP) will change your IP address every few months in a residential environment.</description>
+ </item>
+ <item>
+  <title>Cloud</title>
+  <link>/linux-in-house/linux/Cloud.html</link>
+  <guid>/linux-in-house/linux/Cloud.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:24:00 -0500</pubDate>
+  <description>A cloud used to be floating in the sky, then it was a bubbly thing on a network diagram where weird things happen. Now a cloud just means &quot;Somebody else's computer.&quot;. Of course you get to it over a network and can share things, like files (pictures, music, documents), contacts, calendars and chat, among other things.</description>
+ </item>
+ <item>
+  <title>PostgreSql_Move</title>
+  <link>/linux-in-house/linux/PostgreSql_Move.html</link>
+  <guid>/linux-in-house/linux/PostgreSql_Move.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:22:00 -0500</pubDate>
+  <description>Mainly used this on SBC (BeagleBone) computer to move a database from SD card (/var/lib...) to SSD disk (/data/lib...). A database will burn up an SD card quickly 😟</description>
+ </item>
+ <item>
+  <title>PostgreSql_Upgrade</title>
+  <link>/linux-in-house/linux/PostgreSql_Upgrade.html</link>
+  <guid>/linux-in-house/linux/PostgreSql_Upgrade.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:20:00 -0500</pubDate>
+  <description>Oh my, installing Ubuntu 22.04 installed PostgreSQL 14... wonder what version I am using...</description>
+ </item>
+ <item>
+  <title>Postgresql</title>
+  <link>/linux-in-house/linux/Postgresql.html</link>
+  <guid>/linux-in-house/linux/Postgresql.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:16:00 -0500</pubDate>
+  <description>Postgresql relational SQL database for systems. This is a great database with high reliability, performance and extendable.</description>
+ </item>
+ <item>
+  <title>E-Mail_Relay</title>
+  <link>/linux-in-house/linux/E-Mail_Relay.html</link>
+  <guid>/linux-in-house/linux/E-Mail_Relay.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:16:00 -0500</pubDate>
+  <description>The following diagrams are what this document will accomplish. The challenge is to obtain and keep a good reputation that other E-Mail handlers around the world will accept. Otherwise your messages will be dumped in the trash can (SPAM) or sent back to you (bounced).</description>
+ </item>
+ <item>
+  <title>E-Mail</title>
+  <link>/linux-in-house/linux/E-Mail.html</link>
+  <guid>/linux-in-house/linux/E-Mail.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:14:00 -0500</pubDate>
+  <description>Electronic Mail (E-Mail) is a way to type letters onto a computer and send them to other people. These other people's computers will then use E-Mail to read your letters. It is an electronic version of the Post Office.</description>
+ </item>
+ <item>
+  <title>Mirror_Disks</title>
+  <link>/linux-in-house/linux/Mirror_Disks.html</link>
+  <guid>/linux-in-house/linux/Mirror_Disks.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:12:00 -0500</pubDate>
+  <description>Mirroring disks on Linux is simple and prudent to ensure your data survives hardware, software and human failures. All data from one disk is duplicated on another disk and if any **one** disk fails, you will never know it. So it is important after setting up to monitor the disk array.</description>
+ </item>
+ <item>
+  <title>NAS</title>
+  <link>/linux-in-house/linux/NAS.html</link>
+  <guid>/linux-in-house/linux/NAS.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:10:00 -0500</pubDate>
+  <description>The NAS provides a safe place to store important data. Set this up before running E-Mail or a cloud service because it is the best place to put important files. If an E-Mail server crashes you still have all your E-Mail files on the NFS (see below) attached NAS server. That's what it's for.</description>
+ </item>
+ <item>
+  <title>Intro</title>
+  <link>/linux-in-house/linux/intro.html</link>
+  <guid>/linux-in-house/linux/intro.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:02:00 -0500</pubDate>
+  <description>The amazing things you can do with computer software in your home, ya GNU?</description>
+ </item>
+ <item>
+  <title>My-second-review</title>
+  <link>/linux-in-house/linux/my-second-review.html</link>
+  <guid>/linux-in-house/linux/my-second-review.html</guid>
+  <pubDate>Fri, 03 Dec 2010 10:20:00 -0500</pubDate>
+  <description>Following is a review of my favorite mechanical mouse.</description>
+ </item>
+</channel>
+
+</rss>
+ <item>
+  <title>Welcome</title>
+  <link>/linux-in-house/linux/welcome.html</link>
+  <guid>/linux-in-house/linux/welcome.html</guid>
+  <pubDate>Mon, 01 Jan 2525 10:20:00 -0500</pubDate>
+  <description>the show that never ends, Linux in House..</description>
+ </item>
+ <item>
+  <title>Setup-server</title>
+  <link>/linux-in-house/linux/setup-server.html</link>
+  <guid>/linux-in-house/linux/setup-server.html</guid>
+  <pubDate>Mon, 01 Jan 2525 10:00:00 -0500</pubDate>
+  <description>I use this as a guide to enable proper monitoring and maintenance of any new server on the network.</description>
+ </item>
+ <item>
+  <title>Git</title>
+  <link>/linux-in-house/linux/git.html</link>
+  <guid>/linux-in-house/linux/git.html</guid>
+  <pubDate>Sun, 01 Oct 2023 10:20:00 -0400</pubDate>
+  <description>GIT is like a generic information tracker, letting you go back in time to see what changed.</description>
+ </item>
+ <item>
+  <title>Watch</title>
+  <link>/linux-in-house/linux/Watch.html</link>
+  <guid>/linux-in-house/linux/Watch.html</guid>
+  <pubDate>Tue, 01 Aug 2023 10:20:00 -0400</pubDate>
+  <description>Finally got my alerts working, so when a host goes haywire I get an alert on the Phone and Cloud, with E-Mail as backup.</description>
+ </item>
+ <item>
+  <title>VirtualMachines</title>
+  <link>/linux-in-house/linux/VirtualMachines.html</link>
+  <guid>/linux-in-house/linux/VirtualMachines.html</guid>
+  <pubDate>Thu, 01 Jun 2023 10:20:00 -0400</pubDate>
+  <description>A Virtual Machine (VM) is a way to create a whole operating system, with many applications, that is able to be moved from one physical machine to another physical machine. This has advantages in case of hardware, location or network problems to quickly and correctly restore service.</description>
+ </item>
+ <item>
+  <title>NetworkManagement</title>
+  <link>/linux-in-house/linux/NetworkManagement.html</link>
+  <guid>/linux-in-house/linux/NetworkManagement.html</guid>
+  <pubDate>Sat, 01 Apr 2023 10:44:00 -0400</pubDate>
+  <description>The command line offers a wealth of network management commands. Here are some of my favorites.</description>
+ </item>
+ <item>
+  <title>EncryptingFiles</title>
+  <link>/linux-in-house/linux/EncryptingFiles.html</link>
+  <guid>/linux-in-house/linux/EncryptingFiles.html</guid>
+  <pubDate>Wed, 01 Mar 2023 10:42:00 -0500</pubDate>
+  <description>You should protect your carefully built system and it's files from abuse, tampering, or just plain spying. It's easy to do, what are you waiting for? Encrypt your data directory now.</description>
+ </item>
+ <item>
+  <title>VirtualIP</title>
+  <link>/linux-in-house/linux/VirtualIP.html</link>
+  <guid>/linux-in-house/linux/VirtualIP.html</guid>
+  <pubDate>Wed, 01 Feb 2023 10:20:00 -0500</pubDate>
+  <description>Virtual IP Interface behaves like a normal interface. All traffic routed to it will go through the master interface (for example, eth0).</description>
+ </item>
+ <item>
+  <title>Docker</title>
+  <link>/linux-in-house/linux/Docker.html</link>
+  <guid>/linux-in-house/linux/Docker.html</guid>
+  <pubDate>Mon, 30 Jan 2023 10:40:00 -0500</pubDate>
+  <description>Docker is a way to manage containers, which are like namespaces or jails. Here are some useful common commands to check out the status of these containers.</description>
+ </item>
+ <item>
+  <title>Ncmpcpp</title>
+  <link>/linux-in-house/linux/ncmpcpp.html</link>
+  <guid>/linux-in-house/linux/ncmpcpp.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:36:00 -0500</pubDate>
+  <description>Simply run this on your host running Music Player Daemon (MPD) over your ssh session</description>
+ </item>
+ <item>
+  <title>Media_Managment</title>
+  <link>/linux-in-house/linux/Media_Managment.html</link>
+  <guid>/linux-in-house/linux/Media_Managment.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:34:00 -0500</pubDate>
+  <description>This is where I manage Music and Television files.</description>
+ </item>
+ <item>
+  <title>BeagleBone</title>
+  <link>/linux-in-house/linux/BeagleBone.html</link>
+  <guid>/linux-in-house/linux/BeagleBone.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:32:00 -0500</pubDate>
+  <description>The BeagleBone (BB) line supports the Linux kernel and GPIO hardware connections to devices via device trees. It is similar to the Rasberry-PI line, only BB is open source hardware.</description>
+ </item>
+ <item>
+  <title>Miniflux</title>
+  <link>/linux-in-house/linux/Miniflux.html</link>
+  <guid>/linux-in-house/linux/Miniflux.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:30:00 -0500</pubDate>
+  <description>Miniflux is an RSS (Really Simple Syndication) server that will fetch and display RSS feeds from other websites. Also known as a _news reader_.</description>
+ </item>
+ <item>
+  <title>Matrix</title>
+  <link>/linux-in-house/linux/Matrix.html</link>
+  <guid>/linux-in-house/linux/Matrix.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:28:00 -0500</pubDate>
+  <description>Matrix is a messaging system you can on your server. It allows your to send messages to a phone/watch from command line on the server. It is useful with HomeAssistant for monitoring the house.</description>
+ </item>
+ <item>
+  <title>Certificate</title>
+  <link>/linux-in-house/linux/Certificate.html</link>
+  <guid>/linux-in-house/linux/Certificate.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:28:00 -0500</pubDate>
+  <description>Web certificates encrypt different messages over the public internet so nobody can see what these messages contain.</description>
+ </item>
+ <item>
+  <title>HomeAssistant</title>
+  <link>/linux-in-house/linux/HomeAssistant.html</link>
+  <guid>/linux-in-house/linux/HomeAssistant.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:26:00 -0500</pubDate>
+  <description>This is a web based interface for automating things around the home. It can monitor doors, windows, motion detection and turn electrical things on and off.</description>
+ </item>
+ <item>
+  <title>DNS</title>
+  <link>/linux-in-house/linux/DNS.html</link>
+  <guid>/linux-in-house/linux/DNS.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:24:00 -0500</pubDate>
+  <description>A Domain Name Service (DNS) allows your E-Mail and Web Server to use a name instead of an IP Address, so other people can find you by name. Some Internet Service Providers (ISP) will change your IP address every few months in a residential environment.</description>
+ </item>
+ <item>
+  <title>Cloud</title>
+  <link>/linux-in-house/linux/Cloud.html</link>
+  <guid>/linux-in-house/linux/Cloud.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:24:00 -0500</pubDate>
+  <description>A cloud used to be floating in the sky, then it was a bubbly thing on a network diagram where weird things happen. Now a cloud just means &quot;Somebody else's computer.&quot;. Of course you get to it over a network and can share things, like files (pictures, music, documents), contacts, calendars and chat, among other things.</description>
+ </item>
+ <item>
+  <title>PostgreSql_Move</title>
+  <link>/linux-in-house/linux/PostgreSql_Move.html</link>
+  <guid>/linux-in-house/linux/PostgreSql_Move.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:22:00 -0500</pubDate>
+  <description>Mainly used this on SBC (BeagleBone) computer to move a database from SD card (/var/lib...) to SSD disk (/data/lib...). A database will burn up an SD card quickly 😟</description>
+ </item>
+ <item>
+  <title>PostgreSql_Upgrade</title>
+  <link>/linux-in-house/linux/PostgreSql_Upgrade.html</link>
+  <guid>/linux-in-house/linux/PostgreSql_Upgrade.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:20:00 -0500</pubDate>
+  <description>Oh my, installing Ubuntu 22.04 installed PostgreSQL 14... wonder what version I am using...</description>
+ </item>
+ <item>
+  <title>Postgresql</title>
+  <link>/linux-in-house/linux/Postgresql.html</link>
+  <guid>/linux-in-house/linux/Postgresql.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:16:00 -0500</pubDate>
+  <description>Postgresql relational SQL database for systems. This is a great database with high reliability, performance and extendable.</description>
+ </item>
+ <item>
+  <title>E-Mail_Relay</title>
+  <link>/linux-in-house/linux/E-Mail_Relay.html</link>
+  <guid>/linux-in-house/linux/E-Mail_Relay.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:16:00 -0500</pubDate>
+  <description>The following diagrams are what this document will accomplish. The challenge is to obtain and keep a good reputation that other E-Mail handlers around the world will accept. Otherwise your messages will be dumped in the trash can (SPAM) or sent back to you (bounced).</description>
+ </item>
+ <item>
+  <title>E-Mail</title>
+  <link>/linux-in-house/linux/E-Mail.html</link>
+  <guid>/linux-in-house/linux/E-Mail.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:14:00 -0500</pubDate>
+  <description>Electronic Mail (E-Mail) is a way to type letters onto a computer and send them to other people. These other people's computers will then use E-Mail to read your letters. It is an electronic version of the Post Office.</description>
+ </item>
+ <item>
+  <title>Mirror_Disks</title>
+  <link>/linux-in-house/linux/Mirror_Disks.html</link>
+  <guid>/linux-in-house/linux/Mirror_Disks.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:12:00 -0500</pubDate>
+  <description>Mirroring disks on Linux is simple and prudent to ensure your data survives hardware, software and human failures. All data from one disk is duplicated on another disk and if any **one** disk fails, you will never know it. So it is important after setting up to monitor the disk array.</description>
+ </item>
+ <item>
+  <title>NAS</title>
+  <link>/linux-in-house/linux/NAS.html</link>
+  <guid>/linux-in-house/linux/NAS.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:10:00 -0500</pubDate>
+  <description>The NAS provides a safe place to store important data. Set this up before running E-Mail or a cloud service because it is the best place to put important files. If an E-Mail server crashes you still have all your E-Mail files on the NFS (see below) attached NAS server. That's what it's for.</description>
+ </item>
+ <item>
+  <title>Intro</title>
+  <link>/linux-in-house/linux/intro.html</link>
+  <guid>/linux-in-house/linux/intro.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:02:00 -0500</pubDate>
+  <description>The amazing things you can do with computer software in your home, ya GNU?</description>
+ </item>
+ <item>
+  <title>My-second-review</title>
+  <link>/linux-in-house/linux/my-second-review.html</link>
+  <guid>/linux-in-house/linux/my-second-review.html</guid>
+  <pubDate>Fri, 03 Dec 2010 10:20:00 -0500</pubDate>
+  <description>Following is a review of my favorite mechanical mouse.</description>
+ </item>
+</channel>
+
+</rss>
+ <item>
+  <title>Welcome</title>
+  <link>/linux-in-house/linux/welcome.html</link>
+  <guid>/linux-in-house/linux/welcome.html</guid>
+  <pubDate>Mon, 01 Jan 2525 10:20:00 -0500</pubDate>
+  <description>the show that never ends, Linux in House..</description>
+ </item>
+ <item>
+  <title>Setup-server</title>
+  <link>/linux-in-house/linux/setup-server.html</link>
+  <guid>/linux-in-house/linux/setup-server.html</guid>
+  <pubDate>Mon, 01 Jan 2525 10:00:00 -0500</pubDate>
+  <description>I use this as a guide to enable proper monitoring and maintenance of any new server on the network.</description>
+ </item>
+ <item>
+  <title>Git</title>
+  <link>/linux-in-house/linux/git.html</link>
+  <guid>/linux-in-house/linux/git.html</guid>
+  <pubDate>Sun, 01 Oct 2023 10:20:00 -0400</pubDate>
+  <description>GIT is like a generic information tracker, letting you go back in time to see what changed.</description>
+ </item>
+ <item>
+  <title>Watch</title>
+  <link>/linux-in-house/linux/Watch.html</link>
+  <guid>/linux-in-house/linux/Watch.html</guid>
+  <pubDate>Tue, 01 Aug 2023 10:20:00 -0400</pubDate>
+  <description>Finally got my alerts working, so when a host goes haywire I get an alert on the Phone and Cloud, with E-Mail as backup.</description>
+ </item>
+ <item>
+  <title>VirtualMachines</title>
+  <link>/linux-in-house/linux/VirtualMachines.html</link>
+  <guid>/linux-in-house/linux/VirtualMachines.html</guid>
+  <pubDate>Thu, 01 Jun 2023 10:20:00 -0400</pubDate>
+  <description>A Virtual Machine (VM) is a way to create a whole operating system, with many applications, that is able to be moved from one physical machine to another physical machine. This has advantages in case of hardware, location or network problems to quickly and correctly restore service.</description>
+ </item>
+ <item>
+  <title>NetworkManagement</title>
+  <link>/linux-in-house/linux/NetworkManagement.html</link>
+  <guid>/linux-in-house/linux/NetworkManagement.html</guid>
+  <pubDate>Sat, 01 Apr 2023 10:44:00 -0400</pubDate>
+  <description>The command line offers a wealth of network management commands. Here are some of my favorites.</description>
+ </item>
+ <item>
+  <title>EncryptingFiles</title>
+  <link>/linux-in-house/linux/EncryptingFiles.html</link>
+  <guid>/linux-in-house/linux/EncryptingFiles.html</guid>
+  <pubDate>Wed, 01 Mar 2023 10:42:00 -0500</pubDate>
+  <description>You should protect your carefully built system and it's files from abuse, tampering, or just plain spying. It's easy to do, what are you waiting for? Encrypt your data directory now.</description>
+ </item>
+ <item>
+  <title>VirtualIP</title>
+  <link>/linux-in-house/linux/VirtualIP.html</link>
+  <guid>/linux-in-house/linux/VirtualIP.html</guid>
+  <pubDate>Wed, 01 Feb 2023 10:20:00 -0500</pubDate>
+  <description>Virtual IP Interface behaves like a normal interface. All traffic routed to it will go through the master interface (for example, eth0).</description>
+ </item>
+ <item>
+  <title>Docker</title>
+  <link>/linux-in-house/linux/Docker.html</link>
+  <guid>/linux-in-house/linux/Docker.html</guid>
+  <pubDate>Mon, 30 Jan 2023 10:40:00 -0500</pubDate>
+  <description>Docker is a way to manage containers, which are like namespaces or jails. Here are some useful common commands to check out the status of these containers.</description>
+ </item>
+ <item>
+  <title>Ncmpcpp</title>
+  <link>/linux-in-house/linux/ncmpcpp.html</link>
+  <guid>/linux-in-house/linux/ncmpcpp.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:36:00 -0500</pubDate>
+  <description>Simply run this on your host running Music Player Daemon (MPD) over your ssh session</description>
+ </item>
+ <item>
+  <title>Media_Managment</title>
+  <link>/linux-in-house/linux/Media_Managment.html</link>
+  <guid>/linux-in-house/linux/Media_Managment.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:34:00 -0500</pubDate>
+  <description>This is where I manage Music and Television files.</description>
+ </item>
+ <item>
+  <title>BeagleBone</title>
+  <link>/linux-in-house/linux/BeagleBone.html</link>
+  <guid>/linux-in-house/linux/BeagleBone.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:32:00 -0500</pubDate>
+  <description>The BeagleBone (BB) line supports the Linux kernel and GPIO hardware connections to devices via device trees. It is similar to the Rasberry-PI line, only BB is open source hardware.</description>
+ </item>
+ <item>
+  <title>Miniflux</title>
+  <link>/linux-in-house/linux/Miniflux.html</link>
+  <guid>/linux-in-house/linux/Miniflux.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:30:00 -0500</pubDate>
+  <description>Miniflux is an RSS (Really Simple Syndication) server that will fetch and display RSS feeds from other websites. Also known as a _news reader_.</description>
+ </item>
+ <item>
+  <title>Matrix</title>
+  <link>/linux-in-house/linux/Matrix.html</link>
+  <guid>/linux-in-house/linux/Matrix.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:28:00 -0500</pubDate>
+  <description>Matrix is a messaging system you can on your server. It allows your to send messages to a phone/watch from command line on the server. It is useful with HomeAssistant for monitoring the house.</description>
+ </item>
+ <item>
+  <title>Certificate</title>
+  <link>/linux-in-house/linux/Certificate.html</link>
+  <guid>/linux-in-house/linux/Certificate.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:28:00 -0500</pubDate>
+  <description>Web certificates encrypt different messages over the public internet so nobody can see what these messages contain.</description>
+ </item>
+ <item>
+  <title>HomeAssistant</title>
+  <link>/linux-in-house/linux/HomeAssistant.html</link>
+  <guid>/linux-in-house/linux/HomeAssistant.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:26:00 -0500</pubDate>
+  <description>This is a web based interface for automating things around the home. It can monitor doors, windows, motion detection and turn electrical things on and off.</description>
+ </item>
+ <item>
+  <title>DNS</title>
+  <link>/linux-in-house/linux/DNS.html</link>
+  <guid>/linux-in-house/linux/DNS.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:24:00 -0500</pubDate>
+  <description>A Domain Name Service (DNS) allows your E-Mail and Web Server to use a name instead of an IP Address, so other people can find you by name. Some Internet Service Providers (ISP) will change your IP address every few months in a residential environment.</description>
+ </item>
+ <item>
+  <title>Cloud</title>
+  <link>/linux-in-house/linux/Cloud.html</link>
+  <guid>/linux-in-house/linux/Cloud.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:24:00 -0500</pubDate>
+  <description>A cloud used to be floating in the sky, then it was a bubbly thing on a network diagram where weird things happen. Now a cloud just means &quot;Somebody else's computer.&quot;. Of course you get to it over a network and can share things, like files (pictures, music, documents), contacts, calendars and chat, among other things.</description>
+ </item>
+ <item>
+  <title>PostgreSql_Move</title>
+  <link>/linux-in-house/linux/PostgreSql_Move.html</link>
+  <guid>/linux-in-house/linux/PostgreSql_Move.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:22:00 -0500</pubDate>
+  <description>Mainly used this on SBC (BeagleBone) computer to move a database from SD card (/var/lib...) to SSD disk (/data/lib...). A database will burn up an SD card quickly 😟</description>
+ </item>
+ <item>
+  <title>PostgreSql_Upgrade</title>
+  <link>/linux-in-house/linux/PostgreSql_Upgrade.html</link>
+  <guid>/linux-in-house/linux/PostgreSql_Upgrade.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:20:00 -0500</pubDate>
+  <description>Oh my, installing Ubuntu 22.04 installed PostgreSQL 14... wonder what version I am using...</description>
+ </item>
+ <item>
+  <title>Postgresql</title>
+  <link>/linux-in-house/linux/Postgresql.html</link>
+  <guid>/linux-in-house/linux/Postgresql.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:16:00 -0500</pubDate>
+  <description>Postgresql relational SQL database for systems. This is a great database with high reliability, performance and extendable.</description>
+ </item>
+ <item>
+  <title>E-Mail_Relay</title>
+  <link>/linux-in-house/linux/E-Mail_Relay.html</link>
+  <guid>/linux-in-house/linux/E-Mail_Relay.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:16:00 -0500</pubDate>
+  <description>The following diagrams are what this document will accomplish. The challenge is to obtain and keep a good reputation that other E-Mail handlers around the world will accept. Otherwise your messages will be dumped in the trash can (SPAM) or sent back to you (bounced).</description>
+ </item>
+ <item>
+  <title>E-Mail</title>
+  <link>/linux-in-house/linux/E-Mail.html</link>
+  <guid>/linux-in-house/linux/E-Mail.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:14:00 -0500</pubDate>
+  <description>Electronic Mail (E-Mail) is a way to type letters onto a computer and send them to other people. These other people's computers will then use E-Mail to read your letters. It is an electronic version of the Post Office.</description>
+ </item>
+ <item>
+  <title>Mirror_Disks</title>
+  <link>/linux-in-house/linux/Mirror_Disks.html</link>
+  <guid>/linux-in-house/linux/Mirror_Disks.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:12:00 -0500</pubDate>
+  <description>Mirroring disks on Linux is simple and prudent to ensure your data survives hardware, software and human failures. All data from one disk is duplicated on another disk and if any **one** disk fails, you will never know it. So it is important after setting up to monitor the disk array.</description>
+ </item>
+ <item>
+  <title>NAS</title>
+  <link>/linux-in-house/linux/NAS.html</link>
+  <guid>/linux-in-house/linux/NAS.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:10:00 -0500</pubDate>
+  <description>The NAS provides a safe place to store important data. Set this up before running E-Mail or a cloud service because it is the best place to put important files. If an E-Mail server crashes you still have all your E-Mail files on the NFS (see below) attached NAS server. That's what it's for.</description>
+ </item>
+ <item>
+  <title>Intro</title>
+  <link>/linux-in-house/linux/intro.html</link>
+  <guid>/linux-in-house/linux/intro.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:02:00 -0500</pubDate>
+  <description>The amazing things you can do with computer software in your home, ya GNU?</description>
+ </item>
+ <item>
+  <title>My-second-review</title>
+  <link>/linux-in-house/linux/my-second-review.html</link>
+  <guid>/linux-in-house/linux/my-second-review.html</guid>
+  <pubDate>Fri, 03 Dec 2010 10:20:00 -0500</pubDate>
+  <description>Following is a review of my favorite mechanical mouse.</description>
+ </item>
+</channel>
+
+</rss>
+ <item>
+  <title>Welcome</title>
+  <link>/linux-in-house/linux/welcome.html</link>
+  <guid>/linux-in-house/linux/welcome.html</guid>
+  <pubDate>Mon, 01 Jan 2525 10:20:00 -0500</pubDate>
+  <description>the show that never ends, Linux in House..</description>
+ </item>
+ <item>
+  <title>Setup-server</title>
+  <link>/linux-in-house/linux/setup-server.html</link>
+  <guid>/linux-in-house/linux/setup-server.html</guid>
+  <pubDate>Mon, 01 Jan 2525 10:00:00 -0500</pubDate>
+  <description>I use this as a guide to enable proper monitoring and maintenance of any new server on the network.</description>
+ </item>
+ <item>
+  <title>Git</title>
+  <link>/linux-in-house/linux/git.html</link>
+  <guid>/linux-in-house/linux/git.html</guid>
+  <pubDate>Sun, 01 Oct 2023 10:20:00 -0400</pubDate>
+  <description>GIT is like a generic information tracker, letting you go back in time to see what changed.</description>
+ </item>
+ <item>
+  <title>Watch</title>
+  <link>/linux-in-house/linux/Watch.html</link>
+  <guid>/linux-in-house/linux/Watch.html</guid>
+  <pubDate>Tue, 01 Aug 2023 10:20:00 -0400</pubDate>
+  <description>Finally got my alerts working, so when a host goes haywire I get an alert on the Phone and Cloud, with E-Mail as backup.</description>
+ </item>
+ <item>
+  <title>VirtualMachines</title>
+  <link>/linux-in-house/linux/VirtualMachines.html</link>
+  <guid>/linux-in-house/linux/VirtualMachines.html</guid>
+  <pubDate>Thu, 01 Jun 2023 10:20:00 -0400</pubDate>
+  <description>A Virtual Machine (VM) is a way to create a whole operating system, with many applications, that is able to be moved from one physical machine to another physical machine. This has advantages in case of hardware, location or network problems to quickly and correctly restore service.</description>
+ </item>
+ <item>
+  <title>NetworkManagement</title>
+  <link>/linux-in-house/linux/NetworkManagement.html</link>
+  <guid>/linux-in-house/linux/NetworkManagement.html</guid>
+  <pubDate>Sat, 01 Apr 2023 10:44:00 -0400</pubDate>
+  <description>The command line offers a wealth of network management commands. Here are some of my favorites.</description>
+ </item>
+ <item>
+  <title>EncryptingFiles</title>
+  <link>/linux-in-house/linux/EncryptingFiles.html</link>
+  <guid>/linux-in-house/linux/EncryptingFiles.html</guid>
+  <pubDate>Wed, 01 Mar 2023 10:42:00 -0500</pubDate>
+  <description>You should protect your carefully built system and it's files from abuse, tampering, or just plain spying. It's easy to do, what are you waiting for? Encrypt your data directory now.</description>
+ </item>
+ <item>
+  <title>VirtualIP</title>
+  <link>/linux-in-house/linux/VirtualIP.html</link>
+  <guid>/linux-in-house/linux/VirtualIP.html</guid>
+  <pubDate>Wed, 01 Feb 2023 10:20:00 -0500</pubDate>
+  <description>Virtual IP Interface behaves like a normal interface. All traffic routed to it will go through the master interface (for example, eth0).</description>
+ </item>
+ <item>
+  <title>Docker</title>
+  <link>/linux-in-house/linux/Docker.html</link>
+  <guid>/linux-in-house/linux/Docker.html</guid>
+  <pubDate>Mon, 30 Jan 2023 10:40:00 -0500</pubDate>
+  <description>Docker is a way to manage containers, which are like namespaces or jails. Here are some useful common commands to check out the status of these containers.</description>
+ </item>
+ <item>
+  <title>Ncmpcpp</title>
+  <link>/linux-in-house/linux/ncmpcpp.html</link>
+  <guid>/linux-in-house/linux/ncmpcpp.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:36:00 -0500</pubDate>
+  <description>Simply run this on your host running Music Player Daemon (MPD) over your ssh session</description>
+ </item>
+ <item>
+  <title>Media_Managment</title>
+  <link>/linux-in-house/linux/Media_Managment.html</link>
+  <guid>/linux-in-house/linux/Media_Managment.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:34:00 -0500</pubDate>
+  <description>This is where I manage Music and Television files.</description>
+ </item>
+ <item>
+  <title>BeagleBone</title>
+  <link>/linux-in-house/linux/BeagleBone.html</link>
+  <guid>/linux-in-house/linux/BeagleBone.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:32:00 -0500</pubDate>
+  <description>The BeagleBone (BB) line supports the Linux kernel and GPIO hardware connections to devices via device trees. It is similar to the Rasberry-PI line, only BB is open source hardware.</description>
+ </item>
+ <item>
+  <title>Miniflux</title>
+  <link>/linux-in-house/linux/Miniflux.html</link>
+  <guid>/linux-in-house/linux/Miniflux.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:30:00 -0500</pubDate>
+  <description>Miniflux is an RSS (Really Simple Syndication) server that will fetch and display RSS feeds from other websites. Also known as a _news reader_.</description>
+ </item>
+ <item>
+  <title>Matrix</title>
+  <link>/linux-in-house/linux/Matrix.html</link>
+  <guid>/linux-in-house/linux/Matrix.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:28:00 -0500</pubDate>
+  <description>Matrix is a messaging system you can on your server. It allows your to send messages to a phone/watch from command line on the server. It is useful with HomeAssistant for monitoring the house.</description>
+ </item>
+ <item>
+  <title>Certificate</title>
+  <link>/linux-in-house/linux/Certificate.html</link>
+  <guid>/linux-in-house/linux/Certificate.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:28:00 -0500</pubDate>
+  <description>Web certificates encrypt different messages over the public internet so nobody can see what these messages contain.</description>
+ </item>
+ <item>
+  <title>HomeAssistant</title>
+  <link>/linux-in-house/linux/HomeAssistant.html</link>
+  <guid>/linux-in-house/linux/HomeAssistant.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:26:00 -0500</pubDate>
+  <description>This is a web based interface for automating things around the home. It can monitor doors, windows, motion detection and turn electrical things on and off.</description>
+ </item>
+ <item>
+  <title>DNS</title>
+  <link>/linux-in-house/linux/DNS.html</link>
+  <guid>/linux-in-house/linux/DNS.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:24:00 -0500</pubDate>
+  <description>A Domain Name Service (DNS) allows your E-Mail and Web Server to use a name instead of an IP Address, so other people can find you by name. Some Internet Service Providers (ISP) will change your IP address every few months in a residential environment.</description>
+ </item>
+ <item>
+  <title>Cloud</title>
+  <link>/linux-in-house/linux/Cloud.html</link>
+  <guid>/linux-in-house/linux/Cloud.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:24:00 -0500</pubDate>
+  <description>A cloud used to be floating in the sky, then it was a bubbly thing on a network diagram where weird things happen. Now a cloud just means &quot;Somebody else's computer.&quot;. Of course you get to it over a network and can share things, like files (pictures, music, documents), contacts, calendars and chat, among other things.</description>
+ </item>
+ <item>
+  <title>PostgreSql_Move</title>
+  <link>/linux-in-house/linux/PostgreSql_Move.html</link>
+  <guid>/linux-in-house/linux/PostgreSql_Move.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:22:00 -0500</pubDate>
+  <description>Mainly used this on SBC (BeagleBone) computer to move a database from SD card (/var/lib...) to SSD disk (/data/lib...). A database will burn up an SD card quickly 😟</description>
+ </item>
+ <item>
+  <title>PostgreSql_Upgrade</title>
+  <link>/linux-in-house/linux/PostgreSql_Upgrade.html</link>
+  <guid>/linux-in-house/linux/PostgreSql_Upgrade.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:20:00 -0500</pubDate>
+  <description>Oh my, installing Ubuntu 22.04 installed PostgreSQL 14... wonder what version I am using...</description>
+ </item>
+ <item>
+  <title>Postgresql</title>
+  <link>/linux-in-house/linux/Postgresql.html</link>
+  <guid>/linux-in-house/linux/Postgresql.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:16:00 -0500</pubDate>
+  <description>Postgresql relational SQL database for systems. This is a great database with high reliability, performance and extendable.</description>
+ </item>
+ <item>
+  <title>E-Mail_Relay</title>
+  <link>/linux-in-house/linux/E-Mail_Relay.html</link>
+  <guid>/linux-in-house/linux/E-Mail_Relay.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:16:00 -0500</pubDate>
+  <description>The following diagrams are what this document will accomplish. The challenge is to obtain and keep a good reputation that other E-Mail handlers around the world will accept. Otherwise your messages will be dumped in the trash can (SPAM) or sent back to you (bounced).</description>
+ </item>
+ <item>
+  <title>E-Mail</title>
+  <link>/linux-in-house/linux/E-Mail.html</link>
+  <guid>/linux-in-house/linux/E-Mail.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:14:00 -0500</pubDate>
+  <description>Electronic Mail (E-Mail) is a way to type letters onto a computer and send them to other people. These other people's computers will then use E-Mail to read your letters. It is an electronic version of the Post Office.</description>
+ </item>
+ <item>
+  <title>Mirror_Disks</title>
+  <link>/linux-in-house/linux/Mirror_Disks.html</link>
+  <guid>/linux-in-house/linux/Mirror_Disks.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:12:00 -0500</pubDate>
+  <description>Mirroring disks on Linux is simple and prudent to ensure your data survives hardware, software and human failures. All data from one disk is duplicated on another disk and if any **one** disk fails, you will never know it. So it is important after setting up to monitor the disk array.</description>
+ </item>
+ <item>
+  <title>NAS</title>
+  <link>/linux-in-house/linux/NAS.html</link>
+  <guid>/linux-in-house/linux/NAS.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:10:00 -0500</pubDate>
+  <description>The NAS provides a safe place to store important data. Set this up before running E-Mail or a cloud service because it is the best place to put important files. If an E-Mail server crashes you still have all your E-Mail files on the NFS (see below) attached NAS server. That's what it's for.</description>
+ </item>
+ <item>
+  <title>Intro</title>
+  <link>/linux-in-house/linux/intro.html</link>
+  <guid>/linux-in-house/linux/intro.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:02:00 -0500</pubDate>
+  <description>The amazing things you can do with computer software in your home, ya GNU?</description>
+ </item>
+ <item>
+  <title>My-second-review</title>
+  <link>/linux-in-house/linux/my-second-review.html</link>
+  <guid>/linux-in-house/linux/my-second-review.html</guid>
+  <pubDate>Fri, 03 Dec 2010 10:20:00 -0500</pubDate>
+  <description>Following is a review of my favorite mechanical mouse.</description>
+ </item>
+</channel>
+
+</rss>
+ <item>
+  <title>Welcome</title>
+  <link>/linux-in-house/linux/welcome.html</link>
+  <guid>/linux-in-house/linux/welcome.html</guid>
+  <pubDate>Mon, 01 Jan 2525 10:20:00 -0500</pubDate>
+  <description>the show that never ends, Linux in House..</description>
+ </item>
+ <item>
+  <title>Setup-server</title>
+  <link>/linux-in-house/linux/setup-server.html</link>
+  <guid>/linux-in-house/linux/setup-server.html</guid>
+  <pubDate>Mon, 01 Jan 2525 10:00:00 -0500</pubDate>
+  <description>I use this as a guide to enable proper monitoring and maintenance of any new server on the network.</description>
+ </item>
+ <item>
+  <title>Git</title>
+  <link>/linux-in-house/linux/git.html</link>
+  <guid>/linux-in-house/linux/git.html</guid>
+  <pubDate>Sun, 01 Oct 2023 10:20:00 -0400</pubDate>
+  <description>GIT is like a generic information tracker, letting you go back in time to see what changed.</description>
+ </item>
+ <item>
+  <title>Watch</title>
+  <link>/linux-in-house/linux/Watch.html</link>
+  <guid>/linux-in-house/linux/Watch.html</guid>
+  <pubDate>Tue, 01 Aug 2023 10:20:00 -0400</pubDate>
+  <description>Finally got my alerts working, so when a host goes haywire I get an alert on the Phone and Cloud, with E-Mail as backup.</description>
+ </item>
+ <item>
+  <title>VirtualMachines</title>
+  <link>/linux-in-house/linux/VirtualMachines.html</link>
+  <guid>/linux-in-house/linux/VirtualMachines.html</guid>
+  <pubDate>Thu, 01 Jun 2023 10:20:00 -0400</pubDate>
+  <description>A Virtual Machine (VM) is a way to create a whole operating system, with many applications, that is able to be moved from one physical machine to another physical machine. This has advantages in case of hardware, location or network problems to quickly and correctly restore service.</description>
+ </item>
+ <item>
+  <title>NetworkManagement</title>
+  <link>/linux-in-house/linux/NetworkManagement.html</link>
+  <guid>/linux-in-house/linux/NetworkManagement.html</guid>
+  <pubDate>Sat, 01 Apr 2023 10:44:00 -0400</pubDate>
+  <description>The command line offers a wealth of network management commands. Here are some of my favorites.</description>
+ </item>
+ <item>
+  <title>EncryptingFiles</title>
+  <link>/linux-in-house/linux/EncryptingFiles.html</link>
+  <guid>/linux-in-house/linux/EncryptingFiles.html</guid>
+  <pubDate>Wed, 01 Mar 2023 10:42:00 -0500</pubDate>
+  <description>You should protect your carefully built system and it's files from abuse, tampering, or just plain spying. It's easy to do, what are you waiting for? Encrypt your data directory now.</description>
+ </item>
+ <item>
+  <title>VirtualIP</title>
+  <link>/linux-in-house/linux/VirtualIP.html</link>
+  <guid>/linux-in-house/linux/VirtualIP.html</guid>
+  <pubDate>Wed, 01 Feb 2023 10:20:00 -0500</pubDate>
+  <description>Virtual IP Interface behaves like a normal interface. All traffic routed to it will go through the master interface (for example, eth0).</description>
+ </item>
+ <item>
+  <title>Docker</title>
+  <link>/linux-in-house/linux/Docker.html</link>
+  <guid>/linux-in-house/linux/Docker.html</guid>
+  <pubDate>Mon, 30 Jan 2023 10:40:00 -0500</pubDate>
+  <description>Docker is a way to manage containers, which are like namespaces or jails. Here are some useful common commands to check out the status of these containers.</description>
+ </item>
+ <item>
+  <title>Ncmpcpp</title>
+  <link>/linux-in-house/linux/ncmpcpp.html</link>
+  <guid>/linux-in-house/linux/ncmpcpp.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:36:00 -0500</pubDate>
+  <description>Simply run this on your host running Music Player Daemon (MPD) over your ssh session</description>
+ </item>
+ <item>
+  <title>Media_Managment</title>
+  <link>/linux-in-house/linux/Media_Managment.html</link>
+  <guid>/linux-in-house/linux/Media_Managment.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:34:00 -0500</pubDate>
+  <description>This is where I manage Music and Television files.</description>
+ </item>
+ <item>
+  <title>BeagleBone</title>
+  <link>/linux-in-house/linux/BeagleBone.html</link>
+  <guid>/linux-in-house/linux/BeagleBone.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:32:00 -0500</pubDate>
+  <description>The BeagleBone (BB) line supports the Linux kernel and GPIO hardware connections to devices via device trees. It is similar to the Rasberry-PI line, only BB is open source hardware.</description>
+ </item>
+ <item>
+  <title>Miniflux</title>
+  <link>/linux-in-house/linux/Miniflux.html</link>
+  <guid>/linux-in-house/linux/Miniflux.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:30:00 -0500</pubDate>
+  <description>Miniflux is an RSS (Really Simple Syndication) server that will fetch and display RSS feeds from other websites. Also known as a _news reader_.</description>
+ </item>
+ <item>
+  <title>Matrix</title>
+  <link>/linux-in-house/linux/Matrix.html</link>
+  <guid>/linux-in-house/linux/Matrix.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:28:00 -0500</pubDate>
+  <description>Matrix is a messaging system you can on your server. It allows your to send messages to a phone/watch from command line on the server. It is useful with HomeAssistant for monitoring the house.</description>
+ </item>
+ <item>
+  <title>Certificate</title>
+  <link>/linux-in-house/linux/Certificate.html</link>
+  <guid>/linux-in-house/linux/Certificate.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:28:00 -0500</pubDate>
+  <description>Web certificates encrypt different messages over the public internet so nobody can see what these messages contain.</description>
+ </item>
+ <item>
+  <title>HomeAssistant</title>
+  <link>/linux-in-house/linux/HomeAssistant.html</link>
+  <guid>/linux-in-house/linux/HomeAssistant.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:26:00 -0500</pubDate>
+  <description>This is a web based interface for automating things around the home. It can monitor doors, windows, motion detection and turn electrical things on and off.</description>
+ </item>
+ <item>
+  <title>DNS</title>
+  <link>/linux-in-house/linux/DNS.html</link>
+  <guid>/linux-in-house/linux/DNS.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:24:00 -0500</pubDate>
+  <description>A Domain Name Service (DNS) allows your E-Mail and Web Server to use a name instead of an IP Address, so other people can find you by name. Some Internet Service Providers (ISP) will change your IP address every few months in a residential environment.</description>
+ </item>
+ <item>
+  <title>Cloud</title>
+  <link>/linux-in-house/linux/Cloud.html</link>
+  <guid>/linux-in-house/linux/Cloud.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:24:00 -0500</pubDate>
+  <description>A cloud used to be floating in the sky, then it was a bubbly thing on a network diagram where weird things happen. Now a cloud just means &quot;Somebody else's computer.&quot;. Of course you get to it over a network and can share things, like files (pictures, music, documents), contacts, calendars and chat, among other things.</description>
+ </item>
+ <item>
+  <title>PostgreSql_Move</title>
+  <link>/linux-in-house/linux/PostgreSql_Move.html</link>
+  <guid>/linux-in-house/linux/PostgreSql_Move.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:22:00 -0500</pubDate>
+  <description>Mainly used this on SBC (BeagleBone) computer to move a database from SD card (/var/lib...) to SSD disk (/data/lib...). A database will burn up an SD card quickly 😟</description>
+ </item>
+ <item>
+  <title>PostgreSql_Upgrade</title>
+  <link>/linux-in-house/linux/PostgreSql_Upgrade.html</link>
+  <guid>/linux-in-house/linux/PostgreSql_Upgrade.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:20:00 -0500</pubDate>
+  <description>Oh my, installing Ubuntu 22.04 installed PostgreSQL 14... wonder what version I am using...</description>
+ </item>
+ <item>
+  <title>Postgresql</title>
+  <link>/linux-in-house/linux/Postgresql.html</link>
+  <guid>/linux-in-house/linux/Postgresql.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:16:00 -0500</pubDate>
+  <description>Postgresql relational SQL database for systems. This is a great database with high reliability, performance and extendable.</description>
+ </item>
+ <item>
+  <title>E-Mail_Relay</title>
+  <link>/linux-in-house/linux/E-Mail_Relay.html</link>
+  <guid>/linux-in-house/linux/E-Mail_Relay.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:16:00 -0500</pubDate>
+  <description>The following diagrams are what this document will accomplish. The challenge is to obtain and keep a good reputation that other E-Mail handlers around the world will accept. Otherwise your messages will be dumped in the trash can (SPAM) or sent back to you (bounced).</description>
+ </item>
+ <item>
+  <title>E-Mail</title>
+  <link>/linux-in-house/linux/E-Mail.html</link>
+  <guid>/linux-in-house/linux/E-Mail.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:14:00 -0500</pubDate>
+  <description>Electronic Mail (E-Mail) is a way to type letters onto a computer and send them to other people. These other people's computers will then use E-Mail to read your letters. It is an electronic version of the Post Office.</description>
+ </item>
+ <item>
+  <title>Mirror_Disks</title>
+  <link>/linux-in-house/linux/Mirror_Disks.html</link>
+  <guid>/linux-in-house/linux/Mirror_Disks.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:12:00 -0500</pubDate>
+  <description>Mirroring disks on Linux is simple and prudent to ensure your data survives hardware, software and human failures. All data from one disk is duplicated on another disk and if any **one** disk fails, you will never know it. So it is important after setting up to monitor the disk array.</description>
+ </item>
+ <item>
+  <title>NAS</title>
+  <link>/linux-in-house/linux/NAS.html</link>
+  <guid>/linux-in-house/linux/NAS.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:10:00 -0500</pubDate>
+  <description>The NAS provides a safe place to store important data. Set this up before running E-Mail or a cloud service because it is the best place to put important files. If an E-Mail server crashes you still have all your E-Mail files on the NFS (see below) attached NAS server. That's what it's for.</description>
+ </item>
+ <item>
+  <title>Intro</title>
+  <link>/linux-in-house/linux/intro.html</link>
+  <guid>/linux-in-house/linux/intro.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:02:00 -0500</pubDate>
+  <description>The amazing things you can do with computer software in your home, ya GNU?</description>
+ </item>
+ <item>
+  <title>My-second-review</title>
+  <link>/linux-in-house/linux/my-second-review.html</link>
+  <guid>/linux-in-house/linux/my-second-review.html</guid>
+  <pubDate>Fri, 03 Dec 2010 10:20:00 -0500</pubDate>
+  <description>Following is a review of my favorite mechanical mouse.</description>
+ </item>
+</channel>
+
+</rss>
+ <item>
+  <title>Welcome</title>
+  <link>/linux-in-house/linux/welcome.html</link>
+  <guid>/linux-in-house/linux/welcome.html</guid>
+  <pubDate>Mon, 01 Jan 2525 10:20:00 -0500</pubDate>
+  <description>the show that never ends, Linux in House..</description>
+ </item>
+ <item>
+  <title>Setup-server</title>
+  <link>/linux-in-house/linux/setup-server.html</link>
+  <guid>/linux-in-house/linux/setup-server.html</guid>
+  <pubDate>Mon, 01 Jan 2525 10:00:00 -0500</pubDate>
+  <description>I use this as a guide to enable proper monitoring and maintenance of any new server on the network.</description>
+ </item>
+ <item>
+  <title>Git</title>
+  <link>/linux-in-house/linux/git.html</link>
+  <guid>/linux-in-house/linux/git.html</guid>
+  <pubDate>Sun, 01 Oct 2023 10:20:00 -0400</pubDate>
+  <description>GIT is like a generic information tracker, letting you go back in time to see what changed.</description>
+ </item>
+ <item>
+  <title>Watch</title>
+  <link>/linux-in-house/linux/Watch.html</link>
+  <guid>/linux-in-house/linux/Watch.html</guid>
+  <pubDate>Tue, 01 Aug 2023 10:20:00 -0400</pubDate>
+  <description>Finally got my alerts working, so when a host goes haywire I get an alert on the Phone and Cloud, with E-Mail as backup.</description>
+ </item>
+ <item>
+  <title>VirtualMachines</title>
+  <link>/linux-in-house/linux/VirtualMachines.html</link>
+  <guid>/linux-in-house/linux/VirtualMachines.html</guid>
+  <pubDate>Thu, 01 Jun 2023 10:20:00 -0400</pubDate>
+  <description>A Virtual Machine (VM) is a way to create a whole operating system, with many applications, that is able to be moved from one physical machine to another physical machine. This has advantages in case of hardware, location or network problems to quickly and correctly restore service.</description>
+ </item>
+ <item>
+  <title>NetworkManagement</title>
+  <link>/linux-in-house/linux/NetworkManagement.html</link>
+  <guid>/linux-in-house/linux/NetworkManagement.html</guid>
+  <pubDate>Sat, 01 Apr 2023 10:44:00 -0400</pubDate>
+  <description>The command line offers a wealth of network management commands. Here are some of my favorites.</description>
+ </item>
+ <item>
+  <title>EncryptingFiles</title>
+  <link>/linux-in-house/linux/EncryptingFiles.html</link>
+  <guid>/linux-in-house/linux/EncryptingFiles.html</guid>
+  <pubDate>Wed, 01 Mar 2023 10:42:00 -0500</pubDate>
+  <description>You should protect your carefully built system and it's files from abuse, tampering, or just plain spying. It's easy to do, what are you waiting for? Encrypt your data directory now.</description>
+ </item>
+ <item>
+  <title>VirtualIP</title>
+  <link>/linux-in-house/linux/VirtualIP.html</link>
+  <guid>/linux-in-house/linux/VirtualIP.html</guid>
+  <pubDate>Wed, 01 Feb 2023 10:20:00 -0500</pubDate>
+  <description>Virtual IP Interface behaves like a normal interface. All traffic routed to it will go through the master interface (for example, eth0).</description>
+ </item>
+ <item>
+  <title>Docker</title>
+  <link>/linux-in-house/linux/Docker.html</link>
+  <guid>/linux-in-house/linux/Docker.html</guid>
+  <pubDate>Mon, 30 Jan 2023 10:40:00 -0500</pubDate>
+  <description>Docker is a way to manage containers, which are like namespaces or jails. Here are some useful common commands to check out the status of these containers.</description>
+ </item>
+ <item>
+  <title>Ncmpcpp</title>
+  <link>/linux-in-house/linux/ncmpcpp.html</link>
+  <guid>/linux-in-house/linux/ncmpcpp.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:36:00 -0500</pubDate>
+  <description>Simply run this on your host running Music Player Daemon (MPD) over your ssh session</description>
+ </item>
+ <item>
+  <title>Media_Managment</title>
+  <link>/linux-in-house/linux/Media_Managment.html</link>
+  <guid>/linux-in-house/linux/Media_Managment.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:34:00 -0500</pubDate>
+  <description>This is where I manage Music and Television files.</description>
+ </item>
+ <item>
+  <title>BeagleBone</title>
+  <link>/linux-in-house/linux/BeagleBone.html</link>
+  <guid>/linux-in-house/linux/BeagleBone.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:32:00 -0500</pubDate>
+  <description>The BeagleBone (BB) line supports the Linux kernel and GPIO hardware connections to devices via device trees. It is similar to the Rasberry-PI line, only BB is open source hardware.</description>
+ </item>
+ <item>
+  <title>Miniflux</title>
+  <link>/linux-in-house/linux/Miniflux.html</link>
+  <guid>/linux-in-house/linux/Miniflux.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:30:00 -0500</pubDate>
+  <description>Miniflux is an RSS (Really Simple Syndication) server that will fetch and display RSS feeds from other websites. Also known as a _news reader_.</description>
+ </item>
+ <item>
+  <title>Matrix</title>
+  <link>/linux-in-house/linux/Matrix.html</link>
+  <guid>/linux-in-house/linux/Matrix.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:28:00 -0500</pubDate>
+  <description>Matrix is a messaging system you can on your server. It allows your to send messages to a phone/watch from command line on the server. It is useful with HomeAssistant for monitoring the house.</description>
+ </item>
+ <item>
+  <title>Certificate</title>
+  <link>/linux-in-house/linux/Certificate.html</link>
+  <guid>/linux-in-house/linux/Certificate.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:28:00 -0500</pubDate>
+  <description>Web certificates encrypt different messages over the public internet so nobody can see what these messages contain.</description>
+ </item>
+ <item>
+  <title>HomeAssistant</title>
+  <link>/linux-in-house/linux/HomeAssistant.html</link>
+  <guid>/linux-in-house/linux/HomeAssistant.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:26:00 -0500</pubDate>
+  <description>This is a web based interface for automating things around the home. It can monitor doors, windows, motion detection and turn electrical things on and off.</description>
+ </item>
+ <item>
+  <title>DNS</title>
+  <link>/linux-in-house/linux/DNS.html</link>
+  <guid>/linux-in-house/linux/DNS.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:24:00 -0500</pubDate>
+  <description>A Domain Name Service (DNS) allows your E-Mail and Web Server to use a name instead of an IP Address, so other people can find you by name. Some Internet Service Providers (ISP) will change your IP address every few months in a residential environment.</description>
+ </item>
+ <item>
+  <title>Cloud</title>
+  <link>/linux-in-house/linux/Cloud.html</link>
+  <guid>/linux-in-house/linux/Cloud.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:24:00 -0500</pubDate>
+  <description>A cloud used to be floating in the sky, then it was a bubbly thing on a network diagram where weird things happen. Now a cloud just means &quot;Somebody else's computer.&quot;. Of course you get to it over a network and can share things, like files (pictures, music, documents), contacts, calendars and chat, among other things.</description>
+ </item>
+ <item>
+  <title>PostgreSql_Move</title>
+  <link>/linux-in-house/linux/PostgreSql_Move.html</link>
+  <guid>/linux-in-house/linux/PostgreSql_Move.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:22:00 -0500</pubDate>
+  <description>Mainly used this on SBC (BeagleBone) computer to move a database from SD card (/var/lib...) to SSD disk (/data/lib...). A database will burn up an SD card quickly 😟</description>
+ </item>
+ <item>
+  <title>PostgreSql_Upgrade</title>
+  <link>/linux-in-house/linux/PostgreSql_Upgrade.html</link>
+  <guid>/linux-in-house/linux/PostgreSql_Upgrade.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:20:00 -0500</pubDate>
+  <description>Oh my, installing Ubuntu 22.04 installed PostgreSQL 14... wonder what version I am using...</description>
+ </item>
+ <item>
+  <title>Postgresql</title>
+  <link>/linux-in-house/linux/Postgresql.html</link>
+  <guid>/linux-in-house/linux/Postgresql.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:16:00 -0500</pubDate>
+  <description>Postgresql relational SQL database for systems. This is a great database with high reliability, performance and extendable.</description>
+ </item>
+ <item>
+  <title>E-Mail_Relay</title>
+  <link>/linux-in-house/linux/E-Mail_Relay.html</link>
+  <guid>/linux-in-house/linux/E-Mail_Relay.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:16:00 -0500</pubDate>
+  <description>The following diagrams are what this document will accomplish. The challenge is to obtain and keep a good reputation that other E-Mail handlers around the world will accept. Otherwise your messages will be dumped in the trash can (SPAM) or sent back to you (bounced).</description>
+ </item>
+ <item>
+  <title>E-Mail</title>
+  <link>/linux-in-house/linux/E-Mail.html</link>
+  <guid>/linux-in-house/linux/E-Mail.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:14:00 -0500</pubDate>
+  <description>Electronic Mail (E-Mail) is a way to type letters onto a computer and send them to other people. These other people's computers will then use E-Mail to read your letters. It is an electronic version of the Post Office.</description>
+ </item>
+ <item>
+  <title>Mirror_Disks</title>
+  <link>/linux-in-house/linux/Mirror_Disks.html</link>
+  <guid>/linux-in-house/linux/Mirror_Disks.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:12:00 -0500</pubDate>
+  <description>Mirroring disks on Linux is simple and prudent to ensure your data survives hardware, software and human failures. All data from one disk is duplicated on another disk and if any **one** disk fails, you will never know it. So it is important after setting up to monitor the disk array.</description>
+ </item>
+ <item>
+  <title>NAS</title>
+  <link>/linux-in-house/linux/NAS.html</link>
+  <guid>/linux-in-house/linux/NAS.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:10:00 -0500</pubDate>
+  <description>The NAS provides a safe place to store important data. Set this up before running E-Mail or a cloud service because it is the best place to put important files. If an E-Mail server crashes you still have all your E-Mail files on the NFS (see below) attached NAS server. That's what it's for.</description>
+ </item>
+ <item>
+  <title>Intro</title>
+  <link>/linux-in-house/linux/intro.html</link>
+  <guid>/linux-in-house/linux/intro.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:02:00 -0500</pubDate>
+  <description>The amazing things you can do with computer software in your home, ya GNU?</description>
+ </item>
+ <item>
+  <title>My-second-review</title>
+  <link>/linux-in-house/linux/my-second-review.html</link>
+  <guid>/linux-in-house/linux/my-second-review.html</guid>
+  <pubDate>Fri, 03 Dec 2010 10:20:00 -0500</pubDate>
+  <description>Following is a review of my favorite mechanical mouse.</description>
+ </item>
+</channel>
+
+</rss>
+ <item>
+  <title>Welcome</title>
+  <link>/linux-in-house/linux/welcome.html</link>
+  <guid>/linux-in-house/linux/welcome.html</guid>
+  <pubDate>Mon, 01 Jan 2525 10:20:00 -0500</pubDate>
+  <description>the show that never ends, Linux in House..</description>
+ </item>
+ <item>
+  <title>Setup-server</title>
+  <link>/linux-in-house/linux/setup-server.html</link>
+  <guid>/linux-in-house/linux/setup-server.html</guid>
+  <pubDate>Mon, 01 Jan 2525 10:00:00 -0500</pubDate>
+  <description>I use this as a guide to enable proper monitoring and maintenance of any new server on the network.</description>
+ </item>
+ <item>
+  <title>Git</title>
+  <link>/linux-in-house/linux/git.html</link>
+  <guid>/linux-in-house/linux/git.html</guid>
+  <pubDate>Sun, 01 Oct 2023 10:20:00 -0400</pubDate>
+  <description>GIT is like a generic information tracker, letting you go back in time to see what changed.</description>
+ </item>
+ <item>
+  <title>Watch</title>
+  <link>/linux-in-house/linux/Watch.html</link>
+  <guid>/linux-in-house/linux/Watch.html</guid>
+  <pubDate>Tue, 01 Aug 2023 10:20:00 -0400</pubDate>
+  <description>Finally got my alerts working, so when a host goes haywire I get an alert on the Phone and Cloud, with E-Mail as backup.</description>
+ </item>
+ <item>
+  <title>VirtualMachines</title>
+  <link>/linux-in-house/linux/VirtualMachines.html</link>
+  <guid>/linux-in-house/linux/VirtualMachines.html</guid>
+  <pubDate>Thu, 01 Jun 2023 10:20:00 -0400</pubDate>
+  <description>A Virtual Machine (VM) is a way to create a whole operating system, with many applications, that is able to be moved from one physical machine to another physical machine. This has advantages in case of hardware, location or network problems to quickly and correctly restore service.</description>
+ </item>
+ <item>
+  <title>NetworkManagement</title>
+  <link>/linux-in-house/linux/NetworkManagement.html</link>
+  <guid>/linux-in-house/linux/NetworkManagement.html</guid>
+  <pubDate>Sat, 01 Apr 2023 10:44:00 -0400</pubDate>
+  <description>The command line offers a wealth of network management commands. Here are some of my favorites.</description>
+ </item>
+ <item>
+  <title>EncryptingFiles</title>
+  <link>/linux-in-house/linux/EncryptingFiles.html</link>
+  <guid>/linux-in-house/linux/EncryptingFiles.html</guid>
+  <pubDate>Wed, 01 Mar 2023 10:42:00 -0500</pubDate>
+  <description>You should protect your carefully built system and it's files from abuse, tampering, or just plain spying. It's easy to do, what are you waiting for? Encrypt your data directory now.</description>
+ </item>
+ <item>
+  <title>VirtualIP</title>
+  <link>/linux-in-house/linux/VirtualIP.html</link>
+  <guid>/linux-in-house/linux/VirtualIP.html</guid>
+  <pubDate>Wed, 01 Feb 2023 10:20:00 -0500</pubDate>
+  <description>Virtual IP Interface behaves like a normal interface. All traffic routed to it will go through the master interface (for example, eth0).</description>
+ </item>
+ <item>
+  <title>Docker</title>
+  <link>/linux-in-house/linux/Docker.html</link>
+  <guid>/linux-in-house/linux/Docker.html</guid>
+  <pubDate>Mon, 30 Jan 2023 10:40:00 -0500</pubDate>
+  <description>Docker is a way to manage containers, which are like namespaces or jails. Here are some useful common commands to check out the status of these containers.</description>
+ </item>
+ <item>
+  <title>Ncmpcpp</title>
+  <link>/linux-in-house/linux/ncmpcpp.html</link>
+  <guid>/linux-in-house/linux/ncmpcpp.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:36:00 -0500</pubDate>
+  <description>Simply run this on your host running Music Player Daemon (MPD) over your ssh session</description>
+ </item>
+ <item>
+  <title>Media_Managment</title>
+  <link>/linux-in-house/linux/Media_Managment.html</link>
+  <guid>/linux-in-house/linux/Media_Managment.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:34:00 -0500</pubDate>
+  <description>This is where I manage Music and Television files.</description>
+ </item>
+ <item>
+  <title>BeagleBone</title>
+  <link>/linux-in-house/linux/BeagleBone.html</link>
+  <guid>/linux-in-house/linux/BeagleBone.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:32:00 -0500</pubDate>
+  <description>The BeagleBone (BB) line supports the Linux kernel and GPIO hardware connections to devices via device trees. It is similar to the Rasberry-PI line, only BB is open source hardware.</description>
+ </item>
+ <item>
+  <title>Miniflux</title>
+  <link>/linux-in-house/linux/Miniflux.html</link>
+  <guid>/linux-in-house/linux/Miniflux.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:30:00 -0500</pubDate>
+  <description>Miniflux is an RSS (Really Simple Syndication) server that will fetch and display RSS feeds from other websites. Also known as a _news reader_.</description>
+ </item>
+ <item>
+  <title>Matrix</title>
+  <link>/linux-in-house/linux/Matrix.html</link>
+  <guid>/linux-in-house/linux/Matrix.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:28:00 -0500</pubDate>
+  <description>Matrix is a messaging system you can on your server. It allows your to send messages to a phone/watch from command line on the server. It is useful with HomeAssistant for monitoring the house.</description>
+ </item>
+ <item>
+  <title>Certificate</title>
+  <link>/linux-in-house/linux/Certificate.html</link>
+  <guid>/linux-in-house/linux/Certificate.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:28:00 -0500</pubDate>
+  <description>Web certificates encrypt different messages over the public internet so nobody can see what these messages contain.</description>
+ </item>
+ <item>
+  <title>HomeAssistant</title>
+  <link>/linux-in-house/linux/HomeAssistant.html</link>
+  <guid>/linux-in-house/linux/HomeAssistant.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:26:00 -0500</pubDate>
+  <description>This is a web based interface for automating things around the home. It can monitor doors, windows, motion detection and turn electrical things on and off.</description>
+ </item>
+ <item>
+  <title>DNS</title>
+  <link>/linux-in-house/linux/DNS.html</link>
+  <guid>/linux-in-house/linux/DNS.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:24:00 -0500</pubDate>
+  <description>A Domain Name Service (DNS) allows your E-Mail and Web Server to use a name instead of an IP Address, so other people can find you by name. Some Internet Service Providers (ISP) will change your IP address every few months in a residential environment.</description>
+ </item>
+ <item>
+  <title>Cloud</title>
+  <link>/linux-in-house/linux/Cloud.html</link>
+  <guid>/linux-in-house/linux/Cloud.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:24:00 -0500</pubDate>
+  <description>A cloud used to be floating in the sky, then it was a bubbly thing on a network diagram where weird things happen. Now a cloud just means &quot;Somebody else's computer.&quot;. Of course you get to it over a network and can share things, like files (pictures, music, documents), contacts, calendars and chat, among other things.</description>
+ </item>
+ <item>
+  <title>PostgreSql_Move</title>
+  <link>/linux-in-house/linux/PostgreSql_Move.html</link>
+  <guid>/linux-in-house/linux/PostgreSql_Move.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:22:00 -0500</pubDate>
+  <description>Mainly used this on SBC (BeagleBone) computer to move a database from SD card (/var/lib...) to SSD disk (/data/lib...). A database will burn up an SD card quickly 😟</description>
+ </item>
+ <item>
+  <title>PostgreSql_Upgrade</title>
+  <link>/linux-in-house/linux/PostgreSql_Upgrade.html</link>
+  <guid>/linux-in-house/linux/PostgreSql_Upgrade.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:20:00 -0500</pubDate>
+  <description>Oh my, installing Ubuntu 22.04 installed PostgreSQL 14... wonder what version I am using...</description>
+ </item>
+ <item>
+  <title>Postgresql</title>
+  <link>/linux-in-house/linux/Postgresql.html</link>
+  <guid>/linux-in-house/linux/Postgresql.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:16:00 -0500</pubDate>
+  <description>Postgresql relational SQL database for systems. This is a great database with high reliability, performance and extendable.</description>
+ </item>
+ <item>
+  <title>E-Mail_Relay</title>
+  <link>/linux-in-house/linux/E-Mail_Relay.html</link>
+  <guid>/linux-in-house/linux/E-Mail_Relay.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:16:00 -0500</pubDate>
+  <description>The following diagrams are what this document will accomplish. The challenge is to obtain and keep a good reputation that other E-Mail handlers around the world will accept. Otherwise your messages will be dumped in the trash can (SPAM) or sent back to you (bounced).</description>
+ </item>
+ <item>
+  <title>E-Mail</title>
+  <link>/linux-in-house/linux/E-Mail.html</link>
+  <guid>/linux-in-house/linux/E-Mail.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:14:00 -0500</pubDate>
+  <description>Electronic Mail (E-Mail) is a way to type letters onto a computer and send them to other people. These other people's computers will then use E-Mail to read your letters. It is an electronic version of the Post Office.</description>
+ </item>
+ <item>
+  <title>Mirror_Disks</title>
+  <link>/linux-in-house/linux/Mirror_Disks.html</link>
+  <guid>/linux-in-house/linux/Mirror_Disks.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:12:00 -0500</pubDate>
+  <description>Mirroring disks on Linux is simple and prudent to ensure your data survives hardware, software and human failures. All data from one disk is duplicated on another disk and if any **one** disk fails, you will never know it. So it is important after setting up to monitor the disk array.</description>
+ </item>
+ <item>
+  <title>NAS</title>
+  <link>/linux-in-house/linux/NAS.html</link>
+  <guid>/linux-in-house/linux/NAS.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:10:00 -0500</pubDate>
+  <description>The NAS provides a safe place to store important data. Set this up before running E-Mail or a cloud service because it is the best place to put important files. If an E-Mail server crashes you still have all your E-Mail files on the NFS (see below) attached NAS server. That's what it's for.</description>
+ </item>
+ <item>
+  <title>Intro</title>
+  <link>/linux-in-house/linux/intro.html</link>
+  <guid>/linux-in-house/linux/intro.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:02:00 -0500</pubDate>
+  <description>The amazing things you can do with computer software in your home, ya GNU?</description>
+ </item>
+ <item>
+  <title>My-second-review</title>
+  <link>/linux-in-house/linux/my-second-review.html</link>
+  <guid>/linux-in-house/linux/my-second-review.html</guid>
+  <pubDate>Fri, 03 Dec 2010 10:20:00 -0500</pubDate>
+  <description>Following is a review of my favorite mechanical mouse.</description>
+ </item>
+</channel>
+
+</rss>
+ <item>
+  <title>Welcome</title>
+  <link>/linux-in-house/linux/welcome.html</link>
+  <guid>/linux-in-house/linux/welcome.html</guid>
+  <pubDate>Mon, 01 Jan 2525 10:20:00 -0500</pubDate>
+  <description>the show that never ends, Linux in House..</description>
+ </item>
+ <item>
+  <title>Setup-server</title>
+  <link>/linux-in-house/linux/setup-server.html</link>
+  <guid>/linux-in-house/linux/setup-server.html</guid>
+  <pubDate>Mon, 01 Jan 2525 10:00:00 -0500</pubDate>
+  <description>I use this as a guide to enable proper monitoring and maintenance of any new server on the network.</description>
+ </item>
+ <item>
+  <title>Git</title>
+  <link>/linux-in-house/linux/git.html</link>
+  <guid>/linux-in-house/linux/git.html</guid>
+  <pubDate>Sun, 01 Oct 2023 10:20:00 -0400</pubDate>
+  <description>GIT is like a generic information tracker, letting you go back in time to see what changed.</description>
+ </item>
+ <item>
+  <title>Watch</title>
+  <link>/linux-in-house/linux/Watch.html</link>
+  <guid>/linux-in-house/linux/Watch.html</guid>
+  <pubDate>Tue, 01 Aug 2023 10:20:00 -0400</pubDate>
+  <description>Finally got my alerts working, so when a host goes haywire I get an alert on the Phone and Cloud, with E-Mail as backup.</description>
+ </item>
+ <item>
+  <title>VirtualMachines</title>
+  <link>/linux-in-house/linux/VirtualMachines.html</link>
+  <guid>/linux-in-house/linux/VirtualMachines.html</guid>
+  <pubDate>Thu, 01 Jun 2023 10:20:00 -0400</pubDate>
+  <description>A Virtual Machine (VM) is a way to create a whole operating system, with many applications, that is able to be moved from one physical machine to another physical machine. This has advantages in case of hardware, location or network problems to quickly and correctly restore service.</description>
+ </item>
+ <item>
+  <title>NetworkManagement</title>
+  <link>/linux-in-house/linux/NetworkManagement.html</link>
+  <guid>/linux-in-house/linux/NetworkManagement.html</guid>
+  <pubDate>Sat, 01 Apr 2023 10:44:00 -0400</pubDate>
+  <description>The command line offers a wealth of network management commands. Here are some of my favorites.</description>
+ </item>
+ <item>
+  <title>EncryptingFiles</title>
+  <link>/linux-in-house/linux/EncryptingFiles.html</link>
+  <guid>/linux-in-house/linux/EncryptingFiles.html</guid>
+  <pubDate>Wed, 01 Mar 2023 10:42:00 -0500</pubDate>
+  <description>You should protect your carefully built system and it's files from abuse, tampering, or just plain spying. It's easy to do, what are you waiting for? Encrypt your data directory now.</description>
+ </item>
+ <item>
+  <title>VirtualIP</title>
+  <link>/linux-in-house/linux/VirtualIP.html</link>
+  <guid>/linux-in-house/linux/VirtualIP.html</guid>
+  <pubDate>Wed, 01 Feb 2023 10:20:00 -0500</pubDate>
+  <description>Virtual IP Interface behaves like a normal interface. All traffic routed to it will go through the master interface (for example, eth0).</description>
+ </item>
+ <item>
+  <title>Docker</title>
+  <link>/linux-in-house/linux/Docker.html</link>
+  <guid>/linux-in-house/linux/Docker.html</guid>
+  <pubDate>Mon, 30 Jan 2023 10:40:00 -0500</pubDate>
+  <description>Docker is a way to manage containers, which are like namespaces or jails. Here are some useful common commands to check out the status of these containers.</description>
+ </item>
+ <item>
+  <title>Ncmpcpp</title>
+  <link>/linux-in-house/linux/ncmpcpp.html</link>
+  <guid>/linux-in-house/linux/ncmpcpp.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:36:00 -0500</pubDate>
+  <description>Simply run this on your host running Music Player Daemon (MPD) over your ssh session</description>
+ </item>
+ <item>
+  <title>Media_Managment</title>
+  <link>/linux-in-house/linux/Media_Managment.html</link>
+  <guid>/linux-in-house/linux/Media_Managment.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:34:00 -0500</pubDate>
+  <description>This is where I manage Music and Television files.</description>
+ </item>
+ <item>
+  <title>BeagleBone</title>
+  <link>/linux-in-house/linux/BeagleBone.html</link>
+  <guid>/linux-in-house/linux/BeagleBone.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:32:00 -0500</pubDate>
+  <description>The BeagleBone (BB) line supports the Linux kernel and GPIO hardware connections to devices via device trees. It is similar to the Rasberry-PI line, only BB is open source hardware.</description>
+ </item>
+ <item>
+  <title>Miniflux</title>
+  <link>/linux-in-house/linux/Miniflux.html</link>
+  <guid>/linux-in-house/linux/Miniflux.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:30:00 -0500</pubDate>
+  <description>Miniflux is an RSS (Really Simple Syndication) server that will fetch and display RSS feeds from other websites. Also known as a _news reader_.</description>
+ </item>
+ <item>
+  <title>Matrix</title>
+  <link>/linux-in-house/linux/Matrix.html</link>
+  <guid>/linux-in-house/linux/Matrix.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:28:00 -0500</pubDate>
+  <description>Matrix is a messaging system you can on your server. It allows your to send messages to a phone/watch from command line on the server. It is useful with HomeAssistant for monitoring the house.</description>
+ </item>
+ <item>
+  <title>Certificate</title>
+  <link>/linux-in-house/linux/Certificate.html</link>
+  <guid>/linux-in-house/linux/Certificate.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:28:00 -0500</pubDate>
+  <description>Web certificates encrypt different messages over the public internet so nobody can see what these messages contain.</description>
+ </item>
+ <item>
+  <title>HomeAssistant</title>
+  <link>/linux-in-house/linux/HomeAssistant.html</link>
+  <guid>/linux-in-house/linux/HomeAssistant.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:26:00 -0500</pubDate>
+  <description>This is a web based interface for automating things around the home. It can monitor doors, windows, motion detection and turn electrical things on and off.</description>
+ </item>
+ <item>
+  <title>DNS</title>
+  <link>/linux-in-house/linux/DNS.html</link>
+  <guid>/linux-in-house/linux/DNS.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:24:00 -0500</pubDate>
+  <description>A Domain Name Service (DNS) allows your E-Mail and Web Server to use a name instead of an IP Address, so other people can find you by name. Some Internet Service Providers (ISP) will change your IP address every few months in a residential environment.</description>
+ </item>
+ <item>
+  <title>Cloud</title>
+  <link>/linux-in-house/linux/Cloud.html</link>
+  <guid>/linux-in-house/linux/Cloud.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:24:00 -0500</pubDate>
+  <description>A cloud used to be floating in the sky, then it was a bubbly thing on a network diagram where weird things happen. Now a cloud just means &quot;Somebody else's computer.&quot;. Of course you get to it over a network and can share things, like files (pictures, music, documents), contacts, calendars and chat, among other things.</description>
+ </item>
+ <item>
+  <title>PostgreSql_Move</title>
+  <link>/linux-in-house/linux/PostgreSql_Move.html</link>
+  <guid>/linux-in-house/linux/PostgreSql_Move.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:22:00 -0500</pubDate>
+  <description>Mainly used this on SBC (BeagleBone) computer to move a database from SD card (/var/lib...) to SSD disk (/data/lib...). A database will burn up an SD card quickly 😟</description>
+ </item>
+ <item>
+  <title>PostgreSql_Upgrade</title>
+  <link>/linux-in-house/linux/PostgreSql_Upgrade.html</link>
+  <guid>/linux-in-house/linux/PostgreSql_Upgrade.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:20:00 -0500</pubDate>
+  <description>Oh my, installing Ubuntu 22.04 installed PostgreSQL 14... wonder what version I am using...</description>
+ </item>
+ <item>
+  <title>Postgresql</title>
+  <link>/linux-in-house/linux/Postgresql.html</link>
+  <guid>/linux-in-house/linux/Postgresql.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:16:00 -0500</pubDate>
+  <description>Postgresql relational SQL database for systems. This is a great database with high reliability, performance and extendable.</description>
+ </item>
+ <item>
+  <title>E-Mail_Relay</title>
+  <link>/linux-in-house/linux/E-Mail_Relay.html</link>
+  <guid>/linux-in-house/linux/E-Mail_Relay.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:16:00 -0500</pubDate>
+  <description>The following diagrams are what this document will accomplish. The challenge is to obtain and keep a good reputation that other E-Mail handlers around the world will accept. Otherwise your messages will be dumped in the trash can (SPAM) or sent back to you (bounced).</description>
+ </item>
+ <item>
+  <title>E-Mail</title>
+  <link>/linux-in-house/linux/E-Mail.html</link>
+  <guid>/linux-in-house/linux/E-Mail.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:14:00 -0500</pubDate>
+  <description>Electronic Mail (E-Mail) is a way to type letters onto a computer and send them to other people. These other people's computers will then use E-Mail to read your letters. It is an electronic version of the Post Office.</description>
+ </item>
+ <item>
+  <title>Mirror_Disks</title>
+  <link>/linux-in-house/linux/Mirror_Disks.html</link>
+  <guid>/linux-in-house/linux/Mirror_Disks.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:12:00 -0500</pubDate>
+  <description>Mirroring disks on Linux is simple and prudent to ensure your data survives hardware, software and human failures. All data from one disk is duplicated on another disk and if any **one** disk fails, you will never know it. So it is important after setting up to monitor the disk array.</description>
+ </item>
+ <item>
+  <title>NAS</title>
+  <link>/linux-in-house/linux/NAS.html</link>
+  <guid>/linux-in-house/linux/NAS.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:10:00 -0500</pubDate>
+  <description>The NAS provides a safe place to store important data. Set this up before running E-Mail or a cloud service because it is the best place to put important files. If an E-Mail server crashes you still have all your E-Mail files on the NFS (see below) attached NAS server. That's what it's for.</description>
+ </item>
+ <item>
+  <title>Intro</title>
+  <link>/linux-in-house/linux/intro.html</link>
+  <guid>/linux-in-house/linux/intro.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:02:00 -0500</pubDate>
+  <description>The amazing things you can do with computer software in your home, ya GNU?</description>
+ </item>
+ <item>
+  <title>My-second-review</title>
+  <link>/linux-in-house/linux/my-second-review.html</link>
+  <guid>/linux-in-house/linux/my-second-review.html</guid>
+  <pubDate>Fri, 03 Dec 2010 10:20:00 -0500</pubDate>
+  <description>Following is a review of my favorite mechanical mouse.</description>
+ </item>
+</channel>
+
+</rss>
+ <item>
+  <title>Welcome</title>
+  <link>/linux-in-house/linux/welcome.html</link>
+  <guid>/linux-in-house/linux/welcome.html</guid>
+  <pubDate>Mon, 01 Jan 2525 10:20:00 -0500</pubDate>
+  <description>the show that never ends, Linux in House..</description>
+ </item>
+ <item>
+  <title>Setup-server</title>
+  <link>/linux-in-house/linux/setup-server.html</link>
+  <guid>/linux-in-house/linux/setup-server.html</guid>
+  <pubDate>Mon, 01 Jan 2525 10:00:00 -0500</pubDate>
+  <description>I use this as a guide to enable proper monitoring and maintenance of any new server on the network.</description>
+ </item>
+ <item>
+  <title>Git</title>
+  <link>/linux-in-house/linux/git.html</link>
+  <guid>/linux-in-house/linux/git.html</guid>
+  <pubDate>Sun, 01 Oct 2023 10:20:00 -0400</pubDate>
+  <description>GIT is like a generic information tracker, letting you go back in time to see what changed.</description>
+ </item>
+ <item>
+  <title>Watch</title>
+  <link>/linux-in-house/linux/Watch.html</link>
+  <guid>/linux-in-house/linux/Watch.html</guid>
+  <pubDate>Tue, 01 Aug 2023 10:20:00 -0400</pubDate>
+  <description>Finally got my alerts working, so when a host goes haywire I get an alert on the Phone and Cloud, with E-Mail as backup.</description>
+ </item>
+ <item>
+  <title>VirtualMachines</title>
+  <link>/linux-in-house/linux/VirtualMachines.html</link>
+  <guid>/linux-in-house/linux/VirtualMachines.html</guid>
+  <pubDate>Thu, 01 Jun 2023 10:20:00 -0400</pubDate>
+  <description>A Virtual Machine (VM) is a way to create a whole operating system, with many applications, that is able to be moved from one physical machine to another physical machine. This has advantages in case of hardware, location or network problems to quickly and correctly restore service.</description>
+ </item>
+ <item>
+  <title>NetworkManagement</title>
+  <link>/linux-in-house/linux/NetworkManagement.html</link>
+  <guid>/linux-in-house/linux/NetworkManagement.html</guid>
+  <pubDate>Sat, 01 Apr 2023 10:44:00 -0400</pubDate>
+  <description>The command line offers a wealth of network management commands. Here are some of my favorites.</description>
+ </item>
+ <item>
+  <title>EncryptingFiles</title>
+  <link>/linux-in-house/linux/EncryptingFiles.html</link>
+  <guid>/linux-in-house/linux/EncryptingFiles.html</guid>
+  <pubDate>Wed, 01 Mar 2023 10:42:00 -0500</pubDate>
+  <description>You should protect your carefully built system and it's files from abuse, tampering, or just plain spying. It's easy to do, what are you waiting for? Encrypt your data directory now.</description>
+ </item>
+ <item>
+  <title>VirtualIP</title>
+  <link>/linux-in-house/linux/VirtualIP.html</link>
+  <guid>/linux-in-house/linux/VirtualIP.html</guid>
+  <pubDate>Wed, 01 Feb 2023 10:20:00 -0500</pubDate>
+  <description>Virtual IP Interface behaves like a normal interface. All traffic routed to it will go through the master interface (for example, eth0).</description>
+ </item>
+ <item>
+  <title>Docker</title>
+  <link>/linux-in-house/linux/Docker.html</link>
+  <guid>/linux-in-house/linux/Docker.html</guid>
+  <pubDate>Mon, 30 Jan 2023 10:40:00 -0500</pubDate>
+  <description>Docker is a way to manage containers, which are like namespaces or jails. Here are some useful common commands to check out the status of these containers.</description>
+ </item>
+ <item>
+  <title>Ncmpcpp</title>
+  <link>/linux-in-house/linux/ncmpcpp.html</link>
+  <guid>/linux-in-house/linux/ncmpcpp.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:36:00 -0500</pubDate>
+  <description>Simply run this on your host running Music Player Daemon (MPD) over your ssh session</description>
+ </item>
+ <item>
+  <title>Media_Managment</title>
+  <link>/linux-in-house/linux/Media_Managment.html</link>
+  <guid>/linux-in-house/linux/Media_Managment.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:34:00 -0500</pubDate>
+  <description>This is where I manage Music and Television files.</description>
+ </item>
+ <item>
+  <title>BeagleBone</title>
+  <link>/linux-in-house/linux/BeagleBone.html</link>
+  <guid>/linux-in-house/linux/BeagleBone.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:32:00 -0500</pubDate>
+  <description>The BeagleBone (BB) line supports the Linux kernel and GPIO hardware connections to devices via device trees. It is similar to the Rasberry-PI line, only BB is open source hardware.</description>
+ </item>
+ <item>
+  <title>Miniflux</title>
+  <link>/linux-in-house/linux/Miniflux.html</link>
+  <guid>/linux-in-house/linux/Miniflux.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:30:00 -0500</pubDate>
+  <description>Miniflux is an RSS (Really Simple Syndication) server that will fetch and display RSS feeds from other websites. Also known as a _news reader_.</description>
+ </item>
+ <item>
+  <title>Matrix</title>
+  <link>/linux-in-house/linux/Matrix.html</link>
+  <guid>/linux-in-house/linux/Matrix.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:28:00 -0500</pubDate>
+  <description>Matrix is a messaging system you can on your server. It allows your to send messages to a phone/watch from command line on the server. It is useful with HomeAssistant for monitoring the house.</description>
+ </item>
+ <item>
+  <title>Certificate</title>
+  <link>/linux-in-house/linux/Certificate.html</link>
+  <guid>/linux-in-house/linux/Certificate.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:28:00 -0500</pubDate>
+  <description>Web certificates encrypt different messages over the public internet so nobody can see what these messages contain.</description>
+ </item>
+ <item>
+  <title>HomeAssistant</title>
+  <link>/linux-in-house/linux/HomeAssistant.html</link>
+  <guid>/linux-in-house/linux/HomeAssistant.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:26:00 -0500</pubDate>
+  <description>This is a web based interface for automating things around the home. It can monitor doors, windows, motion detection and turn electrical things on and off.</description>
+ </item>
+ <item>
+  <title>DNS</title>
+  <link>/linux-in-house/linux/DNS.html</link>
+  <guid>/linux-in-house/linux/DNS.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:24:00 -0500</pubDate>
+  <description>A Domain Name Service (DNS) allows your E-Mail and Web Server to use a name instead of an IP Address, so other people can find you by name. Some Internet Service Providers (ISP) will change your IP address every few months in a residential environment.</description>
+ </item>
+ <item>
+  <title>Cloud</title>
+  <link>/linux-in-house/linux/Cloud.html</link>
+  <guid>/linux-in-house/linux/Cloud.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:24:00 -0500</pubDate>
+  <description>A cloud used to be floating in the sky, then it was a bubbly thing on a network diagram where weird things happen. Now a cloud just means &quot;Somebody else's computer.&quot;. Of course you get to it over a network and can share things, like files (pictures, music, documents), contacts, calendars and chat, among other things.</description>
+ </item>
+ <item>
+  <title>PostgreSql_Move</title>
+  <link>/linux-in-house/linux/PostgreSql_Move.html</link>
+  <guid>/linux-in-house/linux/PostgreSql_Move.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:22:00 -0500</pubDate>
+  <description>Mainly used this on SBC (BeagleBone) computer to move a database from SD card (/var/lib...) to SSD disk (/data/lib...). A database will burn up an SD card quickly 😟</description>
+ </item>
+ <item>
+  <title>PostgreSql_Upgrade</title>
+  <link>/linux-in-house/linux/PostgreSql_Upgrade.html</link>
+  <guid>/linux-in-house/linux/PostgreSql_Upgrade.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:20:00 -0500</pubDate>
+  <description>Oh my, installing Ubuntu 22.04 installed PostgreSQL 14... wonder what version I am using...</description>
+ </item>
+ <item>
+  <title>Postgresql</title>
+  <link>/linux-in-house/linux/Postgresql.html</link>
+  <guid>/linux-in-house/linux/Postgresql.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:16:00 -0500</pubDate>
+  <description>Postgresql relational SQL database for systems. This is a great database with high reliability, performance and extendable.</description>
+ </item>
+ <item>
+  <title>E-Mail_Relay</title>
+  <link>/linux-in-house/linux/E-Mail_Relay.html</link>
+  <guid>/linux-in-house/linux/E-Mail_Relay.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:16:00 -0500</pubDate>
+  <description>The following diagrams are what this document will accomplish. The challenge is to obtain and keep a good reputation that other E-Mail handlers around the world will accept. Otherwise your messages will be dumped in the trash can (SPAM) or sent back to you (bounced).</description>
+ </item>
+ <item>
+  <title>E-Mail</title>
+  <link>/linux-in-house/linux/E-Mail.html</link>
+  <guid>/linux-in-house/linux/E-Mail.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:14:00 -0500</pubDate>
+  <description>Electronic Mail (E-Mail) is a way to type letters onto a computer and send them to other people. These other people's computers will then use E-Mail to read your letters. It is an electronic version of the Post Office.</description>
+ </item>
+ <item>
+  <title>Mirror_Disks</title>
+  <link>/linux-in-house/linux/Mirror_Disks.html</link>
+  <guid>/linux-in-house/linux/Mirror_Disks.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:12:00 -0500</pubDate>
+  <description>Mirroring disks on Linux is simple and prudent to ensure your data survives hardware, software and human failures. All data from one disk is duplicated on another disk and if any **one** disk fails, you will never know it. So it is important after setting up to monitor the disk array.</description>
+ </item>
+ <item>
+  <title>NAS</title>
+  <link>/linux-in-house/linux/NAS.html</link>
+  <guid>/linux-in-house/linux/NAS.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:10:00 -0500</pubDate>
+  <description>The NAS provides a safe place to store important data. Set this up before running E-Mail or a cloud service because it is the best place to put important files. If an E-Mail server crashes you still have all your E-Mail files on the NFS (see below) attached NAS server. That's what it's for.</description>
+ </item>
+ <item>
+  <title>Intro</title>
+  <link>/linux-in-house/linux/intro.html</link>
+  <guid>/linux-in-house/linux/intro.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:02:00 -0500</pubDate>
+  <description>The amazing things you can do with computer software in your home, ya GNU?</description>
+ </item>
+ <item>
+  <title>My-second-review</title>
+  <link>/linux-in-house/linux/my-second-review.html</link>
+  <guid>/linux-in-house/linux/my-second-review.html</guid>
+  <pubDate>Fri, 03 Dec 2010 10:20:00 -0500</pubDate>
+  <description>Following is a review of my favorite mechanical mouse.</description>
+ </item>
+</channel>
+
+</rss>
+ <item>
+  <title>Welcome</title>
+  <link>/linux-in-house/linux/welcome.html</link>
+  <guid>/linux-in-house/linux/welcome.html</guid>
+  <pubDate>Mon, 01 Jan 2525 10:20:00 -0500</pubDate>
+  <description>the show that never ends, Linux in House..</description>
+ </item>
+ <item>
+  <title>Setup-server</title>
+  <link>/linux-in-house/linux/setup-server.html</link>
+  <guid>/linux-in-house/linux/setup-server.html</guid>
+  <pubDate>Mon, 01 Jan 2525 10:00:00 -0500</pubDate>
+  <description>I use this as a guide to enable proper monitoring and maintenance of any new server on the network.</description>
+ </item>
+ <item>
+  <title>Git</title>
+  <link>/linux-in-house/linux/git.html</link>
+  <guid>/linux-in-house/linux/git.html</guid>
+  <pubDate>Sun, 01 Oct 2023 10:20:00 -0400</pubDate>
+  <description>GIT is like a generic information tracker, letting you go back in time to see what changed.</description>
+ </item>
+ <item>
+  <title>Watch</title>
+  <link>/linux-in-house/linux/Watch.html</link>
+  <guid>/linux-in-house/linux/Watch.html</guid>
+  <pubDate>Tue, 01 Aug 2023 10:20:00 -0400</pubDate>
+  <description>Finally got my alerts working, so when a host goes haywire I get an alert on the Phone and Cloud, with E-Mail as backup.</description>
+ </item>
+ <item>
+  <title>VirtualMachines</title>
+  <link>/linux-in-house/linux/VirtualMachines.html</link>
+  <guid>/linux-in-house/linux/VirtualMachines.html</guid>
+  <pubDate>Thu, 01 Jun 2023 10:20:00 -0400</pubDate>
+  <description>A Virtual Machine (VM) is a way to create a whole operating system, with many applications, that is able to be moved from one physical machine to another physical machine. This has advantages in case of hardware, location or network problems to quickly and correctly restore service.</description>
+ </item>
+ <item>
+  <title>NetworkManagement</title>
+  <link>/linux-in-house/linux/NetworkManagement.html</link>
+  <guid>/linux-in-house/linux/NetworkManagement.html</guid>
+  <pubDate>Sat, 01 Apr 2023 10:44:00 -0400</pubDate>
+  <description>The command line offers a wealth of network management commands. Here are some of my favorites.</description>
+ </item>
+ <item>
+  <title>EncryptingFiles</title>
+  <link>/linux-in-house/linux/EncryptingFiles.html</link>
+  <guid>/linux-in-house/linux/EncryptingFiles.html</guid>
+  <pubDate>Wed, 01 Mar 2023 10:42:00 -0500</pubDate>
+  <description>You should protect your carefully built system and it's files from abuse, tampering, or just plain spying. It's easy to do, what are you waiting for? Encrypt your data directory now.</description>
+ </item>
+ <item>
+  <title>VirtualIP</title>
+  <link>/linux-in-house/linux/VirtualIP.html</link>
+  <guid>/linux-in-house/linux/VirtualIP.html</guid>
+  <pubDate>Wed, 01 Feb 2023 10:20:00 -0500</pubDate>
+  <description>Virtual IP Interface behaves like a normal interface. All traffic routed to it will go through the master interface (for example, eth0).</description>
+ </item>
+ <item>
+  <title>Docker</title>
+  <link>/linux-in-house/linux/Docker.html</link>
+  <guid>/linux-in-house/linux/Docker.html</guid>
+  <pubDate>Mon, 30 Jan 2023 10:40:00 -0500</pubDate>
+  <description>Docker is a way to manage containers, which are like namespaces or jails. Here are some useful common commands to check out the status of these containers.</description>
+ </item>
+ <item>
+  <title>Ncmpcpp</title>
+  <link>/linux-in-house/linux/ncmpcpp.html</link>
+  <guid>/linux-in-house/linux/ncmpcpp.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:36:00 -0500</pubDate>
+  <description>Simply run this on your host running Music Player Daemon (MPD) over your ssh session</description>
+ </item>
+ <item>
+  <title>Media_Managment</title>
+  <link>/linux-in-house/linux/Media_Managment.html</link>
+  <guid>/linux-in-house/linux/Media_Managment.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:34:00 -0500</pubDate>
+  <description>This is where I manage Music and Television files.</description>
+ </item>
+ <item>
+  <title>BeagleBone</title>
+  <link>/linux-in-house/linux/BeagleBone.html</link>
+  <guid>/linux-in-house/linux/BeagleBone.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:32:00 -0500</pubDate>
+  <description>The BeagleBone (BB) line supports the Linux kernel and GPIO hardware connections to devices via device trees. It is similar to the Rasberry-PI line, only BB is open source hardware.</description>
+ </item>
+ <item>
+  <title>Miniflux</title>
+  <link>/linux-in-house/linux/Miniflux.html</link>
+  <guid>/linux-in-house/linux/Miniflux.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:30:00 -0500</pubDate>
+  <description>Miniflux is an RSS (Really Simple Syndication) server that will fetch and display RSS feeds from other websites. Also known as a _news reader_.</description>
+ </item>
+ <item>
+  <title>Matrix</title>
+  <link>/linux-in-house/linux/Matrix.html</link>
+  <guid>/linux-in-house/linux/Matrix.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:28:00 -0500</pubDate>
+  <description>Matrix is a messaging system you can on your server. It allows your to send messages to a phone/watch from command line on the server. It is useful with HomeAssistant for monitoring the house.</description>
+ </item>
+ <item>
+  <title>Certificate</title>
+  <link>/linux-in-house/linux/Certificate.html</link>
+  <guid>/linux-in-house/linux/Certificate.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:28:00 -0500</pubDate>
+  <description>Web certificates encrypt different messages over the public internet so nobody can see what these messages contain.</description>
+ </item>
+ <item>
+  <title>HomeAssistant</title>
+  <link>/linux-in-house/linux/HomeAssistant.html</link>
+  <guid>/linux-in-house/linux/HomeAssistant.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:26:00 -0500</pubDate>
+  <description>This is a web based interface for automating things around the home. It can monitor doors, windows, motion detection and turn electrical things on and off.</description>
+ </item>
+ <item>
+  <title>DNS</title>
+  <link>/linux-in-house/linux/DNS.html</link>
+  <guid>/linux-in-house/linux/DNS.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:24:00 -0500</pubDate>
+  <description>A Domain Name Service (DNS) allows your E-Mail and Web Server to use a name instead of an IP Address, so other people can find you by name. Some Internet Service Providers (ISP) will change your IP address every few months in a residential environment.</description>
+ </item>
+ <item>
+  <title>Cloud</title>
+  <link>/linux-in-house/linux/Cloud.html</link>
+  <guid>/linux-in-house/linux/Cloud.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:24:00 -0500</pubDate>
+  <description>A cloud used to be floating in the sky, then it was a bubbly thing on a network diagram where weird things happen. Now a cloud just means &quot;Somebody else's computer.&quot;. Of course you get to it over a network and can share things, like files (pictures, music, documents), contacts, calendars and chat, among other things.</description>
+ </item>
+ <item>
+  <title>PostgreSql_Move</title>
+  <link>/linux-in-house/linux/PostgreSql_Move.html</link>
+  <guid>/linux-in-house/linux/PostgreSql_Move.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:22:00 -0500</pubDate>
+  <description>Mainly used this on SBC (BeagleBone) computer to move a database from SD card (/var/lib...) to SSD disk (/data/lib...). A database will burn up an SD card quickly 😟</description>
+ </item>
+ <item>
+  <title>PostgreSql_Upgrade</title>
+  <link>/linux-in-house/linux/PostgreSql_Upgrade.html</link>
+  <guid>/linux-in-house/linux/PostgreSql_Upgrade.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:20:00 -0500</pubDate>
+  <description>Oh my, installing Ubuntu 22.04 installed PostgreSQL 14... wonder what version I am using...</description>
+ </item>
+ <item>
+  <title>Postgresql</title>
+  <link>/linux-in-house/linux/Postgresql.html</link>
+  <guid>/linux-in-house/linux/Postgresql.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:16:00 -0500</pubDate>
+  <description>Postgresql relational SQL database for systems. This is a great database with high reliability, performance and extendable.</description>
+ </item>
+ <item>
+  <title>E-Mail_Relay</title>
+  <link>/linux-in-house/linux/E-Mail_Relay.html</link>
+  <guid>/linux-in-house/linux/E-Mail_Relay.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:16:00 -0500</pubDate>
+  <description>The following diagrams are what this document will accomplish. The challenge is to obtain and keep a good reputation that other E-Mail handlers around the world will accept. Otherwise your messages will be dumped in the trash can (SPAM) or sent back to you (bounced).</description>
+ </item>
+ <item>
+  <title>E-Mail</title>
+  <link>/linux-in-house/linux/E-Mail.html</link>
+  <guid>/linux-in-house/linux/E-Mail.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:14:00 -0500</pubDate>
+  <description>Electronic Mail (E-Mail) is a way to type letters onto a computer and send them to other people. These other people's computers will then use E-Mail to read your letters. It is an electronic version of the Post Office.</description>
+ </item>
+ <item>
+  <title>Mirror_Disks</title>
+  <link>/linux-in-house/linux/Mirror_Disks.html</link>
+  <guid>/linux-in-house/linux/Mirror_Disks.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:12:00 -0500</pubDate>
+  <description>Mirroring disks on Linux is simple and prudent to ensure your data survives hardware, software and human failures. All data from one disk is duplicated on another disk and if any **one** disk fails, you will never know it. So it is important after setting up to monitor the disk array.</description>
+ </item>
+ <item>
+  <title>NAS</title>
+  <link>/linux-in-house/linux/NAS.html</link>
+  <guid>/linux-in-house/linux/NAS.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:10:00 -0500</pubDate>
+  <description>The NAS provides a safe place to store important data. Set this up before running E-Mail or a cloud service because it is the best place to put important files. If an E-Mail server crashes you still have all your E-Mail files on the NFS (see below) attached NAS server. That's what it's for.</description>
+ </item>
+ <item>
+  <title>Intro</title>
+  <link>/linux-in-house/linux/intro.html</link>
+  <guid>/linux-in-house/linux/intro.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:02:00 -0500</pubDate>
+  <description>The amazing things you can do with computer software in your home, ya GNU?</description>
+ </item>
+ <item>
+  <title>My-second-review</title>
+  <link>/linux-in-house/linux/my-second-review.html</link>
+  <guid>/linux-in-house/linux/my-second-review.html</guid>
+  <pubDate>Fri, 03 Dec 2010 10:20:00 -0500</pubDate>
+  <description>Following is a review of my favorite mechanical mouse.</description>
+ </item>
+</channel>
+
+</rss>
+ <item>
+  <title>Welcome</title>
+  <link>/linux-in-house/linux/welcome.html</link>
+  <guid>/linux-in-house/linux/welcome.html</guid>
+  <pubDate>Mon, 01 Jan 2525 10:20:00 -0500</pubDate>
+  <description>the show that never ends, Linux in House..</description>
+ </item>
+ <item>
+  <title>Setup-server</title>
+  <link>/linux-in-house/linux/setup-server.html</link>
+  <guid>/linux-in-house/linux/setup-server.html</guid>
+  <pubDate>Mon, 01 Jan 2525 10:00:00 -0500</pubDate>
+  <description>I use this as a guide to enable proper monitoring and maintenance of any new server on the network.</description>
+ </item>
+ <item>
+  <title>Git</title>
+  <link>/linux-in-house/linux/git.html</link>
+  <guid>/linux-in-house/linux/git.html</guid>
+  <pubDate>Sun, 01 Oct 2023 10:20:00 -0400</pubDate>
+  <description>GIT is like a generic information tracker, letting you go back in time to see what changed.</description>
+ </item>
+ <item>
+  <title>Watch</title>
+  <link>/linux-in-house/linux/Watch.html</link>
+  <guid>/linux-in-house/linux/Watch.html</guid>
+  <pubDate>Tue, 01 Aug 2023 10:20:00 -0400</pubDate>
+  <description>Finally got my alerts working, so when a host goes haywire I get an alert on the Phone and Cloud, with E-Mail as backup.</description>
+ </item>
+ <item>
+  <title>VirtualMachines</title>
+  <link>/linux-in-house/linux/VirtualMachines.html</link>
+  <guid>/linux-in-house/linux/VirtualMachines.html</guid>
+  <pubDate>Thu, 01 Jun 2023 10:20:00 -0400</pubDate>
+  <description>A Virtual Machine (VM) is a way to create a whole operating system, with many applications, that is able to be moved from one physical machine to another physical machine. This has advantages in case of hardware, location or network problems to quickly and correctly restore service.</description>
+ </item>
+ <item>
+  <title>NetworkManagement</title>
+  <link>/linux-in-house/linux/NetworkManagement.html</link>
+  <guid>/linux-in-house/linux/NetworkManagement.html</guid>
+  <pubDate>Sat, 01 Apr 2023 10:44:00 -0400</pubDate>
+  <description>The command line offers a wealth of network management commands. Here are some of my favorites.</description>
+ </item>
+ <item>
+  <title>EncryptingFiles</title>
+  <link>/linux-in-house/linux/EncryptingFiles.html</link>
+  <guid>/linux-in-house/linux/EncryptingFiles.html</guid>
+  <pubDate>Wed, 01 Mar 2023 10:42:00 -0500</pubDate>
+  <description>You should protect your carefully built system and it's files from abuse, tampering, or just plain spying. It's easy to do, what are you waiting for? Encrypt your data directory now.</description>
+ </item>
+ <item>
+  <title>VirtualIP</title>
+  <link>/linux-in-house/linux/VirtualIP.html</link>
+  <guid>/linux-in-house/linux/VirtualIP.html</guid>
+  <pubDate>Wed, 01 Feb 2023 10:20:00 -0500</pubDate>
+  <description>Virtual IP Interface behaves like a normal interface. All traffic routed to it will go through the master interface (for example, eth0).</description>
+ </item>
+ <item>
+  <title>Docker</title>
+  <link>/linux-in-house/linux/Docker.html</link>
+  <guid>/linux-in-house/linux/Docker.html</guid>
+  <pubDate>Mon, 30 Jan 2023 10:40:00 -0500</pubDate>
+  <description>Docker is a way to manage containers, which are like namespaces or jails. Here are some useful common commands to check out the status of these containers.</description>
+ </item>
+ <item>
+  <title>Ncmpcpp</title>
+  <link>/linux-in-house/linux/ncmpcpp.html</link>
+  <guid>/linux-in-house/linux/ncmpcpp.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:36:00 -0500</pubDate>
+  <description>Simply run this on your host running Music Player Daemon (MPD) over your ssh session</description>
+ </item>
+ <item>
+  <title>Media_Managment</title>
+  <link>/linux-in-house/linux/Media_Managment.html</link>
+  <guid>/linux-in-house/linux/Media_Managment.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:34:00 -0500</pubDate>
+  <description>This is where I manage Music and Television files.</description>
+ </item>
+ <item>
+  <title>BeagleBone</title>
+  <link>/linux-in-house/linux/BeagleBone.html</link>
+  <guid>/linux-in-house/linux/BeagleBone.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:32:00 -0500</pubDate>
+  <description>The BeagleBone (BB) line supports the Linux kernel and GPIO hardware connections to devices via device trees. It is similar to the Rasberry-PI line, only BB is open source hardware.</description>
+ </item>
+ <item>
+  <title>Miniflux</title>
+  <link>/linux-in-house/linux/Miniflux.html</link>
+  <guid>/linux-in-house/linux/Miniflux.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:30:00 -0500</pubDate>
+  <description>Miniflux is an RSS (Really Simple Syndication) server that will fetch and display RSS feeds from other websites. Also known as a _news reader_.</description>
+ </item>
+ <item>
+  <title>Matrix</title>
+  <link>/linux-in-house/linux/Matrix.html</link>
+  <guid>/linux-in-house/linux/Matrix.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:28:00 -0500</pubDate>
+  <description>Matrix is a messaging system you can on your server. It allows your to send messages to a phone/watch from command line on the server. It is useful with HomeAssistant for monitoring the house.</description>
+ </item>
+ <item>
+  <title>Certificate</title>
+  <link>/linux-in-house/linux/Certificate.html</link>
+  <guid>/linux-in-house/linux/Certificate.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:28:00 -0500</pubDate>
+  <description>Web certificates encrypt different messages over the public internet so nobody can see what these messages contain.</description>
+ </item>
+ <item>
+  <title>HomeAssistant</title>
+  <link>/linux-in-house/linux/HomeAssistant.html</link>
+  <guid>/linux-in-house/linux/HomeAssistant.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:26:00 -0500</pubDate>
+  <description>This is a web based interface for automating things around the home. It can monitor doors, windows, motion detection and turn electrical things on and off.</description>
+ </item>
+ <item>
+  <title>DNS</title>
+  <link>/linux-in-house/linux/DNS.html</link>
+  <guid>/linux-in-house/linux/DNS.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:24:00 -0500</pubDate>
+  <description>A Domain Name Service (DNS) allows your E-Mail and Web Server to use a name instead of an IP Address, so other people can find you by name. Some Internet Service Providers (ISP) will change your IP address every few months in a residential environment.</description>
+ </item>
+ <item>
+  <title>Cloud</title>
+  <link>/linux-in-house/linux/Cloud.html</link>
+  <guid>/linux-in-house/linux/Cloud.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:24:00 -0500</pubDate>
+  <description>A cloud used to be floating in the sky, then it was a bubbly thing on a network diagram where weird things happen. Now a cloud just means &quot;Somebody else's computer.&quot;. Of course you get to it over a network and can share things, like files (pictures, music, documents), contacts, calendars and chat, among other things.</description>
+ </item>
+ <item>
+  <title>PostgreSql_Move</title>
+  <link>/linux-in-house/linux/PostgreSql_Move.html</link>
+  <guid>/linux-in-house/linux/PostgreSql_Move.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:22:00 -0500</pubDate>
+  <description>Mainly used this on SBC (BeagleBone) computer to move a database from SD card (/var/lib...) to SSD disk (/data/lib...). A database will burn up an SD card quickly 😟</description>
+ </item>
+ <item>
+  <title>PostgreSql_Upgrade</title>
+  <link>/linux-in-house/linux/PostgreSql_Upgrade.html</link>
+  <guid>/linux-in-house/linux/PostgreSql_Upgrade.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:20:00 -0500</pubDate>
+  <description>Oh my, installing Ubuntu 22.04 installed PostgreSQL 14... wonder what version I am using...</description>
+ </item>
+ <item>
+  <title>Postgresql</title>
+  <link>/linux-in-house/linux/Postgresql.html</link>
+  <guid>/linux-in-house/linux/Postgresql.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:16:00 -0500</pubDate>
+  <description>Postgresql relational SQL database for systems. This is a great database with high reliability, performance and extendable.</description>
+ </item>
+ <item>
+  <title>E-Mail_Relay</title>
+  <link>/linux-in-house/linux/E-Mail_Relay.html</link>
+  <guid>/linux-in-house/linux/E-Mail_Relay.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:16:00 -0500</pubDate>
+  <description>The following diagrams are what this document will accomplish. The challenge is to obtain and keep a good reputation that other E-Mail handlers around the world will accept. Otherwise your messages will be dumped in the trash can (SPAM) or sent back to you (bounced).</description>
+ </item>
+ <item>
+  <title>E-Mail</title>
+  <link>/linux-in-house/linux/E-Mail.html</link>
+  <guid>/linux-in-house/linux/E-Mail.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:14:00 -0500</pubDate>
+  <description>Electronic Mail (E-Mail) is a way to type letters onto a computer and send them to other people. These other people's computers will then use E-Mail to read your letters. It is an electronic version of the Post Office.</description>
+ </item>
+ <item>
+  <title>Mirror_Disks</title>
+  <link>/linux-in-house/linux/Mirror_Disks.html</link>
+  <guid>/linux-in-house/linux/Mirror_Disks.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:12:00 -0500</pubDate>
+  <description>Mirroring disks on Linux is simple and prudent to ensure your data survives hardware, software and human failures. All data from one disk is duplicated on another disk and if any **one** disk fails, you will never know it. So it is important after setting up to monitor the disk array.</description>
+ </item>
+ <item>
+  <title>NAS</title>
+  <link>/linux-in-house/linux/NAS.html</link>
+  <guid>/linux-in-house/linux/NAS.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:10:00 -0500</pubDate>
+  <description>The NAS provides a safe place to store important data. Set this up before running E-Mail or a cloud service because it is the best place to put important files. If an E-Mail server crashes you still have all your E-Mail files on the NFS (see below) attached NAS server. That's what it's for.</description>
+ </item>
+ <item>
+  <title>Intro</title>
+  <link>/linux-in-house/linux/intro.html</link>
+  <guid>/linux-in-house/linux/intro.html</guid>
+  <pubDate>Wed, 25 Jan 2023 10:02:00 -0500</pubDate>
+  <description>The amazing things you can do with computer software in your home, ya GNU?</description>
+ </item>
+ <item>
+  <title>My-second-review</title>
+  <link>/linux-in-house/linux/my-second-review.html</link>
+  <guid>/linux-in-house/linux/my-second-review.html</guid>
+  <pubDate>Fri, 03 Dec 2010 10:20:00 -0500</pubDate>
+  <description>Following is a review of my favorite mechanical mouse.</description>
+ </item>
+</channel>
+
+</rss>
