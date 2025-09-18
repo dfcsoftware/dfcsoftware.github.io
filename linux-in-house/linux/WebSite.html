@@ -39,6 +39,23 @@ Author: Don Cohoon</p>
 
 <p>Looking for a simple MD to HTML file converter, I stumbled upon MultiMarkdown [3]. Written in mainly C, with 10 years and 10 extra contributors to it&#8217;s credit, I tried it. I liked it! So I went with it.</p>
 
+<p>Convert from *.md to *.html</p>
+
+<pre><code>  for F in ${1}/*.md
+  do
+    FILE=${F##*/}    # remove directory prefix
+    FILE=${FILE%%.*} # remove file suffix
+    #echo &quot;FILE: ${FILE}&quot;
+    DIR=$(echo ${F}|awk -F / '{print $(NF-1)}') # last directory
+    MultiMarkdown-6/build/multimarkdown \
+      -o build/${BASE}/${DIR}/${FILE}.html ${F}
+  done
+</code></pre>
+
+<blockquote>
+<p>My directory is only one level</p>
+</blockquote>
+
 <p>Next was a method to create index files to link these disparate HTML files together. So using simple find/grep commands with bash in-built string manipulation was easy.</p>
 
 <p>Example find for directory index.html</p>
@@ -128,6 +145,11 @@ EOF
 <pre><code>   {{header.html}}
 </code></pre>
 
+<p>Then just run pagefind against the web site directory:</p>
+
+<pre><code>~/.local/lib/python3.9/site-packages/pagefind_bin/pagefind --site &quot;build/${BASE}&quot;
+</code></pre>
+
 <p>Reference:</p>
 
 <ol>
@@ -177,7 +199,7 @@ EOF
      </td>
      <td>
 
-<p><small>linux-in-house Version: 4.37 </small></p>
+<p><small>linux-in-house Version: 4.40 </small></p>
 
 <p></tr>
 </table></p>
