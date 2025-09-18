@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>Web Site</title>
+	<meta name="date" content="2025-09-18 10:20"/>
+	<meta name="tags" content="web"/>
+	<meta name="author" content="Don Cohoon"/>
+	<meta name="summary" content="Inspired by Dr. Axel, I decided to get rid of Pelican static site builder and create my own. How hard could it be?"/>
+	<meta name="license" content="'[CC-BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)'"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"> <link rel="stylesheet" href="/linux-in-house/common.css" type="text/css" />
+</head>
+<body>
+
+<p><a href="/linux-in-house/"><h1>Linux in House</h1></a></p>
+
+<link href="/linux-in-house/pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/linux-in-house/pagefind/pagefind-ui.js"></script>
+
+<div id="search"></div>
+<script>
+window.addEventListener('DOMContentLoaded', (event) => {
+      new PagefindUI({ element: "#search", showSubResults: true });
+});
+</script>
+
+<blockquote>
+<p><a href="/linux-in-house/linux/welcome.html">Welcome Back My Friends</a></p>
+</blockquote>
+
+<h1 id="howibuiltthiswebsite">How I built this Web Site</h1>
+
+<p>Published: 2025-09-18 10:20 <br />
+Author: Don Cohoon</p>
+
+<p>Inspired by Dr. Axel [1], I decided to get rid of Pelican [2] static site builder and create my own. How hard could it be?</p>
+
+<p>My design is to keep the markdown (MD) files and directory structure, after all, it&#8217;s easy to create new content and manage simple flat files.</p>
+
+<p>Looking for a simple MD to HTML file converter, I stumbled upon MultiMarkdown [3]. Written in mainly C, with 10 years and 10 extra contributors to it&#8217;s credit, I tried it. I liked it! So I went with it.</p>
+
+<p>Next was a method to create index files to link these disparate HTML files together. So using simple find/grep commands with bash in-built string manipulation was easy.</p>
+
+<p>Example find for directory index.html</p>
+
+<pre><code>  find . -type d | sort &gt;${TMP}
+  while read -r SUB
+  do
+    SUB=${SUB##*/}
+    echo &quot;&lt;p&gt;&quot; &gt;&gt; index.html
+    echo &quot;&lt;h2&gt;&lt;a href=\&quot;/${BASE}/${SUB}/index.html\&quot;&gt;${SUB^}&lt;/a&gt;&lt;/h2&gt;&quot; &gt;&gt; index.html
+    echo &quot;&lt;/p&gt;&quot; &gt;&gt; index.html
+    SUBJECTS+=(&quot;$SUB&quot;)
+  done &lt; ${TMP}
+</code></pre>
+
+<p>The SUBJECTS array can be used later to loop through each directory building an index.html file for all *.html files. MultiMarkdown adds &#8216;meta name=&#8230;&#8217; entries for your MD header entries, like date and summary that are used below.</p>
+
+<p>Example grep for files index.html</p>
+
+<pre><code>  for SUB in ${SUBJECTS[@]}
+  do
+    cd ${SUB}
+    grep --exclude index.html --max-count=1 \
+         -i 'meta name=&quot;date&quot;' *.html|sort --reverse -k4 &gt;${TMP}
+    while read FILE
+    do
+      DATE=$(echo ${FILE}|awk -F\&quot; '{print $4}')
+      FILE=${FILE%%:*} # remove suffix so we can grep file
+      BLURB=$(grep --max-count=1 -i 'meta name=&quot;summary&quot;' ${FILE}|awk -F\&quot; '{print $4}')
+      #
+      FILE=${FILE##*/} # Remove directory (/)
+      echo &quot;&lt;p&gt;&quot; &gt;&gt; index.html
+      LINK=${FILE%%.*}
+      echo &quot;&lt;a href=\&quot;/${BASE}/${SUB}/${FILE}\&quot;&gt;&lt;b&gt;${LINK^}&lt;/b&gt;&lt;/a&gt;&quot; &gt;&gt; index.html
+      echo &quot;: &lt;i&gt;&quot; ${BLURB} &quot;&lt;/i&gt;&quot; &gt;&gt; index.html
+      echo &quot;&lt;/p&gt;&quot; &gt;&gt; index.html
+    done &lt; ${TMP}
+  done
+</code></pre>
+
+<p>Including a header and footer with every page is supported by MultiMarkdown as well as converting markdown files to whole HTML pages. It is called <em>transclusion</em>.</p>
+
+<p>Example transclusion</p>
+
+<pre><code>{{includefile.html}}
+</code></pre>
+
+<p>Adding RSS support slipped right in place with the index build. Just follow the Really Simple Syndication [4].</p>
+
+<p>Example RSS item</p>
+
+<pre><code>cat &lt;&lt; EOF &gt;&gt;${RSS}-${SUB}.rss
+ &lt;item&gt;
+  &lt;title&gt;${TITLE}&lt;/title&gt;
+  &lt;link&gt;${URL}&lt;/link&gt;
+  &lt;guid&gt;${URL}&lt;/guid&gt;
+  &lt;pubDate&gt;${DATE}&lt;/pubDate&gt;
+  &lt;description&gt;${DESC}&lt;/description&gt;
+ &lt;/item&gt;
+EOF
+</code></pre>
+
+<p>In the end my build process went from 3+ minutes to about 15 seconds. Not too shabby, grandpappy.</p>
+
+<p>Finally, adding whole site searching was done using the same technique as Pelican, pagefind [5].</p>
+
+<p>Example pagefind usage (for Multimarkdown):</p>
+
+<ul>
+<li> Add to file include/header.html</li>
+</ul>
+
+<pre><code>  &lt;link href=&quot;/pagefind/pagefind-ui.css&quot; rel=&quot;stylesheet&quot;&gt;
+  &lt;script src=&quot;/pagefind/pagefind-ui.js&quot;&gt;&lt;/script&gt;
+  &lt;div id=&quot;search&quot;&gt;&lt;/div&gt;
+  &lt;script&gt;
+    window.addEventListener('DOMContentLoaded', (event) =&gt; {
+        new PagefindUI({ element: &quot;#search&quot;, showSubResults: true });
+    });
+  &lt;/script&gt;
+</code></pre>
+
+<ul>
+<li> Add to every *.md:</li>
+</ul>
+
+<pre><code>   {{header.html}}
+</code></pre>
+
+<p>Reference:</p>
+
+<ol>
+<li><a href="/linux-in-house/writing/teach.html">Dr. Axel&#8217;s inspiring post</a></li>
+<li>Pelican <a href="https://getpelican.com/">https://getpelican.com/</a></li>
+<li>MultiMarkdown <a href="https://github.com/fletcher/MultiMarkdown-6">https://github.com/fletcher/MultiMarkdown-6</a></li>
+<li>RSS <a href="https://en.wikipedia.org/wiki/RSS#Example">https://en.wikipedia.org/wiki/RSS#Example</a></li>
+<li>pagefind <a href="https://pagefind.app/">https://pagefind.app/</a></li>
+</ol>
+
+<p>Hope this helps,<br />
+&#8211; Don Cohoon</p>
+
+<p>PS: Current tools used can be found <a href="/linux-in-house/linux/intro.html#createdwith">here</a></p>
+
+<hr>
+
+<h4 id="madeforhumansbyahuman">Made for Humans, by a Human</h4>
+
+<h4 id="links">Links</h4>
+
+<ul>
+<li><a href="https://lwn.net/">Linux Weekly News</a></li>
+<li><a href="https://fullcirclemagazine.org/">Full Circle Magazine</a></li>
+<li><a href="https://www.linuxjournal.com/">Linux Journal</a></li>
+<li><a href="https://www.linux-magazine.com/">Linux Magazine</a></li>
+<li><a href="https://www.thefarside.com/">The Far Side</a></li>
+</ul>
+
+<h4 id="social">Social</h4>
+
+<ul>
+<li><a href="https://fosstodon.org/@Cohoon">Feedback</a></li>
+<li><a href="/linux-in-house/feed-linux.rss">Linux RSS Feed</a></li>
+<li><a href="/linux-in-house/feed-writing.rss">Writing RSS Feed</a></li>
+<li><a href="https://linux-in-the-house.pages.dev/">Book</a></li>
+</ul>
+
+<div style="overflow-x:auto;">
+<table style="width: 100%;">
+<tr>
+     <td>
+<small><a href="/linux-in-house/linux/intro.html#createdwith">Created with</a></small>
+     </td>
+     <td>
+<small>License: <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0</a></<small>
+     </td>
+     <td>
+
+<p><small>linux-in-house Version: 4.37 </small></p>
+
+<p></tr>
+</table></p>
+
+</div>
+
+
+</body>
+</html>
+

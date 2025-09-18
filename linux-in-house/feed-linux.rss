@@ -17,6 +17,13 @@
   <description>I use this as a guide to enable proper monitoring and maintenance of any new server on the network.</description>
  </item>
  <item>
+  <title>WebSite</title>
+  <link>/linux-in-house/linux/WebSite.html</link>
+  <guid>/linux-in-house/linux/WebSite.html</guid>
+  <pubDate>Thu, 18 Sep 2025 10:20:00 -0400</pubDate>
+  <description>Inspired by Dr. Axel, I decided to get rid of Pelican static site builder and create my own. How hard could it be?</description>
+ </item>
+ <item>
   <title>Git</title>
   <link>/linux-in-house/linux/git.html</link>
   <guid>/linux-in-house/linux/git.html</guid>
