@@ -37,6 +37,41 @@ Author: Don Cohoon</p>
 
 <p>My design is to keep the markdown (MD) files and directory structure, after all, it&#8217;s easy to create new content and manage simple flat files.</p>
 
+<hr />
+
+<div class="TOC">
+
+<ul>
+<li><a href="#howibuiltthiswebsite">How I built this Web Site</a>
+<ul>
+<li><a href="#markdown">MarkDown</a></li>
+<li><a href="#createindex.htmlfiles">Create index.html files</a>
+<ul>
+<li><a href="#directory">Directory</a></li>
+<li><a href="#files">Files</a></li>
+</ul>
+</li>
+<li><a href="#includefiles">Include Files</a></li>
+<li><a href="#rssfeeds">RSS feeds</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+<li><a href="#fullwebsitesearch">Full WebSite Search</a></li>
+<li><a href="#reference:">Reference:</a></li>
+<li><a href="#regards">Regards</a>
+<ul>
+<li><a href="#madeforhumansbyahuman">Made for Humans, by a Human</a></li>
+<li><a href="#links">Links</a></li>
+<li><a href="#social">Social</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+<hr />
+
+<h2 id="markdown">MarkDown</h2>
+
 <p>Looking for a simple MD to HTML file converter, I stumbled upon MultiMarkdown [3]. Written in mainly C, with 10 years and 10 extra contributors to it&#8217;s credit, I tried it. I liked it! So I went with it.</p>
 
 <p>Convert from *.md to *.html</p>
@@ -56,7 +91,11 @@ Author: Don Cohoon</p>
 <p>My directory is only one level</p>
 </blockquote>
 
+<h2 id="createindex.htmlfiles">Create index.html files</h2>
+
 <p>Next was a method to create index files to link these disparate HTML files together. So using simple find/grep commands with bash in-built string manipulation was easy.</p>
+
+<h3 id="directory">Directory</h3>
 
 <p>Example find for directory index.html</p>
 
@@ -70,6 +109,8 @@ Author: Don Cohoon</p>
     SUBJECTS+=(&quot;$SUB&quot;)
   done &lt; ${TMP}
 </code></pre>
+
+<h3 id="files">Files</h3>
 
 <p>The SUBJECTS array can be used later to loop through each directory building an index.html file for all *.html files. MultiMarkdown adds &#8216;meta name=&#8230;&#8217; entries for your MD header entries, like date and summary that are used below.</p>
 
@@ -96,12 +137,16 @@ Author: Don Cohoon</p>
   done
 </code></pre>
 
+<h2 id="includefiles">Include Files</h2>
+
 <p>Including a header and footer with every page is supported by MultiMarkdown as well as converting markdown files to whole HTML pages. It is called <em>transclusion</em>.</p>
 
 <p>Example transclusion</p>
 
 <pre><code>{{includefile.html}}
 </code></pre>
+
+<h2 id="rssfeeds">RSS feeds</h2>
 
 <p>Adding RSS support slipped right in place with the index build. Just follow the Really Simple Syndication [4].</p>
 
@@ -118,7 +163,13 @@ Author: Don Cohoon</p>
 EOF
 </code></pre>
 
+<h2 id="conclusion">Conclusion</h2>
+
 <p>In the end my build process went from 3+ minutes to about 15 seconds. Not too shabby, grandpappy.</p>
+
+<p>I now have more control over how the WebSite is built, and if something goes wrong it is easier to fix. Also incremental builds can speed things up even more in the design and development phases.</p>
+
+<h2 id="fullwebsitesearch">Full WebSite Search</h2>
 
 <p>Finally, adding whole site searching was done using the same technique as Pelican, pagefind [5].</p>
 
@@ -150,15 +201,22 @@ EOF
 <pre><code>~/.local/lib/python3.9/site-packages/pagefind_bin/pagefind --site &quot;build/${BASE}&quot;
 </code></pre>
 
-<p>Reference:</p>
+<h2 id="reference:">Reference:</h2>
 
 <ol>
-<li><a href="/linux-in-house/writing/teach.html">Dr. Axel&#8217;s inspiring post</a></li>
+<li><a href="/linux-in-house/writing/teach.html">Dr. Axel&#8217;s inspiring post</a> <br />
+<a href="https://2ality.com/2025/09/markdown.html">Dr. Axel on Markdown</a></li>
 <li>Pelican <a href="https://getpelican.com/">https://getpelican.com/</a></li>
 <li>MultiMarkdown <a href="https://github.com/fletcher/MultiMarkdown-6">https://github.com/fletcher/MultiMarkdown-6</a></li>
 <li>RSS <a href="https://en.wikipedia.org/wiki/RSS#Example">https://en.wikipedia.org/wiki/RSS#Example</a></li>
 <li>pagefind <a href="https://pagefind.app/">https://pagefind.app/</a></li>
 </ol>
+
+<ul>
+<li>I tried pandoc, but it was as slow as Pelican.</li>
+</ul>
+
+<h2 id="regards">Regards</h2>
 
 <p>Hope this helps,<br />
 &#8211; Don Cohoon</p>
@@ -199,7 +257,7 @@ EOF
      </td>
      <td>
 
-<p><small>linux-in-house Version: 4.41 </small></p>
+<p><small>linux-in-house Version: 4.46 </small></p>
 
 <p></tr>
 </table></p>
