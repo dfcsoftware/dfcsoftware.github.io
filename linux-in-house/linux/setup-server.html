@@ -33,6 +33,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 <p>I use this as a guide to enable proper monitoring and maintenance of any new server on the network.</p>
 
+<object type="image/svg+xml" data="/linux-in-house/images/Linux-in-the-House2.svg" style="width:5%; height:10%; text-align: right">
+Linux-in-the-House.svg<!-- fallback image in CSS -->
+</object>
+
 <br/>
 
 <hr />
@@ -231,12 +235,11 @@ bgcolor=&#8220;transparent&#8221;;</p>
 <li>See Network Interfaces</li>
 </ul>
 
-<hr/>
+<hr />
 
-<p>The Debian Way</label></div></p>
+<p>The Debian Way</p>
 
-<pre><code>:::Text
-$ ifconfig
+<pre><code>$ ifconfig
 eno1: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500
         inet 192.168.0.8  netmask 255.255.255.0  broadcast 192.168.0.255
         inet6 fe80::0000:1111:3333:2222  prefixlen 64  scopeid 0x20&lt;link&gt;
@@ -261,8 +264,7 @@ lo: flags=73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536
 
 <p>The RedHat and Newer Debian Way</p>
 
-<pre><code>::Text
-# ip a
+<pre><code># ip a
 1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
     inet 127.0.0.1/8 scope host lo
@@ -290,16 +292,14 @@ lo: flags=73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536
 
 <p>The Debian Way</p>
 
-<pre><code>:::Text
-/var/log/syslog
+<pre><code>/var/log/syslog
 </code></pre>
 
 <hr/>
 
 <p>The RedHat Way</p>
 
-<pre><code>:::Text
-/var/log/messages
+<pre><code>/var/log/messages
 </code></pre>
 
 <hr/>
@@ -312,8 +312,7 @@ lo: flags=73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536
 
 <p>The Debian Way</p>
 
-<pre><code>::Text
-$ sudo cat /etc/netplan/01-network-manager-all.yaml
+<pre><code>$ sudo cat /etc/netplan/01-network-manager-all.yaml
 network:
     version: 2
     renderer: networkd
@@ -331,8 +330,7 @@ $ sudo systemctl restart system-networkd
 
 <p>The RedHat Way</p>
 
-<pre><code>::Text
-$ sudo nmcli connection up ens3
+<pre><code>$ sudo nmcli connection up ens3
     
 vi /etc/sysconfig/network-scripts/ifcfg-ens3
 ~
@@ -353,8 +351,7 @@ ONBOOT=yes
 
 <p>Always refresh the package repository before getting started.</p>
 
-<pre><code>:::Text
-$ sudo apt-get update
+<pre><code>$ sudo apt-get update
 </code></pre>
 
 <p>You may need to add extra repositories, just check the sources.</p>
@@ -377,8 +374,7 @@ $ sudo apt-get update
 
 <p>Universe is a typical add-on, beware of unstable.</p>
 
-<pre><code>::Text
-$ sudo add-apt-repository universe
+<pre><code>$ sudo add-apt-repository universe
 $ sudo grep '^deb ' /etc/apt/sources.list
 ...
 deb http://us.archive.ubuntu.com/ubuntu/ jammy universe
@@ -392,8 +388,7 @@ $ sudo add-apt-repository --remove universe
 
 <p>Always refresh the package repository before getting started.</p>
 
-<pre><code>:::Text
-$ sudo dnf update
+<pre><code>$ sudo dnf update
 </code></pre>
 
 </div>
@@ -411,8 +406,7 @@ $ sudo dnf update
 
 <p>In file: /etc/yum/pluginconf.d/subscription-manager.conf</p>
 
-<pre><code>:::Text
-$ sudo vi /etc/yum/pluginconf.d/subscription-manager.conf
+<pre><code>$ sudo vi /etc/yum/pluginconf.d/subscription-manager.conf
 $ sudo yum clean all
 0 files removed
 </code></pre>
@@ -425,8 +419,7 @@ $ sudo yum clean all
 
 <p>The folks at Fedora have very nicely put up an automatic build and repo system and they are calling it COPR (Cool Other Package Repositories).</p>
 
-<pre><code>:::Text
-$ sudo dnf install epel-release 'dnf-command(copr)' 
+<pre><code>$ sudo dnf install epel-release 'dnf-command(copr)' 
 </code></pre>
 
 <p>Reference:</p>
@@ -442,8 +435,7 @@ $ sudo dnf install epel-release 'dnf-command(copr)'
 
 <p>Be sure to match the same <em>user numbers</em> across systems, because when sharing files using NFS, the numbers need to match.</p>
 
-<pre><code>:::Text
-$ sudo adduser don --uid 1001
+<pre><code>$ sudo adduser don --uid 1001
 Adding user `don' ...
 Adding new group `don' (1001) ...
 Adding new user `don' (1001) with group `don' ...
@@ -478,14 +470,12 @@ Adding user `don' to group `users' ...
 
 <h4 id="debian">Debian</h4>
 
-<pre><code>:::Text
-$ sudo usermod -aG sudo rootbk
+<pre><code>$ sudo usermod -aG sudo rootbk
 </code></pre>
 
 <p>Check user for group &#8216;27(sudo)&#8217;.</p>
 
-<pre><code>:::Text
-$ id rootbk
+<pre><code>$ id rootbk
 uid=1002(rootbk) gid=1002(rootbk) 
 groups=1002(rootbk),20(dialout),24(cdrom),25(floppy),27(sudo),29(audio),44(video),46(plugdev),100(users),114(i2c),993(spi)
 </code></pre>
@@ -494,14 +484,12 @@ groups=1002(rootbk),20(dialout),24(cdrom),25(floppy),27(sudo),29(audio),44(video
 
 <h4 id="redhat">RedHat</h4>
 
-<pre><code>:::Text
-$ sudo usermod -aG wheel rootbk
+<pre><code>$ sudo usermod -aG wheel rootbk
 </code></pre>
 
 <p>Check user for group &#8216;10(wheel)&#8217;.</p>
 
-<pre><code>:::Text
-# id don
+<pre><code># id don
 uid=1002(rootbk) gid=1002(rootbk) groups=1002(rootbk),10(wheel)
 </code></pre>
 
@@ -511,8 +499,7 @@ uid=1002(rootbk) gid=1002(rootbk) groups=1002(rootbk),10(wheel)
 
 <p>in case the system will not boot</p>
 
-<pre><code>:::Bash
-$ sudo passwd root
+<pre><code>$ sudo passwd root
 [sudo] password for don: 
 New password: 
 Retype new password: 
@@ -531,8 +518,7 @@ passwd: password updated successfully
 
 <p>ufw - Uncomplicated Firewall</p>
 
-<pre><code>:::Text
-$ sudo apt-get install ufw
+<pre><code>$ sudo apt-get install ufw
 $ sudo ufw allow 22/tcp
 $ sudo ufw enable
 $ sudo ufw status numbered
@@ -558,8 +544,7 @@ NOTE: Logging values are: low|medium|high. Only network blocks are logged on low
 
 <p>firewalld</p>
 
-<pre><code>::Text
-$ sudo dnf install firewalld
+<pre><code>$ sudo dnf install firewalld
 $ sudo firewall-cmd --add-service=ssh
 success
 $ sudo firewall-cmd --list-services
@@ -764,8 +749,7 @@ fi
 
 <p>File: /etc/hosts</p>
 
-<pre><code>:::Text
-127.0.0.1	  localhost
+<pre><code>127.0.0.1	  localhost
 192.168.1.5 	www.example.com 	example.com	www
 
 # The following lines are desirable for IPv6 capable hosts
@@ -776,8 +760,7 @@ ff02::2 ip6-allrouters
 
 <p>File: /etc/hostname</p>
 
-<pre><code>:::Text
-don.example.com
+<pre><code>don.example.com
 </code></pre>
 
 <h3 id="rsyslog-sendsyslogentriestoremotesysloghost">Rsyslog - Send Syslog Entries to Remote Syslog Host</h3>
@@ -792,8 +775,7 @@ don.example.com
 
 <p>Add these lines on local system.</p>
 
-<pre><code>:::Text
-~
+<pre><code>~
 # Remote logging - Aug 2020 Don
 # Provides UDP forwarding
 *.* @192.168.1.5:514 #this is the logging host
@@ -806,8 +788,7 @@ don.example.com
 
 <p>Create the file if it does not exist and replace with these lines.</p>
 
-<pre><code>:::Text
-module(load=&quot;ommail&quot;)
+<pre><code>module(load=&quot;ommail&quot;)
 template (name=&quot;mailBody&quot;  type=&quot;string&quot; string=&quot;Alert for %hostname%:\n\nTimestamp: %timereported%\nSeverity:  %syslogseverity-text%\nProgram:   %programname%\nMessage:  %msg%&quot;)
 template (name=&quot;mailSubject&quot; type=&quot;string&quot; string=&quot;[%hostname%] Syslog alert for %programname%&quot;)
     
@@ -825,16 +806,14 @@ if $syslogseverity &lt;= 3 and not ($msg contains 'brcmfmac') then {
 
 <p><strong>Allow remote hosts to log here</strong>: Open firewall port 514/udp on remote syslog host.</p>
 
-<pre><code>:::Text
-$ sudo ufw allow 514/udp
+<pre><code>$ sudo ufw allow 514/udp
 </code></pre>
 
 <p>File: /etc/rsyslog.conf</p>
 
 <p>Add these lines to remote syslog host.</p>
 
-<pre><code>:::Text
-~
+<pre><code>~
 # provides UDP syslog reception
 module(load=&quot;imudp&quot;)
 input(type=&quot;imudp&quot; port=&quot;514&quot;)
@@ -847,8 +826,7 @@ $template RemoteLogs,&quot;/var/log/%HOSTNAME%/%PROGRAMNAME%.log&quot;
 
 <h4 id="restartrsyslog">Restart rsyslog</h4>
 
-<pre><code>:::Text
-$ sudo systemctl restart rsyslog
+<pre><code>$ sudo systemctl restart rsyslog
 </code></pre>
 
 <h3 id="timecontrol">Time Control</h3>
@@ -863,15 +841,13 @@ $ sudo systemctl restart rsyslog
 
 <p>File: /etc/timezone</p>
 
-<pre><code>:::Text
-$ cat /etc/timezone
+<pre><code>$ cat /etc/timezone
 America/New_York
 </code></pre>
 
 <p>Set timezone with timedatactl, and verify.</p>
 
-<pre><code>:::Text
-$ sudo timedatectl set-timezone America/New_York
+<pre><code>$ sudo timedatectl set-timezone America/New_York
 $ timedatectl
                Local time: Sun 2022-10-09 18:27:11 EDT
            Universal time: Sun 2022-10-09 22:27:11 UTC
@@ -888,8 +864,7 @@ System clock synchronized: yes
 
 <p>File: /etc/chrony.conf</p>
 
-<pre><code>:::Text
-server pool.ntp.org iburst
+<pre><code>server pool.ntp.org iburst
 driftfile /var/lib/chrony/drift
 makestep 1.0 3
 rtcsync
@@ -900,8 +875,7 @@ logdir /var/log/chrony
 
 <p>Restart to pick up new config</p>
 
-<pre><code>:::Text
-$ sudo systemctl restart chronyd
+<pre><code>$ sudo systemctl restart chronyd
 $ sudo systemctl status chronyd
  * chronyd.service - NTP client/server
    Loaded: loaded (/usr/lib/systemd/system/chronyd.service; enabled; vendor preset: enabled)
@@ -919,8 +893,7 @@ $ sudo systemctl status chronyd
 
 <p>Test</p>
 
-<pre><code>:::Text
-$ chronyc sources -v
+<pre><code>$ chronyc sources -v
     
   .-- Source mode  '^' = server, '=' = peer, '#' = local clock.
  / .- Source state '*' = current best, '+' = combined, '-' = not combined,
@@ -972,8 +945,7 @@ Leap status     : Normal
 
 <p>Debian uses systemd-timesyncd service.</p>
 
-<pre><code>:::Bash
-$ sudo systemctl status systemd-timesyncd
+<pre><code>$ sudo systemctl status systemd-timesyncd
  * systemd-timesyncd.service - Network Time Synchronization
    Loaded: loaded (/lib/systemd/system/systemd-timesyncd.service; enabled; vendor preset: enabled)
   Drop-In: /lib/systemd/system/systemd-timesyncd.service.d
@@ -1018,22 +990,19 @@ $ sudo systemctl status systemd-timesyncd
 
 <p>Install postfix</p>
 
-<pre><code>:::Text
-$ sudo apt-get install postfix
+<pre><code>$ sudo apt-get install postfix
 </code></pre>
 
 <p>Reconfigure postfix, if it does not pop up, and select <em>satellite</em> system.</p>
 
-<pre><code>:::Text
-$ sudo dpkg-reconfigure postfix
+<pre><code>$ sudo dpkg-reconfigure postfix
 </code></pre>
 
 <p>The following assumes your host is named <em>app</em> and your email server is <em>smtp.&lt;domain&gt;</em></p>
 
 <p>File: /etc/postfix/main.cf</p>
 
-<pre><code>:::Text
-# See /usr/share/postfix/main.cf.dist for a commented, more complete version
+<pre><code># See /usr/share/postfix/main.cf.dist for a commented, more complete version
 # Debian specific:  Specifying a file name will cause the first
 # line of that file to be used as the name.  The Debian default
 # is /etc/mailname.
@@ -1079,8 +1048,7 @@ inet_protocols = all
 
 <p>Check postfix systemd service.</p>
 
-<pre><code>:::Text
-$ sudo systemctl status postfix
+<pre><code>$ sudo systemctl status postfix
 ● postfix.service - Postfix Mail Transport Agent
      Loaded: loaded (/lib/systemd/system/postfix.service; enabled; preset: enabled)
      Active: active (exited) since Sat 2023-07-22 09:32:00 EDT; 5h 26min ago
@@ -1101,16 +1069,14 @@ Jul 22 09:32:00 app.example.com systemd[1]: Finished postfix.service - Postfix M
 
 <p>Install postfix</p>
 
-<pre><code>:::Text
-$ sudo dnf install postfix
+<pre><code>$ sudo dnf install postfix
 </code></pre>
 
 <p>The following assumes your host is named <em>app</em> and your email server is <em>smtp.&lt;domain&gt;</em></p>
 
 <p>File: /etc/postfix/main.cf</p>
 
-<pre><code>:::Text
-smtpd_banner = $myhostname ESMTP $mail_name (Linux)
+<pre><code>smtpd_banner = $myhostname ESMTP $mail_name (Linux)
 biff = no
     
 # appending .domain is the MUA's job.
@@ -1150,8 +1116,7 @@ inet_protocols = all
 
 <p>Check the status of postfix</p>
 
-<pre><code>:::Text
-$ sudo systemctl status postfix
+<pre><code>$ sudo systemctl status postfix
 [sudo] password for don: 
 ● postfix.service - Postfix Mail Transport Agent
      Loaded: loaded (/usr/lib/systemd/system/postfix.service; enabled; preset: disabled)
@@ -1174,8 +1139,7 @@ $ sudo systemctl status postfix
 
 <p>File: /etc/postfix/main.cf</p>
 
-<pre><code>:::Text
-% sudo vi /etc/postfix/main.cf
+<pre><code>% sudo vi /etc/postfix/main.cf
 ~
 myhostname = square.example.com
 ~
@@ -1195,9 +1159,7 @@ relayhost = [192.168.1.3]
 <ul>
 <li><p>Debian</p>
 
-<p>:::Text
-$ sudo apt-get install mailutils mutt
-</p></li>
+<p>$ sudo apt-get install mailutils mutt</p></li>
 </ul>
 
 <hr/>
@@ -1205,15 +1167,12 @@ $ sudo apt-get install mailutils mutt
 <ul>
 <li><p>RedHat</p>
 
-<p>:::Text
-$ sudo dnf install s-nail mutt
-</p></li>
+<p>$ sudo dnf install s-nail mutt</p></li>
 </ul>
 
 <hr/>
 
-<pre><code>:::Text
-% mail -s &quot;Hello internal mail&quot;  don@example.com &lt;/dev/null
+<pre><code>% mail -s &quot;Hello internal mail&quot;  don@example.com &lt;/dev/null
 Null message body; hope that's ok
     
 Shows up as: don@square.example.com
@@ -1227,8 +1186,7 @@ Shows up as: don@square.local
 
 <p>File: ~/.muttrc</p>
 
-<pre><code>:::Text
-set from=&quot;Square &lt;don@square.example.com&gt;&quot;
+<pre><code>set from=&quot;Square &lt;don@square.example.com&gt;&quot;
 set hostname=&quot;square.example.com&quot;
 </code></pre>
 
@@ -1240,8 +1198,7 @@ set hostname=&quot;square.example.com&quot;
 
 <p>File: /etc/aliases</p>
 
-<pre><code>:::Text
-~
+<pre><code>~
 # Person who should get root's mail
 #root:		marc
 root:		bob@example.com
@@ -1250,8 +1207,7 @@ root:		bob@example.com
 
 <p>Update aliases into database format</p>
 
-<pre><code>:::Text
-$ sudo newaliases
+<pre><code>$ sudo newaliases
 </code></pre>
 
 <ul>
@@ -1318,16 +1274,14 @@ MAILTO=bob@example.com
 
 <p>The Debian Way</p>
 
-<pre><code>:::Text
-$ sudo apt-get install monit
+<pre><code>$ sudo apt-get install monit
 </code></pre>
 
 <hr/>
 
 <p>The RedHat Way</p>
 
-<pre><code>:::Text
-$ sudo dnf install monit
+<pre><code>$ sudo dnf install monit
 </code></pre>
 
 <hr/>
@@ -1338,8 +1292,7 @@ $ sudo dnf install monit
 
 <p>File: /etc/monit/monitrc:</p>
 
-<pre><code>:::Text
-# Mail server
+<pre><code># Mail server
 set mailserver www.example.com port 25   # primary mailserver
 # Don 28-Dec 2021 - general monitoring
 check system $HOST
@@ -1374,8 +1327,7 @@ check host REACHABILITY with address 1.1.1.1
 
 <p>File: /etc/monit/conf.d/sshd</p>
 
-<pre><code>:::Text
-check process sshd with pidfile /var/run/sshd.pid
+<pre><code>check process sshd with pidfile /var/run/sshd.pid
     alert root@example.com with mail-format {
            from: monit@example.com
         subject: monit alert: $SERVICE $EVENT $DATE
@@ -1405,8 +1357,7 @@ check process sshd with pidfile /var/run/sshd.pid
 
 <p>package libdb-pg-perl is required for postgresql</p>
 
-<pre><code>:::Text
-# sudo apt-get install munin libdbd-pg-perl
+<pre><code># sudo apt-get install munin libdbd-pg-perl
 </code></pre>
 
 <hr/>
@@ -1415,8 +1366,7 @@ check process sshd with pidfile /var/run/sshd.pid
 
 <p>package perl-DBD-Pg is required for postgresql</p>
 
-<pre><code>:::Text
-# sudo dnf install munin perl-DBD-Pg
+<pre><code># sudo dnf install munin perl-DBD-Pg
 </code></pre>
 
 <hr/>
@@ -1425,8 +1375,7 @@ check process sshd with pidfile /var/run/sshd.pid
 
 <p>File: /etc/munin.munin.conf</p>
 
-<pre><code>:::Text
-~
+<pre><code>~
 # Local Host
 [app.example.com]
     address 127.0.0.1
@@ -1447,8 +1396,7 @@ check process sshd with pidfile /var/run/sshd.pid
 
 <p>On <em>Munin-Node</em> node, allow master into IPv4/6 port:</p>
 
-<pre><code>:::Text
-$ sudo ufw allow 4949
+<pre><code>$ sudo ufw allow 4949
 $ sudo ufw status | grep 4949
 4949                       ALLOW       Anywhere                  
 4949 (v6)                  ALLOW       Anywhere (v6)    
@@ -1464,8 +1412,7 @@ $ sudo ufw status | grep 4949
 
 <p>On <em>Munin-Node</em> node, allow master into IPv4 port:</p>
 
-<pre><code>:::Text
-$ sudo firewall-cmd --permanent --zone=public --add-port=4949/tcp
+<pre><code>$ sudo firewall-cmd --permanent --zone=public --add-port=4949/tcp
 $ sudo firewall-cmd --reload
 $ sudo firewall-cmd --permanent --list-ports
 4949/tcp
@@ -1481,8 +1428,7 @@ $ sudo firewall-cmd --permanent --list-ports
 
 <p>File: /etc/munin/munin-node.conf</p>
 
-<pre><code>:::Text
-~
+<pre><code>~
 # A list of addresses that are allowed to connect.  This must be a
 # regular expression, since Net::Server does not understand CIDR-style
 # network notation unless the perl module Net::CIDR is installed.  You
@@ -1512,8 +1458,7 @@ RedHat -&gt; <code>$ sudo dnf install ncat</code>:</p>
 
 <p>Examples:</p>
 
-<pre><code>:::Text
-$ ncat 127.0.0.1 4949
+<pre><code>$ ncat 127.0.0.1 4949
 # munin node at app.example.com
 list
 acpi apache_accesses apache_processes apache_volume cpu df df_inode entropy forks fw_packets http_loadtime if_em1 if_eno1 if_err_em1 if_err_eno1 if_err_tun0 if_err_wlp58s0 if_tun0 if_wlp58s0 interrupts irqstats load lpstat memory munin_stats netstat ntp_198.23.200.19 ntp_208.94.243.142 ntp_216.218.254.202 ntp_91.189.94.4 ntp_96.126.100.203 ntp_kernel_err ntp_kernel_pll_freq ntp_kernel_pll_off ntp_offset ntp_states open_files open_inodes postfix_mailqueue postfix_mailvolume postgres_autovacuum postgres_bgwriter postgres_cache_ALL postgres_cache_twotree postgres_checkpoints postgres_connections_ALL postgres_connections_db postgres_connections_twotree postgres_locks_ALL postgres_locks_twotree postgres_querylength_ALL postgres_querylength_twotree postgres_scans_twotree postgres_size_ALL postgres_size_twotree postgres_transactions_ALL postgres_transactions_twotree postgres_tuples_twotree postgres_users postgres_xlog proc_pri processes swap threads uptime users vmstat
@@ -1544,16 +1489,14 @@ guest.value 0
 
 <p>Enable apache module mod_status:</p>
 
-<pre><code>:::Text
-$ sudo a2enmod status
+<pre><code>$ sudo a2enmod status
 </code></pre>
 
 <p>Check the IP addresses in the apache status configuration. Change <code>Require ip &lt;address&gt;</code> to allow other IP addresses to connect to the munin monitor.</p>
 
 <p>File: /etc/apache2/mods-enabled/status.conf</p>
 
-<pre><code>:::Text
-~
+<pre><code>~
 	&lt;Location /server-status&gt;
 		SetHandler server-status
 		Require local
@@ -1565,15 +1508,13 @@ $ sudo a2enmod status
 
 <p>Check apache plugin:</p>
 
-<pre><code>:::Text
-$ sudo munin-run apache_volume
+<pre><code>$ sudo munin-run apache_volume
 volume80.value 500736
 </code></pre>
 
 <p>Check postgresql plugin:</p>
 
-<pre><code>:::Text
-$ sudo munin-run postgres_connections_miniflux
+<pre><code>$ sudo munin-run postgres_connections_miniflux
 active.value 0
 idle.value 1
 idletransaction.value 0
@@ -1583,30 +1524,26 @@ waiting.value 0
 
 <p>Check the munin-node daemon status:</p>
 
-<pre><code>:::Text
-$ sudo systemctl status munin-node
+<pre><code>$ sudo systemctl status munin-node
 </code></pre>
 
 <p>Check the munin-master daemon status:</p>
 
-<pre><code>:::Text
-$ sudo systemctl status munin
+<pre><code>$ sudo systemctl status munin
 </code></pre>
 
 <p>The utility <strong>munin-node-configure</strong> is used by the Munin installation procedure to check which plugins are suitable for your node and create the links automatically. <em>It can be called every time when a system configuration changes (services, hardware, etc) on the node and it will adjust the collection of plugins accordingly.</em> &#8216;**-shell&#8217;** will display new configuration plugin links &#8216;ln -s &#8230;&#8217; for you.</p>
 
 <p>For instance, below a new network interface (if) was discovered since the last configuration of munin. To enable the new monitoring simply execute the &#8216;ln -s &#8230;&#8217; commands to create soft links, so interface veth2e40fe9 will be monitored.</p>
 
-<pre><code>:::Text
-$ sudo munin-node-configure -shell
+<pre><code>$ sudo munin-node-configure -shell
 ln -s '/usr/share/munin/plugins/if_' '/etc/munin/plugins/if_veth2e40fe9'
 ln -s '/usr/share/munin/plugins/if_err_' '/etc/munin/plugins/if_err_veth2e40fe9'
 </code></pre>
 
 <p>To have <a href="https://guide.munin-monitoring.org/en/latest/reference/munin-node-configure.html#munin-node-configure">munin-node-configure</a> display &#8216;rm &#8230;&#8217; commands for plugins with software that may no longer be installed, use the option ‘–remove-also’.</p>
 
-<pre><code>:::Text
-$ sudo munin-node-configure -shell -remove-also
+<pre><code>$ sudo munin-node-configure -shell -remove-also
 ln -s '/usr/share/munin/plugins/if_' '/etc/munin/plugins/if_veth2e40fe9'
 rm -f '/etc/munin/plugins/if_veth0049d71'
 ln -s '/usr/share/munin/plugins/if_err_' '/etc/munin/plugins/if_err_veth2e40fe9'
@@ -1615,8 +1552,7 @@ rm -f '/etc/munin/plugins/if_err_veth0049d71'
 
 <p>Enabled monitors can be found in the same location</p>
 
-<pre><code>:::Text
-$ ls -l /etc/munin/plugins | grep apache
+<pre><code>$ ls -l /etc/munin/plugins | grep apache
 lrwxrwxrwx 1 root root 40 Jun 30  2018 apache_accesses -&gt; /usr/share/munin/plugins/apache_accesses
 lrwxrwxrwx 1 root root 41 Jun 30  2018 apache_processes -&gt; /usr/share/munin/plugins/apache_processes
 lrwxrwxrwx 1 root root 38 Jun 30  2018 apache_volume -&gt; /usr/share/munin/plugins/apache_volume
@@ -1624,8 +1560,7 @@ lrwxrwxrwx 1 root root 38 Jun 30  2018 apache_volume -&gt; /usr/share/munin/plug
 
 <p>Testing new plugins has an <strong>autoconf</strong> option to munin-run. Errors will be displayed, and a debug &#8216;-d&#8217; option is also available.</p>
 
-<pre><code>:::Text
-$ sudo munin-run postgres_connections_miniflux autoconf
+<pre><code>$ sudo munin-run postgres_connections_miniflux autoconf
 yes
     
 $ sudo munin-run -d postgres_connections_miniflux autoconf
@@ -1652,8 +1587,7 @@ yes
 
 <p>File: /etc/munin/munin.conf</p>
 
-<pre><code>:::Text
-~
+<pre><code>~
 contact.email.command mail -s &quot;Munin-notification for ${var:group} :: ${var:host}&quot; your@email.address.here
 ~
 </code></pre>
@@ -1664,8 +1598,7 @@ contact.email.command mail -s &quot;Munin-notification for ${var:group} :: ${var
 
 <p>File: /etc/munin.conf</p>
 
-<pre><code>:::Text
-[beaglebone]
+<pre><code>[beaglebone]
     address 192.168.1.7
     use_node_name yes
     diskstats_latency.mmcblk0.avgrdwait.warning 0:10
@@ -1687,8 +1620,7 @@ contact.email.command mail -s &quot;Munin-notification for ${var:group} :: ${var
 <figcaption>Cockpit Dashboard</figcaption>
 </figure>
 
-<pre><code>:::Text
-$ sudo systemctl start Cockpit
+<pre><code>$ sudo systemctl start Cockpit
 </code></pre>
 
 <p>To log in to Cockpit, open your web browser to localhost:9090 and enter your Linux username and password.</p>
@@ -1707,16 +1639,14 @@ $ sudo systemctl start Cockpit
 
 <p>The Debian Way</p>
 
-<pre><code>:::Text
-$ sudo apt-get install fail2ban
+<pre><code>$ sudo apt-get install fail2ban
 </code></pre>
 
 <hr/>
 
 <p>The RedHat Way</p>
 
-<pre><code>:::Text
-$ sudo dnf install fail2ban
+<pre><code>$ sudo dnf install fail2ban
 </code></pre>
 
 <hr/>
@@ -1737,8 +1667,7 @@ $ sudo dnf install fail2ban
 
 <p>File: /etc/fail2ban/jail.local</p>
 
-<pre><code>:::Text
-[DEFAULT]
+<pre><code>[DEFAULT]
 # email
 destemail = don@example.com
 sender = root@example.com
@@ -1756,8 +1685,7 @@ ignoreip = 127.0.0.1 192.168.1.0/24 8.8.8.8 1.1.1.1
 <hr/>
 The Debian Way
 
-<pre><code>:::Text
-[sshd]
+<pre><code>[sshd]
 enabled = true
 port = 22
 filter = sshd
@@ -1771,8 +1699,7 @@ bantime = 1d
 
 <p>The RedHat Way</p>
 
-<pre><code>::Text
-[sshd]
+<pre><code>[sshd]
 enabled = true
 port = 22
 filter = sshd
@@ -1790,8 +1717,7 @@ bantime = 1d
 
 <p>To find the proper name of your USB stick, check the current mounts:</p>
 
-<pre><code>::Text
-$ sudo lsblk
+<pre><code>$ sudo lsblk
 NAME        MAJ:MIN RM   SIZE RO TYPE  MOUNTPOINTS
 sda           8:0    0   1.8T  0 disk  
 └─sda1        8:1    0   1.8T  0 part  
@@ -1805,15 +1731,13 @@ nvme0n1     259:0    0 238.5G  0 disk
 
 <p>Plug it is, then check <code>dmesg -x</code> immediately after plugging it in. Look for :</p>
 
-<pre><code>:::Text
-[201373.210797]  sdd: sdd1
+<pre><code>[201373.210797]  sdd: sdd1
 [201373.211917] sd 2:0:0:0: [sdd] Attached SCSI removable disk
 </code></pre>
 
 <p>Then run blkid again. You can see the new entry, sdd.</p>
 
-<pre><code>:::Text
-$ sudo lsblk
+<pre><code>$ sudo lsblk
 NAME        MAJ:MIN RM   SIZE RO TYPE  MOUNTPOINTS
 sda           8:0    0   1.8T  0 disk  
 └─sda1        8:1    0   1.8T  0 part  
@@ -1840,22 +1764,18 @@ nvme0n1     259:0    0 238.5G  0 disk
 <li><p>w - write partition</p></li>
 <li><p>q - quit</p>
 
-<p>::Text
-$ sudo fdisk /dev/sdd
-</p></li>
+<p>$ sudo fdisk /dev/sdd</p></li>
 </ul>
 
 <p>Check the USB stick label and filesystem (this example has no filesystem)</p>
 
-<pre><code>::Text
-$ sudo blkid /dev/sdd1
+<pre><code>$ sudo blkid /dev/sdd1
 /dev/sdd1: PARTUUID=&quot;66bc7da7-1234-abcd-1234-ea4bfe7e00a7&quot;
 </code></pre>
 
 <p>So create an ext4 filesystem on the new partition(1)</p>
 
-<pre><code>::Text
-$ sudo mkfs.ext4 /dev/sdd1
+<pre><code>$ sudo mkfs.ext4 /dev/sdd1
 mke2fs 1.46.2 (28-Feb-2021)
 /dev/sdc1 contains a vfat file system
 Proceed anyway? (y,N) y
@@ -1873,29 +1793,25 @@ Writing superblocks and filesystem accounting information: done
 
 <p>Check the new filesystem, now we see it is TYPE=&#8220;ext4&#8221;</p>
 
-<pre><code>:::Text
-$ sudo blkid /dev/sdd1
+<pre><code>$ sudo blkid /dev/sdd1
 /dev/sdc1: UUID=&quot;8e33672c-1234-49de-abcd-6fd841372db6&quot; BLOCK_SIZE=&quot;4096&quot; TYPE=&quot;ext4&quot; PARTUUID=&quot;66bc7da7-c9c3-4342-8073-ea4bfe7e00a7&quot;
 </code></pre>
 
 <p>Label the USB stick as &#8216;backup&#8217; so autobackup can find and mount it, then verify that LABEL=&#8220;backup&#8221;</p>
 
-<pre><code>:::Text
-$ sudo e2label /dev/sdd1 backup
+<pre><code>$ sudo e2label /dev/sdd1 backup
 $ sudo blkid /dev/sdd1
 /dev/sdd1: LABEL=&quot;backup&quot; UUID=&quot;8e33672c-1234-49de-abcd-6fd841372db6&quot; BLOCK_SIZE=&quot;4096&quot; TYPE=&quot;ext4&quot; PARTUUID=&quot;66bc7da7-c9c3-4342-8073-ea4bfe7e00a7&quot;
 </code></pre>
 
 <p>Copy the autobackup software onto this server</p>
 
-<pre><code>:::Text
-$ git clone https://github.com/bablokb/autobackup-service
+<pre><code>$ git clone https://github.com/bablokb/autobackup-service
 </code></pre>
 
 <p>Install the autobackup software</p>
 
-<pre><code>:::Text
-$ cd autobackup-service/
+<pre><code>$ cd autobackup-service/
 $ sudo ./tools/install
 </code></pre>
 
@@ -2012,8 +1928,7 @@ backup^I/home^I^I./$
 
 <p>File: $HOME/autobackup-service/autobackup.sh</p>
 
-<pre><code>:::Text
-58,61c60,64
+<pre><code>58,61c60,64
 &lt;   if [ &quot;${DEVICE:5:3}&quot; != &quot;$udev_arg&quot; ]; then
 &lt;     msg &quot;info: partition with label $LABEL is not on newly plugged device $udev_arg&quot;
 &lt;     exit 0
@@ -2030,8 +1945,7 @@ backup^I/home^I^I./$
 
 <p>File: /etc/cron.d/autobackup-daily</p>
 
-<pre><code>:::Text
-# This is a cron file for autobackup/rsnapshot.
+<pre><code># This is a cron file for autobackup/rsnapshot.
 # 0 */4		* * *		root	/usr/bin/rsnapshot alpha
 # 30 3   	* * *		root	/usr/bin/rsnapshot beta
 # 0  3   	* * 1		root    /usr/bin/rsnapshot gamma
@@ -2045,8 +1959,7 @@ MAILTO=&quot;don@example.com&quot;
 
 <p>Log entries will be in the syslog</p>
 
-<pre><code>:::Text
-$ sudo grep autobackup.sh /var/log/syslog
+<pre><code>$ sudo grep autobackup.sh /var/log/syslog
 Jan 23 12:51:11 box autobackup.sh: info: LABEL           = backup
 Jan 23 12:51:11 box autobackup.sh: info: WAIT_FOR_DEVICE = 2
 Jan 23 12:51:11 box autobackup.sh: info: force_daily     = 0
@@ -2077,8 +1990,7 @@ Jan 23 12:51:15 box autobackup.sh: info: umounting /dev/sda1
 <hr/>
 The Debian Way
 
-<pre><code>:::Text
-$ grep run-parts /etc/crontab
+<pre><code>$ grep run-parts /etc/crontab
 17 *	* * *	root    cd / &amp;&amp; run-parts --report /etc/cron.hourly
 25 6	* * *	root	test -x /usr/sbin/anacron || ( cd / &amp;&amp; run-parts --report /etc/cron.daily )
 47 6	* * 7	root	test -x /usr/sbin/anacron || ( cd / &amp;&amp; run-parts --report /etc/cron.weekly )
@@ -2091,8 +2003,7 @@ $ grep run-parts /etc/crontab
 
 <p>The RedHat Way</p>
 
-<pre><code>:::Text
-# cat /etc/anacrontab 
+<pre><code># cat /etc/anacrontab 
 # /etc/anacrontab: configuration file for anacron
     
 # See anacron(8) and anacrontab(5) for details.
@@ -2159,8 +2070,7 @@ fi
 
 <p>File: /etc/cron.d/rsync</p>
 
-<pre><code>:::Text
-# This is a cron file for rsync to NAS 
+<pre><code># This is a cron file for rsync to NAS 
 SHELL=/bin/bash
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 MAILTO=&quot;don@example.com&quot;
@@ -2293,8 +2203,7 @@ $ sudo dnf copr disable brianjmurrell/epel-8
 
 <p>File: /etc/cron.d/logcheck</p>
 
-<pre><code>:::Text
-# Cron job runs at 2 minutes past every hour
+<pre><code># Cron job runs at 2 minutes past every hour
 # /etc/cron.d/logcheck: crontab entries for the logcheck package
     
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
@@ -2352,8 +2261,7 @@ SENDMAILTO=&quot;don@example.com&quot;
 
 <p>RedHat pmstat [3]</p>
 
-<pre><code>:::Text
-$ pmstat
+<pre><code>$ pmstat
 @ Mon Jun 12 10:02:01 2023
  loadavg                      memory      swap        io    system         cpu
    1 min   swpd   free   buff  cache   pi   po   bi   bo   in   cs  us  sy  id
@@ -2473,8 +2381,7 @@ WantedBy=sysstat.service
 
 <p>Above, Systemd edit override example changing the interval from 10 minutes to 5:</p>
 
-<pre><code>:::Text
-# ls -lrt /etc/systemd/system/sysstat-collect.timer.d/
+<pre><code># ls -lrt /etc/systemd/system/sysstat-collect.timer.d/
 total 4
 -rw-r--r--. 1 root root 27 Feb 19 09:38 override.conf
 # more /etc/systemd/system/sysstat-collect.timer.d/override.conf 
@@ -2525,8 +2432,7 @@ sar -q 2 3
 
 <p>Memory</p>
 
-<pre><code>:::Text
-$ sar -r
+<pre><code>$ sar -r
 Linux 5.10.120-ti-arm64-r64 (app.example.com) 	11/07/2022 	_aarch64_	(2 CPU)
     
 02:09:36 PM kbmemfree   kbavail kbmemused  %memused kbbuffers  kbcached  kbcommit   %commit  kbactive   kbinact   kbdirty
@@ -2536,8 +2442,7 @@ Average:       872556   2467364   1037140     27.37    162024   1529680   389880
 
 <p>IO</p>
 
-<pre><code>:::Text
-$ sar -b
+<pre><code>$ sar -b
 Linux 5.10.120-ti-arm64-r64 (app.example.com) 	11/07/2022 	_aarch64_	(2 CPU)
     
 02:09:36 PM       tps      rtps      wtps      dtps   bread/s   bwrtn/s   bdscd/s
@@ -2547,8 +2452,7 @@ Average:         6.63      0.16      6.47      0.00      2.25    312.46      0.0
 
 <p>Network</p>
 
-<pre><code>::Text
-$ sar -n DEV
+<pre><code>$ sar -n DEV
 Linux 5.10.120-ti-arm64-r64 (app.example.com) 	11/07/2022 	_aarch64_	(2 CPU)
     
 02:09:36 PM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
@@ -2566,8 +2470,7 @@ Average:      docker0      0.00      0.00      0.00      0.00      0.00      0.0
 
 <p>Load and Run Queue</p>
 
-<pre><code>:::Text
-$ sar -q
+<pre><code>$ sar -q
 Linux 5.10.120-ti-arm64-r64 (app.example.com) 	11/07/2022 	_aarch64_	(2 CPU)
     
 02:09:36 PM   runq-sz  plist-sz   ldavg-1   ldavg-5  ldavg-15   blocked
@@ -2841,8 +2744,7 @@ Last login: Sun Aug 21 10:13:57 2022 from 192.168.1.4
 
 <hr/>
 
-<pre><code>:::Text
-~
+<pre><code>~
 # Email logins - Don November 2020
 echo $(who am i) ' just logged on ' $(hostname) ' ' $(date) $(who) | mail -s &quot;Login on&quot; don@example.com
 </code></pre>
@@ -2852,10 +2754,6 @@ echo $(who am i) ' just logged on ' $(hostname) ' ' $(date) $(who) | mail -s &qu
 <p>Now that I have set up my new server, I&#8217;ll consider giving it an internet name with DNS.</p>
 
 <p>Proceeding in the order presented, some things are depending on prior setups.</p>
-
-<object type="image/svg+xml" data="/images/Linux-in-the-House2.svg" style="width:5%; height:10%; text-align: right">
-Linux-in-the-House.svg<!-- fallback image in CSS -->
-</object>
 
 <hr>
 
@@ -2891,7 +2789,7 @@ Linux-in-the-House.svg<!-- fallback image in CSS -->
      </td>
      <td>
 
-<p><small>linux-in-house Version: 4.47 </small></p>
+<p><small>linux-in-house Version: 4.52 </small></p>
 
 <p></tr>
 </table></p>
