@@ -191,22 +191,10 @@ Linux-in-the-House.svg<!-- fallback image in CSS -->
 
 <h3 id="samplehomenetwork:">Sample Home Network:</h3>
 
-<p>..graphviz dot
-strict digraph graphName {
-bgcolor=&#8220;lightsteelblue&#8221;;
-graph [rankdir = TD];
-Modem  -&gt; Router  [dir=&#8220;both&#8221;];
-Router  -&gt; MainSwitch [dir=&#8220;both&#8221;];
-Router  -&gt; WiFi   [dir=&#8220;both&#8221;];
-Router  -&gt; GuestWiFi;
-GuestWiFi -&gt; Camera;
-MainSwitch -&gt; ServerSwitch [dir=&#8220;both&#8221;];
-MainSwitch -&gt; Desktop  [dir=&#8220;both&#8221;];
-MainSwitch -&gt; Laptop  [dir=&#8220;both&#8221;];
-ServerSwitch -&gt; MailServer;
-ServerSwitch -&gt; WebServer;
-ServerSwitch -&gt; NetworkAccessStorage;
-}</p>
+<figure>
+<img src="/linux-in-house/images/graph-sample-home-network.svg" alt="Sample Home Network" />
+<figcaption>Sample Home Network</figcaption>
+</figure>
 
 <p>Sometimes the Modem, Router and Main Switch are one unit, or there is no modem.</p>
 
@@ -2789,7 +2777,7 @@ echo $(who am i) ' just logged on ' $(hostname) ' ' $(date) $(who) | mail -s &qu
      </td>
      <td>
 
-<p><small>linux-in-house Version: 4.52 </small></p>
+<p><small>linux-in-house Version: 4.58 </small></p>
 
 <p></tr>
 </table></p>
