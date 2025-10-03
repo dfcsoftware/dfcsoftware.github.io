@@ -113,6 +113,9 @@ img{max-width:100%;height:auto;vertical-align:middle}a{color:inherit}
 .w3-code{width:auto;background-color:#fff;padding:8px 12px;border-left:4px solid #4CAF50;word-wrap:break-word}
 .w3-codespan{color:crimson;background-color:#f1f1f1;padding-left:4px;padding-right:4px;font-size:110%}
 /* Begin. default code formatting - Don */
+pre {
+  overflow-x: auto; /* horizontal scroll bar */
+}
 code{font-family:Consolas,"courier new";
      font-size:16px;
      width:auto;
