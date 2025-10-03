@@ -24,7 +24,8 @@
 <!-- Modem&#45;&gt;Router -->
 <g id="edge1" class="edge">
 <title>Modem&#45;&gt;Router</title>
-<path fill="none" stroke="black" d="M460.39,-287.7C460.39,-279.98 460.39,-270.71 460.39,-262.11"/>
+<path fill="none" stroke="black" d="M460.39,-277.67C460.39,-272.69 460.39,-267.49 460.39,-262.51"/>
+<polygon fill="black" stroke="black" points="456.89,-277.7 460.39,-287.7 463.89,-277.7 456.89,-277.7"/>
 <polygon fill="black" stroke="black" points="463.89,-262.1 460.39,-252.1 456.89,-262.1 463.89,-262.1"/>
 </g>
 <!-- MainSwitch -->
@@ -36,7 +37,8 @@
 <!-- Router&#45;&gt;MainSwitch -->
 <g id="edge2" class="edge">
 <title>Router&#45;&gt;MainSwitch</title>
-<path fill="none" stroke="black" d="M436.92,-218.83C420.23,-208.76 397.55,-195.08 378.82,-183.77"/>
+<path fill="none" stroke="black" d="M428.33,-213.65C413.04,-204.42 394.72,-193.37 379.1,-183.94"/>
+<polygon fill="black" stroke="black" points="426.55,-216.66 436.92,-218.83 430.17,-210.67 426.55,-216.66"/>
 <polygon fill="black" stroke="black" points="380.63,-180.78 370.26,-178.61 377.01,-186.77 380.63,-180.78"/>
 </g>
 <!-- WiFi -->
@@ -48,7 +50,8 @@
 <!-- Router&#45;&gt;WiFi -->
 <g id="edge3" class="edge">
 <title>Router&#45;&gt;WiFi</title>
-<path fill="none" stroke="black" d="M460.39,-215.7C460.39,-207.98 460.39,-198.71 460.39,-190.11"/>
+<path fill="none" stroke="black" d="M460.39,-205.67C460.39,-200.69 460.39,-195.49 460.39,-190.51"/>
+<polygon fill="black" stroke="black" points="456.89,-205.7 460.39,-215.7 463.89,-205.7 456.89,-205.7"/>
 <polygon fill="black" stroke="black" points="463.89,-190.1 460.39,-180.1 456.89,-190.1 463.89,-190.1"/>
 </g>
 <!-- GuestWiFi -->
@@ -72,7 +75,8 @@
 <!-- MainSwitch&#45;&gt;ServerSwitch -->
 <g id="edge6" class="edge">
 <title>MainSwitch&#45;&gt;ServerSwitch</title>
-<path fill="none" stroke="black" d="M314.36,-145.98C293.97,-135.79 266.78,-122.19 244.54,-111.07"/>
+<path fill="none" stroke="black" d="M305.24,-141.42C286.26,-131.93 263.49,-120.55 244.39,-111"/>
+<polygon fill="black" stroke="black" points="303.85,-144.64 314.36,-145.98 306.98,-138.38 303.85,-144.64"/>
 <polygon fill="black" stroke="black" points="245.86,-107.82 235.35,-106.48 242.73,-114.08 245.86,-107.82"/>
 </g>
 <!-- Desktop -->
@@ -84,7 +88,8 @@
 <!-- MainSwitch&#45;&gt;Desktop -->
 <g id="edge7" class="edge">
 <title>MainSwitch&#45;&gt;Desktop</title>
-<path fill="none" stroke="black" d="M344.39,-143.7C344.39,-135.98 344.39,-126.71 344.39,-118.11"/>
+<path fill="none" stroke="black" d="M344.39,-133.67C344.39,-128.69 344.39,-123.49 344.39,-118.51"/>
+<polygon fill="black" stroke="black" points="340.89,-133.7 344.39,-143.7 347.89,-133.7 340.89,-133.7"/>
 <polygon fill="black" stroke="black" points="347.89,-118.1 344.39,-108.1 340.89,-118.1 347.89,-118.1"/>
 </g>
 <!-- Laptop -->
@@ -96,7 +101,8 @@
 <!-- MainSwitch&#45;&gt;Laptop -->
 <g id="edge8" class="edge">
 <title>MainSwitch&#45;&gt;Laptop</title>
-<path fill="none" stroke="black" d="M369.08,-145.29C385.05,-135.13 405.97,-121.82 423.1,-110.91"/>
+<path fill="none" stroke="black" d="M377.84,-139.72C392.27,-130.53 409.05,-119.85 423.22,-110.84"/>
+<polygon fill="black" stroke="black" points="375.64,-136.97 369.08,-145.29 379.4,-142.87 375.64,-136.97"/>
 <polygon fill="black" stroke="black" points="425.11,-113.79 431.66,-105.46 421.35,-107.88 425.11,-113.79"/>
 </g>
 <!-- Camera -->
