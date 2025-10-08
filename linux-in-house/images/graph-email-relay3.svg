@@ -12,13 +12,13 @@
 <!-- VPS_Postfix_MTA -->
 <g id="node1" class="node">
 <title>VPS_Postfix_MTA</title>
-<ellipse fill="none" stroke="black" cx="159.24" cy="-234" rx="90.98" ry="18"/>
+<ellipse fill="none" stroke="black" cx="159.24" cy="-234" rx="91.78" ry="18"/>
 <text text-anchor="middle" x="159.24" y="-230.3" font-family="Times,serif" font-size="14.00">VPS_Postfix_MTA</text>
 </g>
 <!-- Home_Postfix_MTA -->
 <g id="node2" class="node">
 <title>Home_Postfix_MTA</title>
-<ellipse fill="none" stroke="black" cx="159.24" cy="-162" rx="98.58" ry="18"/>
+<ellipse fill="none" stroke="black" cx="159.24" cy="-162" rx="100.18" ry="18"/>
 <text text-anchor="middle" x="159.24" y="-158.3" font-family="Times,serif" font-size="14.00">Home_Postfix_MTA</text>
 </g>
 <!-- VPS_Postfix_MTA&#45;&gt;Home_Postfix_MTA -->
