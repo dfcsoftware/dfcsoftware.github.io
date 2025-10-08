@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="generator" content="Pelican" />
+        <title>Linux Home Administration - writing</title>
+        <link rel="icon" type="image/svg" href="https://vm3.doncohoon.com/linux-in-house/images/favicon.svg">
+        <link rel="stylesheet" href="https://vm3.doncohoon.com/linux-in-house/theme/css/main.css" type="text/css" />
+        <!-- <link rel="stylesheet" href="/theme/css/main.css" type="text/css" />  -->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <table>
+                    <td><h1><a href="https://vm3.doncohoon.com/linux-in-house/">Linux Home Administration</a></h1></td>
+                    <td> <link href="/linux-in-house/pagefind/pagefind-ui.css" rel="stylesheet" type="text/css">
+<script src="/linux-in-house/pagefind/pagefind-ui.js"></script>
+<div id="search"></div>
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        new PagefindUI({ element: "#search", showSubResults: true });
+    });
+</script> </td>
+                </table>
+                <nav><ul>
+                    <li><a href="https://vm3.doncohoon.com/linux-in-house/category/linux.html">linux</a></li>
+                    <li><a href="https://vm3.doncohoon.com/linux-in-house/category/quest.html">quest</a></li>
+                    <li class="active"><a href="https://vm3.doncohoon.com/linux-in-house/category/writing.html">writing</a></li>
+                    <li><a href="https://vm3.doncohoon.com/linux-in-house/category/zines.html">zines</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="https://vm3.doncohoon.com/linux-in-house/teach.html">Teach</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2025-08-28T10:20:00-04:00">
+                Published: Thu 28 August 2025
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://vm3.doncohoon.com/linux-in-house/author/don-cohoon.html">Don Cohoon</a>
+        </address>
+<p>In <a href="https://vm3.doncohoon.com/linux-in-house/category/writing.html">writing</a>.</p>
+
+</footer><!-- /.post-info --><h1 id="simple-steps-and-useful-examples">Simple steps and useful examples.</h1>
+<p>This is the method of teaching I like for learning. </p>
+<p>It's also why I have been so excited to see each day a new post by Dr. Axel Rauschmayer; “Learning web development"</p>
+<blockquote>
+<p><a href="https://2ality.com/2025/08/learning-web-dev-toc.html">https://2ality.com/2025/08/learning-web-dev-toc.html</a></p>
+<p>Thank you Dr. Axel! [7]</p>
+</blockquote>
+<h2 id="my-reasons">My Reasons</h2>
+<ol>
+<li>I like the writing style</li>
+<li>Working examples</li>
+<li>A topic I did a lot of work in, and still some</li>
+<li>Shows me what I lost years ago, learning all those fancy web frameworks</li>
+</ol>
+<p>Particularly #4 brings me back to what I have been wanting lately, a simple, easy to use and maintain web enabled system using the native tools we have: html, css and javascript built-ins.</p>
+<p>I used to write simple web pages, linking them together to make up a story, and using all those funny icons from the 1990's in the 1990's. Picture albums and books with audio links for reading to children. Even GIF's of hand drawn icons. :{0</p>
+<p>Dynamic database driven web sites were some of the things I did at work, and it also creeped into my home projects. Of course I could not pay for the fancy tools like work had, but capable open source alternatives rolled out at an impressive pace. </p>
+<p>When JQuery [1] came out it was great, then Angularjs [2], and finally porting to Angular [3]; I felt the web to database scenario was getting way too complex and it <em>burned me out of webdev</em>.  I kept thinking "There must be a better way."</p>
+<h2 id="better-way">Better Way</h2>
+<p>Then I tried static site builders such as Hugo [4] and Pelican [5]. </p>
+<h3 id="pros">Pros</h3>
+<ol>
+<li>Simple text files (markdown)</li>
+<li>Automatic menu structure</li>
+<li>Search</li>
+<li>RSS [6] sharing</li>
+</ol>
+<h3 id="cons">Cons</h3>
+<ol>
+<li>Hate the build process (waiting...)</li>
+<li>Separate Search build process (more waiting...)</li>
+<li>Complex</li>
+<li>Rely on <em>projects</em> not <strong>standards</strong></li>
+</ol>
+<p>Suddenly the urge is with me to update my decades old project in a <code>simpler</code> <strong>very open source</strong> design and implementation. This may or may not happen, but it should be fun to explore once again with a fresh mind, and newer standards and few, if any, projects. </p>
+<h2 id="what-i-want-to-build">What I Want to Build</h2>
+<p>Web based system for</p>
+<ol>
+<li>text</li>
+<li>menu</li>
+<li>search </li>
+<li>RSS [6] sharing</li>
+</ol>
+<p>contained in simple, 100% source code. </p>
+<blockquote>
+<p>Less code is better.</p>
+</blockquote>
+<h1 id="reference">Reference</h1>
+<ol>
+<li><a href="https://jquery.com/">https://jquery.com/</a></li>
+<li><a href="https://angularjs.org/">https://angularjs.org/</a></li>
+<li><a href="https://angular.io/start">https://angular.io/start</a></li>
+<li><a href="https://gohugo.io/">https://gohugo.io/</a></li>
+<li><a href="https://getpelican.com/">https://getpelican.com/</a></li>
+<li><a href="https://www.rssboard.org/rss-specification">https://www.rssboard.org/rss-specification</a></li>
+<li><a href="https://exploringjs.com/js/">https://exploringjs.com/js/</a></li>
+</ol>
+<p>-- Don Cohoon</p>
+<p>PS: If this sounds like the web's oldest app (e-mail), you are right!</p>
+<p>--</p>
+<div class="highlight"><pre><span></span><code>____          
+|  _ \  ___  _ __  
+| | | |/ <span class="ge">_ \| &#39;_</span> \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+¯\_(ツ)_/¯
+</code></pre></div>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://vm3.doncohoon.com/linux-in-house/lawnmower.html" rel="bookmark"
+                           title="Permalink to Lawnmower">Lawnmower</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2025-08-17T10:20:00-04:00">
+                Published: Sun 17 August 2025
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://vm3.doncohoon.com/linux-in-house/author/don-cohoon.html">Don Cohoon</a>
+        </address>
+<p>In <a href="https://vm3.doncohoon.com/linux-in-house/category/writing.html">writing</a>.</p>
+
+</footer><!-- /.post-info -->                <p>The Electric Lawnmower using a battery is a great invention. With battery technologies improved so much over the last 10 years, I can easily cover my whole lawn in about one hour with power to spare in the lithium cells and expect batteries to last 10 years.</p>
+<p>Having used several …</p>
+                <a class="readmore" href="https://vm3.doncohoon.com/linux-in-house/lawnmower.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://vm3.doncohoon.com/linux-in-house/lead-or-explore.html" rel="bookmark"
+                           title="Permalink to Lead or Explore">Lead or Explore</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2025-08-12T10:20:00-04:00">
+                Published: Tue 12 August 2025
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://vm3.doncohoon.com/linux-in-house/author/don-cohoon.html">Don Cohoon</a>
+        </address>
+<p>In <a href="https://vm3.doncohoon.com/linux-in-house/category/writing.html">writing</a>.</p>
+
+</footer><!-- /.post-info -->                <p>It happens when you least expect it. That golden ring of opportunity. Do you grab it, or let it slide.</p>
+<p>Look around, explore and be of good use. That's what I did. Although several chances arose to become a leader. I suppose it happens to everyone at some time or …</p>
+                <a class="readmore" href="https://vm3.doncohoon.com/linux-in-house/lead-or-explore.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://vm3.doncohoon.com/linux-in-house/files.html" rel="bookmark"
+                           title="Permalink to Files">Files</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2025-08-11T10:20:00-04:00">
+                Published: Mon 11 August 2025
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://vm3.doncohoon.com/linux-in-house/author/don-cohoon.html">Don Cohoon</a>
+        </address>
+<p>In <a href="https://vm3.doncohoon.com/linux-in-house/category/writing.html">writing</a>.</p>
+
+</footer><!-- /.post-info -->                <p>With file formats HTML, MarkDown, Maildir, and JSON; your data is yours only. It does not belong to any one app, is human readable, and portable without relying on export/import.</p>
+<p>That is the way I build my stuff. Probably another reason I use mainly bash (sh, ksh, zsh ...). On …</p>
+                <a class="readmore" href="https://vm3.doncohoon.com/linux-in-house/files.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://vm3.doncohoon.com/linux-in-house/the-day-mom-died.html" rel="bookmark"
+                           title="Permalink to The Day Mom Died">The Day Mom Died</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2025-08-10T10:20:00-04:00">
+                Published: Sun 10 August 2025
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://vm3.doncohoon.com/linux-in-house/author/don-cohoon.html">Don Cohoon</a>
+        </address>
+<p>In <a href="https://vm3.doncohoon.com/linux-in-house/category/writing.html">writing</a>.</p>
+
+</footer><!-- /.post-info -->                <div class="highlight"><pre><span></span><code>I still can&#39;t remember the date.
+I still get chills thinking about it.
+I still remember Dad&#39;s call.
+</code></pre></div>
+
+<p><br></p>
+<div class="highlight"><pre><span></span><code>She held us all together
+with her giggle and smile.
+Made you want to stay
+for awhile.
+</code></pre></div>
+
+<p><br></p>
+<div class="highlight"><pre><span></span><code>The times she made frosted winter scenes on the mirrors,
+brought the turtle …</code></pre></div>
+                <a class="readmore" href="https://vm3.doncohoon.com/linux-in-house/the-day-mom-died.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://vm3.doncohoon.com/linux-in-house/ratio.html" rel="bookmark"
+                           title="Permalink to Ratio">Ratio</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2025-08-09T10:20:00-04:00">
+                Published: Sat 09 August 2025
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://vm3.doncohoon.com/linux-in-house/author/don-cohoon.html">Don Cohoon</a>
+        </address>
+<p>In <a href="https://vm3.doncohoon.com/linux-in-house/category/writing.html">writing</a>.</p>
+
+</footer><!-- /.post-info -->                <div class="highlight"><pre><span></span><code>People -----------------------------------------------------|
+                                                activist ---|
+                                        mad -------------|
+ happy -------------------------------------|
+</code></pre></div>
+
+<blockquote>
+<p>Which one gets the attention in a news needy world?</p>
+</blockquote>
+<p>-- Don Cohoon</p>
+<p>--</p>
+<div class="highlight"><pre><span></span><code>____          
+|  _ \  ___  _ __  
+| | | |/ <span class="ge">_ \| &#39;_</span> \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+¯\_(ツ)_/¯
+</code></pre></div>
+                <a class="readmore" href="https://vm3.doncohoon.com/linux-in-house/ratio.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://vm3.doncohoon.com/linux-in-house/building-puzzle-pieces.html" rel="bookmark"
+                           title="Permalink to Building Puzzle Pieces">Building Puzzle Pieces</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2025-07-28T10:20:00-04:00">
+                Published: Mon 28 July 2025
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://vm3.doncohoon.com/linux-in-house/author/don-cohoon.html">Don Cohoon</a>
+        </address>
+<p>In <a href="https://vm3.doncohoon.com/linux-in-house/category/writing.html">writing</a>.</p>
+
+</footer><!-- /.post-info -->                <p>I like to put it all together, and admire the transformation from nothing to something.</p>
+<p>This is the way I have built software products. Daring to dream big, then breaking it down, and finally small enough pieces that a plan naturally forms.</p>
+<p>Recurrent division through each design piece is done …</p>
+                <a class="readmore" href="https://vm3.doncohoon.com/linux-in-house/building-puzzle-pieces.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://vm3.doncohoon.com/linux-in-house/money.html" rel="bookmark"
+                           title="Permalink to Money">Money</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2025-07-26T10:20:00-04:00">
+                Published: Sat 26 July 2025
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://vm3.doncohoon.com/linux-in-house/author/don-cohoon.html">Don Cohoon</a>
+        </address>
+<p>In <a href="https://vm3.doncohoon.com/linux-in-house/category/writing.html">writing</a>.</p>
+
+</footer><!-- /.post-info -->                <h1 id="money-for-workers">Money for Workers</h1>
+<div class="highlight"><pre><span></span><code>    In need of someone to help
+    grow and maintain the business.
+    Willing to come in every day,
+    happy to be here,
+    sad to leave.
+
+    Apply via our app
+    we&#39;ll get right back.
+
+    PS: Wait until next Tuesday...
+</code></pre></div>
+
+<p>-- Don Cohoon</p>
+<p>--</p>
+<div class="highlight"><pre><span></span><code>____          
+|  _ \  ___  _ __  
+| | | |/ <span class="ge">_ \| &#39;_ …</span></code></pre></div>
+                <a class="readmore" href="https://vm3.doncohoon.com/linux-in-house/money.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://vm3.doncohoon.com/linux-in-house/waiting.html" rel="bookmark"
+                           title="Permalink to Waiting">Waiting</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2025-07-21T10:20:00-04:00">
+                Published: Mon 21 July 2025
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://vm3.doncohoon.com/linux-in-house/author/don-cohoon.html">Don Cohoon</a>
+        </address>
+<p>In <a href="https://vm3.doncohoon.com/linux-in-house/category/writing.html">writing</a>.</p>
+
+</footer><!-- /.post-info -->                <h1 id="everything-is-waiting-for-you">Everything is Waiting For You</h1>
+<blockquote>
+<p>"Everything is Waiting for You" is a poem by David Whyte that emphasizes the importance of recognizing the connections and intimacy in our surroundings, encouraging us to let go of feelings of isolation and engage with the world around us. It suggests that everything in …</p></blockquote>
+                <a class="readmore" href="https://vm3.doncohoon.com/linux-in-house/waiting.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://vm3.doncohoon.com/linux-in-house/summer.html" rel="bookmark"
+                           title="Permalink to Summer">Summer</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2025-07-20T10:20:00-04:00">
+                Published: Sun 20 July 2025
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://vm3.doncohoon.com/linux-in-house/author/don-cohoon.html">Don Cohoon</a>
+        </address>
+<p>In <a href="https://vm3.doncohoon.com/linux-in-house/category/writing.html">writing</a>.</p>
+
+</footer><!-- /.post-info -->                <h1 id="summertime">Summertime</h1>
+<p>It's so hot<br>
+we always sweat<br>
+outside,<br>
+running to the cave<br>
+before we fry,<br></p>
+<p>SPF 55<br>
+hats on fire,<br>
+need a bucket of ice<br>
+to cool the mood.<br>
+Gut bucket blues.<br></p>
+<p>-- Don Cohoon</p>
+<p>--</p>
+<div class="highlight"><pre><span></span><code>____          
+|  _ \  ___  _ __  
+| | | |/ <span class="ge">_ \| &#39;_</span> \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+¯\_(ツ)_ …</code></pre></div>
+                <a class="readmore" href="https://vm3.doncohoon.com/linux-in-house/summer.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+<nav>
+  <ul>
+    <li class="horizontal">Page 1 / 9</li>
+        <li class="horizontal"><a href="https://vm3.doncohoon.com/linux-in-house/category/writing2.html">&rang;</a></li>
+        <li class="horizontal"><a href="https://vm3.doncohoon.com/linux-in-house/category/writing9.html">&Rang;</a></li>
+  </ul>
+</nav>
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://lwn.net/">Linux Weekly News</a></li>
+                            <li><a href="https://fullcirclemagazine.org/">Full Circle Magazine</a></li>
+                            <li><a href="https://www.linuxjournal.com/">Linux Journal</a></li>
+                            <li><a href="https://www.linux-magazine.com/">Linux Magazine</a></li>
+                            <li><a href="https://www.thefarside.com/">The Far Side</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://fosstodon.org/@Cohoon">Feedback</a></li>
+                            <li><a href="https://fosstodon.org/@Cohoon.rss">Mastodon RSS feed</a></li>
+                            <li><a href="https://linux-in-the-house.pages.dev/">Book</a></li>
+                            <li><a href="/linux-in-house/author/don-cohoon.html">Created by: Don Cohoon</a></li>
+                            <li><a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License </a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <p>
+                Made for Humans, by a Human.
+                </p>
+                <p>
+                Site by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>, via <a rel="nofollow" href="https://www.python.org/">Python</a>.
+                </p><!-- /#about -->
+
+                <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+                <p> Version:  3.297 </p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

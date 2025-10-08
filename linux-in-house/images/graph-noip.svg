@@ -18,7 +18,7 @@
 <!-- noip_top -->
 <g id="node2" class="node">
 <title>noip_top</title>
-<polygon fill="none" stroke="black" points="286.34,-187.2 225.34,-187.2 225.34,-151.2 286.34,-151.2 286.34,-187.2"/>
+<polygon fill="none" stroke="black" points="285.84,-187.2 225.84,-187.2 225.84,-151.2 285.84,-151.2 285.84,-187.2"/>
 <text text-anchor="middle" x="255.84" y="-165.5" font-family="Times,serif" font-size="14.00">NO&#45;IP</text>
 </g>
 <!-- you_top&#45;&gt;noip_top -->
@@ -68,7 +68,7 @@
 <!-- noip_bottom -->
 <g id="node5" class="node">
 <title>noip_bottom</title>
-<polygon fill="none" stroke="black" points="286.34,-36 225.34,-36 225.34,0 286.34,0 286.34,-36"/>
+<polygon fill="none" stroke="black" points="285.84,-36 225.84,-36 225.84,0 285.84,0 285.84,-36"/>
 <text text-anchor="middle" x="255.84" y="-14.3" font-family="Times,serif" font-size="14.00">NO&#45;IP</text>
 </g>
 <!-- you_bottom&#45;&gt;noip_bottom -->

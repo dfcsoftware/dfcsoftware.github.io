@@ -1,0 +1,1400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="generator" content="Pelican" />
+        <title>Cloud</title>
+        <link rel="icon" type="image/svg" href="https://vm3.doncohoon.com/linux-in-house/images/favicon.svg">
+        <link rel="stylesheet" href="https://vm3.doncohoon.com/linux-in-house/theme/css/main.css" type="text/css" />
+        <!-- <link rel="stylesheet" href="/theme/css/main.css" type="text/css" />  -->
+        <meta name="description" content="Cloud Systems A cloud used to be floating in the sky, then it was a bubbly thing on a network diagram where weird things happen. Now a cloud just..." />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <table>
+                    <td><h1><a href="https://vm3.doncohoon.com/linux-in-house/">Linux Home Administration</a></h1></td>
+                    <td> <link href="/linux-in-house/pagefind/pagefind-ui.css" rel="stylesheet" type="text/css">
+<script src="/linux-in-house/pagefind/pagefind-ui.js"></script>
+<div id="search"></div>
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        new PagefindUI({ element: "#search", showSubResults: true });
+    });
+</script> </td>
+                </table>
+                <nav><ul>
+                    <li class="active"><a href="https://vm3.doncohoon.com/linux-in-house/category/linux.html">linux</a></li>
+                    <li><a href="https://vm3.doncohoon.com/linux-in-house/category/quest.html">quest</a></li>
+                    <li><a href="https://vm3.doncohoon.com/linux-in-house/category/writing.html">writing</a></li>
+                    <li><a href="https://vm3.doncohoon.com/linux-in-house/category/zines.html">zines</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://vm3.doncohoon.com/linux-in-house/cloud.html" rel="bookmark"
+           title="Permalink to Cloud">Cloud</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2023-01-25T10:20:00-05:00">
+                Published: Wed 25 January 2023
+        </abbr>
+		<br />
+        <abbr class="modified" title="2024-04-19T09:30:00-04:00">
+                Updated: Fri 19 April 2024
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://vm3.doncohoon.com/linux-in-house/author/don-cohoon.html">Don Cohoon</a>
+        </address>
+<p>In <a href="https://vm3.doncohoon.com/linux-in-house/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://vm3.doncohoon.com/linux-in-house/tag/systems.html">systems</a> <a href="https://vm3.doncohoon.com/linux-in-house/tag/web.html">web</a> </p>
+</footer><!-- /.post-info -->      <h1 id="cloud-systems">Cloud Systems</h1>
+<p>A cloud used to be floating in the sky, then it was a bubbly thing on a network diagram where weird things happen. Now a cloud just means "Somebody else's computer.". Of course you get to it over a network and can share things, like files (pictures, music, documents), contacts, calendars and chat, among other things.</p>
+<p><br/></p>
+<hr>
+<div class="toc"><span class="toctitle">Table of Contents</span><ul>
+<li><a href="#cloud-systems">Cloud Systems</a></li>
+<li><a href="#syncthing">SyncThing</a></li>
+<li><a href="#warpinator">Warpinator</a></li>
+<li><a href="#cryptomater">Cryptomater</a></li>
+<li><a href="#nextcloud">NextCloud</a><ul>
+<li><a href="#services">Services</a><ul>
+<li><a href="#ios-app-nextcloud-talk">IOS App - NextCloud Talk</a></li>
+</ul>
+</li>
+<li><a href="#install-documentation">Install Documentation</a></li>
+<li><a href="#install-steps">Install Steps</a><ul>
+<li><a href="#nextcloud-php-install">Nextcloud PHP Install</a></li>
+<li><a href="#package-dependency-install">Package Dependency Install</a></li>
+<li><a href="#create-empty-postgresql-database">Create Empty PostgreSQL Database</a></li>
+<li><a href="#postgresql-database-authentication">PostgreSQL Database Authentication</a><ul>
+<li><a href="#no-database-password">No Database Password</a></li>
+<li><a href="#database-password">Database Password</a></li>
+</ul>
+</li>
+<li><a href="#postgresql-database-populate-nextcloud-metadata">PostgreSQL Database Populate NextCloud Metadata</a></li>
+<li><a href="#apache-web-server-nextcloud-configuration">Apache Web Server NextCloud Configuration</a></li>
+<li><a href="#apache-web-server-locale-settings">Apache Web Server Locale Settings</a></li>
+<li><a href="#nextcloud-trusted-domains-and-e-mail-server-connection">NextCloud Trusted Domains and E-Mail Server Connection</a></li>
+<li><a href="#nextcloud-php-configuration">NextCloud PHP Configuration</a></li>
+<li><a href="#nextcloud-redis-caching-configuration">NextCloud Redis Caching Configuration</a></li>
+</ul>
+</li>
+<li><a href="#move-the-shared-files-in-nextcloud-to-nas">Move the shared files in NextCloud to NAS</a></li>
+<li><a href="#nextcloud-command-line-client">Nextcloud Command Line Client</a><ul>
+<li><a href="#install">Install</a></li>
+<li><a href="#usage">Usage</a></li>
+</ul>
+</li>
+<li><a href="#debug">Debug</a></li>
+<li><a href="#talk-from-command-line">Talk from Command Line</a><ul>
+<li><a href="#talk-mattermost-shell-script">Talk Mattermost Shell Script</a></li>
+<li><a href="#talk-mattermost-php-script">Talk Mattermost PHP Script</a></li>
+</ul>
+</li>
+<li><a href="#federated-sharing-between-nextcloud-servers">Federated Sharing Between Nextcloud Servers</a><ul>
+<li><a href="#in-both-nextcloud-hosts">In both Nextcloud hosts</a></li>
+<li><a href="#in-sending-nextcloud">In Sending Nextcloud</a></li>
+<li><a href="#in-receiving-nextcloud">In Receiving Nextcloud</a></li>
+</ul>
+</li>
+<li><a href="#offline-copy-of-contacts-and-calendar">Offline Copy of Contacts and Calendar</a><ul>
+<li><a href="#install-vdirsyncer-package">Install vdirsyncer package</a></li>
+<li><a href="#configure-vdirsyncer">Configure vdirsyncer</a></li>
+<li><a href="#schedule-vdirsyncer">Schedule vdirsyncer</a></li>
+</ul>
+</li>
+<li><a href="#contacts-from-the-command-line">Contacts from the Command Line</a><ul>
+<li><a href="#install_1">Install</a></li>
+<li><a href="#configure">Configure</a></li>
+<li><a href="#run-it">Run it</a></li>
+</ul>
+</li>
+<li><a href="#calendars-from-the-command-line">Calendars from the Command Line</a><ul>
+<li><a href="#install_2">Install</a></li>
+<li><a href="#configure_1">Configure</a></li>
+<li><a href="#run-it_1">Run it</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#apache-block-malicious-hosts">Apache - Block Malicious Hosts</a><ul>
+<li><a href="#script">Script</a></li>
+<li><a href="#usage_1">Usage</a></li>
+</ul>
+</li>
+<li><a href="#upgrade-nextcloud">Upgrade Nextcloud</a><ul>
+<li><a href="#upgrade-manually">Upgrade manually</a></li>
+</ul>
+</li>
+<li><a href="#continue">Continue</a></li>
+</ul>
+</div>
+<hr>
+<p>For me it means I can get to my stuff no matter where I am; <em>and</em> my stuff is private unless I share it. So I keep it in my home, under lock and key. To share I have a few open ports, encrypted network traffic, and some protected disk arrays with timely backups.</p>
+<p>If this sounds interesting so far, here are some contenders for the job:</p>
+<ul>
+<li>SyncThing [1]</li>
+<li>Warpinator [2]</li>
+<li>Cryptomater [3]</li>
+<li>
+<p>NextCloud [4]</p>
+</li>
+<li>
+<p><a href="https://syncthing.net/">https://syncthing.net/</a></p>
+</li>
+<li><a href="https://github.com/linuxmint/warpinator">https://github.com/linuxmint/warpinator</a></li>
+<li><a href="https://cryptomator.org/">https://cryptomator.org/</a></li>
+<li><a href="https://nextcloud.com/">https://nextcloud.com/</a></li>
+</ul>
+<h1 id="syncthing">SyncThing</h1>
+<p>Syncthing is a continuous file synchronization program. It synchronizes files between two or more computers in real time.</p>
+<p>It is a simple install supporting many operating systems [1]. Debian Ubuntu has a package [2].</p>
+<p>The getting started [3] page has very nice instructions.</p>
+<p>My experience was very easy to install and syncing was quick and reliable. However I limited my exposure to internal network machine syncs, so no messing with my firewall or port forwarding [4]. If you just want to sync files for a project, picture albums or music collection to a backup host in your home, it should work very well. I had no problems.</p>
+<p>They web page states that "All communication is secured using TLS." and commercial support is available [5].</p>
+<ol>
+<li><a href="https://syncthing.net/downloads/">https://syncthing.net/downloads/</a></li>
+<li><a href="https://apt.syncthing.net/">https://apt.syncthing.net/</a></li>
+<li><a href="https://docs.syncthing.net/intro/getting-started.html">https://docs.syncthing.net/intro/getting-started.html</a></li>
+<li><a href="https://docs.syncthing.net/users/firewall.html#firewall-setup">https://docs.syncthing.net/users/firewall.html#firewall-setup</a></li>
+<li><a href="https://www.kastelo.net/stes/">https://www.kastelo.net/stes/</a></li>
+</ol>
+<h1 id="warpinator">Warpinator</h1>
+<p>Warpinator is built to share files across the LAN. I have heard several people and magazines praise how good it works. It is built with Python and available on Github, supporting several operating systems. On Linux Mint it is a simple apt install, probably because it is published on the github linuxmint repository.</p>
+<p>The project supplies firewall instructions so it should be able to run remotely if desired. It uses a <em>shared code</em> to secure comminucation. It is un-clear to me if it uses SSL/TLS encryption, and the support would be through Github.</p>
+<p>I have not tried it, but it sounds very reasonable for syncing things on a local network since SSL/TLS is not mentioned.</p>
+<p>Other platforms include:</p>
+<ul>
+<li>Android: <a href="https://github.com/slowscript/warpinator-android">https://github.com/slowscript/warpinator-android</a></li>
+<li>iOS: <a href="https://github.com/williamMillington/warpinator-iOS">https://github.com/williamMillington/warpinator-iOS</a> (beta)</li>
+<li>Windows: <a href="https://winpinator.swisz.cz">https://winpinator.swisz.cz</a></li>
+<li>Windows: <a href="https://github.com/slowscript/warpinator-windows">https://github.com/slowscript/warpinator-windows</a></li>
+</ul>
+<h1 id="cryptomater">Cryptomater</h1>
+<p>Cryptomator encrypts your data quickly and easily. Afterwards you upload them protected to your favorite cloud service.</p>
+<p>The work flow here is to take files from one directory and copy them to another, then encrypting the new directory in preperation of uploading to a cloud service on someone elses computer.</p>
+<p>My experience was quite good with it for saving a copy of my development project off-site to DropBox. I would prepare my files into a DropBox directory with DropBox turned off, then turn DropBox on, watch it sync, then turn DropBox off. I was assured that no one outside my network could read my <em>secret</em> project files. Very nice, cheap and easy.</p>
+<p>Github reports it is 93% Java, so be aware of that. My usage was all MacOS, so I didn't even realize the Java dependency, but the Linux dependency lists Oracle JDK 16 [3].</p>
+<p>They offer enterprise support [1] and also Github [2] bug reporting.</p>
+<ol>
+<li><a href="https://cryptomator.org/enterprise/">https://cryptomator.org/enterprise/</a></li>
+<li><a href="https://github.com/cryptomator">https://github.com/cryptomator</a></li>
+<li><a href="https://www.oracle.com/java/technologies/javase/products-doc-jdk16certconfig.html">https://www.oracle.com/java/technologies/javase/products-doc-jdk16certconfig.html</a></li>
+</ol>
+<h1 id="nextcloud">NextCloud</h1>
+<p>NextCloud allows file storage on another computer, in my house, so that I can easily access these files from almost any other computer/phone/tablet that has authority. It also supports a shared list of Contacts and Calendar. There is a chat function (Talk) to type messages, or voice, or video between two or more other computers.</p>
+<p>The app store reports many other apps available as well.</p>
+<p>My experience started with OwnCloud, which NextCloud was forked from, and used to have many problems with every new release especially supporting a PostgreSQL database. After OwnCloud went with a entire new infastructure with no more PHP, I decided to try NextCloud, and have been happy ever since. NextCloud is very stable, new releases are smooth, and the many apps seem to work just fine.</p>
+<p>Being based on PHP, NextCloud runs better on Apache in my opinion, since nginx does not default with PHP support. The PostgreSQL database support has not had any problems, and the whole stack runs on a small BeagleBone AI (32-bit) or AI-64 (64-bit) SBC, so the Rasberry PI line should also work.</p>
+<p>One note, after changing from Debian to RedHat, the php support for Apache (httpd on RedHat), uses php-frm, the PHP FastCGI Process Manager. It seems to work quite well, but be aware there is a systemctl service called php-fpm.</p>
+<div class="highlight"><pre><span></span><code><span class="n">sudo</span><span class="w"> </span><span class="n">systemctl</span><span class="w"> </span><span class="n">status</span><span class="w"> </span><span class="n">php</span><span class="o">-</span><span class="n">fpm</span>
+<span class="err">●</span><span class="w"> </span><span class="n">php</span><span class="o">-</span><span class="n">fpm</span><span class="o">.</span><span class="n">service</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="n">PHP</span><span class="w"> </span><span class="n">FastCGI</span><span class="w"> </span><span class="n">Process</span><span class="w"> </span><span class="n">Manager</span>
+<span class="w">     </span><span class="n">Loaded</span><span class="p">:</span><span class="w"> </span><span class="n">loaded</span><span class="w"> </span><span class="p">(</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">systemd</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">php</span><span class="o">-</span><span class="n">fpm</span><span class="o">.</span><span class="n">service</span><span class="p">;</span><span class="w"> </span><span class="n">enabled</span><span class="p">;</span><span class="w"> </span><span class="n">preset</span><span class="p">:</span><span class="w"> </span><span class="n">disabled</span><span class="p">)</span>
+<span class="w">     </span><span class="n">Active</span><span class="p">:</span><span class="w"> </span><span class="n">active</span><span class="w"> </span><span class="p">(</span><span class="n">running</span><span class="p">)</span><span class="w"> </span><span class="n">since</span><span class="w"> </span><span class="n">Tue</span><span class="w"> </span><span class="mi">2023</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">25</span><span class="w"> </span><span class="mi">22</span><span class="p">:</span><span class="mi">57</span><span class="p">:</span><span class="mi">34</span><span class="w"> </span><span class="n">EDT</span><span class="p">;</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">day</span><span class="w"> </span><span class="mi">9</span><span class="n">h</span><span class="w"> </span><span class="n">ago</span>
+<span class="w">   </span><span class="n">Main</span><span class="w"> </span><span class="n">PID</span><span class="p">:</span><span class="w"> </span><span class="mi">940</span><span class="w"> </span><span class="p">(</span><span class="n">php</span><span class="o">-</span><span class="n">fpm</span><span class="p">)</span>
+<span class="w">     </span><span class="n">Status</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Processes active: 0, idle: 13, Requests: 47239, slow: 0, Traffic: 0.2req/sec&quot;</span>
+<span class="w">      </span><span class="n">Tasks</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="w"> </span><span class="p">(</span><span class="n">limit</span><span class="p">:</span><span class="w"> </span><span class="mi">48814</span><span class="p">)</span>
+<span class="w">     </span><span class="n">Memory</span><span class="p">:</span><span class="w"> </span><span class="mf">431.1</span><span class="n">M</span>
+<span class="w">        </span><span class="n">CPU</span><span class="p">:</span><span class="w"> </span><span class="mi">43</span><span class="nb">min</span><span class="w"> </span><span class="mf">15.096</span><span class="n">s</span>
+<span class="w">     </span><span class="n">CGroup</span><span class="p">:</span><span class="w"> </span><span class="o">/</span><span class="n">system</span><span class="o">.</span><span class="n">slice</span><span class="o">/</span><span class="n">php</span><span class="o">-</span><span class="n">fpm</span><span class="o">.</span><span class="n">service</span>
+<span class="w">             </span><span class="err">├─</span><span class="w">   </span><span class="mi">940</span><span class="w"> </span><span class="s2">&quot;php-fpm: master process (/etc/php-fpm.conf)&quot;</span>
+<span class="w">             </span><span class="err">├─</span><span class="w">  </span><span class="mi">2642</span><span class="w"> </span><span class="s2">&quot;php-fpm: pool www&quot;</span>
+<span class="w">             </span><span class="err">├─</span><span class="w">  </span><span class="mi">2643</span><span class="w"> </span><span class="s2">&quot;php-fpm: pool www&quot;</span>
+<span class="w">             </span><span class="err">├─</span><span class="w">  </span><span class="mi">2644</span><span class="w"> </span><span class="s2">&quot;php-fpm: pool www&quot;</span>
+<span class="w">             </span><span class="err">├─</span><span class="w">  </span><span class="mi">2645</span><span class="w"> </span><span class="s2">&quot;php-fpm: pool www&quot;</span>
+<span class="w">             </span><span class="err">├─</span><span class="w">  </span><span class="mi">2646</span><span class="w"> </span><span class="s2">&quot;php-fpm: pool www&quot;</span>
+<span class="w">             </span><span class="err">├─</span><span class="w">  </span><span class="mi">2765</span><span class="w"> </span><span class="s2">&quot;php-fpm: pool www&quot;</span>
+<span class="w">             </span><span class="err">├─</span><span class="w">  </span><span class="mi">2767</span><span class="w"> </span><span class="s2">&quot;php-fpm: pool www&quot;</span>
+<span class="w">             </span><span class="err">├─</span><span class="w">  </span><span class="mi">3834</span><span class="w"> </span><span class="s2">&quot;php-fpm: pool www&quot;</span>
+<span class="w">             </span><span class="err">├─</span><span class="w"> </span><span class="mi">23767</span><span class="w"> </span><span class="s2">&quot;php-fpm: pool www&quot;</span>
+<span class="w">             </span><span class="err">├─</span><span class="w"> </span><span class="mi">60012</span><span class="w"> </span><span class="s2">&quot;php-fpm: pool www&quot;</span>
+<span class="w">             </span><span class="err">├─</span><span class="w"> </span><span class="mi">61859</span><span class="w"> </span><span class="s2">&quot;php-fpm: pool www&quot;</span>
+<span class="w">             </span><span class="err">├─</span><span class="w"> </span><span class="mi">67881</span><span class="w"> </span><span class="s2">&quot;php-fpm: pool www&quot;</span>
+<span class="w">             </span><span class="err">└─</span><span class="mi">120219</span><span class="w"> </span><span class="s2">&quot;php-fpm: pool www&quot;</span>
+</code></pre></div>
+
+<h2 id="services">Services</h2>
+<p>These are services I have/had used without problem:</p>
+<ul>
+<li>Audio Player for playing music collection, streaming, and playlists</li>
+<li>Pictures for organizing photographs by year, then topic</li>
+<li>Contacts for syncing e-mail Thunderbird and iOS</li>
+<li>Calendar for syncing appointments Thunderbird and iOS</li>
+<li>Files using NextCloud Clients for Mac, iOS</li>
+<li>Talk can Send Messages to a phone from Command Line, used for HomeAssistant alerts and run via File: \~/matrix/sendmatrix.sh. Used for monitoring door and window alarms.</li>
+</ul>
+<h5 id="ios-app-nextcloud-talk">IOS App - NextCloud Talk</h5>
+<p><img alt="IMG_84D17B7CC129-1 (2).jpeg" src="/linux-in-house/images/IMG_84D17B7CC129-1.jpeg"></p>
+<p>NextCloud Talk uses the <a href="matrix.md">Matrix service</a> to detect changes to be sent.</p>
+<h2 id="install-documentation">Install Documentation</h2>
+<p>First install the database;</p>
+<p><a href="https://www.postgresql.org/download/">https://www.postgresql.org/download/</a></p>
+<p>Then apache2;</p>
+<p><a href="https://httpd.apache.org/docs/current/install.html">https://httpd.apache.org/docs/current/install.html</a></p>
+<p>Then nextcloud;</p>
+<p><a href="https://nextcloud.com/install/#instructions-server">https://nextcloud.com/install/#instructions-server</a></p>
+<p>Then nextcloud apps;</p>
+<ul>
+<li>contacts</li>
+<li>calendar</li>
+<li>talk</li>
+<li>mattermost</li>
+</ul>
+<blockquote>
+<p>After Nextcloud 27, Talk Mattermost app does not work, and is not needed to send messages through the command line.</p>
+</blockquote>
+<h2 id="install-steps">Install Steps</h2>
+<p>What follows are my steps to install NextCloud the way I want it, manually mostly.</p>
+<p>It may not be necessary, but it does provide details that might otherwise be missed about how NextCloud functions under the covers. This can also be usefull if a problem arises, to debug the issue or at least know where to start.</p>
+<h3 id="nextcloud-php-install">Nextcloud PHP Install</h3>
+<p>Download and unzip the NextCloud release. Change the release number you find.</p>
+<p>Change :
+ * VER : NextCloud version</p>
+<p>File: ~/nextcloud-install.sh</p>
+<div class="highlight"><pre><span></span><code><span class="c1">## https://docs.nextcloud.com/server/latest/admin_manual/installation/command_line_installation.html</span>
+<span class="c1">##</span>
+<span class="n">VER</span><span class="o">=</span><span class="n">nextcloud</span><span class="o">-</span><span class="mf">24.0</span><span class="o">.</span><span class="mi">7</span>
+<span class="c1">##---------------------------------------------------</span>
+<span class="c1">## Download</span>
+<span class="n">curl</span><span class="w"> </span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">download</span><span class="o">.</span><span class="n">nextcloud</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">server</span><span class="o">/</span><span class="n">releases</span><span class="o">/$</span><span class="p">{</span><span class="n">VER</span><span class="p">}</span><span class="o">.</span><span class="n">zip</span><span class="w"> </span><span class="o">-</span><span class="n">o</span><span class="w"> </span><span class="o">$</span><span class="p">{</span><span class="n">VER</span><span class="p">}</span><span class="o">.</span><span class="n">zip</span>
+<span class="c1">##</span>
+<span class="c1">##---------------------------------------------------</span>
+<span class="c1">## Extract</span>
+<span class="n">DIR</span><span class="o">=$</span><span class="p">(</span><span class="n">pwd</span><span class="p">)</span>
+<span class="n">sudo</span><span class="w"> </span><span class="n">mkdir</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">nextcloud</span>
+<span class="n">cd</span><span class="w"> </span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">www</span>
+<span class="n">sudo</span><span class="w"> </span><span class="n">unzip</span><span class="w"> </span><span class="o">$</span><span class="p">{</span><span class="n">DIR</span><span class="p">}</span><span class="o">/$</span><span class="p">{</span><span class="n">VER</span><span class="p">}</span><span class="o">.</span><span class="n">zip</span>
+<span class="n">sudo</span><span class="w"> </span><span class="n">chown</span><span class="w"> </span><span class="o">-</span><span class="n">R</span><span class="w"> </span><span class="n">www</span><span class="o">-</span><span class="n">data</span><span class="p">:</span><span class="n">www</span><span class="o">-</span><span class="n">data</span><span class="w"> </span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span>
+</code></pre></div>
+
+<h3 id="package-dependency-install">Package Dependency Install</h3>
+<p>Now install the Debian/Ubuntu packages.</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>zip<span class="w"> </span>libapache2-mod-php<span class="w"> </span>php-gd<span class="w"> </span>php-json<span class="w"> </span>php-pgsql<span class="w"> </span>php-curl<span class="w"> </span>php-mbstring<span class="w"> </span>php-intl<span class="w"> </span>php-imagick<span class="w"> </span>php-xml<span class="w"> </span>php-zip<span class="w"> </span>php-bcmath<span class="w"> </span>php-gmp<span class="w"> </span>zip<span class="w"> </span>php-apcu
+</code></pre></div>
+
+<h3 id="create-empty-postgresql-database">Create Empty PostgreSQL Database</h3>
+<p>Here we create an empty database for NextCloud.</p>
+<p>Reference: <a href="https://docs.nextcloud.com/server/20/admin_manual/configuration_database/linux_database_configuration.html">https://docs.nextcloud.com/server/20/admin_manual/configuration_database/linux_database_configuration.html</a></p>
+<p>PostgreSQL PHP configuration</p>
+<p>File: /etc/php7/conf.d/pgsql.ini</p>
+<div class="highlight"><pre><span></span><code><span class="err">#</span><span class="w"> </span><span class="n">configuration</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">PHP</span><span class="w"> </span><span class="n">PostgreSQL</span><span class="w"> </span><span class="k">module</span>
+<span class="n">extension</span><span class="o">=</span><span class="n">pdo_pgsql</span><span class="p">.</span><span class="n">so</span>
+<span class="n">extension</span><span class="o">=</span><span class="n">pgsql</span><span class="p">.</span><span class="n">so</span>
+
+<span class="o">[</span><span class="n">PostgresSQL</span><span class="o">]</span>
+<span class="n">pgsql</span><span class="p">.</span><span class="n">allow_persistent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">On</span>
+<span class="n">pgsql</span><span class="p">.</span><span class="n">auto_reset_persistent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">Off</span>
+<span class="n">pgsql</span><span class="p">.</span><span class="n">max_persistent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span>
+<span class="n">pgsql</span><span class="p">.</span><span class="n">max_links</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span>
+<span class="n">pgsql</span><span class="p">.</span><span class="n">ignore_notice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="n">pgsql</span><span class="p">.</span><span class="n">log_notice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="o">~</span>
+<span class="err">:</span><span class="n">wq</span>
+</code></pre></div>
+
+<p>Create nextcloud database</p>
+<p>Change :
+ * nextclouddb : Your PostgreSQL database owner</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>psql<span class="w"> </span>-d<span class="w"> </span>template1
+<span class="nv">template1</span><span class="o">=</span><span class="c1"># </span>
+CREATE<span class="w"> </span>USER<span class="w"> </span>nextclouddb<span class="w"> </span>CREATEDB<span class="p">;</span>
+CREATE<span class="w"> </span>DATABASE<span class="w"> </span>nextcloud<span class="w"> </span>OWNER<span class="w"> </span>nextclouddb<span class="p">;</span>
+<span class="se">\q</span>
+</code></pre></div>
+
+<h3 id="postgresql-database-authentication">PostgreSQL Database Authentication</h3>
+<p>Recommend using a Database Password, that's what I do.
+Change :
+ * nextclouddb : PostgreSQL database owner
+ * ItsABigPaswordToo : password for the database owner</p>
+<h4 id="no-database-password">No Database Password</h4>
+<p>A Nextcloud instance configured with PostgreSQL would contain the path to the socket on which the database 
+  is running as the hostname, the system username the PHP process is using, and an empty password to access it,
+  and the name of the database. The config/config.php as created by the Installation wizard would therefore contain entries like this:</p>
+<p>File: /var/www/nextcloud/config/config.php</p>
+<div class="highlight"><pre><span></span><code><span class="o">~</span>
+<span class="w">  </span><span class="s2">&quot;dbtype&quot;</span><span class="w">        </span><span class="o">=&gt;</span><span class="w"> </span><span class="s2">&quot;pgsql&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;dbname&quot;</span><span class="w">        </span><span class="o">=&gt;</span><span class="w"> </span><span class="s2">&quot;nextcloud&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;dbuser&quot;</span><span class="w">        </span><span class="o">=&gt;</span><span class="w"> </span><span class="s2">&quot;nextclouddb&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;dbpassword&quot;</span><span class="w">    </span><span class="o">=&gt;</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;dbhost&quot;</span><span class="w">        </span><span class="o">=&gt;</span><span class="w"> </span><span class="s2">&quot;/var/run/postgresql&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;dbtableprefix&quot;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s2">&quot;oc_&quot;</span><span class="p">,</span>
+<span class="o">~</span>
+<span class="p">:</span><span class="n">wq</span>
+</code></pre></div>
+
+<blockquote>
+<p>Note: 
+ The host actually points to the socket that is used to connect to the database. Using localhost here 
+ will not work if postgreSQL is configured to use peer authentication. Also note that no password is specified, 
+ because this authentication method doesn’t use a password.</p>
+</blockquote>
+<h4 id="database-password">Database Password</h4>
+<p>If you use another authentication method (not peer), you’ll need to use the following steps to get the database setup: 
+  Now you need to create a database user and the database itself by using the PostgreSQL command line interface. 
+  The database tables will be created by Nextcloud when you login for the first time.</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>psql<span class="w"> </span>-d<span class="w"> </span>postgres
+<span class="nv">postgres</span><span class="o">=</span><span class="c1">#</span>
+ALTER<span class="w"> </span>USER<span class="w"> </span>nextclouddb<span class="w"> </span>WITH<span class="w"> </span>PASSWORD<span class="w"> </span><span class="s1">&#39;ItsABigPaswordToo&#39;</span><span class="p">;</span>
+drop<span class="w"> </span>database<span class="w"> </span>nextcloud<span class="p">;</span>
+CREATE<span class="w"> </span>DATABASE<span class="w"> </span>nextcloud<span class="w"> </span>TEMPLATE<span class="w"> </span>template0<span class="w"> </span>ENCODING<span class="w"> </span><span class="s1">&#39;UNICODE&#39;</span><span class="p">;</span>
+ALTER<span class="w"> </span>DATABASE<span class="w"> </span>nextcloud<span class="w"> </span>OWNER<span class="w"> </span>TO<span class="w"> </span>nextclouddb<span class="p">;</span>
+GRANT<span class="w"> </span>ALL<span class="w"> </span>PRIVILEGES<span class="w"> </span>ON<span class="w"> </span>DATABASE<span class="w"> </span>nextcloud<span class="w"> </span>TO<span class="w"> </span>nextclouddb<span class="p">;</span>
+
+SHOW<span class="w"> </span>hba_file<span class="p">;</span>
+<span class="w">              </span>hba_file<span class="w">               </span>
+-------------------------------------
+<span class="w"> </span>/etc/postgresql/12/main/pg_hba.conf
+<span class="o">(</span><span class="m">1</span><span class="w"> </span>row<span class="o">)</span>
+
+<span class="se">\q</span>
+</code></pre></div>
+
+<p>Set the PostgreSQL Host Based Authentication (hba) for a database user <code>nextclouddb</code> on database <code>nextcloud</code></p>
+<p>File: /etc/postgresql/12/main/pg_hba.conf </p>
+<div class="highlight"><pre><span></span><code><span class="o">~</span>
+<span class="c1"># nextcloud</span>
+<span class="k">host</span><span class="w">    </span><span class="n">nextcloud</span><span class="w">     </span><span class="n">nextclouddb</span><span class="w">    </span><span class="mf">192.168.0.2</span><span class="o">/</span><span class="mi">32</span><span class="w">    </span><span class="n">md5</span><span class="w">  </span><span class="c1"># or `scram-sha-256` instead of `md5` if you use that</span>
+<span class="n">hostssl</span><span class="w"> </span><span class="n">nextcloud</span><span class="w">     </span><span class="n">nextclouddb</span><span class="w">    </span><span class="mf">192.168.0.2</span><span class="o">/</span><span class="mi">32</span><span class="w">    </span><span class="n">md5</span><span class="w">  </span><span class="c1"># or `scram-sha-256` instead of `md5` if you use that</span>
+<span class="o">~</span>
+<span class="o">:</span><span class="n">wq</span>
+</code></pre></div>
+
+<p>A Nextcloud instance configured with PostgreSQL would contain the hostname on which the database is running, 
+  a valid username and password to access it, and the name of the database. The config/config.php as created by
+   the Installation wizard would therefore contain entries like this:</p>
+<p>File: /var/www/nextcloud/config/config.php</p>
+<div class="highlight"><pre><span></span><code><span class="o">~</span>
+<span class="w">  </span><span class="s">&quot;dbtype&quot;</span><span class="w">        </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;pgsql&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s">&quot;dbname&quot;</span><span class="w">        </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;nextcloud&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s">&quot;dbuser&quot;</span><span class="w">        </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;nextclouddb&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s">&quot;dbpassword&quot;</span><span class="w">    </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;ItsABigPaswordToo&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s">&quot;dbhost&quot;</span><span class="w">        </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;localhost&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s">&quot;dbtableprefix&quot;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;oc_&quot;</span><span class="p">,</span>
+<span class="o">~</span>
+<span class="p">:</span><span class="nx">wq</span>
+</code></pre></div>
+
+<h3 id="postgresql-database-populate-nextcloud-metadata">PostgreSQL Database Populate NextCloud Metadata</h3>
+<p>Next we populate the empty database with NextCloud metadata.</p>
+<p>File: ~/nextcloud-db-populate.sh </p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">#####################################################################################</span>
+<span class="nb">cd</span><span class="w"> </span>/var/www/nextcloud
+<span class="nv">PASS</span><span class="o">=</span><span class="s2">&quot;ItsABigPaswordToo&quot;</span>
+sudo<span class="w"> </span>-u<span class="w"> </span>www-data<span class="w"> </span>php<span class="w"> </span>./occ<span class="w">  </span>maintenance:install<span class="w"> </span>--database<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span><span class="s2">&quot;pgsql&quot;</span><span class="w"> </span>--database-name<span class="w"> </span><span class="s2">&quot;nextcloud&quot;</span><span class="w">  </span>--database-user<span class="w"> </span><span class="s2">&quot;nextclouddb&quot;</span><span class="w"> </span>--database-pass<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PASS</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>--admin-user<span class="w"> </span><span class="s2">&quot;bigcloud&quot;</span><span class="w"> </span>--admin-pass<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PASS</span><span class="si">}</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+<h3 id="apache-web-server-nextcloud-configuration">Apache Web Server NextCloud Configuration</h3>
+<p>You can change the alias /nextcloud to a more interesting name if you like.</p>
+<p>File: /etc/apache2/sites-available/nextcloud.conf</p>
+<div class="highlight"><pre><span></span><code>Alias<span class="w"> </span>/nextcloud<span class="w"> </span>&quot;/var/www/nextcloud/&quot;
+
+<span class="nt">&lt;VirtualHost</span><span class="w"> </span><span class="err">*:80</span><span class="nt">&gt;</span>
+<span class="w">  </span>DocumentRoot<span class="w"> </span>/var/www/html/
+<span class="w">  </span>ServerName<span class="w">  </span>www.example.com
+<span class="nt">&lt;/VirtualHost&gt;</span>
+
+<span class="nt">&lt;VirtualHost</span><span class="w"> </span><span class="err">_default_:443</span><span class="nt">&gt;</span>
+<span class="w">  </span>DocumentRoot<span class="w"> </span>/var/www/html/
+<span class="w">  </span>ServerName<span class="w">  </span>www.example.com
+
+<span class="w">  </span><span class="nt">&lt;Directory</span><span class="w"> </span><span class="err">/var/www/nextcloud</span><span class="nt">/&gt;</span>
+<span class="w">    </span>Require<span class="w"> </span>all<span class="w"> </span>granted
+<span class="w">    </span>AllowOverride<span class="w"> </span>All
+<span class="w">    </span>Options<span class="w"> </span>FollowSymLinks<span class="w"> </span>MultiViews
+
+<span class="w">    </span><span class="nt">&lt;IfModule</span><span class="w"> </span><span class="err">mod_dav.c</span><span class="nt">&gt;</span>
+<span class="w">      </span>Dav<span class="w"> </span>off
+<span class="w">    </span><span class="nt">&lt;/IfModule&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/Directory&gt;</span>
+
+#<span class="w"> </span>Use<span class="w"> </span>HTTP<span class="w"> </span>Strict<span class="w"> </span>Transport<span class="w"> </span>Security<span class="w"> </span>to<span class="w"> </span>force<span class="w"> </span>client<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span>secure<span class="w"> </span>connections<span class="w"> </span>only<span class="w">      </span>
+Header<span class="w"> </span>always<span class="w"> </span>set<span class="w"> </span>Strict-Transport-Security<span class="w"> </span>&quot;max-age=31536000;<span class="w"> </span>includeSubDomains;&quot;
+SSLEngine<span class="w"> </span>on
+
+#<span class="w"> </span>certbot
+SSLCertificateFile<span class="w"> </span>/etc/letsencrypt/live/example.com/fullchain.pem
+SSLCertificateKeyFile<span class="w"> </span>/etc/letsencrypt/live/example.com/privkey.pem
+Include<span class="w"> </span>/etc/letsencrypt/options-ssl-apache.conf
+<span class="nt">&lt;/VirtualHost&gt;</span>
+</code></pre></div>
+
+<p>Enable nextcloud.conf</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>a2ensite<span class="w"> </span>nextcloud
+</code></pre></div>
+
+<h3 id="apache-web-server-locale-settings">Apache Web Server Locale Settings</h3>
+<p>Some installs of Apache2 do not enable the locale properly, you can set it like this:</p>
+<p>File: /etc/apache2/envvars</p>
+<div class="highlight"><pre><span></span><code>~
+## Uncomment the following line to use the system default locale instead:
+. /etc/default/locale
+~
+</code></pre></div>
+
+<p>Restart apache to pick up changes</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>apache2
+</code></pre></div>
+
+<h3 id="nextcloud-trusted-domains-and-e-mail-server-connection">NextCloud Trusted Domains and E-Mail Server Connection</h3>
+<p>Make sure you have <em>trusted_domains</em> set to the NextCloud host, and also the E-Mail host and settings.</p>
+<p>File: /var/www/nextcloud/config/config.php</p>
+<div class="highlight"><pre><span></span><code><span class="c1">#  edit the &quot;trusted_domains&quot; setting in /var/www/nextcloud/config/config.php</span>
+<span class="c1"># ...</span>
+<span class="w">  </span><span class="n">array</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="mi">0</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">1</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;192.168.0.5&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">2</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;www.example.com&quot;,</span>
+<span class="w">  </span><span class="p">),</span>
+<span class="o">~</span>
+<span class="w">  </span><span class="s1">&#39;default_phone_region&#39;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;US&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="s1">&#39;mail_from_address&#39;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;nextcloud&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="s1">&#39;mail_smtpmode&#39;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;smtp&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="s1">&#39;mail_sendmailmode&#39;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;smtp&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="s1">&#39;mail_domain&#39;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;mail.example.com&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="s1">&#39;mail_smtphost&#39;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;192.168.0.25&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="s1">&#39;mail_smtpport&#39;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;25&#39;</span><span class="p">,</span>
+<span class="o">~</span>
+<span class="p">:</span><span class="n">wq</span>
+</code></pre></div>
+
+<h3 id="nextcloud-php-configuration">NextCloud PHP Configuration</h3>
+<p>Enable PHP large memory.</p>
+<p>File: /etc/php/7.4/apache2/php.ini</p>
+<div class="highlight"><pre><span></span><code>~
+<span class="c">;memory_limit = 128M</span>
+memory_limit = 512M
+~
+:wq
+</code></pre></div>
+
+<h3 id="nextcloud-redis-caching-configuration">NextCloud Redis Caching Configuration</h3>
+<p>Enable Redis caching.</p>
+<p>Reference: <a href="https://docs.nextcloud.com/server/22/admin_manual/configuration_server/caching_configuration.html">https://docs.nextcloud.com/server/22/admin_manual/configuration_server/caching_configuration.html</a></p>
+<p>Install Redis</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>redis-server<span class="w"> </span>php-redis
+</code></pre></div>
+
+<p>Uncomment the Unix socket <code>server.sock</code> in the redis.conf file</p>
+<p>File: /etc/redis/redis.conf</p>
+<div class="highlight"><pre><span></span><code><span class="o">~</span>
+<span class="n">unixsocket</span><span class="w"> </span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">redis</span><span class="o">/</span><span class="n">redis</span><span class="o">-</span><span class="n">server</span><span class="o">.</span><span class="n">sock</span>
+<span class="o">~</span>
+<span class="p">:</span><span class="n">wq</span>
+</code></pre></div>
+
+<p>Allow www-data access to the socket</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>usermod<span class="w"> </span>-a<span class="w"> </span>-G<span class="w"> </span>redis<span class="w"> </span>www-data
+</code></pre></div>
+
+<p>Add memcache entries in NextCloud config</p>
+<p>File: /var/www/nextcloud/config/config.php</p>
+<div class="highlight"><pre><span></span><code>~
+  &#39;memcache.locking&#39; =&gt; &#39;\OC\Memcache\Redis&#39;,
+  &#39;memcache.local&#39; =&gt; &#39;\OC\Memcache\APCu&#39;,
+  &#39;memcache.distributed&#39; =&gt; &#39;\OC\Memcache\Redis&#39;,
+  &#39;redis&#39; =&gt; [
+     &#39;host&#39;     =&gt; &#39;/run/redis/redis-server.sock&#39;,
+     &#39;port&#39;     =&gt; 0,
+     &#39;timeout&#39;  =&gt; 1.5,
+  ],
+~
+:wq
+</code></pre></div>
+
+<p>Set Redis session handling for Nextcloud</p>
+<p>File: /etc/php/7.4/apache2/php.ini</p>
+<div class="highlight"><pre><span></span><code>~
+redis.session.locking_enabled=1
+redis.session.lock_retries=-1
+redis.session.lock_wait_time=10000
+~
+:wq
+</code></pre></div>
+
+<h2 id="move-the-shared-files-in-nextcloud-to-nas">Move the shared files in NextCloud to NAS</h2>
+<p>These are the files that sync from your machine to NextCloud, like pictures, documents, music, etc. You we be able to see the files in a normal filesystem, just refrain from making any changes.</p>
+<p>Log into PostgreSQL and connect to the nextcloud database.</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>psql<span class="w"> </span>-d<span class="w"> </span>nextcloud
+
+<span class="nv">nextcloud</span><span class="o">=</span><span class="c1"># select * from oc_storages;</span>
+<span class="w"> </span>numeric_id<span class="w"> </span><span class="p">|</span><span class="w">               </span>id<span class="w">                </span><span class="p">|</span><span class="w"> </span>available<span class="w"> </span><span class="p">|</span><span class="w"> </span>last_checked<span class="w"> </span>
+------------+---------------------------------+-----------+--------------
+<span class="w">          </span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>home::bigcloud<span class="w">                  </span><span class="p">|</span><span class="w">         </span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w">             </span>
+<span class="w">          </span><span class="m">2</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>local::/var/www/nextcloud/data/<span class="w"> </span><span class="p">|</span><span class="w">         </span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w">             </span>
+<span class="o">(</span><span class="m">3</span><span class="w"> </span>rows<span class="o">)</span>
+</code></pre></div>
+
+<p>The local::/var/www/nextcloud/data id is the default location for sync data files.</p>
+<p>1) Stop apache and redis</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>apache2
+$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>redis
+</code></pre></div>
+
+<p>2) Make directory on nas. Log into the nas as root because you need to change permissions of the file directory. Assuming the nas mount point is <code>/mnt/vol01/nfs_share</code></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/mnt/vol01/nfs_share/nextcloud
+$<span class="w"> </span>sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span>www-data:www-data<span class="w"> </span>/mnt/vol01/nfs_share/nextcloud
+</code></pre></div>
+
+<p>3) Copy the data on the NextCloud server to the nfs mount. This assumes the nfs mount point is <code>/data</code>.</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>-u<span class="w"> </span>www-data<span class="w"> </span>rsync<span class="w"> </span>-rav<span class="w"> </span>/var/www/nextcloud/data/<span class="w"> </span>/data/nextcloud/
+</code></pre></div>
+
+<p>4) Ensure it is owned by www-data:www-data</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>-u<span class="w"> </span>www-data<span class="w"> </span>ls<span class="w"> </span>-lrt<span class="w"> </span>/data/nextcloud/
+total<span class="w"> </span><span class="m">51</span>
+-rw-rw-r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>www-data<span class="w"> </span>www-data<span class="w">      </span><span class="m">0</span><span class="w"> </span>Sep<span class="w"> </span><span class="m">22</span><span class="w"> </span><span class="m">12</span>:16<span class="w"> </span>index.html
+drwxr-xr-x<span class="w">  </span><span class="m">4</span><span class="w"> </span>www-data<span class="w"> </span>www-data<span class="w">      </span><span class="m">4</span><span class="w"> </span>Sep<span class="w"> </span><span class="m">22</span><span class="w"> </span><span class="m">12</span>:36<span class="w"> </span>bigcloud
+drwxr-xr-x<span class="w">  </span><span class="m">3</span><span class="w"> </span>www-data<span class="w"> </span>www-data<span class="w">      </span><span class="m">3</span><span class="w"> </span>Sep<span class="w"> </span><span class="m">22</span><span class="w"> </span><span class="m">16</span>:59<span class="w"> </span>__groupfolders
+drwxr-xr-x<span class="w"> </span><span class="m">11</span><span class="w"> </span>www-data<span class="w"> </span>www-data<span class="w">     </span><span class="m">11</span><span class="w"> </span>Sep<span class="w"> </span><span class="m">22</span><span class="w"> </span><span class="m">18</span>:16<span class="w"> </span>appdata_oc3hnmjliksp
+-rw-r-----<span class="w">  </span><span class="m">1</span><span class="w"> </span>www-data<span class="w"> </span>www-data<span class="w"> </span><span class="m">290001</span><span class="w"> </span>Sep<span class="w"> </span><span class="m">23</span><span class="w"> </span><span class="m">12</span>:26<span class="w"> </span>nextcloud.log
+</code></pre></div>
+
+<p>5) Rename old data</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>mv<span class="w"> </span>/var/www/nextcloud/data<span class="w"> </span>/var/www/nextcloud/data.old
+</code></pre></div>
+
+<p>6) Update NextCloud config for  the new directory</p>
+<p>File:  /var/www/nextcloud/config/config.php</p>
+<div class="highlight"><pre><span></span><code><span class="o">~</span>
+<span class="c1">##     from</span>
+<span class="c1">##     &#39;datadirectory&#39; =&gt; &#39;/var/www/nextcloud/data&#39;,</span>
+<span class="c1">##     to</span>
+<span class="w">      </span><span class="s1">&#39;datadirectory&#39;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;/data/nextcloud&#39;</span><span class="p">,</span>
+<span class="o">~</span>
+</code></pre></div>
+
+<p>7) Update database:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>-d<span class="w"> </span>nextcloud
+
+<span class="nv">nextcloud</span><span class="o">=</span><span class="c1"># select * from oc_storages;</span>
+<span class="w"> </span>numeric_id<span class="w"> </span><span class="p">|</span><span class="w">               </span>id<span class="w">                </span><span class="p">|</span><span class="w"> </span>available<span class="w"> </span><span class="p">|</span><span class="w"> </span>last_checked<span class="w"> </span>
+------------+---------------------------------+-----------+--------------
+<span class="w">          </span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>home::bigcloud<span class="w">                </span><span class="p">|</span><span class="w">         </span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w">             </span>
+<span class="w">          </span><span class="m">2</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>local::/var/www/nextcloud/data/<span class="w"> </span><span class="p">|</span><span class="w">         </span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w">             </span>
+<span class="o">(</span><span class="m">3</span><span class="w"> </span>rows<span class="o">)</span>
+
+<span class="nv">nextcloud</span><span class="o">=</span><span class="c1"># update oc_storages set id=&#39;local::/data/nextcloud/&#39; where id=&#39;local::/var/www/nextcloud/data/&#39;;</span>
+UPDATE<span class="w"> </span><span class="m">1</span>
+<span class="nv">nextcloud</span><span class="o">=</span><span class="c1"># select * from oc_storages;</span>
+<span class="w"> </span>numeric_id<span class="w"> </span><span class="p">|</span><span class="w">           </span>id<span class="w">            </span><span class="p">|</span><span class="w"> </span>available<span class="w"> </span><span class="p">|</span><span class="w"> </span>last_checked<span class="w"> </span>
+------------+-------------------------+-----------+--------------
+<span class="w">          </span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>home::bigcloud<span class="w">        </span><span class="p">|</span><span class="w">         </span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w">             </span>
+<span class="w">          </span><span class="m">2</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>local::/data/nextcloud/<span class="w"> </span><span class="p">|</span><span class="w">         </span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w">             </span>
+<span class="o">(</span><span class="m">3</span><span class="w"> </span>rows<span class="o">)</span>
+</code></pre></div>
+
+<p>8) Start redis and apache</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>redis
+$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>apache2
+</code></pre></div>
+
+<h2 id="nextcloud-command-line-client">Nextcloud Command Line Client</h2>
+<p>This CLI tool allows syncing files from the local machine to NextCloud.</p>
+<h3 id="install">Install</h3>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>nextcloud-desktop-cmd
+</code></pre></div>
+
+<h3 id="usage">Usage</h3>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="n">nextcloudcmd</span><span class="w"> </span><span class="o">--</span><span class="n">help</span>
+<span class="n">nextcloudcmd</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="n">Nextcloud</span><span class="w"> </span><span class="n">client</span><span class="w"> </span><span class="k">tool</span>
+
+<span class="n">Usage</span><span class="p">:</span><span class="w"> </span><span class="n">nextcloudcmd</span><span class="w"> </span><span class="p">[</span><span class="n">OPTION</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="n">source_dir</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">server_url</span><span class="o">&gt;</span>
+
+<span class="n">A</span><span class="w"> </span><span class="n">proxy</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">either</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">set</span><span class="w"> </span><span class="n">manually</span><span class="w"> </span><span class="n">using</span><span class="w"> </span><span class="o">--</span><span class="n">httpproxy</span><span class="o">.</span>
+<span class="n">Otherwise</span><span class="p">,</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">setting</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">configured</span><span class="w"> </span><span class="n">sync</span><span class="w"> </span><span class="n">client</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">used</span><span class="o">.</span>
+
+<span class="n">Options</span><span class="p">:</span>
+<span class="w">  </span><span class="o">--</span><span class="n">silent</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="n">s</span><span class="w">           </span><span class="n">Don</span><span class="s1">&#39;t be so verbose</span>
+<span class="w">  </span><span class="o">--</span><span class="n">httpproxy</span><span class="w"> </span><span class="p">[</span><span class="n">proxy</span><span class="p">]</span><span class="w">    </span><span class="n">Specify</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">http</span><span class="w"> </span><span class="n">proxy</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">use</span><span class="o">.</span>
+<span class="w">                         </span><span class="n">Proxy</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">server</span><span class="p">:</span><span class="n">port</span>
+<span class="w">  </span><span class="o">--</span><span class="n">trust</span><span class="w">                </span><span class="n">Trust</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">SSL</span><span class="w"> </span><span class="n">certification</span><span class="o">.</span>
+<span class="w">  </span><span class="o">--</span><span class="n">exclude</span><span class="w"> </span><span class="p">[</span><span class="n">file</span><span class="p">]</span><span class="w">       </span><span class="n">Exclude</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="n">file</span>
+<span class="w">  </span><span class="o">--</span><span class="n">unsyncedfolders</span><span class="w"> </span><span class="p">[</span><span class="n">file</span><span class="p">]</span><span class="w">    </span><span class="n">File</span><span class="w"> </span><span class="n">containing</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">unsynced</span><span class="w"> </span><span class="k">remote</span><span class="w"> </span><span class="n">folders</span><span class="w"> </span><span class="p">(</span><span class="n">selective</span><span class="w"> </span><span class="n">sync</span><span class="p">)</span>
+<span class="w">  </span><span class="o">--</span><span class="n">user</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="n">u</span><span class="w"> </span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="w">      </span><span class="n">Use</span><span class="w"> </span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">login</span><span class="w"> </span><span class="n">name</span>
+<span class="w">  </span><span class="o">--</span><span class="n">password</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="p">[</span><span class="k">pass</span><span class="p">]</span><span class="w">  </span><span class="n">Use</span><span class="w"> </span><span class="p">[</span><span class="k">pass</span><span class="p">]</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">password</span>
+<span class="w">  </span><span class="o">-</span><span class="n">n</span><span class="w">                     </span><span class="n">Use</span><span class="w"> </span><span class="n">netrc</span><span class="w"> </span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">login</span>
+<span class="w">  </span><span class="o">--</span><span class="n">non</span><span class="o">-</span><span class="n">interactive</span><span class="w">      </span><span class="n">Do</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">block</span><span class="w"> </span><span class="n">execution</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">interaction</span>
+<span class="w">  </span><span class="o">--</span><span class="n">nonshib</span><span class="w">              </span><span class="n">Use</span><span class="w"> </span><span class="n">Non</span><span class="w"> </span><span class="n">Shibboleth</span><span class="w"> </span><span class="n">WebDAV</span><span class="w"> </span><span class="n">authentication</span>
+<span class="w">  </span><span class="o">--</span><span class="n">davpath</span><span class="w"> </span><span class="p">[</span><span class="n">path</span><span class="p">]</span><span class="w">       </span><span class="n">Custom</span><span class="w"> </span><span class="n">themed</span><span class="w"> </span><span class="n">dav</span><span class="w"> </span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="n">overrides</span><span class="w"> </span><span class="o">--</span><span class="n">nonshib</span>
+<span class="w">  </span><span class="o">--</span><span class="nb">max</span><span class="o">-</span><span class="n">sync</span><span class="o">-</span><span class="n">retries</span><span class="w"> </span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="w"> </span><span class="n">Retries</span><span class="w"> </span><span class="n">maximum</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="n">times</span><span class="w"> </span><span class="p">(</span><span class="n">default</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
+<span class="w">  </span><span class="o">--</span><span class="n">uplimit</span><span class="w"> </span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="w">          </span><span class="n">Limit</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">upload</span><span class="w"> </span><span class="n">speed</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">files</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="n">KB</span><span class="o">/</span><span class="n">s</span>
+<span class="w">  </span><span class="o">--</span><span class="n">downlimit</span><span class="w"> </span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="w">        </span><span class="n">Limit</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">download</span><span class="w"> </span><span class="n">speed</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">files</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="n">KB</span><span class="o">/</span><span class="n">s</span>
+<span class="w">  </span><span class="o">-</span><span class="n">h</span><span class="w">                     </span><span class="n">Sync</span><span class="w"> </span><span class="n">hidden</span><span class="w"> </span><span class="n">files</span><span class="p">,</span><span class="w"> </span><span class="n">do</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">ignore</span><span class="w"> </span><span class="n">them</span>
+<span class="w">  </span><span class="o">--</span><span class="n">version</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="n">v</span><span class="w">          </span><span class="n">Display</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">exit</span>
+<span class="w">  </span><span class="o">--</span><span class="n">logdebug</span><span class="w">             </span><span class="n">More</span><span class="w"> </span><span class="n">verbose</span><span class="w"> </span><span class="n">logging</span>
+</code></pre></div>
+
+<p>To synchronize the Nextcloud directory Music to the local directory media/music, 
+through a proxy listening on port 8080, and on a gateway machine using IP address 192.168.178.1, 
+the command line would be:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>nextcloudcmd<span class="w"> </span>--httpproxy<span class="w"> </span>http://192.168.178.1:8080<span class="w"> </span><span class="se">\</span>
+<span class="w">              </span><span class="nv">$HOME</span>/media/music<span class="w"> </span><span class="se">\</span>
+<span class="w">              </span>https://server/nextcloud/remote.php/webdav/Music
+</code></pre></div>
+
+<p>nextcloudcmd will prompt for the user name and password, unless they have been specified on the command line or -n has been passed.</p>
+<blockquote>
+<p>NOTE: --exclude option does not work! (Oct-2022) 
+Need to create/edit a file named .sync-exclude.lst in the 
+top level directory of the client side.
+Example: 
+<code>$ cat cloud/.sync-exclude.lst 
+/Pictures/*
+Pictures/*</code></p>
+</blockquote>
+<h2 id="debug">Debug</h2>
+<ul>
+<li>
+<p><em>Problem:</em> Command line occ does not work.</p>
+</li>
+<li>
+<p><em>Solution:</em> Put <code>apc.enable_cli=1</code> in <code>/etc/php/{{ php_version }}/mods-available/apcu.ini</code> and it worked. ({{ php_version }} == 7.4/8.0)</p>
+</li>
+</ul>
+<p><a href="https://help.nextcloud.com/t/occ-wont-run-with-memcache-apcu/119724/6">https://help.nextcloud.com/t/occ-wont-run-with-memcache-apcu/119724/6</a></p>
+<p>File: /etc/php/7.4/mods-available/apcu.ini 
+  <code>~
+  apc.enable_cli=1
+  ~</code></p>
+<hr>
+<ul>
+<li>
+<p><em>Problem:</em> External storage option for SMB/CIFS.</p>
+</li>
+<li>
+<p><em>Solution:</em> Enable APP 'External Storage" and install package
+  <code>$ sudo apt-get install smbclient</code></p>
+</li>
+</ul>
+<hr>
+<ul>
+<li>
+<p><em>Problem:</em> Backup calendar and contacts</p>
+</li>
+<li>
+<p><em>Solution:</em> Use vdirsync (see below) Offline Copy of Contacts and Calendar</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li>
+<p><em>Problem:</em> Contacts and Calendar access from iOS</p>
+</li>
+<li>
+<p><em>Solution:</em> Create or modify htaccess file in web root directory to perform http redirect (301)</p>
+</li>
+</ul>
+<p>File: /var/www/html/.htaccess 
+  <code>&lt;IfModule mod_rewrite.c&gt;
+    RewriteEngine on
+    RewriteRule ^\.well-known/carddav   /remote.php/dav [R=301,L]
+    RewriteRule ^\.well-known/caldav    /remote.php/dav [R=301,L]
+    RewriteRule ^\.well-known/webfinger /index.php/.well-known/webfinger [R=301,L]
+    RewriteRule ^\.well-known/nodeinfo  /index.php/.well-known/nodeinfo [R=301,L]
+  &lt;/IfModule&gt;</code></p>
+<h2 id="talk-from-command-line">Talk from Command Line</h2>
+<p>This is a way to send messages to the phone from Linux command line. Requires the 'NextCloud Talk' iOS app from the Apple App store and 'Mattermost' app from the NextCloud App store.</p>
+<h4 id="talk-mattermost-shell-script">Talk Mattermost Shell Script</h4>
+<blockquote>
+<p>After Nextcloud 27, Talk Mattermost app does not work, and is not needed to send messages through the command line.</p>
+</blockquote>
+<p>File: ~/talk_mattermost.sh</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">#----------------------------------------------------</span>
+<span class="c1"># File: talk_mattermost.sh</span>
+<span class="c1">#</span>
+<span class="c1"># Usage: talk_mattermost.sh &lt;msg&gt;</span>
+<span class="c1">#</span>
+<span class="c1"># Purpose: Send message to nextcloud talk client</span>
+<span class="c1">#</span>
+<span class="c1"># Dependencies: </span>
+<span class="c1"># Version Nextcloud 26 or below:</span>
+<span class="c1">#  1) In NextCloud apps, search for Mattermost</span>
+<span class="c1"># </span>
+<span class="c1">#  2) Click install it</span>
+<span class="c1"># </span>
+<span class="c1">#  3) In Settings, enable it</span>
+<span class="c1">#</span>
+<span class="c1"># All Versions: </span>
+<span class="c1"># 4) Create a dedicated user in Nextcloud; i.e.: robot</span>
+<span class="c1">#     with password under “User/Security”.</span>
+<span class="c1">#     (a new account specifically for the bot) first.</span>
+<span class="c1">#     It will not relay messages from yourself if you use your account</span>
+<span class="c1"># </span>
+<span class="c1"># 5) Create a Nextloud Talk channel</span>
+<span class="c1">#     - new conversasion (e.g.: robotic) while logged in as new user &#39;robot&#39;</span>
+<span class="c1">#     - under ... [options] enable MatterMost -&gt; Nextcloud Talk)</span>
+<span class="c1">#       with the user for the automatic service</span>
+<span class="c1">#     - add users to whom the push messages should be sent.</span>
+<span class="c1">#       (you will see automatic user &#39;bridge-bot&#39; as a participant)</span>
+<span class="c1"># </span>
+<span class="c1"># 6) Open the channel and *copy the channel id* from the URL</span>
+<span class="c1">#     (https://&lt;address_to_nextcloud_service&gt;/index.php/call/&lt;channel_id&gt;).</span>
+<span class="c1"># </span>
+<span class="c1"># 7) And now follows the magic PHP-code part, which has to be copied somewhere on the server.</span>
+<span class="c1"># </span>
+<span class="c1"># &lt;?php</span>
+<span class="c1">#   function NextcloudTalk_SendMessage($channel_id, $message) {</span>
+<span class="c1">#       $SERVER = &quot;https://&lt;address_to_nextcloud_service&gt;&quot;;</span>
+<span class="c1">#       $USER = &quot;&lt;nextcloud_robotic_user&gt;&quot;;</span>
+<span class="c1">#       $PASS = &quot;&lt;application_password&gt;&quot;;</span>
+<span class="c1"># </span>
+<span class="c1">#       // notify hack</span>
+<span class="c1">#       $data = array(</span>
+<span class="c1">#           &quot;token&quot; =&gt; $channel_id,</span>
+<span class="c1">#           &quot;message&quot; =&gt; $message,</span>
+<span class="c1">#           &quot;actorDisplayName&quot; =&gt; &quot;PYTHON-NOTIFICATION&quot;,</span>
+<span class="c1">#           &quot;actorType&quot; =&gt; &quot;&quot;,</span>
+<span class="c1">#           &quot;actorId&quot; =&gt; &quot;&quot;,</span>
+<span class="c1">#           &quot;timestamp&quot; =&gt; 0,</span>
+<span class="c1">#           &quot;messageParameters&quot; =&gt; array()</span>
+<span class="c1">#       );</span>
+<span class="c1"># </span>
+<span class="c1">#       $payload = json_encode($data);</span>
+<span class="c1"># </span>
+<span class="c1">#       $ch = curl_init($SERVER . &#39;/ocs/v2.php/apps/spreed/api/v1/chat/&#39; . $channel_id);</span>
+<span class="c1"># </span>
+<span class="c1">#       curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);</span>
+<span class="c1">#       curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);</span>
+<span class="c1">#       curl_setopt($ch, CURLINFO_HEADER_OUT, true);</span>
+<span class="c1">#       curl_setopt($ch, CURLOPT_POST, true);</span>
+<span class="c1">#       curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);</span>
+<span class="c1">#       curl_setopt($ch, CURLOPT_USERPWD, &quot;$USER:$PASS&quot;);</span>
+<span class="c1">#       curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);</span>
+<span class="c1"># </span>
+<span class="c1">#       // Set HTTP Header</span>
+<span class="c1">#       curl_setopt($ch, CURLOPT_HTTPHEADER, array(</span>
+<span class="c1">#           &#39;Content-Type: application/json&#39;,</span>
+<span class="c1">#           &#39;Content-Length: &#39; . strlen($payload),</span>
+<span class="c1">#           &#39;Accept: application/json&#39;,</span>
+<span class="c1">#           &#39;OCS-APIRequest: true&#39;)</span>
+<span class="c1">#       );</span>
+<span class="c1"># </span>
+<span class="c1">#       $result = curl_exec($ch);</span>
+<span class="c1">#       curl_close($ch);</span>
+<span class="c1"># </span>
+<span class="c1">#   }</span>
+<span class="c1"># </span>
+<span class="c1">#   $token = $argv[1];</span>
+<span class="c1">#   $message = $argv[2];</span>
+<span class="c1"># </span>
+<span class="c1">#   NextcloudTalk_SendMessage($token, $message);</span>
+<span class="c1"># ?&gt;</span>
+<span class="c1"># </span>
+<span class="c1"># 8) Test service from command line</span>
+<span class="c1"># php &lt;path_to_file&gt;/nextcloudmessage.php &lt;channel_id&gt; &lt;message&gt;</span>
+<span class="c1"># </span>
+<span class="c1"># Reference: https://www.developercookies.net/push-notification-service-with-nextcloud-talk/</span>
+<span class="c1">#            https://github.com/42wim/matterbridge#configuration</span>
+<span class="c1">#</span>
+<span class="c1"># Date     Author     Description</span>
+<span class="c1"># ----     ------     -----------</span>
+<span class="c1"># Dec-2021 Don Cohoon Created</span>
+<span class="c1"># Jun-2023 Don Cohoon Talk Mattermost app not available/needed on Nextcloud v27</span>
+<span class="c1">#----------------------------------------------------</span>
+<span class="nv">CHANNEL_ID</span><span class="o">=</span>***********
+/usr/bin/php<span class="w"> </span>/data/talk_mattermost.php<span class="w"> </span><span class="si">${</span><span class="nv">CHANNEL_ID</span><span class="si">}</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="p">@</span><span class="si">}</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+<h4 id="talk-mattermost-php-script">Talk Mattermost PHP Script</h4>
+<div class="highlight"><pre><span></span><code><span class="o">&lt;</span><span class="err">?</span><span class="n">php</span>
+<span class="w">    </span><span class="n">function</span><span class="w"> </span><span class="n">NextcloudTalk_SendMessage</span><span class="p">(</span><span class="o">$</span><span class="n">channel_id</span><span class="p">,</span><span class="w"> </span><span class="o">$</span><span class="n">message</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="o">$</span><span class="n">SERVER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;https://www.example.com/&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="o">$</span><span class="n">USER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;robot&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="o">$</span><span class="n">PASS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;*************&quot;</span><span class="p">;</span>
+
+<span class="w">        </span><span class="o">//</span><span class="w"> </span><span class="n">notify</span><span class="w"> </span><span class="n">hack</span>
+<span class="w">        </span><span class="o">$</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">array</span><span class="p">(</span>
+<span class="w">            </span><span class="s2">&quot;token&quot;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">$</span><span class="n">channel_id</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;message&quot;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">$</span><span class="n">message</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;actorDisplayName&quot;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s2">&quot;PYTHON-NOTIFICATION&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;actorType&quot;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;actorId&quot;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;timestamp&quot;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;messageParameters&quot;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">array</span><span class="p">()</span>
+<span class="w">        </span><span class="p">);</span>
+
+<span class="w">        </span><span class="o">$</span><span class="n">payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">json_encode</span><span class="p">(</span><span class="o">$</span><span class="n">data</span><span class="p">);</span>
+
+<span class="w">        </span><span class="o">$</span><span class="n">ch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">curl_init</span><span class="p">(</span><span class="o">$</span><span class="n">SERVER</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="s1">&#39;/ocs/v2.php/apps/spreed/api/v1/chat/&#39;</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="o">$</span><span class="n">channel_id</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">curl_setopt</span><span class="p">(</span><span class="o">$</span><span class="n">ch</span><span class="p">,</span><span class="w"> </span><span class="n">CURLOPT_SSL_VERIFYPEER</span><span class="p">,</span><span class="w"> </span><span class="bp">true</span><span class="p">);</span>
+<span class="w">        </span><span class="n">curl_setopt</span><span class="p">(</span><span class="o">$</span><span class="n">ch</span><span class="p">,</span><span class="w"> </span><span class="n">CURLOPT_RETURNTRANSFER</span><span class="p">,</span><span class="w"> </span><span class="bp">true</span><span class="p">);</span>
+<span class="w">        </span><span class="n">curl_setopt</span><span class="p">(</span><span class="o">$</span><span class="n">ch</span><span class="p">,</span><span class="w"> </span><span class="n">CURLINFO_HEADER_OUT</span><span class="p">,</span><span class="w"> </span><span class="bp">true</span><span class="p">);</span>
+<span class="w">        </span><span class="n">curl_setopt</span><span class="p">(</span><span class="o">$</span><span class="n">ch</span><span class="p">,</span><span class="w"> </span><span class="n">CURLOPT_POST</span><span class="p">,</span><span class="w"> </span><span class="bp">true</span><span class="p">);</span>
+<span class="w">        </span><span class="n">curl_setopt</span><span class="p">(</span><span class="o">$</span><span class="n">ch</span><span class="p">,</span><span class="w"> </span><span class="n">CURLOPT_POSTFIELDS</span><span class="p">,</span><span class="w"> </span><span class="o">$</span><span class="n">payload</span><span class="p">);</span>
+<span class="w">        </span><span class="n">curl_setopt</span><span class="p">(</span><span class="o">$</span><span class="n">ch</span><span class="p">,</span><span class="w"> </span><span class="n">CURLOPT_USERPWD</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;$USER:$PASS&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">curl_setopt</span><span class="p">(</span><span class="o">$</span><span class="n">ch</span><span class="p">,</span><span class="w"> </span><span class="n">CURLOPT_HTTPAUTH</span><span class="p">,</span><span class="w"> </span><span class="n">CURLAUTH_BASIC</span><span class="p">);</span>
+
+<span class="w">        </span><span class="o">//</span><span class="w"> </span><span class="n">Set</span><span class="w"> </span><span class="n">HTTP</span><span class="w"> </span><span class="n">Header</span>
+<span class="w">        </span><span class="n">curl_setopt</span><span class="p">(</span><span class="o">$</span><span class="n">ch</span><span class="p">,</span><span class="w"> </span><span class="n">CURLOPT_HTTPHEADER</span><span class="p">,</span><span class="w"> </span><span class="n">array</span><span class="p">(</span>
+<span class="w">            </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="p">,</span>
+<span class="w">            </span><span class="s1">&#39;Content-Length: &#39;</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="n">strlen</span><span class="p">(</span><span class="o">$</span><span class="n">payload</span><span class="p">),</span>
+<span class="w">            </span><span class="s1">&#39;Accept: application/json&#39;</span><span class="p">,</span>
+<span class="w">            </span><span class="s1">&#39;OCS-APIRequest: true&#39;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">);</span>
+
+<span class="w">        </span><span class="o">$</span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">curl_exec</span><span class="p">(</span><span class="o">$</span><span class="n">ch</span><span class="p">);</span>
+<span class="w">        </span><span class="n">curl_close</span><span class="p">(</span><span class="o">$</span><span class="n">ch</span><span class="p">);</span>
+
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="o">$</span><span class="n">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">$</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="w">    </span><span class="o">$</span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">$</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+
+<span class="w">    </span><span class="n">NextcloudTalk_SendMessage</span><span class="p">(</span><span class="o">$</span><span class="n">token</span><span class="p">,</span><span class="w"> </span><span class="o">$</span><span class="n">message</span><span class="p">);</span>
+<span class="err">?</span><span class="o">&gt;</span>
+</code></pre></div>
+
+<h2 id="federated-sharing-between-nextcloud-servers">Federated Sharing Between Nextcloud Servers</h2>
+<p>If you have a friend using NextCloud and want to share data between you and them, or you have an organization with several instances of NextCloud, it is possible to let them sync between each other. This is called Federation.</p>
+<p>The main requirement is that both hosts must have https (SSL/TLS) enabled on their web servers with valid certificates.</p>
+<h3 id="in-both-nextcloud-hosts">In both Nextcloud hosts</h3>
+<ol>
+<li>
+<p>Enable the Federation App in NextCloud app admin screen.</p>
+</li>
+<li>
+<p>Update NextCloud configs, <em>trusted_domains</em> and add the <em>allow_local_remote_servers</em> if both hosts are on the same domain.</p>
+</li>
+</ol>
+<p>File: /var/www/nextcloud/config.php:</p>
+<div class="highlight"><pre><span></span><code><span class="s1">&#39;trusted_domains&#39;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w">  </span>
+<span class="w">  </span><span class="k">array</span><span class="w"> </span><span class="p">(</span><span class="w">  </span>
+<span class="w">    </span><span class="mi">0</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;[localhost](http://localhost)&#39;</span><span class="p">,</span><span class="w">  </span>
+<span class="w">    </span><span class="mi">1</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;192.168.0.5&#39;</span><span class="p">,</span><span class="w">  </span>
+<span class="w">    </span><span class="mi">2</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;[one.example.com](http://one.example.com)&#39;</span><span class="p">,</span><span class="w">  </span>
+<span class="w">    </span><span class="mi">3</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;[two.example.com](http://two.example.com)&#39;</span><span class="p">,</span><span class="w">  </span>
+<span class="w">    </span><span class="mi">4</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;[www.example.com](http://www.example.com)&#39;</span><span class="p">,</span><span class="w">  </span>
+<span class="w">    </span><span class="mi">5</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;[example.com](http://example.com)&#39;</span><span class="p">,</span><span class="w">  </span>
+<span class="w">  </span><span class="p">),</span><span class="w">  </span>
+<span class="err">\</span><span class="o">~</span>
+
+<span class="s1">&#39;allow_local_remote_servers&#39;</span><span class="o">=&gt;</span><span class="k">true</span><span class="p">,</span>
+
+<span class="err">\</span><span class="o">~</span>
+</code></pre></div>
+
+<ol>
+<li>In NextCloud setting screen: Set global sharing checkboxes to send and receive remote shares</li>
+</ol>
+<h3 id="in-sending-nextcloud">In Sending Nextcloud</h3>
+<p>In NextCloud file screen: Share file/folder using</p>
+<div class="highlight"><pre><span></span><code>&lt;login&gt;@&lt;server&gt;/&lt;URI&gt;
+</code></pre></div>
+
+<p>For example, from <em>host www</em> to share with <em>host one</em> <em>user cloud</em> enter this as the <em>shared with</em> name on the File screen:</p>
+<p><code>cloud@one.example.com</code></p>
+<h3 id="in-receiving-nextcloud">In Receiving Nextcloud</h3>
+<p>Check NextCloud on receiving host, should see <strong>share alert</strong> pop up, then you <em>NEED</em> to press the <em>ACCEPT</em> button  .</p>
+<p>Reference: 
+ * <a href="https://nextcloud.com/federation/">https://nextcloud.com/federation/</a>
+ * <a href="https://docs.nextcloud.com/server/latest/user_manual/en/files/federated_cloud_sharing.html">https://docs.nextcloud.com/server/latest/user_manual/en/files/federated_cloud_sharing.html</a>
+ * <a href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/federated_cloud_sharing_configuration.html">https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/federated_cloud_sharing_configuration.html</a></p>
+<h2 id="offline-copy-of-contacts-and-calendar">Offline Copy of Contacts and Calendar</h2>
+<p>This is a solution for backing up Contacts and Calendars from the NextCloud database to a flat file. The file can then be used for restore back to the database or transfer to another NextCloud instance. Additionally it can be used to access Contacts and Calendars from Linux command line.</p>
+<h4 id="install-vdirsyncer-package">Install vdirsyncer package</h4>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>vdirsyncer
+</code></pre></div>
+
+<h4 id="configure-vdirsyncer">Configure vdirsyncer</h4>
+<p>File: /data/vcard/vdirsyncer-nextcloud.conf</p>
+<div class="highlight"><pre><span></span><code><span class="k">[general]</span>
+<span class="na">status_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;~/.vdirsyncer/status/&quot;</span>
+
+<span class="k">[pair contacts_nextcloud_to_local]</span>
+<span class="na">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;my_contacts_local&quot;</span>
+<span class="na">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;my_contacts_nextcloud&quot;</span>
+<span class="na">collections</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">[&quot;from a&quot;, &quot;from b&quot;]</span>
+
+<span class="k">[storage my_contacts_local]</span>
+<span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;filesystem&quot;</span>
+<span class="na">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;~/.contacts/&quot;</span>
+<span class="na">fileext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;.vcf&quot;</span>
+
+<span class="k">[storage my_contacts_nextcloud]</span>
+<span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;carddav&quot;</span>
+
+<span class="na">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;https://www.example.com/&quot;</span>
+<span class="na">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;cloud&quot;</span>
+<span class="na">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;*************&quot;</span>
+
+<span class="k">[pair cal_nextcloud_to_local]</span>
+<span class="na">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;my_cal_local&quot;</span>
+<span class="na">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;my_cal_nextcloud&quot;</span>
+<span class="na">collections</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">[&quot;from a&quot;, &quot;from b&quot;]</span>
+
+<span class="k">[storage my_cal_local]</span>
+<span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;filesystem&quot;</span>
+<span class="na">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;~/.calendars/&quot;</span>
+<span class="na">fileext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;.ics&quot;</span>
+
+<span class="k">[storage my_cal_nextcloud]</span>
+<span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;caldav&quot;</span>
+
+<span class="na">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;https://www.example.com/&quot;</span>
+<span class="na">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;cloud&quot;</span>
+<span class="na">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;**********&quot;</span>
+</code></pre></div>
+
+<p>Run discovery to populate the sync directories and configuration in your $HOME directory</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>vdirsyncer<span class="w"> </span>-c<span class="w"> </span>/data/vcard/vdirsyncer-nextcloud.conf<span class="w"> </span>discover
+</code></pre></div>
+
+<p>Create a script to run it. Make sure you created the .htaccess file above.</p>
+<p>File:/data/vcard/vdirsyncer.sh</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1"># sudo apt-get install vdirsyncer</span>
+<span class="c1">#</span>
+<span class="c1"># One-time only</span>
+<span class="c1">#vdirsyncer -c vdirsyncer-nextcloud.conf discover</span>
+<span class="c1">#</span>
+<span class="c1"># NOTE: Need to add .htaccess to /var/www/html</span>
+<span class="c1">#  Ref: https://docs.nextcloud.com/server/23/admin_manual/issues/general_troubleshooting.html#service-discovery</span>
+<span class="c1">#</span>
+<span class="nv">DIR</span><span class="o">=</span>/data/vcard
+vdirsyncer<span class="w"> </span>-c<span class="w"> </span><span class="si">${</span><span class="nv">DIR</span><span class="si">}</span>/vdirsyncer-nextcloud.conf<span class="w"> </span>sync<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>mail<span class="w"> </span>-s<span class="w"> </span>vdirsync<span class="w"> </span>mail@example.com
+</code></pre></div>
+
+<h4 id="schedule-vdirsyncer">Schedule vdirsyncer</h4>
+<p>Ensure it is executable:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>chmod<span class="w"> </span><span class="m">755</span><span class="w"> </span>/data/vcard/vdirsyncer.sh
+</code></pre></div>
+
+<p>Schedule vdirsync via /etc/cron.daily to backup contacts and calendars.</p>
+<p>File: /etc/cron.daily/vdirsyncer</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+sudo<span class="w"> </span>-u<span class="w"> </span>bob<span class="w"> </span>/data/vcard/vdirsyncer.sh
+</code></pre></div>
+
+<h2 id="contacts-from-the-command-line">Contacts from the Command Line</h2>
+<p>khard command line will search and display your NextCloud contacts using vdirsync files locally.</p>
+<p>Reference: <a href="https://khard.readthedocs.io/en/latest/">https://khard.readthedocs.io/en/latest/</a></p>
+<h4 id="install_1">Install</h4>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>khard
+</code></pre></div>
+
+<h4 id="configure">Configure</h4>
+<p>First create a configuration file.</p>
+<p>File: /data/vcard/khard.conf</p>
+<div class="highlight"><pre><span></span><code><span class="cp"># example configuration file for khard version &gt; 0.14.0</span>
+<span class="cp"># place it under ~/.config/khard/khard.conf</span>
+<span class="cp"># This file is parsed by the configobj library.  The syntax is described at</span>
+<span class="cp"># https:</span><span class="c1">//configobj.readthedocs.io/en/latest/configobj.html#the-config-file-format</span>
+
+<span class="p">[</span><span class="n">addressbooks</span><span class="p">]</span>
+<span class="p">[[</span><span class="n">family</span><span class="p">]]</span>
+<span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">~/</span><span class="p">.</span><span class="n">contacts</span><span class="o">/</span><span class="n">family</span><span class="o">/</span>
+<span class="p">[[</span><span class="n">friends</span><span class="p">]]</span>
+<span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">~/</span><span class="p">.</span><span class="n">contacts</span><span class="o">/</span><span class="n">friends</span><span class="o">/</span>
+
+<span class="p">[</span><span class="n">general</span><span class="p">]</span>
+<span class="n">debug</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">no</span>
+<span class="n">default_action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">list</span>
+<span class="cp"># These are either strings or comma seperated lists</span>
+<span class="n">editor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vim</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">NONE</span>
+<span class="n">merge_editor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vimdiff</span>
+
+<span class="p">[</span><span class="n">contact</span><span class="w"> </span><span class="n">table</span><span class="p">]</span>
+<span class="cp"># display names by first or last name: first_name / last_name / formatted_name</span>
+<span class="n">display</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">first_name</span>
+<span class="cp"># group by address book: yes / no</span>
+<span class="n">group_by_addressbook</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">no</span>
+<span class="cp"># reverse table ordering: yes / no</span>
+<span class="n">reverse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">no</span>
+<span class="cp"># append nicknames to name column: yes / no</span>
+<span class="n">show_nicknames</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">no</span>
+<span class="cp"># show uid table column: yes / no</span>
+<span class="n">show_uids</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">yes</span>
+<span class="cp"># sort by first or last name: first_name / last_name / formatted_name</span>
+<span class="n">sort</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">last_name</span>
+<span class="cp"># localize dates: yes / no</span>
+<span class="n">localize_dates</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">yes</span>
+<span class="cp"># set a comma separated list of preferred phone number types in descending priority</span>
+<span class="cp"># or nothing for non-filtered alphabetical order</span>
+<span class="n">preferred_phone_number_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pref</span><span class="p">,</span><span class="w"> </span><span class="n">cell</span><span class="p">,</span><span class="w"> </span><span class="n">home</span>
+<span class="cp"># set a comma separated list of preferred email address types in descending priority</span>
+<span class="cp"># or nothing for non-filtered alphabetical order</span>
+<span class="n">preferred_email_address_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pref</span><span class="p">,</span><span class="w"> </span><span class="n">work</span><span class="p">,</span><span class="w"> </span><span class="n">home</span>
+
+<span class="p">[</span><span class="n">vcard</span><span class="p">]</span>
+<span class="cp"># extend contacts with your own private objects</span>
+<span class="cp"># these objects are stored with a leading &quot;X-&quot; before the object name in the vcard files</span>
+<span class="cp"># every object label may only contain letters, digits and the - character</span>
+<span class="cp"># example:</span>
+<span class="cp">#   private_objects = Jabber, Skype, Twitter</span>
+<span class="cp"># default: ,  (the empty list)</span>
+<span class="n">private_objects</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Jabber</span><span class="p">,</span><span class="w"> </span><span class="n">Skype</span><span class="p">,</span><span class="w"> </span><span class="n">Twitter</span>
+<span class="cp"># preferred vcard version: 3.0 / 4.0</span>
+<span class="n">preferred_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.0</span>
+<span class="cp"># Look into source vcf files to speed up search queries: yes / no</span>
+<span class="n">search_in_source_files</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">no</span>
+<span class="cp"># skip unparsable vcard files: yes / no</span>
+<span class="n">skip_unparsable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">no</span>
+</code></pre></div>
+
+<p>Next create a script to run it, pointing to the configuration file and the 'show' verb.</p>
+<p>File: ~/khard.sh</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1"># sudo apt-get install khard</span>
+<span class="c1">#</span>
+<span class="c1"># Copy khard.conf to ~/.config/khard/khard.conf </span>
+<span class="c1">#</span>
+<span class="c1"># show : allows selection for details</span>
+<span class="c1"># list : just shows listing then exit</span>
+<span class="c1">#</span>
+khard<span class="w"> </span>-c<span class="w"> </span>khard.conf<span class="w"> </span>show<span class="w"> </span><span class="si">${</span><span class="nv">1</span><span class="si">}</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+
+<span class="c1"># Detailed</span>
+<span class="c1">#khard -c khard.conf show ${1} --format yaml</span>
+
+<span class="c1"># dump and exit</span>
+<span class="c1">#khard -c khard.conf list ${1}</span>
+
+<span class="c1"># use contact.yaml as template</span>
+<span class="c1">#khard -c khard.conf new -i contact.yaml</span>
+<span class="c1">#khard -c khard.conf edit -i contact.yaml</span>
+</code></pre></div>
+
+<h4 id="run-it">Run it</h4>
+<p>Now see it in action.</p>
+<p>Sample run, searching for string match</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>./khard.sh<span class="w"> </span>picard
+Select<span class="w"> </span>contact<span class="w"> </span><span class="k">for</span><span class="w"> </span>Show<span class="w"> </span>action
+Address<span class="w"> </span>book:<span class="w"> </span>All
+Index<span class="w">    </span>Name<span class="w">                     </span>Phone<span class="w">                                </span>E-Mail<span class="w">    </span>UID<span class="w">   </span>
+<span class="m">1</span><span class="w">        </span>Dr.<span class="w"> </span>Picard,<span class="w"> </span>Jeffery<span class="w">    </span>HOME,VOICE:<span class="w"> </span><span class="m">999</span>-555-1212<span class="w">                       </span><span class="m">57</span><span class="w">    </span>
+<span class="m">2</span><span class="w">        </span>Picard<span class="w">                 </span>WORK,<span class="w"> </span>VOICE,<span class="w"> </span>pref:<span class="w"> </span><span class="o">(</span><span class="m">999</span><span class="o">)</span><span class="w"> </span><span class="m">555</span>-1212<span class="w">              </span>7A<span class="w">    </span>
+Enter<span class="w"> </span>Index<span class="w"> </span><span class="o">(</span>q<span class="w"> </span>to<span class="w"> </span>quit<span class="o">)</span>:<span class="w"> </span>q
+Canceled
+</code></pre></div>
+
+<h2 id="calendars-from-the-command-line">Calendars from the Command Line</h2>
+<p>khal is a command line display of NextCloud calendar entries using vdirsync files locally.</p>
+<p>Reference: <a href="https://khal.readthedocs.io/en/latest/">https://khal.readthedocs.io/en/latest/</a></p>
+<h4 id="install_2">Install</h4>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>khal
+</code></pre></div>
+
+<h4 id="configure_1">Configure</h4>
+<p>First crete a configuration file that matches your NextCloud calendar names. This example has 2 calendars, personal and bills.</p>
+<p>File: /data/vcard/khal.conf</p>
+<div class="highlight"><pre><span></span><code><span class="k">[calendars]</span>
+
+<span class="w">  </span><span class="k">[[home]]</span>
+<span class="w">    </span><span class="na">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">~/.calendars/personal/</span>
+<span class="w">    </span><span class="na">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">dark cyan</span>
+<span class="w">    </span><span class="na">priority</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">20</span>
+
+<span class="w">  </span><span class="k">[[bills]]</span>
+<span class="w">    </span><span class="na">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">~/.calendars/bills/</span>
+<span class="w">    </span><span class="na">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">dark red</span>
+<span class="w">    </span><span class="na">readonly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">True</span>
+
+<span class="k">[locale]</span>
+<span class="na">local_timezone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">America/New_York</span>
+<span class="na">default_timezone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">America/New_York</span>
+
+<span class="c1"># If you use certain characters (e.g. commas) in these formats you may need to</span>
+<span class="c1"># enclose them in &quot;&quot; to ensure that they are loaded as strings.</span>
+<span class="na">timeformat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">%H:%M</span>
+<span class="na">dateformat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">%d-%b-</span>
+<span class="na">longdateformat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">%d-%b-%Y</span>
+<span class="na">datetimeformat</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="s">%d-%b- %H:%M</span>
+<span class="na">longdatetimeformat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">%d-%b-%Y %H:%M</span>
+
+<span class="na">firstweekday</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0</span>
+<span class="c1">#monthdisplay = firstday</span>
+
+<span class="k">[default]</span>
+<span class="na">default_calendar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">home</span>
+<span class="na">timedelta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">7d</span><span class="w"> </span><span class="c1"># the default timedelta that list uses</span>
+<span class="na">highlight_event_days</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">True</span><span class="w">  </span><span class="c1"># the default is False</span>
+</code></pre></div>
+
+<p>Next create a script to run it, pointing to the configuration file.</p>
+<p>File: ~/khal.sh</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+khal<span class="w"> </span>-c<span class="w"> </span>/data/vcard/khal.conf<span class="w"> </span>calendar
+</code></pre></div>
+
+<h4 id="run-it_1">Run it</h4>
+<p>Now run the command line calendar. It will use the latest vsyndir files locally.</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>./khal.sh<span class="w"> </span>
+<span class="w">    </span>Mo<span class="w"> </span>Tu<span class="w"> </span>We<span class="w"> </span>Th<span class="w"> </span>Fr<span class="w"> </span>Sa<span class="w"> </span>Su<span class="w">     </span>Today,<span class="w"> </span><span class="m">03</span>-Jan-2023
+Jan<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">27</span><span class="w"> </span><span class="m">28</span><span class="w"> </span><span class="m">29</span><span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="m">31</span><span class="w">  </span><span class="m">1</span><span class="w">     </span><span class="m">21</span>:00-22:00<span class="w"> </span>Gas<span class="w"> </span>Bill<span class="w"> </span>⟳
+<span class="w">     </span><span class="m">2</span><span class="w">  </span><span class="m">3</span><span class="w">  </span><span class="m">4</span><span class="w">  </span><span class="m">5</span><span class="w">  </span><span class="m">6</span><span class="w">  </span><span class="m">7</span><span class="w">  </span><span class="m">8</span><span class="w">     </span>Monday,<span class="w"> </span><span class="m">09</span>-Jan-2023
+<span class="w">     </span><span class="m">9</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="m">13</span><span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">15</span><span class="w">     </span><span class="m">18</span>:30-19:30<span class="w"> </span>Trash<span class="w"> </span>pickup<span class="w"> </span>tomorrow<span class="w">  </span>⟳
+<span class="w">    </span><span class="m">16</span><span class="w"> </span><span class="m">17</span><span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">19</span><span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="m">22</span><span class="w">     </span>
+<span class="w">    </span><span class="m">23</span><span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">27</span><span class="w"> </span><span class="m">28</span><span class="w"> </span><span class="m">29</span><span class="w">     </span>
+Feb<span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="m">31</span><span class="w">  </span><span class="m">1</span><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">3</span><span class="w">  </span><span class="m">4</span><span class="w">  </span><span class="m">5</span><span class="w">     </span>
+<span class="w">     </span><span class="m">6</span><span class="w">  </span><span class="m">7</span><span class="w">  </span><span class="m">8</span><span class="w">  </span><span class="m">9</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">12</span><span class="w">     </span>
+<span class="w">    </span><span class="m">13</span><span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">15</span><span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">17</span><span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">19</span><span class="w">     </span>
+<span class="w">    </span><span class="m">20</span><span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="m">22</span><span class="w"> </span><span class="m">23</span><span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">26</span><span class="w">     </span>
+Mar<span class="w"> </span><span class="m">27</span><span class="w"> </span><span class="m">28</span><span class="w">  </span><span class="m">1</span><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">3</span><span class="w">  </span><span class="m">4</span><span class="w">  </span><span class="m">5</span><span class="w">     </span>
+<span class="w">     </span><span class="m">6</span><span class="w">  </span><span class="m">7</span><span class="w">  </span><span class="m">8</span><span class="w">  </span><span class="m">9</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">12</span><span class="w">     </span>
+<span class="w">    </span><span class="m">13</span><span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">15</span><span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">17</span><span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">19</span><span class="w">     </span>
+<span class="w">    </span><span class="m">20</span><span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="m">22</span><span class="w"> </span><span class="m">23</span><span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">26</span><span class="w">     </span>
+Apr<span class="w"> </span><span class="m">27</span><span class="w"> </span><span class="m">28</span><span class="w"> </span><span class="m">29</span><span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="m">31</span><span class="w">  </span><span class="m">1</span><span class="w">  </span><span class="m">2</span><span class="w">   </span>
+</code></pre></div>
+
+<h1 id="apache-block-malicious-hosts">Apache - Block Malicious Hosts</h1>
+<p>With NextCloud comes Apache web server, and with that comes strangers knocking on your door. I welcome my friends, family, neighbors and people who just want to look at your front garden. I also limit who has access to my back garden and especially indoors.</p>
+<p>With that, here is a way to post a bouncer at your gate. Obtain the IP addresses from your logwatch and logcheck scripts as well as the /var/log/apache2/errors.log. They usually show up as some kind of mal-formed URL request with strange directory patterns.</p>
+<p>Examples of mal-formed URLs:</p>
+<div class="highlight"><pre><span></span><code><span class="o">/.</span><span class="n">DS_Store</span>
+<span class="o">/.</span><span class="n">env</span>
+<span class="o">/</span><span class="n">debug</span><span class="o">/</span><span class="n">default</span><span class="o">/</span><span class="n">view</span><span class="err">?</span><span class="n">panel</span><span class="o">=</span><span class="n">config</span>
+<span class="o">/</span><span class="n">ecp</span><span class="o">/</span><span class="n">Current</span><span class="o">/</span><span class="n">exporttool</span><span class="o">/</span><span class="n">microsoft</span><span class="o">.</span><span class="n">exchange</span><span class="o">.</span><span class="n">ediscovery</span><span class="o">.</span><span class="n">exporttool</span><span class="o">.</span><span class="n">application</span>
+<span class="o">/</span><span class="n">telescope</span><span class="o">/</span><span class="n">requests</span>
+<span class="o">/</span><span class="n">s</span><span class="o">/</span><span class="mf">633323e2431313</span><span class="n">e2535323e26393</span><span class="o">/</span><span class="n">_</span><span class="o">/</span><span class="p">;</span><span class="o">/</span><span class="n">META</span><span class="o">-</span><span class="bp">INF</span><span class="o">/</span><span class="n">maven</span><span class="o">/</span><span class="n">com</span><span class="o">.</span><span class="n">atlassian</span><span class="o">.</span><span class="n">jira</span><span class="o">/</span><span class="n">jira</span><span class="o">-</span><span class="n">webapp</span><span class="o">-</span><span class="n">dist</span><span class="o">/</span><span class="n">pom</span><span class="o">.</span><span class="n">properties</span>
+<span class="o">/</span><span class="err">?</span><span class="n">rest_route</span><span class="o">=/</span><span class="n">wp</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">users</span><span class="o">/</span>
+<span class="o">/</span><span class="n">server</span><span class="o">-</span><span class="n">status</span>
+<span class="o">/.</span><span class="n">git</span><span class="o">/</span><span class="n">config</span>
+<span class="o">/.</span><span class="n">vscode</span><span class="o">/</span><span class="n">sftp</span><span class="o">.</span><span class="n">json</span>
+<span class="o">/</span><span class="n">info</span><span class="o">.</span><span class="n">php</span>
+<span class="o">/</span><span class="n">login</span><span class="o">.</span><span class="n">action</span>
+<span class="o">/</span><span class="n">config</span><span class="o">.</span><span class="n">json</span>
+<span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">_catalog</span>
+<span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">search</span><span class="err">?</span><span class="n">folderIds</span><span class="o">=</span><span class="mi">0</span>
+<span class="o">/</span><span class="n">about</span>
+</code></pre></div>
+
+<h2 id="script">Script</h2>
+<p>The script from nitefood at github provides Autonomous System Numbers (ASN) which is a better indicator of all an organizations IP number ranges then the standard <code>whois &lt;ip&gt;</code>, so the firewall.sh script will utilize them as CIDR range blocks to UFW.</p>
+<p>In order to use the IPQualityScore API for <em>in-depth threat reporting</em>, it's necessary to sign up for their service (it's free) and get an API token (it will be emailed to you on sign-up), which will entitle you to 5000 free lookups per month.</p>
+<p>Reference: </p>
+<ul>
+<li><a href="https://github.com/nitefood/asn">https://github.com/nitefood/asn</a></li>
+<li><a href="https://www.arin.net/resources/guide/asn/">https://www.arin.net/resources/guide/asn/</a></li>
+</ul>
+<p>This script will block the IP address range of an organization. Typically when one IP is hacking into systems, others within that domains range will be at it too.</p>
+<p>File: ~/linux/firewall.sh</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">####################################################################</span>
+<span class="c1">#</span>
+<span class="c1"># File: firewall.sh</span>
+<span class="c1">#</span>
+<span class="c1"># Purpose: get CIDR of IP and block using ufw</span>
+<span class="c1">#</span>
+<span class="c1"># Dependencies:</span>
+<span class="c1">#  sudo apt-get install curl whois bind9-host mtr-tiny jq ipcalc grepcidr nmap ncat aha </span>
+<span class="c1">#</span>
+<span class="c1">#  git clone https://github.com/nitefood/asn </span>
+<span class="c1">#</span>
+<span class="c1">#  Be sure to get an ~/.asn/iqs_token</span>
+<span class="c1">#  from https://github.com/nitefood/asn#ip-reputation-api-token</span>
+<span class="c1">#</span>
+<span class="c1">####################################################################</span>
+<span class="nv">DIR</span><span class="o">=</span>/root
+<span class="nv">LOG</span><span class="o">=</span><span class="si">${</span><span class="nv">DIR</span><span class="si">}</span>/firewall.log
+<span class="nv">WHO</span><span class="o">=</span>/tmp/whois.txt
+<span class="nv">CIDR</span><span class="o">=</span>/tmp/whois.cidr
+<span class="nv">IP</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">1</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="c1">#</span>
+<span class="k">function</span><span class="w"> </span>run_asn<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">  </span><span class="si">${</span><span class="nv">DIR</span><span class="si">}</span>/asn/asn<span class="w"> </span>-n<span class="w"> </span><span class="si">${</span><span class="nv">IP</span><span class="si">}</span><span class="w"> </span>&gt;<span class="w"> </span><span class="si">${</span><span class="nv">WHO</span><span class="si">}</span>
+<span class="w">  </span>/usr/bin/cat<span class="w"> </span><span class="si">${</span><span class="nv">WHO</span><span class="si">}</span>
+<span class="w">  </span><span class="nv">RANGE</span><span class="o">=</span><span class="k">$(</span>/usr/bin/cat<span class="w"> </span><span class="si">${</span><span class="nv">WHO</span><span class="si">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>/usr/bin/grep<span class="w"> </span><span class="s1">&#39;NET&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>/usr/bin/grep<span class="w"> </span><span class="s1">&#39;/&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>/usr/bin/awk<span class="w"> </span>-Fm<span class="w"> </span><span class="s1">&#39;{print $6}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>/usr/bin/cut<span class="w"> </span>-d<span class="s2">&quot; &quot;</span><span class="w"> </span>-f1<span class="k">)</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;CDR: </span><span class="si">${</span><span class="nv">RANGE</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">RANGE</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="w"> </span><span class="si">${</span><span class="nv">CIDR</span><span class="si">}</span>
+<span class="o">}</span>
+<span class="c1">#</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="si">${</span><span class="nv">1</span><span class="si">}</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span>run_asn
+<span class="k">else</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Usage: </span><span class="si">${</span><span class="nv">0</span><span class="si">}</span><span class="s2"> &lt;IP Address&gt;&quot;</span>
+<span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+<span class="c1">#</span>
+/usr/bin/grep<span class="w"> </span>-v<span class="w"> </span>deaggregate<span class="w"> </span><span class="si">${</span><span class="nv">CIDR</span><span class="si">}</span><span class="w"> </span>&gt;<span class="w"> </span><span class="si">${</span><span class="nv">CIDR</span><span class="si">}</span>.block
+<span class="k">while</span><span class="w"> </span><span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>IP
+<span class="w">  </span><span class="k">do</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Blocking: </span><span class="si">${</span><span class="nv">IP</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span><span class="si">${</span><span class="nv">LOG</span><span class="si">}</span>
+<span class="w">    </span>sudo<span class="w"> </span>/usr/sbin/ufw<span class="w"> </span>prepend<span class="w"> </span>deny<span class="w"> </span>from<span class="w"> </span><span class="si">${</span><span class="nv">IP</span><span class="si">}</span><span class="w"> </span>to<span class="w"> </span>any<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">|</span>tee<span class="w"> </span>-a<span class="w"> </span><span class="nv">$LOG</span>
+<span class="w">  </span><span class="k">done</span><span class="w"> </span>&lt;<span class="w"> </span><span class="si">${</span><span class="nv">CIDR</span><span class="si">}</span>.block
+</code></pre></div>
+
+<p>Make it executable</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>chmod<span class="w"> </span><span class="m">755</span><span class="w"> </span>~/linux/firewall.sh
+</code></pre></div>
+
+<h2 id="usage_1">Usage</h2>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>~/linux/firewall.sh<span class="w"> </span><span class="m">43</span>.129.97.125
+
+╭──────────────────────────────╮
+│<span class="w"> </span>ASN<span class="w"> </span>lookup<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="m">43</span>.129.97.125<span class="w"> </span>│
+╰──────────────────────────────╯
+
+<span class="w"> </span><span class="m">43</span>.129.97.125<span class="w"> </span>┌PTR<span class="w"> </span>-
+<span class="w">               </span>├ASN<span class="w"> </span><span class="m">132203</span><span class="w"> </span><span class="o">(</span>TENCENT-NET-AP-CN<span class="w"> </span>Tencent<span class="w"> </span>Building,<span class="w"> </span>Kejizhongyi<span class="w"> </span>Avenue,<span class="w"> </span>CN<span class="o">)</span>
+<span class="w">               </span>├ORG<span class="w"> </span><span class="m">6</span><span class="w"> </span>COLLYER<span class="w"> </span>QUAY
+<span class="w">               </span>├NET<span class="w"> </span><span class="m">43</span>.129.64.0/18<span class="w"> </span><span class="o">(</span>ACEVILLEPTELTD-SG<span class="o">)</span>
+<span class="w">               </span>├ABU<span class="w"> </span>-
+<span class="w">               </span>├ROA<span class="w"> </span>✓<span class="w"> </span>UNKNOWN<span class="w"> </span><span class="o">(</span>no<span class="w"> </span>ROAs<span class="w"> </span>found<span class="o">)</span>
+<span class="w">               </span>├TYP<span class="w">  </span>Hosting/DC<span class="w"> </span>
+<span class="w">               </span>├GEO<span class="w"> </span>Hong<span class="w"> </span>Kong,<span class="w"> </span>Central<span class="w"> </span>and<span class="w"> </span>Western<span class="w"> </span>District<span class="w"> </span><span class="o">(</span>HK<span class="o">)</span>
+<span class="w">               </span>└REP<span class="w"> </span>✓<span class="w"> </span>NONE<span class="w">  </span>SEEN<span class="w"> </span>SCANNING<span class="w"> </span>
+
+
+CDR:<span class="w"> </span><span class="m">43</span>.129.64.0/18
+Rule<span class="w"> </span>inserted
+<span class="m">43</span>.129.64.0/18<span class="w"> </span>Blocked
+</code></pre></div>
+
+<h1 id="upgrade-nextcloud">Upgrade Nextcloud</h1>
+<p>Download the latest nextcloud community server software.</p>
+<div class="highlight"><pre><span></span><code><span class="o">$</span><span class="w"> </span><span class="n">curl</span><span class="w"> </span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">download</span><span class="o">.</span><span class="n">nextcloud</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">server</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="n">latest</span><span class="o">.</span><span class="n">zip</span><span class="w"> </span><span class="o">-</span><span class="n">o</span><span class="w"> </span><span class="n">nextcloud</span><span class="o">.</span><span class="n">zip</span>
+</code></pre></div>
+
+<h2 id="upgrade-manually">Upgrade manually</h2>
+<p>If you upgrade from a previous major version please see critical changes first.</p>
+<p>Reference: <a href="https://docs.nextcloud.com/server/stable/admin_manual/release_notes/index.html#critical-changes">https://docs.nextcloud.com/server/stable/admin_manual/release_notes/index.html#critical-changes</a></p>
+<p>Always start by making a fresh backup and disabling all 3rd party apps.</p>
+<ul>
+<li>
+<p>Back up your existing Nextcloud Server database, data directory, and config.php file. (See Backup, for restore information see Restoring backup)</p>
+</li>
+<li>
+<p>Download and unpack the latest Nextcloud Server release (Archive file) from nextcloud.com/install/ into an empty directory outside of your current installation.</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">unzip</span><span class="w"> </span><span class="n">nextcloud</span><span class="o">-[</span><span class="n">version</span><span class="o">]</span><span class="p">.</span><span class="n">zip</span><span class="w"> </span>
+<span class="err">#</span><span class="w"> </span><span class="o">-</span><span class="ow">or</span><span class="o">-</span><span class="w"> </span>
+<span class="err">$</span><span class="w"> </span><span class="n">tar</span><span class="w"> </span><span class="o">-</span><span class="n">xjf</span><span class="w"> </span><span class="n">nextcloud</span><span class="o">-[</span><span class="n">version</span><span class="o">]</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">bz2</span>
+</code></pre></div>
+
+<ul>
+<li>
+<p>Stop your Web server.</p>
+</li>
+<li>
+<p>In case you are running a cron-job for nextcloud’s house-keeping disable it by commenting the entry in the crontab file</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code># Debian
+$ sudo crontab -u www-data -e
+# RedHat
+$ sudo crontab -u apache -e
+</code></pre></div>
+
+<p>(Put a # at the beginning of the corresponding line.)</p>
+<ul>
+<li>
+<p>Rename your current Nextcloud directory, for example nextcloud-old.</p>
+</li>
+<li>
+<p>Unpacking the new archive creates a new nextcloud directory populated with your new server files. Move this directory and its contents to the original location of your old server. For example /var/www/, so that once again you have /var/www/nextcloud.</p>
+</li>
+<li>
+<p>Copy the config/config.php file from your old Nextcloud directory to your new Nextcloud directory.</p>
+</li>
+</ul>
+<p>If you keep your data/ directory in your nextcloud/ directory, copy it from your old version of Nextcloud to your new nextcloud/. If you keep it outside of nextcloud/ then you don’t have to do anything with it, because its location is configured in your original config.php, and none of the upgrade steps touch it.</p>
+<p>If you are using 3rd party application, it may not always be available in your upgraded/new Nextcloud instance. To check this, compare a list of the apps in the new nextcloud/apps/ folder to a list of the of the apps in your backed-up/old nextcloud/apps/ folder. If you find 3rd party apps in the old folder that needs to be in the new/upgraded instance, simply copy them over and ensure the permissions are set up as shown below.</p>
+<p>If you have additional apps folders like for example nextcloud/apps-extras or nextcloud/apps-external, make sure to also transfer/keep these in the upgraded folder.</p>
+<p>If you are using 3rd party theme make sure to copy it from your themes/ directory to your new one. It is possible you will have to make some modifications to it after the upgrade.</p>
+<ul>
+<li>Adjust file ownership and permissions:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/var/www
+<span class="c1"># Debian</span>
+$<span class="w"> </span>sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span>www-data:www-data<span class="w"> </span>nextcloud
+<span class="c1"># RedHat</span>
+$<span class="w"> </span>sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span>apache:apache<span class="w"> </span>nextcloud
+<span class="c1"># Both</span>
+$<span class="w"> </span>sudo<span class="w"> </span>find<span class="w"> </span>nextcloud/<span class="w"> </span>-type<span class="w"> </span>d<span class="w"> </span>-exec<span class="w"> </span>chmod<span class="w"> </span><span class="m">750</span><span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
+$<span class="w"> </span>sudo<span class="w"> </span>find<span class="w"> </span>nextcloud/<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-exec<span class="w"> </span>chmod<span class="w"> </span><span class="m">640</span><span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
+</code></pre></div>
+
+<ul>
+<li>
+<p>Restart your Web server.</p>
+</li>
+<li>
+<p>Now launch the upgrade from the command line using occ:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">cd</span><span class="w">  </span>/var/www/nextcloud/
+<span class="c1"># Debian</span>
+$<span class="w"> </span>sudo<span class="w"> </span>-u<span class="w"> </span>www-data<span class="w"> </span>php<span class="w"> </span>/var/www/nextcloud/occ<span class="w"> </span>upgrade
+<span class="c1"># RedHat</span>
+$<span class="w"> </span>sudo<span class="w"> </span>-u<span class="w"> </span>apache<span class="w"> </span>php<span class="w"> </span>/var/www/nextcloud/occ<span class="w"> </span>upgrade
+</code></pre></div>
+
+<blockquote>
+<p>This MUST be executed from within your nextcloud installation directory</p>
+</blockquote>
+<p>The upgrade operation takes a few minutes to a few hours, depending on the size of your installation. When it is finished you will see a success message, or an error message that will tell where it went wrong.</p>
+<ul>
+<li>Re-enable the nextcloud cron-job. (See step 4 above.)</li>
+</ul>
+<div class="highlight"><pre><span></span><code># Debian
+$ sudo crontab -u www-data -e
+# RedHat
+$ sudo crontab -u apache -e
+</code></pre></div>
+
+<p>(Delete the # at the beginning of the corresponding line in the crontab file.)</p>
+<ul>
+<li>Login and take a look at the bottom of your Admin page to verify the version number. Check your other settings to make sure they’re correct. Go to the Apps page and review the core apps to make sure the right ones are enabled. Re-enable your third-party apps.</li>
+</ul>
+<p>Reference: <a href="https://docs.nextcloud.com/server/stable/admin_manual/maintenance/manual_upgrade.html">https://docs.nextcloud.com/server/stable/admin_manual/maintenance/manual_upgrade.html</a></p>
+<h1 id="continue">Continue</h1>
+<p>Now that you have Cloud, consider some Home Automation, like door and window security, lights and more.</p>
+<p>Proceed in the order presented, some things are depending on prior setups.</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://lwn.net/">Linux Weekly News</a></li>
+                            <li><a href="https://fullcirclemagazine.org/">Full Circle Magazine</a></li>
+                            <li><a href="https://www.linuxjournal.com/">Linux Journal</a></li>
+                            <li><a href="https://www.linux-magazine.com/">Linux Magazine</a></li>
+                            <li><a href="https://www.thefarside.com/">The Far Side</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://fosstodon.org/@Cohoon">Feedback</a></li>
+                            <li><a href="https://fosstodon.org/@Cohoon.rss">Mastodon RSS feed</a></li>
+                            <li><a href="https://linux-in-the-house.pages.dev/">Book</a></li>
+                            <li><a href="/linux-in-house/author/don-cohoon.html">Created by: Don Cohoon</a></li>
+                            <li><a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License </a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <p>
+                Made for Humans, by a Human.
+                </p>
+                <p>
+                Site by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>, via <a rel="nofollow" href="https://www.python.org/">Python</a>.
+                </p><!-- /#about -->
+
+                <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+                <p> Version:  3.297 </p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

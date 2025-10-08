@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="generator" content="Pelican" />
+        <title>Matrix</title>
+        <link rel="icon" type="image/svg" href="https://vm3.doncohoon.com/linux-in-house/images/favicon.svg">
+        <link rel="stylesheet" href="https://vm3.doncohoon.com/linux-in-house/theme/css/main.css" type="text/css" />
+        <!-- <link rel="stylesheet" href="/theme/css/main.css" type="text/css" />  -->
+        <meta name="description" content="Matrix Messaging Matrix is a messaging system you can on your server. It allows your to send messages to a phone/watch from command line on the..." />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <table>
+                    <td><h1><a href="https://vm3.doncohoon.com/linux-in-house/">Linux Home Administration</a></h1></td>
+                    <td> <link href="/linux-in-house/pagefind/pagefind-ui.css" rel="stylesheet" type="text/css">
+<script src="/linux-in-house/pagefind/pagefind-ui.js"></script>
+<div id="search"></div>
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        new PagefindUI({ element: "#search", showSubResults: true });
+    });
+</script> </td>
+                </table>
+                <nav><ul>
+                    <li class="active"><a href="https://vm3.doncohoon.com/linux-in-house/category/linux.html">linux</a></li>
+                    <li><a href="https://vm3.doncohoon.com/linux-in-house/category/quest.html">quest</a></li>
+                    <li><a href="https://vm3.doncohoon.com/linux-in-house/category/writing.html">writing</a></li>
+                    <li><a href="https://vm3.doncohoon.com/linux-in-house/category/zines.html">zines</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://vm3.doncohoon.com/linux-in-house/matrix.html" rel="bookmark"
+           title="Permalink to Matrix">Matrix</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2023-01-25T10:20:00-05:00">
+                Published: Wed 25 January 2023
+        </abbr>
+		<br />
+        <abbr class="modified" title="2024-04-19T09:30:00-04:00">
+                Updated: Fri 19 April 2024
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://vm3.doncohoon.com/linux-in-house/author/don-cohoon.html">Don Cohoon</a>
+        </address>
+<p>In <a href="https://vm3.doncohoon.com/linux-in-house/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://vm3.doncohoon.com/linux-in-house/tag/systems.html">systems</a> </p>
+</footer><!-- /.post-info -->      <h1 id="matrix-messaging">Matrix Messaging</h1>
+<p>Matrix is a messaging system you can on your server. It allows your to send messages to a phone/watch from command line on the server. It is useful with HomeAssistant for monitoring the house.</p>
+<hr>
+<div class="toc"><span class="toctitle">Table of Contents</span><ul>
+<li><a href="#matrix-messaging">Matrix Messaging</a><ul>
+<li><a href="#install">Install</a></li>
+<li><a href="#configure">Configure</a></li>
+<li><a href="#create-users">Create User(s)</a></li>
+<li><a href="#database">Database</a><ul>
+<li><a href="#you-can-convert-the-database-to-postgresql">You can convert the database to PostgreSQL</a></li>
+</ul>
+</li>
+<li><a href="#secure-configuration">Secure Configuration</a></li>
+<li><a href="#matrix-commander-cli">Matrix Commander CLI</a></li>
+<li><a href="#send-matrix">Send Matrix</a></li>
+</ul>
+</li>
+<li><a href="#debug">Debug</a><ul>
+<li><a href="#matrix-commander-credentials">matrix-commander credentials</a></li>
+<li><a href="#change-user-password">Change User Password</a></li>
+<li><a href="#matrix-client-server-api">Matrix Client-Server API</a></li>
+</ul>
+</li>
+<li><a href="#alternative-nextcloud-talk">Alternative: Nextcloud Talk</a></li>
+<li><a href="#continue">Continue</a></li>
+</ul>
+</div>
+<hr>
+<blockquote>
+<p>Here is an example of a Matrix Client, called Element[1], available on iOS, Android and Desktops.</p>
+</blockquote>
+<p><img alt="IMG_2070A268049A-1.jpeg" src="/linux-in-house/images/IMG_2070A268049A-1.jpeg"></p>
+<ol>
+<li><a href="https://element.io/">https://element.io/</a></li>
+</ol>
+<h2 id="install">Install</h2>
+<p>Matrix.org provides Debian/Ubuntu packages of Synapse via https://packages.matrix.org/debian/. To install the latest release:</p>
+<p>Prerequsites:</p>
+<div class="highlight"><pre><span></span><code>sudo apt install -y lsb-release wget apt-transport-https
+</code></pre></div>
+
+<p>Matrix.org packages</p>
+<div class="highlight"><pre><span></span><code><span class="nx">sudo</span><span class="w"> </span><span class="nx">wget</span><span class="w"> </span><span class="o">-</span><span class="nx">O</span><span class="w"> </span><span class="o">/</span><span class="nx">usr</span><span class="o">/</span><span class="nx">share</span><span class="o">/</span><span class="nx">keyrings</span><span class="o">/</span><span class="nx">matrix</span><span class="o">-</span><span class="nx">org</span><span class="o">-</span><span class="nx">archive</span><span class="o">-</span><span class="nx">keyring</span><span class="p">.</span><span class="nx">gpg</span><span class="w"> </span><span class="nx">https</span><span class="p">:</span><span class="c1">//packages.matrix.org/debian/matrix-org-archive-keyring.gpg</span>
+<span class="nx">echo</span><span class="w"> </span><span class="s">&quot;deb [signed-by=/usr/share/keyrings/matrix-org-archive-keyring.gpg] https://packages.matrix.org/debian/ $(lsb_release -cs) main&quot;</span><span class="w"> </span><span class="o">|</span>
+<span class="w">    </span><span class="nx">sudo</span><span class="w"> </span><span class="nx">tee</span><span class="w"> </span><span class="o">/</span><span class="nx">etc</span><span class="o">/</span><span class="nx">apt</span><span class="o">/</span><span class="nx">sources</span><span class="p">.</span><span class="nx">list</span><span class="p">.</span><span class="nx">d</span><span class="o">/</span><span class="nx">matrix</span><span class="o">-</span><span class="nx">org</span><span class="p">.</span><span class="nx">list</span>
+
+<span class="nx">sudo</span><span class="w"> </span><span class="nx">apt</span><span class="w"> </span><span class="nx">update</span>
+<span class="nx">sudo</span><span class="w"> </span><span class="nx">apt</span><span class="w"> </span><span class="nx">install</span><span class="w"> </span><span class="nx">matrix</span><span class="o">-</span><span class="nx">synapse</span><span class="o">-</span><span class="nx">py3</span>
+</code></pre></div>
+
+<p>Reference: <a href="https://github.com/matrix-org/synapse/blob/master/INSTALL.md">https://github.com/matrix-org/synapse/blob/master/INSTALL.md</a></p>
+<h2 id="configure">Configure</h2>
+<ul>
+<li>Set the public_baseurl to your server's local IP address.</li>
+<li>Set the listeners to your server's local IP address too.</li>
+</ul>
+<p>File: /etc/matrix-synapse/homeserver.yaml</p>
+<div class="highlight"><pre><span></span><code><span class="err">#</span><span class="nx">public_baseurl</span><span class="p">:</span><span class="w"> </span><span class="nx">https</span><span class="p">:</span><span class="c1">//example.com/</span>
+<span class="nx">public_baseurl</span><span class="p">:</span><span class="w"> </span><span class="nx">http</span><span class="p">:</span><span class="c1">//192.168.1.3/</span>
+<span class="o">~</span>
+<span class="nx">listeners</span><span class="p">:</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="nx">port</span><span class="p">:</span><span class="w"> </span><span class="mi">8008</span>
+<span class="w">    </span><span class="nx">tls</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">    </span><span class="k">type</span><span class="p">:</span><span class="w"> </span><span class="nx">http</span>
+<span class="w">    </span><span class="nx">x_forwarded</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="nx">bind_addresses</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">&#39;</span><span class="o">::</span><span class="mi">1</span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="m m-Double">127.0.0.1</span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="m m-Double">192.168.1.3</span><span class="err">&#39;</span><span class="p">]</span>
+
+<span class="w">    </span><span class="nx">resources</span><span class="p">:</span>
+<span class="w">      </span><span class="o">-</span><span class="w"> </span><span class="nx">names</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="nx">client</span><span class="p">,</span><span class="w"> </span><span class="nx">federation</span><span class="p">]</span>
+<span class="w">        </span><span class="nx">compress</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="o">~</span>
+<span class="p">:</span><span class="nx">wq</span>
+</code></pre></div>
+
+<p>Set the shared secret and enable registration so we can create users for ourselves. We can disable it later because anyone with the shared secret can register, whether enabled or not.</p>
+<blockquote>
+<p>Create the shared secret like this:</p>
+<p><code>cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1</code></p>
+</blockquote>
+<p>File: /etc/matrix-synapse/homeserver.yaml</p>
+<div class="highlight"><pre><span></span><code><span class="p">#</span><span class="nl">enable_registration:</span><span class="w"> </span><span class="n">false</span>
+<span class="nl">enable_registration:</span><span class="w"> </span><span class="n">true</span>
+<span class="o">~</span>
+<span class="p">#</span><span class="w"> </span><span class="n">If</span><span class="w"> </span><span class="n">set</span><span class="p">,</span><span class="w"> </span><span class="n">allows</span><span class="w"> </span><span class="n">registration</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">standard</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="n">admin</span><span class="w"> </span><span class="n">accounts</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="n">anyone</span><span class="w"> </span><span class="n">who</span>
+<span class="p">#</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">shared</span><span class="w"> </span><span class="n">secret</span><span class="p">,</span><span class="w"> </span><span class="n">even</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">registration</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">otherwise</span><span class="w"> </span><span class="n">disabled</span><span class="p">.</span>
+<span class="p">#</span>
+<span class="p">#</span><span class="w"> </span><span class="n">Change</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="p">&#39;</span><span class="n">registration_shared_secret</span><span class="p">&#39;</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">random</span><span class="w"> </span><span class="n">passphrase</span><span class="w"> </span><span class="n">generated</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">below</span>
+<span class="p">#</span>
+<span class="nl">registration_shared_secret:</span><span class="w"> </span><span class="s">&quot;S9gYeYowVX49U6OG25EEROKU4b2gEU3S&quot;</span>
+<span class="p">#</span>
+<span class="nl">server_name:</span><span class="w"> </span><span class="n">localhost</span>
+<span class="p">#</span>
+<span class="o">:</span><span class="n">wq</span>
+</code></pre></div>
+
+<h2 id="create-users">Create User(s)</h2>
+<p>Using enable_registration=true, we can create users via register_new_matrix_user client.</p>
+<div class="highlight"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">register_new_matrix_user</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">matrix</span><span class="o">-</span><span class="n">synapse</span><span class="o">/</span><span class="n">homeserver</span><span class="p">.</span><span class="n">yaml</span><span class="w"> </span><span class="nl">http</span><span class="p">:</span><span class="o">//</span><span class="nl">localhost</span><span class="p">:</span><span class="mi">8008</span>
+<span class="k">New</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="n">localpart</span><span class="w"> </span><span class="o">[</span><span class="n">bob</span><span class="o">]</span><span class="err">:</span><span class="w"> </span><span class="n">alice</span>
+<span class="nl">Password</span><span class="p">:</span><span class="w"> </span>
+<span class="n">Confirm</span><span class="w"> </span><span class="nl">password</span><span class="p">:</span><span class="w"> </span>
+<span class="n">Make</span><span class="w"> </span><span class="k">admin</span><span class="w"> </span><span class="o">[</span><span class="n">no</span><span class="o">]</span><span class="err">:</span><span class="w"> </span><span class="n">n</span>
+<span class="n">Sending</span><span class="w"> </span><span class="n">registration</span><span class="w"> </span><span class="n">request</span><span class="p">...</span>
+<span class="n">Success</span><span class="err">!</span>
+</code></pre></div>
+
+<blockquote>
+<p>Must have python &gt; 2.7.9</p>
+</blockquote>
+<p>Reference: <a href="https://matrix-org.github.io/synapse/latest/usage/administration/admin_api/">https://matrix-org.github.io/synapse/latest/usage/administration/admin_api/</a></p>
+<h2 id="database">Database</h2>
+<p>Database is sqlite3, here:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ls<span class="w"> </span>/var/lib/matrix-synapse
+homeserver.db<span class="w">  </span>media
+</code></pre></div>
+
+<p>Check your database settings in the configuration file, connect to the correct database using either psql [database name] (if using PostgreSQL) or sqlite3 path/to/your/database.db (if using SQLite) and elevate the user @foo:bar.com to server administrator.</p>
+<div class="highlight"><pre><span></span><code><span class="k">UPDATE</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="k">admin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;@foo:bar.com&#39;</span><span class="p">;</span>
+</code></pre></div>
+
+<p>You can also revoke server admin by setting <code>admin = 0</code> above.</p>
+<blockquote>
+<p>Room administrators and server administrators are different. Server admins don't have any power over rooms. When you use the "Start chat" button in Riot, it'll set everyone as room admin.</p>
+</blockquote>
+<h4 id="you-can-convert-the-database-to-postgresql">You can convert the database to PostgreSQL</h4>
+<p><a href="https://github.com/matrix-org/synapse/blob/master/docs/postgres.md">https://github.com/matrix-org/synapse/blob/master/docs/postgres.md</a></p>
+<h2 id="secure-configuration">Secure Configuration</h2>
+<p>Once you have tested Matrix, created users and have a SSL/TLS certificate, you can enable external communication.</p>
+<blockquote>
+<p>Turn off registrations and comment out the registration_key.</p>
+</blockquote>
+<p>File: /etc/matrix-synapse/homeserver.yaml</p>
+<div class="highlight"><pre><span></span><code><span class="o">~</span>
+<span class="w">  </span><span class="mi">46</span><span class="w"> </span><span class="c1"># This is set in /etc/matrix-synapse/conf.d/server_name.yaml for Debian installations.</span>
+<span class="w">  </span><span class="mi">47</span><span class="w"> </span><span class="c1"># server_name: &quot;SERVERNAME&quot;</span>
+<span class="w">  </span><span class="mi">48</span><span class="w"> </span><span class="n">server_name</span><span class="p">:</span><span class="w"> </span><span class="n">matrix</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>
+<span class="o">~</span>
+<span class="w">  </span><span class="mi">64</span><span class="w"> </span><span class="c1"># The public-facing base URL that clients use to access this Homeserver (not</span>
+<span class="w">  </span><span class="mi">65</span><span class="w"> </span><span class="c1"># including _matrix/...). This is the same URL a user might enter into the</span>
+<span class="w">  </span><span class="mi">66</span><span class="w"> </span><span class="c1"># &#39;Custom Homeserver URL&#39; field on their client. If you use Synapse with a</span>
+<span class="w">  </span><span class="mi">67</span><span class="w"> </span><span class="c1"># reverse proxy, this should be the URL to reach Synapse via the proxy.</span>
+<span class="w">  </span><span class="mi">68</span><span class="w"> </span><span class="c1"># Otherwise, it should be the URL to reach Synapse&#39;s client HTTP listener (see</span>
+<span class="w">  </span><span class="mi">69</span><span class="w"> </span><span class="c1"># &#39;listeners&#39; below).</span>
+<span class="w">  </span><span class="mi">70</span><span class="w"> </span><span class="c1">#</span>
+<span class="w">  </span><span class="mi">71</span><span class="w"> </span><span class="c1">#public_baseurl: https://example.com/</span>
+<span class="w">  </span><span class="mi">72</span><span class="w"> </span><span class="n">public_baseurl</span><span class="p">:</span><span class="w"> </span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">matrix</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="mi">8448</span>
+<span class="o">~</span>
+<span class="mi">272</span><span class="w"> </span><span class="c1">#</span>
+<span class="w"> </span><span class="mi">273</span><span class="w"> </span><span class="n">listeners</span><span class="p">:</span>
+<span class="w"> </span><span class="mi">274</span><span class="w">   </span><span class="c1"># TLS-enabled listener: for when matrix traffic is sent directly to synapse.</span>
+<span class="w"> </span><span class="mi">275</span><span class="w">   </span><span class="c1">#</span>
+<span class="w"> </span><span class="mi">276</span><span class="w">   </span><span class="c1"># Disabled by default. To enable it, uncomment the following. (Note that you</span>
+<span class="w"> </span><span class="mi">277</span><span class="w">   </span><span class="c1"># will also need to give Synapse a TLS key and certificate: see the TLS section</span>
+<span class="w"> </span><span class="mi">278</span><span class="w">   </span><span class="c1"># below.)</span>
+<span class="w"> </span><span class="mi">279</span><span class="w">   </span><span class="c1">#</span>
+<span class="w"> </span><span class="mi">280</span><span class="w">   </span><span class="o">-</span><span class="w"> </span><span class="n">port</span><span class="p">:</span><span class="w"> </span><span class="mi">8448</span>
+<span class="w"> </span><span class="mi">281</span><span class="w">     </span><span class="n">type</span><span class="p">:</span><span class="w"> </span><span class="n">http</span>
+<span class="w"> </span><span class="mi">282</span><span class="w">     </span><span class="n">tls</span><span class="p">:</span><span class="w"> </span><span class="bp">true</span>
+<span class="w"> </span><span class="mi">283</span><span class="w">     </span><span class="n">bind_addresses</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;::1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;0.0.0.0&#39;</span><span class="p">]</span>
+<span class="w"> </span><span class="mi">284</span><span class="w">     </span><span class="n">resources</span><span class="p">:</span>
+<span class="w"> </span><span class="mi">285</span><span class="w">       </span><span class="o">-</span><span class="w"> </span><span class="n">names</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">federation</span><span class="p">]</span>
+<span class="w"> </span><span class="mi">286</span><span class="w"> </span>
+<span class="w"> </span><span class="mi">287</span><span class="w">   </span><span class="c1"># Unsecure HTTP listener: for when matrix traffic passes through a reverse proxy</span>
+<span class="w"> </span><span class="mi">288</span><span class="w">   </span><span class="c1"># that unwraps TLS.</span>
+<span class="w"> </span><span class="mi">289</span><span class="w">   </span><span class="c1">#</span>
+<span class="w"> </span><span class="mi">290</span><span class="w">   </span><span class="c1"># If you plan to use a reverse proxy, please see</span>
+<span class="w"> </span><span class="mi">291</span><span class="w">   </span><span class="c1"># https://matrix-org.github.io/synapse/latest/reverse_proxy.html.</span>
+<span class="w"> </span><span class="mi">292</span><span class="w">   </span><span class="c1">#</span>
+<span class="w"> </span><span class="mi">293</span><span class="w">   </span><span class="o">-</span><span class="w"> </span><span class="n">port</span><span class="p">:</span><span class="w"> </span><span class="mi">8008</span>
+<span class="w"> </span><span class="mi">294</span><span class="w">     </span><span class="n">tls</span><span class="p">:</span><span class="w"> </span><span class="bp">false</span>
+<span class="w"> </span><span class="mi">295</span><span class="w">     </span><span class="n">type</span><span class="p">:</span><span class="w"> </span><span class="n">http</span>
+<span class="w"> </span><span class="mi">296</span><span class="w">     </span><span class="n">x_forwarded</span><span class="p">:</span><span class="w"> </span><span class="bp">true</span>
+<span class="w"> </span><span class="mi">297</span><span class="w">     </span><span class="n">bind_addresses</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;::1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;192.168.1.3&#39;</span><span class="p">]</span>
+<span class="w"> </span><span class="mi">298</span><span class="w"> </span>
+<span class="w"> </span><span class="mi">299</span><span class="w">     </span><span class="n">resources</span><span class="p">:</span>
+<span class="w"> </span><span class="mi">300</span><span class="w">       </span><span class="o">-</span><span class="w"> </span><span class="n">names</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">federation</span><span class="p">]</span>
+<span class="w"> </span><span class="mi">301</span><span class="w">         </span><span class="n">compress</span><span class="p">:</span><span class="w"> </span><span class="bp">false</span>
+<span class="w"> </span><span class="mi">302</span><span class="w"> </span>
+<span class="o">~</span>
+<span class="w"> </span><span class="mi">547</span><span class="w"> </span><span class="c1">## TLS ##</span>
+<span class="w"> </span><span class="mi">548</span><span class="w"> </span>
+<span class="w"> </span><span class="mi">549</span><span class="w"> </span><span class="c1"># PEM-encoded X509 certificate for TLS.</span>
+<span class="w"> </span><span class="mi">550</span><span class="w"> </span><span class="c1"># This certificate, as of Synapse 1.0, will need to be a valid and verifiable</span>
+<span class="w"> </span><span class="mi">551</span><span class="w"> </span><span class="c1"># certificate, signed by a recognised Certificate Authority.</span>
+<span class="w"> </span><span class="mi">552</span><span class="w"> </span><span class="c1">#</span>
+<span class="w"> </span><span class="mi">553</span><span class="w"> </span><span class="c1"># Be sure to use a `.pem` file that includes the full certificate chain including</span>
+<span class="w"> </span><span class="mi">554</span><span class="w"> </span><span class="c1"># any intermediate certificates (for instance, if using certbot, use</span>
+<span class="w"> </span><span class="mi">555</span><span class="w"> </span><span class="c1"># `fullchain.pem` as your certificate, not `cert.pem`).</span>
+<span class="w"> </span><span class="mi">556</span><span class="w"> </span><span class="c1">#</span>
+<span class="w"> </span><span class="mi">557</span><span class="w"> </span><span class="c1">#tls_certificate_path: &quot;/etc/matrix-synapse/SERVERNAME.tls.crt&quot;</span>
+<span class="w"> </span><span class="mi">558</span><span class="w"> </span><span class="n">tls_certificate_path</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/etc/letsencrypt/live/example.com/fullchain.pem&quot;</span>
+<span class="w"> </span><span class="mi">559</span><span class="w"> </span>
+<span class="w"> </span><span class="mi">560</span><span class="w"> </span><span class="c1"># PEM-encoded private key for TLS</span>
+<span class="w"> </span><span class="mi">561</span><span class="w"> </span><span class="c1">#</span>
+<span class="w"> </span><span class="mi">562</span><span class="w"> </span><span class="c1">#tls_private_key_path: &quot;/etc/matrix-synapse/SERVERNAME.tls.key&quot;</span>
+<span class="w"> </span><span class="mi">563</span><span class="w"> </span><span class="n">tls_private_key_path</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/etc/letsencrypt/live/example.com/privkey.pem&quot;</span>
+<span class="o">~</span>
+<span class="mi">755</span><span class="w"> </span><span class="n">database</span><span class="p">:</span>
+<span class="w"> </span><span class="mi">756</span><span class="w">   </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="n">psycopg2</span>
+<span class="w"> </span><span class="mi">757</span><span class="w">   </span><span class="n">args</span><span class="p">:</span>
+<span class="w"> </span><span class="mi">758</span><span class="w">     </span><span class="n">user</span><span class="p">:</span><span class="w"> </span><span class="n">matrix_user</span>
+<span class="w"> </span><span class="mi">759</span><span class="w">     </span><span class="n">password</span><span class="p">:</span><span class="w"> </span><span class="o">************</span>
+<span class="w"> </span><span class="mi">760</span><span class="w">     </span><span class="n">database</span><span class="p">:</span><span class="w"> </span><span class="n">matrix</span>
+<span class="w"> </span><span class="mi">761</span><span class="w">     </span><span class="n">host</span><span class="p">:</span><span class="w"> </span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span>
+<span class="w"> </span><span class="mi">762</span><span class="w">     </span><span class="n">cp_min</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span>
+<span class="w"> </span><span class="mi">763</span><span class="w">     </span><span class="n">cp_max</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span>
+<span class="w"> </span><span class="mi">764</span><span class="w"> </span>
+<span class="w"> </span><span class="mi">765</span><span class="w">     </span><span class="c1"># seconds of inactivity after which TCP should send a keepalive message to the server</span>
+<span class="w"> </span><span class="mi">766</span><span class="w">     </span><span class="n">keepalives_idle</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span>
+<span class="w"> </span><span class="mi">767</span><span class="w"> </span>
+<span class="w"> </span><span class="mi">768</span><span class="w">     </span><span class="c1"># the number of seconds after which a TCP keepalive message that is not</span>
+<span class="w"> </span><span class="mi">769</span><span class="w">     </span><span class="c1"># acknowledged by the server should be retransmitted</span>
+<span class="w"> </span><span class="mi">770</span><span class="w">     </span><span class="n">keepalives_interval</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span>
+<span class="w"> </span><span class="mi">771</span><span class="w"> </span>
+<span class="w"> </span><span class="mi">772</span><span class="w">     </span><span class="c1"># the number of TCP keepalives that can be lost before the client&#39;s connection</span>
+<span class="w"> </span><span class="mi">773</span><span class="w">     </span><span class="c1"># to the server is considered dead</span>
+<span class="w"> </span><span class="mi">774</span><span class="w">     </span><span class="n">keepalives_count</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span>
+<span class="o">~</span>
+<span class="w"> </span><span class="mi">777</span><span class="w"> </span><span class="c1">## Logging ##</span>
+<span class="w"> </span><span class="mi">778</span><span class="w"> </span>
+<span class="w"> </span><span class="mi">779</span><span class="w"> </span><span class="c1"># A yaml python logging config file as described by</span>
+<span class="w"> </span><span class="mi">780</span><span class="w"> </span><span class="c1"># https://docs.python.org/3.7/library/logging.config.html#configuration-dictionary-schema</span>
+<span class="w"> </span><span class="mi">781</span><span class="w"> </span><span class="c1">#</span>
+<span class="w"> </span><span class="mi">782</span><span class="w"> </span><span class="n">log_config</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/etc/matrix-synapse/log.yaml&quot;</span>
+<span class="o">~</span>
+<span class="w"> </span><span class="mi">906</span><span class="w"> </span><span class="c1"># Directory where uploaded images and attachments are stored.</span>
+<span class="w"> </span><span class="mi">907</span><span class="w"> </span><span class="c1">#</span>
+<span class="w"> </span><span class="mi">908</span><span class="w"> </span><span class="n">media_store_path</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/var/lib/matrix-synapse/media&quot;</span>
+<span class="o">~</span>
+<span class="mi">1139</span><span class="w"> </span><span class="c1"># Enable registration for new users.</span>
+<span class="mi">1140</span><span class="w"> </span><span class="c1">#</span>
+<span class="mi">1141</span><span class="w"> </span><span class="c1">#enable_registration: false</span>
+<span class="mi">1142</span><span class="w"> </span><span class="n">enable_registration</span><span class="p">:</span><span class="w"> </span><span class="bp">false</span>
+<span class="o">~</span>
+<span class="mi">1190</span><span class="w"> </span><span class="c1"># If set, allows registration of standard or admin accounts by anyone who</span>
+<span class="mi">1191</span><span class="w"> </span><span class="c1"># has the shared secret, even if registration is otherwise disabled.</span>
+<span class="mi">1192</span><span class="w"> </span><span class="c1">#</span>
+<span class="mi">1193</span><span class="w"> </span><span class="c1">#registration_shared_secret: &lt;PRIVATE STRING&gt;</span>
+<span class="mi">1194</span><span class="w"> </span><span class="n">registration_shared_secret</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;*****************************&quot;</span>
+<span class="o">~</span>
+<span class="mi">1438</span><span class="w"> </span><span class="c1">## Signing Keys ##</span>
+<span class="mi">1439</span><span class="w"> </span>
+<span class="mi">1440</span><span class="w"> </span><span class="c1"># Path to the signing key to sign messages with</span>
+<span class="mi">1441</span><span class="w"> </span><span class="c1">#</span>
+<span class="mi">1442</span><span class="w"> </span><span class="n">signing_key_path</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/etc/matrix-synapse/homeserver.signing.key&quot;</span>
+<span class="o">~</span>
+<span class="c1">#trusted_key_servers:</span>
+<span class="mi">1500</span><span class="w"> </span><span class="c1">#  - server_name: &quot;my_trusted_server.example.com&quot;</span>
+<span class="mi">1501</span><span class="w"> </span><span class="c1">#    verify_keys:</span>
+<span class="mi">1502</span><span class="w"> </span><span class="c1">#      &quot;ed25519:auto&quot;: &quot;abcdefghijklmnopqrstuvwxyzabcdefghijklmopqr&quot;</span>
+<span class="mi">1503</span><span class="w"> </span><span class="c1">#  - server_name: &quot;my_other_trusted_server.example.com&quot;</span>
+<span class="mi">1504</span><span class="w"> </span><span class="c1">#</span>
+<span class="mi">1505</span><span class="w"> </span><span class="n">trusted_key_servers</span><span class="p">:</span>
+<span class="mi">1506</span><span class="w">   </span><span class="o">-</span><span class="w"> </span><span class="n">server_name</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;matrix.org&quot;</span>
+<span class="o">~</span>
+</code></pre></div>
+
+<p>File: /etc/matrix-synapse/conf.d/server_name.yaml</p>
+<div class="highlight"><pre><span></span><code> # This file is autogenerated, and will be recreated on upgrade if it is deleted.
+<span class="gh">#</span> Any changes you make will be preserved.
+
+<span class="gh">#</span> The domain name of the server, with optional explicit port.
+<span class="gh">#</span> This is used by remote servers to connect to this server,
+<span class="gh">#</span> e.g. matrix.org, localhost:8080, etc.
+<span class="gh">#</span> This is also the last part of your UserID.
+<span class="gh">#</span>
+server_name: matrix.example.com
+</code></pre></div>
+
+<h2 id="matrix-commander-cli">Matrix Commander CLI</h2>
+<p>This will allow us to send text messages to our phone/watch from homeassistant.</p>
+<p>Follow the instruction on the matrix-commander website. Specifically run with the <code>--login</code> parameter to create ~/.config/matrix-commander/credentials.json file.</p>
+<p>Reference: <a href="https://github.com/8go/matrix-commander">https://github.com/8go/matrix-commander</a></p>
+<h2 id="send-matrix">Send Matrix</h2>
+<p>This script will assist in watching homeassistant for new messages, then sending them out.</p>
+<p>File: ~/matrix/sendmatrix.sh </p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">#----------------------------------------------------</span>
+<span class="c1"># File: sendmatrix.sh</span>
+<span class="c1">#</span>
+<span class="c1"># Usage: sendmatrix.sh</span>
+<span class="c1">#</span>
+<span class="c1"># Purpose: Watch for new lines in a homeassistant (hass)</span>
+<span class="c1">#  file (${HOME}/wave/hass/sendmatrix.log) and send an matrix </span>
+<span class="c1">#  message with those new line(s)</span>
+<span class="c1">#</span>
+<span class="c1"># Dependencies: </span>
+<span class="c1">#  - git clone https://github.com/8go/matrix-commander.git</span>
+<span class="c1">#  - sudo apt-get install inotify-tools</span>
+<span class="c1">#  - retail : git clone https://github.com/mbucc/retail.git</span>
+<span class="c1">#  - NOTE: Docker configures / as /config for homeassistant</span>
+<span class="c1">#          and ~/wave/hass is /</span>
+<span class="c1">#  - ~/wave/hass/configuration.yaml</span>
+<span class="c1">#       ~</span>
+<span class="c1">#       shell_command:</span>
+<span class="c1">#         xmpp_light_off: /config/script.sh Outside light off</span>
+<span class="c1">#       ~</span>
+<span class="c1">#  - ~/wave/hass/automations.yaml </span>
+<span class="c1">#       ~</span>
+<span class="c1">#       - service: shell_command.xmpp_light_off</span>
+<span class="c1">#       ~</span>
+<span class="c1">#  - ~/wave/hass/script.sh</span>
+<span class="c1">#       #!/bin/bash</span>
+<span class="c1">#       echo &quot;${@} - $(date)&quot; &gt;&gt;  /config/sendxmpp.log</span>
+<span class="c1">#</span>
+<span class="c1"># Date     Author     Description</span>
+<span class="c1"># ----     ------     -----------</span>
+<span class="c1"># Sep-2021 Don Cohoon Created</span>
+<span class="c1"># Sep-2022 Don Cohoon Updated matrix-commander version</span>
+<span class="c1"># Oct-2022 Don Cohoon Fix matrix commander parameters</span>
+<span class="c1">#----------------------------------------------------</span>
+<span class="nv">HOME</span><span class="o">=</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>
+
+<span class="c1"># configure hass interface</span>
+<span class="nv">DIR</span><span class="o">=</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/wave
+<span class="nv">OFFSET</span><span class="o">=</span><span class="si">${</span><span class="nv">DIR</span><span class="si">}</span>/sendmatrix.cnt
+<span class="nv">RESULT</span><span class="o">=</span><span class="si">${</span><span class="nv">DIR</span><span class="si">}</span>/sendmatrix.txt
+<span class="nv">MSGS</span><span class="o">=</span><span class="si">${</span><span class="nv">DIR</span><span class="si">}</span>/hass/sendsms.log
+<span class="nv">LOG</span><span class="o">=</span><span class="si">${</span><span class="nv">DIR</span><span class="si">}</span>/sendmatrix.log
+<span class="nv">MATRIX_COMMANDER</span><span class="o">=</span><span class="nv">$HOME</span>/.local/lib/python3.10/site-packages/matrix_commander/matrix_commander.py
+<span class="nv">MATRIX_CONFIG</span><span class="o">=</span><span class="nv">$HOME</span>/.config/matrix-commander/credentials.json
+<span class="nv">MATRIX_STORE</span><span class="o">=</span><span class="nv">$HOME</span>/.config/matrix-commander/store
+<span class="c1">#MATRIX_DEBUG=&quot;-d&quot;</span>
+<span class="nv">MATRIX_DEBUG</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+
+<span class="c1">#</span>
+date<span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="si">${</span><span class="nv">LOG</span><span class="si">}</span>
+<span class="c1"># monitor mode, look for file ${MSGS} modification</span>
+/usr/bin/inotifywait<span class="w"> </span>-m<span class="w"> </span>-e<span class="w"> </span>modify<span class="w"> </span><span class="si">${</span><span class="nv">MSGS</span><span class="si">}</span><span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="nb">read</span><span class="w"> </span>line
+<span class="k">do</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>date<span class="k">)</span><span class="s2"> - </span><span class="nv">$line</span><span class="s2">&quot;</span><span class="w">  </span>&gt;&gt;<span class="w"> </span><span class="si">${</span><span class="nv">LOG</span><span class="si">}</span>
+<span class="w">  </span><span class="c1"># grab any hass script.sh new lines since last time</span>
+<span class="w">  </span>/usr/local/bin/retail<span class="w"> </span>-T<span class="w"> </span><span class="si">${</span><span class="nv">OFFSET</span><span class="si">}</span><span class="w"> </span><span class="si">${</span><span class="nv">MSGS</span><span class="si">}</span><span class="w"> </span>&gt;<span class="w"> </span><span class="si">${</span><span class="nv">RESULT</span><span class="si">}</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>!<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">RESULT</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span>rm<span class="w"> </span><span class="si">${</span><span class="nv">RESULT</span><span class="si">}</span>
+<span class="w">  </span><span class="k">else</span>
+<span class="w">    </span><span class="c1"># send text message to phone</span>
+<span class="w">    </span><span class="nv">MSG</span><span class="o">=</span><span class="k">$(</span>/bin/cat<span class="w"> </span><span class="si">${</span><span class="nv">RESULT</span><span class="si">}</span><span class="k">)</span>
+<span class="w">    </span>/bin/cat<span class="w"> </span><span class="si">${</span><span class="nv">RESULT</span><span class="si">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>/usr/bin/python3<span class="w"> </span><span class="si">${</span><span class="nv">MATRIX_COMMANDER</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>-c<span class="w"> </span><span class="si">${</span><span class="nv">MATRIX_CONFIG</span><span class="si">}</span><span class="w"> </span>-s<span class="w"> </span><span class="si">${</span><span class="nv">MATRIX_STORE</span><span class="si">}</span><span class="w"> </span>--no-ssl<span class="w"> </span><span class="si">${</span><span class="nv">MATRIX_DEBUG</span><span class="si">}</span><span class="w"> </span>-m<span class="w"> </span>-<span class="w"> </span>&gt;&gt;<span class="si">${</span><span class="nv">LOG</span><span class="si">}</span><span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+<span class="w">    </span><span class="c1"># nextcloud talk integration </span>
+<span class="w">    </span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/nextcloud/talk_mattermost.sh<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">MSG</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="w">    </span><span class="c1">#</span>
+<span class="w">    </span>/bin/cat<span class="w"> </span><span class="si">${</span><span class="nv">RESULT</span><span class="si">}</span><span class="w"> </span>&gt;&gt;<span class="si">${</span><span class="nv">LOG</span><span class="si">}</span><span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+<span class="w">    </span>date<span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="si">${</span><span class="nv">LOG</span><span class="si">}</span>
+<span class="w">  </span><span class="k">fi</span>
+<span class="k">done</span>
+</code></pre></div>
+
+<h1 id="debug">Debug</h1>
+<h2 id="matrix-commander-credentials">matrix-commander credentials</h2>
+<p>This is the credentials.json file matrix-commander.py creates and uses.</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w">  </span>~/.config/matrix-commander/credentials.json<span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>.
+<span class="o">{</span>
+<span class="w">  </span><span class="s2">&quot;homeserver&quot;</span>:<span class="w"> </span><span class="s2">&quot;http://127.0.0.1:8008&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;device_id&quot;</span>:<span class="w"> </span><span class="s2">&quot;GTSIKDHJEG&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;user_id&quot;</span>:<span class="w"> </span><span class="s2">&quot;@user:matrix.example.com&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;room_id&quot;</span>:<span class="w"> </span><span class="s2">&quot;!JshkYudiHksdhKHSKk:matrix.example.com&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;access_token&quot;</span>:<span class="w"> </span><span class="s2">&quot;syt_ZTSjdlksshoidywlSKkDHIASLJW_0D2t3m&quot;</span>
+<span class="o">}</span>
+</code></pre></div>
+
+<p>If you are interested in where the element values derive from, check these:</p>
+<ul>
+<li>device_id - <a href="https://matrix-org.github.io/synapse/develop/admin_api/user_admin_api.html?highlight=device_id#show-a-device">https://matrix-org.github.io/synapse/develop/admin_api/user_admin_api.html?highlight=device_id#show-a-device</a></li>
+<li>user_id - <a href="https://matrix-org.github.io/synapse/develop/admin_api/user_admin_api.html">https://matrix-org.github.io/synapse/develop/admin_api/user_admin_api.html</a></li>
+<li>room_id - <a href="https://matrix-org.github.io/synapse/v1.41/admin_api/rooms.html">https://matrix-org.github.io/synapse/v1.41/admin_api/rooms.html</a></li>
+<li>access_token - <code>curl -XPOST \
+  -d '{"type":"m.login.password", "user":"&lt;userid&gt;", "password":"&lt;password&gt;"}' \
+  "https://example.com:8448/_matrix/client/r0/login"</code></li>
+</ul>
+<h2 id="change-user-password">Change User Password</h2>
+<p>As an admin, you can reset another user's password.</p>
+<p>Login as an admin and save an access token.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">curl</span><span class="w"> </span><span class="o">-</span><span class="nx">XPOST</span><span class="w"> </span><span class="o">-</span><span class="nx">d</span><span class="w"> </span><span class="err">&#39;</span><span class="p">{</span><span class="s">&quot;type&quot;</span><span class="p">:</span><span class="s">&quot;m.login.password&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;user&quot;</span><span class="p">:</span><span class="s">&quot;&lt;userId&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;password&quot;</span><span class="p">:</span><span class="s">&quot;&lt;pasword&gt;&quot;</span><span class="p">}</span><span class="err">&#39;</span><span class="w"> </span><span class="s">&quot;https://localhost:8448/_matrix/client/r0/login&quot;</span>
+</code></pre></div>
+
+<p>Using that access token, reset any user's password.</p>
+<div class="highlight"><pre><span></span><code>curl -XPOST -H &quot;Authorization: Bearer &lt;access_token&gt;&quot; -H &quot;Content-Type: application/json&quot; -d &#39;{&quot;new_password&quot;:&quot;&lt;new_password&gt;&quot;}&#39; &quot;https://localhost:8448/_matrix/client/r0/admin/reset_password/&lt;userId&gt;&quot;
+</code></pre></div>
+
+<blockquote>
+<p><userId> is fully qualified. E.g. @user:server.com</p>
+</blockquote>
+<p>Reference:</p>
+<ul>
+<li><a href="https://github.com/matrix-org/synapse/blob/develop/docs/admin_api/user_admin_api.md">https://github.com/matrix-org/synapse/blob/develop/docs/admin_api/user_admin_api.md</a></li>
+</ul>
+<h2 id="matrix-client-server-api">Matrix Client-Server API</h2>
+<p>The easiest way to administer a Matrix-Synapse server is through the Client-Server API [1].</p>
+<p>Visit the API overview for many examples with code for: </p>
+<ul>
+<li>Server Administration, </li>
+<li>Account Management, </li>
+<li>Spaces, </li>
+<li>Event Relationships, </li>
+<li>Threads, </li>
+<li>Room Participation, </li>
+<li>Session Management, </li>
+<li>Capabilities, </li>
+<li>Room Creation, </li>
+<li>Device Management, </li>
+<li>Room Discovery, </li>
+<li>Room Directory, </li>
+<li>Room Membership, </li>
+<li>End-to-End Encryption, </li>
+<li>Push Notifications, </li>
+<li>Presence, </li>
+<li>User Data, </li>
+<li>
+<p>and more.</p>
+</li>
+<li>
+<p><a href="https://matrix.org/docs/api/#overview">https://matrix.org/docs/api/#overview</a></p>
+</li>
+</ul>
+<h1 id="alternative-nextcloud-talk">Alternative: Nextcloud Talk</h1>
+<p>NextCloud Talk is part of <a href="Cloud.md?fileId=571041">NextCloud Services</a>.</p>
+<h1 id="continue">Continue</h1>
+<p>Now that you have set up Matrix Communication on your server, you can read some news to send to others. Read on to find out how to set up a local news/RSS reader.</p>
+<p>Proceed in the order presented, some things are depending on prior setups.</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://lwn.net/">Linux Weekly News</a></li>
+                            <li><a href="https://fullcirclemagazine.org/">Full Circle Magazine</a></li>
+                            <li><a href="https://www.linuxjournal.com/">Linux Journal</a></li>
+                            <li><a href="https://www.linux-magazine.com/">Linux Magazine</a></li>
+                            <li><a href="https://www.thefarside.com/">The Far Side</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://fosstodon.org/@Cohoon">Feedback</a></li>
+                            <li><a href="https://fosstodon.org/@Cohoon.rss">Mastodon RSS feed</a></li>
+                            <li><a href="https://linux-in-the-house.pages.dev/">Book</a></li>
+                            <li><a href="/linux-in-house/author/don-cohoon.html">Created by: Don Cohoon</a></li>
+                            <li><a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License </a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <p>
+                Made for Humans, by a Human.
+                </p>
+                <p>
+                Site by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>, via <a rel="nofollow" href="https://www.python.org/">Python</a>.
+                </p><!-- /#about -->
+
+                <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+                <p> Version:  3.297 </p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
