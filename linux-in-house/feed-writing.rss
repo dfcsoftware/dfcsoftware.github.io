@@ -3,6 +3,13 @@
 
 <channel>
  <item>
+  <title>Water-heater</title>
+  <link>/linux-in-house/writing/water-heater.html</link>
+  <guid>/linux-in-house/writing/water-heater.html</guid>
+  <pubDate>Wed, 08 Oct 2025 10:20:00 -0400</pubDate>
+  <description>A Tankless Water Heater requires annual maintenance, and once you do it, it becomes easy.</description>
+ </item>
+ <item>
   <title>Teach</title>
   <link>/linux-in-house/writing/teach.html</link>
   <guid>/linux-in-house/writing/teach.html</guid>
