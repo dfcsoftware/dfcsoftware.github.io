@@ -1,0 +1,2410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="generator" content="Pelican" />
+        <title>Setup Server</title>
+        <link rel="icon" type="image/svg" href="https://vm3.doncohoon.com/linux-in-house/images/favicon.svg">
+        <link rel="stylesheet" href="https://vm3.doncohoon.com/linux-in-house/theme/css/main.css" type="text/css" />
+        <!-- <link rel="stylesheet" href="/theme/css/main.css" type="text/css" />  -->
+        <meta name="description" content="Set Up a New Server I use this as a guide to enable proper monitoring and maintenance of any new server on the network. Table of Contents Set Up a..." />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <table>
+                    <td><h1><a href="https://vm3.doncohoon.com/linux-in-house/">Linux Home Administration</a></h1></td>
+                    <td> <link href="/linux-in-house/pagefind/pagefind-ui.css" rel="stylesheet" type="text/css">
+<script src="/linux-in-house/pagefind/pagefind-ui.js"></script>
+<div id="search"></div>
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        new PagefindUI({ element: "#search", showSubResults: true });
+    });
+</script> </td>
+                </table>
+                <nav><ul>
+                    <li class="active"><a href="https://vm3.doncohoon.com/linux-in-house/category/linux.html">linux</a></li>
+                    <li><a href="https://vm3.doncohoon.com/linux-in-house/category/quest.html">quest</a></li>
+                    <li><a href="https://vm3.doncohoon.com/linux-in-house/category/writing.html">writing</a></li>
+                    <li><a href="https://vm3.doncohoon.com/linux-in-house/category/zines.html">zines</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://vm3.doncohoon.com/linux-in-house/setup-server.html" rel="bookmark"
+           title="Permalink to Setup Server">Setup Server</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2023-02-02T10:20:00-05:00">
+                Published: Thu 02 February 2023
+        </abbr>
+		<br />
+        <abbr class="modified" title="2024-05-01T09:30:00-04:00">
+                Updated: Wed 01 May 2024
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://vm3.doncohoon.com/linux-in-house/author/don-cohoon.html">Don Cohoon</a>
+        </address>
+<p>In <a href="https://vm3.doncohoon.com/linux-in-house/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://vm3.doncohoon.com/linux-in-house/tag/setup.html">setup</a> </p>
+</footer><!-- /.post-info -->      <h1 id="set-up-a-new-server">Set Up a New Server</h1>
+<p>I use this as a guide to enable proper monitoring and maintenance of any new server on the network.</p>
+<p><br/></p>
+<hr>
+<div class="toc"><span class="toctitle">Table of Contents</span><ul>
+<li><a href="#set-up-a-new-server">Set Up a New Server</a><ul>
+<li><a href="#sample-home-network">Sample Home Network:</a></li>
+<li><a href="#check-your-network">Check your Network</a></li>
+<li><a href="#update-package-repository">Update Package Repository</a><ul>
+<li><a href="#debian">Debian</a></li>
+<li><a href="#redhat">RedHat</a></li>
+</ul>
+</li>
+<li><a href="#new-user-and-group-to-use">New User and Group to Use</a><ul>
+<li><a href="#debian_1">Debian</a></li>
+<li><a href="#redhat_1">RedHat</a><ul>
+<li><a href="#also-set-the-root-password">Also set the root password</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#firewall">Firewall</a><ul>
+<li><a href="#debian_2">Debian</a></li>
+<li><a href="#redhat_2">RedHat</a><ul>
+<li><a href="#block-bad-actors-whole-autonomous-system-1-groups-at-a-time">Block bad actors, whole Autonomous System [1] groups at a time</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#set-your-host-and-domain-names">Set your host and domain names</a></li>
+<li><a href="#rsyslog-send-syslog-entries-to-remote-syslog-host">Rsyslog - Send Syslog Entries to Remote Syslog Host</a><ul>
+<li><a href="#local-system">Local System</a></li>
+<li><a href="#remote-syslog-host">Remote Syslog Host</a></li>
+<li><a href="#restart-rsyslog">Restart rsyslog</a></li>
+</ul>
+</li>
+<li><a href="#time-control">Time Control</a><ul>
+<li><a href="#timezone">timezone</a></li>
+<li><a href="#redhat_3">RedHat</a></li>
+<li><a href="#debian_3">Debian</a></li>
+</ul>
+</li>
+<li><a href="#e-mail-client-for-sending-local-mail">E-Mail - Client for Sending Local Mail</a><ul>
+<li><a href="#identify-mail-client-host-and-domain">Identify Mail Client Host and Domain</a></li>
+<li><a href="#mail-transport-agent-mta-packages">Mail Transport Agent (MTA) packages</a></li>
+<li><a href="#mac-os-send-mail-to-local-server-not-system-configured-in-mail-app">MAC OS send mail to local server, not system configured in mail app</a></li>
+<li><a href="#test-mail">Test mail</a></li>
+</ul>
+</li>
+<li><a href="#monit-monitor-system-and-restart-processes">Monit - Monitor System and Restart Processes</a><ul>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#configuration">Configuration</a></li>
+<li><a href="#process">Process</a></li>
+</ul>
+</li>
+<li><a href="#munin-resource-history-monitor">Munin - Resource History Monitor</a><ul>
+<li><a href="#_1"></a></li>
+<li><a href="#alert-via-e-mail">Alert via e-mail:</a></li>
+<li><a href="#adjust-disk-full-thresholds">Adjust disk full thresholds:</a></li>
+<li><a href="#graph-example">Graph Example</a></li>
+<li><a href="#redhat-alternative">Redhat Alternative</a></li>
+</ul>
+</li>
+<li><a href="#fail2ban-automatic-firewall-blocking">Fail2ban - Automatic Firewall Blocking</a><ul>
+<li><a href="#install">Install</a></li>
+<li><a href="#configure">Configure</a></li>
+</ul>
+</li>
+<li><a href="#backup-save-your-files-daily">Backup - Save Your Files Daily</a><ul>
+<li><a href="#automatic-backup-to-usb-disk">Automatic backup to USB disk</a></li>
+<li><a href="#automatic-backup-of-postgresql-database">Automatic Backup of PostgreSQL Database</a><ul>
+<li><a href="#crondaily">cron.daily</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#rsync-remote-file-synchronization">Rsync - Remote File Synchronization</a><ul>
+<li><a href="#schedule">Schedule</a></li>
+<li><a href="#script">Script</a></li>
+</ul>
+</li>
+<li><a href="#logwatch-daily-alert-of-logging-activity">Logwatch - Daily Alert of Logging Activity</a><ul>
+<li><a href="#installation_1">Installation</a></li>
+<li><a href="#schedule_1">Schedule</a></li>
+<li><a href="#add-services">Add services</a></li>
+</ul>
+</li>
+<li><a href="#logcheck-mails-anomalies-in-the-system-logfiles-to-the-admin">Logcheck - mails anomalies in the system logfiles to the admin</a><ul>
+<li><a href="#installation_2">Installation</a></li>
+<li><a href="#schedule_2">Schedule</a></li>
+<li><a href="#change-email-destination">Change email destination</a></li>
+</ul>
+</li>
+<li><a href="#sysstat-gather-system-usage-statistics">Sysstat - Gather System Usage Statistics</a><ul>
+<li><a href="#installation_3">Installation</a></li>
+<li><a href="#configuration_1">Configuration</a></li>
+<li><a href="#past-statistics-report">Past Statistics Report</a></li>
+<li><a href="#sample-runs">Sample Runs</a></li>
+</ul>
+</li>
+<li><a href="#smart-disk-monitoring">S.M.A.R.T. Disk Monitoring</a><ul>
+<li><a href="#install-software">Install software:</a></li>
+<li><a href="#configure_1">Configure</a></li>
+<li><a href="#restart">Restart</a></li>
+<li><a href="#monitoring-script-for-testing-and-reporting">Monitoring script for testing and reporting.</a></li>
+<li><a href="#smartd-database">smartd database</a></li>
+</ul>
+</li>
+<li><a href="#login-notices-to-users-motdissueissuenet">Login Notices to Users - motd/issue/issue.net</a><ul>
+<li><a href="#installation_4">Installation</a></li>
+<li><a href="#configuration_2">Configuration</a></li>
+<li><a href="#verify">Verify</a></li>
+<li><a href="#example-login">Example login</a></li>
+</ul>
+</li>
+<li><a href="#login-notification">Login notification</a></li>
+<li><a href="#continue">Continue</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<hr>
+<h3 id="sample-home-network">Sample Home Network:</h3>
+<div class="graphviz"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIKICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPgo8IS0tIEdlbmVyYXRlZCBieSBncmFwaHZpeiB2ZXJzaW9uIDIuNDMuMCAoMCkKIC0tPgo8IS0tIFRpdGxlOiBncmFwaE5hbWUgUGFnZXM6IDEgLS0+Cjxzdmcgd2lkdGg9IjYzOHB0IiBoZWlnaHQ9IjMzMnB0Igogdmlld0JveD0iMC4wMCAwLjAwIDYzOC4xOSAzMzIuMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgo8ZyBpZD0iZ3JhcGgwIiBjbGFzcz0iZ3JhcGgiIHRyYW5zZm9ybT0ic2NhbGUoMSAxKSByb3RhdGUoMCkgdHJhbnNsYXRlKDQgMzI4KSI+Cjx0aXRsZT5ncmFwaE5hbWU8L3RpdGxlPgo8cG9seWdvbiBmaWxsPSJsaWdodHN0ZWVsYmx1ZSIgc3Ryb2tlPSJ0cmFuc3BhcmVudCIgcG9pbnRzPSItNCw0IC00LC0zMjggNjM0LjE5LC0zMjggNjM0LjE5LDQgLTQsNCIvPgo8IS0tIE1vZGVtIC0tPgo8ZyBpZD0ibm9kZTEiIGNsYXNzPSJub2RlIj4KPHRpdGxlPk1vZGVtPC90aXRsZT4KPGVsbGlwc2UgZmlsbD0ibm9uZSIgc3Ryb2tlPSJibGFjayIgY3g9IjQ2MC4zOSIgY3k9Ii0zMDYiIHJ4PSI0NS40OSIgcnk9IjE4Ii8+Cjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjQ2MC4zOSIgeT0iLTMwMi4zIiBmb250LWZhbWlseT0iVGltZXMsc2VyaWYiIGZvbnQtc2l6ZT0iMTQuMDAiPk1vZGVtPC90ZXh0Pgo8L2c+CjwhLS0gUm91dGVyIC0tPgo8ZyBpZD0ibm9kZTIiIGNsYXNzPSJub2RlIj4KPHRpdGxlPlJvdXRlcjwvdGl0bGU+CjxlbGxpcHNlIGZpbGw9Im5vbmUiIHN0cm9rZT0iYmxhY2siIGN4PSI0NjAuMzkiIGN5PSItMjM0IiByeD0iNDIuNDkiIHJ5PSIxOCIvPgo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB4PSI0NjAuMzkiIHk9Ii0yMzAuMyIgZm9udC1mYW1pbHk9IlRpbWVzLHNlcmlmIiBmb250LXNpemU9IjE0LjAwIj5Sb3V0ZXI8L3RleHQ+CjwvZz4KPCEtLSBNb2RlbSYjNDU7Jmd0O1JvdXRlciAtLT4KPGcgaWQ9ImVkZ2UxIiBjbGFzcz0iZWRnZSI+Cjx0aXRsZT5Nb2RlbSYjNDU7Jmd0O1JvdXRlcjwvdGl0bGU+CjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iYmxhY2siIGQ9Ik00NjAuMzksLTI3Ny42N0M0NjAuMzksLTI3Mi42OSA0NjAuMzksLTI2Ny40OSA0NjAuMzksLTI2Mi41MSIvPgo8cG9seWdvbiBmaWxsPSJibGFjayIgc3Ryb2tlPSJibGFjayIgcG9pbnRzPSI0NTYuODksLTI3Ny43IDQ2MC4zOSwtMjg3LjcgNDYzLjg5LC0yNzcuNyA0NTYuODksLTI3Ny43Ii8+Cjxwb2x5Z29uIGZpbGw9ImJsYWNrIiBzdHJva2U9ImJsYWNrIiBwb2ludHM9IjQ2My44OSwtMjYyLjEgNDYwLjM5LC0yNTIuMSA0NTYuODksLTI2Mi4xIDQ2My44OSwtMjYyLjEiLz4KPC9nPgo8IS0tIE1haW5Td2l0Y2ggLS0+CjxnIGlkPSJub2RlMyIgY2xhc3M9Im5vZGUiPgo8dGl0bGU+TWFpblN3aXRjaDwvdGl0bGU+CjxlbGxpcHNlIGZpbGw9Im5vbmUiIHN0cm9rZT0iYmxhY2siIGN4PSIzNDQuMzkiIGN5PSItMTYyIiByeD0iNjUuNzkiIHJ5PSIxOCIvPgo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB4PSIzNDQuMzkiIHk9Ii0xNTguMyIgZm9udC1mYW1pbHk9IlRpbWVzLHNlcmlmIiBmb250LXNpemU9IjE0LjAwIj5NYWluU3dpdGNoPC90ZXh0Pgo8L2c+CjwhLS0gUm91dGVyJiM0NTsmZ3Q7TWFpblN3aXRjaCAtLT4KPGcgaWQ9ImVkZ2UyIiBjbGFzcz0iZWRnZSI+Cjx0aXRsZT5Sb3V0ZXImIzQ1OyZndDtNYWluU3dpdGNoPC90aXRsZT4KPHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSJibGFjayIgZD0iTTQyOC4zMywtMjEzLjY1QzQxMy4wNCwtMjA0LjQyIDM5NC43MiwtMTkzLjM3IDM3OS4xLC0xODMuOTQiLz4KPHBvbHlnb24gZmlsbD0iYmxhY2siIHN0cm9rZT0iYmxhY2siIHBvaW50cz0iNDI2LjU1LC0yMTYuNjYgNDM2LjkyLC0yMTguODMgNDMwLjE3LC0yMTAuNjcgNDI2LjU1LC0yMTYuNjYiLz4KPHBvbHlnb24gZmlsbD0iYmxhY2siIHN0cm9rZT0iYmxhY2siIHBvaW50cz0iMzgwLjYzLC0xODAuNzggMzcwLjI2LC0xNzguNjEgMzc3LjAxLC0xODYuNzcgMzgwLjYzLC0xODAuNzgiLz4KPC9nPgo8IS0tIFdpRmkgLS0+CjxnIGlkPSJub2RlNCIgY2xhc3M9Im5vZGUiPgo8dGl0bGU+V2lGaTwvdGl0bGU+CjxlbGxpcHNlIGZpbGw9Im5vbmUiIHN0cm9rZT0iYmxhY2siIGN4PSI0NjAuMzkiIGN5PSItMTYyIiByeD0iMzIuNDkiIHJ5PSIxOCIvPgo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB4PSI0NjAuMzkiIHk9Ii0xNTguMyIgZm9udC1mYW1pbHk9IlRpbWVzLHNlcmlmIiBmb250LXNpemU9IjE0LjAwIj5XaUZpPC90ZXh0Pgo8L2c+CjwhLS0gUm91dGVyJiM0NTsmZ3Q7V2lGaSAtLT4KPGcgaWQ9ImVkZ2UzIiBjbGFzcz0iZWRnZSI+Cjx0aXRsZT5Sb3V0ZXImIzQ1OyZndDtXaUZpPC90aXRsZT4KPHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSJibGFjayIgZD0iTTQ2MC4zOSwtMjA1LjY3QzQ2MC4zOSwtMjAwLjY5IDQ2MC4zOSwtMTk1LjQ5IDQ2MC4zOSwtMTkwLjUxIi8+Cjxwb2x5Z29uIGZpbGw9ImJsYWNrIiBzdHJva2U9ImJsYWNrIiBwb2ludHM9IjQ1Ni44OSwtMjA1LjcgNDYwLjM5LC0yMTUuNyA0NjMuODksLTIwNS43IDQ1Ni44OSwtMjA1LjciLz4KPHBvbHlnb24gZmlsbD0iYmxhY2siIHN0cm9rZT0iYmxhY2siIHBvaW50cz0iNDYzLjg5LC0xOTAuMSA0NjAuMzksLTE4MC4xIDQ1Ni44OSwtMTkwLjEgNDYzLjg5LC0xOTAuMSIvPgo8L2c+CjwhLS0gR3Vlc3RXaUZpIC0tPgo8ZyBpZD0ibm9kZTUiIGNsYXNzPSJub2RlIj4KPHRpdGxlPkd1ZXN0V2lGaTwvdGl0bGU+CjxlbGxpcHNlIGZpbGw9Im5vbmUiIHN0cm9rZT0iYmxhY2siIGN4PSI1NzAuMzkiIGN5PSItMTYyIiByeD0iNTkuNTkiIHJ5PSIxOCIvPgo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB4PSI1NzAuMzkiIHk9Ii0xNTguMyIgZm9udC1mYW1pbHk9IlRpbWVzLHNlcmlmIiBmb250LXNpemU9IjE0LjAwIj5HdWVzdFdpRmk8L3RleHQ+CjwvZz4KPCEtLSBSb3V0ZXImIzQ1OyZndDtHdWVzdFdpRmkgLS0+CjxnIGlkPSJlZGdlNCIgY2xhc3M9ImVkZ2UiPgo8dGl0bGU+Um91dGVyJiM0NTsmZ3Q7R3Vlc3RXaUZpPC90aXRsZT4KPHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSJibGFjayIgZD0iTTQ4Mi45MiwtMjE4LjY3QzQ5OC41NSwtMjA4LjcyIDUxOS42MywtMTk1LjMgNTM3LjE4LC0xODQuMTQiLz4KPHBvbHlnb24gZmlsbD0iYmxhY2siIHN0cm9rZT0iYmxhY2siIHBvaW50cz0iNTM5LjQzLC0xODYuODUgNTQ1Ljk5LC0xNzguNTMgNTM1LjY3LC0xODAuOTUgNTM5LjQzLC0xODYuODUiLz4KPC9nPgo8IS0tIFNlcnZlclN3aXRjaCAtLT4KPGcgaWQ9Im5vZGU3IiBjbGFzcz0ibm9kZSI+Cjx0aXRsZT5TZXJ2ZXJTd2l0Y2g8L3RpdGxlPgo8ZWxsaXBzZSBmaWxsPSJub25lIiBzdHJva2U9ImJsYWNrIiBjeD0iMjA0LjM5IiBjeT0iLTkwIiByeD0iNzMuMzkiIHJ5PSIxOCIvPgo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB4PSIyMDQuMzkiIHk9Ii04Ni4zIiBmb250LWZhbWlseT0iVGltZXMsc2VyaWYiIGZvbnQtc2l6ZT0iMTQuMDAiPlNlcnZlclN3aXRjaDwvdGV4dD4KPC9nPgo8IS0tIE1haW5Td2l0Y2gmIzQ1OyZndDtTZXJ2ZXJTd2l0Y2ggLS0+CjxnIGlkPSJlZGdlNiIgY2xhc3M9ImVkZ2UiPgo8dGl0bGU+TWFpblN3aXRjaCYjNDU7Jmd0O1NlcnZlclN3aXRjaDwvdGl0bGU+CjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iYmxhY2siIGQ9Ik0zMDUuMjQsLTE0MS40MkMyODYuMjYsLTEzMS45MyAyNjMuNDksLTEyMC41NSAyNDQuMzksLTExMSIvPgo8cG9seWdvbiBmaWxsPSJibGFjayIgc3Ryb2tlPSJibGFjayIgcG9pbnRzPSIzMDMuODUsLTE0NC42NCAzMTQuMzYsLTE0NS45OCAzMDYuOTgsLTEzOC4zOCAzMDMuODUsLTE0NC42NCIvPgo8cG9seWdvbiBmaWxsPSJibGFjayIgc3Ryb2tlPSJibGFjayIgcG9pbnRzPSIyNDUuODYsLTEwNy44MiAyMzUuMzUsLTEwNi40OCAyNDIuNzMsLTExNC4wOCAyNDUuODYsLTEwNy44MiIvPgo8L2c+CjwhLS0gRGVza3RvcCAtLT4KPGcgaWQ9Im5vZGU4IiBjbGFzcz0ibm9kZSI+Cjx0aXRsZT5EZXNrdG9wPC90aXRsZT4KPGVsbGlwc2UgZmlsbD0ibm9uZSIgc3Ryb2tlPSJibGFjayIgY3g9IjM0NC4zOSIgY3k9Ii05MCIgcng9IjQ4Ljk5IiByeT0iMTgiLz4KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iMzQ0LjM5IiB5PSItODYuMyIgZm9udC1mYW1pbHk9IlRpbWVzLHNlcmlmIiBmb250LXNpemU9IjE0LjAwIj5EZXNrdG9wPC90ZXh0Pgo8L2c+CjwhLS0gTWFpblN3aXRjaCYjNDU7Jmd0O0Rlc2t0b3AgLS0+CjxnIGlkPSJlZGdlNyIgY2xhc3M9ImVkZ2UiPgo8dGl0bGU+TWFpblN3aXRjaCYjNDU7Jmd0O0Rlc2t0b3A8L3RpdGxlPgo8cGF0aCBmaWxsPSJub25lIiBzdHJva2U9ImJsYWNrIiBkPSJNMzQ0LjM5LC0xMzMuNjdDMzQ0LjM5LC0xMjguNjkgMzQ0LjM5LC0xMjMuNDkgMzQ0LjM5LC0xMTguNTEiLz4KPHBvbHlnb24gZmlsbD0iYmxhY2siIHN0cm9rZT0iYmxhY2siIHBvaW50cz0iMzQwLjg5LC0xMzMuNyAzNDQuMzksLTE0My43IDM0Ny44OSwtMTMzLjcgMzQwLjg5LC0xMzMuNyIvPgo8cG9seWdvbiBmaWxsPSJibGFjayIgc3Ryb2tlPSJibGFjayIgcG9pbnRzPSIzNDcuODksLTExOC4xIDM0NC4zOSwtMTA4LjEgMzQwLjg5LC0xMTguMSAzNDcuODksLTExOC4xIi8+CjwvZz4KPCEtLSBMYXB0b3AgLS0+CjxnIGlkPSJub2RlOSIgY2xhc3M9Im5vZGUiPgo8dGl0bGU+TGFwdG9wPC90aXRsZT4KPGVsbGlwc2UgZmlsbD0ibm9uZSIgc3Ryb2tlPSJibGFjayIgY3g9IjQ1NC4zOSIgY3k9Ii05MCIgcng9IjQyLjc5IiByeT0iMTgiLz4KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iNDU0LjM5IiB5PSItODYuMyIgZm9udC1mYW1pbHk9IlRpbWVzLHNlcmlmIiBmb250LXNpemU9IjE0LjAwIj5MYXB0b3A8L3RleHQ+CjwvZz4KPCEtLSBNYWluU3dpdGNoJiM0NTsmZ3Q7TGFwdG9wIC0tPgo8ZyBpZD0iZWRnZTgiIGNsYXNzPSJlZGdlIj4KPHRpdGxlPk1haW5Td2l0Y2gmIzQ1OyZndDtMYXB0b3A8L3RpdGxlPgo8cGF0aCBmaWxsPSJub25lIiBzdHJva2U9ImJsYWNrIiBkPSJNMzc3Ljg0LC0xMzkuNzJDMzkyLjI3LC0xMzAuNTMgNDA5LjA1LC0xMTkuODUgNDIzLjIyLC0xMTAuODQiLz4KPHBvbHlnb24gZmlsbD0iYmxhY2siIHN0cm9rZT0iYmxhY2siIHBvaW50cz0iMzc1LjY0LC0xMzYuOTcgMzY5LjA4LC0xNDUuMjkgMzc5LjQsLTE0Mi44NyAzNzUuNjQsLTEzNi45NyIvPgo8cG9seWdvbiBmaWxsPSJibGFjayIgc3Ryb2tlPSJibGFjayIgcG9pbnRzPSI0MjUuMTEsLTExMy43OSA0MzEuNjYsLTEwNS40NiA0MjEuMzUsLTEwNy44OCA0MjUuMTEsLTExMy43OSIvPgo8L2c+CjwhLS0gQ2FtZXJhIC0tPgo8ZyBpZD0ibm9kZTYiIGNsYXNzPSJub2RlIj4KPHRpdGxlPkNhbWVyYTwvdGl0bGU+CjxlbGxpcHNlIGZpbGw9Im5vbmUiIHN0cm9rZT0iYmxhY2siIGN4PSI1NzAuMzkiIGN5PSItOTAiIHJ4PSI0Ni41OSIgcnk9IjE4Ii8+Cjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjU3MC4zOSIgeT0iLTg2LjMiIGZvbnQtZmFtaWx5PSJUaW1lcyxzZXJpZiIgZm9udC1zaXplPSIxNC4wMCI+Q2FtZXJhPC90ZXh0Pgo8L2c+CjwhLS0gR3Vlc3RXaUZpJiM0NTsmZ3Q7Q2FtZXJhIC0tPgo8ZyBpZD0iZWRnZTUiIGNsYXNzPSJlZGdlIj4KPHRpdGxlPkd1ZXN0V2lGaSYjNDU7Jmd0O0NhbWVyYTwvdGl0bGU+CjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iYmxhY2siIGQ9Ik01NzAuMzksLTE0My43QzU3MC4zOSwtMTM1Ljk4IDU3MC4zOSwtMTI2LjcxIDU3MC4zOSwtMTE4LjExIi8+Cjxwb2x5Z29uIGZpbGw9ImJsYWNrIiBzdHJva2U9ImJsYWNrIiBwb2ludHM9IjU3My44OSwtMTE4LjEgNTcwLjM5LC0xMDguMSA1NjYuODksLTExOC4xIDU3My44OSwtMTE4LjEiLz4KPC9nPgo8IS0tIE1haWxTZXJ2ZXIgLS0+CjxnIGlkPSJub2RlMTAiIGNsYXNzPSJub2RlIj4KPHRpdGxlPk1haWxTZXJ2ZXI8L3RpdGxlPgo8ZWxsaXBzZSBmaWxsPSJub25lIiBzdHJva2U9ImJsYWNrIiBjeD0iNjIuMzkiIGN5PSItMTgiIHJ4PSI2Mi4yOSIgcnk9IjE4Ii8+Cjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjYyLjM5IiB5PSItMTQuMyIgZm9udC1mYW1pbHk9IlRpbWVzLHNlcmlmIiBmb250LXNpemU9IjE0LjAwIj5NYWlsU2VydmVyPC90ZXh0Pgo8L2c+CjwhLS0gU2VydmVyU3dpdGNoJiM0NTsmZ3Q7TWFpbFNlcnZlciAtLT4KPGcgaWQ9ImVkZ2U5IiBjbGFzcz0iZWRnZSI+Cjx0aXRsZT5TZXJ2ZXJTd2l0Y2gmIzQ1OyZndDtNYWlsU2VydmVyPC90aXRsZT4KPHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSJibGFjayIgZD0iTTE3My4yMywtNzMuNjRDMTUyLjE0LC02My4yNCAxMjQuMSwtNDkuNDIgMTAxLjUxLC0zOC4yOCIvPgo8cG9seWdvbiBmaWxsPSJibGFjayIgc3Ryb2tlPSJibGFjayIgcG9pbnRzPSIxMDMuMDMsLTM1LjEzIDkyLjUxLC0zMy44NSA5OS45MywtNDEuNDEgMTAzLjAzLC0zNS4xMyIvPgo8L2c+CjwhLS0gV2ViU2VydmVyIC0tPgo8ZyBpZD0ibm9kZTExIiBjbGFzcz0ibm9kZSI+Cjx0aXRsZT5XZWJTZXJ2ZXI8L3RpdGxlPgo8ZWxsaXBzZSBmaWxsPSJub25lIiBzdHJva2U9ImJsYWNrIiBjeD0iMjA0LjM5IiBjeT0iLTE4IiByeD0iNjEuOTkiIHJ5PSIxOCIvPgo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB4PSIyMDQuMzkiIHk9Ii0xNC4zIiBmb250LWZhbWlseT0iVGltZXMsc2VyaWYiIGZvbnQtc2l6ZT0iMTQuMDAiPldlYlNlcnZlcjwvdGV4dD4KPC9nPgo8IS0tIFNlcnZlclN3aXRjaCYjNDU7Jmd0O1dlYlNlcnZlciAtLT4KPGcgaWQ9ImVkZ2UxMCIgY2xhc3M9ImVkZ2UiPgo8dGl0bGU+U2VydmVyU3dpdGNoJiM0NTsmZ3Q7V2ViU2VydmVyPC90aXRsZT4KPHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSJibGFjayIgZD0iTTIwNC4zOSwtNzEuN0MyMDQuMzksLTYzLjk4IDIwNC4zOSwtNTQuNzEgMjA0LjM5LC00Ni4xMSIvPgo8cG9seWdvbiBmaWxsPSJibGFjayIgc3Ryb2tlPSJibGFjayIgcG9pbnRzPSIyMDcuODksLTQ2LjEgMjA0LjM5LC0zNi4xIDIwMC44OSwtNDYuMSAyMDcuODksLTQ2LjEiLz4KPC9nPgo8IS0tIE5ldHdvcmtBY2Nlc3NTdG9yYWdlIC0tPgo8ZyBpZD0ibm9kZTEyIiBjbGFzcz0ibm9kZSI+Cjx0aXRsZT5OZXR3b3JrQWNjZXNzU3RvcmFnZTwvdGl0bGU+CjxlbGxpcHNlIGZpbGw9Im5vbmUiIHN0cm9rZT0iYmxhY2siIGN4PSI0MDIuMzkiIGN5PSItMTgiIHJ4PSIxMTguMDgiIHJ5PSIxOCIvPgo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB4PSI0MDIuMzkiIHk9Ii0xNC4zIiBmb250LWZhbWlseT0iVGltZXMsc2VyaWYiIGZvbnQtc2l6ZT0iMTQuMDAiPk5ldHdvcmtBY2Nlc3NTdG9yYWdlPC90ZXh0Pgo8L2c+CjwhLS0gU2VydmVyU3dpdGNoJiM0NTsmZ3Q7TmV0d29ya0FjY2Vzc1N0b3JhZ2UgLS0+CjxnIGlkPSJlZGdlMTEiIGNsYXNzPSJlZGdlIj4KPHRpdGxlPlNlcnZlclN3aXRjaCYjNDU7Jmd0O05ldHdvcmtBY2Nlc3NTdG9yYWdlPC90aXRsZT4KPHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSJibGFjayIgZD0iTTI0NC40NiwtNzQuODNDMjc0LjM5LC02NC4yNSAzMTUuNjIsLTQ5LjY4IDM0OC40NCwtMzguMDciLz4KPHBvbHlnb24gZmlsbD0iYmxhY2siIHN0cm9rZT0iYmxhY2siIHBvaW50cz0iMzQ5LjY0LC00MS4zNiAzNTcuOSwtMzQuNzMgMzQ3LjMxLC0zNC43NiAzNDkuNjQsLTQxLjM2Ii8+CjwvZz4KPC9nPgo8L3N2Zz4K"></div>
+<p>Sometimes the Modem, Router and Main Switch are one unit, or there is no modem.</p>
+<blockquote>
+<p>-----&gt; Single Arrow is a limited access network (VLAN)</p>
+<p>&lt;----&gt; Double Arrows is an Open Network</p>
+</blockquote>
+<p>The key point here is that the servers are isolated on a separate switch for performance and security reasons, using a VLAN (Virtual Local Area Network) local to the Server Switch. Server VLAN network packets between each other never leave the Server Switch. Each server has another IP address <strong>not</strong> on the VLAN for public access.</p>
+<p>A guest WiFi service does not have access to the Main Switch because it is on it's own VLAN, so local resources are protected from that experimental 12 year old guest.</p>
+<p>If my camera accesses a cloud service (most do), then I link it to the Guest WiFi for security purposes. Any other untrusted device will also be on the Guest WiFi, like Robot Vacuum Cleaners, Car Chargers, Car, TV streaming box, VOIP (Telephone VoiceOverIP), Garage Door Opener, Door Locks, etc...</p>
+<p>Reference: <a href="https://www.graphviz.org/doc/info/colors.html">https://www.graphviz.org/doc/info/colors.html</a></p>
+<p>Graph also available in:
+  bgcolor="transparent";</p>
+<h3 id="check-your-network">Check your Network</h3>
+<ul>
+<li>See Network Interfaces</li>
+</ul>
+<hr/>
+
+<p>The Debian Way</label></div></p>
+<div class="highlight"><pre><span></span><code>$ ifconfig
+eno1: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500
+        inet 192.168.0.8  netmask 255.255.255.0  broadcast 192.168.0.255
+        inet6 fe80::0000:1111:3333:2222  prefixlen 64  scopeid 0x20&lt;link&gt;
+        ether 2a:53:9b:00:f9:21  txqueuelen 1000  (Ethernet)
+        RX packets 342047883  bytes 378663045018 (378.6 GB)
+        RX errors 0  dropped 54131  overruns 0  frame 0
+        TX packets 221663343  bytes 165067861773 (165.0 GB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+        device interrupt 16  memory 0xc0b00000-c0b20000
+
+lo: flags=73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10&lt;host&gt;
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 32619960  bytes 99080107335 (99.0 GB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 32619960  bytes 99080107335 (99.0 GB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+</code></pre></div>
+
+<hr/>
+
+<p>The RedHat and Newer Debian Way</p>
+<div class="highlight"><pre><span></span><code># ip a
+1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: ens3: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 36:27:10:52:32:96 brd ff:ff:ff:ff:ff:ff
+    altname enp0s3
+    inet 192.168.0.5/24 brd 10.0.2.255 scope global dynamic noprefixroute ens3
+       valid_lft 66645sec preferred_lft 66645sec
+    inet6 fec0::000:ff:1111:1111/64 scope site dynamic noprefixroute 
+       valid_lft 86390sec preferred_lft 14390sec
+    inet6 fe80::000:ff:1111:1111/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+</code></pre></div>
+
+<hr/>
+
+<ul>
+<li>System Log is</li>
+</ul>
+<hr/>
+
+<p>The Debian Way</p>
+<div class="highlight"><pre><span></span><code>/var/log/syslog
+</code></pre></div>
+
+<hr/>
+
+<p>The RedHat Way</p>
+<div class="highlight"><pre><span></span><code>/var/log/messages
+</code></pre></div>
+
+<hr/>
+
+<ul>
+<li>Bring Network Up:</li>
+</ul>
+<hr/>
+
+<p>The Debian Way</p>
+<div class="highlight"><pre><span></span><code>$ sudo cat /etc/netplan/01-network-manager-all.yaml
+network:
+    version: 2
+    renderer: networkd
+    ethernets:
+        enp3s0:
+            dhcp4: true
+$ sudo netplan try
+$ sudo netplan -d apply
+$ sudo systemctl restart system-networkd
+</code></pre></div>
+
+<p>Reference: <a href="https://netplan.io/">https://netplan.io/</a></p>
+<hr/>
+
+<p>The RedHat Way</p>
+<div class="highlight"><pre><span></span><code>$ sudo nmcli connection up ens3
+
+vi /etc/sysconfig/network-scripts/ifcfg-ens3
+~
+ONBOOT=yes
+~
+:wq
+</code></pre></div>
+
+<p>Reference: <a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_and_managing_networking/configuring-an-ethernet-connection_configuring-and-managing-networking">https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_and_managing_networking/configuring-an-ethernet-connection_configuring-and-managing-networking</a></p>
+<hr/>
+
+<h3 id="update-package-repository">Update Package Repository</h3>
+<hr/>
+
+<h4 id="debian">Debian</h4>
+<p>Always refresh the package repository before getting started.</p>
+<div class="highlight"><pre><span></span><code>$ sudo apt-get update
+</code></pre></div>
+
+<p>You may need to add extra repositories, just check the sources.</p>
+<p>The four main repositories are:</p>
+<ul>
+<li>Main - Canonical-supported free and open-source software.</li>
+<li>Universe - Community-maintained free and open-source software.</li>
+<li>Restricted - Proprietary drivers for devices.</li>
+<li>Multiverse - Software restricted by copyright or legal issues. </li>
+<li>Backports[1] - Software from older releases that should still work.</li>
+</ul>
+<p>Reference:</p>
+<ol>
+<li>Backports for old stuff you really really need. </li>
+</ol>
+<p>Universe is a typical add-on, beware of unstable.</p>
+<div class="highlight"><pre><span></span><code>$ sudo add-apt-repository universe
+$ sudo grep &#39;^deb &#39; /etc/apt/sources.list
+...
+deb http://us.archive.ubuntu.com/ubuntu/ jammy universe
+...
+$ sudo add-apt-repository --remove universe
+</code></pre></div>
+
+<hr/>
+
+<h4 id="redhat">RedHat</h4>
+<p>Always refresh the package repository before getting started.</p>
+<div class="highlight"><pre><span></span><code>$ sudo dnf update
+</code></pre></div>
+
+</div>
+<ul>
+<li>Now I can disable <em>subscription-manager</em> since I do not have a RedHat subscription.</li>
+</ul>
+<p>Change: </p>
+<ul>
+<li>From -&gt; enabled=1</li>
+<li>To   -&gt; enabled=0</li>
+</ul>
+<p>In file: /etc/yum/pluginconf.d/subscription-manager.conf</p>
+<div class="highlight"><pre><span></span><code>$ sudo vi /etc/yum/pluginconf.d/subscription-manager.conf
+$ sudo yum clean all
+0 files removed
+</code></pre></div>
+
+<ul>
+<li>You may need to add extra repositories, just check the sources.</li>
+</ul>
+<p>The EPEL repository provides additional high-quality packages for RHEL-based distributions. EPEL is a selection of packages from Fedora, but only packages that are not in RHEL or its layered products to avoid conflicts. </p>
+<p>The folks at Fedora have very nicely put up an automatic build and repo system and they are calling it COPR (Cool Other Package Repositories). </p>
+<div class="highlight"><pre><span></span><code>$ sudo dnf install epel-release &#39;dnf-command(copr)&#39;
+</code></pre></div>
+
+<p>Reference: </p>
+<ul>
+<li><a href="https://www.redhat.com/sysadmin/install-epel-linux">https://www.redhat.com/sysadmin/install-epel-linux</a> </li>
+<li><a href="https://copr.fedorainfracloud.org/">https://copr.fedorainfracloud.org/</a></li>
+</ul>
+<hr/>
+
+<h3 id="new-user-and-group-to-use">New User and Group to Use</h3>
+<p>Be sure to match the same <em>user numbers</em> across systems, because when sharing files using NFS, the numbers need to match.</p>
+<div class="highlight"><pre><span></span><code>$ sudo adduser don --uid 1001
+Adding user `don&#39; ...
+Adding new group `don&#39; (1001) ...
+Adding new user `don&#39; (1001) with group `don&#39; ...
+Creating home directory `/home/don&#39; ...
+Copying files from `/etc/skel&#39; ...
+New password:
+Retype new password:
+passwd: password updated successfully
+Changing the user information for don
+Enter the new value, or press ENTER for the default
+ . . .  Full Name []: Don
+ . . .  Room Number []:
+ . . .  Work Phone []:
+ . . .  Home Phone []:
+ . . .  Other []:
+Is the information correct? [Y/n] y
+Adding new user `don&#39; to extra groups ...
+Adding user `don&#39; to group `dialout&#39; ...
+Adding user `don&#39; to group `i2c&#39; ...
+Adding user `don&#39; to group `spi&#39; ...
+Adding user `don&#39; to group `cdrom&#39; ...
+Adding user `don&#39; to group `floppy&#39; ...
+Adding user `don&#39; to group `audio&#39; ...
+Adding user `don&#39; to group `video&#39; ...
+Adding user `don&#39; to group `plugdev&#39; ...
+Adding user `don&#39; to group `users&#39; ...
+</code></pre></div>
+
+<p>If this user is an administrator;</p>
+<hr/>
+
+<h4 id="debian_1">Debian</h4>
+<div class="highlight"><pre><span></span><code>$ sudo usermod -aG sudo rootbk
+</code></pre></div>
+
+<p>Check user for group '27(sudo)'.</p>
+<div class="highlight"><pre><span></span><code>$ id rootbk
+uid=1002(rootbk) gid=1002(rootbk) 
+groups=1002(rootbk),20(dialout),24(cdrom),25(floppy),27(sudo),29(audio),44(video),46(plugdev),100(users),114(i2c),993(spi)
+</code></pre></div>
+
+<hr/>
+
+<h4 id="redhat_1">RedHat</h4>
+<div class="highlight"><pre><span></span><code>$ sudo usermod -aG wheel rootbk
+</code></pre></div>
+
+<p>Check user for group '10(wheel)'.</p>
+<div class="highlight"><pre><span></span><code># id don
+uid=1002(rootbk) gid=1002(rootbk) groups=1002(rootbk),10(wheel)
+</code></pre></div>
+
+<hr/>
+
+<h5 id="also-set-the-root-password">Also set the root password</h5>
+<p>in case the system will not boot</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>passwd<span class="w"> </span>root
+<span class="o">[</span>sudo<span class="o">]</span><span class="w"> </span>password<span class="w"> </span><span class="k">for</span><span class="w"> </span>don:<span class="w"> </span>
+New<span class="w"> </span>password:<span class="w"> </span>
+Retype<span class="w"> </span>new<span class="w"> </span>password:<span class="w"> </span>
+passwd:<span class="w"> </span>password<span class="w"> </span>updated<span class="w"> </span>successfully
+</code></pre></div>
+
+<h3 id="firewall">Firewall</h3>
+<p>Every machine should have a firewall enabled, especially before connecting to the internet. </p>
+<p>Now adays there is a choice between Uncomplicated Firewall (ufw) and firewalld. I choose firewalld.</p>
+<hr/>
+
+<h4 id="debian_2">Debian</h4>
+<p>ufw - Uncomplicated Firewall</p>
+<div class="highlight"><pre><span></span><code>$ sudo apt-get install ufw
+$ sudo ufw allow 22/tcp
+$ sudo ufw enable
+$ sudo ufw status numbered
+Status: active
+
+     To                         Action      From
+     --                         ------      ----
+[ 1] 22/tcp                     ALLOW IN    Anywhere                               
+[ 2] 22/tcp (v6)                ALLOW IN    Anywhere (v6)
+
+$ sudo ufw delete 2
+$ sudo ufw logging low
+$ sudo ufw logging on
+
+NOTE: Logging values are: low|medium|high. Only network blocks are logged on low.
+</code></pre></div>
+
+<p>Reference: <a href="https://launchpad.net/ufw">https://launchpad.net/ufw</a></p>
+<hr/>
+
+<h4 id="redhat_2">RedHat</h4>
+<p>firewalld </p>
+<div class="highlight"><pre><span></span><code>$ sudo dnf install firewalld
+$ sudo firewall-cmd --add-service=ssh
+success
+$ sudo firewall-cmd --list-services
+cockpit dhcpv6-client ssh
+$ sudo firewall-cmd --remove-service=cockpit
+success
+$ sudo firewall-cmd --remove-service=dhcpv6-client
+success
+$ sudo firewall-cmd --list-services
+ssh
+$ sudo firewall-cmd --runtime-to-permanent
+success
+</code></pre></div>
+
+<p>Reference: <a href="https://firewalld.org/">https://firewalld.org/</a></p>
+<hr/>
+
+<h5 id="block-bad-actors-whole-autonomous-system-1-groups-at-a-time">Block bad actors, whole Autonomous System [1] groups at a time</h5>
+<p>Using IP addresses from Logwatch, Logcheck, and Logwatcher, feed them into the firewall.sh script.</p>
+<p>Run the <code>git clone</code> and install the dependencies based on your operating system.</p>
+<p>File: ~/firewall.sh</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">##############################################################################</span>
+<span class="c1">#</span>
+<span class="c1"># File: firewall.sh</span>
+<span class="c1">#</span>
+<span class="c1"># Purpose: Block IP address or CIDR range using OS firewall</span>
+<span class="c1">#</span>
+<span class="c1"># Dependencies: </span>
+<span class="c1">#</span>
+<span class="c1">#  git clone https://github.com/nitefood/asn </span>
+<span class="c1">#</span>
+<span class="c1">#  * For more detail get an ~/.asn/iqs_token</span>
+<span class="c1">#     from https://github.com/nitefood/asn#ip-reputation-api-token</span>
+<span class="c1">#</span>
+<span class="c1"># * **Debian 10 / Ubuntu 20.04 (or newer):**</span>
+<span class="c1">#</span>
+<span class="c1">#  ```</span>
+<span class="c1">#  apt -y install curl whois bind9-host mtr-tiny jq ipcalc grepcidr nmap ncat aha</span>
+<span class="c1">#  ```</span>
+<span class="c1">#  * Enable ufw and allow the ports you need</span>
+<span class="c1">#</span>
+<span class="c1">#  # ufw allow 22</span>
+<span class="c1">#  # ufw enable</span>
+<span class="c1">#</span>
+<span class="c1">#  * Delete rules not needed:</span>
+<span class="c1">#  # ufw status numbered</span>
+<span class="c1">#  # ufw delete &lt;number&gt;</span>
+<span class="c1">#</span>
+<span class="c1"># * **CentOS / RHEL / Rocky Linux 8:**</span>
+<span class="c1">#</span>
+<span class="c1"># # Install repos:</span>
+<span class="c1"># $ sudo dnf repolist</span>
+<span class="c1"># repo id                                repo name</span>
+<span class="c1"># appstream                              CentOS Stream 9 - AppStream</span>
+<span class="c1"># baseos                                 CentOS Stream 9 - BaseOS</span>
+<span class="c1"># epel                                   Extra Packages for Enterprise Linux 9 - x86_64</span>
+<span class="c1"># epel-next                              Extra Packages for Enterprise Linux 9 - Next - x86_64</span>
+<span class="c1"># extras-common                          CentOS Stream 9 - Extras packages</span>
+<span class="c1">#</span>
+<span class="c1"># $ ls /etc/yum.repos.d</span>
+<span class="c1"># centos-addons.repo  centos.repo  epel-next.repo  epel-next-testing.repo  epel.repo  epel-testing.repo  redhat.repo</span>
+<span class="c1">#</span>
+<span class="c1"># dnf install bind-utils jq whois curl nmap ipcalc grepcidr aha</span>
+<span class="c1">#</span>
+<span class="c1">#   If you have a list of IP addresses to block (text file, each IP on a separate line),</span>
+<span class="c1">#     you can easily import that to your block list:</span>
+<span class="c1">#</span>
+<span class="c1">#    # firewall-cmd --permanent --ipset=networkblock --add-entries-from-file=/path/to/blocklist.txt</span>
+<span class="c1">#    # firewall-cmd --reload</span>
+<span class="c1">#</span>
+<span class="c1">#   To view ipsets:</span>
+<span class="c1">#    # firewall-cmd --permanent --get-ipsets</span>
+<span class="c1">#     networkblock</span>
+<span class="c1">#    # firewall-cmd --permanent --info-ipset=networkblock</span>
+<span class="c1">#     networkblock</span>
+<span class="c1">#       type: hash:net</span>
+<span class="c1">#       options: maxelem=1000000 family=inet hashsize=4096</span>
+<span class="c1">#       entries: 46.148.40.0/24</span>
+<span class="c1">#</span>
+<span class="c1">#   # firewall-cmd --add-service=smtp</span>
+<span class="c1">#   success</span>
+<span class="c1">#   # firewall-cmd --add-service=smtps</span>
+<span class="c1">#   success</span>
+<span class="c1">#   # firewall-cmd --list-services</span>
+<span class="c1">#   cockpit dhcpv6-client smtp smtps ssh</span>
+<span class="c1">#   # firewall-cmd --remove-service=cockpit</span>
+<span class="c1">#   success</span>
+<span class="c1">#   # firewall-cmd --remove-service=dhcpv6-client</span>
+<span class="c1">#   success</span>
+<span class="c1">#   # firewall-cmd --list-services</span>
+<span class="c1">#   smtp smtps ssh</span>
+<span class="c1">#   # firewall-cmd --runtime-to-permanent</span>
+<span class="c1">#   success</span>
+<span class="c1">#</span>
+<span class="c1">#   # firewall-cmd --list-all</span>
+<span class="c1">#     public (active)</span>
+<span class="c1">#       target: default</span>
+<span class="c1">#       icmp-block-inversion: no</span>
+<span class="c1">#       interfaces: ens3</span>
+<span class="c1">#       sources: </span>
+<span class="c1">#       services: smtp smtps ssh</span>
+<span class="c1">#       ports: </span>
+<span class="c1">#       protocols: </span>
+<span class="c1">#       forward: no</span>
+<span class="c1">#       masquerade: no</span>
+<span class="c1">#       forward-ports: </span>
+<span class="c1">#       source-ports: </span>
+<span class="c1">#       icmp-blocks: </span>
+<span class="c1">#       rich rules: </span>
+<span class="c1">#</span>
+<span class="c1"># https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/security_guide/sec-setting_and_controlling_ip_sets_using_firewalld</span>
+<span class="c1">#</span>
+<span class="c1"># * TO UNDO A MISTAKEN BLOCK:</span>
+<span class="c1">#   # firewall-cmd --permanent --ipset=networkblock --remove-entry=x.x.x.x/y</span>
+<span class="c1">#   # firewall-cmd --reload</span>
+<span class="c1">#</span>
+<span class="c1"># * To drop ipset</span>
+<span class="c1">#   # firewall-cmd --permanent --delete-ipset=networkblock</span>
+<span class="c1">#   # firewall-cmd --reload</span>
+<span class="c1">#</span>
+<span class="c1"># Author     Date     Description</span>
+<span class="c1"># ---------- -------- --------------------------------------------------------</span>
+<span class="c1"># D. Cohoon  Jan-2023 Created</span>
+<span class="c1"># D. Cohoon  Feb-2023 Add RedHat firewalld</span>
+<span class="c1">##############################################################################</span>
+<span class="nv">DIR</span><span class="o">=</span>/root
+<span class="nv">LOG</span><span class="o">=</span><span class="si">${</span><span class="nv">DIR</span><span class="si">}</span>/firewall.log
+<span class="nv">WHO</span><span class="o">=</span>/tmp/whois.txt
+<span class="nv">CIDR</span><span class="o">=</span>/tmp/whois.cidr
+<span class="nv">IP</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">1</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="nv">OS</span><span class="o">=</span><span class="k">$(</span>/usr/bin/hostnamectl<span class="p">|</span>/usr/bin/grep<span class="w"> </span><span class="s1">&#39;Operating System&#39;</span><span class="p">|</span>/usr/bin/cut<span class="w"> </span>-d:<span class="w"> </span>-f2<span class="p">|</span>/usr/bin/awk<span class="w"> </span><span class="s1">&#39;{print $1}&#39;</span><span class="k">)</span>
+<span class="c1">#.............................................................................</span>
+<span class="k">function</span><span class="w"> </span>set_ipset<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">  </span><span class="nv">FOUND_IPSET</span><span class="o">=</span><span class="m">0</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="nb">read</span><span class="w"> </span>SET
+<span class="w">  </span><span class="k">do</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>!<span class="w"> </span>-z<span class="w"> </span><span class="si">${</span><span class="nv">SET</span><span class="si">}</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="si">${</span><span class="nv">SET</span><span class="si">}</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;networkblock&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">      </span><span class="nv">FOUND_IPSET</span><span class="o">=</span><span class="m">1</span>
+<span class="w">    </span><span class="k">fi</span>
+<span class="w">  </span><span class="k">done</span><span class="w"> </span><span class="o">&lt;&lt;&lt;</span><span class="w"> </span><span class="k">$(</span>sudo<span class="w"> </span>/usr/bin/firewall-cmd<span class="w"> </span>--permanent<span class="w"> </span>--get-ipsets<span class="k">)</span><span class="w"> </span>
+<span class="w">  </span><span class="c1">#</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$FOUND_IPSET</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="c1"># Create networkblock ipset</span>
+<span class="w">    </span>sudo<span class="w"> </span>/usr/bin/firewall-cmd<span class="w"> </span>--permanent<span class="w"> </span>--new-ipset<span class="o">=</span>networkblock<span class="w"> </span>--type<span class="o">=</span>hash:net<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>--option<span class="o">=</span><span class="nv">maxelem</span><span class="o">=</span><span class="m">1000000</span><span class="w"> </span>--option<span class="o">=</span><span class="nv">family</span><span class="o">=</span>inet<span class="w"> </span>--option<span class="o">=</span><span class="nv">hashsize</span><span class="o">=</span><span class="m">4096</span>
+<span class="w">    </span><span class="c1"># Add new ipset to drop zone</span>
+<span class="w">    </span>sudo<span class="w"> </span>/usr/bin/firewall-cmd<span class="w"> </span>--permanent<span class="w"> </span>--zone<span class="o">=</span>drop<span class="w"> </span>--add-source<span class="o">=</span>ipset:networkblock
+<span class="w">    </span><span class="c1"># reload</span>
+<span class="w">    </span>sudo<span class="w"> </span>/usr/bin/firewall-cmd<span class="w"> </span>--reload
+<span class="w">  </span><span class="k">fi</span>
+<span class="o">}</span>
+<span class="c1">#</span>
+<span class="c1">#.............................................................................</span>
+<span class="k">function</span><span class="w"> </span>run_asn<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">  </span><span class="si">${</span><span class="nv">DIR</span><span class="si">}</span>/asn/asn<span class="w"> </span>-n<span class="w"> </span><span class="si">${</span><span class="nv">IP</span><span class="si">}</span><span class="w"> </span>&gt;<span class="w"> </span><span class="si">${</span><span class="nv">WHO</span><span class="si">}</span>
+<span class="w">  </span>/usr/bin/cat<span class="w"> </span><span class="si">${</span><span class="nv">WHO</span><span class="si">}</span>
+<span class="w">  </span><span class="nv">RANGE</span><span class="o">=</span><span class="k">$(</span>/usr/bin/cat<span class="w"> </span><span class="si">${</span><span class="nv">WHO</span><span class="si">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>/usr/bin/grep<span class="w"> </span><span class="s1">&#39;NET&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>/usr/bin/grep<span class="w"> </span><span class="s1">&#39;/&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>/usr/bin/awk<span class="w"> </span>-Fm<span class="w"> </span><span class="s1">&#39;{print $6}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>/usr/bin/cut<span class="w"> </span>-d<span class="s2">&quot; &quot;</span><span class="w"> </span>-f1<span class="k">)</span>
+<span class="w">  </span>/usr/bin/echo<span class="w"> </span><span class="s2">&quot;CDR: </span><span class="si">${</span><span class="nv">RANGE</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="w">  </span>/usr/bin/echo<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">RANGE</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="w"> </span><span class="si">${</span><span class="nv">CIDR</span><span class="si">}</span>
+<span class="o">}</span>
+<span class="c1">#.............................................................................</span>
+<span class="c1">#</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="si">${</span><span class="nv">1</span><span class="si">}</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span>run_asn
+<span class="k">else</span>
+<span class="w">  </span>/usr/bin/echo<span class="w"> </span><span class="s2">&quot;Usage: </span><span class="si">${</span><span class="nv">0</span><span class="si">}</span><span class="s2"> &lt;IP Address&gt;&quot;</span>
+<span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+<span class="c1">#.............................................................................</span>
+<span class="c1">#</span>
+<span class="w">  </span>/usr/bin/grep<span class="w"> </span>-v<span class="w"> </span>deaggregate<span class="w"> </span><span class="si">${</span><span class="nv">CIDR</span><span class="si">}</span><span class="w"> </span>&gt;<span class="w"> </span><span class="si">${</span><span class="nv">CIDR</span><span class="si">}</span>.block
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>IP
+<span class="w">  </span><span class="k">do</span>
+<span class="w">    </span>/usr/bin/echo<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>/usr/bin/date<span class="k">)</span><span class="s2"> - OS: </span><span class="si">${</span><span class="nv">OS</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>/usr/bin/tee<span class="w"> </span>-a<span class="w"> </span><span class="si">${</span><span class="nv">LOG</span><span class="si">}</span>
+<span class="w">    </span>/usr/bin/echo<span class="w"> </span><span class="s2">&quot;Blocking: </span><span class="si">${</span><span class="nv">IP</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>/usr/bin/tee<span class="w"> </span>-a<span class="w"> </span><span class="si">${</span><span class="nv">LOG</span><span class="si">}</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="si">${</span><span class="nv">OS</span><span class="si">}</span><span class="w"> </span><span class="k">in</span>
+<span class="w">      </span>AlmaLinux<span class="p">|</span>CentOS<span class="o">)</span><span class="w"> </span>
+<span class="w">        </span>/usr/bin/echo<span class="w"> </span><span class="s2">&quot;Firewalld&quot;</span>
+<span class="w">        </span>set_ipset
+<span class="w">        </span>sudo<span class="w"> </span>/usr/bin/firewall-cmd<span class="w"> </span>--permanent<span class="w"> </span>--ipset<span class="o">=</span>networkblock<span class="w"> </span>--add-entry<span class="o">=</span><span class="si">${</span><span class="nv">IP</span><span class="si">}</span>
+<span class="w">        </span>sudo<span class="w"> </span>/usr/bin/firewall-cmd<span class="w"> </span>--reload
+<span class="w">        </span><span class="p">;;</span>
+<span class="w">      </span>Ubuntu<span class="p">|</span>Debian<span class="o">)</span><span class="w"> </span>
+<span class="w">        </span>/usr/bin/echo<span class="w"> </span><span class="s2">&quot;ufw&quot;</span>
+<span class="w">        </span>sudo<span class="w"> </span>/usr/sbin/ufw<span class="w"> </span>prepend<span class="w"> </span>deny<span class="w"> </span>from<span class="w"> </span><span class="si">${</span><span class="nv">IP</span><span class="si">}</span><span class="w"> </span>to<span class="w"> </span>any<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">|</span>tee<span class="w"> </span>-a<span class="w"> </span><span class="nv">$LOG</span>
+<span class="w">        </span><span class="p">;;</span>
+<span class="w">    </span><span class="k">esac</span>
+<span class="w">  </span><span class="k">done</span><span class="w"> </span>&lt;<span class="w"> </span><span class="si">${</span><span class="nv">CIDR</span><span class="si">}</span>.block
+</code></pre></div>
+
+<ol>
+<li><a href="https://www.arin.net/resources/guide/asn/">https://www.arin.net/resources/guide/asn/</a></li>
+</ol>
+<h3 id="set-your-host-and-domain-names">Set your host and domain names</h3>
+<p>File: /etc/hosts</p>
+<div class="highlight"><pre><span></span><code>127.0.0.1     localhost
+192.168.1.5     www.example.com     example.com www
+
+# The following lines are desirable for IPv6 capable hosts
+::1     localhost ip6-localhost ip6-loopback
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+</code></pre></div>
+
+<p>File: /etc/hostname</p>
+<div class="highlight"><pre><span></span><code>don.example.com
+</code></pre></div>
+
+<h3 id="rsyslog-send-syslog-entries-to-remote-syslog-host">Rsyslog - Send Syslog Entries to Remote Syslog Host</h3>
+<p>It is a good idea to send log messages to another host in case the system crashes. You will be able to see that last gasping breath of the dying server. Also in the event of a compromised system hackers usually zero out the local syslog to cover their tracks. Now you still have any trace of the hackers on the central rsyslog host. It makes things simpler for detailed log analysis with combined logs on one system too.</p>
+<h4 id="local-system">Local System</h4>
+<p><strong>Replicate log entries</strong>: Add the following to cause log entries to be in /var/log/syslog locally <em>and</em> be sent to a remote syslog host. If you do not have a Remote Syslog Host, skip this.</p>
+<p>File: /etc/rsyslog.conf</p>
+<p>Add these lines on local system.</p>
+<div class="highlight"><pre><span></span><code>~
+# Remote logging - Aug 2020 Don
+# Provides UDP forwarding
+*.* @192.168.1.5:514 #this is the logging host
+~
+</code></pre></div>
+
+<p><strong>Alert</strong>: Create the following to send syslog <strong>alerts</strong> to email if the <strong>severity</strong> is <strong>high</strong> (3 or below).</p>
+<p>File: /etc/rsyslog.d/alert.conf</p>
+<p>Create the file if it does not exist and replace with these lines.</p>
+<div class="highlight"><pre><span></span><code>module(load=&quot;ommail&quot;)
+template (name=&quot;mailBody&quot;  type=&quot;string&quot; string=&quot;Alert for %hostname%:\n\nTimestamp: %timereported%\nSeverity:  %syslogseverity-text%\nProgram:   %programname%\nMessage:  %msg%&quot;)
+template (name=&quot;mailSubject&quot; type=&quot;string&quot; string=&quot;[%hostname%] Syslog alert for %programname%&quot;)
+
+if $syslogseverity &lt;= 3 and not ($msg contains &#39;brcmfmac&#39;) then {
+   action(type=&quot;ommail&quot; server=&quot;192.168.1.3&quot; port=&quot;25&quot;
+          mailfrom=&quot;rsyslog@localhost&quot;
+          mailto=&quot;don@example.com&quot;
+          subject.template=&quot;mailSubject&quot;
+          template=&quot;mailBody&quot;
+          action.execonlyonceeveryinterval=&quot;3600&quot;)
+}
+</code></pre></div>
+
+<h4 id="remote-syslog-host">Remote Syslog Host</h4>
+<p><strong>Allow remote hosts to log here</strong>: Open firewall port 514/udp on remote syslog host.</p>
+<div class="highlight"><pre><span></span><code>$ sudo ufw allow 514/udp
+</code></pre></div>
+
+<p>File: /etc/rsyslog.conf</p>
+<p>Add these lines to remote syslog host.</p>
+<div class="highlight"><pre><span></span><code>~
+# provides UDP syslog reception
+module(load=&quot;imudp&quot;)
+input(type=&quot;imudp&quot; port=&quot;514&quot;)
+~
+# Process remote logs into seperate directories, then stop. Do not duplicate into syslog
+$template RemoteLogs,&quot;/var/log/%HOSTNAME%/%PROGRAMNAME%.log&quot;
+*.* ?RemoteLogs
+&amp; stop
+</code></pre></div>
+
+<h4 id="restart-rsyslog">Restart rsyslog</h4>
+<div class="highlight"><pre><span></span><code>$ sudo systemctl restart rsyslog
+</code></pre></div>
+
+<h3 id="time-control">Time Control</h3>
+<p>All servers should be set up to synchronize their time over the network using Network Time Protocol (NTP). This is critical in validating security certificates. For offline systems, consider using a <a href="BeagleBone.md#real-time-clock-rtc-system-service-and-setup?fileId=697174">Real Time Clock</a> (RTC) attached to something like BeagleBone.</p>
+<p>TODO: Link to Beaglebone</p>
+<h4 id="timezone">timezone</h4>
+<p>Change to match your timezone.</p>
+<p>File: /etc/timezone</p>
+<div class="highlight"><pre><span></span><code>$ cat /etc/timezone
+America/New_York
+</code></pre></div>
+
+<p>Set timezone with timedatactl, and verify.</p>
+<div class="highlight"><pre><span></span><code>$ sudo timedatectl set-timezone America/New_York
+$ timedatectl
+               Local time: Sun 2022-10-09 18:27:11 EDT
+           Universal time: Sun 2022-10-09 22:27:11 UTC
+                 RTC time: n/a
+                Time zone: America/New_York (EDT, -0400)
+System clock synchronized: yes
+              NTP service: active
+          RTC in local TZ: no
+</code></pre></div>
+
+<h4 id="redhat_3">RedHat</h4>
+<p>RedHat uses chronyd service</p>
+<p>File: /etc/chrony.conf</p>
+<div class="highlight"><pre><span></span><code>server pool.ntp.org iburst
+driftfile /var/lib/chrony/drift
+makestep 1.0 3
+rtcsync
+keyfile /etc/chrony.keys
+leapsectz right/UTC
+logdir /var/log/chrony
+</code></pre></div>
+
+<p>Restart to pick up new config</p>
+<div class="highlight"><pre><span></span><code>$ sudo systemctl restart chronyd
+$ sudo systemctl status chronyd
+ * chronyd.service - NTP client/server
+   Loaded: loaded (/usr/lib/systemd/system/chronyd.service; enabled; vendor preset: enabled)
+   Active: active (running) since Fri 2023-02-17 15:47:28 EST; 20h ago
+     Docs: man:chronyd(8)
+           man:chrony.conf(5)
+  Process: 798 ExecStartPost=/usr/libexec/chrony-helper update-daemon (code=exited, status=0/SUCCESS)
+  Process: 789 ExecStart=/usr/sbin/chronyd $OPTIONS (code=exited, status=0/SUCCESS)
+ Main PID: 796 (chronyd)
+    Tasks: 1 (limit: 11366)
+   Memory: 2.3M
+   CGroup: /system.slice/chronyd.service
+           └─796 /usr/sbin/chronyd
+</code></pre></div>
+
+<p>Test</p>
+<div class="highlight"><pre><span></span><code>$ chronyc sources -v
+
+  .-- Source mode  &#39;^&#39; = server, &#39;=&#39; = peer, &#39;#&#39; = local clock.
+ / .- Source state &#39;*&#39; = current best, &#39;+&#39; = combined, &#39;-&#39; = not combined,
+| /             &#39;x&#39; = may be in error, &#39;~&#39; = too variable, &#39;?&#39; = unusable.
+||                                                 .- xxxx [ yyyy ] +/- zzzz
+||      Reachability register (octal) -.           |  xxxx = adjusted offset,
+||      Log2(Polling interval) --.      |          |  yyyy = measured offset,
+||                                \     |          |  zzzz = estimated error.
+||                                 |    |           \
+MS Name/IP address         Stratum Poll Reach LastRx Last sample               
+== ============================================================================
+^? your-ip-name-d&gt;             0   8     0     -     +0ns[   +0ns] +/-    0ns
+...
+$ timedatectl
+               Local time: Wed 2023-07-12 09:03:57 EDT
+           Universal time: Wed 2023-07-12 13:03:57 UTC
+                 RTC time: Wed 2023-07-12 13:03:57
+                Time zone: America/New_York (EDT, -0400)
+System clock synchronized: yes
+              NTP service: active
+          RTC in local TZ: no
+...
+$ systemctl is-active chronyd.service
+active
+...
+$ chronyc tracking
+Reference ID    : 404F64C5 (ntpool1.258.ntp.org)
+Stratum         : 3
+Ref time (UTC)  : Wed Jul 12 12:47:34 2023
+System time     : 0.000000002 seconds slow of NTP time
+Last offset     : +1.114915133 seconds
+RMS offset      : 1.114915133 seconds
+Frequency       : 32.362 ppm slow
+Residual freq   : +22.860 ppm
+Skew            : 3.901 ppm
+Root delay      : 0.046558209 seconds
+Root dispersion : 0.050582517 seconds
+Update interval : 0.0 seconds
+Leap status     : Normal
+</code></pre></div>
+
+<p>Reference: </p>
+<ul>
+<li><a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_basic_system_settings/using-chrony-to-configure-ntp_configuring-basic-system-settings">https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_basic_system_settings/using-chrony-to-configure-ntp_configuring-basic-system-settings</a></li>
+</ul>
+<h4 id="debian_3">Debian</h4>
+<p>Debian uses systemd-timesyncd service.</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>systemd-timesyncd
+<span class="w"> </span>*<span class="w"> </span>systemd-timesyncd.service<span class="w"> </span>-<span class="w"> </span>Network<span class="w"> </span>Time<span class="w"> </span>Synchronization
+<span class="w">   </span>Loaded:<span class="w"> </span>loaded<span class="w"> </span><span class="o">(</span>/lib/systemd/system/systemd-timesyncd.service<span class="p">;</span><span class="w"> </span>enabled<span class="p">;</span><span class="w"> </span>vendor<span class="w"> </span>preset:<span class="w"> </span>enabled<span class="o">)</span>
+<span class="w">  </span>Drop-In:<span class="w"> </span>/lib/systemd/system/systemd-timesyncd.service.d
+<span class="w">           </span>└─disable-with-time-daemon.conf
+<span class="w">   </span>Active:<span class="w"> </span>active<span class="w"> </span><span class="o">(</span>running<span class="o">)</span><span class="w"> </span>since<span class="w"> </span>Sun<span class="w"> </span><span class="m">2022</span>-07-24<span class="w"> </span><span class="m">12</span>:06:36<span class="w"> </span>EDT<span class="p">;</span><span class="w"> </span><span class="m">2</span><span class="w"> </span>weeks<span class="w"> </span><span class="m">3</span><span class="w"> </span>days<span class="w"> </span>ago
+<span class="w">     </span>Docs:<span class="w"> </span>man:systemd-timesyncd.service<span class="o">(</span><span class="m">8</span><span class="o">)</span>
+<span class="w"> </span>Main<span class="w"> </span>PID:<span class="w"> </span><span class="m">559</span><span class="w"> </span><span class="o">(</span>systemd-timesyn<span class="o">)</span>
+<span class="w">   </span>Status:<span class="w"> </span><span class="s2">&quot;Synchronized to time server for the first time 192.155.94.72:123 (2.debian.pool.ntp.org).&quot;</span>
+<span class="w">    </span>Tasks:<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">(</span>limit:<span class="w"> </span><span class="m">951</span><span class="o">)</span>
+<span class="w">   </span>Memory:<span class="w"> </span><span class="m">1</span>.0M
+<span class="w">   </span>CGroup:<span class="w"> </span>/system.slice/systemd-timesyncd.service
+<span class="w">           </span>└─559<span class="w"> </span>/lib/systemd/systemd-timesyncd
+</code></pre></div>
+
+<p>Reference: </p>
+<ul>
+<li>Debian: <a href="https://www.debian.org/doc/manuals/debian-handbook/sect.config-misc.en.html#sect.time-synchronization">https://www.debian.org/doc/manuals/debian-handbook/sect.config-misc.en.html#sect.time-synchronization</a></li>
+<li>Ubuntu: <a href="https://ubuntu.com/server/docs/network-ntp">https://ubuntu.com/server/docs/network-ntp</a></li>
+</ul>
+<h3 id="e-mail-client-for-sending-local-mail">E-Mail - Client for Sending Local Mail</h3>
+<h4 id="identify-mail-client-host-and-domain">Identify Mail Client Host and Domain</h4>
+<p>Edit the following files:</p>
+<ul>
+<li>/etc/hostname (add fully qualified host &amp; domain; i.e.: www.example.com)</li>
+<li>/etc/mailname (add domain; i.e.: example.com)</li>
+</ul>
+<h4 id="mail-transport-agent-mta-packages">Mail Transport Agent (MTA) packages</h4>
+<p>Install an SMTP daemon to transfer mail to the E-Mail server. </p>
+<hr/>
+
+<ul>
+<li>Debian</li>
+</ul>
+<p>Install postfix</p>
+<div class="highlight"><pre><span></span><code>$ sudo apt-get install postfix
+</code></pre></div>
+
+<p>Reconfigure postfix, if it does not pop up, and select <em>satellite</em> system.</p>
+<div class="highlight"><pre><span></span><code>$ sudo dpkg-reconfigure postfix
+</code></pre></div>
+
+<p>The following assumes your host is named <em>app</em> and your email server is <em>smtp.&lt;domain&gt;</em></p>
+<p>File: /etc/postfix/main.cf</p>
+<div class="highlight"><pre><span></span><code># See /usr/share/postfix/main.cf.dist for a commented, more complete version
+# Debian specific:  Specifying a file name will cause the first
+# line of that file to be used as the name.  The Debian default
+# is /etc/mailname.
+#myorigin = /etc/mailname
+
+smtpd_banner = $myhostname ESMTP $mail_name (Debian/GNU)
+biff = no
+
+# appending .domain is the MUA&#39;s job.
+append_dot_mydomain = no
+
+# Uncomment the next line to generate &quot;delayed mail&quot; warnings
+#delay_warning_time = 4h
+
+readme_directory = no
+
+# See http://www.postfix.org/COMPATIBILITY_README.html -- default to 3.6 on
+# fresh installs.
+compatibility_level = 3.6
+
+# TLS parameters
+smtpd_tls_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem
+smtpd_tls_key_file=/etc/ssl/private/ssl-cert-snakeoil.key
+smtpd_tls_security_level=may
+
+smtp_tls_CApath=/etc/ssl/certs
+smtp_tls_security_level=may
+smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
+
+smtpd_relay_restrictions = permit_mynetworks permit_sasl_authenticated defer_unauth_destination
+myhostname = app
+alias_maps = hash:/etc/aliases
+alias_database = hash:/etc/aliases
+myorigin = /etc/mailname
+mydestination = app.example.com, $myhostname, app, localhost.localdomain, localhost
+relayhost = smtp.example.com
+mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128
+mailbox_size_limit = 0
+recipient_delimiter = +
+inet_interfaces = loopback-only
+inet_protocols = all
+</code></pre></div>
+
+<p>Check postfix systemd service.</p>
+<div class="highlight"><pre><span></span><code>$ sudo systemctl status postfix
+● postfix.service - Postfix Mail Transport Agent
+     Loaded: loaded (/lib/systemd/system/postfix.service; enabled; preset: enabled)
+     Active: active (exited) since Sat 2023-07-22 09:32:00 EDT; 5h 26min ago
+       Docs: man:postfix(1)
+    Process: 1178 ExecStart=/bin/true (code=exited, status=0/SUCCESS)
+   Main PID: 1178 (code=exited, status=0/SUCCESS)
+        CPU: 1ms
+
+Jul 22 09:32:00 app.example.com systemd[1]: Starting postfix.service - Postfix Mail Transport Agent...
+Jul 22 09:32:00 app.example.com systemd[1]: Finished postfix.service - Postfix Mail Transport Agent.
+</code></pre></div>
+
+<hr/>
+
+<ul>
+<li>RedHat</li>
+</ul>
+<p>Install postfix</p>
+<div class="highlight"><pre><span></span><code>$ sudo dnf install postfix
+</code></pre></div>
+
+<p>The following assumes your host is named <em>app</em> and your email server is <em>smtp.&lt;domain&gt;</em></p>
+<p>File: /etc/postfix/main.cf</p>
+<div class="highlight"><pre><span></span><code>smtpd_banner = $myhostname ESMTP $mail_name (Linux)
+biff = no
+
+# appending .domain is the MUA&#39;s job.
+append_dot_mydomain = no
+
+# Uncomment the next line to generate &quot;delayed mail&quot; warnings
+#delay_warning_time = 4h
+
+readme_directory = no
+
+# See http://www.postfix.org/COMPATIBILITY_README.html -- default to 2 on
+# fresh installs.
+compatibility_level = 2
+
+# TLS parameters
+smtpd_tls_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem
+smtpd_tls_key_file=/etc/ssl/private/ssl-cert-snakeoil.key
+smtpd_use_tls=yes
+smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
+smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
+
+# See /usr/share/doc/postfix/TLS_README.gz in the postfix-doc package for
+# information on enabling SSL in the smtp client.
+
+smtpd_relay_restrictions = permit_mynetworks permit_sasl_authenticated defer_unauth_destination
+myhostname = app.example.com
+alias_maps = hash:/etc/aliases
+alias_database = hash:/etc/aliases
+mydestination = app.example.com, localhost.example.com, localhost
+relayhost = smtp.example.com
+mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128 192.168.1.0/32
+mailbox_size_limit = 0
+recipient_delimiter = +
+inet_interfaces = loopback-only
+inet_protocols = all
+</code></pre></div>
+
+<p>Check the status of postfix</p>
+<div class="highlight"><pre><span></span><code>$ sudo systemctl status postfix
+[sudo] password for don: 
+● postfix.service - Postfix Mail Transport Agent
+     Loaded: loaded (/usr/lib/systemd/system/postfix.service; enabled; preset: disabled)
+     Active: active (running) since Wed 2023-06-07 17:43:43 EDT; 22h ago
+   Main PID: 2182 (master)
+      Tasks: 3 (limit: 99462)
+     Memory: 8.6M
+        CPU: 1.975s
+     CGroup: /system.slice/postfix.service
+             ├─ 2182 /usr/libexec/postfix/master -w
+             ├─ 2184 qmgr -l -t unix -u
+             └─15581 pickup -l -t unix -u
+</code></pre></div>
+
+<hr/>
+
+<h4 id="mac-os-send-mail-to-local-server-not-system-configured-in-mail-app">MAC OS send mail to local server, not system configured in mail app</h4>
+<p>Use the IP address of the local mail server, or you can edit /etc/hosts and use that name. Postfix does not run as a daemon, but is run by the SMTP process, probably fired of by a listener for port 25.</p>
+<p>File: /etc/postfix/main.cf</p>
+<div class="highlight"><pre><span></span><code>% sudo vi /etc/postfix/main.cf
+~
+myhostname = square.example.com
+~
+mydomain = example.com
+~
+relayhost = [192.168.1.3]
+</code></pre></div>
+
+<hr/>
+
+<h4 id="test-mail">Test mail</h4>
+<p>First install the command line mail interface(s). I use mail and mutt.</p>
+<hr/>
+
+<ul>
+<li>
+<p>Debian</p>
+<p>:::Text
+$ sudo apt-get install mailutils mutt</p>
+</li>
+</ul>
+<hr/>
+
+<ul>
+<li>
+<p>RedHat</p>
+<p>:::Text
+$ sudo dnf install s-nail mutt</p>
+</li>
+</ul>
+<hr/>
+
+<div class="highlight"><pre><span></span><code>% mail -s &quot;Hello internal mail&quot;  don@example.com &lt;/dev/null
+Null message body; hope that&#39;s ok
+
+Shows up as: don@square.example.com
+...
+mutt -s &quot;Hello internal mail from mutt&quot;  don@example.com
+
+Shows up as: don@square.local
+</code></pre></div>
+
+<p>Mutt change <em>from</em> address</p>
+<p>File: ~/.muttrc </p>
+<div class="highlight"><pre><span></span><code>set from=&quot;Square &lt;don@square.example.com&gt;&quot;
+set hostname=&quot;square.example.com&quot;
+</code></pre></div>
+
+<p>Shows up as: don@square.example.com</p>
+<ul>
+<li>Update root destination in aliases</li>
+</ul>
+<p>File: /etc/aliases</p>
+<div class="highlight"><pre><span></span><code>~
+# Person who should get root&#39;s mail
+#root:      marc
+root:       bob@example.com
+~
+</code></pre></div>
+
+<p>Update aliases into database format</p>
+<div class="highlight"><pre><span></span><code>$ sudo newaliases
+</code></pre></div>
+
+<ul>
+<li>Create mail script to set variables</li>
+</ul>
+<p>File: ~/mail.sh</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">#######################################################################</span>
+<span class="c1">#</span>
+<span class="c1"># File: mail.sh</span>
+<span class="c1">#</span>
+<span class="c1"># Usage: mail.sh &lt;File Name to Mail&gt; &lt;Subject&gt;</span>
+<span class="c1">#  Change the REPLYTO, FROM, and MAILTO variables</span>
+<span class="c1">#  and choose RedHat or Debian</span>
+<span class="c1">#</span>
+<span class="c1"># Who       When        Why</span>
+<span class="c1"># --------- ----------- -----------------------------------------------</span>
+<span class="c1"># D. Cohoon Feb-2023    VPS host name cannot be changed, so set headers</span>
+<span class="c1">#######################################################################</span>
+<span class="k">function</span><span class="w"> </span>usage<span class="w"> </span><span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">   </span>/usr/bin/echo<span class="w"> </span><span class="s2">&quot;Usage: </span><span class="si">${</span><span class="nv">0</span><span class="si">}</span><span class="s2"> &lt;File Name to Mail&gt; &lt;Subject&gt;&quot;</span>
+<span class="w">   </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="o">}</span>
+<span class="c1">#------------------</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$#</span><span class="w"> </span>-lt<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span>usage
+<span class="k">fi</span>
+<span class="c1">#</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>!<span class="w"> </span>-z<span class="w"> </span><span class="si">${</span><span class="nv">1</span><span class="si">}</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>!<span class="w"> </span>-f<span class="w"> </span><span class="si">${</span><span class="nv">1</span><span class="si">}</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span>usage<span class="w"> </span>
+<span class="k">fi</span>
+<span class="c1">#</span>
+<span class="c1">#------------------</span>
+<span class="nv">HOSTNAME</span><span class="o">=</span><span class="k">$(</span>hostname<span class="w"> </span>-s<span class="k">)</span>
+<span class="nv">DOMAINNAME</span><span class="o">=</span><span class="k">$(</span>hostname<span class="w"> </span>-d<span class="k">)</span>
+<span class="nv">FILE</span><span class="o">=</span><span class="si">${</span><span class="nv">1</span><span class="si">}</span><span class="w">    </span><span class="c1"># First arg</span>
+<span class="nb">shift</span><span class="w"> </span><span class="m">1</span>
+<span class="nv">SUBJECT</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">HOSTNAME</span><span class="si">}</span><span class="s2">.</span><span class="si">${</span><span class="nv">DOMAINNAME</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="p">@</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="c1"># Remainder of args</span>
+<span class="c1">#</span>
+<span class="c1">#------------------</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">REPLYTO</span><span class="o">=</span>root@app.example.com
+<span class="nv">FROM</span><span class="o">=</span>root@app.example.com
+<span class="c1">#FROM=&quot;${HOSTNAME}@${DOMAINNAME}&quot;</span>
+<span class="nv">MAILTO</span><span class="o">=</span>bob@example.com
+<span class="c1">#</span>
+<span class="c1">#------------------</span>
+<span class="c1"># Debian: install mailutils</span>
+<span class="c1">#/usr/bin/cat ${FILE} | /usr/bin/mail -aFROM:${FROM}  -s &quot;${SUBJECT}&quot; ${MAILTO}</span>
+<span class="c1"># RedHat: install s-nail</span>
+<span class="c1">#/usr/bin/cat ${FILE} | /usr/bin/mail --from-address=${FROM} -s &quot;${SUBJECT}&quot; ${MAILTO}</span>
+</code></pre></div>
+
+<h3 id="monit-monitor-system-and-restart-processes">Monit - Monitor System and Restart Processes</h3>
+<p>Monit is a small Open Source utility for managing and monitoring Unix systems. Monit conducts automatic maintenance and repair and can execute meaningful causal actions in error situations.</p>
+<p>Reference: <a href="https://mmonit.com/monit/">https://mmonit.com/monit/</a></p>
+<h4 id="installation">Installation</h4>
+<hr/>
+
+<p>The Debian Way</p>
+<div class="highlight"><pre><span></span><code>$ sudo apt-get install monit
+</code></pre></div>
+
+<hr/>
+
+<p>The RedHat Way</p>
+<div class="highlight"><pre><span></span><code>$ sudo dnf install monit
+</code></pre></div>
+
+<hr/>
+
+<h4 id="configuration">Configuration</h4>
+<p>Change the mailserver to yours, and add some general monitoring.</p>
+<p>File: /etc/monit/monitrc:</p>
+<div class="highlight"><pre><span></span><code># Mail server
+set mailserver www.example.com port 25   # primary mailserver
+# Don 28-Dec 2021 - general monitoring
+check system $HOST
+  if loadavg (1min) per core &gt; 2 for 5 cycles then alert
+  if loadavg (5min) per core &gt; 1.5 for 10 cycles then alert
+  if cpu usage &gt; 95% for 5 cycles then alert
+  if memory usage &gt; 90% then alert
+  if swap usage &gt; 50% then alert
+
+check device root with path /
+  if space usage &gt; 90% then alert
+  if inode usage &gt; 90% then alert
+  if changed fsflags then alert
+  if service time &gt; 250 milliseconds for 5 cycles then alert
+  if read rate &gt; 500 operations/s for 5 cycles then alert
+  if write rate &gt; 200 operations/s for 5 cycles then alert
+
+check network eth0 with interface eth0
+  if failed link then alert
+  if changed link then alert
+  if saturation &gt; 90%  for 2 cycles then alert
+  if download &gt; 10 MB/s for 5 cycles then alert
+  if total uploaded &gt; 1 GB in last hour then alert
+
+check host REACHABILITY with address 1.1.1.1
+  if failed ping with timeout 10 seconds then alert
+</code></pre></div>
+
+<h4 id="process">Process</h4>
+<p>Monitor and restart the ssh process (and others that you may need using this as a guide).</p>
+<p>File: /etc/monit/conf.d/sshd</p>
+<div class="highlight"><pre><span></span><code>check process sshd with pidfile /var/run/sshd.pid
+    alert root@example.com with mail-format {
+           from: monit@example.com
+        subject: monit alert: $SERVICE $EVENT $DATE
+        message: $DESCRIPTION
+    }
+  start program &quot;/etc/init.d/ssh start&quot;
+  stop program &quot;/etc/init.d/ssh stop&quot;
+</code></pre></div>
+
+<h3 id="munin-resource-history-monitor">Munin - Resource History Monitor</h3>
+<p>Munin is a networked resource monitoring tool (<a href="https://guide.munin-monitoring.org/en/latest/reference/history.html#history">started in 2002</a>) that can help analyze resource trends and <em>what just happened to kill our performance?</em> problems. It is designed to be very plug and play.</p>
+<p>A default installation provides a lot of graphs with almost no work. <strong>Requires Apache or nginx for graphs.</strong></p>
+<p>Reference: <a href="http://guide.munin-monitoring.org/en/latest/tutorial/alert.html">http://guide.munin-monitoring.org/en/latest/tutorial/alert.html</a></p>
+<h4 id="_1"><img alt="Munin-Architecture.png" src="/linux-in-house/images/Munin-Architecture.png"></h4>
+<p>Installation</p>
+<p>On <em>all</em> nodes </p>
+<hr/>
+
+<p>The Debian Way</label></div></p>
+<p>package libdb-pg-perl is required for postgresql</p>
+<div class="highlight"><pre><span></span><code># sudo apt-get install munin libdbd-pg-perl
+</code></pre></div>
+
+<hr/>
+
+<p>The RedHat Way</p>
+<p>package perl-DBD-Pg is required for postgresql</p>
+<div class="highlight"><pre><span></span><code># sudo dnf install munin perl-DBD-Pg
+</code></pre></div>
+
+<hr/>
+
+<p>On <em>Munin-Master</em> node, add the following list of hosts to monitor:</p>
+<p>File: /etc/munin.munin.conf</p>
+<div class="highlight"><pre><span></span><code>~
+# Local Host
+[app.example.com]
+    address 127.0.0.1
+    use_node_name yes
+
+# E-Mail host
+[www.example.com]
+    address 192.168.1.3
+    use_node_name yes
+~
+</code></pre></div>
+
+<hr/>
+
+<ul>
+<li>The Debian (ufw) Way</li>
+</ul>
+<p>On <em>Munin-Node</em> node, allow master into IPv4/6 port:</p>
+<div class="highlight"><pre><span></span><code>$ sudo ufw allow 4949
+$ sudo ufw status | grep 4949
+4949                       ALLOW       Anywhere                  
+4949 (v6)                  ALLOW       Anywhere (v6)
+</code></pre></div>
+
+<p>IPv4 and IPv6</p>
+<hr/>
+
+<ul>
+<li>The RedHat (firewall-cmd) Way</li>
+</ul>
+<p>On <em>Munin-Node</em> node, allow master into IPv4 port:</p>
+<div class="highlight"><pre><span></span><code>$ sudo firewall-cmd --permanent --zone=public --add-port=4949/tcp
+$ sudo firewall-cmd --reload
+$ sudo firewall-cmd --permanent --list-ports
+4949/tcp
+</code></pre></div>
+
+<p>IPv4</p>
+<hr/>
+
+<ul>
+<li>On <em>Munin-Node</em> node, add the <em>Munin-Master</em> IP address to the following:</li>
+</ul>
+<p>File: /etc/munin/munin-node.conf</p>
+<div class="highlight"><pre><span></span><code>~
+# A list of addresses that are allowed to connect.  This must be a
+# regular expression, since Net::Server does not understand CIDR-style
+# network notation unless the perl module Net::CIDR is installed.  You
+# may repeat the allow line as many times as you&#39;d like
+
+allow ^127\.0\.0\.1$
+allow ^::1$
+allow ^192\.168\.1\.3$
+allow ^fe80::abcd:1234:0000:abcd$
+~
+</code></pre></div>
+
+<p>Check your munin-node functions from command line using the <em>network cat</em> utility 
+Debian -&gt; <code>$ sudo apt-get install ncat</code>:
+RedHat -&gt; <code>$ sudo dnf install ncat</code>:</p>
+<p>Try comands:</p>
+<ul>
+<li>list</li>
+<li>nodes</li>
+<li>config <item from list></li>
+<li>fetch <item from list></li>
+<li>version</li>
+<li>quit quit</li>
+</ul>
+<p>Examples:</p>
+<div class="highlight"><pre><span></span><code>$ ncat 127.0.0.1 4949
+# munin node at app.example.com
+list
+acpi apache_accesses apache_processes apache_volume cpu df df_inode entropy forks fw_packets http_loadtime if_em1 if_eno1 if_err_em1 if_err_eno1 if_err_tun0 if_err_wlp58s0 if_tun0 if_wlp58s0 interrupts irqstats load lpstat memory munin_stats netstat ntp_198.23.200.19 ntp_208.94.243.142 ntp_216.218.254.202 ntp_91.189.94.4 ntp_96.126.100.203 ntp_kernel_err ntp_kernel_pll_freq ntp_kernel_pll_off ntp_offset ntp_states open_files open_inodes postfix_mailqueue postfix_mailvolume postgres_autovacuum postgres_bgwriter postgres_cache_ALL postgres_cache_twotree postgres_checkpoints postgres_connections_ALL postgres_connections_db postgres_connections_twotree postgres_locks_ALL postgres_locks_twotree postgres_querylength_ALL postgres_querylength_twotree postgres_scans_twotree postgres_size_ALL postgres_size_twotree postgres_transactions_ALL postgres_transactions_twotree postgres_tuples_twotree postgres_users postgres_xlog proc_pri processes swap threads uptime users vmstat
+.
+fetch df
+_dev_nvme0n1p2.value 34.4721606114914
+_dev_shm.value 0.000540811610733636
+_run.value 0.183629672785198
+_run_lock.value 0.15625
+_run_qemu.value 0
+_dev_sda1.value 39.2182617590549
+_dev_nvme0n1p1.value 1.02513530868728
+_dev_sdb1.value 29.1143742265263
+.
+fetch cpu
+user.value 3392679
+nice.value 310628
+system.value 792413
+idle.value 49254331
+iowait.value 202415
+irq.value 0
+softirq.value 56281
+steal.value 0
+guest.value 0
+</code></pre></div>
+
+<p>Apache monitoring requires the mod_status to be enabled and add your IP address range to the status.conf.</p>
+<p>Enable apache module mod_status:</p>
+<div class="highlight"><pre><span></span><code>$ sudo a2enmod status
+</code></pre></div>
+
+<p>Check the IP addresses in the apache status configuration. Change <code>Require ip &lt;address&gt;</code> to allow other IP addresses to connect to the munin monitor.</p>
+<p>File: /etc/apache2/mods-enabled/status.conf</p>
+<div class="highlight"><pre><span></span><code>~
+    &lt;Location /server-status&gt;
+        SetHandler server-status
+        Require local
+        Require ip 192.168.1.0/24
+        #Require ip 192.0.2.0/24
+    &lt;/Location&gt;
+~
+</code></pre></div>
+
+<p>Check apache plugin:</p>
+<div class="highlight"><pre><span></span><code>$ sudo munin-run apache_volume
+volume80.value 500736
+</code></pre></div>
+
+<p>Check postgresql plugin:</p>
+<div class="highlight"><pre><span></span><code>$ sudo munin-run postgres_connections_miniflux
+active.value 0
+idle.value 1
+idletransaction.value 0
+unknown.value 0
+waiting.value 0
+</code></pre></div>
+
+<p>Check the munin-node daemon status:</p>
+<div class="highlight"><pre><span></span><code>$ sudo systemctl status munin-node
+</code></pre></div>
+
+<p>Check the munin-master daemon status:</p>
+<div class="highlight"><pre><span></span><code>$ sudo systemctl status munin
+</code></pre></div>
+
+<p>The utility <strong>munin-node-configure</strong> is used by the Munin installation procedure to check which plugins are suitable for your node and create the links automatically. <em>It can be called every time when a system configuration changes (services, hardware, etc) on the node and it will adjust the collection of plugins accordingly.</em> '<strong>-shell'</strong> will display new configuration plugin links 'ln -s ...' for you.</p>
+<p>For instance, below a new network interface (if) was discovered since the last configuration of munin. To enable the new monitoring simply execute the 'ln -s ...' commands to create soft links, so interface veth2e40fe9 will be monitored.</p>
+<div class="highlight"><pre><span></span><code>$ sudo munin-node-configure -shell
+ln -s &#39;/usr/share/munin/plugins/if_&#39; &#39;/etc/munin/plugins/if_veth2e40fe9&#39;
+ln -s &#39;/usr/share/munin/plugins/if_err_&#39; &#39;/etc/munin/plugins/if_err_veth2e40fe9&#39;
+</code></pre></div>
+
+<p>To have <a href="https://guide.munin-monitoring.org/en/latest/reference/munin-node-configure.html#munin-node-configure">munin-node-configure</a> display 'rm ...' commands for plugins with software that may no longer be installed, use the option ‘–remove-also’.</p>
+<div class="highlight"><pre><span></span><code>$ sudo munin-node-configure -shell -remove-also
+ln -s &#39;/usr/share/munin/plugins/if_&#39; &#39;/etc/munin/plugins/if_veth2e40fe9&#39;
+rm -f &#39;/etc/munin/plugins/if_veth0049d71&#39;
+ln -s &#39;/usr/share/munin/plugins/if_err_&#39; &#39;/etc/munin/plugins/if_err_veth2e40fe9&#39;
+rm -f &#39;/etc/munin/plugins/if_err_veth0049d71&#39;
+</code></pre></div>
+
+<p>Enabled monitors can be found in the same location</p>
+<div class="highlight"><pre><span></span><code>$ ls -l /etc/munin/plugins | grep apache
+lrwxrwxrwx 1 root root 40 Jun 30  2018 apache_accesses -&gt; /usr/share/munin/plugins/apache_accesses
+lrwxrwxrwx 1 root root 41 Jun 30  2018 apache_processes -&gt; /usr/share/munin/plugins/apache_processes
+lrwxrwxrwx 1 root root 38 Jun 30  2018 apache_volume -&gt; /usr/share/munin/plugins/apache_volume
+</code></pre></div>
+
+<p>Testing new plugins has an <strong>autoconf</strong> option to munin-run. Errors will be displayed, and a debug '-d' option is also available.</p>
+<div class="highlight"><pre><span></span><code>$ sudo munin-run postgres_connections_miniflux autoconf
+yes
+
+$ sudo munin-run -d postgres_connections_miniflux autoconf
+# Running &#39;munin-run&#39; via &#39;systemd-run&#39; with systemd properties based on &#39;munin-node.service&#39;.
+# Command invocation: systemd-run --collect --pipe --quiet --wait --property EnvironmentFile=/tmp/YRfAa1dq9U --property UMask=0022 --property LimitCPU=infinity --property LimitFSIZE=infinity --property LimitDATA=infinity --property LimitSTACK=infinity --property LimitCORE=infinity --property LimitRSS=infinity --property LimitNOFILE=524288 --property LimitAS=infinity --property LimitNPROC=14150 --property LimitMEMLOCK=65536 --property LimitLOCKS=infinity --property LimitSIGPENDING=14150 --property LimitMSGQUEUE=819200 --property LimitNICE=0 --property LimitRTPRIO=0 --property LimitRTTIME=infinity --property SecureBits=0 --property &#39;CapabilityBoundingSet=cap_chown cap_dac_override cap_dac_read_search cap_fowner cap_fsetid cap_kill cap_setgid cap_setuid cap_setpcap cap_linux_immutable cap_net_bind_service cap_net_broadcast cap_net_admin cap_net_raw cap_ipc_lock cap_ipc_owner cap_sys_module cap_sys_rawio cap_sys_chroot cap_sys_ptrace cap_sys_pacct cap_sys_admin cap_sys_boot cap_sys_nice cap_sys_resource cap_sys_time cap_sys_tty_config cap_mknod cap_lease cap_audit_write cap_audit_control cap_setfcap cap_mac_override cap_mac_admin cap_syslog cap_wake_alarm cap_block_suspend cap_audit_read cap_perfmon cap_bpf cap_checkpoint_restore&#39; --property AmbientCapabilities= --property DynamicUser=no --property MountFlags= --property PrivateTmp=yes --property PrivateDevices=no --property ProtectClock=no --property ProtectKernelTunables=no --property ProtectKernelModules=no --property ProtectKernelLogs=no --property ProtectControlGroups=no --property PrivateNetwork=no --property PrivateUsers=no --property PrivateMounts=no --property ProtectHome=yes --property ProtectSystem=full --property NoNewPrivileges=no --property LockPersonality=no --property MemoryDenyWriteExecute=no --property RestrictRealtime=no --property RestrictSUIDSGID=no --property RestrictNamespaces=no --property ProtectProc=default --property ProtectHostname=no -- /usr/sbin/munin-run --ignore-systemd-properties -d postgres_connections_miniflux autoconf
+# Processing plugin configuration from /etc/munin/plugin-conf.d/README
+# Processing plugin configuration from /etc/munin/plugin-conf.d/dhcpd3
+# Processing plugin configuration from /etc/munin/plugin-conf.d/munin-node
+# Processing plugin configuration from /etc/munin/plugin-conf.d/spamstats
+# Setting /rgid/ruid/ to /130/117/
+# Setting /egid/euid/ to /130 130/117/
+# Setting up environment
+# Environment PGPORT = 5432
+# Environment PGUSER = postgres
+# About to run &#39;/etc/munin/plugins/postgres_connections_miniflux autoconf&#39;
+yes
+</code></pre></div>
+
+<h4 id="alert-via-e-mail">Alert via e-mail:</h4>
+<p>Reference: <a href="https://guide.munin-monitoring.org/en/latest/tutorial/alert.html#alerts-send-by-local-system-tools">https://guide.munin-monitoring.org/en/latest/tutorial/alert.html#alerts-send-by-local-system-tools</a></p>
+<p>Change your email here</p>
+<p>File: /etc/munin/munin.conf</p>
+<div class="highlight"><pre><span></span><code>~
+contact.email.command mail -s &quot;Munin-notification for ${var:group} :: ${var:host}&quot; your@email.address.here
+~
+</code></pre></div>
+
+<h4 id="adjust-disk-full-thresholds">Adjust disk full thresholds:</h4>
+<p>Adjust this in <em>master</em> /etc/munin.conf section for node</p>
+<p>File: /etc/munin.conf</p>
+<div class="highlight"><pre><span></span><code>[beaglebone]
+    address 192.168.1.7
+    use_node_name yes
+    diskstats_latency.mmcblk0.avgrdwait.warning 0:10
+    diskstats_latency.mmcblk0.avgrdwait.critical -5:5
+    diskstats_latency.mmcblk0.avgwdwait.warning 0:10
+    diskstats_latency.mmcblk0.avgwdwait.critical -5:5
+    diskstats_latency.mmcblk0.avgwait.warning 0:10
+    diskstats_latency.mmcblk0.avgwait.critical -5:5
+</code></pre></div>
+
+<h4 id="graph-example">Graph Example<img alt="munin.png" src="/linux-in-house/images/munin.png"></h4>
+<h4 id="redhat-alternative">Redhat Alternative</h4>
+<p>Cockpit</p>
+<p><img alt="Cockpit Dashboard" src="/linux-in-house/images/Cockpit-dashboard.png"></p>
+<div class="highlight"><pre><span></span><code>$ sudo systemctl start Cockpit
+</code></pre></div>
+
+<p>To log in to Cockpit, open your web browser to localhost:9090 and enter your Linux username and password.</p>
+<p>Reference: <a href="https://www.redhat.com/sysadmin/intro-cockpit">https://www.redhat.com/sysadmin/intro-cockpit</a></p>
+<h3 id="fail2ban-automatic-firewall-blocking">Fail2ban - Automatic Firewall Blocking</h3>
+<p>Daemon to ban hosts that cause multiple authentication errors by monitoring system logs.</p>
+<p>Reference: <a href="https://github.com/fail2ban/fail2ban">https://github.com/fail2ban/fail2ban</a></p>
+<h4 id="install">Install</h4>
+<hr/>
+
+<p>The Debian Way</p>
+<div class="highlight"><pre><span></span><code>$ sudo apt-get install fail2ban
+</code></pre></div>
+
+<hr/>
+
+<p>The RedHat Way</p>
+<div class="highlight"><pre><span></span><code>$ sudo dnf install fail2ban
+</code></pre></div>
+
+<hr/>
+
+<h4 id="configure">Configure</h4>
+<p>Create a jail.local file to override the defaults. Update your email and IP addresses to suit your environment. Also add or disable applications you do not run. See the reference above for example of how to do that.</p>
+<p><code>action = %(action_)s</code> This defines the action to execute when a limit is reached. By default it will only block the user.</p>
+<p>To receive an email at each ban, set it to:</p>
+<p><code>action = %(action_mw)</code></p>
+<p>To receive the logs with the mail, set it to:</p>
+<p><code>action = %(action_mwl)</code></p>
+<p>File: /etc/fail2ban/jail.local</p>
+<div class="highlight"><pre><span></span><code>[DEFAULT]
+# email
+destemail = don@example.com
+sender = root@example.com
+# ban &amp; send an e-mail with whois report and relevant log lines
+# to the destemail.
+action = %(action_mwl)s
+# whitelist
+ignoreip = 127.0.0.1 192.168.1.0/24 8.8.8.8 1.1.1.1
+</code></pre></div>
+
+<p>Secure sshd</p>
+<p>File: /etc/fail2ban/jail.d/sshd.local</p>
+<hr/>
+<p>The Debian Way</p>
+<div class="highlight"><pre><span></span><code>[sshd]
+enabled = true
+port = 22
+filter = sshd
+action = iptables-multiport[name=sshd, port=&quot;ssh&quot;]
+logpath = /var/log/auth.log
+maxretry = 3
+bantime = 1d
+</code></pre></div>
+
+<hr/>
+
+<p>The RedHat Way</p>
+<div class="highlight"><pre><span></span><code>[sshd]
+enabled = true
+port = 22
+filter = sshd
+action = iptables-multiport[name=sshd, port=&quot;ssh&quot;]
+logpath = /var/log/secure
+maxretry = 3
+bantime = 1d
+</code></pre></div>
+
+<hr/>
+
+<p>More filters show which daemons are available to be enabled here: /etc/fail2ban/filter.d/</p>
+<h3 id="backup-save-your-files-daily">Backup - Save Your Files Daily</h3>
+<p>To find the proper name of your USB stick, check the current mounts:</p>
+<div class="highlight"><pre><span></span><code>$ sudo lsblk
+NAME        MAJ:MIN RM   SIZE RO TYPE  MOUNTPOINTS
+sda           8:0    0   1.8T  0 disk  
+└─sda1        8:1    0   1.8T  0 part  
+sdb           8:16   1     0B  0 disk  
+sdc           8:32   1     0B  0 disk  
+nvme0n1     259:0    0 238.5G  0 disk  
+├─nvme0n1p1 259:1    0   300M  0 part  /boot/efi
+├─nvme0n1p2 259:2    0 119.2G  0 part  /
+├─nvme0n1p3 259:3    0  16.9G  0 part  [SWAP]
+</code></pre></div>
+
+<p>Plug it is, then check <code>dmesg -x</code> immediately after plugging it in. Look for :</p>
+<div class="highlight"><pre><span></span><code>[201373.210797]  sdd: sdd1
+[201373.211917] sd 2:0:0:0: [sdd] Attached SCSI removable disk
+</code></pre></div>
+
+<p>Then run blkid again. You can see the new entry, sdd.</p>
+<div class="highlight"><pre><span></span><code>$ sudo lsblk
+NAME        MAJ:MIN RM   SIZE RO TYPE  MOUNTPOINTS
+sda           8:0    0   1.8T  0 disk  
+└─sda1        8:1    0   1.8T  0 part  
+sdb           8:16   1     0B  0 disk  
+sdc           8:32   1     0B  0 disk  
+sdd           8:48   1  28.9G  0 disk  &lt;----- New USB Stick
+nvme0n1     259:0    0 238.5G  0 disk  
+├─nvme0n1p1 259:1    0   300M  0 part  /boot/efi
+├─nvme0n1p2 259:2    0 119.2G  0 part  /
+├─nvme0n1p3 259:3    0  16.9G  0 part  [SWAP]
+</code></pre></div>
+
+<h4 id="automatic-backup-to-usb-disk">Automatic backup to USB disk</h4>
+<p>Format new USB stick.</p>
+<p>Here are the commands to fdisk:</p>
+<ul>
+<li>m - menu</li>
+<li>p - print existing partitions</li>
+<li>d - delete partition</li>
+<li>n - create new partition (in this case only a primary partition is required)</li>
+<li>w - write partition</li>
+<li>
+<p>q - quit</p>
+<p>::Text
+$ sudo fdisk /dev/sdd</p>
+</li>
+</ul>
+<p>Check the USB stick label and filesystem (this example has no filesystem)</p>
+<div class="highlight"><pre><span></span><code>$ sudo blkid /dev/sdd1
+/dev/sdd1: PARTUUID=&quot;66bc7da7-1234-abcd-1234-ea4bfe7e00a7&quot;
+</code></pre></div>
+
+<p>So create an ext4 filesystem on the new partition(1)</p>
+<div class="highlight"><pre><span></span><code>$ sudo mkfs.ext4 /dev/sdd1
+mke2fs 1.46.2 (28-Feb-2021)
+/dev/sdc1 contains a vfat file system
+Proceed anyway? (y,N) y
+Creating filesystem with 7566075 4k blocks and 1892352 inodes
+Filesystem UUID: 8e33672c-1283-49de-98b8-6fd841372db6
+Superblock backups stored on blocks: 
+    32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632, 2654208, 
+    4096000
+
+Allocating group tables: done                            
+Writing inode tables: done                            
+Creating journal (32768 blocks): done
+Writing superblocks and filesystem accounting information: done
+</code></pre></div>
+
+<p>Check the new filesystem, now we see it is TYPE="ext4"</p>
+<div class="highlight"><pre><span></span><code>$ sudo blkid /dev/sdd1
+/dev/sdc1: UUID=&quot;8e33672c-1234-49de-abcd-6fd841372db6&quot; BLOCK_SIZE=&quot;4096&quot; TYPE=&quot;ext4&quot; PARTUUID=&quot;66bc7da7-c9c3-4342-8073-ea4bfe7e00a7&quot;
+</code></pre></div>
+
+<p>Label the USB stick as 'backup' so autobackup can find and mount it, then verify that LABEL="backup"</p>
+<div class="highlight"><pre><span></span><code>$ sudo e2label /dev/sdd1 backup
+$ sudo blkid /dev/sdd1
+/dev/sdd1: LABEL=&quot;backup&quot; UUID=&quot;8e33672c-1234-49de-abcd-6fd841372db6&quot; BLOCK_SIZE=&quot;4096&quot; TYPE=&quot;ext4&quot; PARTUUID=&quot;66bc7da7-c9c3-4342-8073-ea4bfe7e00a7&quot;
+</code></pre></div>
+
+<p>Copy the autobackup software onto this server</p>
+<div class="highlight"><pre><span></span><code>$ git clone https://github.com/bablokb/autobackup-service
+</code></pre></div>
+
+<p>Install the autobackup software</p>
+<div class="highlight"><pre><span></span><code>$ cd autobackup-service/
+$ sudo ./tools/install
+</code></pre></div>
+
+<p>RedHat Changes </p>
+<p>Lines: 21, 30, 31</p>
+<p>File: ./tools/install</p>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="mi">17</span><span class="w"> </span><span class="n">check_packages</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w"> </span><span class="mi">18</span><span class="w">   </span><span class="n">local</span><span class="w"> </span><span class="n">p</span>
+<span class="w"> </span><span class="mi">19</span><span class="w">   </span><span class="k">for</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s">&quot;$@&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w"> </span><span class="mi">20</span><span class="w">     </span><span class="n">echo</span><span class="w"> </span><span class="o">-</span><span class="n">en</span><span class="w"> </span><span class="s">&quot;Checking $p ... &quot;</span><span class="w"> </span><span class="o">&gt;&amp;</span><span class="mi">2</span>
+<span class="w"> </span><span class="mi">21</span><span class="w">     </span><span class="n">rpm</span><span class="w"> </span><span class="o">-</span><span class="n">qa</span><span class="w"> </span><span class="s">&quot;$p&quot;</span><span class="w"> </span><span class="mi">2</span><span class="o">&gt;/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">grep</span><span class="w"> </span><span class="o">-</span><span class="n">q</span><span class="w"> </span><span class="s">&quot;Status.*ok&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span>
+<span class="w"> </span><span class="mi">22</span><span class="w">     </span><span class="n">echo</span><span class="w"> </span><span class="s">&quot;ok&quot;</span><span class="w"> </span><span class="o">&gt;&amp;</span><span class="mi">2</span>
+<span class="w"> </span><span class="mi">23</span><span class="w">   </span><span class="n">done</span>
+<span class="w"> </span><span class="mi">24</span><span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span>
+<span class="w"> </span><span class="mi">25</span><span class="w"> </span><span class="p">}</span>
+<span class="w"> </span><span class="mi">26</span><span class="w"> </span>
+<span class="w"> </span><span class="mi">27</span><span class="w"> </span><span class="n">install_packages</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w"> </span><span class="mi">28</span><span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="o">-</span><span class="n">n</span><span class="w"> </span><span class="s">&quot;$PACKAGES&quot;</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">check_packages</span><span class="w"> </span><span class="n">$PACKAGES</span><span class="p">;</span><span class="w"> </span><span class="n">then</span>
+<span class="w"> </span><span class="mi">29</span><span class="w">     </span><span class="n">echo</span><span class="w"> </span><span class="o">-</span><span class="n">e</span><span class="w"> </span><span class="s">&quot;[INFO] installing additional packages&quot;</span><span class="w"> </span><span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span>
+<span class="w"> </span><span class="mi">30</span><span class="w">     </span><span class="n">dnf</span><span class="w"> </span><span class="n">update</span>
+<span class="w"> </span><span class="mi">31</span><span class="w">     </span><span class="n">dnf</span><span class="w"> </span><span class="o">-</span><span class="n">y</span><span class="w"> </span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">upgrade</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">$PACKAGES</span>
+<span class="w"> </span><span class="mi">32</span><span class="w">   </span><span class="n">fi</span>
+<span class="w"> </span><span class="mi">33</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+
+<p>Edit the autobackup configuration file, assigning LABEL=backup, and other items below:</p>
+<p>File: /etc/autobackup.conf</p>
+<div class="highlight"><pre><span></span><code>~
+<span class="gh">#</span> =&gt; File: /etc/autobackup.conf &lt;=
+<span class="gh">#</span> label of backup partition
+LABEL=backup
+
+<span class="gh">#</span> write messages to syslog
+SYSLOG=1
+
+<span class="gh">#</span> wait for device to appear (in seconds)
+WAIT_FOR_DEVICE=2
+
+<span class="gh">#</span> run a backup on every mount (i.e. multiple daily backups)
+force_daily=0
+
+<span class="gh">#</span> backup-levels - this must match your entries in /etc/rsnapshot.conf,
+i.e.
+<span class="gh">#</span> you must have a corresponding &#39;retain&#39; or &#39;interval&#39; entry.
+<span class="gh">#</span> The autobackup-script will skip empty levels
+daily=&quot;day&quot;
+weekly=&quot;week&quot;
+monthly=&quot;month&quot;
+yearly=&quot;&quot;
+&quot;/etc/autobackup.conf&quot; line 29 of 29 --100%--
+</code></pre></div>
+
+<p>Edit the rsnapshot configuration file, be sure to use TABS in the BACKUP POINTS / SCRIPTS section.</p>
+<p>File: /etc/rsnapshot.conf</p>
+<div class="highlight"><pre><span></span><code><span class="o">~</span>
+<span class="c1"># =&gt; File /etc/rsnapshot.conf &lt;=</span>
+<span class="c1">###########################</span>
+<span class="c1"># SNAPSHOT ROOT DIRECTORY #</span>
+<span class="c1">###########################</span>
+
+<span class="c1"># All snapshots will be stored under this root directory.</span>
+<span class="c1">#</span>
+<span class="c1">#snapshot_root  /var/cache/rsnapshot/</span>
+<span class="n">snapshot_root</span><span class="w">   </span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">autobackup</span><span class="o">/.</span><span class="n">autobackup</span><span class="o">/</span>
+<span class="o">~</span><span class="w"> </span>
+<span class="o">~</span>
+<span class="c1">#########################################</span>
+<span class="c1">#     BACKUP LEVELS / INTERVALS         #</span>
+<span class="c1"># Must be unique and in ascending order #</span>
+<span class="c1"># e.g. alpha, beta, gamma, etc.         #</span>
+<span class="c1">#########################################</span>
+
+<span class="n">retain</span><span class="w">  </span><span class="n">day</span><span class="w">     </span><span class="mi">7</span>
+<span class="n">retain</span><span class="w">  </span><span class="n">week</span><span class="w">    </span><span class="mi">4</span>
+<span class="n">retain</span><span class="w">  </span><span class="n">month</span><span class="w">   </span><span class="mi">3</span>
+<span class="c1">#retain year    3</span>
+
+<span class="c1">###############################</span>
+<span class="c1">### BACKUP POINTS / SCRIPTS ###</span>
+<span class="c1">###############################</span>
+
+<span class="c1"># LOCALHOST</span>
+<span class="c1"># backup  /etc/           ./</span>
+<span class="c1"># backup  /var/backups/   ./</span>
+<span class="c1"># backup  /usr/local/     ./</span>
+<span class="c1"># backup  /home           ./</span>
+<span class="c1"># NOTE: Use tabs!</span>
+<span class="c1"># LOCALHOST$</span>
+<span class="n">backup</span><span class="o">^</span><span class="n">I</span><span class="o">/</span><span class="n">etc</span><span class="o">/^</span><span class="n">I</span><span class="o">./$</span>
+<span class="n">backup</span><span class="o">^</span><span class="n">I</span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">backups</span><span class="o">/^</span><span class="n">I</span><span class="o">./$</span>
+<span class="n">backup</span><span class="o">^</span><span class="n">I</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/^</span><span class="n">I</span><span class="o">./$</span>
+<span class="n">backup</span><span class="o">^</span><span class="n">I</span><span class="o">/</span><span class="n">home</span><span class="o">^</span><span class="n">I</span><span class="o">^</span><span class="n">I</span><span class="o">./$</span><span class="w">    </span>
+<span class="o">~</span>
+<span class="o">&gt;</span><span class="w"> </span><span class="s2">&quot;/etc/rsnapshot.conf&quot;</span>
+</code></pre></div>
+
+<p>Copy autobackup script from install to your home directory</p>
+<div class="highlight"><pre><span></span><code>cp autobackup-service/files/usr/local/sbin/autobackup $HOME/autobackup-service/autobackup.sh
+</code></pre></div>
+
+<p>Comment out lines 58 through 61 from "&lt;" to "&gt;" below, to allow running in cron.</p>
+<blockquote>
+<p>autobackup-service normally runs automatically when a USB stick with the proper label is inserted into the machine. Comment out the <code>if</code> statement to allow it to run by cron.</p>
+</blockquote>
+<p>File: $HOME/autobackup-service/autobackup.sh</p>
+<div class="highlight"><pre><span></span><code>58,61c60,64
+&lt;   if [ &quot;${DEVICE:5:3}&quot; != &quot;$udev_arg&quot; ]; then
+&lt;     msg &quot;info: partition with label $LABEL is not on newly plugged device $udev_arg&quot;
+&lt;     exit 0
+&lt;   fi
+---
+&gt; # Don -&gt; do not check, as we are screduling through cron
+&gt; #  if [ &quot;${DEVICE:5:3}&quot; != &quot;$udev_arg&quot; ]; then
+&gt; #    msg &quot;info: partition with label $LABEL is not on newly plugged device $udev_arg&quot;
+&gt; #    exit 0
+&gt; #  fi
+</code></pre></div>
+
+<p>Schedule in /etc/cron.d (change your home directory):</p>
+<p>File: /etc/cron.d/autobackup-daily</p>
+<div class="highlight"><pre><span></span><code># This is a cron file for autobackup/rsnapshot.
+# 0 */4     * * *       root    /usr/bin/rsnapshot alpha
+# 30 3      * * *       root    /usr/bin/rsnapshot beta
+# 0  3      * * 1       root    /usr/bin/rsnapshot gamma
+# 30 2      1 * *       root    /usr/bin/rsnapshot delta
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+MAILTO=&quot;don@example.com&quot;
+# m h  dom mon dow user  command
+55 12  *   *   *   root  /home/don/autobackup-service/autobackup.sh
+</code></pre></div>
+
+<p>Log entries will be in the syslog</p>
+<div class="highlight"><pre><span></span><code>$ sudo grep autobackup.sh /var/log/syslog
+Jan 23 12:51:11 box autobackup.sh: info: LABEL           = backup
+Jan 23 12:51:11 box autobackup.sh: info: WAIT_FOR_DEVICE = 2
+Jan 23 12:51:11 box autobackup.sh: info: force_daily     = 0
+Jan 23 12:51:11 box autobackup.sh: info: yearly          = 
+Jan 23 12:51:11 box autobackup.sh: info: monthly         = month
+Jan 23 12:51:11 box autobackup.sh: info: weekly          = week
+Jan 23 12:51:11 box autobackup.sh: info: daily           = day
+Jan 23 12:51:13 box autobackup.sh: info: checking: 
+Jan 23 12:51:13 box autobackup.sh: info: mount-directory: /tmp/autobackup
+Jan 23 12:51:13 box autobackup.sh: info: current year:  2021
+Jan 23 12:51:13 box autobackup.sh: info: current month: 01
+Jan 23 12:51:13 box autobackup.sh: info: current week:  03
+Jan 23 12:51:13 box autobackup.sh: info: current day:   023
+Jan 23 12:51:13 box autobackup.sh: info: starting backup for interval: month (last backup: 0)
+Jan 23 12:51:13 box autobackup.sh: info: starting backup for interval: week (last backup: 0)
+Jan 23 12:51:13 box autobackup.sh: info: starting backup for interval: day (last backup: 0)
+Jan 23 12:51:15 box autobackup.sh: info: umounting /dev/sda1
+</code></pre></div>
+
+<h4 id="automatic-backup-of-postgresql-database">Automatic Backup of PostgreSQL Database</h4>
+<p>Place a script in /etc/cron.daily and it will be run once a day, using the root account.</p>
+<h5 id="crondaily">cron.daily</h5>
+<p>To check the times look here:</p>
+<hr/>
+<p>The Debian Way</p>
+<div class="highlight"><pre><span></span><code>$ grep run-parts /etc/crontab
+17 *    * * *   root    cd / &amp;&amp; run-parts --report /etc/cron.hourly
+25 6    * * *   root    test -x /usr/sbin/anacron || ( cd / &amp;&amp; run-parts --report /etc/cron.daily )
+47 6    * * 7   root    test -x /usr/sbin/anacron || ( cd / &amp;&amp; run-parts --report /etc/cron.weekly )
+52 6    1 * *   root    test -x /usr/sbin/anacron || ( cd / &amp;&amp; run-parts --report /etc/cron.monthly )
+</code></pre></div>
+
+<p>So our daily runs start at 6:25am every day.</p>
+<hr/>
+
+<p>The RedHat Way</p>
+<div class="highlight"><pre><span></span><code># cat /etc/anacrontab 
+# /etc/anacrontab: configuration file for anacron
+
+# See anacron(8) and anacrontab(5) for details.
+
+SHELL=/bin/sh
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+MAILTO=root
+# the maximal random delay added to the base delay of the jobs
+RANDOM_DELAY=45
+# the jobs will be started during the following hours only
+START_HOURS_RANGE=3-22
+
+#period in days   delay in minutes   job-identifier   command
+1   5   cron.daily      nice run-parts /etc/cron.daily
+7   25  cron.weekly     nice run-parts /etc/cron.weekly
+@monthly 45 cron.monthly        nice run-parts /etc/cron.monthly
+</code></pre></div>
+
+<p>So our daily runs start ... any idea?</p>
+<hr/>
+
+<p>Backing up a PostrgreSQL database can be done while everything is up and running with the following script. Backups are stored in /data/backups.</p>
+<p>File: /etc/cron.daily/backup_nextcloud</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="nv">LOGFILE</span><span class="o">=</span>/var/log/backup_db.log
+<span class="nv">ID</span><span class="o">=</span><span class="k">$(</span>id<span class="w"> </span>-un<span class="k">)</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="si">${</span><span class="nv">ID</span><span class="si">}</span><span class="w"> </span>!<span class="o">=</span><span class="w"> </span><span class="s2">&quot;root&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Must run as root, try sudo&quot;</span>
+<span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+<span class="c1">#</span>
+<span class="nb">echo</span><span class="w"> </span><span class="k">$(</span>date<span class="k">)</span><span class="w"> </span><span class="si">${</span><span class="nv">0</span><span class="si">}</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="nv">$LOGFILE</span>
+
+<span class="nb">umask</span><span class="w"> </span><span class="m">027</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">DATA</span><span class="o">=</span>/data/backups
+<span class="k">if</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span><span class="si">${</span><span class="nv">DATA</span><span class="si">}</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="c1"># Postgres</span>
+<span class="w">  </span><span class="c1">#/usr/bin/pg_dump -c nextcloud &gt; $DATA/nextcloud.db.$(date +%j) &lt;/dev/null</span>
+<span class="w">  </span>sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>/usr/bin/pg_dump<span class="w"> </span>-c<span class="w"> </span>nextcloud<span class="w"> </span>&gt;<span class="w"> </span><span class="nv">$DATA</span>/nextcloud.db<span class="w"> </span>&lt;/dev/null
+
+<span class="w">  </span>date<span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="nv">$LOGFILE</span>
+<span class="w">  </span>sync
+<span class="w">  </span>sync
+<span class="w">  </span>sync
+<span class="w">  </span>sync
+<span class="w">  </span>savelog<span class="w"> </span>-c<span class="w"> </span><span class="m">7</span><span class="w"> </span>nextcloud.db<span class="w"> </span>&gt;&gt;<span class="nv">$LOGFILE</span><span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+<span class="k">fi</span>
+</code></pre></div>
+
+<h3 id="rsync-remote-file-synchronization">Rsync - Remote File Synchronization</h3>
+<p>Rsync is a good way to keep a daily backup as it only copies changed files to the destination. Make sure you use a separate disk and preferably separate system, as rsync works great over the network.</p>
+<blockquote>
+<p>The PostgreSQL backup above should be sent off to another system using this method. Another rsync script should be called by PostgreSQL backup to do the database network backup. Just copy this one, change the directories, and call it at the end of the database backup.</p>
+</blockquote>
+<h4 id="schedule">Schedule</h4>
+<p>This cron entry will run at 8:40am every day by user root.</p>
+<p>File: /etc/cron.d/rsync</p>
+<div class="highlight"><pre><span></span><code># This is a cron file for rsync to NAS 
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+MAILTO=&quot;don@example.com&quot;
+# m h  dom mon dow user  command
+40 8  *   *   *   root  /mnt/raid1/rsync.sh noask
+</code></pre></div>
+
+<h4 id="script">Script</h4>
+<p>This script will backup the local directory, /mnt/raid1/data, to a remote system (IP Address 192.168.1.2). The files on the remote system will be at /mnt/vol09/backups. The first run will copy everything, all next runs will only copy changed files. Any files deleted on the source will also be deleted on the destination.</p>
+<p>To schedule in cron the parameter 'noask' is used, as shown above. Otherwise there is a prompt for y/n.</p>
+<p>The last run's history is in log file /mnt/raid1/rsync.log.</p>
+<p>File: /mnt/raid1/rsync.sh</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="nv">DIR</span><span class="o">=</span>/mnt/raid1
+<span class="nv">LOG</span><span class="o">=</span><span class="si">${</span><span class="nv">DIR</span><span class="si">}</span>/rsync.log
+<span class="nb">cd</span><span class="w"> </span><span class="si">${</span><span class="nv">DIR</span><span class="si">}</span>
+date<span class="w"> </span>&gt;<span class="si">${</span><span class="nv">LOG</span><span class="si">}</span>
+<span class="nv">ASK</span><span class="o">=</span><span class="si">${</span><span class="nv">1</span><span class="si">}</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="si">${</span><span class="nv">ASK</span><span class="si">}</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Asking&quot;</span>
+<span class="k">fi</span>
+<span class="c1">#</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="si">${</span><span class="nv">ASK</span><span class="si">}</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;Copy data? y/n: &quot;</span>
+<span class="w">  </span><span class="nb">read</span><span class="w"> </span>askme
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$askme</span><span class="w"> </span><span class="o">=</span>~<span class="w"> </span>^<span class="o">[</span>Yy<span class="o">]</span>$<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span>rsync<span class="w"> </span>-avzz<span class="w"> </span>--ignore-errors<span class="w"> </span>--progress<span class="w"> </span>--delete<span class="w"> </span><span class="si">${</span><span class="nv">DIR</span><span class="si">}</span>/data<span class="w"> </span>root@192.168.1.2:/mnt/vol09/backups/<span class="w"> </span><span class="p">|</span>tee<span class="w"> </span>-a<span class="w"> </span><span class="si">${</span><span class="nv">LOG</span><span class="si">}</span>
+<span class="w">  </span><span class="k">else</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Sync of data skipped&quot;</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;. . .&quot;</span>
+<span class="w">  </span><span class="k">fi</span>
+<span class="k">else</span>
+<span class="w">  </span>rsync<span class="w"> </span>-avzz<span class="w"> </span>--ignore-errors<span class="w"> </span>--progress<span class="w"> </span>--delete<span class="w"> </span><span class="si">${</span><span class="nv">DIR</span><span class="si">}</span>/data<span class="w"> </span>root@192.168.1.2:/mnt/vol09/backups/<span class="w"> </span><span class="p">|</span>tee<span class="w"> </span>-a<span class="w"> </span><span class="si">${</span><span class="nv">LOG</span><span class="si">}</span>
+<span class="k">fi</span>
+<span class="c1">#</span>
+date<span class="w"> </span>&gt;&gt;<span class="si">${</span><span class="nv">LOG</span><span class="si">}</span>
+</code></pre></div>
+
+<h3 id="logwatch-daily-alert-of-logging-activity">Logwatch - Daily Alert of Logging Activity</h3>
+<p>Logwatch is a customizable, pluggable log-monitoring system. It will go through your logs for a given period of time and make a report in the areas that you wish with the detail that you wish. Logwatch is being used for Linux and many types of UNIX.</p>
+<h4 id="installation_1">Installation</h4>
+<p>Debian:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>logwatch
+</code></pre></div>
+
+<p>Redhat:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>logwatch
+</code></pre></div>
+
+<h4 id="schedule_1">Schedule</h4>
+<p>File: /etc/cron.daily/00logwatch</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="c1">#Check if removed-but-not-purged</span>
+<span class="nb">test</span><span class="w"> </span>-x<span class="w"> </span>/usr/share/logwatch/scripts/logwatch.pl<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
+
+<span class="c1">#execute</span>
+<span class="c1">#/usr/sbin/logwatch --output mail</span>
+/usr/sbin/logwatch<span class="w"> </span>--mailto<span class="w"> </span>don@example.com
+
+<span class="c1">#Note: It&#39;s possible to force the recipient in above command</span>
+<span class="c1">#Just pass --mailto address@a.com instead of --output mail</span>
+</code></pre></div>
+
+<h4 id="add-services">Add services</h4>
+<p>You can add iptables summary on the daily report. It shows which IP addresses have been blocked by UFW.</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>cp<span class="w"> </span>/usr/share/logwatch/default.conf/services/iptables.conf<span class="w"> </span>/etc/logwatch/conf/services/
+</code></pre></div>
+
+<p>You may need to add syslog on Ubuntu servers</p>
+<p>File: /etc/logwatch/conf/services/iptables.conf</p>
+<hr/>
+
+<p>The Debian Way</p>
+<div class="highlight"><pre><span></span><code>~
+# Which logfile group...
+LogFile = syslog
+~
+</code></pre></div>
+
+<hr/>
+
+<h3 id="logcheck-mails-anomalies-in-the-system-logfiles-to-the-admin">Logcheck - mails anomalies in the system logfiles to the admin</h3>
+<p>The logcheck program helps spot problems and security violations in your logfiles automatically and will send the results to you periodically in an e-mail. By default logcheck runs as an hourly cronjob just off the hour and after every reboot.</p>
+<h4 id="installation_2">Installation</h4>
+<hr/>
+
+<p>The Debian Way</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>logcheck
+</code></pre></div>
+
+<hr/>
+
+<p>The RedHat Way</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>epel-release<span class="w"> </span><span class="s1">&#39;dnf-command(copr)&#39;</span>
+$<span class="w"> </span>sudo<span class="w"> </span>dnf<span class="w"> </span>copr<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>brianjmurrell/epel-8
+$<span class="w"> </span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>logcheck
+$<span class="w"> </span>sudo<span class="w"> </span>setfacl<span class="w"> </span>-R<span class="w"> </span>-m<span class="w"> </span>u:logcheck:rx<span class="w"> </span>/var/log/secure*
+$<span class="w"> </span>sudo<span class="w"> </span>setfacl<span class="w"> </span>-R<span class="w"> </span>-m<span class="w"> </span>u:logcheck:rx<span class="w"> </span>/var/log/messages*
+$<span class="w"> </span>sudo<span class="w"> </span>dnf<span class="w"> </span>copr<span class="w"> </span>disable<span class="w"> </span>brianjmurrell/epel-8
+</code></pre></div>
+
+<hr/>
+
+<h4 id="schedule_2">Schedule</h4>
+<p>Normally the package installation will schedule a cron job for you. Check it here:</p>
+<p>File: /etc/cron.d/logcheck</p>
+<div class="highlight"><pre><span></span><code># Cron job runs at 2 minutes past every hour
+# /etc/cron.d/logcheck: crontab entries for the logcheck package
+
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+MAILTO=root
+
+@reboot         logcheck    if [ -x /usr/sbin/logcheck ]; then nice -n10 /usr/sbin/logcheck -R; fi
+2 * * * *       logcheck    if [ -x /usr/sbin/logcheck ]; then nice -n10 /usr/sbin/logcheck; fi
+
+# EOF
+</code></pre></div>
+
+<h4 id="change-email-destination">Change email destination</h4>
+<p>Change SENDMAILTO variable to point to your email.</p>
+<p>File: /etc/logcheck/logcheck.conf</p>
+<div class="highlight"><pre><span></span><code><span class="o">~</span>
+<span class="c1"># Controls the address mail goes to:</span>
+<span class="c1"># *NOTE* the script does not set a default value for this variable!</span>
+<span class="c1"># Should be set to an offsite &quot;emailaddress@some.domain.tld&quot;</span>
+
+<span class="c1">#SENDMAILTO=&quot;logcheck&quot;</span>
+<span class="n">SENDMAILTO</span><span class="o">=</span><span class="s2">&quot;don@example.com&quot;</span>
+<span class="o">~</span>
+</code></pre></div>
+
+<h3 id="sysstat-gather-system-usage-statistics">Sysstat - Gather System Usage Statistics</h3>
+<p>The sysstat[1] package contains various utilities, common to many commercial Unixes, to monitor system performance and usage activity:</p>
+<ul>
+<li>iostat reports CPU statistics and input/output statistics for block devices and partitions.</li>
+<li>mpstat reports individual or combined processor related statistics.</li>
+<li>pidstat reports statistics for Linux tasks (processes) : I/O, CPU, memory, etc.</li>
+<li>tapestat reports statistics for tape drives connected to the system.</li>
+<li>cifsiostat reports CIFS statistics.</li>
+</ul>
+<p>Sysstat also contains tools you can schedule via cron or systemd to collect and historize performance and activity data:</p>
+<ul>
+<li>sar collects, reports and saves system activity information (see below a list of metrics collected by sar).</li>
+<li>sadc is the system activity data collector, used as a backend for sar.</li>
+<li>sa1 collects and stores binary data in the system activity daily data file. It is a front end to sadc designed to be run from cron or systemd.</li>
+<li>sa2 writes a summarized daily activity report. It is a front end to sar designed to be run from cron or systemd.</li>
+<li>sadf displays data collected by sar in multiple formats (CSV, XML, JSON, etc.) and can be used for data exchange with other programs. This command can also be used to draw graphs for the various activities collected by sar using SVG (Scalable Vector Graphics) format.</li>
+</ul>
+<p>Default sampling interval is 10 minutes but this can be changed of course (it can be as small as 1 second).</p>
+<blockquote>
+<p>Redhat Cockpit uses pmlogger.service [2] from systemd. Install from Cockpit's Overview, Metrics and history.</p>
+</blockquote>
+<p>RedHat pmstat [3]</p>
+<div class="highlight"><pre><span></span><code>$ pmstat
+@ Mon Jun 12 10:02:01 2023
+ loadavg                      memory      swap        io    system         cpu
+   1 min   swpd   free   buff  cache   pi   po   bi   bo   in   cs  us  sy  id
+    0.00 116224 231636   3284 13116m    0    0    0   17  348  387   0   0 100
+    0.00 116224 233328   3284 13116m    0    0    0    0  339  383   0   0 100
+    0.00 116224 228704   3284 13116m    0    0    0    0  333  358   0   0 100
+    0.00 116224 227192   3284 13116m    0    0    0    6  493  548   0   0  99
+^C
+$ pmstat -a /var/log/pcp/pmlogger/bob.example.com/20230610.0.xz -t 2hour -A 1hour -z
+Note: timezone set to local timezone of host &quot;bob.example.com&quot; from archive
+
+@ Sat Jun 10 01:00:00 2023
+ loadavg                      memory      swap        io    system         cpu
+   1 min   swpd   free   buff  cache   pi   po   bi   bo   in   cs  us  sy  id
+    0.08   2048  7646m   6440  6591m    0    0    0    3  198  237   0   0 100
+    0.08   2048  7650m   6440  6596m    0    0    0    3  202  237   0   0 100
+    0.06   2048  7643m   6440  6600m    0    0    0    3  204  236   0   0 100
+    0.00   2048  7597m   6440  6624m    0    0    2   27  219  261   0   0 100
+    0.09   2048  7609m   6440  6629m    0    0    0    3  215  259   0   0 100
+    0.03   2048  7593m   6440  6633m    0    0    0    3  220  261   0   0 100
+    0.00   2048  7585m   6440  6638m    0    0    0    4  223  263   0   0 100
+    0.01      0 14402m   6740 495508    ?    ?    ?    ?    ?    ?   ?   ?   ?
+    0.00      0 14268m   6740 630344    ?    ?    ?    ?    ?    ?   ?   ?   ?
+    0.15      0 14272m   6740 634764    0    0    0    2  162  151   0   0 100
+    0.13      0 14266m   6740 639188    0    0    0    2  164  152   0   0 100
+ pmFetchGroup: End of PCP archive log
+</code></pre></div>
+
+<p>Reference: 
+ 1 <a href="https://github.com/sysstat/sysstat">https://github.com/sysstat/sysstat</a>
+ 2 <a href="https://cockpit-project.org/guide/latest/feature-pcp.html">https://cockpit-project.org/guide/latest/feature-pcp.html</a>
+ 3 <a href="https://pcp.readthedocs.io/en/latest/UAG/MonitoringSystemPerformance.html#the-pmstat-command">https://pcp.readthedocs.io/en/latest/UAG/MonitoringSystemPerformance.html#the-pmstat-command</a></p>
+<h4 id="installation_3">Installation</h4>
+<hr/>
+
+<p>The Debian Way</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>sysstat
+</code></pre></div>
+
+<hr/>
+
+<p>The RedHat Way</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>sysstat
+</code></pre></div>
+
+<hr/>
+
+<h4 id="configuration_1">Configuration</h4>
+<p>It should configure itself, but just in case:</p>
+<hr/>
+
+<p>The Debian Way</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>dpkg-reconfigure<span class="w"> </span>sysstat
+Replacing<span class="w"> </span>config<span class="w"> </span>file<span class="w"> </span>/etc/default/sysstat<span class="w"> </span>with<span class="w"> </span>new<span class="w"> </span>version
+</code></pre></div>
+
+<hr/>
+
+<p>The RedHat Way</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>vi<span class="w"> </span>/etc/sysconfig/sysstat
+$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>sysstat
+</code></pre></div>
+
+<hr/>
+
+<p>The history files are kept here:</p>
+<hr/>
+
+<p>The Debian Way</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ls<span class="w"> </span>/var/log/sysstat/
+sa07
+</code></pre></div>
+
+<hr/>
+
+<p>The RedHat Way</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ls<span class="w"> </span>/var/log/sa/
+sa07
+</code></pre></div>
+
+<hr/>
+
+<p>The timer is in the systemd configuration file. OnCalendar defines the interval. In this case data is collected every ten minutes. WantedBy defines that the timer should be active when the sysstat.service is running.</p>
+<blockquote>
+<p>Use <code>systemctl edit sysstat-collect.timer</code> to edit this file. It will automatically create an override file in the right place and enable it for you, and preserve the change over release updates.</p>
+</blockquote>
+<p>File: /usr/lib/systemd/system/sysstat-collect.timer</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># /lib/systemd/system/sysstat-collect.timer</span>
+<span class="c1"># (C) 2014 Tomasz Torcz &lt;tomek@pipebreaker.pl&gt;</span>
+<span class="c1">#</span>
+<span class="c1"># sysstat-12.5.2 systemd unit file:</span>
+<span class="c1">#        Activates activity collector every 10 minutes</span>
+
+<span class="k">[Unit]</span>
+<span class="na">Description</span><span class="o">=</span><span class="s">Run system activity accounting tool every 10 minutes</span>
+
+<span class="k">[Timer]</span>
+<span class="na">OnCalendar</span><span class="o">=</span><span class="s">*:00/10</span>
+
+<span class="k">[Install]</span>
+<span class="na">WantedBy</span><span class="o">=</span><span class="s">sysstat.service</span>
+</code></pre></div>
+
+<p>Above, Systemd edit override example changing the interval from 10 minutes to 5:</p>
+<div class="highlight"><pre><span></span><code># ls -lrt /etc/systemd/system/sysstat-collect.timer.d/
+total 4
+-rw-r--r--. 1 root root 27 Feb 19 09:38 override.conf
+# more /etc/systemd/system/sysstat-collect.timer.d/override.conf 
+[Timer]
+OnCalendar=*:00/05
+</code></pre></div>
+
+<p>Reference:</p>
+<p><a href="https://www.catalyst2.com/knowledgebase/server-management/how-to-install-configure-sysstat/">https://www.catalyst2.com/knowledgebase/server-management/how-to-install-configure-sysstat/</a></p>
+<h4 id="past-statistics-report">Past Statistics Report</h4>
+<p>Report on system statistics over the last few days.</p>
+<p>File: sar.sh</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">#################################</span>
+<span class="c1"># Files are here:</span>
+<span class="c1"># ls -l /var/log/sysstat/</span>
+<span class="c1">#  -rw-r--r-- 1 root root 49064 Feb  9 16:35 sa09</span>
+<span class="c1">#</span>
+<span class="c1"># Report on some other day:</span>
+<span class="c1">#  sar -u 2 3 -f /var/log/sysstat/sa15</span>
+<span class="c1">#</span>
+<span class="c1"># Output to file:</span>
+<span class="c1">#  sar -u 2 3 -o /tmp/logfile</span>
+<span class="c1">#################################</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Disk&quot;</span>
+sar<span class="w"> </span>-d<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Network&quot;</span>
+sar<span class="w"> </span>-n<span class="w"> </span>DEV<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;CPU&quot;</span>
+sar<span class="w"> </span>-u<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span>
+sar<span class="w"> </span>-P<span class="w"> </span>ALL<span class="w"> </span>-u<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Memory&quot;</span>
+sar<span class="w"> </span>-r<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Paging&quot;</span>
+sar<span class="w"> </span>-B<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Swap&quot;</span>
+sar<span class="w"> </span>-S<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Load&quot;</span>
+sar<span class="w"> </span>-q<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span>
+</code></pre></div>
+
+<h4 id="sample-runs">Sample Runs</h4>
+<p>Memory</p>
+<div class="highlight"><pre><span></span><code>$ sar -r
+Linux 5.10.120-ti-arm64-r64 (app.example.com)   11/07/2022  _aarch64_   (2 CPU)
+
+02:09:36 PM kbmemfree   kbavail kbmemused  %memused kbbuffers  kbcached  kbcommit   %commit  kbactive   kbinact   kbdirty
+02:10:01 PM    872556   2467364   1037140     27.37    162024   1529680   3898804     66.24    999112   1645384       536
+Average:       872556   2467364   1037140     27.37    162024   1529680   3898804     66.24    999112   1645384       536
+</code></pre></div>
+
+<p>IO</p>
+<div class="highlight"><pre><span></span><code>$ sar -b
+Linux 5.10.120-ti-arm64-r64 (app.example.com)   11/07/2022  _aarch64_   (2 CPU)
+
+02:09:36 PM       tps      rtps      wtps      dtps   bread/s   bwrtn/s   bdscd/s
+02:10:01 PM      6.63      0.16      6.47      0.00      2.25    312.46      0.00
+Average:         6.63      0.16      6.47      0.00      2.25    312.46      0.00
+</code></pre></div>
+
+<p>Network</p>
+<div class="highlight"><pre><span></span><code>$ sar -n DEV
+Linux 5.10.120-ti-arm64-r64 (app.example.com)   11/07/2022  _aarch64_   (2 CPU)
+
+02:09:36 PM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+02:10:01 PM        lo      3.94      3.94      1.66      1.66      0.00      0.00      0.00      0.00
+02:10:01 PM      eth0      4.10      5.27      0.37      1.72      0.00      0.00      0.00      0.00
+02:10:01 PM      usb0      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+02:10:01 PM      usb1      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+02:10:01 PM   docker0      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+Average:           lo      3.94      3.94      1.66      1.66      0.00      0.00      0.00      0.00
+Average:         eth0      4.10      5.27      0.37      1.72      0.00      0.00      0.00      0.00
+Average:         usb0      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+Average:         usb1      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+Average:      docker0      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+</code></pre></div>
+
+<p>Load and Run Queue</p>
+<div class="highlight"><pre><span></span><code>$ sar -q
+Linux 5.10.120-ti-arm64-r64 (app.example.com)   11/07/2022  _aarch64_   (2 CPU)
+
+02:09:36 PM   runq-sz  plist-sz   ldavg-1   ldavg-5  ldavg-15   blocked
+02:10:01 PM         3       531      0.74      0.61      0.51         0
+Average:            3       531      0.74      0.61      0.51         0
+</code></pre></div>
+
+<h3 id="smart-disk-monitoring">S.M.A.R.T. Disk Monitoring</h3>
+<p>Monitor and notify disk health using smartmontools, and email any notifications.</p>
+<h4 id="install-software">Install software:</h4>
+<hr/>
+
+<p>The Debian Way</label></div></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>smartmontools
+</code></pre></div>
+
+<hr/>
+
+<p>The RedHat Way</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>smartmontools
+</code></pre></div>
+
+<hr/>
+
+<h4 id="configure_1">Configure</h4>
+<p>Add Long monitoring test for Sunday (/dev/sda through /dev/sdX) and comment out DEVICESCAN:</p>
+<hr/>
+
+<p>The Debian Way</p>
+<p>File: /etc/smartd.conf</p>
+<hr/>
+
+<p>The RedHat Way</p>
+<p>File: /etc/smartmontools/smartd.conf</p>
+<hr/>
+
+<div class="highlight"><pre><span></span><code><span class="o">~</span>
+<span class="c1"># Don - 5-Nov-2021</span>
+<span class="c1">#   -a      Default: equivalent to -H -f -t -l error -l selftest -C 197 -U 198</span>
+<span class="c1">#   -d TYPE Set the device type: ata, scsi, marvell, removable, 3ware,N, hpt,L/M/N</span>
+<span class="c1">#   -n MODE No check. MODE is one of: never, sleep, standby, idle</span>
+<span class="c1">#   -s REGE Start self-test when type/date matches regular expression (see man page)</span>
+<span class="c1">#           T/MM/DD/d/HH </span>
+<span class="c1">#           ^ ^  ^  ^ ^</span>
+<span class="c1">#           | |  |  | + 24 Hour</span>
+<span class="c1">#           | |  |  +-- Day of week, 1(monday) through 7(sunday)</span>
+<span class="c1">#           | |  +----- Day of month, 1 ~ 31</span>
+<span class="c1">#           | +-------- Month of year, 01 (January) to 12 (December)</span>
+<span class="c1">#           +---------- T is the type of test that should be run, options are:</span>
+<span class="c1">#</span>
+<span class="c1">#                       L for long self-test</span>
+<span class="c1">#                       S for short self-test</span>
+<span class="c1">#                       C for conveyance test</span>
+<span class="c1">#                       O for an Offline immediate Test</span>
+<span class="c1">#</span>
+<span class="c1">#   -W D,I,C Monitor Temperature D)ifference, I)nformal limit, C)ritical limit</span>
+<span class="c1">#   -m ADD  Send warning email to ADD for -H, -l error, -l selftest, and -f</span>
+<span class="c1">#/dev/nvme0 -a -n never -W 2,30,40 -m don@example.com</span>
+<span class="c1"># Start long tests on Sunday 9am and short</span>
+<span class="c1">#  self-tests every night at 2am and send errors to me</span>
+<span class="c1">#/dev/sda   -a -n never -s (L/../../7/09|S/../.././02) -W 2,30,40 -m don@example.com -M test</span>
+<span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sda</span><span class="w">   </span><span class="o">-</span><span class="n">a</span><span class="w"> </span><span class="o">-</span><span class="n">n</span><span class="w"> </span><span class="n">never</span><span class="w"> </span><span class="o">-</span><span class="n">s</span><span class="w"> </span><span class="p">(</span><span class="n">L</span><span class="o">/../../</span><span class="mi">7</span><span class="o">/</span><span class="mi">09</span><span class="o">|</span><span class="n">S</span><span class="o">/../.././</span><span class="mi">02</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="n">W</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="mi">42</span><span class="p">,</span><span class="mi">50</span><span class="w"> </span><span class="o">-</span><span class="n">m</span><span class="w"> </span><span class="n">don</span><span class="err">@</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="w"> </span><span class="o">-</span><span class="n">M</span><span class="w"> </span><span class="n">diminishing</span>
+<span class="c1">#/dev/sdb   -a -n never -s (L/../../7/09|S/../.././02) -W 2,30,40 -m don@example.com</span>
+<span class="c1"># Don - 5-Nov-2021</span>
+<span class="o">~</span>
+<span class="c1">#DEVICESCAN -d removable -n standby -m root -M exec /usr/share/smartmontools/smartd-runner</span>
+<span class="o">~</span>
+</code></pre></div>
+
+<h4 id="restart">Restart</h4>
+<p>Restart smartd daemon to pick up configuration changes</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>smartd
+</code></pre></div>
+
+<h4 id="monitoring-script-for-testing-and-reporting">Monitoring script for testing and reporting.</h4>
+<p>Change the DEV below and see if your disks support SMART monitoring.</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="nv">DEV</span><span class="o">=</span><span class="s2">&quot;/dev/sda&quot;</span>
+<span class="c1"># Info</span>
+sudo<span class="w"> </span>smartctl<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">DEV</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="c1"># Show</span>
+sudo<span class="w"> </span>smartctl<span class="w"> </span>-P<span class="w"> </span>show<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">DEV</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="c1"># turn smart on/off</span>
+<span class="c1">#sudo smartctl -s on &quot;${DEV}&quot;</span>
+<span class="c1"># Errors?</span>
+sudo<span class="w"> </span>smartctl<span class="w"> </span>-l<span class="w"> </span>error<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">DEV</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="c1"># Health Check</span>
+sudo<span class="w"> </span>smartctl<span class="w"> </span>-Hc<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">DEV</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="c1"># Selftest Log</span>
+sudo<span class="w"> </span>smartctl<span class="w"> </span>-l<span class="w"> </span>selftest<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">DEV</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="c1"># Attributes</span>
+<span class="c1">#  Problems if...</span>
+<span class="c1">#    Reallocated_Sector_Ct &gt; 0</span>
+<span class="c1">#    Current_Pending_Sector &gt; 0</span>
+sudo<span class="w"> </span>smartctl<span class="w"> </span>-A<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">DEV</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="c1">#</span>
+<span class="c1">#.... T E S T S ....</span>
+<span class="c1"># -&gt; short ... couple of minutes</span>
+<span class="c1"># sudo smartctl -t short /dev/sda</span>
+<span class="c1"># -&gt; long ... one hour</span>
+<span class="c1"># sudo smartctl -t long /dev/sda</span>
+<span class="c1"># -&gt; Look at test results</span>
+<span class="c1"># sudo smartctl -a /dev/sda</span>
+<span class="c1"># </span>
+<span class="c1">#.... R E P O R T ....</span>
+sudo<span class="w"> </span>smartctl<span class="w"> </span>--attributes<span class="w"> </span>--log<span class="o">=</span>selftest<span class="w">   </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">DEV</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="c1">#</span>
+<span class="c1"># - Get the temprature</span>
+sudo<span class="w"> </span>hddtemp<span class="w"> </span>/dev/sda
+</code></pre></div>
+
+<h4 id="smartd-database">smartd database</h4>
+<p>The history of each smartd monitored disk is located here:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ls<span class="w"> </span>/var/lib/smartmontools/
+drivedb<span class="w">                            </span>smartd.Samsung_SSD_980_1TB-S64ANS0T408956M.nvme.state~<span class="w">  </span>smartd.Samsung_SSD_980_1TB-S64ANS0T418940T.nvme.state~
+smartd.Samsung_SSD_980_1TB-S64ANS0T408956M.nvme.state<span class="w">  </span>smartd.Samsung_SSD_980_1TB-S64ANS0T418940T.nvme.state
+</code></pre></div>
+
+<p>If you replace the disks and get error reports, you can remove the files and new ones will be created</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>rm<span class="w"> </span>/var/lib/smartmontools/smartd.Samsung_SSD_980_1TB-S64ANS0T4*
+</code></pre></div>
+
+<p>Run smartctl for each disk:</p>
+<div class="highlight"><pre><span></span><code>sudo smartctl -i /dev/sda
+sudo smartctl -i /dev/sdb
+...
+</code></pre></div>
+
+<p>Then check the history data files. New ones should show up.</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ls<span class="w"> </span>/var/lib/smartmontools/
+attrlog.CT1000BX500SSD1-2251E695AE97.ata.csv<span class="w">  </span>smartd.CT1000BX500SSD1-2251E695AE97.ata.state<span class="w">   </span>smartd.CT1000BX500SSD1-2251E695AE9E.ata.state~
+attrlog.CT1000BX500SSD1-2251E695AE9E.ata.csv<span class="w">  </span>smartd.CT1000BX500SSD1-2251E695AE97.ata.state~<span class="w">  </span>smartd.Samsung_SSD_980_1TB-S64ANS0T408956M.nvme.state
+drivedb<span class="w">                       </span>smartd.CT1000BX500SSD1-2251E695AE9E.ata.state<span class="w">   </span>smartd.Samsung_SSD_980_1TB-S64ANS0T418940T.nvme.state
+</code></pre></div>
+
+<h3 id="login-notices-to-users-motdissueissuenet">Login Notices to Users - motd/issue/issue.net</h3>
+<p>You can customize the Message of the Day (motd), and infomation displayed when loggin in to the system.</p>
+<h4 id="installation_4">Installation</h4>
+<hr/>
+
+<p>The Debian Way</label></div></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>cowsay<span class="w"> </span>fortune
+</code></pre></div>
+
+<hr/>
+
+<p>The RedHat Way</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>cowsay<span class="w"> </span>fortune-mod
+</code></pre></div>
+
+<hr/>
+
+<h4 id="configuration_2">Configuration</h4>
+<p>Update the message (/etc/motd) every hour.</p>
+<p>File: /etc/cron.hourly/motd</p>
+<hr/>
+
+<p>The Debian Way</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+/usr/games/cowsay<span class="w"> </span><span class="k">$(</span>/usr/games/fortune<span class="k">)</span><span class="w"> </span>&gt;<span class="w"> </span>/etc/motd
+</code></pre></div>
+
+<hr/>
+
+<p>The RedHat Way</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+/bin/cowsay<span class="w"> </span><span class="k">$(</span>/bin/fortune<span class="k">)</span><span class="w"> </span>&gt;<span class="w"> </span>/etc/motd
+</code></pre></div>
+
+<hr/>
+
+<h4 id="verify">Verify</h4>
+<p>File: /etc/motd</p>
+<div class="highlight"><pre><span></span><code> _________________________________________
+/ Your mind is the part of you that says, \
+| &quot;Why&#39;n&#39;tcha eat that piece of cake?&quot;    |
+| ... and then, twenty minutes later,     |
+| says, &quot;Y&#39;know, if I were you, I         |
+| wouldn&#39;t have done that!&quot; -- Steven and |
+\ Ondrea Levine                           /
+ -----------------------------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+</code></pre></div>
+
+<p>File: /etc/issue</p>
+<div class="highlight"><pre><span></span><code>Look out!
+</code></pre></div>
+
+<p>File: /etc/issue.net</p>
+<div class="highlight"><pre><span></span><code>Looke out!
+</code></pre></div>
+
+<h4 id="example-login">Example login</h4>
+<div class="highlight"><pre><span></span><code><span class="c">% ssh don@example         </span>
+<span class="n">Looke</span><span class="w"> </span><span class="s">out!</span>
+<span class="w"> </span><span class="n">_________________________________________</span>
+<span class="o">/</span><span class="w"> </span><span class="n">Individuality</span><span class="w"> </span><span class="n">My</span><span class="w"> </span><span class="n">words</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">easy</span><span class="w"> </span><span class="n">to</span><span class="w">      </span><span class="o">\</span>
+<span class="o">|</span><span class="w"> </span><span class="n">understand</span><span class="w"> </span><span class="n">And</span><span class="w"> </span><span class="n">my</span><span class="w"> </span><span class="n">actions</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">easy</span><span class="w"> </span><span class="n">to</span><span class="w">   </span><span class="o">|</span>
+<span class="o">|</span><span class="w"> </span><span class="n">perform</span><span class="w"> </span><span class="n">Yet</span><span class="w"> </span><span class="n">no</span><span class="w"> </span><span class="n">other</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">understand</span><span class="w"> </span><span class="n">or</span><span class="w">  </span><span class="o">|</span>
+<span class="o">|</span><span class="w"> </span><span class="n">perform</span><span class="w"> </span><span class="n">them</span><span class="p">.</span><span class="w"> </span><span class="n">My</span><span class="w"> </span><span class="n">words</span><span class="w"> </span><span class="n">have</span><span class="w"> </span><span class="n">meaning</span><span class="p">;</span><span class="w"> </span><span class="n">my</span><span class="w"> </span><span class="o">|</span>
+<span class="o">|</span><span class="w"> </span><span class="n">actions</span><span class="w"> </span><span class="n">have</span><span class="w"> </span><span class="n">reason</span><span class="p">;</span><span class="w"> </span><span class="n">Yet</span><span class="w"> </span><span class="s">these</span><span class="w"> </span><span class="s">cannot</span><span class="w">   </span><span class="o">|</span>
+<span class="o">|</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">known</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">I</span><span class="w"> </span><span class="n">cannot</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">known</span><span class="p">.</span><span class="w"> </span><span class="n">We</span><span class="w"> </span><span class="n">are</span><span class="w">  </span><span class="o">|</span>
+<span class="o">|</span><span class="w"> </span><span class="n">each</span><span class="w"> </span><span class="nb">unique</span><span class="p">,</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">therefore</span><span class="w"> </span><span class="n">valuable</span><span class="p">;</span><span class="w">    </span><span class="o">|</span>
+<span class="o">|</span><span class="w"> </span><span class="n">Though</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">sage</span><span class="w"> </span><span class="n">wears</span><span class="w"> </span><span class="n">coarse</span><span class="w"> </span><span class="n">clothes</span><span class="p">,</span><span class="w">   </span><span class="o">|</span>
+<span class="o">|</span><span class="w"> </span><span class="n">his</span><span class="w"> </span><span class="n">heart</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">jade</span><span class="p">.</span><span class="w"> </span><span class="o">--</span><span class="w"> </span><span class="n">Lao</span><span class="w"> </span><span class="n">Tse</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Tao Te  |</span>
+<span class="s">\ Ching&quot;</span><span class="w">                                  </span><span class="o">/</span>
+<span class="w"> </span><span class="o">-----------------------------------------</span>
+<span class="w">        </span><span class="o">\</span><span class="w">   </span>^<span class="n">__</span>^
+<span class="w">         </span><span class="o">\</span><span class="w">  </span><span class="p">(</span><span class="n">oo</span><span class="p">)</span><span class="o">\</span><span class="n">_______</span>
+<span class="w">            </span><span class="p">(</span><span class="n">__</span><span class="p">)</span><span class="o">\</span><span class="w">       </span><span class="p">)</span><span class="o">\/\</span>
+<span class="w">                </span><span class="o">||----</span><span class="n">w</span><span class="w"> </span><span class="o">|</span>
+<span class="w">                </span><span class="o">||</span><span class="w">     </span><span class="o">||</span>
+<span class="n">Last</span><span class="w"> </span><span class="s">login:</span><span class="w"> </span><span class="s">Sun</span><span class="w"> </span><span class="s">Aug</span><span class="w"> </span><span class="s">21</span><span class="w"> </span><span class="s">10:13:57</span><span class="w"> </span><span class="s">2022</span><span class="w"> </span><span class="s">from</span><span class="w"> </span><span class="s">192.168.1.4</span>
+</code></pre></div>
+
+<h3 id="login-notification">Login notification</h3>
+<p>Add the following lines to the end of the system bashrc for notification whenever <em>any user</em> logs into the system (with the bash shell).</p>
+<hr/>
+
+<p>The Debian Way</label></div></p>
+<p>File: /etc/bash.bashrc</p>
+<hr/>
+
+<p>The RedHat Way</p>
+<p>File: /etc/bashrc</p>
+<hr/>
+
+<div class="highlight"><pre><span></span><code>~
+# Email logins - Don November 2020
+echo $(who am i) &#39; just logged on &#39; $(hostname) &#39; &#39; $(date) $(who) | mail -s &quot;Login on&quot; don@example.com
+</code></pre></div>
+
+<h3 id="continue">Continue</h3>
+<p>Now that I have set up my new server, I'll consider giving it an internet name with DNS.</p>
+<p>Proceeding in the order presented, some things are depending on prior setups.</p>
+<object type="image/svg+xml" data="/images/Linux-in-the-House2.svg" style="width:5%; height:10%; text-align: right">
+  Linux-in-the-House.svg<!-- fallback image in CSS -->
+</object>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://lwn.net/">Linux Weekly News</a></li>
+                            <li><a href="https://fullcirclemagazine.org/">Full Circle Magazine</a></li>
+                            <li><a href="https://www.linuxjournal.com/">Linux Journal</a></li>
+                            <li><a href="https://www.linux-magazine.com/">Linux Magazine</a></li>
+                            <li><a href="https://www.thefarside.com/">The Far Side</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://fosstodon.org/@Cohoon">Feedback</a></li>
+                            <li><a href="https://fosstodon.org/@Cohoon.rss">Mastodon RSS feed</a></li>
+                            <li><a href="https://linux-in-the-house.pages.dev/">Book</a></li>
+                            <li><a href="/linux-in-house/author/don-cohoon.html">Created by: Don Cohoon</a></li>
+                            <li><a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License </a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <p>
+                Made for Humans, by a Human.
+                </p>
+                <p>
+                Site by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>, via <a rel="nofollow" href="https://www.python.org/">Python</a>.
+                </p><!-- /#about -->
+
+                <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+                <p> Version:  3.297 </p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
