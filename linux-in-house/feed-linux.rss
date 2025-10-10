@@ -17,6 +17,13 @@
   <description>I use this as a guide to enable proper monitoring and maintenance of any new server on the network.</description>
  </item>
  <item>
+  <title>Backup</title>
+  <link>https://dfcsoftware.github.io/linux-in-house/linux/Backup.html</link>
+  <guid>https://dfcsoftware.github.io/linux-in-house/linux/Backup.html</guid>
+  <pubDate>Thu, 09 Oct 2025 10:20:00 -0400</pubDate>
+  <description>This is how I do automatic backups of all my servers from a central server to Network Attached Storage.</description>
+ </item>
+ <item>
   <title>WebSite</title>
   <link>https://dfcsoftware.github.io/linux-in-house/linux/WebSite.html</link>
   <guid>https://dfcsoftware.github.io/linux-in-house/linux/WebSite.html</guid>

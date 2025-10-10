@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>Backup</title>
+	<meta name="date" content="2025-10-09 10:20"/>
+	<meta name="tags" content="backup"/>
+	<meta name="author" content="Don Cohoon"/>
+	<meta name="summary" content="This is how I do automatic backups of all my servers from a central server to Network Attached Storage."/>
+	<meta name="license" content="'[CC-BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)'"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"> <link rel="stylesheet" href="/linux-in-house/common.css" type="text/css" />
+</head>
+<body>
+
+<p><a href="/linux-in-house/index.html"><h1>Linux in House</h1></a></p>
+
+<link href="/linux-in-house/pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/linux-in-house/pagefind/pagefind-ui.js"></script>
+
+<div id="search"></div>
+<script>
+window.addEventListener('DOMContentLoaded', (event) => {
+      new PagefindUI({ element: "#search", showSubResults: true });
+});
+</script>
+
+<blockquote>
+<p><a href="/linux-in-house/linux/welcome.html">Welcome Back My Friends</a></p>
+</blockquote>
+
+<h1 id="howibackupmystuff">How I backup my stuff</h1>
+
+<p>Published: 2025-10-09 10:20 <br />
+Author: Don Cohoon</p>
+
+<p>This is how I do automatic backups of all my servers from a central server to Network Attached Storage.</p>
+
+<p>In the news lately was a disk crash at the South Korean government that lost their share drive files, and had no backup because it was too big and not that important. Turns out it was kind of important. If your stuff is important you really should back it up. Here is one example, how I do that.</p>
+
+<hr />
+
+<div class="TOC">
+
+<ul>
+<li><a href="#howibackupmystuff">How I backup my stuff</a>
+<ul>
+<li><a href="#strategy">Strategy</a></li>
+<li><a href="#implementation">Implementation</a>
+<ul>
+<li><a href="#linkconfigdirectorytohome">Link config directory to home</a></li>
+<li><a href="#example:backupremotehost-usingremotesnfsmount">Example: Backup Remote Host - Using remote&#8217;s nfs mount</a></li>
+<li><a href="#example:backupremotehost-usingrsyncoverssh">Example: Backup Remote Host - Using rsync over ssh</a></li>
+<li><a href="#example:backupremotehost-usingcommandonproxy">Example: Backup Remote Host - Using Command on Proxy</a></li>
+<li><a href="#hosts.name">hosts.&lt;name&gt;</a></li>
+<li><a href="#scheduleincron">Schedule in cron</a></li>
+</ul>
+</li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li><a href="#reference">Reference</a>
+<ul>
+<li><a href="#code">Code</a>
+<ul>
+<li><a href="#logit.sh">logit.sh</a></li>
+<li><a href="#pid.sh">pid.sh</a></li>
+<li><a href="#mail.sh">mail.sh</a></li>
+<li><a href="#ping.sh">ping.sh</a></li>
+<li><a href="#logger.sh">logger.sh</a></li>
+<li><a href="#backup_links.sh">backup_links.sh</a></li>
+</ul>
+</li>
+<li><a href="#regards">Regards</a>
+<ul>
+<li><a href="#madeforhumansbyahuman">Made for Humans, by a Human</a></li>
+<li><a href="#links">Links</a></li>
+<li><a href="#social">Social</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+<hr />
+
+<h2 id="strategy">Strategy</h2>
+
+<ul>
+<li><p>Back up <em>from</em> a central location, <em>to</em> a central location (plus <a href="/linux-in-house/linux/setup-server.html#automaticbackuptousbdisk">offsite</a>).</p></li>
+<li><p><a href="/linux-in-house/linux/Backup.html#scheduleincron">Automate</a> everything.</p></li>
+<li><p>Use config files.</p></li>
+<li><p>Include any <a href="/linux-in-house/linux/setup-server.html#automaticbackupofpostgresqldatabase">databases</a>.</p></li>
+<li><p>Support incremental backups.</p></li>
+</ul>
+
+<h2 id="implementation">Implementation</h2>
+
+<p>Assumptions:</p>
+
+<ul>
+<li>Everything important will be in the user home directory.
+On each host first create links to live /etc files in the home (~/) directory
+and use <code>rsync --copy-links</code> to back up the data</li>
+</ul>
+
+<p>Reference: <a href="#backup_links.sh">backup_links.sh</a></p>
+
+<ul>
+<li>ssh access from a central host to all other hosts.
+Use the combination ssh-keygen and ssh-copy-id from the central host to other hosts.</li>
+</ul>
+
+<p>From host-0, set auto login to host-1 and host-2.</p>
+
+<pre><code>$ ssh-keygen
+$ ssh-copy-id host-1
+$ ssh-copy-id host-2
+</code></pre>
+
+<ul>
+<li>destination is a Network Attached Storage (NAS) system over Network File System (NFS) protocol, with Redundant Array Internal Drives (RAID) drives.
+NAS access is via NFS mounts on major servers and rsync over ssh on others.</li>
+</ul>
+
+<p>Reference:
+<a href="/linux-in-house/linux/NAS.html#unixlinuxserver-networkfilesystemnfs">NFS</a>,
+<a href="/linux-in-house/linux/NAS.html">NAS</a>,
+<a href="/linux-in-house/linux/Mirror_Disks.html">RAID</a>,
+<a href="https://www.truenas.com/docs/scale/gettingstarted/configure/setupstoragescale/">https://www.truenas.com/docs/scale/gettingstarted/configure/setupstoragescale/</a></p>
+
+<ul>
+<li><p>Proxy backups occur if NFS/SSH are not available.<br />
+For instance;<br />
+host-2 cannot access NAS,<br />
+host-1 can access NAS and host-2,<br />
+so host-1 is a proxy for host-2 backups.</p></li>
+<li><p>Anything host specific will be in configuration files.<br />
+For example;<br />
+create file ~/.config/${SYS}, where in my case SYS=forest.<br />
+and use the following guide to set your variables:</p></li>
+</ul>
+
+<table>
+<colgroup>
+<col />
+<col />
+<col />
+</colgroup>
+
+<thead>
+<tr>
+	<th>    </th>
+	<th> Backup Rules   </th>
+	<th>     </th>
+</tr>
+<tr>
+	<th>Variable  </th>
+	<th> Set     </th>
+	<th> Un&#8211;Set   </th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>MY_BACKUP_DIR </td>
+	<td>      </td>
+	<td> Skip Backup (1) </td>
+</tr>
+<tr>
+	<td>MY_BACKUP_CMD </td>
+	<td> Script on Remote (2,5) </td>
+	<td>     </td>
+</tr>
+<tr>
+	<td>MY_BACKUP_HOST </td>
+	<td> Rsync on Remote (4) </td>
+	<td> NFS on Remote (3) </td>
+</tr>
+<tr>
+	<td>MY_BACKUP_PROXY </td>
+	<td> Run MY_BACKUP_CMD on </td>
+	<td>     </td>
+</tr>
+<tr>
+	<td>    </td>
+	<td> Proxy host (5)  </td>
+	<td>     </td>
+</tr>
+</tbody>
+</table>
+
+<ol>
+<li>Skip if MY_BACKUP_DIR unset</li>
+<li>Run a script on the remote host if MY_BACKUP_CMD set</li>
+<li>Use remote&#8217;s nfs mount if MY_BACKUP_HOST is unset</li>
+<li>Use rsync on remote host to backup over the network if
+MY_BACKUP_HOST is set</li>
+<li>Run MY_BACKUP_CMD on MY_BACKUP_PROXY host to backup remote if
+MY_BACKUP_PROXY is set</li>
+</ol>
+
+<h3 id="linkconfigdirectorytohome">Link config directory to home</h3>
+
+<p>I normally put this in a home directory as <code>~/forest</code>, and create a link so other scripts can find it.</p>
+
+<p>As so:</p>
+
+<pre><code>$ sudo ln -s /home/bob/forest/config/ /home/bob/.config/forest/
+#            ^ install location       ^ user home/.config/ 
+</code></pre>
+
+<h3 id="example:backupremotehost-usingremotesnfsmount">Example: Backup Remote Host - Using remote&#8217;s nfs mount</h3>
+
+<p>This example backs up host-1, from central host-0.</p>
+
+<p>File: config/config.host-1</p>
+
+<pre><code>export LOCAL_DIR=~/forest
+export SSH_USER=bob
+export MY_BACKUP_DIR=/data_remote/backups/
+export MY_BACKUP_HOST=
+</code></pre>
+
+<h3 id="example:backupremotehost-usingrsyncoverssh">Example: Backup Remote Host - Using rsync over ssh</h3>
+
+<p>This example backs up host-0, from central host-0.</p>
+
+<p>File: config/config.host-0</p>
+
+<pre><code>export LOCAL_DIR=~/forest
+export SSH_USER=bob
+export MY_BACKUP_DIR=backups/
+export MY_BACKUP_HOST=nas
+</code></pre>
+
+<h3 id="example:backupremotehost-usingcommandonproxy">Example: Backup Remote Host - Using Command on Proxy</h3>
+
+<p>This example backs up host-2 via host-1, from central host-0.</p>
+
+<p>File: config/config.host-2</p>
+
+<pre><code>export LOCAL_DIR=~/forest
+export SSH_USER=bob
+export MY_BACKUP_CMD=/data_remote/backups/host-2/rsync.sh
+export MY_BACKUP_PROXY=host-1
+</code></pre>
+
+<h3 id="hosts.name">hosts.&lt;name&gt;</h3>
+
+<p>This file sets host-0 as a controlling host. It lists all the other hosts it will be controlling.</p>
+
+<p>The &#8216;Backup Home&#8217; column sets the backup on (1) or off (0).</p>
+
+<p>File: config/hosts.host-0</p>
+
+<pre><code>#       ssh  Remote       Remote           Backup   Function
+# Host  Port Script        Home             Home    Monitors
+# ----- ---- ------ ---------------------- ------  ----------------------------
+host-1  22    0    /home/bob                1      df util memory 
+host-2  22    0    /home/data/bob           1      df util memory 
+# Remote Script: 1=run monitor script that is on remote machine 
+#                0=run monitor script on local, through ssh tunnel
+# Function Monitors: Forest script to run. 0 = skip.
+# Backup Home: 1=yes, 0=no
+</code></pre>
+
+<p>The hosts.&lt;name&gt; file is central to the &#8216;Forest&#8217; administration system. It controls monitoring via the alert.sh and log.sh scripts (to be documented&#8230;)</p>
+
+<h3 id="scheduleincron">Schedule in cron</h3>
+
+<p>File: /etc/cron.d/backup</p>
+
+<pre><code># Run the backups
+SHELL=/bin/bash
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+MAILTO=&quot;bob@bob.com&quot;
+20 2 * * * bob /home/bob/forest/backup_home.sh
+</code></pre>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>This may seem like a lot of work, and it is. But think about losing something meaningful to you, and it&#8217;s not so bad.</p>
+
+<p>I have used this for a long time and needed backups many times too. It has saved me more than it cost.</p>
+
+<p>If you actually read this far, <a href="/linux-in-house/linux/Backup.html#regards">Thank You</a> 8-)</p>
+
+<h1 id="reference">Reference</h1>
+
+<p><a href="/linux-in-house/linux/setup-server.html#automaticbackuptousbdisk">Automatic Backup to USB</a></p>
+
+<p><a href="/linux-in-house/linux/setup-server.html#automaticbackupofpostgresqldatabase">Automatic Backup of PostgreSQL Database</a></p>
+
+<ul>
+<li>Dependencies</li>
+</ul>
+
+<p>Directory structure required for backups</p>
+
+<pre><code>~/forest
+├── alert
+├── bin
+├── config
+├── include
+├── log
+├── tmp
+</code></pre>
+
+<p><a href="/linux-in-house/linux/Backup.html#logit.sh">include/logit.sh</a></p>
+
+<p><a href="/linux-in-house/linux/Backup.html#pid.sh">include/pid.sh</a></p>
+
+<p><a href="/linux-in-house/linux/Backup.html#mail.sh">bin/mail.sh</a></p>
+
+<p><a href="/linux-in-house/linux/Backup.html#ping.sh">bin/ping.sh</a></p>
+
+<p><a href="/linux-in-house/linux/Backup.html#logger.sh">bin/logger.sh</a></p>
+
+<h2 id="code">Code</h2>
+
+<p>File: backup_home.sh</p>
+
+<pre><code>#!/bin/bash
+######################################################################################
+#
+# File: backup_home.sh
+#
+# Purpose: Backup home directories
+#
+# Usage: backup_home.sh
+# - Run from the controller host, it will ssh into remotes and back them up
+#
+# Configuration: 
+# - On each host, run ${LOCAL_DIR}/install/backup_links.sh first to create 
+#     links to live files in user home directory
+#     rsync --copy-links will back up the data
+# - Set hosts file on controller
+#     File: ${CONFIG_DIR}/hosts.&lt;host&gt;
+#       (See file alert.sh for layout)
+# - Set destination directory
+#     File: ${CONFIG_DIR}/config.&lt;host&gt;
+#```
+# # nfs Backup variables
+# export MY_BACKUP_DIR=/data/backups/
+# export MY_BACKUP_HOST=
+# # rsync Backup variables
+# #export MY_BACKUP_DIR=/mnt/vol042/backups/
+# #export MY_BACKUP_HOST=nashost
+# # Remote backup
+# #export MY_BACKUP_CMD=/data/bob/rsync.sh
+# # Proxy backup
+# #export MY_BACKUP_PROXY=vm42
+# #export MY_BACKUP_CMD=/mnt/vol042/bob/rsync.sh
+#```
+# - Backup Rules:
+#                               Set               UnSet   
+#  +-----------------+------------------------+-------------------+
+#  | MY_BACKUP_DIR   |                        | Skip Backup (1)   |
+#  +-----------------+------------------------+-------------------+
+#  | MY_BACKUP_CMD   | Script on Remote (2,5) |                   | 
+#  +-----------------+------------------------+-------------------+
+#  | MY_BACKUP_HOST  | Rsync on Remote (4)    | NFS on Remote (3) |
+#  +-----------------+------------------------+-------------------+
+#  | MY_BACKUP_PROXY | Run MY_BACKUP_CMD on   |                   |
+#  |                 |  Proxy host (5)        |                   |
+#  +-----------------+------------------------+-------------------+
+#  1) Skip if MY_BACKUP_DIR unset
+#  2) Run a script on the remote host if MY_BACKUP_CMD set
+#  3) Use remote's nfs mount if MY_BACKUP_HOST is unset
+#  4) Use rsync on remote host to backup over the network if
+#       MY_BACKUP_HOST is set
+#  5) Run MY_BACKUP_CMD on MY_BACKUP_PROXY host to backup remote if
+#      MY_BACKUP_PROXY is set
+#
+# - Create destination directory
+#
+# Topic: backup
+#
+# History:
+#   When          Who         What
+# -----------  ----------  -----------------------------------------------------------
+# 24-Sep-2023  Don Cohoon  Created
+#  3-Aug-2025  Don Cohoon  Add logit
+######################################################################################
+#
+export SYS=forest
+CONFIG_DIR=~/.config/${SYS}
+#
+YES=1
+NO=0
+HOSTNAME=$(/bin/hostname -s)
+SEND_MAIL=&quot;${SEND_MAIL:=${YES}}&quot;
+#
+MY_DATE=$(/bin/date)
+#
+ME=${0}
+#/bin/script.sh
+ME=${ME%%.*} # remove after trailing .
+#/bin/script
+ME=${ME:-backup_home}
+# default for ./script.sh
+ME=${ME##*/} # basename
+#script
+#..........................................
+#
+function msg() {
+  DATE=$(/bin/date +%Y%m%dT%H%M%S)
+  /bin/echo &quot;${DATE}:${ME}:INFO: ${@}&quot;
+}
+#..........................................
+#
+function err() {
+  DATE=$(/bin/date +%Y%m%dT%H%M%S)
+  /bin/echo &quot;${DATE}:${ME}:ERROR: ${@}&quot;
+}
+#..........................................
+#--------------------------------------------------------------
+#
+# Back up home directory on another host
+#
+function back_it_up() {
+  H=${1}
+  PORT=${2}
+  REMOTE_HOME=${3}
+  SHORT_HOST=${H%%.*}
+  #
+  # Logging
+  #
+  LOG=${LOG_DIR}/${ME}_${H}.log
+  DATE=$(/bin/date +%Y%m%dT%H%M%S)
+  # MY_BACKUP_...from config.&lt;host&gt; by now
+  if [ -z ${MY_BACKUP_DIR} ] &amp;&amp; [ -z ${MY_BACKUP_CMD} ]; then
+    err &quot;MY_BACKUP_DIR/CMD missing, skipping ${H}&quot;
+    return 2
+  fi
+  #
+  if [ ! -z ${MY_BACKUP_CMD} ]; then 
+    if [ ! -z ${MY_BACKUP_PROXY} ]; then 
+      logit_info &quot;${MY_BACKUP_PROXY} will backup ${H}&quot;
+      H=${MY_BACKUP_PROXY}
+      # Get port for new host
+      #SHORT_HOST=${H%%.*}
+      PORT=$(grep ${H} ${CONFIG_DIR}/hosts.${HOSTNAME}|awk '{print $2}')
+      LOG=/tmp/${ME}_${H}.log # Proxy will log
+    else
+      logit_info &quot;remote host will backup ${H}&quot;
+    fi
+    /usr/bin/ssh -p ${PORT} ${SSH_USER}@${H} \
+        ${MY_BACKUP_CMD} \
+        &gt; ${LOG} 2&gt;&amp;1
+    RSLT=$?
+  else
+    if [ -z ${MY_BACKUP_HOST} ]; then # HOST not set
+      logit_info &quot;nfs mount backup ${H}&quot;
+      MY_BACKUP_DIR=${MY_BACKUP_DIR}/${SHORT_HOST}/ 
+    else
+      logit_info &quot;net backup ${H}&quot;
+      MY_BACKUP_DIR=${SSH_USER}@${MY_BACKUP_HOST}:${MY_BACKUP_DIR}/${SHORT_HOST}/
+    fi
+    # 
+    /usr/bin/ssh -p ${PORT} ${SSH_USER}@${H} \
+        /usr/bin/rsync --copy-links -av ${REMOTE_HOME} ${MY_BACKUP_DIR} \
+        &gt; ${LOG} 2&gt;&amp;1
+    RSLT=$?
+  fi
+  if [ ${RSLT} -ne 0 ] &amp;&amp; [ ${RSLT} -ne 23 ]; then # alert
+    S=$(err &quot;Backup of ${REMOTE_HOME} on ${H} - ${MY_BACKUP_HOST} failed, &quot;)
+    case ${RSLT}
+      in # rsync exit status:
+        0)   S+=&quot;Success&quot;
+        ;;
+        1)   S+=&quot;Syntax or usage error&quot;
+        ;;
+        2)   S+=&quot;Protocol incompatibility&quot;
+        ;;
+        3)   S+=&quot;Errors selecting input/output files, dirs&quot;
+        ;;
+        4)   S+=&quot;Requested  action  not  supported:  an attempt was made to manipulate 64-bit files on a platform that cannot support&quot;
+             S+=&quot; them; or an option was specified that is supported by the client and not by the server.&quot;
+        ;;
+        5)   S+=&quot;Error starting client-server protocol&quot;
+        ;;
+        6)   S+=&quot;Daemon unable to append to log-file&quot;
+        ;;
+        10)  S+=&quot;Error in socket I/O&quot;
+        ;;
+        11)  S+=&quot;Error in file I/O&quot;
+        ;;
+        12)  S+=&quot;Error in rsync protocol data stream&quot;
+        ;;
+        13)  S+=&quot;Errors with program diagnostics&quot;
+        ;;
+        14)  S+=&quot;Error in IPC code&quot;
+        ;;
+        20)  S+=&quot;Received SIGUSR1 or SIGINT&quot;
+        ;;
+        21)  S+=&quot;Some error returned by waitpid()&quot;
+        ;;
+        22)  S+=&quot;Error allocating core memory buffers&quot;
+        ;;
+        23)  S+=&quot;Partial transfer due to error&quot;
+        ;;
+        24)  S+=&quot;Partial transfer due to vanished source files&quot;
+        ;;
+        25)  S+=&quot;The --max-delete limit stopped deletions&quot;
+        ;;
+        30)  S+=&quot;Timeout in data send/receive&quot;
+        ;;
+    esac
+    /bin/echo &quot;${S}&quot; &gt; ${MY_LOCAL_DIR}/alert/${H}.${ME}.${DATE}.txt
+    #
+    /usr/bin/tail -20 ${LOG} &gt;&gt; \
+        ${MY_LOCAL_DIR}/alert/${H}.${ME}.${DATE}.txt
+    if [ ${SEND_MAIL} == ${YES} ]; then
+       ${MY_LOCAL_DIR}/bin/mail.sh \
+           ${MY_LOCAL_DIR}/alert/${H}.${ME}.${DATE}.txt \
+           &quot;${H} :${ME} : Fail&quot;
+    fi
+  else
+    logit_info &quot;Backup complete for ${H}&quot;
+    if [ $RSLT -eq 23 ]; then
+      logit_info &quot;Partial transfer due to error&quot;
+    fi
+  fi
+}
+#
+#--------------------------------------------------------------
+#
+# Check Config
+#
+if [ ! -f ${CONFIG_DIR}/hosts.${HOSTNAME} ]; then
+  /bin/echo &quot;${MY_DATE}:ERROR: Missing (config file) ${CONFIG_DIR}/hosts.${HOSTNAME}&quot;
+  exit 2
+fi
+if [ ! -f ${CONFIG_DIR}/config.${HOSTNAME} ]; then
+  /bin/echo &quot;${MY_DATE}:ERROR: Missing (config file) ${CONFIG_DIR}/config.${HOSTNAME}&quot;
+  exit 2
+else
+  source ${CONFIG_DIR}/config.${HOSTNAME}
+fi
+if [ ! -d ${LOCAL_DIR}/alert ]; then 
+  /bin/echo &quot;${MY_DATE}:ERROR: Missing (LOCAL_DIR) ${LOCAL_DIR}/alert&quot; 
+  exit 2 
+fi
+MY_LOCAL_DIR=${LOCAL_DIR}
+# log standard (contains trap EXIT)
+#  so we call logit_cleanup before we exit
+source ${LOCAL_DIR}/include/logit.sh
+# cron.sh requirement (overrides trap EXIT)
+source ${LOCAL_DIR}/include/pid.sh
+#
+LOG_DIR=${LOCAL_DIR}/log/
+BACKUP_HOME_LOG=${LOG_DIR}/${HOSTNAME}.backup_home.log
+#         Level  Name                Size in MB
+logit_set INFO   ${BACKUP_HOME_LOG}  1
+#------------------------------------------------------------------------------------
+logit_info &quot;===&gt; Backup Home Started &lt;===&quot;
+#--------------------------------------------------------------
+#
+# Back 'em up Scotty!
+#
+TMP_PING=$(mktemp  --tmpdir=${LOCAL_DIR}/tmp)
+TMP_READ=$(mktemp  --tmpdir=${LOCAL_DIR}/tmp)
+#
+# Example Hosts file:
+# #                  ssh  Remote       Remote           Backup 
+# #       Host       Port Script        Home             Home  
+# # ---------------- ---- ------ ---------------------- ------
+#   hn1.example.com   22    0    /mnt/raid1/bob/home/     0   
+#   hn2.example.com   22    0    /data/bob/               1   
+# #
+# # Backup Home: 1=yes, 0=no
+#
+/bin/grep -v '^#' &lt; ${CONFIG_DIR}/hosts.${HOSTNAME} &gt;${TMP_READ}
+{ while read -u 3 H PORT REMOTE_SCRIPT REMOTE_HOME BACKUP FILLER
+ do
+ if [ ${BACKUP} -eq 1 ]; then
+   #..........................................
+   # Ensure network is up first
+   ${LOCAL_DIR}/bin/ping.sh 3 ${H} &gt; ${TMP_PING}
+   if [ $? -ne 0 ]; then
+      DATE=$(/bin/date +%Y%m%dT%H%M%S)
+      err &quot;-&gt; ${H} &lt;- skipped ${ME} due to networking!&quot; &gt;&gt; ${TMP_PING}
+      /bin/cat ${TMP_PING} &gt; ${LOCAL_DIR}/alert/${H}.${ME}.${DATE}.txt
+      continue
+   fi
+   # Get backup config and run it if defined
+   SHORT_HOST=${H%%.*}
+   MY_BACKUP_HOST=
+   MY_BACKUP_DIR=
+   MY_BACKUP_CMD=
+   MY_BACKUP_PROXY=
+   source ${CONFIG_DIR}/config.${SHORT_HOST}
+   logit_info &quot;Starting backup for ===&gt; ${H} &lt;===&quot;
+   back_it_up ${H} ${PORT} ${REMOTE_HOME}
+   # Clean up for the next one
+   source ${CONFIG_DIR}/config.${HOSTNAME}
+   #..........................................
+ fi
+done } 3&lt; ${TMP_READ} # ssh and rsync grap stdin/out
+#
+# Log to alert directory with no page
+#
+tail -20 ${BACKUP_HOME_LOG} &gt;${TMP_READ}
+${LOCAL_DIR}/bin/logger.sh ${TMP_READ} &quot;backup_home&quot; 
+#
+logit_cleanup
+/bin/rm -f ${TMP_PING}
+/bin/rm -f ${TMP_READ}
+
+</code></pre>
+
+<h3 id="logit.sh">logit.sh</h3>
+
+<p>File: logit.sh</p>
+
+<pre><code>#!/bin/bash
+###############################################################
+#
+# File: logit.sh
+#
+# Purpose: log entries into a file
+#
+# Usage: 
+#  * One time set up:
+#     source ~/forest/include/logit.sh
+#     logit_set INFO /tmp/my_script.log 2
+#               ^    ^                  ^
+#               |    |                  |
+#               |    |                  + Log size in MB
+#               |    +------------------- Log Name
+#               +------------------------ Log Level
+#                                          DEBUG
+#                                          INFO
+#                                          WARN
+#                                          ERROR
+#  * Then use it:
+#     logit_error &quot;message...&quot;
+#     logit_info  &quot;message...&quot;
+#     logit_warn  &quot;message...&quot;
+#     logit_debug &quot;message...&quot;
+#  * Change log level afterwards:
+#     logit_set DEBUG 
+#  * Log file will be rotated after it exceeds 
+#     the supplied log size, in MegaBytes (MB)
+#     (See function logit_cleanup)
+#     May want to call 'logit_cleanup' manually 
+#      if you overite this script's 'trap EXIT'
+#
+# Dependencies: 
+#   ~/forest/bin/savelog.sh
+#   ~/forest/bin/file_size.sh
+#
+# logit_&lt;name&gt;  are public
+# logit__&lt;name&gt; are private
+#
+# Reference:
+#  https://blog.brujordet.no/post/bash/debugging_bash_like_a_sire/
+
+# History
+# When         Who         What
+# -----------  ----------  ------------------------------------
+# 21-Jul-2025  Don Cohoon  Created
+###############################################################
+# safeguards
+#set -o nounset
+#set -o pipefail
+#set -o errexit
+trap logit_cleanup EXIT
+#
+# Private Globals and Defaults
+#
+logit__MB=1
+logit__LOG=/tmp/$$.log
+logit__LOG_LEVEL=INFO
+logit__daystokeep=10
+#
+# Public Initialize
+#
+function logit_set() {
+  logit__LOG_LEVEL=${1} 
+  if [ ! -z &quot;${2}&quot; ]; then
+    logit__LOG=${2}
+  fi
+  if [ ! -z &quot;${3}&quot; ]; then
+    logit__MB=${3}
+  fi
+  logit__write_log ${logit__LOG_LEVEL} &quot;$@&quot; 
+}
+#
+# Rotate Log
+#
+function logit__rotate_log() {
+  local daystokeep MAX_SZ SZ
+  daystokeep=${1:-${logit__daystokeep}}
+  MAX_SZ=$((1024*1024*logit__MB)) 
+  SZ=$(${LOCAL_DIR}/bin/file_size.sh ${logit__LOG})
+  if (( SZ &gt; MAX_SZ )); then
+    ${LOCAL_DIR}/bin/savelog.sh -q -c ${daystokeep} ${logit__LOG}
+  fi
+}
+#
+# Cleanup
+#
+function logit_cleanup {
+  local timestamp daystokeep
+  if logit_level_is_active &quot;DEBUG&quot;; then
+    daystokeep=${1:-${logit__daystokeep}}
+    timestamp=$(date +'%y.%m.%d %H:%M:%S')
+    printf '%s [%s] [%s - %s]: %s %s \n' \
+        &quot;${logit__LOG_LEVEL}&quot; &quot;$timestamp&quot; &quot;${0##*/}&quot; &quot;logit_cleanup&quot; \
+        &quot; Log file is &quot; &quot;${logit__LOG}&quot; &gt;&gt;${logit__LOG} 2&gt;&amp;1
+  fi
+  logit__rotate_log ${daystokeep}
+}
+#
+# Public logging functions
+#
+function logit_info {
+  logit__write_log &quot;INFO&quot; &quot;$@&quot;
+}
+#
+function logit_warn {
+  logit__write_log &quot;WARN&quot; &quot;$@&quot;
+}
+#
+function logit_debug {
+  logit__write_log &quot;DEBUG&quot; &quot;$@&quot;
+}
+#
+# Public Level check
+#  returns true if parameter is active
+#
+function logit_level_is_active {
+  local check_level current_level
+  check_level=$1
+
+  declare -A log_levels=(
+    [DEBUG]=1
+    [INFO]=2
+    [WARN]=3
+    [ERROR]=4
+  )
+
+  check_level=&quot;${log_levels[&quot;$check_level&quot;]}&quot;
+  current_level=&quot;${log_levels[&quot;$logit__LOG_LEVEL&quot;]}&quot;
+
+  (( check_level &gt;= current_level ))
+}
+
+#
+# Private write
+#
+function logit__write_log {
+  local timestamp file function_name log_level
+  log_level=$1
+  shift
+
+  if logit_level_is_active &quot;$log_level&quot;; then
+    timestamp=$(date +'%y.%m.%d %H:%M:%S')
+    file=&quot;${BASH_SOURCE[2]##*/}&quot;
+    function_name=&quot;${FUNCNAME[2]}&quot;
+    printf '%s [%s] [%s - %s]: %s\n' \
+      &quot;$log_level&quot; &quot;$timestamp&quot; &quot;$file&quot; &quot;$function_name&quot; &quot;${*}&quot; \
+      &gt;&gt; ${logit__LOG} 2&gt;&amp;1
+  fi
+}
+#
+# Public ERROR: with stacktrace of functions
+#
+function logit_error {
+  logit__write_log &quot;ERROR&quot; &quot;$@&quot; 
+  local stack_offset=1
+  printf '%s:\n' 'Stacktrace:' &gt;&gt; ${logit__LOG} 2&gt;&amp;1
+
+  for stack_id in &quot;${!FUNCNAME[@]}&quot;; do
+    if [[ &quot;$stack_offset&quot; -le &quot;$stack_id&quot; ]]; then
+      local source_file=&quot;${BASH_SOURCE[$stack_id]}&quot;
+      local function=&quot;${FUNCNAME[$stack_id]}&quot;
+      local line=&quot;${BASH_LINENO[$(( stack_id - 1 ))]}&quot;
+      printf '\t%s:%s:%s\n' &quot;$source_file&quot; &quot;$function&quot; &quot;$line&quot; \
+        &gt;&gt; ${logit__LOG} 2&gt;&amp;1
+    fi
+  done
+}
+</code></pre>
+
+<h3 id="pid.sh">pid.sh</h3>
+
+<p>File: pid.sh</p>
+
+<pre><code>###############################################################
+#
+# File: pid.sh
+#
+# Purpose: cron pid cleanup
+#
+# Usage: source this by any job run with cron.sh
+#
+# Dependencies: ${LOCAL_DIR}
+#
+###############################################################
+# safeguards
+#set -o nounset
+#set -o pipefail
+#set -o errexit
+trap cleanup_pid EXIT
+#
+PID_CMD=$(/usr/bin/basename ${0})
+function cleanup_pid() {
+  PID_FILE=${LOCAL_DIR}/tmp/cron.${PID_CMD}.pid
+  #echo &quot;Cleanup_pid ($$) file ${PID_FILE}&quot;
+  /bin/rm -f ${PID_FILE}
+  exit
+}
+#
+</code></pre>
+
+<h3 id="mail.sh">mail.sh</h3>
+
+<p><a href="/linux-in-house/linux/setup-server.html#testmail">mail.sh</a></p>
+
+<h3 id="ping.sh">ping.sh</h3>
+
+<p>File: ping.sh</p>
+
+<pre><code>#!/bin/bash
+##########################################################
+#
+# File: ping.sh
+#
+# Usage: ping.sh [Number] [Host] [Debug]
+#  Number:
+#   1) ping - Human readable with timestamp
+#   2) Tracing - Show Network Hops
+#   3) monitor - Network Alerts
+#  Host:
+#   short names will have the current domain added
+#  Debug:
+#   -  0 = off
+#   -  1 = on
+#
+# Purpose: Check network connectivity:
+#  - Exit Status:
+#    -  0 = good
+#    -  1 = bad
+#
+# Dependencies:
+# - Debian 10: Fails with
+#    -&gt; ping: socket: Operation not permitted
+#   Solution:
+#    File: /etc/sysctl.d/ping.conf
+#```
+# net.ipv4.ping_group_range = 0 2147483647 
+#```
+#    $ sudo sysctl --system
+#
+# - Trace Route
+#   $ sudo apt install mtr-tiny
+#
+# Alternatives:
+# - fping (standard package)
+#     fping differs from ping in that you can specify
+#      any number of targets on the command line, or 
+#      specify a file containing the lists of targets 
+#      to ping. Instead of sending to one target until 
+#      it times out or replies, fping will send out a 
+#      ping packet and move on to the next target in 
+#      a round-robin fashion. In the default mode, if 
+#      a target replies, it is noted and removed from 
+#      the list of targets to check;
+#
+# - prettyping
+#     https://github.com/denilsonsa/prettyping
+#     `prettyping` is a wrapper around the standard 
+#     `ping` tool, making the output prettier, more 
+#     colorful, more compact, and easier to read. 
+#
+# Configuration:
+# - List of hosts to *ignore*
+#   File: ~/.config/${SYS}/ping.&lt;host&gt;
+#```
+# ignore.example.com
+#```
+#
+# Topic: forest
+#
+# History:
+# When        Who        Description
+# ----------- ---------- --------------------
+# 25-Aug-2023 Don Cohoon Created
+############################################
+#
+# Configs
+#
+SYS=forest
+CONFIG_DIR=~/.config/${SYS}
+YES=1
+NO=0
+SEND_MAIL=&quot;${SEND_MAIL:=${YES}}&quot;
+#SEND_MAIL=&quot;${SEND_MAIL:=${NO}}&quot;
+EXIT=0
+DEBUG=${NO}
+#..........................................
+HOSTNAME=$(/bin/hostname -s)
+DOMAINNAME=$(/bin/hostname -d)
+#
+#..........................................
+function msg() {
+    echo &quot;${DATE}:ping.sh:INFO: ${@}&quot;
+}
+#
+#..........................................
+function err() {
+    echo &quot;${DATE}:ping.sh:ERROR: ${@}&quot;
+}
+#..........................................
+#
+# Ping the host
+#
+function pong() {
+ H=${1}
+ DATE=$(date '+%Y%m%dT%H%M%S')
+  # D - timestamp
+  # t - timeout, 5 seconds
+  # c - limit count, 2 times
+  ping -D -t 5 -c 2 ${H} &gt;${TMP} 2&gt;&amp;1
+  RSLT=$?
+  if [ $RSLT -ne 0 ]; then
+    err &quot;Cannot find host: ${H}&quot;
+    cat ${TMP}
+    err &gt;&gt;${TMP}
+    if [ ${SEND_MAIL} == ${YES} ]; then
+       ${LOCAL_DIR}/bin/mail.sh ${TMP} &quot;${H} :ping.sh : Ping Failed&quot;
+    fi
+    return 1
+  fi
+  if [ $DEBUG -eq ${YES} ]; then
+    msg &quot;Host is up: ${H}&quot;
+  fi
+  return 0
+}
+#..........................................
+source ${CONFIG_DIR}/config.${HOSTNAME}
+TMP=$(mktemp  --tmpdir=${LOCAL_DIR}/tmp)
+#..........................................
+#
+# Check parameters
+#
+if [ $# -gt 0 ]; then
+  A=${1}
+  H=${2}
+  DEBUG=${3:-${NO}} # 1= print good output
+else
+  /bin/echo &quot;1) ping - Human readable with timestamp&quot;
+  /bin/echo &quot;2) Tracing - Show Network Hops&quot;
+  /bin/echo &quot;3) monitor - Network Alerts&quot;
+  read A
+fi
+#..........................................
+#
+# Cannot have empty host
+#
+if [ -z ${H} ]; then
+  echo &quot;Enter Host name: &quot;
+  read H
+fi
+#..........................................
+#
+# Add my domain, if not present
+#
+DOTS=$(echo ${H} | awk -F'.' '{print NF-1}' )
+if (( DOTS &lt; 2 )); then
+  H+=&quot;.${DOMAINNAME}&quot;
+fi
+#..........................................
+#
+# Pick one
+#
+case ${A}
+ in
+   1) # ping - timestamp
+      ping -D -t 5 -c 2 ${H}
+      ;;
+   2) # trace route (also supports json: mtr --json &lt;host&gt;)
+      mtr -c 5 -i 1.5 -r  ${H}
+      ;;
+   3) # ping - alerts
+      # Skip any host(s) in ping.&lt;host&gt;
+      grep ${H} ${CONFIG_DIR}/ping.${HOSTNAME} &gt;/dev/null 2&gt;&amp;1
+      if [ $? != 0 ]; then # not found
+        pong ${H}
+        EXIT=$?
+      fi
+      ;;
+esac
+#
+#..........................................
+rm ${TMP}
+# 
+#..........................................
+exit $EXIT
+</code></pre>
+
+<h3 id="logger.sh">logger.sh</h3>
+
+<p>File: logger.sh</p>
+
+<pre><code>#!/bin/bash
+#########################################################################
+#
+# Purpose: Create a log file entry
+#
+# Topic: forest
+#
+#########################################################################
+SYS=forest
+CONFIG_DIR=~/.config/${SYS}
+#
+HOSTNAME=$(/bin/hostname)
+SHORT_HOST=${HOSTNAME%%.*}
+DATE=$(/bin/date +%Y%m%dT%H%M%S)
+#
+function usage () {
+   /bin/echo &quot;Usage: ${0} &lt;File Name to Log&gt; &lt;Subject&gt;&quot;
+   exit 1
+}
+#------------------
+if [ $# -lt 2 ]; then
+  usage
+fi
+#
+if [ ! -z ${1} ] &amp;&amp; [ ! -f ${1} ]; then
+  usage 
+fi
+#
+if [ ! -f ${CONFIG_DIR}/config.${SHORT_HOST} ]; then
+  /bin/echo &quot;${MY_DATE}:ERROR: Missing (config file) ${CONFIG_DIR}/config.${SHORT_HOST}&quot;
+  exit 2
+else
+  source ${CONFIG_DIR}/config.${SHORT_HOST}
+fi
+#
+FILE=${1}   
+SUBJECT=${2}
+#
+if [ ! -d ${LOCAL_DIR}/alert ]; then
+	/bin/echo &quot;${MY_DATE}:ERROR: Missing (LOCAL_DIR) ${LOCAL_DIR}/alert&quot;
+  exit 2
+fi
+if [ -s ${FILE} ]; then # treat this as a log entry
+  /bin/cat ${FILE} &gt; &quot;${LOCAL_DIR}/alert/${SHORT_HOST}.${SUBJECT}.${DATE}.uploaded&quot;
+fi
+#
+#
+</code></pre>
+
+<h3 id="backup_links.sh">backup_links.sh</h3>
+
+<p>File: backup_links.sh</p>
+
+<pre><code>#!/bin/bash
+######################################################################################
+#
+# File: backup_links.sh
+# 
+# Purpose: Create links from /etc/, /usr/ to user's home for backup_home.sh to pick up
+#
+# Usage: backup_links.sh
+# - Run as SSH_USER on remote host before backup_home.sh runs
+#
+# Configuration:
+# - Input -&gt; File: ${CONFIG_DIR}/backup_links.txt
+# - Output -&gt; Links to live files in home dir for backup to copy
+#
+# History:
+#   When          Who         What
+# -----------  ----------  -----------------------------------------------------------
+# 24-Sep-2023  Don Cohoon  Created
+######################################################################################
+export SYS=forest
+CONFIG_DIR=~/.config/${SYS}
+#
+HOSTNAME=$(/bin/hostname -s)
+MY_DATE=$(/bin/date)
+#
+if [ ! -f ${CONFIG_DIR}/config.${HOSTNAME} ]; then
+  /bin/echo &quot;${MY_DATE}:ERROR: Missing (config file) ${CONFIG_DIR}/config.${HOSTNAME}&quot;
+  exit 2
+else
+  . ${CONFIG_DIR}/config.${HOSTNAME}
+fi
+if [ ! -f ${CONFIG_DIR}/backup_links.txt ]; then
+  /bin/echo &quot;${MY_DATE}:ERROR: Missing (config file) ${CONFIG_DIR}/backup_links.txt&quot;
+  exit 2
+fi
+#
+HOME=~/
+#####################
+#
+function link() {
+  LINK=${1}
+  DIR=$(dirname   &quot;${LINK}&quot;)
+  BASE=$(basename &quot;${LINK}&quot;)
+  #
+  if [ -f /&quot;${LINK}&quot; ]; then
+    echo &quot;mkdir -p ${HOME}/${DIR}&quot;
+    mkdir -p ${HOME}/${DIR}
+    #
+    echo &quot;cd ${HOME}/${DIR}&quot;
+    cd ${HOME}/${DIR}
+    #
+    echo &quot;ln -s /&quot;${LINK}&quot; .&quot;
+    if [ ! -f &quot;${BASE}&quot; ]; then
+      ln -s /&quot;${LINK}&quot; .
+    fi
+  else
+    echo &quot;Permission denied or missing file; ${LINK}&quot;
+  fi
+}
+#
+# Create links from config file, skipping comments
+#
+TMP=$(mktemp)
+/bin/grep -v '^#' &lt; ${CONFIG_DIR}/backup_links.txt &gt;${TMP}
+{ while read -u 3 LINK
+ do
+   link &quot;${LINK}&quot;
+done } 3&lt; ${TMP} 
+#
+rm -f ${TMP}
+#
+exit 0
+</code></pre>
+
+<p>File: backup_links.txt</p>
+
+<pre><code>#
+# Basics
+#
+etc/fstab
+etc/hosts
+#
+# Forest Logwatch
+#
+etc/cron.d/logwatcher
+#
+# Next Cloud
+#
+etc/httpd/conf.d/nextcloud.conf
+var/www/nextcloud/config/config.php
+#
+# Nmstate Networking (RedHat)
+#
+etc/nmstate/40-create-eno1.applied
+#
+# Postfix E-Mail
+#
+etc/postfix/main.cf
+etc/postfix/master.cf
+#
+# Dovevot E-Mail
+#
+etc/dovecot/local.cf
+#
+# Network Manager (RedHat)
+#
+etc/NetworkManager/system-connections/eno1.nmconnection
+'etc/NetworkManager/system-connections/Wired connection\ 1.nmconnection'
+#
+# PostgreSQL Database (RedHat)
+#
+# Add postgres group to $SSH_USER
+# sudo chmod 770 /var/lib/pgsql/data/
+# sudo chmod 660 /var/lib/pgsql/data/pg_hba.conf 
+# sudo chmod 660 /var/lib/pgsql/data/postgresql.conf 
+#
+var/lib/pgsql/data/pg_hba.conf
+var/lib/pgsql/data/postgresql.conf
+#
+# nginx Web Server
+#
+etc/nginx/sites-available/default
+</code></pre>
+
+<h2 id="regards">Regards</h2>
+
+<p>Hope this helps,<br />
+&#8211; Don Cohoon</p>
+
+<hr>
+
+<h4 id="madeforhumansbyahuman">Made for Humans, by a Human</h4>
+
+<h4 id="links">Links</h4>
+
+<ul>
+<li><a href="https://lwn.net/">Linux Weekly News</a></li>
+<li><a href="https://fullcirclemagazine.org/">Full Circle Magazine</a></li>
+<li><a href="https://www.linuxjournal.com/">Linux Journal</a></li>
+<li><a href="https://www.linux-magazine.com/">Linux Magazine</a></li>
+<li><a href="https://www.thefarside.com/">The Far Side</a></li>
+</ul>
+
+<h4 id="social">Social</h4>
+
+<ul>
+<li><a href="https://fosstodon.org/@Cohoon">Feedback</a></li>
+<li><a href="/linux-in-house/feed-linux.rss">Linux RSS Feed</a></li>
+<li><a href="/linux-in-house/feed-writing.rss">Writing RSS Feed</a></li>
+<li><a href="https://linux-in-the-house.pages.dev/">Book</a></li>
+</ul>
+
+<div style="overflow-x:auto;">
+<table style="width: 100%;">
+<tr>
+     <td>
+<small><a href="/linux-in-house/linux/intro.html#createdwith">Created with</a></small>
+     </td>
+     <td>
+<small>License: <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0</a></<small>
+     </td>
+     <td>
+
+<p><small>linux-in-house Version: 4.114 </small></p>
+
+<p></tr>
+</table></p>
+
+</div>
+
+
+</body>
+</html>
+
