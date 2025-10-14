@@ -3,6 +3,13 @@
 
 <channel>
  <item>
+  <title>Notes</title>
+  <link>https://dfcsoftware.github.io/linux-in-house/writing/notes.html</link>
+  <guid>https://dfcsoftware.github.io/linux-in-house/writing/notes.html</guid>
+  <pubDate>Tue, 14 Oct 2025 10:20:00 -0400</pubDate>
+  <description>My goto note taker and also web bookmarker/saver</description>
+ </item>
+ <item>
   <title>Water-heater</title>
   <link>https://dfcsoftware.github.io/linux-in-house/writing/water-heater.html</link>
   <guid>https://dfcsoftware.github.io/linux-in-house/writing/water-heater.html</guid>

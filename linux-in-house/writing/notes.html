@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>Notes</title>
+	<meta name="date" content="2025-10-14 10:20"/>
+	<meta name="author" content="Don Cohoon"/>
+	<meta name="summary" content="My goto note taker and also web bookmarker/saver"/>
+	<meta name="license" content="'[CC-BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)'"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"> <link rel="stylesheet" href="/linux-in-house/common.css" type="text/css" />
+</head>
+<body>
+
+<p><a href="/linux-in-house/index.html"><h1>Linux in House</h1></a></p>
+
+<link href="/linux-in-house/pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/linux-in-house/pagefind/pagefind-ui.js"></script>
+
+<div id="search"></div>
+<script>
+window.addEventListener('DOMContentLoaded', (event) => {
+      new PagefindUI({ element: "#search", showSubResults: true });
+});
+</script>
+
+<blockquote>
+<p><a href="/linux-in-house/linux/welcome.html">Welcome Back My Friends</a></p>
+</blockquote>
+
+<h1 id="title">Notes</h1>
+
+<p>Published: 2025-10-14 10:20 <br />
+Author: Don Cohoon</p>
+
+<p>My goto <em>note taker</em> and also <em>web bookmarker/saver</em>.</p>
+
+<h1 id="ithasallthefeaturesineed:">It has all the features I need:</h1>
+
+<ol>
+<li>Runs on all my devices</li>
+<li>Centrialized storage and backup</li>
+<li>Data sharing</li>
+<li>Works offline</li>
+<li>Private because it&#8217;s self-hosted</li>
+<li>Supports html, pictures, sound, video, attachments like pdf.</li>
+<li>Standard filesystem directory format, no special software needed to view.</li>
+</ol>
+
+<h1 id="mytechniqueisfoldering.">My technique is &#8216;foldering&#8217;.</h1>
+
+<ol>
+<li>Create a new E-Mail using any <strong>E-Mail client</strong> that&#8217;s handy</li>
+<li>Make it text or html</li>
+<li>Paste a web page, a URL, maybe type some thoughts into the body</li>
+<li>Add a meaningful subject</li>
+<li>Close, and save as <strong>Draft</strong></li>
+</ol>
+
+<h1 id="reasonsikeepusingit">Reasons I keep using it</h1>
+
+<p>I can move a note to a folder of my choice. Never have to hit <strong>&#8216;Send&#8217;</strong>.</p>
+
+<p><strong>Editing</strong> is just a matter of dragging it back to the Draft folder.</p>
+
+<p>It comes with built-in <strong>full text search</strong>.</p>
+
+<p>This can be <strong>shared</strong> with someone else by just hitting Send.</p>
+
+<h2 id="selfhostedoptional">Self Hosted [Optional]</h2>
+
+<p>Because I host my own E-Mail Server (dovecot)<sub>[1]</sub> it is <strong>private</strong> by default, and these are in Maildir<sub>[2]</sub> format which is one file per message, so <strong>backup, restore and transfer</strong> are easy<sub>[3]</sub>.</p>
+
+<figure>
+<img src="/linux-in-house/images/Maildir.png" alt="Maildir~[2]~ sample folder layout" />
+<figcaption>Maildir<sub>[2]</sub> sample folder layout</figcaption>
+</figure>
+
+<p>The Maildir folder is also on <strong>RAID</strong> storage, so hardware failures are easy to recover from.</p>
+
+<p>If this is only for note gathering on <strong>local</strong> networks, I just use IMAP (port 143). For internet facing I use <strong>IMAPS</strong> (port 993) using <em>ssl_cert</em> (file /etc/dovecot/conf.d/10-ssl.conf).</p>
+
+<p>In some configurations I will skip SMTP (port 25) <strong>outgoing</strong> mail if I don&#8217;t need it. A whole lot simpler without SPF, DKIM and DMARC, unless you have a <em>&#8216;satellite&#8217;</em> system where all mail is sent to another local machine; an e-mail server.</p>
+
+<p>Ubuntu has a nice setup wizard for SMTP using postfix:</p>
+
+<pre><code> dpkg-reconfigure postfix
+</code></pre>
+
+<blockquote>
+<p>There are more details at <em>E-Mail Quickstart</em><sub>[1]</sub> below.</p>
+</blockquote>
+
+<h3 id="regards">Regards</h3>
+
+<p>Hope this helps,<br />
+&#8211; Don Cohoon</p>
+
+<h3 id="reference:">Reference:</h3>
+
+<ol>
+<li><a href="/linux-in-house/linux/E-Mail.html#e-mail">E-Mail Quickstart</a></li>
+<li>Maildir: <a href="https://en.wikipedia.org/wiki/Maildir">https://en.wikipedia.org/wiki/Maildir</a></li>
+<li><a href="/linux-in-house/writing/files.html">Open File Formats</a></li>
+</ol>
+
+<hr />
+
+<pre><code>____          
+|  _ \  ___  _ __  
+| | | |/ _ \| '_ \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+¯\_(ツ)_/¯
+</code></pre>
+
+<hr>
+
+<h4 id="madeforhumansbyahuman">Made for Humans, by a Human</h4>
+
+<h4 id="links">Links</h4>
+
+<ul>
+<li><a href="https://lwn.net/">Linux Weekly News</a></li>
+<li><a href="https://fullcirclemagazine.org/">Full Circle Magazine</a></li>
+<li><a href="https://www.linuxjournal.com/">Linux Journal</a></li>
+<li><a href="https://www.linux-magazine.com/">Linux Magazine</a></li>
+<li><a href="https://www.thefarside.com/">The Far Side</a></li>
+</ul>
+
+<h4 id="social">Social</h4>
+
+<ul>
+<li><a href="https://fosstodon.org/@Cohoon">Feedback</a></li>
+<li><a href="/linux-in-house/feed-linux.rss">Linux RSS Feed</a></li>
+<li><a href="/linux-in-house/feed-writing.rss">Writing RSS Feed</a></li>
+<li><a href="https://linux-in-the-house.pages.dev/">Book</a></li>
+</ul>
+
+<div style="overflow-x:auto;">
+<table style="width: 100%;">
+<tr>
+     <td>
+<small><a href="/linux-in-house/linux/intro.html#createdwith">Created with</a></small>
+     </td>
+     <td>
+<small>License: <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0</a></<small>
+     </td>
+     <td>
+
+<p><small>linux-in-house Version: 4.156 </small></p>
+
+<p></tr>
+</table></p>
+
+</div>
+
+
+</body>
+</html>
+
