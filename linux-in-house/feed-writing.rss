@@ -3,6 +3,20 @@
 
 <channel>
  <item>
+  <title>Algol</title>
+  <link>https://dfcsoftware.github.io/linux-in-house/writing/algol.html</link>
+  <guid>https://dfcsoftware.github.io/linux-in-house/writing/algol.html</guid>
+  <pubDate>Fri, 17 Oct 2025 10:20:00 -0400</pubDate>
+  <description>Algol was once described as a *disease* caught by unsuspecting people that can last for many years. I suppose it was that for me. I first caught it in 1980 and did not lose hold of it's grasp until 1993.</description>
+ </item>
+ <item>
+  <title>Leave-me-alone</title>
+  <link>https://dfcsoftware.github.io/linux-in-house/writing/leave-me-alone.html</link>
+  <guid>https://dfcsoftware.github.io/linux-in-house/writing/leave-me-alone.html</guid>
+  <pubDate>Wed, 15 Oct 2025 10:20:00 -0400</pubDate>
+  <description>That was the most often used phrase on me growing up. No one wanted to know what was inside my head.</description>
+ </item>
+ <item>
   <title>Notes</title>
   <link>https://dfcsoftware.github.io/linux-in-house/writing/notes.html</link>
   <guid>https://dfcsoftware.github.io/linux-in-house/writing/notes.html</guid>
@@ -612,11 +626,25 @@
   <description>Credit where credit is due:</description>
  </item>
  <item>
+  <title>How-to-tell-a-story-2</title>
+  <link>https://dfcsoftware.github.io/linux-in-house/writing/how-to-tell-a-story-2.html</link>
+  <guid>https://dfcsoftware.github.io/linux-in-house/writing/how-to-tell-a-story-2.html</guid>
+  <pubDate>Mon, 24 Nov 2014 10:20:00 -0500</pubDate>
+  <description>Keillor, 72, will be onstage in Santa Rosa on Dec. 3 and at the Nourse theater in San Francisco on Jan. 10. From New York, he talked to The Chronicle about storytelling, getting older, and why he always wears those red sneakers.</description>
+ </item>
+ <item>
   <title>My-writing-post</title>
   <link>https://dfcsoftware.github.io/linux-in-house/writing/my-writing-post.html</link>
   <guid>https://dfcsoftware.github.io/linux-in-house/writing/my-writing-post.html</guid>
   <pubDate>Fri, 03 Dec 2010 10:20:00 -0500</pubDate>
   <description>Following is a story about my favorite ghost story.</description>
+ </item>
+ <item>
+  <title>How-to-tell-a-story</title>
+  <link>https://dfcsoftware.github.io/linux-in-house/writing/how-to-tell-a-story.html</link>
+  <guid>https://dfcsoftware.github.io/linux-in-house/writing/how-to-tell-a-story.html</guid>
+  <pubDate>Sun, 20 Aug 2006 10:20:00 -0400</pubDate>
+  <description>I do not claim that I can tell a story as it ought to be told. I only claim to know how a story ought to be told, for I have been almost daily in the company of the most expert story-tellers for many years.</description>
  </item>
 </channel>
 
