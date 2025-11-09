@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>Todo</title>
+	<meta name="date" content="2025-11-9 10:24"/>
+	<meta name="tags" content="systems, nextcloud"/>
+	<meta name="author" content="Don Cohoon"/>
+	<meta name="summary" content="What is it?"/>
+	<meta name="license" content="'[CC-BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)'"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"> <link rel="stylesheet" href="/linux-in-house/common.css" type="text/css" />
+</head>
+<body>
+
+<p><a href="/linux-in-house/index.html"><h1>Linux in House</h1></a></p>
+
+<link href="/linux-in-house/pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/linux-in-house/pagefind/pagefind-ui.js"></script>
+
+<div id="search"></div>
+<script>
+window.addEventListener('DOMContentLoaded', (event) => {
+      new PagefindUI({ element: "#search", showSubResults: true });
+});
+</script>
+
+<blockquote>
+<p><a href="/linux-in-house/linux/welcome.html">Welcome Back My Friends</a></p>
+</blockquote>
+
+<h1 id="todosystem">Todo System</h1>
+
+<hr />
+
+<div class="TOC">
+
+<ul>
+<li><a href="#todosystem">Todo System</a>
+<ul>
+<li><a href="#whatisit">What is it?</a></li>
+<li><a href="#whatworksformeisnextclouddeck">What works for me is; nextcloud Deck</a></li>
+<li><a href="#reference">Reference</a></li>
+<li><a href="#regards">Regards</a>
+<ul>
+<li><a href="#madeforhumansbyahuman">Made for Humans, by a Human</a></li>
+<li><a href="#links">Links</a></li>
+<li><a href="#social">Social</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+<hr />
+
+<h2 id="whatisit">What is it?</h2>
+
+<ul>
+<li>Easy to use</li>
+<li>Anyplace</li>
+<li>One source</li>
+<li>Human readable backup</li>
+</ul>
+
+<h2 id="whatworksformeisnextclouddeck">What works for me is; nextcloud Deck</h2>
+
+<figure>
+<img src="/linux-in-house/images/Deck-1.png" alt="Deck in Kanban style - nextcloud.com~[[3](/linux-in-house/linux/Todo.html#reference)]~ " />
+<figcaption>Deck in Kanban style - nextcloud.com<sub>[<a href="/linux-in-house/linux/Todo.html#reference">3</a>]</sub> </figcaption>
+</figure>
+
+<ul>
+<li>Kanban<sub>[<a href="/linux-in-house/linux/Todo.html#reference">1</a>]</sub> (Todo - Doing - Done) stacks</li>
+<li>A board for each major topic in my life</li>
+<li>Drag-n-drop web interface</li>
+<li>Phone app<sub>[<a href="/linux-in-house/linux/Todo.html#reference">4</a>]</sub></li>
+<li>Data is stored in PostgreSQL database</li>
+<li>CLI to extract human readable backup</li>
+</ul>
+
+<p>The last point was important to me because major software systems can and do break, and I do not want to loose my valuable work. I need a human readable backup, like <a href="/linux-in-house/linux/Cloud.html#offlinecopyofcontactsandcalendar">Calendar and Contacts</a>.</p>
+
+<p>So not finding a simple solution, I wrote my own; nextcloud_deck.sh, using their API<sub>[<a href="/linux-in-house/linux/Todo.html#reference">2</a>]</sub>.</p>
+
+<pre><code>$ nextcloud_deck.sh
+
+...... 1 - Bills[4] - Doing[8] - Electric Bill[125] ......
+Created : 05-Mar-2024 18:57:04 - Modified: 07-Nov-2025 18:18:03
+        Check KW used
+Due on 17-Nov-2025 12:00:00 
+
+...... 1 - Bills[4] - Doing[8] - Credit Card[46] ......
+Created : 07-Sep-2023 09:08:32 - Modified: 07-Nov-2025 14:07:53
+        
+Due on 08-Nov-2025 08:00:00 [Over Due]
+
+...... 3 - House[18] - Doing[24] - Clean Gutter[218] ......
+Created : 02-Jan-2025 18:24:12 - Modified: 02-Jan-2025 18:26:48
+        Use leaf blower
+
+...... 5 - Self[22] - Doing[39] - Dr. Appt 215] ......
+Created : 01-Oct-2024 17:28:19 - Modified: 05-Nov-2025 16:04:40
+        Teleconference
+Due on 11-Nov-2025 09:45:00 
+</code></pre>
+
+<p>File: nextcloud_deck.sh</p>
+
+<pre><code>#!/bin/bash
+####################################################
+#
+# File: nextcloud_deck.sh
+#
+# Purpose: Extract nextcloud deck Kanban entries
+#
+# Usage: nextcloud_deck.sh [option]
+#   1) Refresh files
+#   2) Report of items not done
+#   3) Inquire
+# 
+# Dependencies:
+#   - apt install jq
+#   - nextcloud deck app
+#      https://apps.nextcloud.com/apps/deck
+#   - pass.sh
+#      $ apt install pass
+#      Add the Nextcloud Deck username/password
+#      $ pass add nextcloud/myuser
+#      $ pass ls
+#       Password Store
+#       ├── nextcloud
+#       │   └── myuser
+#
+#   - Configuration
+#      File: ${LOCAL_DIR}/config/nextcloud_deck.&lt;host&gt;
+#      ```
+#      CLOUD_URI=nextcloud
+#      CLOUD_USER=myuser
+#      SERVER=&quot;https://example.com/${CLOUD_URI}&quot;
+#      ```
+#   - Screen highlights (optional)
+#      File: ${LOCAL_DIR}/include/screen.sh
+#
+# Reference:
+#   https://deck.readthedocs.io/en/latest/API/#api-version-11
+#    Fetch all user board GET /api/v1.0/boards
+#    Fetch a single board GET /api/v1.0/boards/{boardId}
+#    Fetch all stacks of a board GET /api/v1.0/boards/{boardId}/stacks
+#    Fetch a single stacks of a board GET /api/v1.0/boards/{boardId}/stacks/{stackId}
+#    Fetch a single card of a board GET /api/v1.0/boards/{boardId}/stacks/{stackId}/cards/{cardId}
+#    Fetch attachments of a card GET /api/v1.0/boards/{boardId}/stacks/{stackId}/cards/{cardId}/attachments
+#
+# Issues:
+#  -Modified date retrieval does not work
+#    -H &quot;If-Modified-Since: Mon, 01 Nov 2025 09:28:00 GMT&quot; 
+#    Error: 
+#     Exception Class &quot;Sabre\HTTP\Util&quot; not found in file '/var/www/nextcloud/apps/deck/lib/Controller/StackApiController.php' line 48
+#
+# Topic: nextcloud
+#  
+# KanBan Example Setup:
+#      https://apps.nextcloud.com/apps/deck
+#  Deck (boards) like Bills, House, etc...
+#  |
+#  +-&gt; Stack (list) Doing, Done, Todo
+#      |
+#      +-&gt; Card (item) like 'Pay Electric bill', etc...
+#
+#  The normal procedure is to move a Card 
+#   from Stack: ToDo -&gt; Doing -&gt; Done
+#   within a Deck, using nextcloud Deck.app.
+#  This script saves the Deck database as flat files
+#   in ${LOCAL_DIR}/tmp/decks, allowing viewing offline
+#   and human readable backup, should nextcloud be down.
+#
+# History
+# When         Who         What
+# -----------  ----------  -------------------------
+#  7-Nov-2025  Don Cohoon  Created
+####################################################
+#
+# Configs
+#
+SYS=forest
+CONFIG_DIR=~/.config/${SYS}
+HOSTNAME=$(/bin/hostname -s)
+source ${CONFIG_DIR}/config.${HOSTNAME}
+source ${LOCAL_DIR}/include/screen.sh
+#..........................................
+BOARDS=&quot;index.php/apps/deck/api/v1.0/boards&quot;
+TMP=$(mktemp  --tmpdir=${LOCAL_DIR}/tmp)
+declare -a DECK_IDS
+declare -a STACK_IDS
+declare -a CARD_IDS
+trap deck_cleanup SIGINT SIGTERM EXIT
+# ---------------------------------
+#
+# Cleanup
+#
+function deck_cleanup() {
+  rm -f ${TMP}
+  exit
+}
+# ---------------------------------
+function get_decks() {
+#
+# Get Decks
+#
+  curl -u ${CLOUD_USER}:${CLOUD_PASS} -X GET \
+      &quot;${SERVER}/${BOARDS}&quot;\
+      -H &quot;OCS-APIRequest: true&quot; \
+      --ipv4 \
+      -o ${DECK_DIR}/decks.json 
+}
+# ---------------------------------
+function get_deck() {
+#
+# Get Deck
+#
+  local ID=${1}
+  curl -u ${CLOUD_USER}:${CLOUD_PASS} -X GET \
+      &quot;${SERVER}/${BOARDS}/${ID}&quot;\
+      -H &quot;OCS-APIRequest: true&quot; \
+      --ipv4 \
+      -o ${DECK_DIR}/deck-${ID}.json 
+}
+# ---------------------------------
+function get_stacks() {
+#
+# Get Stacks
+#
+  local DECK_ID=${1}
+  local STACK_ID=${2}
+  curl -u ${CLOUD_USER}:${CLOUD_PASS} -X GET \
+      &quot;${SERVER}/${BOARDS}/${DECK_ID}/stacks/${STACK_ID}&quot;\
+      -H &quot;OCS-APIRequest: true&quot; \
+      --ipv4 \
+      -o ${DECK_DIR}/deck-${DECK_ID}-stack-${STACK_ID}.json
+}
+# ---------------------------------
+function get_cards() {
+#
+# Get Cards
+#
+  local DECK_ID=${1}
+  local STACK_ID=${2}
+  local CARD_ID=${3}
+  curl -u ${CLOUD_USER}:${CLOUD_PASS} -X GET \
+      &quot;${SERVER}/${BOARDS}/${DECK_ID}/stacks/${STACK_ID}/cards/${CARD_ID}&quot;\
+      -H &quot;OCS-APIRequest: true&quot; \
+      --ipv4 \
+      -o ${DECK_DIR}/deck-${DECK_ID}-stack-${STACK_ID}-card-${CARD_ID}.json
+}
+# ---------------------------------
+#
+# Cloud Access
+#
+function deck_pass() {
+  ${LOCAL_DIR}/bin/pass.sh ls $CLOUD_URI/$CLOUD_USER 2&gt;&gt;/dev/null
+}
+# ---------------------------------
+#
+# Get  Decks
+#
+function refresh_decks() {
+  local DECK_ID
+  if [ &quot;${1}&quot; = &quot;all&quot; ]; then
+    get_decks
+  fi
+  DECK_IDS=$(jq '.[]| .id' ${DECK_DIR}/decks.json 2&gt;/dev/null)
+  if [ &quot;${1}&quot; = &quot;all&quot; ]; then
+    echo ${DECK_IDS[@]}
+    #
+    for DECK_ID in ${DECK_IDS[@]}
+    do
+      get_deck ${DECK_ID}
+      cat ${DECK_DIR}/deck-${DECK_ID}.json
+    done
+  fi
+}
+# ---------------------------------
+# 
+# Get Stacks
+# 
+function refresh_stacks() {
+  local DECK_ID STACK_ID CARD_ID
+  for DECK_ID in ${DECK_IDS[@]}
+  do
+    STACK_IDS=$(jq '.|.stacks[].id' \
+        ${DECK_DIR}/deck-${DECK_ID}.json 2&gt;/dev/null)
+    for STACK_ID in ${STACK_IDS[@]}
+    do
+      if [ &quot;${1}&quot; = &quot;all&quot; ]; then
+        get_stacks ${DECK_ID} ${STACK_ID}
+        cat ${DECK_DIR}/deck-${DECK_ID}-stack-${STACK_ID}.json
+      fi
+      CARD_IDS=$(jq '.|.cards[].id' \
+          ${DECK_DIR}/deck-${DECK_ID}-stack-${STACK_ID}.json 2&gt;/dev/null)
+      if [ &quot;${1}&quot; = &quot;all&quot; ]; then
+        echo &quot;Card IDS: ${CARD_IDS[@]}&quot;
+        for CARD_ID in ${CARD_IDS[@]}
+        do
+          echo &quot;CARD IDS: DECK_ID:${DECK_ID} STACK_ID:${STACK_ID} CARD_ID:${CARD_ID}&quot;
+          get_cards ${DECK_ID} ${STACK_ID} ${CARD_ID}
+          cat ${DECK_DIR}/deck-${DECK_ID}-stack-${STACK_ID}-card-${CARD_ID}.json
+        done
+      fi
+    done
+  done
+}
+# --------------------------------------------------
+#
+# Show Due
+#
+function show_due(){
+  local DECK_ID=${1}
+  local STACK_ID=${2}
+  local CARD_ID=${3}
+  local DUEDATE OVERDUE
+  read DUEDATE OVERDUE &lt; &lt;(jq -r '.|&quot;\(.duedate) \(.overdue)&quot;'  \
+      ${DECK_DIR}/deck-${DECK_ID}-stack-${STACK_ID}-card-${CARD_ID}.json)
+  case &quot;${OVERDUE}&quot;
+      in
+    0)
+      OVERDUE=&quot;&quot;
+      ;;
+    1) # Day left
+      OVERDUE=&quot;[${OVERDUE} day left]&quot;
+      ;;
+    2) # Today
+      OVERDUE=&quot;[Due Today]&quot;
+      ;;
+    *) # Overdue
+      OVERDUE=&quot;[Over Due]&quot;
+      ;;
+  esac
+  if [ &quot;${DUEDATE}&quot; != &quot;null&quot; ]; then
+    DUEDATE=$(date +&quot;%d-%b-%Y %H:%M:%S&quot; -d $DUEDATE)
+    printf &quot;Due on ${G}%s${NOCOLOR} ${R}%s${NOCOLOR}\n&quot; &quot;${DUEDATE}&quot; &quot;${OVERDUE}&quot;
+  fi
+}
+# --------------------------------------------------
+#
+# Show Card
+#
+function show_card() {
+  local DECK_ID=${1}
+  local STACK_ID=${2}
+  local CARD_ID=${3}
+  local CREATED_AT LAST_MODIFIED
+  # https://tldp.org/LDP/abs/html/process-sub.html
+  # only one card
+  read CREATED_AT LAST_MODIFIED &lt; &lt;(jq -r '&quot;\(.createdAt) \(.lastModified)&quot;'\
+      ${DECK_DIR}/deck-${DECK_ID}-stack-${STACK_ID}-card-${CARD_ID}.json)
+  echo -n &quot;Created : $(date +&quot;%d-%b-%Y %H:%M:%S&quot; -d @$CREATED_AT) - &quot;
+  echo &quot;Modified: $(date +&quot;%d-%b-%Y %H:%M:%S&quot; -d @$LAST_MODIFIED)&quot;
+  echo -en &quot;\t&quot;
+  jq -r '.|.description'  \
+      ${DECK_DIR}/deck-${DECK_ID}-stack-${STACK_ID}-card-${CARD_ID}.json
+  show_due ${DECK_ID} ${STACK_ID} ${CARD_ID}
+}
+# --------------------------------------------------
+#
+# Report
+#
+function report() {
+    # $1 : Stack Filter
+    #       Todo
+    #       Doing
+    #       Done
+  local STACK_FILTER=${1:-&quot;Doing&quot;}
+  local DECK STACK CARD
+  for DECK_ID in ${DECK_IDS[@]}
+  do
+    STACK_IDS=$(jq '.|.stacks[].id' \
+        ${DECK_DIR}/deck-${DECK_ID}.json 2&gt;/dev/null)
+    for STACK_ID in ${STACK_IDS[@]}
+    do
+      STACK=$(jq '.|.title' \
+            ${DECK_DIR}/deck-${DECK_ID}-stack-${STACK_ID}.json|
+            tr -d '&quot;' 2&gt;/dev/null)
+      if [ &quot;${STACK}&quot; = ${STACK_FILTER} ]; then
+        CARD_IDS=$(jq '.|.cards[].id' \
+          ${DECK_DIR}/deck-${DECK_ID}-stack-${STACK_ID}.json 2&gt;/dev/null)
+        for CARD_ID in ${CARD_IDS[@]}
+        do
+          DECK=$(jq '.|.title' ${DECK_DIR}/deck-${DECK_ID}.json|tr -d '&quot;')
+          CARD=$(jq '.|.title'  \
+              ${DECK_DIR}/deck-${DECK_ID}-stack-${STACK_ID}-card-${CARD_ID}.json |
+              tr -d '&quot;' )
+          echo -e &quot;\n...... ${DECK}[${DECK_ID}] - ${STACK}[${STACK_ID}] - ${CARD}[${CARD_ID}] ......&quot;
+          show_card ${DECK_ID} ${STACK_ID} ${CARD_ID}
+        done
+      fi
+    done
+  done
+}
+# --------------------------------------------------
+#
+# Inquire
+#
+function inquire() {
+  local -A DECK_TITLES=()
+  local -A STACK_TITLES=()
+  local -A CARD_TITLES=()
+  local REPLY
+  local DECK_ID DECK_NUM DECK_SEP DECK_TITLE
+  local STACK_ID STACK_TITLE
+  local CARD_ID CARD_TITLE
+  echo &quot;Pick a Deck&quot;
+  jq -r '.[]|&quot;\(.id) \(.title)&quot;' ${DECK_DIR}/decks.json &gt; ${TMP}
+  while read DECK_ID DECK_NUM DECK_SEP DECK_TITLE
+   do
+     echo &quot;$DECK_ID) $DECK_TITLE&quot;
+     DECK_TITLES[$DECK_ID]=$DECK_TITLE
+   done &lt;${TMP}
+  read REPLY
+  DECK_ID=$REPLY
+  if [ -z ${DECK_ID} ]; then
+     return
+  fi 
+  # ----------------
+  echo &quot;Pick a STACK&quot;
+  jq -r '.stacks[]|&quot;\(.id) \(.title)&quot;' \
+      ${DECK_DIR}/deck-${DECK_ID}.json &gt; ${TMP}
+   while read -r STACK_ID STACK_TITLE
+   do
+     echo &quot;$STACK_ID) $STACK_TITLE&quot;
+     STACK_TITLES[$STACK_ID]=$STACK_TITLE
+   done &lt;${TMP}
+  read REPLY
+  STACK_ID=$REPLY
+  if [ -z ${STACK_ID} ]; then
+     return
+  fi 
+  # ---------------
+  echo &quot;Pick a CARD&quot;
+  jq -r '.cards[]|&quot;\(.id) \(.title)&quot;' \
+      ${DECK_DIR}/deck-${DECK_ID}-stack-${STACK_ID}.json &gt; ${TMP}
+   while read -r CARD_ID CARD_TITLE
+   do
+     if [ -n &quot;${CARD_ID}&quot; ]; then
+       echo &quot;$CARD_ID) $CARD_TITLE&quot;
+       CARD_TITLES[$CARD_ID]=$CARD_TITLE
+     fi
+   done &lt;${TMP}
+  read REPLY
+  CARD_ID=$REPLY
+  if [ -z ${CARD_ID} ]; then
+     return
+  fi 
+  # ----------------------------------------------
+  echo &quot; ${DECK_TITLES[${DECK_ID}]} (${DECK_ID}) \
+         ${STACK_TITLES[${STACK_ID}]} (${STACK_ID}) \
+         ${CARD_TITLES[${CARD_ID}]} (${CARD_ID})&quot;
+  show_card ${DECK_ID} ${STACK_ID} ${CARD_ID}
+}
+# --------------------------------------------------
+function usage() {
+  echo &quot;Usage: nextcloud_deck.sh [option]&quot;
+  echo &quot;1) Refresh files&quot;
+  echo &quot;2) Report of items not done&quot;
+  echo &quot;3) Inquire&quot;
+}
+# --------------------------------------------------
+if [ ! -f ${CONFIG_DIR}/nextcloud_deck.${HOSTNAME} ]; then
+    echo &quot;ERROR: missing config file ${CONFIG_DIR}/nextcloud_deck.${HOSTNAME}&quot;
+    exit 1
+fi
+source ${CONFIG_DIR}/nextcloud_deck.${HOSTNAME}
+CLOUD_PASS=${CLOUD_PASS:-$(deck_pass)}
+DECK_DIR=${LOCAL_DIR}/tmp/decks
+mkdir -p ${DECK_DIR}
+#
+# Parse Parameters
+#
+if [ $# -gt 0 ]; then
+  A=${1}
+  DEBUG=${2}
+else
+  usage
+  read A
+fi
+#
+case ${A}
+ in
+   1) # Refresh files
+      rm -f ${DECK_DIR}/*
+      refresh_decks all  # Remove and Download
+      refresh_stacks all 
+      ;;
+   2) # Report
+      refresh_decks  # rebuild arrays
+      refresh_stacks # rebuild arrays
+      report &quot;Doing&quot; | less --raw-control-chars
+      printf &quot;\t===&gt; Press ${Y}Enter${NOCOLOR} to continue with Todo List &gt;&quot;
+      read CONTINUE
+      report &quot;Todo&quot;  | less --raw-control-chars
+      ;;
+   3) # Inquire
+      REPLY=&quot;y&quot;
+      while [ &quot;$REPLY&quot; = &quot;y&quot; ]
+      do
+        inquire
+        echo -n &quot;More? [y/n]: &quot;
+        read REPLY
+      done
+      ;;
+   *)
+      usage
+      exit 1
+      ;;
+esac
+#
+</code></pre>
+
+<h2 id="reference">Reference</h2>
+
+<ol>
+<li>Kanban: <a href="https://en.wikipedia.org/wiki/Kanban_(development)">https://en.wikipedia.org/wiki/Kanban_(development)</a></li>
+<li>Deck API: <a href="https://deck.readthedocs.io/en/latest/API/#api-version-11">https://deck.readthedocs.io/en/latest/API/#api-version-11</a></li>
+<li>Deck App: <a href="https://apps.nextcloud.com/apps/deck">https://apps.nextcloud.com/apps/deck</a></li>
+<li>Phone App: <a href="https://play.google.com/store/apps/details?id=it.niedermann.nextcloud.deck.play&amp;hl=en-US">https://play.google.com/store/apps/details?id=it.niedermann.nextcloud.deck.play&amp;hl=en-US</a></li>
+</ol>
+
+<p>iOS Deck app <a href="https://framagit.org/StCyr/deck-react-native">https://framagit.org/StCyr/deck-react-native</a> was removed since I installed it years ago.</p>
+
+<blockquote>
+<p>Good news, the web app works very nicely on a phone, tablet or laptop.</p>
+</blockquote>
+
+<h2 id="regards">Regards</h2>
+
+<p>&#8211; Don Cohoon</p>
+
+<hr>
+
+<h4 id="madeforhumansbyahuman">Made for Humans, by a Human</h4>
+
+<h4 id="links">Links</h4>
+
+<ul>
+<li><a href="https://lwn.net/">Linux Weekly News</a></li>
+<li><a href="https://fullcirclemagazine.org/">Full Circle Magazine</a></li>
+<li><a href="https://www.linuxjournal.com/">Linux Journal</a></li>
+<li><a href="https://www.linux-magazine.com/">Linux Magazine</a></li>
+<li><a href="https://www.thefarside.com/">The Far Side</a></li>
+</ul>
+
+<h4 id="social">Social</h4>
+
+<ul>
+<li><a href="https://fosstodon.org/@Cohoon">Feedback</a></li>
+<li><a href="/linux-in-house/feed-linux.rss">Linux RSS Feed</a></li>
+<li><a href="/linux-in-house/feed-writing.rss">Writing RSS Feed</a></li>
+<li><a href="https://linux-in-the-house.pages.dev/">Book</a></li>
+</ul>
+
+<div class="footer">
+<small><a href="/linux-in-house/linux/intro.html#createdwith">Tools Used</a></small>
+<small>License: <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0 </a></small>
+<small>linux-in-house Version:  4.242 </small>
+
+</div>
+
+
+</body>
+</html>
+

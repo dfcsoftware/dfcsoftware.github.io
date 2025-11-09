@@ -171,3 +171,12 @@ code{font-family:Consolas,"courier new";
 .w3-button:hover{color:#000!important;background-color:#ccc!important}
 .w3-transparent,.w3-hover-none:hover{background-color:transparent!important}
 .w3-hover-none:hover{box-shadow:none!important}
+/* Footer - Don Oct-2025 */
+.footer {
+  height: 7rem;
+  display: flex;
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: row;
+  justify-content: space-between;
+}

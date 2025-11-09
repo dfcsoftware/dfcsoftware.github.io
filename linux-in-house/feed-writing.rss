@@ -3,6 +3,27 @@
 
 <channel>
  <item>
+  <title>Winter-in-my-soul</title>
+  <link>https://dfcsoftware.github.io/linux-in-house/writing/winter-in-my-soul.html</link>
+  <guid>https://dfcsoftware.github.io/linux-in-house/writing/winter-in-my-soul.html</guid>
+  <pubDate>Tue, 04 Nov 2025 10:20:00 -0500</pubDate>
+  <description>It's the winter of my soul now, when a steady march of lawn mowing, eases out of the work week, and occasional items like pruning enter.</description>
+ </item>
+ <item>
+  <title>Bottom-up</title>
+  <link>https://dfcsoftware.github.io/linux-in-house/writing/bottom-up.html</link>
+  <guid>https://dfcsoftware.github.io/linux-in-house/writing/bottom-up.html</guid>
+  <pubDate>Sat, 01 Nov 2025 10:20:00 -0400</pubDate>
+  <description>Top to bottom, or bottom to top; which way to read.</description>
+ </item>
+ <item>
+  <title>Good-or-bad</title>
+  <link>https://dfcsoftware.github.io/linux-in-house/writing/good-or-bad.html</link>
+  <guid>https://dfcsoftware.github.io/linux-in-house/writing/good-or-bad.html</guid>
+  <pubDate>Wed, 22 Oct 2025 10:20:00 -0400</pubDate>
+  <description>Walking down the street a bank robbery occurs and a guy walking by, Sam, is shot in the leg. Falling to the ground, by-standers gasp &quot;How horrible is that!&quot;</description>
+ </item>
+ <item>
   <title>Algol</title>
   <link>https://dfcsoftware.github.io/linux-in-house/writing/algol.html</link>
   <guid>https://dfcsoftware.github.io/linux-in-house/writing/algol.html</guid>
@@ -99,6 +120,13 @@
   <guid>https://dfcsoftware.github.io/linux-in-house/writing/summer.html</guid>
   <pubDate>Sun, 20 Jul 2025 10:20:00 -0400</pubDate>
   <description>It's so hot we always sweat...</description>
+ </item>
+ <item>
+  <title>Draft-4</title>
+  <link>https://dfcsoftware.github.io/linux-in-house/writing/draft-4.html</link>
+  <guid>https://dfcsoftware.github.io/linux-in-house/writing/draft-4.html</guid>
+  <pubDate>Sat, 19 Jul 2025 10:20:00 -0400</pubDate>
+  <description>draft</description>
  </item>
  <item>
   <title>Predict-the-past</title>

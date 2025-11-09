@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>Bottom Up</title>
+	<meta name="date" content="2025-11-01 10:20"/>
+	<meta name="author" content="Don Cohoon"/>
+	<meta name="summary" content="Top to bottom, or bottom to top; which way to read."/>
+	<meta name="license" content="'[CC-BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)'"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"> <link rel="stylesheet" href="/linux-in-house/common.css" type="text/css" />
+</head>
+<body>
+
+<p><a href="/linux-in-house/index.html"><h1>Linux in House</h1></a></p>
+
+<link href="/linux-in-house/pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/linux-in-house/pagefind/pagefind-ui.js"></script>
+
+<div id="search"></div>
+<script>
+window.addEventListener('DOMContentLoaded', (event) => {
+      new PagefindUI({ element: "#search", showSubResults: true });
+});
+</script>
+
+<blockquote>
+<p><a href="/linux-in-house/linux/welcome.html">Welcome Back My Friends</a></p>
+</blockquote>
+
+<h1 id="title">Bottom Up</h1>
+
+<p>Published: 2025-11-01 10:20 <br />
+Author: Don Cohoon</p>
+
+<p>Top to bottom, or bottom to top; which way to read.</p>
+
+<p>Early in my career computer screens painted their picture on CRT&#8217;s from the top left, to bottom right. Like we all learned in school, reading books, newspapers and magazines.</p>
+
+<p>One day new computers became available and switched that upside-down. A blank terminal/screen might start at the top left, but after two dozen commands you will find yourself scrolling from the bottom up and entering commands down below.</p>
+
+<p>But I was used to scrolling from the top down! And my commands were typed on the <em>home</em> position, top left of course, with stuff falling off at the bottom of the screen.</p>
+
+<p>Alas, it took a few hours and I forgot all about it, until I saw a screenshot of my old terminal after 30 years. It inspired me to write an ODT (Operator Display Terminal) interface and enable elapsed time accounting (completed entries) for some of my daily jobs. The top line is always open for input, so I know where to type, no scrolling prompt.</p>
+
+<blockquote>
+<p>ODT</p>
+</blockquote>
+
+<pre><code>adm
+---- Active ----
+4053724 3d 07:15:22 cron.sh started
+---- Messages ----
+169874 16:29:53 sync.sh:main No files found
+169874 16:29:53 sync.sh:main INFO /home/bob/forest/log/sync.log 1
+4053724 16:27:00 cron.sh:start Background [1]: 169541 alert.sh Create Alerts for All Hosts
+4053724 16:27:00 cron.sh:waiter Run Job: 1 {bob}alert.sh Create Alerts for All Hosts
+167368 16:12:00 sync.sh:main No files found
+167368 16:12:00 sync.sh:main INFO /home/bob/forest/log/sync.log 1
+4053724 16:12:00 cron.sh:start Background [1]: 167332 log.sh Watch Log Files for Interesting Things
+4053724 16:12:00 cron.sh:waiter Run Job: 7 {root}log.sh Watch Log Files for Interesting Things
+166933 16:09:54 sync.sh:main No files found
+166933 16:09:54 sync.sh:main INFO /home/bob/forest/log/sync.log 1
+4053724 16:07:01 cron.sh:start Background [1]: 166707 alert.sh Create Alerts for All Hosts
+4053724 16:07:00 cron.sh:waiter Run Job: 1 {bob}alert.sh Create Alerts for All Hosts
+---- Completed ----
+169541 16:29:54 alert.sh 0d 00:02:54
+167332 16:12:00 log.sh 0d 00:00:00
+166707 16:09:54 alert.sh 0d 00:02:54
+165830 15:51:00 file_cleanup.sh 0d 00:00:00
+165596 15:49:53 alert.sh 0d 00:02:53
+</code></pre>
+
+<p>So should old data go away up into the heavens? Or down below?</p>
+
+<p>I guess it does not matter&#8230;</p>
+
+<h1 id="regards">Regards,</h1>
+
+<p>&#8211; Don Cohoon</p>
+
+<h2 id="reference">Reference</h2>
+
+<figure>
+<img src="/linux-in-house/images/odt.png" alt="B6800 Operator Display Terminal" />
+<figcaption>B6800 Operator Display Terminal</figcaption>
+</figure>
+
+<hr />
+
+<pre><code>____          
+|  _ \  ___  _ __  
+| | | |/ _ \| '_ \ 
+| |_| | (_) | | | |
+|____/ \___/|_| |_|                             
+
+¯\_(ツ)_/¯
+</code></pre>
+
+<hr>
+
+<h4 id="madeforhumansbyahuman">Made for Humans, by a Human</h4>
+
+<h4 id="links">Links</h4>
+
+<ul>
+<li><a href="https://lwn.net/">Linux Weekly News</a></li>
+<li><a href="https://fullcirclemagazine.org/">Full Circle Magazine</a></li>
+<li><a href="https://www.linuxjournal.com/">Linux Journal</a></li>
+<li><a href="https://www.linux-magazine.com/">Linux Magazine</a></li>
+<li><a href="https://www.thefarside.com/">The Far Side</a></li>
+</ul>
+
+<h4 id="social">Social</h4>
+
+<ul>
+<li><a href="https://fosstodon.org/@Cohoon">Feedback</a></li>
+<li><a href="/linux-in-house/feed-linux.rss">Linux RSS Feed</a></li>
+<li><a href="/linux-in-house/feed-writing.rss">Writing RSS Feed</a></li>
+<li><a href="https://linux-in-the-house.pages.dev/">Book</a></li>
+</ul>
+
+<div class="footer">
+<small><a href="/linux-in-house/linux/intro.html#createdwith">Tools Used</a></small>
+<small>License: <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0 </a></small>
+<small>linux-in-house Version:  4.242 </small>
+
+</div>
+
+
+</body>
+</html>
+
