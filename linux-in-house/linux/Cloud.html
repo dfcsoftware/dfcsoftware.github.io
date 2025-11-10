@@ -69,6 +69,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 <li><a href="#nextcloudtrusteddomainsande-mailserverconnection">NextCloud Trusted Domains and E-Mail Server Connection</a></li>
 <li><a href="#nextcloudphpconfiguration">NextCloud PHP Configuration</a></li>
 <li><a href="#nextcloudrediscachingconfiguration">NextCloud Redis Caching Configuration</a></li>
+<li><a href="#updateforredisusingphp8.2onredhatcentosalmalinux">Update for Redis using php 8.2 on Redhat/CentOS/AlmaLinux</a></li>
 </ul>
 </li>
 <li><a href="#movethesharedfilesinnextcloudtonas">Move the shared files in NextCloud to NAS</a></li>
@@ -634,6 +635,53 @@ redis.session.lock_retries=-1
 redis.session.lock_wait_time=10000
 ~
 :wq
+</code></pre>
+
+<h3 id="updateforredisusingphp8.2onredhatcentosalmalinux">Update for Redis using php 8.2 on Redhat/CentOS/AlmaLinux</h3>
+
+<blockquote>
+<p>File locking is finally working now!</p>
+</blockquote>
+
+<pre><code>dnf install php82-php-pecl-redis6
+</code></pre>
+
+<p>&#8230;
+To get pecl:</p>
+
+<pre><code>dnf install php-devel
+</code></pre>
+
+<p>&#8230;
+Installing the Redis Server in PHP</p>
+
+<p>To interact with Redis in PHP, you&#8217;ll need the Redis extension. You can install it using the following command:</p>
+
+<pre><code>    pecl install redis
+</code></pre>
+
+<p>Installing PHP Redis Extension</p>
+
+<p>Once the extension is installed, you can enable it by adding the following line to your php.ini file: (or create file /etc/php.d/20-redis.ini)</p>
+
+<pre><code>    extension=redis.so
+</code></pre>
+
+<p>Note: After enabling the extension, restart your web server to apply the changes.</p>
+
+<p>Now, you can establish a connection to your Redis server using PHP:</p>
+
+<p>File: /tmp/test.php</p>
+
+<pre><code>&lt;?php
+$redis = new Redis();
+$redis-&gt;connect('127.0.0.1', 6379); // Replace with your Redis server's IP and port
+?&gt;
+</code></pre>
+
+<p>Success is no errors returned, php connection worked!</p>
+
+<pre><code>php -f /tmp/test.php
 </code></pre>
 
 <h2 id="movethesharedfilesinnextcloudtonas">Move the shared files in NextCloud to NAS</h2>
@@ -1598,7 +1646,7 @@ $ sudo crontab -u apache -e
 <div class="footer">
 <small><a href="/linux-in-house/linux/intro.html#createdwith">Tools Used</a></small>
 <small>License: <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0 </a></small>
-<small>linux-in-house Version:  4.242 </small>
+<small>linux-in-house Version:  4.246 </small>
 
 </div>
 
